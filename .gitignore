@@ -22,3 +22,6 @@ sources/_VS/Kornet/Panel/x64/*
 sources/_VS/Kornet/PanelBoot/Debug/*
 sources/_VS/Kornet/PanelBoot/Release/*
 sources/_VS/Kornet/PanelBoot/x64/*
+
+doc/Kornet/doxygen/Device/*
+doc/Kornet/doxygen/Panel/*
