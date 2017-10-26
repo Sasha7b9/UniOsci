@@ -2,6 +2,23 @@
 *.o
 *.obj
 
+sources/.vs/*
+sources/_VS/Kornet/.vs/*
+
 sources/Kornet/DebugConfig/*
 sources/Kornet/obj/*
 sources/Kornet/lst/*
+
+sources/_VS/Kornet/x64/*
+sources/_VS/Kornet/Device/Debug/*
+sources/_VS/Kornet/Device/Release/*
+sources/_VS/Kornet/Device/x64/*
+sources/_VS/Kornet/DeviceBoot/Debug/*
+sources/_VS/Kornet/DeviceBoot/Release/*
+sources/_VS/Kornet/DeviceBoot/x64/*
+sources/_VS/Kornet/Panel/Debug/*
+sources/_VS/Kornet/Panel/Release/*
+sources/_VS/Kornet/Panel/x64/*
+sources/_VS/Kornet/PanelBoot/Debug/*
+sources/_VS/Kornet/PanelBoot/Release/*
+sources/_VS/Kornet/PanelBoot/x64/*

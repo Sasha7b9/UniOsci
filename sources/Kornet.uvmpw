@@ -16,4 +16,12 @@
     <PathAndName>.\Kornet\Panel.uvprojx</PathAndName>
   </project>
 
+  <project>
+    <PathAndName>.\Kornet\DeviceBoot\DeviceBoot.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\Kornet\PanelBoot.uvprojx</PathAndName>
+  </project>
+
 </ProjectWorkspace>

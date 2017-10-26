@@ -11,7 +11,7 @@
     <View>
       <WinId>38003</WinId>
       <ViewName>Registers</ViewName>
-      <TableColWidths>115 85</TableColWidths>
+      <TableColWidths>115 77</TableColWidths>
     </View>
     <View>
       <WinId>346</WinId>
@@ -1480,7 +1480,7 @@
         <RecentRowIndex>0</RecentRowIndex>
         <RectRecentDocked>
           <Len>16</Len>
-          <Data>0300000056020000D50000006F020000</Data>
+          <Data>1504000062000000E104000023020000</Data>
         </RectRecentDocked>
         <RectRecentFloat>
           <Len>16</Len>
