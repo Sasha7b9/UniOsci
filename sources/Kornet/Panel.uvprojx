@@ -378,7 +378,25 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source Group 1</GroupName>
+          <GroupName>HAL</GroupName>
+        </Group>
+        <Group>
+          <GroupName>libs</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Display</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Display/font</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Hardware</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Keyboard</GroupName>
+        </Group>
+        <Group>
+          <GroupName>src</GroupName>
         </Group>
       </Groups>
     </Target>
