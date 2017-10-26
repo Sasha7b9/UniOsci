@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>1</BrowseInformation>
+          <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\lst\Device\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -159,11 +159,11 @@
             <ldmm>1</ldmm>
             <ldXref>1</ldXref>
             <BigEnd>0</BigEnd>
-            <AdsALst>1</AdsALst>
+            <AdsALst>0</AdsALst>
             <AdsACrf>1</AdsACrf>
             <AdsANop>0</AdsANop>
             <AdsANot>0</AdsANot>
-            <AdsLLst>1</AdsLLst>
+            <AdsLLst>0</AdsLLst>
             <AdsLmap>1</AdsLmap>
             <AdsLcgr>1</AdsLcgr>
             <AdsLsym>1</AdsLsym>
@@ -311,7 +311,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>4</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -336,7 +336,7 @@
               <MiscControls>--cpp</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F437xx,__cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc</IncludePath>
+              <IncludePath>..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\Device\libs;.\Device;..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -494,42 +494,398 @@
         </Group>
         <Group>
           <GroupName>libs</GroupName>
+          <Files>
+            <File>
+              <FileName>startup_stm32f437xx.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Device\libs\startup_stm32f437xx.s</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_hal_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\libs\stm32f4xx_hal_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_hal_msp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\libs\stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\libs\stm32f4xx_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\libs\stm32f4xx_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>system_stm32f4xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\libs\system_stm32f4xx.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Display</GroupName>
+          <Files>
+            <File>
+              <FileName>Display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\Display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Display\Display.h</FilePath>
+            </File>
+            <File>
+              <FileName>Grid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\Grid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Grid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Display\Grid.h</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\Painter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Display\Painter.h</FilePath>
+            </File>
+            <File>
+              <FileName>PainterData.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\PainterData.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterData.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Display\PainterData.h</FilePath>
+            </File>
+            <File>
+              <FileName>TypeSymbols.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Display\TypeSymbols.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>FPGA</GroupName>
+          <Files>
+            <File>
+              <FileName>AD9286.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\AD9286.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>AD9286.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\FPGA\AD9286.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\FPGA.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\FPGA\FPGA.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA_Types.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\FPGA\FPGA_Types.h</FilePath>
+            </File>
+            <File>
+              <FileName>Storage.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\Storage.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Storage.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\FPGA\Storage.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Keyboard</GroupName>
+          <Files>
+            <File>
+              <FileName>Buttons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Keyboard\Buttons.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>Decoder.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\Decoder.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Hardware\Decoder.h</FilePath>
+            </File>
+            <File>
+              <FileName>FLASH.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\FLASH.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FLASH.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Hardware\FLASH.h</FilePath>
+            </File>
+            <File>
+              <FileName>FSMC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\FSMC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FSMC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Hardware\FSMC.h</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\GPIO.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Hardware\GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>Hardware.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\Hardware.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hardware.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Hardware\Hardware.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\Timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Hardware\Timer.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Menu</GroupName>
+          <Files>
+            <File>
+              <FileName>Menu.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Menu.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Menu\Menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuControls.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\MenuControls.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuControls.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Menu\MenuControls.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Menu/Pages</GroupName>
+          <Files>
+            <File>
+              <FileName>PageChannel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageChannel.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDisplay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageDisplay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageService.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageService.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTester.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageTester.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTrig.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageTrig.cpp</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Multimeter</GroupName>
+          <Files>
+            <File>
+              <FileName>Multimeter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Multimeter\Multimeter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Multimeter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Multimeter\Multimeter.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Osci</GroupName>
+          <Files>
+            <File>
+              <FileName>Osci.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Osci\Osci.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Osci.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Osci\Osci.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Settings</GroupName>
+          <Files>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\Settings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Settings\Settings.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Settings\SettingsTypes.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Tester</GroupName>
+          <Files>
+            <File>
+              <FileName>Tester.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Tester\Tester.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Tester.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Tester\Tester.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Utils</GroupName>
+          <Files>
+            <File>
+              <FileName>CommonFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\CommonFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CommonFunctions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Utils\CommonFunctions.h</FilePath>
+            </File>
+            <File>
+              <FileName>Debug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Debug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Debug.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Utils\Debug.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Utils\Math.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>src</GroupName>
+          <Files>
+            <File>
+              <FileName>defines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\defines.h</FilePath>
+            </File>
+            <File>
+              <FileName>Device.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Device.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Device.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Device.h</FilePath>
+            </File>
+            <File>
+              <FileName>Log.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Log.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Log.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Log.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\main.h</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>
