@@ -1,3 +1,7 @@
 *.lst
 *.o
 *.obj
+
+sources/Kornet/DebugConfig/*
+sources/Kornet/obj/*
+sources/Kornet/lst/*
