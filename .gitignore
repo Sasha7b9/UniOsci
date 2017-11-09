@@ -10,6 +10,15 @@ sources/Kornet/DebugConfig/*
 sources/Kornet/obj/*
 sources/Kornet/lst/*
 
+sources/S8-54/DebugConfig/*
+sources/S8-54/obj/*
+sources/S8-54/lst/*
+
+sources/S8-53/DebugConfig/*
+sources/S8-53/obj/*
+sources/S8-53/lst/*
+
+
 sources/_VS/Kornet/x64/*
 sources/_VS/Kornet/Device/Debug/*
 sources/_VS/Kornet/Device/Release/*
