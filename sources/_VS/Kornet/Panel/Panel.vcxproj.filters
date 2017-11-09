@@ -1,2 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="HAL">
+      <UniqueIdentifier>{6a5db84e-81cf-4f28-8d7b-fa41a3918b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{2b1c1fff-84f0-4111-a47e-ea732a2501dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Display">
+      <UniqueIdentifier>{89baa631-c8df-4cc5-8482-c1778fdd1133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Display\font">
+      <UniqueIdentifier>{aaebdff7-53f3-4911-b4f3-6d8044f44016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hardware">
+      <UniqueIdentifier>{76bba3b7-677a-4c55-a13f-2d7a91ba36ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Keyboard">
+      <UniqueIdentifier>{3cbf6f66-fa4e-423b-a210-6110adc33b08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{935bd6f7-1c3a-4a0d-bbec-a6e032ce02b1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

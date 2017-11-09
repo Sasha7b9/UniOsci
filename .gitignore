@@ -1,3 +1,4 @@
+*.bak
 *.lst
 *.o
 *.obj
