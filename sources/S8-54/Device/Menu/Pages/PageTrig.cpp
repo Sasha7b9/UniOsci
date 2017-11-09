@@ -1,0 +1,225 @@
+#include "defines.h"
+#include "Menu/MenuItems.h"
+#include "Settings/Settings.h"
+#include "Utils/GlobalFunctions.h"
+#include "FPGA/FPGAtypes.h"
+#include "FPGA/FPGA.h"
+#include "Settings/Settings.h"
+#include "Utils/GlobalFunctions.h"
+#include "Definition.h"
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extern const   Choice cMode;                    ///< СИНХР - Режим
+       void  OnChanged_TrigMode(bool active);   
+extern const   Choice cSource;                  ///< СИНХР - Источник
+static void  OnChanged_Source(bool active);
+extern const   Choice cPolarity;                ///< СИНХР - Полярность
+static void  OnChanged_Polarity(bool active);   
+extern const   Choice cInput;                   ///< СИНХР - Вход
+static void  OnChanged_Input(bool active);
+extern const    Page ppSearch;                  ///< СИНХР - ПОИСК
+extern const   Choice cSearch_Mode;             ///< СИНХР - ПОИСК - Режим
+extern const   Button bSearch_Search;           ///< СИНХР - ПОИСК - Найти
+static bool   IsActive_Search_Search(void);
+static void    OnPress_Search_Search(void);
+//static const Governor gTimeDelay;               ///< СИНХР - Удержание
+
+extern const Page pTrig;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СИНХР ///
+DEF_PAGE_5(     pTrig, ,
+    Page_Trig, &mainPage, FuncActive, EmptyPressPage,
+    "СИНХР", "TRIG",
+    "Содержит настройки синхронизации.",
+    "Contains synchronization settings.",
+    cMode,      // СИНХР - Режим
+    cSource,    // СИНХР - Источник
+    cPolarity,  // СИНХР - Полярность
+    cInput,     // СИНХР - Вход
+    ppSearch    // СИНХР - ПОИСК
+//  gTimeDelay  // СИНХР - Удержание
+);
+
+const Page * pointerPageTrig = &pTrig;
+
+//---------------------------------------------------------------------------------------------------------------------------------- СИНХР - Режим ---
+void OnChanged_TrigMode(bool active)
+{
+    FPGA_Stop(false);
+    if(!START_MODE_SINGLE)
+    {
+        FPGA_OnPressStartStop();
+    }
+    
+    // Елси находимся в режиме рандомизатора
+    if(IN_RANDOM_MODE)
+    /// \todo Это вместо функции sTime_RandomizeModeEnabled() было сделано потому, что с функцией экран периодически отваливался
+    //if (SET_TBASE < TBase_50ns)
+    {
+        // и переключаемся на одиночный режим запуска, то надо сохранить имеющийся тип выборки, чтобы восстановить при возвращении в режим 
+        // рандомизатора автоматический или ждущий
+        if (START_MODE_SINGLE)
+        {
+            SAMPLE_TYPE_OLD = SAMPLE_TYPE;
+            SAMPLE_TYPE = SampleType_Real;
+        }
+        else if(START_MODE_AUTO)    // Иначе восстановим ранее сохранённый
+        {
+            SAMPLE_TYPE = SAMPLE_TYPE_OLD;
+        }
+    }
+}
+
+DEF_CHOICE_3
+(
+    cMode, pTrig,
+    START_MODE, FuncActive, OnChanged_TrigMode, FuncDraw,
+    "Режим",        "Mode",
+    "Задаёт режим запуска:\n"
+    "1. \"Авто\" - запуск происходит автоматически.\n"
+    "2. \"Ждущий\" - запуск происходит по уровню синхронизации.\n"
+    "3. \"Однократный\" - запуск происходит по достижении уровня синхронизации один раз. Для следующего измерения нужно нажать кнопку ПУСК/СТОП.",
+    "Sets the trigger mode:\n"
+    "1. \"Auto\" - start automatically.\n"
+    "2. \"Standby\" - the launch takes place at the level of synchronization.\n"
+    "3. \"Single\" - the launch takes place on reaching the trigger levelonce. For the next measurement is necessary to press the START/STOP.",
+    "Авто ",        "Auto",
+    "Ждущий",       "Wait",
+    "Однократный",  "Single"
+);
+
+//------------------------------------------------------------------------------------------------------------------------------- СИНХР - Источник ---
+static void OnChanged_Source(bool active)
+{
+    FPGA_SetTrigSource(TRIGSOURCE);
+}
+
+DEF_CHOICE_3
+(
+    cSource, pTrig,
+    TRIGSOURCE, FuncActive, OnChanged_Source, FuncDraw,
+    "Источник", "Source",
+    "Выбор источника сигнала синхронизации.",
+    "Synchronization signal source choice.",
+    "Канал 1",  "Channel 1",
+    "Канал 2",  "Channel 2",
+    "Внешний",  "External"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------- СИНХР - Полярность ---
+static void OnChanged_Polarity(bool active)
+{
+    FPGA_SetTrigPolarity(TRIG_POLARITY);
+}
+
+DEF_CHOICE_2
+(
+    cPolarity, pTrig,
+    TRIG_POLARITY, FuncActive, OnChanged_Polarity, FuncDraw,
+    "Полярность", "Polarity",
+    "1. \"Фронт\" - запуск происходит по фронту синхроимпульса.\n"
+    "2. \"Срез\" - запуск происходит по срезу синхроимпульса.",
+    "1. \"Front\" - start happens on the front of clock pulse.\n"
+    "2. \"Back\" - start happens on a clock pulse cut.",
+    "Фронт", "Front",
+    "Срез",  "Back"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------- СИНХР - Вход ---
+static void OnChanged_Input(bool active)
+{
+    FPGA_SetTrigInput(TRIG_INPUT);
+}
+
+DEF_CHOICE_4
+(
+    cInput, pTrig,
+    TRIG_INPUT, FuncActive, OnChanged_Input, FuncDraw,
+    "Вход", "Input",
+    "Выбор связи с источником синхронизации:\n"
+    "1. \"ПС\" - полный сигнал.\n"
+    "2. \"АС\" - закрытый вход.\n"
+    "3. \"ФНЧ\" - фильтр низких частот.\n"
+    "4. \"ФВЧ\" - фильтр высоких частот.",
+    "The choice of communication with the source of synchronization:\n"
+    "1. \"SS\" - a full signal.\n"
+    "2. \"AS\" - a gated entrance.\n"
+    "3. \"LPF\" - low-pass filter.\n"
+    "4. \"HPF\" - high-pass filter frequency.",
+    "ПС", "Full",
+    "АС", "AC",
+    "ФНЧ", "LPF",
+    "ФВЧ", "HPF"
+);
+
+// СИНХР - Удержание ---------------------------------------------------------------------------------------------------------------------------------
+/*
+static const Governor gTimeDelay =
+{
+    Item_Governor, &pTrig, 0,
+    {
+        "Удержание, мс", "Holdoff, ms",
+        "Устанавливает минимальное время между запусками.",
+        "Sets the minimum time between starts."
+    },
+    (int16 *)&TRIG_TIME_DELAY, 45, 10000
+};
+*/
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СИНХР - ПОИСК ///
+DEF_PAGE_2(     ppSearch, static,
+    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage,
+    "ПОИСК", "SEARCH",
+    "Управление автоматическим поиском уровня синхронизации.",
+    "Office of the automatic search the trigger level.",
+    cSearch_Mode,      // СИНХР - ПОИСК - Режим
+    bSearch_Search     // СИНХР - ПОИСК - Найти
+);
+
+//-------------------------------------------------------------------------------------------------------------------------- СИНХР - ПОИСК - Режим ---
+static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "Auto" };
+
+static const Choice cSearch_Mode =
+{
+    Item_Choice, 2, &ppSearch, 0,
+    {
+        "Режим", "Mode"
+        ,
+        "Выбор режима автоматического поиска синхронизации:\n"
+        "1. \"Ручной\" - поиск производится по нажатию кнопки \"Найти\" или по удержанию в течение 0.5с кнопки СИНХР, если установлено "
+        "\"СЕРВИС\x99Реж длит СИНХР\x99Автоуровень\".\n"
+        "2. \"Автоматический\" - поиск производится автоматически."
+        ,
+        "Selecting the automatic search of synchronization:\n"
+#pragma push
+#pragma diag_suppress 192
+        "1. \"Hand\" - search is run on pressing of the button \"Find\" or on deduction during 0.5s the СИНХР button if it is established "
+        "\"SERVICE\x99Mode long СИНХР\x99\Autolevel\".\n"
+#pragma pop
+        "2. \"Auto\" - the search is automatically."
+    },
+    (int8 *)&TRIG_MODE_FIND,
+    hintsSearch_Mode, FuncChangedChoice, FuncDraw
+};
+
+// СИНХР - ПОИСК - Найти -----------------------------------------------------------------------------------------------------------------------------
+DEF_BUTTON
+(
+    bSearch_Search,
+    "Найти", "Search",
+    "Производит поиск уровня синхронизации.",
+    "Runs for search synchronization level.",
+    ppSearch, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
+);
+
+static bool IsActive_Search_Search(void)
+{
+    return TRIG_MODE_FIND_HAND;
+}
+
+static void OnPress_Search_Search(void)
+{
+    FPGA_FindAndSetTrigLevel();
+}
