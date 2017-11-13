@@ -21,7 +21,6 @@ typedef struct
 typedef struct
 {
     char nameDir[_MAX_LFN + 1];
-    char lfn[(_MAX_LFN + 1)];
     FILINFO fno;
     DIR dir;
 } StructForReadDir;

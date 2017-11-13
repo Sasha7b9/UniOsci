@@ -1,5 +1,3 @@
-
-
 #include "FlashDrive.h"
 #include "Globals.h"
 #include "Log.h"
@@ -8,8 +6,8 @@
 #include "Hardware/Timer.h"
 #include "Menu/FileManager.h"
 #include "Utils/Dictionary.h"
+#include "usbh_diskio.h"
 #include <ff_gen_drv.h>
-#include <usbh_diskio.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -21,7 +19,7 @@ static struct BitFieldFlashDrive
 } bf = {0};
 
 
-USBH_HandleTypeDef handleUSBH;
+USBH_HandleTypeDef hUSB_Host;
 static FATFS USBDISKFatFs;
 static char USBDISKPath[4];
 static bool gFlashDriveIsConnected = false;
@@ -101,9 +99,9 @@ void FDrive_Init(void)
 {
     if(FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK) 
     {
-        USBH_StatusTypeDef res = USBH_Init(&handleUSBH, USBH_UserProcess, 0);
-        res = USBH_RegisterClass(&handleUSBH, USBH_MSC_CLASS);
-        res = USBH_Start(&handleUSBH);
+        USBH_StatusTypeDef res = USBH_Init(&hUSB_Host, USBH_UserProcess, 0);
+        res = USBH_RegisterClass(&hUSB_Host, USBH_MSC_CLASS);
+        res = USBH_Start(&hUSB_Host);
     }
     else
     {
@@ -140,7 +138,7 @@ void FDrive_Update(void)
     }
     else
     {
-        USBH_Process(&handleUSBH);
+        USBH_Process(&hUSB_Host);
     }
 }
 
@@ -220,9 +218,6 @@ bool FDrive_GetNameDir(const char *fullPath, int numDir, char *nameDirOut, Struc
     memcpy(s->nameDir, fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
 
-    s->fno.lfname = s->lfn;
-    s->fno.lfsize = sizeof(s->lfn);
-
     DIR *pDir = &s->dir;
     if (f_opendir(pDir, s->nameDir) == FR_OK)
     {
@@ -247,10 +242,9 @@ bool FDrive_GetNameDir(const char *fullPath, int numDir, char *nameDirOut, Struc
                 }
                 alreadyNull = true;
             }
-            char *fn = *(pFNO->lfname) ? pFNO->lfname : pFNO->fname;
             if (numDir == numDirs && (pFNO->fattrib & AM_DIR))
             {
-                strcpy(nameDirOut, fn);
+                strcpy(nameDirOut, pFNO->fname);
                 return true;
             }
             if ((pFNO->fattrib & AM_DIR) && (pFNO->fname[0] != '.'))
@@ -289,10 +283,9 @@ bool FDrive_GetNextNameDir(char *nameDirOut, StructForReadDir *s)
         }
         else
         {
-            char *fn = *(pFNO->lfname) ? pFNO->lfname : pFNO->fname;
             if (pFNO->fattrib & AM_DIR)
             {
-                strcpy(nameDirOut, fn);
+                strcpy(nameDirOut, pFNO->fname);
                 return true;
             }
         }
@@ -312,9 +305,6 @@ bool FDrive_GetNameFile(const char *fullPath, int numFile, char *nameFileOut, St
 {
     memcpy(s->nameDir, fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
-
-    s->fno.lfname = s->lfn;
-    s->fno.lfsize = sizeof(s->lfn);
 
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -340,10 +330,9 @@ bool FDrive_GetNameFile(const char *fullPath, int numFile, char *nameFileOut, St
                 }
                 alreadyNull = true;
             }
-            char *fn = *(pFNO->lfname) ? pFNO->lfname : pFNO->fname;
             if (numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                strcpy(nameFileOut, fn);
+                strcpy(nameFileOut, pFNO->fname);
                 return true;
             }
             if ((pFNO->fattrib & AM_DIR) == 0 && (pFNO->fname[0] != '.'))
@@ -381,10 +370,9 @@ bool FDrive_GetNextNameFile(char *nameFileOut, StructForReadDir *s)
         }
         else
         {
-            char *fn = *(pFNO->lfname) ? pFNO->lfname : pFNO->fname;
             if ((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                strcpy(nameFileOut, fn);
+                strcpy(nameFileOut, pFNO->fname);
                 return true;
             }
         }
