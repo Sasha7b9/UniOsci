@@ -177,10 +177,6 @@ void FDrive_GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles
     memcpy(nameDir, fullPath, strlen(fullPath));
     nameDir[strlen(fullPath)] = '\0';
 
-    char lfn[(_MAX_LFN + 1)];
-    fno.lfname = lfn;
-    fno.lfsize = sizeof(lfn);
-
     if (f_opendir(&dir, nameDir) == FR_OK)
     {
         int numReadingElements = 0;
@@ -201,8 +197,7 @@ void FDrive_GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles
                 continue;
             }
             numReadingElements++;
-            char *fn = *fno.lfname ? fno.lfname : fno.fname;
-            if (fn[0] != '.')
+            if (fno.fname[0] != '.')
             {
                 if (fno.fattrib & AM_DIR)
                 {

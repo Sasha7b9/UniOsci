@@ -2,6 +2,7 @@
 *.lst
 *.o
 *.obj
+*.tmp
 
 sources/.vs/*
 sources/_VS/Kornet/.vs/*
@@ -23,6 +24,7 @@ sources/_VS/Kornet/x64/*
 sources/_VS/Kornet/Device/Debug/*
 sources/_VS/Kornet/Device/Release/*
 sources/_VS/Kornet/Device/x64/*
+sources/_VS/Kornet/Device/.vs/*
 sources/_VS/Kornet/DeviceBoot/Debug/*
 sources/_VS/Kornet/DeviceBoot/Release/*
 sources/_VS/Kornet/DeviceBoot/x64/*
@@ -33,5 +35,15 @@ sources/_VS/Kornet/PanelBoot/Debug/*
 sources/_VS/Kornet/PanelBoot/Release/*
 sources/_VS/Kornet/PanelBoot/x64/*
 
+sources/_VS/S8-54/Boot54/Debug/*
+sources/_VS/S8-54/Boot54/Release/*
+sources/_VS/S8-54/Boot54/x64/*
+sources/_VS/S8-54/Device54/Debug/*
+sources/_VS/S8-54/Device54/Release/*
+sources/_VS/S8-54/Device54/x64/*
+sources/_VS/S8-54/.vs/*
+
 doc/Kornet/doxygen/Device/*
 doc/Kornet/doxygen/Panel/*
+
+doc/doxygen/S8-54/*
