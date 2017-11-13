@@ -8,14 +8,12 @@
   <WorkspaceName>WorkSpace</WorkspaceName>
 
   <project>
-    <PathAndName>.\S8-54\Device.uvprojx</PathAndName>
+    <PathAndName>.\S8-54\Boot54.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
-    <PathAndName>.\S8-54\DeviceBoot.uvprojx</PathAndName>
-    <NodeIsExpanded>1</NodeIsExpanded>
+    <PathAndName>.\S8-54\Device54.uvprojx</PathAndName>
   </project>
 
 </ProjectWorkspace>
