@@ -103,7 +103,7 @@ void Timer_StartLogging(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Timer_LogPointUS(char *name)
+uint Timer_LogPointUS(char *)
 {
     uint interval = gTimerTics - timePrevPoint;
     timePrevPoint = gTimerTics;
@@ -112,7 +112,7 @@ uint Timer_LogPointUS(char *name)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Timer_LogPointMS(char *name)
+uint Timer_LogPointMS(char *)
 {
     uint interval = gTimerTics - timePrevPoint;
     timePrevPoint = gTimerTics;
@@ -124,8 +124,8 @@ uint Timer_LogPointMS(char *name)
 void Timer_Enable(TypeTimer type, int timeInMS, void(*eF)(void))
 {
     f[type] = eF;
-    reactionTimeMS[type] = timeInMS;
-    timePrevExecuteMS[type] = gTimerMS;
+    reactionTimeMS[type] = (uint)timeInMS;
+    timePrevExecuteMS[type] = (int)gTimerMS;
     isRun[type] = true;
 }
 
@@ -171,7 +171,7 @@ static void Timer_Update(void)
             if(delta >= reactionTimeMS[num])
             {
                 f[num]();
-                timePrevExecuteMS[num] = curTimeMS;
+                timePrevExecuteMS[num] = (int)curTimeMS;
             }
             
         }
@@ -207,13 +207,13 @@ void TIM2_IRQHandler(void)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void PersonalTimer_Start(TypePersonalTimer type, uint timeMS, bool repeat, pFuncVV func)
+void PersonalTimer_Start(TypePersonalTimer, uint, bool, pFuncVV)
 {
 
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void PersonalTimer_Stop(TypePersonalTimer type)
+void PersonalTimer_Stop(TypePersonalTimer)
 {
 
 }

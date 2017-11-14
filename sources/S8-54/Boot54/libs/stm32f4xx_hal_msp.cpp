@@ -3,7 +3,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void HAL_SRAM_MspInit(SRAM_HandleTypeDef *hsram)
+void HAL_SRAM_MspInit(SRAM_HandleTypeDef *)
 {
     __HAL_RCC_FMC_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -101,7 +101,7 @@ void HAL_SRAM_MspInit(SRAM_HandleTypeDef *hsram)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef *hsram)
+void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef *)
 {
     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_7);
     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_7 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 | GPIO_PIN_11 |
@@ -111,7 +111,7 @@ void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef *hsram)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Инициализация флешки
-void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
+void HAL_HCD_MspInit(HCD_HandleTypeDef *)
 {
     GPIO_InitTypeDef isGPIO =
     {
@@ -146,7 +146,7 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Деинициализация флешки
-void HAL_HCD_MspDeInit(HCD_HandleTypeDef *hhcd)
+void HAL_HCD_MspDeInit(HCD_HandleTypeDef *)
 {
     __USB_OTG_FS_CLK_DISABLE();
 }
@@ -154,7 +154,7 @@ void HAL_HCD_MspDeInit(HCD_HandleTypeDef *hhcd)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Инициализаця VCP
-void HAL_PCD_MspInit(PCD_HandleTypeDef *hpcd)
+void HAL_PCD_MspInit(PCD_HandleTypeDef *)
 {
     __GPIOB_CLK_ENABLE();
     __USB_OTG_HS_CLK_ENABLE();
@@ -180,7 +180,7 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef *hpcd)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_PCD_MspDeInit(PCD_HandleTypeDef *hpcd)
+void HAL_PCD_MspDeInit(PCD_HandleTypeDef *)
 {
     __USB_OTG_HS_CLK_DISABLE();
 }

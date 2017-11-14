@@ -43,7 +43,7 @@ void FDrive_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id)
+void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 {
     switch(id)
     {
@@ -137,7 +137,7 @@ bool FDrive_FileExist(char *fileName)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
-    memcpy(s->nameDir, fullPath, strlen(fullPath));
+    memcpy((uint8 *)s->nameDir, (uint8 *)fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
@@ -219,7 +219,7 @@ int FDrive_OpenFileForRead(char *fileName)
 {
     if (f_open(&ms->drive.file, fileName, FA_READ) == FR_OK)
     {
-        return f_size(&ms->drive.file);
+        return (int)f_size(&ms->drive.file);
     }
     return -1;
 }
@@ -229,7 +229,7 @@ int FDrive_OpenFileForRead(char *fileName)
 int FDrive_ReadFromFile(int numBytes, uint8 *buffer)
 {
     uint readed = 0;
-    if (f_read(&ms->drive.file, buffer, numBytes, &readed) == FR_OK)
+    if (f_read(&ms->drive.file, buffer, (UINT)numBytes, &readed) == FR_OK)
     {
         return (int)readed;
     }

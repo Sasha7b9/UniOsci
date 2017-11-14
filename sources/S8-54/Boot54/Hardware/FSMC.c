@@ -5,6 +5,12 @@
 #include "Utils/GlobalFunctions.h"
 
 
+#ifdef WIN64
+#pragma warning(push)
+#pragma warning(disable:4312)
+#endif
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static ModeFSMC curMode = ModeFSMC_None;
 static ModeFSMC prevMode = ModeFSMC_None;
@@ -206,3 +212,7 @@ void FSMC_RemoveFunctionAfterSetMode(void)
 {
     funcAfterSetMode = 0;
 }
+
+#ifdef WIN64
+#pragma warning(pop)
+#endif

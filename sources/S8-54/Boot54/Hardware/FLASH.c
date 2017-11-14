@@ -43,7 +43,7 @@ void WriteData(uint address, uint8 *data, int size)
         for (int i = 0; i < size; i++)
         {
             uint *data32 = (uint *)data;
-            HAL_StatusTypeDef error = HAL_FLASH_Program(TYPEPROGRAM_WORD, address, (uint64_t)(data32[i]));
+            HAL_FLASH_Program(TYPEPROGRAM_WORD, address, (uint64_t)(data32[i]));
             address += 4;
         }
     }

@@ -193,9 +193,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.c">
-      <Filter>libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\system_stm32f4xx.c">
       <Filter>libs</Filter>
     </ClCompile>
@@ -295,12 +292,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.c">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Display\font\Font.c">
-      <Filter>Display\fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\FlashDrive\FlashDrive.c">
-      <Filter>FlashDrive</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FLASH.c">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -308,9 +299,6 @@
       <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Hardware.c">
-      <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Timer.c">
       <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Controls.c">
@@ -333,6 +321,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\PainterText.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.cpp">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Timer.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\FlashDrive\FlashDrive.cpp">
+      <Filter>FlashDrive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Display\font\Font.cpp">
+      <Filter>Display\fonts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

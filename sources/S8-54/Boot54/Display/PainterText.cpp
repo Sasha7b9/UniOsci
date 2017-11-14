@@ -424,7 +424,7 @@ static int8 * BreakWord(char *word)
     if (strcmp(word, "структуру") == 0)
     {
         int8 lengths[] = {5, 2, 2, 0};
-        memcpy(lengthSyllables, lengths, 4);
+        memcpy((uint8 *)lengthSyllables, (uint8 *)lengths, 4);
     }
     else if (strcmp(word, "соответствующей") == 0)
     {

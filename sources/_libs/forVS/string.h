@@ -12,4 +12,8 @@ void sprintf(char *, char *, ...);
 
 int strcmp(char *, char *);
 
-#define memcpy(x, y, z)
+void memcpy(void *, void *, int);
+
+char tolower(char);
+
+void strcpy(char *, char *);

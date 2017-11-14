@@ -629,11 +629,6 @@
               <FilePath>.\Boot54\libs\stm32f4xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\libs\stm32f4xx_hal_msp.c</FilePath>
-            </File>
-            <File>
               <FileName>system_stm32f4xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Boot54\libs\system_stm32f4xx.c</FilePath>
@@ -657,6 +652,11 @@
               <FileName>usbh_diskio.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\libs\usbh_diskio.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_hal_msp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\libs\stm32f4xx_hal_msp.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -719,11 +719,6 @@
           <GroupName>Display/fonts</GroupName>
           <Files>
             <File>
-              <FileName>Font.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Display\font\Font.c</FilePath>
-            </File>
-            <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Display\font\Font.h</FilePath>
@@ -733,20 +728,25 @@
               <FileType>5</FileType>
               <FilePath>.\Boot54\Display\font\font8.inc</FilePath>
             </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Display\font\Font.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>FlashDrive</GroupName>
           <Files>
             <File>
-              <FileName>FlashDrive.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\FlashDrive\FlashDrive.c</FilePath>
-            </File>
-            <File>
               <FileName>FlashDrive.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\FlashDrive\FlashDrive.h</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\FlashDrive\FlashDrive.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -784,14 +784,14 @@
               <FilePath>.\Boot54\Hardware\Hardware.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Hardware\Timer.c</FilePath>
-            </File>
-            <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Hardware\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Hardware\Timer.cpp</FilePath>
             </File>
           </Files>
         </Group>
