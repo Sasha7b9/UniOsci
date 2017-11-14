@@ -4,7 +4,6 @@
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Display/Painter.h"
-
 #include <math.h>
 
 

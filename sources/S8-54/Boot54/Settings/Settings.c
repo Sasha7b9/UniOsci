@@ -6,7 +6,6 @@
 #include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "Display/Display.h"
-
 #include <string.h>
 
 

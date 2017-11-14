@@ -1,6 +1,5 @@
 #include "defines.h" 
 #include "globals.h"
-
 #include <usbh_def.h>
 #include <ff_gen_drv.h>
 #include <usbh_diskio.h>
@@ -9,7 +8,6 @@
 #include "ffconf.h"
 #include "FlashDrive.h"
 #include "main.h"
-
 #include <ctype.h>
 
 

@@ -1,16 +1,12 @@
 #include "defines.h"
-
 #include "Display/Display.h"
-
 #include "FlashDrive/FlashDrive.h"
-
 #include "Hardware.h"
 #include "Hardware/FLASH.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Timer.h"
 #include "Panel/Panel.h"
 #include "Utils/GlobalFunctions.h"
-
 #include <stm32f437xx.h>
 #include <stm32f4xx_hal.h>
 #include <stm32f4xx_hal_tim.h>

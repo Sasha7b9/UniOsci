@@ -1,15 +1,12 @@
 #include "Panel.h"
 #include "Controls.h"
 #include "Display/Display.h"
-//#include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/FSMC.h"
-
 #include <string.h>
-
 #include "PanelFunctions.c"
 
 

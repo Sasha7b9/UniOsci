@@ -4,8 +4,6 @@
 #include "Font/font.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
-
-
 #include <stdarg.h>
 
 

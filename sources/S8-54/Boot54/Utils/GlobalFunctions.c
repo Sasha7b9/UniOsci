@@ -2,7 +2,6 @@
 #include "GlobalFunctions.h"
 #include "Settings/Settings.h"
 #include "Math.h"
-
 #include <math.h>
 #include <string.h>
 #include <ctype.h>

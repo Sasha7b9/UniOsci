@@ -1,4 +1,5 @@
 #pragma once
+#include "defines.h"
 
 Color ColorTrig(void);                  // Возвращает цвет синхронизации.
 Color ColorMenuTitle                    // Цвет заголовка страницы.
