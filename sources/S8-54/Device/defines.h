@@ -42,9 +42,9 @@
 #define OLD_RECORDER
 
 typedef signed      char        int8;
-typedef signed      char        int8_t;
 typedef signed      short   int int16;
 typedef unsigned    char        uint8;
+typedef unsigned    char        unused;
 typedef unsigned    char        uint8_t;
 typedef unsigned    short   int uint16;
 typedef unsigned    short   int uint16_t;
@@ -55,6 +55,12 @@ typedef unsigned    int         uint32_t;
 typedef unsigned    char        uchar;
 typedef uint8                   BYTE;
 typedef const char * const      pString;
+
+
+#ifndef WIN64
+typedef signed      char        int8_t;
+#endif
+
 
 #ifndef __cplusplus
 
@@ -95,7 +101,15 @@ typedef int     (*pFuncIU8I)(uint8 *, int);
 
 #define BIT_MASK(numBit) (1 << (numBit))
 
+#ifndef WIN64
 #pragma anon_unions
+#endif
+
+#ifdef WIN64
+#pragma warning(push)
+#pragma warning(disable:4201)
+#endif
+
 
 // Объединение размером 16 бит
 typedef union
@@ -164,9 +178,14 @@ typedef union
 
 typedef struct
 {
-    int16 rel;
-    float abs;
+    int16  rel;
+    unused unused[2];
+    float  abs;
 } StructRelAbs;
+
+#ifdef WIN64
+#pragma warning(pop)
+#endif
 
 #define _bitset(bits)                               \
   ((uint8)(                                         \

@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include "commonSCPI.h"
 #include "Hardware/Hardware.h"

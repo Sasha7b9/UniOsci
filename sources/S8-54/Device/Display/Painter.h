@@ -1,6 +1,8 @@
 #pragma once
 #include "Colors.h"
 #include "DisplayTypes.h"
+#include "ff.h"
+#include "ffconf.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,11 +78,7 @@ public:
 
     void DrawPicture(int x, int y, int width, int height, uint8 *address);
 
-#if _USE_LFN > 0
-    void SaveScreenToFlashDrive(TCHAR *fileName);
-#else
-    bool SaveScreenToFlashDrive(void);
-#endif
+    bool SaveScreenToFlashDrive();
 
     void SendToDisplay(uint8 *bytes, int numBytes);
 

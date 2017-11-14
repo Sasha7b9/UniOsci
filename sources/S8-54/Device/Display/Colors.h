@@ -59,6 +59,7 @@ public:
     Color   color;
     int8    currentField;
     bool    alreadyUsed;
+    unused  unused;
 
     /// Если forced == false, то инициализация происходит только при первом вызове функции
     void Init(bool forced);

@@ -44,8 +44,6 @@ void Upgrade(void);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main(void)
 {
-    pFunction JumpToApplication;
-
     ms = (MainStruct *)malloc(sizeof(MainStruct));
     ms->percentUpdate = 0.0f;
     
@@ -128,17 +126,14 @@ int main(void)
     
     __disable_irq();
     // Теперь переходим на основную программу
-#ifdef WIN64
-#pragma warning(push)
-#pragma warning(disable:4312)
-#endif
+#ifndef WIN64
+    pFunction JumpToApplication;
+
     JumpToApplication = (pFunction)(*(__IO uint *)(MAIN_PROGRAM_START_ADDRESS + 4));
-#ifdef WIN64
-#pragma warning(pop)
-#endif
     __set_MSP(*(__IO uint *)MAIN_PROGRAM_START_ADDRESS);
     __enable_irq();
     JumpToApplication();
+#endif
 }
 
 

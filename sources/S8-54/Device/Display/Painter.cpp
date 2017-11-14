@@ -515,7 +515,7 @@ void Painter::DrawPicture(int x, int y, int width, int height, uint8 *address)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Painter::SaveScreenToFlashDrive(void)
+bool Painter::SaveScreenToFlashDrive()
 {
 
 #pragma pack(1)
