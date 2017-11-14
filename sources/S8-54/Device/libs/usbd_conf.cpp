@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include <stm32f4xx_hal.h>
 #include "usbd_core.h"

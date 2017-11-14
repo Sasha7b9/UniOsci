@@ -1,7 +1,7 @@
 #pragma once
 #include "Globals.h"
 #include "VCP/VCP.h"
-#include "VCP/usbd_conf.h"
+#include "usbd_conf.h"
 #include "Ethernet/TcpSocket.h"
 
 

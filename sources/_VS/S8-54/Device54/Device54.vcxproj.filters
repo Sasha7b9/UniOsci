@@ -25,6 +25,9 @@
     <Filter Include="forVS">
       <UniqueIdentifier>{073b3680-fbaa-47bd-ad78-13e4379fb59b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="VCP">
+      <UniqueIdentifier>{15f7ff00-9063-489f-8a7a-56fe517cac5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -184,6 +187,30 @@
       <Filter>forVS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\_libs\forVS\usbh_msc.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\ff_gen_drv.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_def.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\libs\usbd_conf.h">
+      <Filter>libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.h">
+      <Filter>VCP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_desc.h">
+      <Filter>VCP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\VCP.h">
+      <Filter>VCP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_core.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\ff.h">
       <Filter>forVS</Filter>
     </ClInclude>
   </ItemGroup>
@@ -386,17 +413,32 @@
     <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c">
       <Filter>libs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.c">
-      <Filter>libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.c">
-      <Filter>libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_msp.cpp">
       <Filter>libs</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.cpp">
       <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.cpp">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\libs\usbd_conf.cpp">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.c">
+      <Filter>VCP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_core.c">
+      <Filter>VCP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_desc.c">
+      <Filter>VCP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\VCP.cpp">
+      <Filter>VCP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

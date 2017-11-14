@@ -96,6 +96,7 @@ typedef enum
 /// Общая часть для всех типов элементов меню
 #define COMMON_PART_MENU_ITEM                                                                       \
     TypeItem     type;           /* Тип итема */                                                    \
+    unused       empty[4];                                                                          \
     const Page  *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */       \
     pFuncBV      funcOfActive;   /* Активен ли данный элемент */                                    \
     const char  *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
@@ -108,13 +109,15 @@ typedef enum
     const char *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 #define COMMON_PART_MENU_ITEM_PAGE                                                                  \
-    TypeItem    type;          /* Тип итема */                                                      \
-    bool        isPageSB;      /* Если true, то это страница малых кнопок */                        \
-    NamePage    name;          /* Имя из перечисления NamePage */                                   \
+    TypeItem    type;           /* Тип итема */                                                     \
+    bool        isPageSB;       /* Если true, то это страница малых кнопок */                       \
+    unused      empty[3];                                                                           \
+    NamePage    name;           /* Имя из перечисления NamePage */                                  \
     int8        numItems;                                                                           \
-    const Page *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */         \
-    pFuncBV     funcOfActive;  /* Активен ли данный элемент */                                      \
-    const char *titleHint[4];  /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
+    unused      empty2[3];                                                                          \
+    const Page *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
+    pFuncBV     funcOfActive;   /* Активен ли данный элемент */                                     \
+    const char *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 class SButton;
 
@@ -182,6 +185,7 @@ public:
     pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
     const StructHelpSmallButton    *hintUGO; 
     int                             numHints;
+    unused
     void Draw(int x, int y);
 };
 

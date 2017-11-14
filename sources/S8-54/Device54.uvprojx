@@ -831,19 +831,9 @@
               <FilePath>.\Device\libs\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\libs\usbh_conf.c</FilePath>
-            </File>
-            <File>
               <FileName>usbh_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\libs\usbh_conf.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_diskio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\libs\usbh_diskio.c</FilePath>
             </File>
             <File>
               <FileName>usbh_diskio.h</FileName>
@@ -859,6 +849,26 @@
               <FileName>stm32f4xx_it.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\libs\stm32f4xx_it.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_conf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Device\libs\usbd_conf.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\libs\usbd_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\libs\usbh_conf.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\libs\usbh_diskio.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1797,16 +1807,6 @@
               <FileName>usbd_cdc_interface.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\VCP\usbd_cdc_interface.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\VCP\usbd_conf.c</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\VCP\usbd_conf.h</FilePath>
             </File>
             <File>
               <FileName>usbd_core.c</FileName>

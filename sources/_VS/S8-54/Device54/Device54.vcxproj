@@ -74,7 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\x64\Debug\</OutDir>
-    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\S8-54\Device;C:\My\Work\UniOsci\sources\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\UniOsci\sources\S8-54\Device\libs</IncludePath>
+    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\S8-54\Device;C:\My\Work\UniOsci\sources\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\UniOsci\sources\S8-54\Device\libs;C:\My\Work\UniOsci\sources\S8-54\Device\VCP</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -124,10 +124,16 @@
     <ClInclude Include="..\..\..\S8-54\Device\libs\ffconf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\libs\usbd_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_diskio.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_desc.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\VCP.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
+    <ClInclude Include="..\..\..\_libs\forVS\ff.h" />
+    <ClInclude Include="..\..\..\_libs\forVS\ff_gen_drv.h" />
     <ClInclude Include="..\..\..\_libs\forVS\limits.h" />
     <ClInclude Include="..\..\..\_libs\forVS\math.h" />
     <ClInclude Include="..\..\..\_libs\forVS\stdarg.h" />
@@ -137,6 +143,8 @@
     <ClInclude Include="..\..\..\_libs\forVS\stm32f4xx_hal.h" />
     <ClInclude Include="..\..\..\_libs\forVS\string.h" />
     <ClInclude Include="..\..\..\_libs\forVS\tchar.h" />
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_core.h" />
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_def.h" />
     <ClInclude Include="..\..\..\_libs\forVS\usbh_core.h" />
     <ClInclude Include="..\..\..\_libs\forVS\usbh_def.h" />
     <ClInclude Include="..\..\..\_libs\forVS\usbh_msc.h" />
@@ -237,9 +245,16 @@
     <ClCompile Include="..\..\..\common\STM32F437lib\GPIO.c" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.c" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\libs\usbd_conf.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_core.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_desc.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\VCP.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>

@@ -89,7 +89,7 @@ const Diskio_drvTypeDef  USBH_Driver =
   * @param  lun : lun id
   * @retval DSTATUS: Operation status
   */
-DSTATUS USBH_initialize(BYTE lun)
+DSTATUS USBH_initialize(BYTE)
 {
   /* CAUTION : USB Host library has to be initialized in the application */
 
@@ -114,7 +114,7 @@ DSTATUS USBH_status(BYTE lun)
     res = RES_ERROR;
   }
 
-  return res;
+  return (DSTATUS)res;
 }
 
 /**
