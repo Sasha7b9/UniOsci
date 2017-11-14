@@ -58,7 +58,6 @@ int     Math_MaxInt(int val1, int val2);
 void    Math_CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
 void    Math_CalculateMathFunction(float *data0andResult, float *dataB, int numPoints);
 float   Math_RandFloat(float min, float max);
-int8    Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max);
 int     Math_Sign(int vlaue);
 int     Math_Pow10(int pow);                                                                    // Вычисляет 10**pow.
 int     Math_NumDigitsInNumber(int value);                                                      // Вычисляет число разрядов в целом типа int.

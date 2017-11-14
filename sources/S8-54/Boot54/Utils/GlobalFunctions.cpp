@@ -119,11 +119,11 @@ char* Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
     if(alwaysSign && value >= 0)
     {
         buffer[0] = '+';
-        snprintf(buffer + 1, SIZE - 1, format, value);
+        snprintf(buffer + 1, SIZE - 1, format, (float)value);
     }
     else
     {
-        snprintf(buffer, SIZE, format, value);
+        snprintf(buffer, SIZE, format, (float)value);
     }
     return buffer;
 }
@@ -171,7 +171,7 @@ char* Hex8toString(uint8 value, char buffer[3], bool upper)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Hex16toString(uint16 value, char buffer[5], bool upper)
+char* Hex16toString(uint16 value, char buffer[5], bool)
 {
     sprintf(buffer, "%04X", value);
     return buffer;
@@ -267,7 +267,7 @@ char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numD
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Phase2String(float phase, bool empty, char bufferOut[20])
+char* Phase2String(float phase, bool, char bufferOut[20])
 {
     const int SIZE = 20;
     char buffer[SIZE];
@@ -277,7 +277,7 @@ char* Phase2String(float phase, bool empty, char bufferOut[20])
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char*  Freq2String(float freq, bool alwaysSign, char bufferOut[20])
+char*  Freq2String(float freq, bool, char bufferOut[20])
 {
     return Freq2StringAccuracy(freq, bufferOut, 4);
 }
@@ -486,34 +486,34 @@ void EmptyFuncVV(void) { }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVI(int i) { }
+void EmptyFuncVI(int) { }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVpV(void *empty) { }
+void EmptyFuncVpV(void *) { }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVII(int i, int ii) { }
+void EmptyFuncVII(int, int) { }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncpVII(void *v, int i, int ii) { }
+void EmptyFuncpVII(void *, int, int) { }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVI16(int16 i) {}
+void EmptyFuncVI16(int16) {}
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVB(bool b) {}
+void EmptyFuncVB(bool) {}
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char* IntToStrCat(char *_buffer, int _value)
 {
 #define LENGTH_INTTOSTRCAT 10
-    char buffer[LENGTH_INTTOSTRCAT];
+    unsigned char buffer[LENGTH_INTTOSTRCAT];
     for(int i = 0; i < LENGTH_INTTOSTRCAT; i++)
     {
         buffer[i] = 0;

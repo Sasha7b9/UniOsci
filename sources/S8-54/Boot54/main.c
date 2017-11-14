@@ -128,7 +128,14 @@ int main(void)
     
     __disable_irq();
     // Теперь переходим на основную программу
+#ifdef WIN64
+#pragma warning(push)
+#pragma warning(disable:4312)
+#endif
     JumpToApplication = (pFunction)(*(__IO uint *)(MAIN_PROGRAM_START_ADDRESS + 4));
+#ifdef WIN64
+#pragma warning(pop)
+#endif
     __set_MSP(*(__IO uint *)MAIN_PROGRAM_START_ADDRESS);
     __enable_irq();
     JumpToApplication();
@@ -138,7 +145,7 @@ int main(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Upgrade(void)
 {
-    const int sizeSector = 1 * 1024;
+#define sizeSector (1 * 1024)
     
     uint8 buffer[sizeSector];
     

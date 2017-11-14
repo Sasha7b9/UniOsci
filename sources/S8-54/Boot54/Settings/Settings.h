@@ -6,7 +6,9 @@
 
 #define SIZE_NONRESET_SETTINGS 200
 
-#pragma anon_unions 
+#ifndef WIN64
+#pragma anon_unions
+#endif
 
 // Настройки изображения
 typedef struct

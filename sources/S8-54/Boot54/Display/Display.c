@@ -154,7 +154,7 @@ void Display_Update(void)
 
         int height = 30;
         int fullWidth = 280;
-        int width = fullWidth * ms->percentUpdate;
+        int width = (int)(fullWidth * ms->percentUpdate);
 
         Painter_FillRegion(20, 130, width, height);
         Painter_DrawRectangle(20, 130, fullWidth, height);
@@ -196,7 +196,7 @@ void DrawProgressBar(uint dT)
     Painter_DrawStringInCenterRect(X, y0 + 2 * dH, WIDTH, 10, "Подождите...");
 
     Painter_DrawRectangle(X, Y, WIDTH, HEIGHT);
-    Painter_FillRegion(X, Y, ms->display.value, HEIGHT);
+    Painter_FillRegion(X, Y, (int)ms->display.value, HEIGHT);
 }
 
 
@@ -222,7 +222,7 @@ static void DrawBigMNIPI(void)
     uint time = gTimerMS - startTime;
 
     int numColor = 0;
-    LIMITATION(numColor, time / (float)TIME_WAIT * 13.0f, 0, 13);
+    LIMITATION(numColor, (int)(time / (float)TIME_WAIT * 13.0f), 0, 13);
     Painter_SetColor((Color)(numColor + 2));
 
     float amplitude = 3.0f - (time / (TIME_WAIT / 2.0f)) * 3;
@@ -236,13 +236,13 @@ static void DrawBigMNIPI(void)
 
     for (int i = 0; i < 240; i++)
     {
-        shift[i] = WAVE_OR_ALL ? amplitude * sin(frequency * time + i / 5.0f) : 0;
+        shift[i] = WAVE_OR_ALL ? amplitude * sinf(frequency * time + i / 5.0f) : 0;
     }
 
     for (int i = 0; i < numPoints; i++)
     {
-        int x = array[i].x + (VAGUE_OR_ALL ? RandValue(-radius, radius) : 0) + shift[array[i].y];
-        int y = array[i].y + (VAGUE_OR_ALL ? RandValue(-radius, radius) : 0);
+        int x = array[i].x + (VAGUE_OR_ALL ? RandValue((int)-radius, (int)radius) : 0) + (int)shift[array[i].y];
+        int y = array[i].y + (VAGUE_OR_ALL ? RandValue((int)-radius, (int)radius) : 0);
         if (x > 0 && x < 319 && y > 0 && y < 239)
         {
             Painter_SetPoint(x, y);
@@ -273,8 +273,8 @@ static void InitPoints(void)
         {
             if (buffer[x][y])
             {
-                array[numPoints].x = x;
-                array[numPoints].y = y;
+                array[numPoints].x = (uint16)x;
+                array[numPoints].y = (uint8)y;
                 numPoints++;
             }
         }

@@ -69,22 +69,6 @@ float Math_RandFloat(float min, float max)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
-{
-    int8 retValue = value + delta;
-    if (retValue < 0)
-    {
-        return 0;
-    }
-    if (retValue > max)
-    {
-        return max;
-    }
-    return retValue;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Math_Sign(int value)
 {
     if (value > 0)

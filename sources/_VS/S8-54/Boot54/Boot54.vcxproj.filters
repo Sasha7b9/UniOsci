@@ -37,6 +37,12 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{db2e90c3-e22c-4e2d-8879-cad40780b8fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CMSIS">
+      <UniqueIdentifier>{c9836d03-e64d-4f8a-81b9-fa062c4ccbd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="forVS">
+      <UniqueIdentifier>{c9e4a5e2-d31b-4e05-929d-57e874fc64fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-54\Boot54\libs\ffconf.h">
@@ -122,6 +128,57 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Boot54\Utils\Math.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\cmsis_armcc.h">
+      <Filter>CMSIS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\core_cm4.h">
+      <Filter>CMSIS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\core_cmFunc.h">
+      <Filter>CMSIS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\core_cmInstr.h">
+      <Filter>CMSIS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\core_cmSimd.h">
+      <Filter>CMSIS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\windows.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\tchar.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\math.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdint.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdio.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdlib.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stm32f4xx_hal.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\string.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbh_def.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\ctype.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdarg.h">
+      <Filter>forVS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -238,9 +295,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.c">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Display\PainterText.c">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\font\Font.c">
       <Filter>Display\fonts</Filter>
     </ClCompile>
@@ -271,11 +325,14 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.c">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.c">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Utils\Math.c">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Display\PainterText.cpp">
+      <Filter>Display</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

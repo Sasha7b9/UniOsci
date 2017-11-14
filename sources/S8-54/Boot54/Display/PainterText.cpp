@@ -26,36 +26,8 @@ void Painter_SetFont(TypeFont typeFont)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter_LoadFont(TypeFont typeFont)
+void Painter_LoadFont(TypeFont)
 {
-    /*
-    const uchar *bytes = 0;
-    if (typeFont == TypeFont_5)
-    {
-        bytes = font5display;
-    }
-    else if (typeFont == TypeFont_8)
-    {
-        bytes = font8display;
-    }
-    else if (typeFont == TypeFont_UGO)
-    {
-        bytes = fontUGOdisplay;
-    }
-    else if (typeFont == TypeFont_UGO2)
-    {
-        bytes = fontUGO2display;
-    }
-    */
-    /*
-    uint8 command[3084];
-    command[0] = LOAD_FONT;
-    command[1] = typeFont;
-    for (int i = 0; i < 3080; i++)
-    {
-        command[2 + i] = bytes[i];
-    }
-    */
 }
 
 
@@ -92,7 +64,7 @@ static bool BitInFontIsExist(int eChar, int numByte, int bit)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawCharInColorDisplay(int eX, int eY, uchar symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -118,7 +90,7 @@ static void DrawCharInColorDisplay(int eX, int eY, uchar symbol)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 int Painter_DrawBigChar(int eX, int eY, int size, char symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -176,9 +148,9 @@ int Painter_DrawChar(int x, int y, char symbol)
     }
     else
     {
-        DrawCharInColorDisplay(x, y, symbol);
+        DrawCharInColorDisplay(x, y, (uchar)symbol);
     }
-    return x + Font_GetLengthSymbol(symbol);
+    return x + Font_GetLengthSymbol((uchar)symbol);
 }
 
 
@@ -205,7 +177,7 @@ int Painter_DrawText(int x, int y, const char *text)
     uint8 command[SIZE_BUFFER];
     command[0] = DRAW_TEXT;
     *((int16 *)(command + 1)) = (int16)x;
-    *(command + 3) = (int8)(y + 1);
+    *(command + 3) = (uint8)(y + 1);
     uint8 *pointer = command + 5;
     uint8 length = 0;
 
@@ -213,7 +185,7 @@ int Painter_DrawText(int x, int y, const char *text)
     while (*text && length < (SIZE_BUFFER - 7))
     {
         *pointer = (uint8)(*text);
-        retValue += Font_GetLengthSymbol(*text);
+        retValue += Font_GetLengthSymbol((uchar)*text);
         text++;
         pointer++;
         length++;
@@ -239,7 +211,7 @@ int Painter_DrawTextC(int x, int y, const char *text, Color color)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int DrawCharWithLimitation(int eX, int eY, uchar symbol, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -268,7 +240,7 @@ static int DrawCharWithLimitation(int eX, int eY, uchar symbol, int limitX, int 
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Painter_DrawTextWithLimitationC(int x, int y, const char *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight)
+int Painter_DrawTextWithLimitationC(int x, int y, const uchar *text, Color color, int limitX, int limitY, int limitWidth, int limitHeight)
 {
     Painter_SetColor(color);
     int retValue = x;
@@ -465,7 +437,7 @@ static int8 * BreakWord(char *word)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Возвращает часть слова до слога numSyllable(включительн) вместе со знаком переноса
-static char* PartWordForTransfer(char *word, int8 * lengthSyllables, int numSyllable, char buffer[30])
+static char* PartWordForTransfer(char *word, int8 *lengthSyllables, int numSyllable, char buffer[30])
 {
     int length = 0;
     for (int i = 0; i <= numSyllable; i++)
@@ -555,9 +527,9 @@ int Painter_DrawTextInRectWithTransfers(int eX, int eY, int eWidth, int eHeight,
                 int lengthString = Font_GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
-                    int numSymbols = DrawPartWord(word, x, y, right, true);
+                    int numSymb = DrawPartWord(word, x, y, right, true);
                     x = right;
-                    curSymbol += numSymbols;
+                    curSymbol += numSymb;
                     continue;
                 }
                 else
@@ -606,16 +578,16 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, const char 
                 {
                     continue;
                 }
-                x += Font_GetLengthSymbol(symbol);
+                x += Font_GetLengthSymbol((uchar)symbol);
             }
             else                                            // А здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
             {
                 int lengthString = Font_GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
-                    int numSymbols = DrawPartWord(word, x, y, right, false);
+                    int numSymb = DrawPartWord(word, x, y, right, false);
                     x = right;
-                    curSymbol += numSymbols;
+                    curSymbol += numSymb;
                     continue;
                 }
                 else
@@ -716,7 +688,7 @@ static int GetLenghtSubString(char *text)
     int retValue = 0;
     while (((*text) != ' ') && ((*text) != '\0'))
     {
-        retValue += Font_GetLengthSymbol(*text);
+        retValue += Font_GetLengthSymbol((uchar)*text);
         text++;
     }
     return retValue;
@@ -831,7 +803,7 @@ void Painter_DrawBigText(int eX, int eY, int size, const char *text)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int Painter_DrawBigCharInBuffer(int eX, int eY, int size, char symbol, uint8 buffer[320][240])
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)

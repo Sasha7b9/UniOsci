@@ -704,14 +704,14 @@
               <FilePath>.\Boot54\Display\PainterC.h</FilePath>
             </File>
             <File>
-              <FileName>PainterText.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Display\PainterText.c</FilePath>
-            </File>
-            <File>
               <FileName>PainterText.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Display\PainterText.h</FilePath>
+            </File>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Display\PainterText.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -849,11 +849,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>GlobalFunctions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Utils\GlobalFunctions.c</FilePath>
-            </File>
-            <File>
               <FileName>GlobalFunctions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Utils\GlobalFunctions.h</FilePath>
@@ -867,6 +862,11 @@
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>GlobalFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Utils\GlobalFunctions.cpp</FilePath>
             </File>
           </Files>
         </Group>
