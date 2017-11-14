@@ -333,10 +333,10 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER, STM32F437xx</Define>
+              <MiscControls>--cpp</MiscControls>
+              <Define>USE_HAL_DRIVER, STM32F437xx, __cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>.\Boot54\libs;..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;.\Boot54;..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src</IncludePath>
+              <IncludePath>..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;.\Boot54;.\Boot54\libs</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\ffconf.h" />
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_conf.h" />
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\usbh_conf.h" />
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\S8-54\Boot54\libs\startup_stm32f437xx.s" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\system_stm32f4xx.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_conf.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.c" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}</ProjectGuid>
@@ -71,6 +86,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>.\x64\Debug\</OutDir>
+    <IncludePath>..\..\..\S8-54\Device;C:\Keil_v5\ARM\ARMCLANG\include\libcxx;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>.\x64\Release\</OutDir>
@@ -87,6 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,8 +132,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

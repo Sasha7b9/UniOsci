@@ -6,25 +6,21 @@
 #include <usbh_core.h>
 
 
-/*******************************************************************************
-                       LL Driver Callbacks (HCD -> USB Host Library)
-*******************************************************************************/
-
-/**
-  * @brief  SOF callback.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                       LL Driver Callbacks (HCD -> USB Host Library)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/** @brief  SOF callback.
   * @param  hhcd: HCD handle
-  * @retval None
-  */
+  * @retval None */
 void HAL_HCD_SOF_Callback(HCD_HandleTypeDef *hhcd)
 {
   USBH_LL_IncTimer ((USBH_HandleTypeDef *)hhcd->pData);
 }
 
-/**
-  * @brief  Connect callback.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/** @brief  Connect callback.
   * @param  hhcd: HCD handle
-  * @retval None
-  */
+  * @retval None */
 void HAL_HCD_Connect_Callback(HCD_HandleTypeDef *hhcd)
 {
   USBH_LL_Connect((USBH_HandleTypeDef *)hhcd->pData);

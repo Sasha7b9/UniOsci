@@ -1,2 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="libs">
+      <UniqueIdentifier>{60ca0323-59da-4ecb-b3e1-de2fc8f01446}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\ffconf.h">
+      <Filter>libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_conf.h">
+      <Filter>libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\usbh_conf.h">
+      <Filter>libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.h">
+      <Filter>libs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\S8-54\Boot54\libs\startup_stm32f437xx.s">
+      <Filter>libs</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.c">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\system_stm32f4xx.c">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_conf.c">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.c">
+      <Filter>libs</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

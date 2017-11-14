@@ -88,6 +88,10 @@ void Hardware_Init(void)
     FSMC_SetMode(ModeFSMC_FPGA);
 }
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OTG_FS_IRQHandler(void)
 {
@@ -99,3 +103,7 @@ void SysTick_Handler(void)
 {
     HAL_IncTick();
 }
+
+#ifdef __cplusplus
+}
+#endif

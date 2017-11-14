@@ -217,6 +217,10 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* handleSPI)
     SPI1->DR = 0;
 }
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // This interrupt call soft NSS for spi (see Hardware::SPIforPanel.c::
 // PanelInit() and HAL_GPIO_EXTI_Callback())
@@ -232,6 +236,10 @@ void SPI1_IRQHandler(void)
 {
     HAL_SPI_IRQHandler(&handleSPI);
 }
+
+#ifdef __cplusplus
+}
+#endif
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

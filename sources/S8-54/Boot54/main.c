@@ -46,7 +46,7 @@ int main(void)
 {
     pFunction JumpToApplication;
 
-    ms = malloc(sizeof(MainStruct));
+    ms = (MainStruct *)malloc(sizeof(MainStruct));
     ms->percentUpdate = 0.0f;
     
     HAL_Init();
