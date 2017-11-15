@@ -171,6 +171,12 @@
     <ClCompile Include="..\..\..\Kornet\Device\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Menu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\MenuControls.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Device\libs\startup_stm32f437xx.s">
@@ -309,6 +315,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Hardware\Timer.h">
       <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Menu\Menu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Menu\MenuControls.h">
+      <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

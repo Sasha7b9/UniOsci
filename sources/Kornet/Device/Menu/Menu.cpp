@@ -52,17 +52,17 @@ void Menu::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ButtonPress(Key button, TypePress typePress)
+void Menu::ButtonPress(Key btn, TypePress tPress)
 {
-    this->typePress = typePress;
+    typePress = tPress;
 
-    this->button = button;
+    button = btn;
 
-    isPressed[button] = typePress != Release;
+    isPressed[btn] = typePress != Release;
 
-    typedef void(Menu::*pFuncVV)();
+    typedef void(Menu::*pFuncMenuVV)();
 
-    static const pFuncVV funcs[NumButtons] =
+    static const pFuncMenuVV funcs[NumButtons] =
     {
         &Menu::OnPressNone,
         &Menu::OnPressFunction,
@@ -101,7 +101,7 @@ void Menu::ButtonPress(Key button, TypePress typePress)
         &Menu::OnPressF5
     };
 
-    pFuncVV func = funcs[button];
+    pFuncMenuVV func = funcs[btn];
 
     if (func)
     {

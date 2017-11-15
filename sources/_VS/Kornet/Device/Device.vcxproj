@@ -149,6 +149,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Device\Log.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\main.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Menu.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\MenuControls.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -244,6 +246,8 @@
     <ClInclude Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Log.h" />
     <ClInclude Include="..\..\..\Kornet\Device\main.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Menu\Menu.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Menu\MenuControls.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ff.h" />
