@@ -6,6 +6,11 @@
 #include "Settings/Settings.h"
 #include <stdarg.h>
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4100 4101)
+#endif
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static TypeFont currentTypeFont = TypeFont_None;
@@ -150,7 +155,7 @@ int Painter_DrawChar(int x, int y, char symbol)
     {
         DrawCharInColorDisplay(x, y, (uchar)symbol);
     }
-    return x + Font_GetLengthSymbol((uchar)symbol);
+    return x + Font_GetLengthSymbol(symbol);
 }
 
 
@@ -185,7 +190,7 @@ int Painter_DrawText(int x, int y, const char *text)
     while (*text && length < (SIZE_BUFFER - 7))
     {
         *pointer = (uint8)(*text);
-        retValue += Font_GetLengthSymbol((uchar)*text);
+        retValue += Font_GetLengthSymbol(*text);
         text++;
         pointer++;
         length++;
@@ -247,7 +252,7 @@ int Painter_DrawTextWithLimitationC(int x, int y, const uchar *text, Color color
     while (*text)
     {
         x = DrawCharWithLimitation(x, y, *text, limitX, limitY, limitWidth, limitHeight);
-        retValue += Font_GetLengthSymbol(*text);
+        retValue += Font_GetLengthSymbol((char)*text);
         text++;
     }
     return retValue + 1;
@@ -578,7 +583,7 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, const char 
                 {
                     continue;
                 }
-                x += Font_GetLengthSymbol((uchar)symbol);
+                x += Font_GetLengthSymbol(symbol);
             }
             else                                            // ј здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
             {
@@ -688,7 +693,7 @@ static int GetLenghtSubString(char *text)
     int retValue = 0;
     while (((*text) != ' ') && ((*text) != '\0'))
     {
-        retValue += Font_GetLengthSymbol((uchar)*text);
+        retValue += Font_GetLengthSymbol(*text);
         text++;
     }
     return retValue;
@@ -861,3 +866,7 @@ void Painter_DrawBigTextInBuffer(int eX, int eY, int size, const char *text, uin
         x += size;
     }
 }
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif

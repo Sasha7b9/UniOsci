@@ -20,7 +20,7 @@ int Font_GetLengthText(const char *text)
     int retValue = 0;
     while (*text)
     {
-        retValue += Font_GetLengthSymbol((uchar)*text);
+        retValue += Font_GetLengthSymbol(*text);
         text++;
     }
     return retValue;

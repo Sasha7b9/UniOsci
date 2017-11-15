@@ -634,19 +634,9 @@
               <FilePath>.\Boot54\libs\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\libs\usbh_conf.c</FilePath>
-            </File>
-            <File>
               <FileName>usbh_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\libs\usbh_conf.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbh_diskio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\libs\usbh_diskio.c</FilePath>
             </File>
             <File>
               <FileName>usbh_diskio.h</FileName>
@@ -658,25 +648,25 @@
               <FileType>8</FileType>
               <FilePath>.\Boot54\libs\stm32f4xx_hal_msp.cpp</FilePath>
             </File>
+            <File>
+              <FileName>usbh_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\libs\usbh_conf.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\libs\usbh_diskio.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Display\Colors.c</FilePath>
-            </File>
-            <File>
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Display\Colors.h</FilePath>
-            </File>
-            <File>
-              <FileName>Display.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Display\Display.c</FilePath>
             </File>
             <File>
               <FileName>Display.h</FileName>
@@ -712,6 +702,16 @@
               <FileName>PainterText.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Display\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Display\Colors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Display\Display.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -854,11 +854,6 @@
               <FilePath>.\Boot54\Utils\GlobalFunctions.h</FilePath>
             </File>
             <File>
-              <FileName>Math.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Utils\Math.c</FilePath>
-            </File>
-            <File>
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Utils\Math.h</FilePath>
@@ -867,6 +862,11 @@
               <FileName>GlobalFunctions.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Utils\GlobalFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Utils\Math.cpp</FilePath>
             </File>
           </Files>
         </Group>

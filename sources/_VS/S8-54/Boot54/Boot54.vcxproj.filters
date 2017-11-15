@@ -196,12 +196,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\system_stm32f4xx.c">
       <Filter>libs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_conf.c">
-      <Filter>libs</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.c">
-      <Filter>libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.c">
       <Filter>FatFS</Filter>
     </ClCompile>
@@ -283,12 +277,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\main.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Colors.c">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Display.c">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.c">
       <Filter>Display</Filter>
     </ClCompile>
@@ -313,9 +301,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.c">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\Math.c">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -333,6 +318,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\font\Font.cpp">
       <Filter>Display\fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.cpp">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_conf.cpp">
+      <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Display.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Colors.cpp">
+      <Filter>Display</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

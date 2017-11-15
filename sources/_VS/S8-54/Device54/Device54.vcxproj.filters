@@ -37,6 +37,9 @@
     <Filter Include="Data">
       <UniqueIdentifier>{ab134b5f-f899-4ed2-b89f-d61943731611}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Display\fonts">
+      <UniqueIdentifier>{8d5e1928-9f84-4652-ba9d-9bdc84275d6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -269,6 +272,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Data\Reader.h">
       <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Display\font\Font.h">
+      <Filter>Display\fonts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -536,10 +542,37 @@
     <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Display\font\Font.cpp">
+      <Filter>Display\fonts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\S8-54\Device\libs\startup_stm32f437xx.s">
       <Filter>libs</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\font5.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\font5display.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\font8.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\font8display.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\fontUGO.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\fontUGO2.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\fontUGO2display.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\Display\font\fontUGOdisplay.inc">
+      <Filter>Display\fonts</Filter>
     </None>
   </ItemGroup>
 </Project>

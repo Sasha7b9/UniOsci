@@ -46,6 +46,11 @@ bool operator!=(const Color &left, const Color &right);
 bool operator==(const Color &left, const Color &right);
 bool operator>(const Color &left, const Color &right);
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4623)
+#endif
+
 class ColorType
 {
 public:
@@ -69,6 +74,10 @@ private:
     void CalcSteps();
     void SetColor();
 };
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 
 extern Color gColorFill;
 extern Color gColorBack;
