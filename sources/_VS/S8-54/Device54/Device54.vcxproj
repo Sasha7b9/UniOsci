@@ -78,6 +78,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\S8-54\Device;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\S8-54\Device\libs;..\..\..\S8-54\Device\VCP;$(IncludePath)</IncludePath>
+    <OutDir>..\Debug\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

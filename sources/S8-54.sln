@@ -14,25 +14,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docx", "docx", "{AA4F7338-7
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Debug|x64.ActiveCfg = Debug|x64
-		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Debug|x64.Build.0 = Debug|x64
 		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Debug|x86.ActiveCfg = Debug|Win32
 		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Debug|x86.Build.0 = Debug|Win32
-		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Release|x64.ActiveCfg = Release|x64
-		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Release|x64.Build.0 = Release|x64
 		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Release|x86.ActiveCfg = Release|Win32
 		{893FF85B-DBD8-465A-BDAB-BFF7BD352B14}.Release|x86.Build.0 = Release|Win32
-		{59181B39-92F6-4D62-BDF0-76995F754E25}.Debug|x64.ActiveCfg = Debug|x64
-		{59181B39-92F6-4D62-BDF0-76995F754E25}.Debug|x64.Build.0 = Debug|x64
 		{59181B39-92F6-4D62-BDF0-76995F754E25}.Debug|x86.ActiveCfg = Debug|Win32
-		{59181B39-92F6-4D62-BDF0-76995F754E25}.Release|x64.ActiveCfg = Release|x64
-		{59181B39-92F6-4D62-BDF0-76995F754E25}.Release|x64.Build.0 = Release|x64
+		{59181B39-92F6-4D62-BDF0-76995F754E25}.Debug|x86.Build.0 = Debug|Win32
 		{59181B39-92F6-4D62-BDF0-76995F754E25}.Release|x86.ActiveCfg = Release|Win32
 		{59181B39-92F6-4D62-BDF0-76995F754E25}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection

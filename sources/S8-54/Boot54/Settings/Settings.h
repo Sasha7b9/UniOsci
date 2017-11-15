@@ -6,7 +6,7 @@
 
 #define SIZE_NONRESET_SETTINGS 200
 
-#ifndef WIN64
+#ifndef WIN32
 #pragma anon_unions
 #endif
 
