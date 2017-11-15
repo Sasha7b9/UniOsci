@@ -2,13 +2,13 @@
 
 char *strcat(char *, const char *);
 
-void snprintf(char *, int, char *, ...);
+void snprintf(char *, int, const char *, ...);
 
 float atof(char *);
 
 int strlen(const char *);
 
-void sprintf(char *, char *, ...);
+void sprintf(char *, const char *, ...);
 
 int strcmp(char *, char *);
 

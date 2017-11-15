@@ -205,7 +205,7 @@ DEF_PAGE_2(ppCalibrator, static,
 );
 
 //--------------------------------------------------------------------------------------------------------------- —≈–¬»— -  ¿À»¡–¿“Œ– -  ‡ÎË·‡ÚÓ ---
-static void OnChanged_Calibrator_Calibrator(bool active)
+static void OnChanged_Calibrator_Calibrator(bool)
 {
     FPGA_SetCalibratorMode(CALIBRATOR_MODE);
 }
@@ -245,7 +245,7 @@ DEF_BUTTON
 #ifdef OLD_RECORDER
 
 //--------------------------------------------------------------------------------------------------------------------------- —≈–¬»— - –Â„ËÒÚ‡ÚÓ ---
-static void OnChanged_Recorder(bool active)
+static void OnChanged_Recorder(bool)
 {
     FPGA_EnableRecorderMode(RECORDER_MODE);
 }
@@ -516,7 +516,7 @@ DEF_SMALL_BUTTON
 //----------------------------------------------------------------------------------------------------------- —≈–¬»— - —œ≈ “– -  ”–—Œ–€ - »ÒÚÓ˜ÌËÍ ---
 static void OnPress_FFT_Cursors_Source(void)
 {
-    MATH_CURRENT_CUR = (MATH_CURRENT_CUR + 1) % 2;
+    MATH_CURRENT_CUR = (uint8)((MATH_CURRENT_CUR + 1) % 2);
 }
 
 static void Draw_FFT_Cursors_Source(int x, int y)
@@ -617,7 +617,7 @@ static void OnRegSet_Function(int delta)
             if (SET_RANGE_MATH < RangeSize - 1)
             {
                 SET_RANGE_MATH = (Range)((int)SET_RANGE_MATH + 1);  // SET_RANGE_MATH++;
-                SET_RSHIFT_MATH = (int16)math.RShift2Rel(rShiftAbs, SET_RANGE_MATH);
+                SET_RSHIFT_MATH = (uint16)math.RShift2Rel(rShiftAbs, SET_RANGE_MATH);
                 Sound_RegulatorSwitchRotate();
             }
             sum = 0;
@@ -627,7 +627,7 @@ static void OnRegSet_Function(int delta)
             if (SET_RANGE_MATH > 0)
             {
                 SET_RANGE_MATH = (Range)((int)SET_RANGE_MATH - 1);  // SET_RANGE_MATH--;
-                SET_RSHIFT_MATH = (int16)math.RShift2Rel(rShiftAbs, SET_RANGE_MATH);
+                SET_RSHIFT_MATH = (uint16)math.RShift2Rel(rShiftAbs, SET_RANGE_MATH);
                 Sound_RegulatorSwitchRotate();
             }
             sum = 0;
@@ -842,7 +842,7 @@ DEF_PAGE_5(     ppEthernet, static,
 );
 
 //------------------------------------------------------------------------------------------------------------------- —≈–¬»— - ETHERNET - Ethernet ---
-static void OnChanged_Ethernet_Settings(bool active)
+static void OnChanged_Ethernet_Settings(bool)
 {
     display.ShowWarning(NeedRebootDevice);
 }

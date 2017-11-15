@@ -231,7 +231,7 @@ static bool IsActive_MinMax(void)
     return !IN_RANDOM_MODE && !IN_P2P_MODE;
 }
 
-static void OnChanged_MinMax(bool active)
+static void OnChanged_MinMax(bool)
 {
     /*
     int maxMeasures = DS_NumberAvailableEntries();  
@@ -285,7 +285,7 @@ DEF_CHOICE_REG_10
 );
 
 //----------------------------------------------------------------------------------------------------------------------- ƒ»—œÀ≈… - ◊‡ÒÚÓÚ‡ Ó·ÌÓ‚Î ---
-static void OnChanged_RefreshFPS(bool active)
+static void OnChanged_RefreshFPS(bool)
 {
     FPGA_SetENumSignalsInSec(NUM_SIGNALS_IN_SEC);
 }
@@ -453,7 +453,7 @@ static const GovernorColor gcSettings_Colors_Grid =
 };
 
 //-------------------------------------------------------------------------------------------------------------- ƒ»—œÀ≈… - Õ¿—“–Œ… » - ÷¬≈“¿ - ‘ÓÌ ---
-static void OnChanged_Settings_Colors_Background(bool active)
+static void OnChanged_Settings_Colors_Background(bool)
 {
     PageService_InitGlobalColors();
 

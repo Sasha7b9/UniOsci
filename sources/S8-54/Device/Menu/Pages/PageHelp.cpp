@@ -43,7 +43,7 @@ void DrawSB_Help_ParagraphNext(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnHelpRegSet(int angle) 
+void OnHelpRegSet(int)
 {
 
 }

@@ -1464,24 +1464,9 @@
               <FilePath>.\Device\Menu\Pages\PageChannels.c</FilePath>
             </File>
             <File>
-              <FileName>PageCursors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageCursors.c</FilePath>
-            </File>
-            <File>
               <FileName>PageCursors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Menu\Pages\PageCursors.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageDebug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageDebug.c</FilePath>
-            </File>
-            <File>
-              <FileName>PageDisplay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageDisplay.c</FilePath>
             </File>
             <File>
               <FileName>PageDisplay.h</FileName>
@@ -1489,24 +1474,9 @@
               <FilePath>.\Device\Menu\Pages\PageDisplay.h</FilePath>
             </File>
             <File>
-              <FileName>PageHelp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageHelp.c</FilePath>
-            </File>
-            <File>
               <FileName>PageHelp.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Menu\Pages\PageHelp.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageMeasures.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageMeasures.c</FilePath>
-            </File>
-            <File>
-              <FileName>PageMemory.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageMemory.c</FilePath>
             </File>
             <File>
               <FileName>PageMemory.h</FileName>
@@ -1514,19 +1484,49 @@
               <FilePath>.\Device\Menu\Pages\PageMemory.h</FilePath>
             </File>
             <File>
-              <FileName>PageService.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageService.c</FilePath>
-            </File>
-            <File>
-              <FileName>PageTime.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageTime.c</FilePath>
-            </File>
-            <File>
               <FileName>PageTrig.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Menu\Pages\PageTrig.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageCursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageCursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDebug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageDebug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDisplay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageDisplay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageHelp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageHelp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMeasures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageMeasures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageMemory.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageService.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageService.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageTime.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageTime.cpp</FilePath>
             </File>
           </Files>
         </Group>

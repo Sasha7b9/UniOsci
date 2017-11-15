@@ -218,7 +218,7 @@ DEF_CHOICE_6
 static void OnPress_Last(void)
 {
     NUM_RAM_SIGNAL = 0;
-    RUN_FPGA_BEFORE_SB = FPGA_IS_RUNNING ? 1 : 0;
+    RUN_FPGA_BEFORE_SB = FPGA_IS_RUNNING ? 1u : 0u;
     FPGA_Stop(false);
     MODE_WORK = ModeWork_RAM;
 }
@@ -564,7 +564,7 @@ DEF_SMALL_BUTTON
 //---------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНУТР ЗУ - Показывать всегда ---
 static void OnPress_Internal_ShowAlways(void)
 {
-    ALWAYS_SHOW_ROM_SIGNAL = ALWAYS_SHOW_ROM_SIGNAL ? 0 : 1;
+    ALWAYS_SHOW_ROM_SIGNAL = ALWAYS_SHOW_ROM_SIGNAL ? 0u : 1u;
 }
 
 static void Draw_Internal_ShowAlways(int x, int y)

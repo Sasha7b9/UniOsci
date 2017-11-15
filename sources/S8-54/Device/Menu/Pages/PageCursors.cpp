@@ -12,7 +12,7 @@
 #include "Log.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
-#include "../MenuFunctions.h"
+#include "Menu/MenuFunctions.h"
 #include <math.h>
 #include <string.h>
 
@@ -590,8 +590,8 @@ void SetCursPosT(Channel ch, int numCur, float pos)
 
 static void SetCursPos100(Channel ch)
 {
-    dUperc(ch) = (float)fabs(CURsU_POS(ch, 0) - CURsU_POS(ch, 1));
-    dTperc(ch) = (float)fabs(CURsT_POS(ch, 0) - CURsT_POS(ch, 1));
+    dUperc(ch) = (float)fabsf(CURsU_POS(ch, 0) - CURsU_POS(ch, 1));
+    dTperc(ch) = (float)fabsf(CURsT_POS(ch, 0) - CURsT_POS(ch, 1));
 }
 
 static void SetCursSource(Channel ch)

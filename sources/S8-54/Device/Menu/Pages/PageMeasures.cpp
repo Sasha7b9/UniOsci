@@ -19,7 +19,7 @@ extern const Page ppFreqMeter;
 extern const Page ppTune;
 
 //------------------------------------------------------------------------------------------------------------ ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Частотомер ---
-static void OnChanged_FreqMeter_Enable(bool param)
+static void OnChanged_FreqMeter_Enable(bool)
 {
     FreqMeter_Init();
 }
@@ -196,7 +196,7 @@ static void OnPress_Tune_Settings(void)
     pageChoiceIsActive = !pageChoiceIsActive;
     if (pageChoiceIsActive)
     {
-        posOnPageChoice = MEASURE(posActive);
+        posOnPageChoice = (int8)MEASURE(posActive);
     }
 }
 

@@ -412,7 +412,7 @@ DEF_PAGE_3(     pppADC_Balance, static,
 );
 
 //----------------------------------------------------------------------------------------------------------------- Œ“À¿ƒ ¿ - ¿÷œ - ¡¿À¿Õ— - –ÂÊËÏ ---
-static void OnChanged_ADC_Balance_Mode(bool active)
+static void OnChanged_ADC_Balance_Mode(bool)
 {
     Draw_ADC_Balance_Mode(0, 0);
 }
@@ -420,7 +420,7 @@ static void OnChanged_ADC_Balance_Mode(bool active)
 static int16 shiftADCA;
 static int16 shiftADCB;
 
-static void Draw_ADC_Balance_Mode(int x, int y)
+static void Draw_ADC_Balance_Mode(int, int)
 {
     int8 shift[2][3] =
     {
@@ -508,7 +508,7 @@ DEF_PAGE_15(    pppADC_Stretch, static,
 static int16 stretchA;
 static int16 stretchB;  
 
-void OnChanged_ADC_Stretch_Mode(bool active)
+void OnChanged_ADC_Stretch_Mode(bool)
 {
     if (NRST_STRETCH_ADC_TYPE_IS_DISABLE)
     {
@@ -782,7 +782,7 @@ DEF_PAGE_2(     ppChannels, static,
 );
 
 //-------------------------------------------------------------------------------------------------------------------- Œ“À¿ƒ ¿ -  ¿ÕÀ¿€ - œÓÎÓÒ‡ 1 ---
-static void OnChanged_Channels_BandwidthA(bool active)
+static void OnChanged_Channels_BandwidthA(bool)
 {
     FPGA_SetBandwidth(A);
 }
@@ -804,7 +804,7 @@ DEF_CHOICE_7
 );
 
 //-------------------------------------------------------------------------------------------------------------------- Œ“À¿ƒ ¿ -  ¿ÕÀ¿€ - œÓÎÓÒ‡ 2 ---
-static void OnChanged_Channels_BandwidthB(bool active)
+static void OnChanged_Channels_BandwidthB(bool)
 {
     FPGA_SetBandwidth(B);
 }
@@ -1035,12 +1035,12 @@ static void OnChanged_Pred(void)
 {
     gPred = ~pred;
     static char buffer[30];
-    LOG_WRITE("pred %d %s", pred, trans.Hex16toString(gPred, buffer, true));
+    LOG_WRITE("pred %d %s", pred, trans.Hex16toString((uint16)gPred, buffer, true));
 }
 
 static void OnChanged_Post(void)
 {
-    gPost = ~post;
+    gPost = (uint16)~post;
     static char buffer[30];
     LOG_WRITE("post %d %s", post, trans.Hex16toString(gPost, buffer, true));
 }
@@ -1070,7 +1070,7 @@ DEF_CHOICE_2
 );
 
 //---------------------------------------------------------------------------------------------------------------------------- Œ“À¿ƒ ¿ - –ÂÊËÏ ›Ã— ---
-static void OnChanged_EMS(bool active)
+static void OnChanged_EMS(bool)
 {
     FPGA_SetBandwidth(A);
     FPGA_SetBandwidth(B);
@@ -1088,7 +1088,7 @@ DEF_CHOICE_2
 );
 
 //--------------------------------------------------------------------------------------------------------------------------- Œ“À¿ƒ ¿ - ŒËÂÌÚ‡ˆËˇ ---
-void OnChanged_DisplayOrientation(bool active)
+void OnChanged_DisplayOrientation(bool)
 {
     display.SetOrientation(DISPLAY_ORIENTATION);
 }

@@ -10,42 +10,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const   Choice cMode;                    ///< ÑÈÍÕÐ - Ðåæèì
-       void  OnChanged_TrigMode(bool active);   
-extern const   Choice cSource;                  ///< ÑÈÍÕÐ - Èñòî÷íèê
-static void  OnChanged_Source(bool active);
-extern const   Choice cPolarity;                ///< ÑÈÍÕÐ - Ïîëÿðíîñòü
-static void  OnChanged_Polarity(bool active);   
-extern const   Choice cInput;                   ///< ÑÈÍÕÐ - Âõîä
-static void  OnChanged_Input(bool active);
-extern const    Page ppSearch;                  ///< ÑÈÍÕÐ - ÏÎÈÑÊ
-extern const   Choice cSearch_Mode;             ///< ÑÈÍÕÐ - ÏÎÈÑÊ - Ðåæèì
-extern const   Button bSearch_Search;           ///< ÑÈÍÕÐ - ÏÎÈÑÊ - Íàéòè
-static bool   IsActive_Search_Search(void);
-static void    OnPress_Search_Search(void);
-//static const Governor gTimeDelay;               ///< ÑÈÍÕÐ - Óäåðæàíèå
-
 extern const Page pTrig;
+extern const Page ppSearch;
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÑÈÍÕÐ ///
-DEF_PAGE_5(     pTrig, ,
-    Page_Trig, &mainPage, FuncActive, EmptyPressPage,
-    "ÑÈÍÕÐ", "TRIG",
-    "Ñîäåðæèò íàñòðîéêè ñèíõðîíèçàöèè.",
-    "Contains synchronization settings.",
-    cMode,      // ÑÈÍÕÐ - Ðåæèì
-    cSource,    // ÑÈÍÕÐ - Èñòî÷íèê
-    cPolarity,  // ÑÈÍÕÐ - Ïîëÿðíîñòü
-    cInput,     // ÑÈÍÕÐ - Âõîä
-    ppSearch    // ÑÈÍÕÐ - ÏÎÈÑÊ
-//  gTimeDelay  // ÑÈÍÕÐ - Óäåðæàíèå
-);
-
-const Page * pointerPageTrig = &pTrig;
 
 //---------------------------------------------------------------------------------------------------------------------------------- ÑÈÍÕÐ - Ðåæèì ---
-void OnChanged_TrigMode(bool active)
+void OnChanged_TrigMode(bool)
 {
     FPGA_Stop(false);
     if(!START_MODE_SINGLE)
@@ -91,7 +61,7 @@ DEF_CHOICE_3
 );
 
 //------------------------------------------------------------------------------------------------------------------------------- ÑÈÍÕÐ - Èñòî÷íèê ---
-static void OnChanged_Source(bool active)
+static void OnChanged_Source(bool)
 {
     FPGA_SetTrigSource(TRIGSOURCE);
 }
@@ -109,7 +79,7 @@ DEF_CHOICE_3
 );
 
 //----------------------------------------------------------------------------------------------------------------------------- ÑÈÍÕÐ - Ïîëÿðíîñòü ---
-static void OnChanged_Polarity(bool active)
+static void OnChanged_Polarity(bool)
 {
     FPGA_SetTrigPolarity(TRIG_POLARITY);
 }
@@ -128,7 +98,7 @@ DEF_CHOICE_2
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------- ÑÈÍÕÐ - Âõîä ---
-static void OnChanged_Input(bool active)
+static void OnChanged_Input(bool)
 {
     FPGA_SetTrigInput(TRIG_INPUT);
 }
@@ -168,16 +138,6 @@ static const Governor gTimeDelay =
 };
 */
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÑÈÍÕÐ - ÏÎÈÑÊ ///
-DEF_PAGE_2(     ppSearch, static,
-    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage,
-    "ÏÎÈÑÊ", "SEARCH",
-    "Óïðàâëåíèå àâòîìàòè÷åñêèì ïîèñêîì óðîâíÿ ñèíõðîíèçàöèè.",
-    "Office of the automatic search the trigger level.",
-    cSearch_Mode,      // ÑÈÍÕÐ - ÏÎÈÑÊ - Ðåæèì
-    bSearch_Search     // ÑÈÍÕÐ - ÏÎÈÑÊ - Íàéòè
-);
-
 //-------------------------------------------------------------------------------------------------------------------------- ÑÈÍÕÐ - ÏÎÈÑÊ - Ðåæèì ---
 static const char *hintsSearch_Mode[] ={ "Ðó÷íîé", "Hand", "Àâòîìàòè÷åñêèé",  "Auto" };
 
@@ -193,27 +153,20 @@ static const Choice cSearch_Mode =
         "2. \"Àâòîìàòè÷åñêèé\" - ïîèñê ïðîèçâîäèòñÿ àâòîìàòè÷åñêè."
         ,
         "Selecting the automatic search of synchronization:\n"
+#ifndef WIN32
 #pragma push
 #pragma diag_suppress 192
         "1. \"Hand\" - search is run on pressing of the button \"Find\" or on deduction during 0.5s the ÑÈÍÕÐ button if it is established "
         "\"SERVICE\x99Mode long ÑÈÍÕÐ\x99\Autolevel\".\n"
 #pragma pop
+#endif
         "2. \"Auto\" - the search is automatically."
     },
     (int8 *)&TRIG_MODE_FIND,
     hintsSearch_Mode, FuncChangedChoice, FuncDraw
 };
 
-// ÑÈÍÕÐ - ÏÎÈÑÊ - Íàéòè -----------------------------------------------------------------------------------------------------------------------------
-DEF_BUTTON
-(
-    bSearch_Search,
-    "Íàéòè", "Search",
-    "Ïðîèçâîäèò ïîèñê óðîâíÿ ñèíõðîíèçàöèè.",
-    "Runs for search synchronization level.",
-    ppSearch, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
-);
-
+//--------------------------------------------------------------------------------------------------------------------------- ÑÈÍÕÐ - ÏÎÈÑÊ - Íàéòè --
 static bool IsActive_Search_Search(void)
 {
     return TRIG_MODE_FIND_HAND;
@@ -223,3 +176,39 @@ static void OnPress_Search_Search(void)
 {
     FPGA_FindAndSetTrigLevel();
 }
+
+DEF_BUTTON
+(
+    bSearch_Search,
+    "Íàéòè", "Search",
+    "Ïðîèçâîäèò ïîèñê óðîâíÿ ñèíõðîíèçàöèè.",
+    "Runs for search synchronization level.",
+    ppSearch, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
+);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÑÈÍÕÐ - ÏÎÈÑÊ ///
+DEF_PAGE_2(ppSearch, static,
+           Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage,
+           "ÏÎÈÑÊ", "SEARCH",
+           "Óïðàâëåíèå àâòîìàòè÷åñêèì ïîèñêîì óðîâíÿ ñèíõðîíèçàöèè.",
+           "Office of the automatic search the trigger level.",
+           cSearch_Mode,      // ÑÈÍÕÐ - ÏÎÈÑÊ - Ðåæèì
+           bSearch_Search     // ÑÈÍÕÐ - ÏÎÈÑÊ - Íàéòè
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÑÈÍÕÐ ///
+DEF_PAGE_5(pTrig, ,
+           Page_Trig, &mainPage, FuncActive, EmptyPressPage,
+           "ÑÈÍÕÐ", "TRIG",
+           "Ñîäåðæèò íàñòðîéêè ñèíõðîíèçàöèè.",
+           "Contains synchronization settings.",
+           cMode,      // ÑÈÍÕÐ - Ðåæèì
+           cSource,    // ÑÈÍÕÐ - Èñòî÷íèê
+           cPolarity,  // ÑÈÍÕÐ - Ïîëÿðíîñòü
+           cInput,     // ÑÈÍÕÐ - Âõîä
+           ppSearch    // ÑÈÍÕÐ - ÏÎÈÑÊ
+                       //  gTimeDelay  // ÑÈÍÕÐ - Óäåðæàíèå
+);
+
+const Page * pointerPageTrig = &pTrig;
