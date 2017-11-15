@@ -916,11 +916,6 @@
               <FilePath>.\Device\Log.h</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\main.c</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\main.h</FilePath>
@@ -978,26 +973,16 @@
               <FileType>5</FileType>
               <FilePath>.\Device\Tables.h</FilePath>
             </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\main.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Data</GroupName>
           <Files>
-            <File>
-              <FileName>Data.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Data\Data.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Data.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Data\Data.h</FilePath>
-            </File>
-            <File>
-              <FileName>DataSettings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Data\DataSettings.c</FilePath>
-            </File>
             <File>
               <FileName>DataSettings.h</FileName>
               <FileType>5</FileType>
@@ -1012,6 +997,21 @@
               <FileName>DataStorage.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Data\DataStorage.h</FilePath>
+            </File>
+            <File>
+              <FileName>DataSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Data\DataSettings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Reader.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Data\Reader.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Reader.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Data\Reader.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1039,11 +1039,6 @@
               <FilePath>.\Device\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayPrimitives.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Display\DisplayPrimitives.c</FilePath>
-            </File>
-            <File>
               <FileName>DisplayPrimitives.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Display\DisplayPrimitives.h</FilePath>
@@ -1062,11 +1057,6 @@
               <FileName>Grid.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Display\Grid.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math3D.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Display\Math3D.c</FilePath>
             </File>
             <File>
               <FileName>Math3D.h</FileName>
@@ -1094,11 +1084,6 @@
               <FilePath>.\Device\Display\PainterData.h</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Display\PainterMem.c</FilePath>
-            </File>
-            <File>
               <FileName>PainterMem.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Display\PainterMem.h</FilePath>
@@ -1114,14 +1099,29 @@
               <FilePath>.\Device\Display\Symbols.h</FilePath>
             </File>
             <File>
-              <FileName>WelcomeScreen.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Display\WelcomeScreen.c</FilePath>
-            </File>
-            <File>
               <FileName>WelcomeScreen.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Display\WelcomeScreen.h</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\DisplayPrimitives.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math3D.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\Math3D.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterMem.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\PainterMem.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>WelcomeScreen.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Display\WelcomeScreen.cpp</FilePath>
             </File>
           </Files>
         </Group>

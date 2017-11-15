@@ -12,10 +12,10 @@
 #define SIZE_FLASH_TEMP_BUFFER 512
 typedef struct
 {
-    uint8 tempBuffer[SIZE_FLASH_TEMP_BUFFER];
-    int sizeData;
-    FIL fileObj;
-    char name[255];
+    uint8   tempBuffer[SIZE_FLASH_TEMP_BUFFER];
+    int     sizeData;
+    FIL     fileObj;
+    char    name[255];
 } StructForWrite;
 
 typedef struct

@@ -82,10 +82,11 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level4</WarningLevel>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;USE_HAL_DRIVER;STM32F437xx;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4514; 4820</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -126,6 +127,20 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Data\Reader.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Data\DataSettings.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Data\DataStorage.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Colors.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayTypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Grid.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Math3D.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Painter.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterData.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterMem.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Symbols.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Display\WelcomeScreen.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\ffconf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.h" />
@@ -279,15 +294,29 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\common\STM32F437lib\GPIO.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Data\DataSettings.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\Colors.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\Grid.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\Math3D.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\Painter.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterText.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Display\WelcomeScreen.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbd_conf.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\main.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_core.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_desc.cpp" />

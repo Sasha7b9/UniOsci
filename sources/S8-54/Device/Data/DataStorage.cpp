@@ -397,8 +397,8 @@ void CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 
         for(int numData = 0; numData < allDatas; numData++)
         {
-            const uint8 *dataA = dS.GetData_RAM(A, numData);
-            const uint8 *dataB = dS.GetData_RAM(B, numData);
+            dataA = dS.GetData_RAM(A, numData);
+            dataB = dS.GetData_RAM(B, numData);
 
             uint8 data = 0;
             uint8 limitUp = 0;
@@ -477,9 +477,9 @@ void CalculateSums(void)
 #define ALTERNATE_ADD(addr, shift)                                                                          \
     loSum = (*addr) + (uint8)(data16 >> shift);                                                             \
     *addr = (uint16)loSum;                                                                                  \
-    if (loSum > 0xffff)                                                                                     \
+    if (loSum > 0xffffU)                                                                                     \
     {                                                                                                       \
-        sum = (uint)((int)loSum - (int)((uint8)(data16 >> shift))) + ((*(addr + 1)) >> 16) + (uint8)data16; \
+        sum = (uint)((int)loSum - (int)((uint8)(data16 >> shift))) + ((*(addr + 1U)) >> 16) + (uint8)data16; \
         *addr = (uint16)sum;                                                                                \
         *(addr + 1) = (uint16)(sum >> 16);                                                                  \
     }                                                                                                       \
@@ -491,7 +491,7 @@ void CalculateSums(void)
                 uint loSum = 0;
                 uint16 data16 = *dA++;     // Считываем первые два отсчёта данных
 
-                ALTERNATE_ADD(sumA16, 0);  /** \todo Похоже, sum неправильно вычисляется, из-за чего артефаты при больших накоплениях. Нужно 
+                ALTERNATE_ADD(sumA16, 0U);  /** \todo Похоже, sum неправильно вычисляется, из-за чего артефаты при больших накоплениях. Нужно 
                                            (loSum - data16) заменить на старое значение (*data16) */
 
                 ALTERNATE_ADD(sumA16, 8);

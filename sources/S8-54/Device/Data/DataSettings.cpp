@@ -24,12 +24,12 @@ int BytesInChannel(DataSettings *ds)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void DataSettings_Fill(DataSettings *ds)
 {
-    Lval_ENABLED_A(ds) = SET_ENABLED_A ? 1 : 0;
-    Lval_ENABLED_B(ds) = SET_ENABLED_B ? 1 : 0;
-    INVERSE_A(ds) = SET_INVERSE_A ? 1 : 0;
-    INVERSE_B(ds) = SET_INVERSE_B ? 1 : 0;
-    Lval_RANGE_A(ds) = SET_RANGE_A;
-    Lval_RANGE_B(ds) = SET_RANGE_B;
+    Lval_ENABLED_A(ds) = SET_ENABLED_A ? 1U : 0U;
+    Lval_ENABLED_B(ds) = SET_ENABLED_B ? 1U : 0U;
+    INVERSE_A(ds) = SET_INVERSE_A ? 1U : 0U;
+    INVERSE_B(ds) = SET_INVERSE_B ? 1U : 0U;
+    Lval_RANGE_A(ds) = (uint8)SET_RANGE_A;
+    Lval_RANGE_B(ds) = (uint8)SET_RANGE_B;
     RSHIFT_A(ds) = SET_RSHIFT_A;
     RSHIFT_B(ds) = SET_RSHIFT_B;
     Lval_TBASE(ds) = SET_TBASE;

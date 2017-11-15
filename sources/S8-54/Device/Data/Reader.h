@@ -98,7 +98,7 @@ typedef struct
     ModeWork forMode;                       ///< Для какого режима считываются данные
 } StructDataDrawing;
 
-class Data
+class Reader
 {
 public:
     /// \brief Читает данные из ОЗУ, fromEnd c конца (fromEnd == 0 - последний считанный сигнал) и заполняет данными inA(B), outA(B), DS.
@@ -112,7 +112,7 @@ public:
     void ReadMax(StructDataDrawing *dataStruct);
 };
 
-extern Data data;
+extern Reader reader;
 
 /** @}  @}  @}
  */

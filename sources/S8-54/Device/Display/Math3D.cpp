@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include "Math3D.h"
 #include <string.h>
@@ -16,8 +14,8 @@ void FillMatriceRotation(Mat4x4 *mat, float angleX, float angleY, float angleZ)
     Mat4x4 matZ = {0};
     Mat4x4 matTemp = {0};
 
-    float cosX = (float)cos(angleX);
-    float sinX = (float)sin(angleX);
+    float cosX = cosf(angleX);
+    float sinX = sinf(angleX);
     float cosY = cosf(angleY);
     float sinY = sinf(angleY);
     float cosZ = cosf(angleZ);

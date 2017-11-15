@@ -1,5 +1,5 @@
 #include "PageMemory.h"
-#include "Data/Data.h"
+#include "Data/Reader.h"
 #include "Display/Grid.h"
 #include "Display/Symbols.h"
 #include "FlashDrive/FlashDrive.h"
@@ -752,7 +752,7 @@ static void SaveSignalToIntMemory(void)
 {
     // Заносим в указатели DS, DATA_A, DATA_B данные из ОЗУ или последний считанный сигнал, в зависимости от того, из какого режима зашли в 
     // "ПАМЯТЬ-ВНУТР ЗУ"
-    data.ReadFromRAM(EXIT_FROM_ROM_TO_RAM ? NUM_RAM_SIGNAL : 0, 0, false);
+    reader.ReadFromRAM(EXIT_FROM_ROM_TO_RAM ? NUM_RAM_SIGNAL : 0, 0, false);
 
     if (DS)                                             // Если есть что сохранять
     {

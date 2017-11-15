@@ -35,16 +35,14 @@ void HAL_HCD_Disconnect_Callback(HCD_HandleTypeDef *hhcd)
   USBH_LL_Disconnect((USBH_HandleTypeDef *)hhcd->pData);
 } 
 
-/**
-  * @brief  Notify URB state change callback.
+/** @brief  Notify URB state change callback.
   * @param  hhcd: HCD handle
   * @param  chnum:
   * @param  urb_state:
-  * @retval None
-  */
-void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *hhcd, uint8_t chnum, HCD_URBStateTypeDef urb_state)
+  * @retval None  */
+void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *, uint8_t, HCD_URBStateTypeDef)
 {
-  /* To be used with OS to sync URB state with the global state machine */
+    /* To be used with OS to sync URB state with the global state machine */
 }
 
 /*******************************************************************************
@@ -272,29 +270,25 @@ USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe
   return (USBH_URBStateTypeDef)HAL_HCD_HC_GetURBState ((HCD_HandleTypeDef *)phost->pData, pipe);
 }
 
-/**
-  * @brief  Drives VBUS.
+/** @brief  Drives VBUS.
   * @param  phost: Host handle
   * @param  state: VBUS state
   *          This parameter can be one of these values:
   *           0: VBUS Active 
   *           1: VBUS Inactive
-  * @retval USBH Status
-  */
-USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
+  * @retval USBH Status  */
+USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *, uint8_t)
 {
     HAL_Delay(200);
     return USBH_OK;  
 }
 
-/**
-  * @brief  Sets toggle for a pipe.
+/** @brief  Sets toggle for a pipe.
   * @param  phost: Host handle
   * @param  pipe: Pipe index   
   * @param  toggle: toggle (0/1)
-  * @retval USBH Status
-  */
-USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t toggle)   
+  * @retval USBH Status  */
+USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *, uint8_t pipe, uint8_t toggle)   
 {
     if(handleHCD.hc[pipe].ep_is_in)
     {
@@ -307,13 +301,11 @@ USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *phost, uint8_t pipe, ui
     return USBH_OK; 
 }
 
-/**
-  * @brief  Returns the current toggle of a pipe.
+/** @brief  Returns the current toggle of a pipe.
   * @param  phost: Host handle
   * @param  pipe: Pipe index
-  * @retval toggle (0/1)
-  */
-uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *phost, uint8_t pipe)   
+  * @retval toggle (0/1) */
+uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *, uint8_t pipe)   
 {
     uint8_t toggle = 0;
   

@@ -16,7 +16,7 @@ static const int    DEFAULT_PORT = 7,
 
 bool TCPSocket_Init(void (*funcConnect)(void), void (*funcReceiver)(const char *buffer, uint length));
 
-bool TCPSocket_Send(const char *buffer, uint length);
+bool TCPSocket_Send(const char *buffer, int length);
 
 void TCPSocket_SendFormatString(char *format, ...);
 

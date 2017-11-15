@@ -3,7 +3,7 @@
 #include "Log.h"
 #include "PainterData.h"
 #include "Symbols.h"
-#include "Data/Data.h"
+#include "Data/Reader.h"
 #include "Ethernet/TcpSocket.h"
 #include "FlashDrive/FlashDrive.h"
 #include "font/Font.h"
@@ -290,7 +290,7 @@ void Display::RotateRShift(Channel ch)
     {
         (ch == A) ? (showLevelRShiftA = true) : (showLevelRShiftB = true);
         Timer_SetAndStartOnce((ch == A) ? kShowLevelRShiftA : kShowLevelRShiftB, (ch == A) ? DisableShowLevelRShiftA : DisableShowLevelRShiftB, 
-                              TIME_SHOW_LEVELS  * 1000);
+                              TIME_SHOW_LEVELS  * 1000U);
     };
     NEED_FINISH_DRAW = 1;
 }
@@ -301,7 +301,7 @@ void Display::RotateTrigLev(void)
     if(TIME_SHOW_LEVELS && TRIG_MODE_FIND_HAND)
     {
         showLevelTrigLev = true;
-        Timer_SetAndStartOnce(kShowLevelTrigLev, DisableShowLevelTrigLev, TIME_SHOW_LEVELS * 1000);
+        Timer_SetAndStartOnce(kShowLevelTrigLev, DisableShowLevelTrigLev, TIME_SHOW_LEVELS * 1000U);
     }
     NEED_FINISH_DRAW = 1;
 }
@@ -383,7 +383,7 @@ void Display::ShiftScreen(int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::ChangedRShiftMarkers(bool active)
+void Display::ChangedRShiftMarkers(bool)
 {
     drawRShiftMarkers = !ALT_MARKERS_HIDE;
     Timer_SetAndStartOnce(kRShiftMarkersAutoHide, OnRShiftMarkersAutoHide, 5000);
@@ -485,7 +485,7 @@ static bool NeedForClearScreen(void)
         NEED_FINISH_DRAW = 0;
         return true;
     }
-    if(!ENUM_ACCUM_INF && MODE_ACCUM_RESET && NUM_DRAWING_SIGNALS >= NUM_ACCUM)
+    if(!ENUM_ACCUM_INF && MODE_ACCUM_RESET && NUM_DRAWING_SIGNALS >= (uint)NUM_ACCUM)
     {
         NUM_DRAWING_SIGNALS = 0;
         return true;
@@ -498,7 +498,7 @@ static void SendOrientationToDisplay(void)
 {
     if(NEED_SET_ORIENTATION)
     {
-        uint8 command[4] ={SET_ORIENTATION, DISPLAY_ORIENTATION, 0, 0};
+        uint8 command[4] ={SET_ORIENTATION, (uint8)DISPLAY_ORIENTATION, 0, 0};
         painter.SendToDisplay(command, 4);
         painter.SendToInterfaces(command, 2);
         NEED_SET_ORIENTATION = 0;
@@ -725,7 +725,6 @@ static void DrawLowPart(void)
     if(MODE_WORK_DIR)
     {
         char mesFreq[20] = "\x7c=";
-        char buffer[20];
         float freq = FreqMeter_GetFreq();
         if(freq == -1.0f)
         {
@@ -979,7 +978,7 @@ static void DrawCursorTShift(void)
     int shiftTShift = TPOS_IN_POINTS - TSHIFT_IN_POINTS;
     if(IntInRange(shiftTShift, FIRST_POINT, LAST_POINT))
     {
-        int x = gridLeft + shiftTShift - FIRST_POINT - 3;
+        x = gridLeft + shiftTShift - FIRST_POINT - 3;
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, gColorBack, gColorFill);
     }
     else if(shiftTShift < FIRST_POINT)
@@ -1065,7 +1064,7 @@ void Display::DrawConsole(void)
 
     int dY = 0;
 
-    for(int numString = firstString; numString <= lastString; numString++)
+    for(numString = firstString; numString <= lastString; numString++)
     {
         int width = Font_GetLengthText(strings[numString]);
         painter.FillRegion(grid.Left() + 1, GRID_TOP + 1 + count * (height + 1) + delta, width, height + 1, gColorBack);
@@ -1097,7 +1096,7 @@ static void WriteValueTrigLevel(void)
         }
 
         char buffer[20];
-        strcpy(buffer, DICT(DTrigLev));
+        strcpy(buffer, (char *)DICT(DTrigLev));
         char bufForVolt[20];
         strcat(buffer, trans.Voltage2String(trigLev, true, bufForVolt));
         int width = 96;
@@ -1227,7 +1226,7 @@ static void AddString(const char *string)
     const int SIZE = 100;
     char buffer[SIZE];
     snprintf(buffer, SIZE, "%d\x11", num++);
-    strcat(buffer, string);
+    strcat(buffer, (char *)string);
     int size = strlen(buffer) + 1;
     while(CalculateFreeSize() < size)
     {
@@ -1502,7 +1501,6 @@ static void WriteCursors(void)
             float pos1 = math.TimeCursor(CURsT_POS(source, 1), SET_TBASE);
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
-            char buffer[20];
             painter.DrawText(x + 17, y1, trans.Time2String(delta, false, buffer));
             painter.DrawText(x, y2, ":");
             painter.DrawText(x + 8, y2, sCursors_GetCursorPercentsT(source, buffer));
@@ -1510,11 +1508,10 @@ static void WriteCursors(void)
             if(CURSORS_SHOW_FREQ)
             {
                 int width = 65;
-                int x = grid.Right() - width;
+                x = grid.Right() - width;
                 painter.DrawRectangle(x, GRID_TOP, width, 12, gColorFill);
                 painter.FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, gColorBack);
                 painter.DrawText(x + 1, GRID_TOP + 2, "1/dT=", colorText);
-                char buffer[20];
                 painter.DrawText(x + 25, GRID_TOP + 2, trans.Freq2String(1.0f / delta, false, buffer));
             }
         }
@@ -1544,7 +1541,7 @@ static void DrawHiRightPart(void)
     }
 
     // Ðåæèì ðàáîòû
-    static pString strings[][2] =
+    static pString strs[][2] =
     {
         {"ÈÇÌ", "MEAS"},
         {"ÏÎÑË", "LAST"},
@@ -1557,7 +1554,7 @@ static void DrawHiRightPart(void)
         painter.DrawVLine(x, 1, GRID_TOP - 2, gColorFill);
         x += 2;
         painter.DrawText(LANG_RU ? x : x + 3, -1, DICT(DMode));
-        painter.DrawStringInCenterRect(x + 1, 9, 25, 8, strings[MODE_WORK][LANG]);
+        painter.DrawStringInCenterRect(x + 1, 9, 25, 8, strs[MODE_WORK][LANG]);
     }
     else
     {
@@ -1619,7 +1616,7 @@ static void WriteTextVoltage(Channel ch, int x, int y)
     snprintf(buffer, SIZE, "%s\xa5%s\xa5%s", (ch == A) ? DICT(D1ch) : DICT(D2ch), couple[SET_COUPLE(ch)], sChannel_Range2String(range, divider));
     painter.DrawText(x + 1, y, buffer, colorDraw);
     char bufferTemp[SIZE];
-    snprintf(bufferTemp, SIZE, "\xa5%s", sChannel_RShift2String((int16)SET_RSHIFT(ch), range, divider, buffer));
+    snprintf(bufferTemp, SIZE, "\xa5%s", sChannel_RShift2String((uint16)SET_RSHIFT(ch), range, divider, buffer));
     painter.DrawText(x + 46, y, bufferTemp);
 }
 
@@ -1663,11 +1660,11 @@ static void DrawTime(int x, int y)
             time.seconds = TIME_SECONDS_DS;
             time.month = TIME_MONTH_DS;
             time.year = TIME_YEAR_DS;
-            painter.DrawText(x, y, trans.Int2String(time.day, false, 2, buffer));
+            painter.DrawText(x, y, trans.Int2String((int)time.day, false, 2, buffer));
             painter.DrawText(x + dField, y, ":");
-            painter.DrawText(x + dField + dSeparator, y, trans.Int2String(time.month, false, 2, buffer));
+            painter.DrawText(x + dField + dSeparator, y, trans.Int2String((int)time.month, false, 2, buffer));
             painter.DrawText(x + 2 * dField + dSeparator, y, ":");
-            painter.DrawText(x + 2 * dField + 2 * dSeparator, y, trans.Int2String(time.year + 2000, false, 4, buffer));
+            painter.DrawText(x + 2 * dField + 2 * dSeparator, y, trans.Int2String((int)time.year + 2000, false, 4, buffer));
             y += 9;
         }
         else
@@ -1676,11 +1673,11 @@ static void DrawTime(int x, int y)
         }
     }
 
-    painter.DrawText(x, y, trans.Int2String(time.hours, false, 2, buffer));
+    painter.DrawText(x, y, trans.Int2String((int)time.hours, false, 2, buffer));
     painter.DrawText(x + dField, y, ":");
-    painter.DrawText(x + dField + dSeparator, y, trans.Int2String(time.minutes, false, 2, buffer));
+    painter.DrawText(x + dField + dSeparator, y, trans.Int2String((int)time.minutes, false, 2, buffer));
     painter.DrawText(x + 2 * dField + dSeparator, y, ":");
-    painter.DrawText(x + 2 * dField + 2 * dSeparator, y, trans.Int2String(time.seconds, false, 2, buffer));
+    painter.DrawText(x + 2 * dField + 2 * dSeparator, y, trans.Int2String((int)time.seconds, false, 2, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -14,6 +14,8 @@ int strcmp(char *, char *);
 
 void memcpy(void *, void *, int);
 
+void memset(void *, unsigned char value, int num);
+
 char tolower(char);
 
 void strcpy(char *, char *);

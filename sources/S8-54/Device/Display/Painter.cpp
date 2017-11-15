@@ -141,7 +141,7 @@ Color Painter::GetColor(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::LoadPalette(void)
 {
-    for (int i = 0; i < Color::NUMBER; i++)
+    for (uint8 i = 0; i < Color::NUMBER; i++)
     {
         Painter::SetPalette((Color)i);
     }
@@ -231,7 +231,7 @@ void Painter::DrawMultiVPointLine(int numLines, int y, uint16 x[], int delta, in
 
     SetColor(color);
 
-    uint8 command[60] = {DRAW_MULTI_VPOINT_LINE, numLines, y, count, delta, 0};
+    uint8 command[60] = {DRAW_MULTI_VPOINT_LINE, (uint8)numLines, (uint8)y, (uint8)count, (uint8)delta, 0};
 
     uint8 *pointer = command + 6;
     for (int i = 0; i < numLines; i++)
@@ -477,7 +477,7 @@ void Painter::DrawVLineArray(int x, int numLines, uint8 *y0y1, Color color)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawSignal(int x, uint8 data[281], bool modeLines)
 {
-    uint8 command[284] = {modeLines ? DRAW_SIGNAL_LINES : DRAW_SIGNAL_POINTS};
+    uint8 command[284] = {(uint8)(modeLines ? DRAW_SIGNAL_LINES : DRAW_SIGNAL_POINTS)};
     WRITE_SHORT(1, x);
     for (int i = 0; i < 281; i++)
     {
@@ -627,7 +627,7 @@ bool Painter::SaveScreenToFlashDrive()
                 color = Read2points(x, y);
             }
 
-            buffer[x / 2] = ((color & 0x0f) << 4) + (color >> 4);
+            buffer[x / 2] = (uint8)(((color & 0x0f) << 4) + (color >> 4));
         }
 
         FDrive_WriteToFile(buffer, 160, &structForWrite);
@@ -647,7 +647,6 @@ void Painter::SendToDisplay(uint8 *bytes, int numBytes)
     {
         while (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_11) == GPIO_PIN_RESET)
         {
-            volatile int temp = breakpoint;
         };
         Timer_PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
         *ADDR_CDISPLAY = *bytes++;

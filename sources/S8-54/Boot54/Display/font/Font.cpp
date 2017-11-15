@@ -31,7 +31,7 @@ int Font_GetHeightSymbol(char)
     return 9;
 }
 
-int Font_GetLengthSymbol(uchar symbol)
+int Font_GetLengthSymbol(char symbol)
 {
     return font->symbol[symbol].width + 1;
 }

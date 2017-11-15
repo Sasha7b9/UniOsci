@@ -149,8 +149,13 @@ typedef union
     uint                    word[2];
     struct
     {
-        uint word0;
-        uint word1;
+        uint uword0;
+        uint uword1;
+    };
+    struct
+    {
+        int word0;
+        int word1;
     };
     uint16  halfWord[4];
     struct
@@ -219,3 +224,7 @@ typedef struct
 void HardwareErrorHandler(const char *file, const char *function, int line);
 
 #define SAFE_FREE(x) if(x) free(x); (x) = 0;
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif

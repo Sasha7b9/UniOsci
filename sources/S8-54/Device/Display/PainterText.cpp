@@ -8,6 +8,11 @@
 #include <stdarg.h>
 #include <string.h>
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4100 4101)
+#endif
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static TypeFont currentTypeFont = TypeFont_None;
@@ -49,7 +54,7 @@ void Painter::LoadFont(TypeFont typeFont)
         bytes = fontUGO2display;
     }
 
-    uint8 command[3084] = {LOAD_FONT, typeFont};
+    uint8 command[3084] = {LOAD_FONT, (uint8)typeFont};
     for (int i = 0; i < 3080; i++)
     {
         WRITE_BYTE(2 + i, bytes[i]);
@@ -89,9 +94,9 @@ static bool BitInFontIsExist(int eChar, int numByte, int bit)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCharInColorDisplay(int eX, int eY, uchar symbol)
+static void DrawCharInColorDisplay(int eX, int eY, char symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -116,7 +121,7 @@ static void DrawCharInColorDisplay(int eX, int eY, uchar symbol)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int DrawBigChar(int eX, int eY, int size, char symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -205,7 +210,7 @@ int Painter::DrawText(int x, int y, const char *text, Color color)
 #define SIZE_BUFFER 100
     uint8 command[SIZE_BUFFER] = {DRAW_TEXT};
     WRITE_SHORT(1, x);
-    WRITE_BYTE(3, y + 1);
+    WRITE_BYTE(3, (uint8)(y + 1));
 
     uint8 *pointer = command + 5;
     uint8 length = 0;
@@ -241,9 +246,9 @@ int Painter::DrawFormatText(int x, int y, char *format, ...)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int DrawCharWithLimitation(int eX, int eY, uchar symbol, int limitX, int limitY, int limitWidth, int limitHeight)
+static int DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -550,9 +555,9 @@ int Painter::DrawTextInRectWithTransfers(int eX, int eY, int eWidth, int eHeight
                 int lengthString = Font_GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
-                    int numSymbols = DrawPartWord(word, x, y, right, true);
+                    int numSymb = DrawPartWord(word, x, y, right, true);
                     x = right;
-                    curSymbol += numSymbols;
+                    curSymbol += numSymb;
                     continue;
                 }
                 else
@@ -607,9 +612,9 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, const char 
                 int lengthString = Font_GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
-                    int numSymbols = DrawPartWord(word, x, y, right, false);
+                    int numSymb = DrawPartWord(word, x, y, right, false);
                     x = right;
-                    curSymbol += numSymbols;
+                    curSymbol += numSymb;
                     continue;
                 }
                 else
@@ -826,3 +831,7 @@ void Painter::DrawBigText(int eX, int eY, int size, const char *text, Color colo
         x += size;
     }
 }
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif

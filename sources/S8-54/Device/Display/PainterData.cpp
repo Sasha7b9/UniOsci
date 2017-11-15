@@ -2,7 +2,7 @@
 #include "Log.h"
 #include "PainterData.h"
 #include "Symbols.h"
-#include "Data/Data.h"
+#include "Data/Reader.h"
 #include "Data/DataStorage.h"
 #include "Display/Grid.h"
 #include "FPGA/FPGA.h"
@@ -56,7 +56,7 @@ static int FillDataP2PforRecorder(int numPoints, int numPointsDS, int pointsInSc
 
 static int FillDataP2PforNormal(int numPoints, int numPointsDS, int pointsInScreen, uint8 *src, uint8 *dest);
 
-static void DrawDataInRect(uint width, Channel ch);
+static void DrawDataInRect(int width, Channel ch);
 
 static void DrawTPos(int leftX, int rightX);
 
@@ -144,7 +144,7 @@ void PainterData::DrawData(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawData_ModeDir(void)
 {  
-    data.ReadFromRAM(0, dataStruct, true);
+    reader.ReadFromRAM(0, dataStruct, true);
     DrawMemoryWindow();
 
     if (MODE_ACCUM_NO_RESET && !IN_P2P_MODE && ENUM_ACCUM > ENumAccum_1)
@@ -164,7 +164,7 @@ static void DrawData_ModeDir(void)
         int i = 0;
         while (i < numAccum && !interruptDrawing)
         {
-            data.ReadFromRAM(i, dataStruct, false);
+            reader.ReadFromRAM(i, dataStruct, false);
             DrawData(true);
             ++i;
         }
@@ -172,14 +172,14 @@ static void DrawData_ModeDir(void)
     
     if (!IN_RANDOM_MODE && !IN_P2P_MODE)
     {
-        data.ReadMin(dataStruct);
+        reader.ReadMin(dataStruct);
         DrawData(true);
 
-        data.ReadMax(dataStruct);
+        reader.ReadMax(dataStruct);
         DrawData(true);
     }
 
-    data.ReadFromRAM(0, dataStruct, false);
+    reader.ReadFromRAM(0, dataStruct, false);
     DrawData(false);
 
     IncreaseNumDrawingSignals();
@@ -204,14 +204,14 @@ static void IncreaseNumDrawingSignals(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawData_ModeRAM(void)
 {
-    data.ReadFromRAM(NUM_RAM_SIGNAL, dataStruct, false);
+    reader.ReadFromRAM(NUM_RAM_SIGNAL, dataStruct, false);
     DrawData(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawData_ModeROM(void)
 {
-    data.ReadFromROM(dataStruct);
+    reader.ReadFromROM(dataStruct);
 
     if (NUM_BYTES_SET == NUM_BYTES_DS)
     {
@@ -235,7 +235,7 @@ static void DrawData_ModeROM(void)
         painter.DrawBigText(x0 + 2, y0 + 2, 2, str1[LANG], gColorFill);
         painter.DrawBigText(x0 + 2, y0 + 20, 2, str2[LANG]);
         char buffer[100];
-        sprintf(buffer, str3[LANG], namesLengthMemory[ENUM_POINTS_DS]);
+        sprintf(buffer, (char *)str3[LANG], namesLengthMemory[ENUM_POINTS_DS]);
         painter.DrawBigText(x0 + 2, y0 + 38, 2, buffer);
 
         painter.DrawRectangle(grid.Left(), GRID_TOP, grid.Width(), grid.FullHeight(), gColorFill);
@@ -316,7 +316,7 @@ static void DrawChannel_Normal(Channel ch, int left, int bottom, float scaleY)
 
         LIMITATION(val, MIN_VALUE, MAX_VALUE);
 
-        int y = k - val * scaleY;                       //int y = bottom - (val - MIN_VALUE) * scaleY;
+        int y = (int)(k - val * scaleY);                //int y = bottom - (val - MIN_VALUE) * scaleY;
 
         int x = left + i;
 
@@ -326,7 +326,7 @@ static void DrawChannel_Normal(Channel ch, int left, int bottom, float scaleY)
         }
         else
         {
-            int yNext = k - data[i + 1] * scaleY;       //int yNext = bottom - (data[i + 1] - MIN_VALUE) * scaleY;
+            int yNext = (int)(k - data[i + 1] * scaleY);       //int yNext = bottom - (data[i + 1] - MIN_VALUE) * scaleY;
 
             if(yNext < y)
             {
@@ -374,10 +374,10 @@ static void DrawChannel_PeakDet(Channel ch, int left, int bottom, float scaleY)
             Y_MAX_NEXT = Y_MAX;
         }
 
-        int min = k - Y_MAX * scaleY;
-        int max = k - Y_MIN * scaleY;
-        int minNext = k - Y_MAX_NEXT * scaleY;
-        int maxNext = k - Y_MIN_NEXT * scaleY;
+        int min = (int)(k - Y_MAX * scaleY);
+        int max = (int)(k - Y_MIN * scaleY);
+        int minNext = (int)(k - Y_MAX_NEXT * scaleY);
+        int maxNext = (int)(k - Y_MIN_NEXT * scaleY);
 
         int x = left + i;
 
@@ -545,7 +545,7 @@ static void DrawChannel_Math(uint8 *dataIn)
     int maxY = grid.MathBottom();
 
     bool calculateFiltr = true;
-    int sizeBuffer = NUM_BYTES_DS;
+//    int sizeBuffer = NUM_BYTES_DS;
     
 #define SIZE_BUFFER (16 * 1024)
     
@@ -847,7 +847,7 @@ static void DrawMemoryWindow(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawDataInRect(uint width, Channel ch)
+static void DrawDataInRect(int width, Channel ch)
 {
     if (!dataStruct->needDraw[ch])
     {
@@ -868,10 +868,10 @@ static void DrawDataInRect(uint width, Channel ch)
         uint8 *iMin = &min[0];
         uint8 *iMax = &max[0];
 
-        for (uint col = 0; col < width; col++, iMin++, iMax++)
+        for (int col = 0; col < width; col++, iMin++, iMax++)
         {
             uint firstElem = (uint)(col * elemsInColumn);
-            uint lastElem = (uint)firstElem + elemsInColumn - 1;
+            uint lastElem = (uint)(firstElem + elemsInColumn - 1);
             *iMin = data[firstElem];
             *iMax = data[firstElem];
             for (uint elem = firstElem + 1; elem <= lastElem; elem++)
@@ -885,8 +885,8 @@ static void DrawDataInRect(uint width, Channel ch)
     {
         for (int col = 0; col < width; col++)
         {
-            uint firstElem = (uint)col * elemsInColumn;
-            uint lastElem = (uint)firstElem + elemsInColumn - 1;
+            uint firstElem = (uint)(col * elemsInColumn);
+            uint lastElem = (uint)(firstElem + elemsInColumn - 1);
             min[col] = data[firstElem];
             max[col] = data[firstElem];
             for (uint elem = firstElem + 1; elem <= lastElem; elem++)
@@ -1000,7 +1000,7 @@ static int Ordinate(uint8 x, float scale)
         return -1;
     }
 
-    return (17.0f - scale * math.LimitationInt(x - MIN_VALUE, 0, (MAX_VALUE - MIN_VALUE))) + 0.5f;
+    return (int)((17.0f - scale * math.LimitationInt(x - MIN_VALUE, 0, (MAX_VALUE - MIN_VALUE))) + 0.5f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1016,8 +1016,8 @@ static void SendToDisplayDataInRect(Channel ch, int x, int *min, int *max, int w
 
     for (int i = 0; i < width; i++)
     {
-        points[i * 2] = max[i];
-        points[i * 2 + 1] = min[i] < 0 ? 0 : min[i];
+        points[i * 2] = (uint8)max[i];
+        points[i * 2 + 1] = (uint8)(min[i] < 0 ? 0 : min[i]);
     }
 
     painter.DrawVLineArray(x, (int)width, points, gColorChan[ch]);

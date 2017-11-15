@@ -30,9 +30,9 @@ static uint8 GetMask(int x, int y, int color)
 {
     if (((y * width + x) % 2) == 0)
     {
-        return (color & 0xf);
+        return (uint8)(color & 0xf);
     }
-    return ((color << 4) & 0xf0);
+    return (uint8)((color << 4) & 0xf0);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -59,11 +59,11 @@ void PainterMem_SetPoint(int x, int y, int color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_FillRect(int x, int y, int width, int height, int color)
+void PainterMem_FillRect(int x, int y, int w, int h, int color)
 {
-    for(int i = 0; i <= height; i++)
+    for(int i = 0; i <= h; i++)
     {
-        PainterMem_DrawHLine(y + i, x, x + width, color);
+        PainterMem_DrawHLine(y + i, x, x + w, color);
     }
 }
 
@@ -113,10 +113,10 @@ void PainterMem_DrawHLine(int y, int x0, int x1, int color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_DrawRectangle(int x, int y, int width, int height, int color)
+void PainterMem_DrawRectangle(int x, int y, int w, int h, int color)
 {
-    PainterMem_DrawVLine(x, y, y + height, color);
-    PainterMem_DrawVLine(x + width, y, y + height, color);
-    PainterMem_DrawHLine(y, x, x + width, color);
-    PainterMem_DrawHLine(y + height, x, x + width, color);
+    PainterMem_DrawVLine(x, y, y + h, color);
+    PainterMem_DrawVLine(x + w, y, y + h, color);
+    PainterMem_DrawHLine(y, x, x + w, color);
+    PainterMem_DrawHLine(y + h, x, x + w, color);
 }

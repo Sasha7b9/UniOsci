@@ -66,14 +66,14 @@ static int8_t CDC_Itf_DeInit(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int8_t CDC_Itf_Control (uint8_t cmd, uint8_t* pbuf, uint16_t length)
+static int8_t CDC_Itf_Control (uint8_t cmd, uint8_t* pbuf, uint16_t)
 { 
     switch (cmd)
     {
     case CDC_SEND_ENCAPSULATED_COMMAND:
         /* Add your code here */
         break;
-
+        
     case CDC_GET_ENCAPSULATED_RESPONSE:
         /* Add your code here */
         break;
@@ -138,7 +138,7 @@ static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length)
     }
     else
     {
-        memcpy(data + sizeData, buffer, *length);
+        memcpy(data + sizeData, buffer, (int)(*length));
         sizeData += *length;
 
         int processingBytes = 0;                                            // Число обработанных байт

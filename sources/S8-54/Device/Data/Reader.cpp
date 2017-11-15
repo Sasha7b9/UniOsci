@@ -1,5 +1,5 @@
 #define _INCLUDE_DATA_
-#include "Data.h"
+#include "Reader.h"
 #undef _INCLUDE_DATA_
 #include "Globals.h"
 #include "Log.h"
@@ -21,7 +21,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Data data;
+Reader reader;
 
 static uint8 buffer[4][16 * 1024] __attribute__((section("CCM_DATA")));
 
@@ -54,7 +54,7 @@ void Clear(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Data::ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMemoryWindow)
+void Reader::ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMemoryWindow)
 {
     Clear();
 
@@ -122,7 +122,7 @@ void Data::ReadFromRAM(int fromEnd, StructDataDrawing *dataStruct, bool forMemor
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Data::ReadFromROM(StructDataDrawing *dataStruct)
+void Reader::ReadFromROM(StructDataDrawing *dataStruct)
 {
     Clear();
 
@@ -141,13 +141,13 @@ void Data::ReadFromROM(StructDataDrawing *dataStruct)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Data::ReadMin(StructDataDrawing *dataStruct)
+void Reader::ReadMin(StructDataDrawing *dataStruct)
 {
     ReadMinMax(dataStruct, 0);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Data::ReadMax(StructDataDrawing *dataStruct)
+void Reader::ReadMax(StructDataDrawing *dataStruct)
 {
     ReadMinMax(dataStruct, 1);
 }

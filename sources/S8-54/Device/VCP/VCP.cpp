@@ -4,6 +4,11 @@
 #include "Utils/Math.h"
 #include <stdarg.h>
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4100 4101)
+#endif
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 VCP vcp;
@@ -99,7 +104,7 @@ void VCP::SendDataSynch(const uint8 *buffer, int size)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SendData(const uint8 *buffer, int size)
+void SendData(const uint8 *, int)
 {
 
 }
@@ -153,6 +158,10 @@ void VCP::SendByte(uint8 byte)
 {
     SendDataSynch(&byte, 1);
 }
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 
 
 #ifdef __cplusplus

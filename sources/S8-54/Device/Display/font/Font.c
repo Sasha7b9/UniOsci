@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include "Display/DisplayTypes.h"
 #include "font.h"
@@ -42,7 +40,7 @@ int Font_GetHeightSymbol(char symbol)
     return 9;
 }
 
-int Font_GetLengthSymbol(uchar symbol)
+int Font_GetLengthSymbol(char symbol)
 {
     return font->symbol[symbol].width + 1;
 }

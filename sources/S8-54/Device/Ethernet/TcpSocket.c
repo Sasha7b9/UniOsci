@@ -62,7 +62,7 @@ bool TCPSocket_Init(void(*funcConnect)(void), void(*funcReceiver)(const char *bu
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool TCPSocket_Send(const char *buffer, uint length)
+bool TCPSocket_Send(const char *buffer, int length)
 {
     if (pcbClient)
     {
