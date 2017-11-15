@@ -144,6 +144,15 @@
     <ClCompile Include="..\..\..\Kornet\Device\Display\PainterData.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\FPGA\AD9286.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\FPGA\FPGA.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\FPGA\Storage.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Device\libs\startup_stm32f437xx.s">
@@ -249,6 +258,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Display\TypeSymbols.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\AD9286.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA_Types.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\Storage.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

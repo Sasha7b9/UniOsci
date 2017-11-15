@@ -51,7 +51,7 @@ public:
         {
             if (max - term >= *value)
             {
-                *value += term;
+                *value += (uint16)term;
             }
             else
             {
@@ -62,7 +62,7 @@ public:
         {
             if (min - term <= *value)
             {
-                *value += term;
+                *value += (uint16)term;
             }
             else
             {

@@ -48,7 +48,7 @@ void AD9286::WriteByte(uint8 address, uint8 byte)
 {
     ResetPin(SPI4_CS);
 
-    uint value = (address << 8) + byte;
+    uint value = (uint)((address << 8) + byte);
 
     for (int i = 23; i >= 0; --i)
     {
@@ -74,7 +74,7 @@ void AD9286::WriteByte(uint8 address, uint8 byte)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 AD9286::ReadByte(uint8 address)
 {
-    uint16 value = 0x8000 + address;
+    uint16 value = (uint16)(0x8000 + address);
 
     ResetPin(SPI4_CS);
 
@@ -126,17 +126,17 @@ uint8 AD9286::ReadByte(uint8 address)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AD9286::SetPin(uint pin)
 {
-    HAL_GPIO_WritePin(GPIOE, pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOE, (uint16)pin, GPIO_PIN_SET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AD9286::ResetPin(uint pin)
 {
-    HAL_GPIO_WritePin(GPIOE, pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOE, (uint16)pin, GPIO_PIN_RESET);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int AD9286::ReadPin(uint pin)
 {
-    return HAL_GPIO_ReadPin(GPIOE, pin);
+    return HAL_GPIO_ReadPin(GPIOE, (uint16)pin);
 }

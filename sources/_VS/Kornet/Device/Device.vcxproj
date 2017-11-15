@@ -133,6 +133,9 @@
     <ClCompile Include="..\..\..\Kornet\Device\Display\Grid.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\FPGA\AD9286.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\FPGA\FPGA.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\FPGA\Storage.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.c" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\system_stm32f4xx.c">
@@ -220,6 +223,10 @@
     <ClInclude Include="..\..\..\Kornet\Device\Display\Painter.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\PainterData.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\TypeSymbols.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\AD9286.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA_Types.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\Storage.h" />
     <ClInclude Include="..\..\..\Kornet\Device\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Log.h" />

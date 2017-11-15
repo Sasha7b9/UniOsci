@@ -151,7 +151,7 @@ void FPGA::GiveStart()
 {
     uint8 value = (uint8)TRIG_POLARITY;
     fsmc.WriteToFPGA8(WR_TRIG, value++);
-    fsmc.WriteToFPGA8(WR_TRIG, value % 2);
+    fsmc.WriteToFPGA8(WR_TRIG, (uint8)(value % 2));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -192,7 +192,7 @@ uint8 FPGA::ReadFlag()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint16 FPGA::ReadLastRecord()
 {
-    return fsmc.ReadFromFPGA(RD_LAST_RECORD_LO) + ((uint16)(fsmc.ReadFromFPGA(RD_LAST_RECORD_HI)) << 8);
+    return (uint16)(fsmc.ReadFromFPGA(RD_LAST_RECORD_LO) + ((uint16)(fsmc.ReadFromFPGA(RD_LAST_RECORD_HI)) << 8));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -211,8 +211,6 @@ void FPGA::Start()
     givingStart = false;
     addrRead = 0xffff;
 
-    uint time = gTimeMS;
-
     uint16 gPost = (uint16)(-NUM_POINTS);
     uint16 gPred = (uint16)(-3);
 
@@ -223,7 +221,7 @@ void FPGA::Start()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::StartForTester(int numPoints)
+void FPGA::StartForTester(int)
 {
     // У нас двенадцать делений. На двенадцать делений должно приходиться не менее 2.5 мс
     // 2.5мс / 12дел = 0.2 мс/дел = 10мкс/тчк
@@ -233,7 +231,7 @@ void FPGA::StartForTester(int numPoints)
     LoadTBase();
 
     uint16 gPost = (uint16)(-TESTER_NUM_POINTS);
-    uint16 gPred = ~3;
+    uint16 gPred = (uint16)~3;
 
     fsmc.WriteToFPGA16(WR_PRED_LO, gPred);
     fsmc.WriteToFPGA16(WR_POST_LO, gPost);
@@ -268,9 +266,9 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
         }
     }
 
-    uint16 addrRead = ReadLastRecord() - TESTER_NUM_POINTS;
+    uint16 addr = (uint16)(ReadLastRecord() - TESTER_NUM_POINTS);
 
-    fsmc.WriteToFPGA16(WR_PRED_LO, addrRead);           // Указываем адрес, с которого будем читать данные
+    fsmc.WriteToFPGA16(WR_PRED_LO, addr);           // Указываем адрес, с которого будем читать данные
     fsmc.WriteToFPGA8(WR_START_ADDR, 0xff);             // И даём команду ПЛИС, чтобы чтение начиналось с него
 
     uint8 *addrA = RD_DATA_A;
@@ -279,7 +277,7 @@ void FPGA::ReadForTester(uint8 *dataA, uint8 *dataB)
         *dataA++ = *addrA;
     }
 
-    fsmc.WriteToFPGA16(WR_PRED_LO, addrRead);           // Указываем адрес, с котонрого будем читать данные
+    fsmc.WriteToFPGA16(WR_PRED_LO, addr);           // Указываем адрес, с котонрого будем читать данные
     fsmc.WriteToFPGA8(WR_START_ADDR, 0xff);             // И даём команду ПЛИС, чтобы чтение начиналось с него
 
     uint8 *addrB = RD_DATA_B;
@@ -294,7 +292,7 @@ void FPGA::ReadDataChanenl(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
     if (addrRead == 0xffff)
     {
-        addrRead = ReadLastRecord() - NUM_POINTS;
+        addrRead = (uint16)(ReadLastRecord() - NUM_POINTS);
     }
     
     fsmc.WriteToFPGA16(WR_PRED_LO, addrRead);
@@ -344,7 +342,6 @@ void FPGA::ReadDataChanenlRand(Channel ch, uint8 *address, uint8 *data)
     while (index < 0)
     {
         index += step;
-        __IO uint8 newData = *address;
     }
 
     uint8 *dataRead = &dataRand[ch][0] + index;
@@ -478,7 +475,7 @@ void FPGA::GPIO_Init()
 
     for (int i = 0; i < Num_Pins; i++)
     {
-        gpio.SetOutputPP_PullDown(GetPort((Pin)i), math.LowSignedBit(GetPin((Pin)i)));
+        gpio.SetOutputPP_PullDown(GetPort((Pin)i), (uint)math.LowSignedBit(GetPin((Pin)i)));
     }
 }
 
@@ -564,6 +561,11 @@ GPIO_TypeDef *FPGA::GetPort(Pin pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 ValueForRange(Channel ch)
 {
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4310)
+#endif
+
     static const uint8 datas[CoupleSize] =
     {
         BIN_U8(01000001),    // AC
@@ -593,13 +595,17 @@ uint8 ValueForRange(Channel ch)
         { BIN_U8(00011001), BIN_U8(00101001) }    // 20V
     };
 
-    return (values[SET_RANGE(ch)][ch] | datas[SET_COUPLE(ch)]);
+    return (uint8)((values[SET_RANGE(ch)][ch] | datas[SET_COUPLE(ch)]));
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadRanges()
 {
-    uint16 value = ValueForRange(B) + (ValueForRange(A) << 8);
+    uint16 value = (uint16)(ValueForRange(B) + (ValueForRange(A) << 8));
 
     WriteRegisters(SPI3_CS2, value);
 
@@ -669,13 +675,13 @@ void FPGA::LoadRShift(Channel ch)
 {
     static const uint16 mask[2] = {0xa000, 0x6000};
 
-    WriteRegisters(SPI3_CS1, mask[ch] | (SET_RSHIFT(ch) << 2));
+    WriteRegisters(SPI3_CS1, (uint16)(mask[ch] | (SET_RSHIFT(ch) << 2)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTrigLev()
 {
-    WriteRegisters(SPI3_CS1, 0x2000 | (SET_TRIGLEV << 2));
+    WriteRegisters(SPI3_CS1, (uint16)(0x2000 | (SET_TRIGLEV << 2)));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -707,10 +713,10 @@ void FPGA::ResetPin(Pin pin)
 void FPGA::LoadTShift()
 {
     int pred = ~(2);
-    int post = ~(1 << 13 - 1);
+    int post = ~((1 << 13) - 1);
 
-    fsmc.WriteToFPGA16(WR_PRED_LO, pred);
-    fsmc.WriteToFPGA16(WR_POST_LO, post);
+    fsmc.WriteToFPGA16(WR_PRED_LO, (uint16)pred);
+    fsmc.WriteToFPGA16(WR_POST_LO, (uint16)post);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -724,6 +730,11 @@ void FPGA::SetRShift(Channel ch, uint16 rShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTBase()
 {
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4310)
+#endif
+
     static const uint8 values[TBaseSize] =
     {
         BIN_U8(00000000),    // 2ns     1       200MHz
@@ -761,6 +772,10 @@ void FPGA::LoadTBase()
     memset(&dataRand[0][0], 0, FPGA_MAX_NUM_POINTS * 2);
 
     fsmc.WriteToFPGA8(WR_TBASE, values[SET_TBASE]);
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
