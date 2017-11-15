@@ -70,6 +70,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{a86e176a-f766-4345-b5f3-32dfff44ca82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="VCP\SCPI">
+      <UniqueIdentifier>{f1786359-2db6-4799-a8fb-be12a04c44ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -494,6 +497,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Tables.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.h">
+      <Filter>VCP\SCPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.h">
+      <Filter>VCP\SCPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.h">
+      <Filter>VCP\SCPI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -937,6 +949,27 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\defines.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\channelSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\displaySCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\tbaseSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\trigSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

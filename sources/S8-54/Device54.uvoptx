@@ -1377,7 +1377,7 @@
 
   <Group>
     <GroupName>src</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -3556,30 +3556,6 @@
     <File>
       <GroupNumber>23</GroupNumber>
       <FileNumber>264</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\channelSCPI.c</PathWithFileName>
-      <FilenameWithoutPath>channelSCPI.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>23</GroupNumber>
-      <FileNumber>265</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\commonSCPI.c</PathWithFileName>
-      <FilenameWithoutPath>commonSCPI.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>23</GroupNumber>
-      <FileNumber>266</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3591,19 +3567,7 @@
     </File>
     <File>
       <GroupNumber>23</GroupNumber>
-      <FileNumber>267</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\controlSCPI.c</PathWithFileName>
-      <FilenameWithoutPath>controlSCPI.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>23</GroupNumber>
-      <FileNumber>268</FileNumber>
+      <FileNumber>265</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3615,31 +3579,7 @@
     </File>
     <File>
       <GroupNumber>23</GroupNumber>
-      <FileNumber>269</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\displaySCPI.c</PathWithFileName>
-      <FilenameWithoutPath>displaySCPI.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>23</GroupNumber>
-      <FileNumber>270</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\SCPI.c</PathWithFileName>
-      <FilenameWithoutPath>SCPI.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>23</GroupNumber>
-      <FileNumber>271</FileNumber>
+      <FileNumber>266</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3651,25 +3591,85 @@
     </File>
     <File>
       <GroupNumber>23</GroupNumber>
-      <FileNumber>272</FileNumber>
-      <FileType>1</FileType>
+      <FileNumber>267</FileNumber>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\tbaseSCPI.c</PathWithFileName>
-      <FilenameWithoutPath>tbaseSCPI.c</FilenameWithoutPath>
+      <PathWithFileName>.\Device\VCP\SCPI\channelSCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>channelSCPI.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>268</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\VCP\SCPI\commonSCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>commonSCPI.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>269</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\VCP\SCPI\controlSCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>controlSCPI.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>270</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\VCP\SCPI\displaySCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>displaySCPI.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>271</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\VCP\SCPI\SCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>SCPI.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>23</GroupNumber>
+      <FileNumber>272</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\VCP\SCPI\tbaseSCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>tbaseSCPI.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>23</GroupNumber>
       <FileNumber>273</FileNumber>
-      <FileType>1</FileType>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\VCP\SCPI\trigSCPI.c</PathWithFileName>
-      <FilenameWithoutPath>trigSCPI.c</FilenameWithoutPath>
+      <PathWithFileName>.\Device\VCP\SCPI\trigSCPI.cpp</PathWithFileName>
+      <FilenameWithoutPath>trigSCPI.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -63,7 +63,7 @@ int SCPI_ParseNewCommand(uint8 *buffer, int length)
 
     for (uint8 *address = buffer; address <= addrRET; address++)
     {
-        *address = toupper(*address);
+        *address = (uint8)toupper((char)*address);
     }
 
     SCPI_ProcessingCommand(commands, buffer);

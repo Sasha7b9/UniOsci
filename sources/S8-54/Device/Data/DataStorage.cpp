@@ -475,11 +475,11 @@ void CalculateSums(void)
 /* Если значение выходит за 16 разрядов */
 /* То производим полное вычисление суммы */
 #define ALTERNATE_ADD(addr, shift)                                                                          \
-    loSum = (*addr) + (uint8)(data16 >> shift);                                                             \
+    loSum = (uint)((*addr) + (uint8)(data16 >> shift));                                                     \
     *addr = (uint16)loSum;                                                                                  \
-    if (loSum > 0xffffU)                                                                                     \
+    if (loSum > 0xffffU)                                                                                    \
     {                                                                                                       \
-        sum = (uint)((int)loSum - (int)((uint8)(data16 >> shift))) + ((*(addr + 1U)) >> 16) + (uint8)data16; \
+        sum = (uint)((int)loSum - (int)((uint8)(data16 >> shift))) + ((*(addr + 1U)) >> 16) + (uint8)data16;\
         *addr = (uint16)sum;                                                                                \
         *(addr + 1) = (uint16)(sum >> 16);                                                                  \
     }                                                                                                       \
@@ -491,6 +491,11 @@ void CalculateSums(void)
                 uint loSum = 0;
                 uint16 data16 = *dA++;     // Считываем первые два отсчёта данных
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4333)
+#endif
+
                 ALTERNATE_ADD(sumA16, 0U);  /** \todo Похоже, sum неправильно вычисляется, из-за чего артефаты при больших накоплениях. Нужно 
                                            (loSum - data16) заменить на старое значение (*data16) */
 
@@ -501,6 +506,11 @@ void CalculateSums(void)
                 ALTERNATE_ADD(sumB16, 0);
 
                 ALTERNATE_ADD(sumB16, 8);
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
+
             }
         }
     }

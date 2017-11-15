@@ -182,7 +182,7 @@ void Process_OFFSET(uint8 *buffer)
     if (SCPI_FirstIsInt(buffer, &intVal, -240, 240))
     {
         int rShift = RShiftZero + (intVal * RSHIFT_IN_CELL / 20);
-        FPGA_SetRShift(ch, (int16)rShift);
+        FPGA_SetRShift(ch, (uint16)rShift);
         return;
     }
     ENTER_ANALYSIS
@@ -220,7 +220,7 @@ void Process_PROBE(uint8 *buffer)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Process_BALANCE(uint8 *buffer)
+void Process_BALANCE(uint8 *)
 {
     FPGA_BalanceChannel(ch);
 }

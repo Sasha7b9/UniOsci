@@ -548,7 +548,7 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
 
     uint16 *address = ADDRESS_READ(ch);
 
-    volatile uint16 dat = *address;
+    nStop = *address;
 
     if (shift)
     {
