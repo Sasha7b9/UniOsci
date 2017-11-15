@@ -6,12 +6,6 @@
 #include <string.h>
 
 
-#ifdef WIN32
-#pragma warning(push)
-#pragma warning(disable : 4100 4101)
-#endif
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool loggerUSB = false;
 
@@ -90,7 +84,3 @@ void Log_EnableLoggerUSB(bool enable)
 {
     loggerUSB = enable;
 }
-
-#ifdef WIN32
-#pragma warning(pop)
-#endif

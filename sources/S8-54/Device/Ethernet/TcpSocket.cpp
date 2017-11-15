@@ -3,11 +3,6 @@
 #include <string.h>
 #include <stdarg.h>
 
-#ifdef WIN32
-#pragma warning(push)
-#pragma warning(disable : 4100 4101)
-#endif
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 struct tcp_pcb *pcbClient = 0;      // 0, если клиент не приконнекчен
@@ -405,9 +400,6 @@ static err_t CallbackOnAccept(void *arg, struct tcp_pcb *newPCB, err_t err)
     return ret_err;
 }
 
-#ifdef WIN32
-#pragma warning(pop)
-#endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*

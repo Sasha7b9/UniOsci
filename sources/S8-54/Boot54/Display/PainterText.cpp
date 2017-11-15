@@ -6,12 +6,6 @@
 #include "Settings/Settings.h"
 #include <stdarg.h>
 
-#ifdef WIN32
-#pragma warning(push)
-#pragma warning(disable : 4100 4101)
-#endif
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static TypeFont currentTypeFont = TypeFont_None;
 
@@ -866,7 +860,3 @@ void Painter_DrawBigTextInBuffer(int eX, int eY, int size, const char *text, uin
         x += size;
     }
 }
-
-#ifdef WIN32
-#pragma warning(pop)
-#endif

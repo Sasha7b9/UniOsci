@@ -8,11 +8,6 @@
 #include <stdarg.h>
 #include <string.h>
 
-#ifdef WIN32
-#pragma warning(push)
-#pragma warning(disable : 4100 4101)
-#endif
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static TypeFont currentTypeFont = TypeFont_None;
@@ -831,7 +826,3 @@ void Painter::DrawBigText(int eX, int eY, int size, const char *text, Color colo
         x += size;
     }
 }
-
-#ifdef WIN32
-#pragma warning(pop)
-#endif
