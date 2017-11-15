@@ -6,6 +6,12 @@
 #include <stdio.h>
 
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4100 4101 4189)
+#endif
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Log logger;
 
@@ -27,3 +33,7 @@ void Log::Message(char *format, ...)
 
     display.logEntity.AddToConsole(buffer);
 }
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif

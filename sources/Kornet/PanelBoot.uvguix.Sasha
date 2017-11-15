@@ -11,7 +11,7 @@
     <View>
       <WinId>38003</WinId>
       <ViewName>Registers</ViewName>
-      <TableColWidths>115 115</TableColWidths>
+      <TableColWidths>115 107</TableColWidths>
     </View>
     <View>
       <WinId>346</WinId>
@@ -30,25 +30,25 @@
       <WinId>1506</WinId>
       <ViewName>Symbols</ViewName>
       <UserString></UserString>
-      <TableColWidths>80 80 80</TableColWidths>
+      <TableColWidths>70 70 70</TableColWidths>
     </View>
     <View>
       <WinId>1936</WinId>
       <ViewName>Watch 1</ViewName>
       <UserString></UserString>
-      <TableColWidths>80 80 80</TableColWidths>
+      <TableColWidths>70 70 70</TableColWidths>
     </View>
     <View>
       <WinId>1937</WinId>
       <ViewName>Watch 2</ViewName>
       <UserString></UserString>
-      <TableColWidths>80 80 80</TableColWidths>
+      <TableColWidths>70 70 70</TableColWidths>
     </View>
     <View>
       <WinId>1935</WinId>
       <ViewName>Call Stack + Locals</ViewName>
       <UserString></UserString>
-      <TableColWidths>80 80 80</TableColWidths>
+      <TableColWidths>70 70 70</TableColWidths>
     </View>
     <View>
       <WinId>2506</WinId>
@@ -80,8 +80,8 @@
     <sActiveDebugView></sActiveDebugView>
     <WindowPosition>
       <length>44</length>
-      <flags>0</flags>
-      <showCmd>1</showCmd>
+      <flags>2</flags>
+      <showCmd>3</showCmd>
       <MinPosition>
         <xPos>-1</xPos>
         <yPos>-1</yPos>
@@ -91,10 +91,10 @@
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>115</Top>
-        <Left>16</Left>
-        <Right>835</Right>
-        <Bottom>1269</Bottom>
+        <Top>99</Top>
+        <Left>697</Left>
+        <Right>1612</Right>
+        <Bottom>911</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>

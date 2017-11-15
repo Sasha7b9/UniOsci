@@ -8,9 +8,9 @@
 class Control
 {
 public:
-    virtual void Draw(int x, int y) const {};
+    virtual void Draw(int, int) const {};
 
-    virtual void PressKey(Key key) const {};
+    virtual void PressKey(Key) const {};
 
     static const int CONTROLS_ON_SUBPAGE = 5;
 
@@ -73,11 +73,11 @@ public:
         {
             items0 = items_;
             cells[0] = (uint8 *)cell_;
-            max[0] = num - 1;
+            max[0] = (uint8)(num - 1);
             
             items1 = items_2;
             cells[1] = (uint8 *)cell_2;
-            max[1] = num2_ - 1;
+            max[1] = (uint8)(num2_ - 1);
 
             numAlternate = 0;
         };

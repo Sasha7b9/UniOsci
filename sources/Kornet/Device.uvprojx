@@ -311,7 +311,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -506,11 +506,6 @@
               <FilePath>.\Device\libs\stm32f4xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\libs\stm32f4xx_hal_msp.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Device\libs\stm32f4xx_it.c</FilePath>
@@ -524,6 +519,11 @@
               <FileName>system_stm32f4xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Device\libs\system_stm32f4xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_hal_msp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\libs\stm32f4xx_hal_msp.cpp</FilePath>
             </File>
           </Files>
         </Group>

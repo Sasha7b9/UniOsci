@@ -26,7 +26,7 @@ public:
         }
         else
         {
-            value = min;
+            value = (uint8)min;
         }
     }
 
