@@ -88,15 +88,13 @@ void Tester::Init()
     }
 
     // Инициализируем ЦАП
+    GPIO_InitTypeDef gpioDAC =
     {
-        GPIO_InitTypeDef isGPIO =
-        {
-            GPIO_PIN_5,
-            GPIO_MODE_ANALOG,
-            GPIO_NOPULL
-        };
-        HAL_GPIO_Init(GPIOA, &isGPIO);
-    }
+        GPIO_PIN_5,
+        GPIO_MODE_ANALOG,
+        GPIO_NOPULL
+    };
+    HAL_GPIO_Init(GPIOA, &gpioDAC);
 
     if (HAL_DAC_Init(&hDAC) != HAL_OK)
     {
@@ -196,7 +194,7 @@ void Tester::ProcessStep()
     {
         if ((step % 2) == 0)        // Если шаг кратен двум, то нужно устанавливать напряжение
         {
-            HAL_DAC_SetValue(&hDAC, DAC1_CHANNEL_2, DAC_ALIGN_8B_R, stepU * step / 2);
+            HAL_DAC_SetValue(&hDAC, DAC1_CHANNEL_2, DAC_ALIGN_8B_R, (uint)(stepU * step / 2));
             StartFPGA();
         }
         else

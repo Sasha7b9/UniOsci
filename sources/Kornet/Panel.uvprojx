@@ -466,11 +466,6 @@
               <FilePath>.\Panel\libs\stm32f4xx_hal_msp.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Panel\libs\stm32f4xx_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Panel\libs\stm32f4xx_it.h</FilePath>
@@ -479,6 +474,11 @@
               <FileName>system_stm32f4xx.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Panel\libs\system_stm32f4xx.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Panel\libs\stm32f4xx_it.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -81,7 +81,7 @@ void Display::ToggleBuffers(void)
     hDMA2D.Init.ColorMode = DMA2D_INPUT_L8;
     hDMA2D.Init.OutputOffset = 0;
 
-    hDMA2D.XferCpltCallback = NULL;
+    hDMA2D.XferCpltCallback = 0;
 
     hDMA2D.LayerCfg[1].AlphaMode = DMA2D_NO_MODIF_ALPHA;
     hDMA2D.LayerCfg[1].InputAlpha = 0xFF;

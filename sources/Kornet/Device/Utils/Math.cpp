@@ -132,7 +132,7 @@ char *Math::Float2String(float value, bool alwaysSign, int numDigits, char buffe
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Math::NumDigitsInIntPart(float value)
 {
-    float fabsValue = fabs(value);
+    float fabsValue = fabsf(value);
 
     int numDigitsInInt = 0;
     if (fabsValue >= 10000)
@@ -181,7 +181,7 @@ int Math::LowSignedBit(uint value)
 char *Math::Bin2String16(uint16 value, char valBuffer[19])
 {
     char buffer[9];
-    strcpy(valBuffer, Bin2String(value >> 8, buffer));
+    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
     strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
     valBuffer[18] = '\0';
     return valBuffer;
@@ -228,6 +228,6 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
     
     for (int i = 1; i < numPoints; i++)
     {
-        data[i] = (int)(buffer[i] / num[i] + 0.5f);
+        data[i] = (uint8)(buffer[i] / num[i] + 0.5f);
     }
 }

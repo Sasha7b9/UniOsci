@@ -188,9 +188,12 @@ int Display::WriteChannel(Channel ch, int x, int y)
     
     x += 7;
 
-    static const char symbols[3] = {SYMBOL_COUPLE_AC, 
+    static const char symbols[3] =
+    {
+        SYMBOL_COUPLE_AC, 
         SYMBOL_COUPLE_DC, 
-        SYMBOL_COUPLE_GND};
+        SYMBOL_COUPLE_GND
+    };
 
     char string[2] = {symbols[SET_COUPLE(ch)], 0};
 

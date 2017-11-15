@@ -382,5 +382,8 @@
     <ClInclude Include="..\..\..\Kornet\Device\Utils\Math.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\algorithm">
+      <Filter>forVS</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
