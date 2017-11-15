@@ -18,7 +18,10 @@
 void LOG_WRITE(char *, char *, float);
 void LOG_WRITE(char *, int, uint16, uint16);
 void LOG_WRITE(char *, uint);
+void LOG_WRITE(char *, float);
 void LOG_WRITE(char *, int16, char*);
+void LOG_WRITE(char *);
+void LOG_WRITE(char *, char *, uint, float);
 #define ASSERT_RET(cont, ...)
 #define LOG_ERROR_TRACE(...)
 #else

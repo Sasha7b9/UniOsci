@@ -1,5 +1,3 @@
-
-
 #include "Settings.h"
 #include "SettingsDisplay.h"
 #include "Utils/Math.h"

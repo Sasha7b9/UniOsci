@@ -175,7 +175,7 @@ void Math::DataExtrapolation(uint8 *data, uint8 *there, int size)
             float deltaX = (float)(data[pointer2] - data[pointer]) / deltaY;
             for(int i = 1; i < deltaY; i++)
             {
-                data[pointer + i] = data[pointer] + (uint8)(i * deltaX);
+                data[pointer + i] = (uint8)(data[pointer] + (uint8)(i * deltaX));
             }
         }
         pointer = pointer2 + 1;
@@ -204,7 +204,7 @@ void Math::PointsRelToVoltage(const uint8 *points, int numPoints, Range range, u
     float voltInPoint = voltsInPointInt[range] / ((MAX_VALUE - MIN_VALUE) / 200.0f);
     float maxVoltsOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
     float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    int diff = (MIN_VALUE * voltInPoint) + (int)((maxVoltsOnScreen + rShiftAbs) * 20e3f);
+    int diff = (int)((MIN_VALUE * voltInPoint) + (int)((maxVoltsOnScreen + rShiftAbs) * 20e3f));
     float koeff = 1.0f / 20e3f;
     for (int i = 0; i < numPoints; i++)
     {
@@ -339,7 +339,7 @@ static float const *Koeff(int numPoints)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Normalize(float *data, int numPoints)
+static void Normalize(float *data, int)
 {
     float max = 0.0;
     for (int i = 0; i < 256; i++)
@@ -494,15 +494,15 @@ void Math::CalculateFFT(float *dataR, int numPoints, float *result, float *freq0
             result[io] = itp;
         }
 
-        int k = nn;
+        int kk = nn;
 
-        while (k < j)
+        while (kk < j)
         {
-            j = j - k;
-            k >>= 1;
+            j = j - kk;
+            kk >>= 1;
         }
 
-        j = j + k;
+        j = j + kk;
     }
 
     for (int i = 0; i < 256; i++)
@@ -585,7 +585,7 @@ float Math::RandFloat(float min, float max)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int8 Math::AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
+int8 Math::AddInt8WithLimitation(int8 value, int8 delta, int8, int8 max)
 {
     int8 retValue = value + delta;
     if (retValue < 0)

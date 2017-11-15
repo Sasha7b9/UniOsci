@@ -76,7 +76,7 @@ public:
 };
 
 
-extern Measures meas;
+extern Measures measures;
 
 
 /** @}  @}

@@ -12,7 +12,7 @@ void sprintf(char *, const char *, ...);
 
 int strcmp(char *, char *);
 
-void memcpy(void *, void *, int);
+void memcpy(void *, const void *, int);
 
 void memset(void *, unsigned char value, int num);
 
@@ -20,4 +20,4 @@ int memcmp(const void *, const void *, int);
 
 char tolower(char);
 
-void strcpy(char *, char *);
+void strcpy(char *, const char *);

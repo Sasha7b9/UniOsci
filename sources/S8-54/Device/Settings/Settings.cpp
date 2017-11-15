@@ -1,5 +1,3 @@
-
-
 #include "Settings.h"
 #include "Hardware/FLASH.H"
 #include "Display/Display.h"

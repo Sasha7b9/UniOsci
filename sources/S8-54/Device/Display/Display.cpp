@@ -629,8 +629,8 @@ static void DrawLowPart(void)
     int y1 = SCREEN_HEIGHT - 10;
     int x = -1;
 
-    painter.DrawHLine(grid.ChannelBottom(), 1, grid.Left() - meas.GetDeltaGridLeft() - 2, gColorFill);
-    painter.DrawHLine(grid.FullBottom(), 1, grid.Left() - meas.GetDeltaGridLeft() - 2);
+    painter.DrawHLine(grid.ChannelBottom(), 1, grid.Left() - measures.GetDeltaGridLeft() - 2, gColorFill);
+    painter.DrawHLine(grid.FullBottom(), 1, grid.Left() - measures.GetDeltaGridLeft() - 2);
     WriteTextVoltage(A, x + 2, y0);
     WriteTextVoltage(B, x + 2, y1);
     painter.DrawVLine(x + 95, GRID_BOTTOM + 2, SCREEN_HEIGHT - 2, gColorFill);
@@ -872,13 +872,13 @@ static void DrawMeasures(void)
         painter.DrawRectangle(x0, y0, x1 - x0, y1 - y0, gColorFill);
     }
 
-    int x0 = grid.Left() - meas.GetDeltaGridLeft();
-    int dX = meas.GetDX();
-    int dY = meas.GetDY();
-    int y0 = meas.GetTopTable();
+    int x0 = grid.Left() - measures.GetDeltaGridLeft();
+    int dX = measures.GetDX();
+    int dY = measures.GetDY();
+    int y0 = measures.GetTopTable();
 
-    int numRows = meas.NumRows();
-    int numCols = meas.NumCols();
+    int numRows = measures.NumRows();
+    int numCols = measures.NumCols();
 
     for(int str = 0; str < numRows; str++)
     {
@@ -886,9 +886,9 @@ static void DrawMeasures(void)
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = meas.IsActive(str, elem) && GetNameOpenedPage() == PageSB_Measures_Tune;
+            bool active = measures.IsActive(str, elem) && GetNameOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? gColorBack : gColorFill;
-            Meas measure = meas.Type(str, elem);
+            Meas measure = measures.Type(str, elem);
             if(measure != Meas_None)
             {
                 painter.FillRegion(x, y, dX, dY, gColorBack);
@@ -904,11 +904,11 @@ static void DrawMeasures(void)
 #define SIZE_BUFFER 20
                 char buffer[SIZE_BUFFER];
 
-                painter.DrawText(x + 4, y + 2, meas.Name(str, elem), color);
+                painter.DrawText(x + 4, y + 2, measures.Name(str, elem), color);
                 if(measure == MARKED_MEAS)
                 {
                     painter.FillRegion(x + 1, y + 1, dX - 2, 9, active ? gColorBack : gColorFill);
-                    painter.DrawText(x + 4, y + 2, meas.Name(str, elem), active ? gColorFill : gColorBack);
+                    painter.DrawText(x + 4, y + 2, measures.Name(str, elem), active ? gColorFill : gColorBack);
                 }
                 if(SOURCE_MEASURE_A && SET_ENABLED_A)
                 {
@@ -930,7 +930,7 @@ static void DrawMeasures(void)
 
     if(GetNameOpenedPage() == PageSB_Measures_Tune)
     {
-        meas.DrawPageChoice();
+        measures.DrawPageChoice();
     }
 }
 
@@ -1894,7 +1894,7 @@ static void WriteParametersFFT(Channel ch, float freq0, float density0, float fr
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawCursorRShift(Channel ch)
 {
-    int x = grid.Right() - grid.Width() - meas.GetDeltaGridLeft();
+    int x = grid.Right() - grid.Width() - measures.GetDeltaGridLeft();
 
     if(ch == MathCh)
     {

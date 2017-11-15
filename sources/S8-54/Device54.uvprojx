@@ -1579,19 +1579,9 @@
           <GroupName>Settings</GroupName>
           <Files>
             <File>
-              <FileName>Settings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\Settings.c</FilePath>
-            </File>
-            <File>
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\Settings.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsChannel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsChannel.c</FilePath>
             </File>
             <File>
               <FileName>SettingsChannel.h</FileName>
@@ -1599,29 +1589,14 @@
               <FilePath>.\Device\Settings\SettingsChannel.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsCursors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsCursors.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsCursors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\SettingsCursors.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsDebug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsDebug.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsDebug.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\SettingsDebug.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsDisplay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsDisplay.c</FilePath>
             </File>
             <File>
               <FileName>SettingsDisplay.h</FileName>
@@ -1639,11 +1614,6 @@
               <FilePath>.\Device\Settings\SettingsMeasures.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsMemory.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsMemory.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsMemory.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\SettingsMemory.h</FilePath>
@@ -1654,19 +1624,9 @@
               <FilePath>.\Device\Settings\SettingsNRST.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsService.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsService.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsService.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\SettingsService.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsTime.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Settings\SettingsTime.c</FilePath>
             </File>
             <File>
               <FileName>SettingsTime.h</FileName>
@@ -1683,25 +1643,55 @@
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\SettingsTypes.h</FilePath>
             </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\Settings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsChannel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsChannel.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsCursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsCursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDebug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsDebug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDisplay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsDisplay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsMemory.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsService.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsService.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTime.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Settings\SettingsTime.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Debug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Utils\Debug.c</FilePath>
-            </File>
-            <File>
               <FileName>Debug.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\Debug.h</FilePath>
-            </File>
-            <File>
-              <FileName>Dictionary.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Utils\Dictionary.c</FilePath>
             </File>
             <File>
               <FileName>Dictionary.h</FileName>
@@ -1709,19 +1699,9 @@
               <FilePath>.\Device\Utils\Dictionary.h</FilePath>
             </File>
             <File>
-              <FileName>Generator.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Utils\Generator.c</FilePath>
-            </File>
-            <File>
               <FileName>Generator.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\Generator.h</FilePath>
-            </File>
-            <File>
-              <FileName>GlobalFunctions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Utils\GlobalFunctions.c</FilePath>
             </File>
             <File>
               <FileName>GlobalFunctions.h</FileName>
@@ -1792,6 +1772,26 @@
               <FileName>CreateTables.py</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\CreateTables.py</FilePath>
+            </File>
+            <File>
+              <FileName>Debug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Debug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Dictionary.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Dictionary.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Generator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Generator.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GlobalFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\GlobalFunctions.cpp</FilePath>
             </File>
           </Files>
         </Group>

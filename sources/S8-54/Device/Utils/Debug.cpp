@@ -32,6 +32,7 @@ static bool running = false;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void DBG_PrintSizeStack(void)
 {
+#ifndef WIN32
     uint value = 0;
     __asm
     {
@@ -39,6 +40,7 @@ void DBG_PrintSizeStack(void)
     }
     value -= 0x10000000;
     LOG_WRITE("%d", value);
+#endif
 }
 
 

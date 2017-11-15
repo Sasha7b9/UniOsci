@@ -12,7 +12,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Measures meas;
+Measures measures;
 
 typedef struct
 {
@@ -20,7 +20,7 @@ typedef struct
     const char UGO;
 } StructMeasure;
 
-static const StructMeasure measures[Meas_NumMeasures] =
+static const StructMeasure sMeas[Meas_NumMeasures] =
 {
     {"",            '\x00'},
     {"U макс",      '\x20'},
@@ -78,7 +78,7 @@ void Measures::SetActive(int row, int col)
 
 char Measures::GetChar(Meas measure)
 {
-    return measures[measure].UGO;
+    return sMeas[measure].UGO;
 }
 
 
@@ -103,7 +103,7 @@ int Measures::GetDX(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *Measures::Name(int row, int col)
 {
-    return measures[MEASURE(row * NumCols() + col)].name;
+    return sMeas[MEASURE(row * NumCols() + col)].name;
 }
 
 
@@ -228,7 +228,7 @@ void Measures::DrawPageChoice(void)
             if(meas < Meas_NumMeasures)
             {
                 painter.SetFont(TypeFont_5);
-                painter.DrawTextRelativelyRight(x0 + dX, y0 + 12, measures[meas].name, active ? Color::FLASH_01 : gColorFill);
+                painter.DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : gColorFill);
                 painter.SetFont(TypeFont_UGO);
             }
             meas = (Meas)((int)meas + 1);    // meas++;

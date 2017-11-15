@@ -127,7 +127,7 @@ char *Translate::Bin2String(uint8 value, char buffer[9])
 char *Translate::Bin2String16(uint16 value, char valBuffer[19])
 {
     char buffer[9];
-    strcpy(valBuffer, Bin2String(value >> 8, buffer));
+    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
     strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
     valBuffer[18] = '\0';
     return valBuffer;
@@ -286,7 +286,7 @@ char *Translate::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Freq2String(float freq, bool alwaysSign, char bufferOut[20])
+char *Translate::Freq2String(float freq, bool, char bufferOut[20])
 {
     return Freq2StringAccuracy(freq, bufferOut, 4);
 }
@@ -318,7 +318,7 @@ char *Translate::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigi
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Phase2String(float phase, bool empty, char bufferOut[20])
+char *Translate::Phase2String(float phase, bool, char bufferOut[20])
 {
     const int SIZE = 20;
     char buffer[SIZE];
@@ -558,10 +558,10 @@ char GetSymbolForGovernor(int value)
 void EmptyFuncVV(void) { }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVpV(void *empty) { }
+void EmptyFuncVpV(void *) { }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncVII(int i, int ii) { }
+void EmptyFuncVII(int, int) { }
 
 void EmptyFuncVI(int) {};
 
@@ -570,7 +570,7 @@ bool EmptyFuncBV() { return true; };
 void EmptyFuncVB(bool) {};
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EmptyFuncpVII(void *v, int i, int ii) { }
+void EmptyFuncpVII(void *, int, int) { }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FillArrayUINT8(uint8 *data, uint8 value, int numElements)
@@ -608,7 +608,7 @@ char *IntToStrCat(char *_buffer, int _value)
 
     while(_value > 0)
     {
-        buffer[pointer] = (unsigned char)(_value % 10);
+        buffer[pointer] = (char)(_value % 10);
         _value /= 10;
         pointer--;
     }

@@ -1,6 +1,9 @@
 #pragma once
 
-float sinf(float angle);
-float cosf(float angle);
+float sinf(float);
+float cosf(float);
 int rand();
-float fabsf(float value);
+float fabsf(float);
+float sqrtf(float);
+float log10f(float);
+bool isnan(float);

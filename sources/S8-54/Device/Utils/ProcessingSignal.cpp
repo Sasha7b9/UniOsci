@@ -70,7 +70,7 @@ static bool isSet = false;          ///< Если true, то сигнал назначен.
 
 static int firstByte = 0;
 static int lastByte = 0;
-static int numBytes = 0;
+static int nBytes = 0;
 
 
 typedef float (*pFuncFCh)(Channel);
@@ -86,7 +86,7 @@ typedef struct
 } MeasureCalculate;
 
 
-static const MeasureCalculate measures[Meas_NumMeasures] =
+static const MeasureCalculate sMeas[Meas_NumMeasures] =
 {
     {"", 0, 0, false},
     {"CalculateVoltageMax",         CalculateVoltageMax,           &Translate::Voltage2String, true},
@@ -144,7 +144,7 @@ void Processing::CalculateMeasures(void)
         return;
     }
     
-    int length = NUM_BYTES_DS;
+//    int length = NUM_BYTES_DS;
 
     maxIsCalculating[0] = maxIsCalculating[1] = maxSteadyIsCalculating[0] = maxSteadyIsCalculating[1] = false;
     minIsCalculating[0] = minIsCalculating[1] = minSteadyIsCalculating[0] = minSteadyIsCalculating[1] = false;
@@ -153,12 +153,12 @@ void Processing::CalculateMeasures(void)
     periodAccurateIsCalculating[0] = periodAccurateIsCalculating[1] = false;
     picIsCalculating[0] = picIsCalculating[1] = false;
 
-    for(int str = 0; str < meas.NumRows(); str++)
+    for(int str = 0; str < measures.NumRows(); str++)
     {
-        for(int elem = 0; elem < meas.NumCols(); elem++)
+        for(int elem = 0; elem < measures.NumCols(); elem++)
         {
-            Meas measure = meas.Type(str, elem);
-            pFuncFCh func = measures[measure].FuncCalculate;
+            Meas measure = measures.Type(str, elem);
+            pFuncFCh func = sMeas[measure].FuncCalculate;
             if(func)
             {
                 if(measure == MARKED_MEAS || MARKED_MEAS == Meas_None)
@@ -448,7 +448,7 @@ int CalculatePeriodAccurately(Channel ch)
         sums[firstByte] = dataIn[firstByte];
 
         int i = firstByte + 1;
-        int *sum = &sums[i];
+        int *pSum = &sums[i];
         uint8 *data = &dataIn[i];
         uint8 *end = &dataIn[lastByte];
 
@@ -459,19 +459,19 @@ int CalculatePeriodAccurately(Channel ch)
             {
                 EXIT_FROM_PERIOD_ACCURACY
             }
-            *sum = *(sum - 1) + point;
-            sum++;
+            *pSum = *(pSum - 1) + point;
+            pSum++;
         }
 
         int addShift = firstByte - 1;
-        int maxPeriod = (int)(numBytes * 0.95f);
+        int maxPeriod = (int)(nBytes * 0.95f);
 
         for(int nextPeriod = 10; nextPeriod < maxPeriod; nextPeriod++)
         {
             int sum = sums[addShift + nextPeriod];
 
             int maxDelta = 0;
-            int maxStart = numBytes - nextPeriod;
+            int maxStart = nBytes - nextPeriod;
 
             int *pSums = &sums[firstByte + 1];
             for(int start = 1; start < maxStart; start++)
@@ -1067,7 +1067,7 @@ void Processing::SetData(bool needSmoothing)
     firstByte = points.word0;
     lastByte = points.word1;
 
-    numBytes = lastByte - firstByte;
+    nBytes = lastByte - firstByte;
     
     if(TBASE_DS >= MIN_TBASE_P2P)           // Если находимся в поточечном режме, то нужно брать последние считанные точки для проведения измерений
     {
@@ -1076,11 +1076,11 @@ void Processing::SetData(bool needSmoothing)
             if (IN_A[i] != NONE_VALUE)      // Если это значение считано
             {
                 lastByte = i;
-                firstByte = lastByte - numBytes;
+                firstByte = lastByte - nBytes;
                 if (firstByte < 0)
                 {
                     firstByte = 0;
-                    lastByte = numBytes;
+                    lastByte = nBytes;
                 }
                 break;
             }
@@ -1306,16 +1306,16 @@ char* Processing::GetStringMeasure(Meas measure, Channel ch, char* buffer, int l
     else if((ch == A && !ENABLED_DS_A) || (ch == B && !ENABLED_DS_B))
     {
     }
-    else if(measures[measure].FuncCalculate)
+    else if(sMeas[measure].FuncCalculate)
     {
         char bufferForFunc[20];
-        pFuncTrans func = measures[measure].FucnConvertate;
+        pFuncTrans func = sMeas[measure].FucnConvertate;
         float value = values[measure].value[ch];
         if (SET_DIVIDER_10(ch) && func == &Translate::Voltage2String)
         {
             value *= 10.0f;                         // Домножаем, если включён делитель
         }
-        char *text = ((&trans)->*func)(value, measures[measure].showSign, bufferForFunc);
+        char *text = ((&trans)->*func)(value, sMeas[measure].showSign, bufferForFunc);
         int len = strlen(text) + strlen(buffer) + 1;
         if (len + 1 <= lenBuf)
         {
@@ -1339,7 +1339,7 @@ void Processing::CountedToCurrentSettings(void)
 {
     int numBytes = NUM_BYTES_DS;
 
-    if (ENUM_POINTS_DS != FPGA_ENUM_POINTS)
+    if ((ENumPointsFPGA)ENUM_POINTS_DS != FPGA_ENUM_POINTS)
     {
         CountedEnumPoints();
     }
@@ -1365,9 +1365,9 @@ void Processing::CountedToCurrentSettings(void)
 
     int16 dTShift = SET_TSHIFT - TSHIFT_DS;
 
-    int rShiftA = ((int)SET_RSHIFT_A - (int)RSHIFT_DS_A) / (float)STEP_RSHIFT * 1.25f;   /// \todo магические числа
+    int rShiftA = (int)(((int)SET_RSHIFT_A - (int)RSHIFT_DS_A) / (float)STEP_RSHIFT * 1.25f);   /// \todo магические числа
 
-    int rShiftB = ((int)SET_RSHIFT_B - (int)RSHIFT_DS_B) / (float)STEP_RSHIFT * 1.25f;   /// \todo избавиться от этого непонятного коэффициента
+    int rShiftB = (int)(((int)SET_RSHIFT_B - (int)RSHIFT_DS_B) / (float)STEP_RSHIFT * 1.25f);   /// \todo избавиться от этого непонятного коэффициента
     
     if (dTShift || rShiftA || rShiftB)
     {
@@ -1473,7 +1473,7 @@ void Processing::CountedRange(Channel ch)
             float abs = POINT_2_VOLTAGE(d, rangeIn, rShiftIn);
             d = math.VoltageToPoint(abs, rangeOut, (uint16)rShiftOut);
             LIMITATION(d, MIN_VALUE, MAX_VALUE);
-            out[i] = d;
+            out[i] = (uint8)d;
         }
         else
         {
@@ -1496,7 +1496,7 @@ void Processing::CountedTBase()
 
     for (int i = 0; i < numBytes; ++i)
     {
-        int indexOut = index0 + (i - index0) * ratio;
+        int indexOut = (int)(index0 + (i - index0) * ratio);
         if (IN_RANGE(indexOut, 0, numBytes - 1))
         {
             OUT_A[indexOut] = IN_A[i];
@@ -1536,7 +1536,7 @@ static void LinearInterpolation(uint8 *data, int numPoints)
 
         for (int i = iFirst; i < iSecond; i++)
         {
-            data[i] = data[iFirst] + k * (i - iFirst);
+            data[i] = (uint8)(data[iFirst] + k * (i - iFirst));
         }
 
         iFirst = iSecond;

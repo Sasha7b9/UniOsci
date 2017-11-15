@@ -171,7 +171,7 @@ DEF_SMALL_BUTTON
 //---------------------------------------------------------------------------------------------------------------- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - Ã‡ÍÂ˚ ---
 static void OnPress_Tune_Markers(void)
 {
-    meas.ShortPressOnSmallButonMarker();
+    measures.ShortPressOnSmallButonMarker();
 }
 
 static void Draw_Tune_Markers(int x, int y)
@@ -250,27 +250,27 @@ static void OnRegSet_Tune(int angle)
     {
         int row = 0;
         int col = 0;
-        meas.GetActive(&row, &col);
+        measures.GetActive(&row, &col);
         col += math.Sign(currentAngle);
         if (col < 0)
         {
-            col = meas.NumCols() - 1;
+            col = measures.NumCols() - 1;
             row--;
             if (row < 0)
             {
-                row = meas.NumRows() - 1;
+                row = measures.NumRows() - 1;
             }
         }
-        else if (col == meas.NumCols())
+        else if (col == measures.NumCols())
         {
             col = 0;
             row++;
-            if (row >= meas.NumRows())
+            if (row >= measures.NumRows())
             {
                 row = 0;
             }
         }
-        meas.SetActive(row, col);
+        measures.SetActive(row, col);
         Sound_RegulatorSwitchRotate();
     }
     currentAngle = 0;

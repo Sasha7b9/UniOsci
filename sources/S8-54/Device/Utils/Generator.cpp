@@ -30,7 +30,7 @@ static float freq[2] = {1000.0f, 500.0f};
 static float angle[2] = {0.05f, 0.1f};
 static float ampl[2] = {1.0f, 0.5f};
 static float amplNoise[2] = {0.1f, 0.1f};
-static int numSample[2] = {0, 0};
+static int nSample[2] = {0, 0};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,16 +45,16 @@ void SetParametersWave(Channel ch, TypeWave typeWave, float frequency, float sta
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void StartNewWave(Channel ch)
+void StartNewWave(Channel)
 {
-    numSample[0] = numSample[1] = 0;
+    nSample[0] = nSample[1] = 0;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 GetSampleWave(Channel ch)
 {
-    return (type[ch] == Wave_Sinus) ? GetSampleSinusWave(ch, (numSample[ch])++) : GetSampleMeanderWave(ch, (numSample[ch])++);
+    return (type[ch] == Wave_Sinus) ? GetSampleSinusWave(ch, (nSample[ch])++) : GetSampleMeanderWave(ch, (nSample[ch])++);
 }
 
 
@@ -68,7 +68,7 @@ uint8 GetSampleSinusWave(Channel ch, int numSample)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 GetSampleMeanderWave(Channel ch, int numSample)
+uint8 GetSampleMeanderWave(Channel, int)
 {
     return 0;
 }

@@ -485,7 +485,7 @@ void CalculateSums(void)
     }                                                                                                       \
     addr += 2;
 
-            for(int i = 0; i < iMax; i++)
+            for(int j = 0; j < iMax; j++)
             {
                 uint sum = 0;
                 uint loSum = 0;
