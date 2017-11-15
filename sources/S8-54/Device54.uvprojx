@@ -851,11 +851,6 @@
               <FilePath>.\Device\libs\stm32f4xx_it.cpp</FilePath>
             </File>
             <File>
-              <FileName>usbd_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\libs\usbd_conf.c</FilePath>
-            </File>
-            <File>
               <FileName>usbd_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\libs\usbd_conf.h</FilePath>
@@ -869,6 +864,11 @@
               <FileName>usbh_diskio.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\libs\usbh_diskio.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\libs\usbd_conf.cpp</FilePath>
             </File>
           </Files>
         </Group>
