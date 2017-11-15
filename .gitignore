@@ -17,8 +17,8 @@ sources/S8-54/obj/*
 sources/S8-54/lst/*
 
 sources/S8-53/DebugConfig/*
-sources/S8-53/obj/*
-sources/S8-53/lst/*
+sources/S8-53/_obj/*
+sources/S8-53/_lst/*
 
 
 sources/_VS/Kornet/x64/*
