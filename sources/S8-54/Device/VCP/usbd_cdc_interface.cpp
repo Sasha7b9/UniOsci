@@ -1,5 +1,3 @@
-
-
 #include "main.h"
 #include "Globals.h"
 #include "VCP/VCP.h"
@@ -128,7 +126,7 @@ static int8_t CDC_Itf_Control (uint8_t cmd, uint8_t* pbuf, uint16_t length)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int8 CDC_Itf_Receive(uint8 *buffer, uint *length)
+static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length)
 {
 #define LENGTH_DATA_BUFFER 100
     static uint8 data[LENGTH_DATA_BUFFER];

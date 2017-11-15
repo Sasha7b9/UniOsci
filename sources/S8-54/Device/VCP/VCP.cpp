@@ -80,7 +80,7 @@ void VCP::SendDataSynch(const uint8 *buffer, int size)
                 int reqBytes = SIZE_BUFFER_VCP - sizeBuffer;
                 LIMITATION(reqBytes, 0, size);
                 while (pCDC->TxState == 1) {};
-                memcpy(buffSend + sizeBuffer, buffer, reqBytes);
+                memcpy(buffSend + sizeBuffer, (void *)buffer, reqBytes);
                 USBD_CDC_SetTxBuffer(&handleUSBD, buffSend, SIZE_BUFFER_VCP);
                 USBD_CDC_TransmitPacket(&handleUSBD);
                 size -= reqBytes;
@@ -89,7 +89,7 @@ void VCP::SendDataSynch(const uint8 *buffer, int size)
             }
             else
             {
-                memcpy(buffSend + sizeBuffer, buffer, size);
+                memcpy(buffSend + sizeBuffer, (void *)buffer, size);
                 sizeBuffer += size;
                 size = 0;
             }

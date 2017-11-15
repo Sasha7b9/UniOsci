@@ -56,7 +56,7 @@ typedef uint8                   BYTE;
 typedef const char * const      pString;
 
 
-#ifndef WIN64
+#ifndef WIN32
 typedef signed      char        int8_t;
 #endif
 
@@ -100,11 +100,11 @@ typedef int     (*pFuncIU8I)(uint8 *, int);
 
 #define BIT_MASK(numBit) (1 << (numBit))
 
-#ifndef WIN64
+#ifndef WIN32
 #pragma anon_unions
 #endif
 
-#ifdef WIN64
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4201)
 #endif

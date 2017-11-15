@@ -135,7 +135,7 @@ USBD_StatusTypeDef USBD_DeInit(USBD_HandleTypeDef *pdev)
   pdev->dev_state  = USBD_STATE_DEFAULT;
   
   /* Free Class Resources */
-  pdev->pClass->DeInit(pdev, pdev->dev_config);  
+  pdev->pClass->DeInit(pdev, (uint8)pdev->dev_config);  
   
     /* Stop the low level driver  */
   USBD_LL_Stop(pdev); 
@@ -195,13 +195,13 @@ USBD_StatusTypeDef  USBD_Start  (USBD_HandleTypeDef *pdev)
   */
 USBD_StatusTypeDef  USBD_Stop   (USBD_HandleTypeDef *pdev)
 {
-  /* Free Class Resources */
-  pdev->pClass->DeInit(pdev, pdev->dev_config);  
+    /* Free Class Resources */
+    pdev->pClass->DeInit(pdev, (uint8)pdev->dev_config);  
 
-  /* Stop the low level driver  */
-  USBD_LL_Stop(pdev); 
-  
-  return USBD_OK;  
+    /* Stop the low level driver  */
+    USBD_LL_Stop(pdev); 
+    
+    return USBD_OK;  
 }
 
 /**
@@ -210,7 +210,7 @@ USBD_StatusTypeDef  USBD_Stop   (USBD_HandleTypeDef *pdev)
 * @param  pdev: device instance
 * @retval status
 */
-USBD_StatusTypeDef  USBD_RunTestMode (USBD_HandleTypeDef  *pdev) 
+USBD_StatusTypeDef  USBD_RunTestMode (USBD_HandleTypeDef  *) 
 {
   return USBD_OK;
 }
@@ -299,39 +299,35 @@ USBD_StatusTypeDef USBD_LL_SetupStage(USBD_HandleTypeDef *pdev, uint8_t *psetup)
 */
 USBD_StatusTypeDef USBD_LL_DataOutStage(USBD_HandleTypeDef *pdev , uint8_t epnum, uint8_t *pdata)
 {
-  USBD_EndpointTypeDef    *pep;
-  
-  if(epnum == 0) 
-  {
-    pep = &pdev->ep_out[0];
+    USBD_EndpointTypeDef    *pep;
     
-    if ( pdev->ep0_state == USBD_EP0_DATA_OUT)
+    if(epnum == 0) 
     {
-      if(pep->rem_length > pep->maxpacket)
-      {
-        pep->rem_length -=  pep->maxpacket;
-       
-        USBD_CtlContinueRx (pdev, 
-                            pdata,
-                            MIN(pep->rem_length ,pep->maxpacket));
-      }
-      else
-      {
-        if((pdev->pClass->EP0_RxReady != NULL)&&
-           (pdev->dev_state == USBD_STATE_CONFIGURED))
+        pep = &pdev->ep_out[0];
+        
+        if ( pdev->ep0_state == USBD_EP0_DATA_OUT)
         {
-          pdev->pClass->EP0_RxReady(pdev); 
+            if(pep->rem_length > pep->maxpacket)
+            {
+                pep->rem_length -=  pep->maxpacket;
+             
+                USBD_CtlContinueRx (pdev, pdata, (uint16)(MIN(pep->rem_length ,pep->maxpacket)));
+            }
+          else
+          {
+                if((pdev->pClass->EP0_RxReady != NULL) && (pdev->dev_state == USBD_STATE_CONFIGURED))
+                {
+                    pdev->pClass->EP0_RxReady(pdev); 
+                }
+                USBD_CtlSendStatus(pdev);
+          }
         }
-        USBD_CtlSendStatus(pdev);
-      }
     }
-  }
-  else if((pdev->pClass->DataOut != NULL)&&
-          (pdev->dev_state == USBD_STATE_CONFIGURED))
-  {
-    pdev->pClass->DataOut(pdev, epnum); 
-  }  
-  return USBD_OK;
+    else if((pdev->pClass->DataOut != NULL) && (pdev->dev_state == USBD_STATE_CONFIGURED))
+    {
+        pdev->pClass->DataOut(pdev, epnum); 
+    }  
+    return USBD_OK;
 }
 
 /**
@@ -355,15 +351,10 @@ USBD_StatusTypeDef USBD_LL_DataInStage(USBD_HandleTypeDef *pdev ,uint8_t epnum, 
       {
         pep->rem_length -=  pep->maxpacket;
         
-        USBD_CtlContinueSendData (pdev, 
-                                  pdata, 
-                                  pep->rem_length);
+        USBD_CtlContinueSendData (pdev, pdata, (uint16)pep->rem_length);
         
         /* Prepare endpoint for premature end of transfer */
-        USBD_LL_PrepareReceive (pdev,
-                                0,
-                                NULL,
-                                0);  
+        USBD_LL_PrepareReceive (pdev, 0, NULL, 0);  
       }
       else
       { /* last packet is MPS multiple, so send ZLP packet */
@@ -376,10 +367,7 @@ USBD_StatusTypeDef USBD_LL_DataInStage(USBD_HandleTypeDef *pdev ,uint8_t epnum, 
           pdev->ep0_data_len = 0;
           
         /* Prepare endpoint for premature end of transfer */
-        USBD_LL_PrepareReceive (pdev,
-                                0,
-                                NULL,
-                                0);
+        USBD_LL_PrepareReceive (pdev, 0, NULL, 0);
         }
         else
         {
@@ -433,9 +421,10 @@ USBD_StatusTypeDef USBD_LL_Reset(USBD_HandleTypeDef  *pdev)
   /* Upon Reset call user call back */
   pdev->dev_state = USBD_STATE_DEFAULT;
   
-  if (pdev->pClassData) 
-    pdev->pClass->DeInit(pdev, pdev->dev_config);  
- 
+  if (pdev->pClassData)
+  {
+      pdev->pClass->DeInit(pdev, (uint8)pdev->dev_config);
+  }
   
   return USBD_OK;
 }
@@ -509,7 +498,7 @@ USBD_StatusTypeDef USBD_LL_SOF(USBD_HandleTypeDef  *pdev)
 * @param  pdev: device instance
 * @retval status
 */
-USBD_StatusTypeDef USBD_LL_IsoINIncomplete(USBD_HandleTypeDef  *pdev, uint8_t epnum)
+USBD_StatusTypeDef USBD_LL_IsoINIncomplete(USBD_HandleTypeDef  *, uint8_t)
 {
   return USBD_OK;
 }
@@ -520,7 +509,7 @@ USBD_StatusTypeDef USBD_LL_IsoINIncomplete(USBD_HandleTypeDef  *pdev, uint8_t ep
 * @param  pdev: device instance
 * @retval status
 */
-USBD_StatusTypeDef USBD_LL_IsoOUTIncomplete(USBD_HandleTypeDef  *pdev, uint8_t epnum)
+USBD_StatusTypeDef USBD_LL_IsoOUTIncomplete(USBD_HandleTypeDef  *, uint8_t)
 {
   return USBD_OK;
 }
@@ -531,7 +520,7 @@ USBD_StatusTypeDef USBD_LL_IsoOUTIncomplete(USBD_HandleTypeDef  *pdev, uint8_t e
 * @param  pdev: device instance
 * @retval status
 */
-USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef  *pdev)
+USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef  *)
 {
     CABLE_USB_IS_CONNECTED = true;
     CONNECTED_TO_USB = true;
@@ -546,11 +535,11 @@ USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef  *pdev)
 */
 USBD_StatusTypeDef USBD_LL_DevDisconnected(USBD_HandleTypeDef  *pdev)
 {
-  /* Free Class Resources */
-  pdev->dev_state = USBD_STATE_DEFAULT;
-  pdev->pClass->DeInit(pdev, pdev->dev_config);  
-   
-  return USBD_OK;
+    /* Free Class Resources */
+    pdev->dev_state = USBD_STATE_DEFAULT;
+    pdev->pClass->DeInit(pdev, (uint8)pdev->dev_config);
+     
+    return USBD_OK;
 }
 /**
 * @}
