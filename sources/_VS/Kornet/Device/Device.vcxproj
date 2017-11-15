@@ -151,6 +151,18 @@
     <ClCompile Include="..\..\..\Kornet\Device\main.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Menu\MenuControls.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageChannel.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageDisplay.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageService.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageTester.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageTrig.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Multimeter\Multimeter.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Osci\Osci.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Tester\Tester.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\CommonFunctions.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -248,6 +260,14 @@
     <ClInclude Include="..\..\..\Kornet\Device\main.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Menu\Menu.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Menu\MenuControls.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Multimeter\Multimeter.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Osci\Osci.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\Settings.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\CommonFunctions.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\Math.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ff.h" />

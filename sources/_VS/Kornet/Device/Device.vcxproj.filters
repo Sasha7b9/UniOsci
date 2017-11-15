@@ -177,6 +177,42 @@
     <ClCompile Include="..\..\..\Kornet\Device\Menu\MenuControls.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageChannel.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageDisplay.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageService.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageTester.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Menu\Pages\PageTrig.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Multimeter\Multimeter.cpp">
+      <Filter>Multimeter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Osci\Osci.cpp">
+      <Filter>Osci</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Settings\Settings.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Tester\Tester.cpp">
+      <Filter>Tester</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\CommonFunctions.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Device\libs\startup_stm32f437xx.s">
@@ -321,6 +357,30 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Menu\MenuControls.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Multimeter\Multimeter.h">
+      <Filter>Multimeter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Osci\Osci.h">
+      <Filter>Osci</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\Settings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsTypes.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h">
+      <Filter>Tester</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\CommonFunctions.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\Math.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
