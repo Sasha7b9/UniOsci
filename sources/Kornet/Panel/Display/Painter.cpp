@@ -80,7 +80,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
 
     for (int i = 0; i <= y1 - y0; i++)
     {
-        *address = color;
+        *address = (uint8)color;
         address += Display::WIDTH;
     }
 }
@@ -173,7 +173,7 @@ static bool BitInFontIsExist(int eChar, int numByte, int bit)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Painter::DrawChar(int eX, int eY, char symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     int size = 1;

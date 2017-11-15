@@ -171,7 +171,7 @@ void Keyboard::Update()
                             
                             if (prevRepeat + prevPause < time)
                             {
-                                prevPause = TimeBetweenRepeats(prevPause);
+                                prevPause = TimeBetweenRepeats();
                                 prevRepeat = time;
                                 FillCommand(controls[rl][sl], Repeat);
                             }
@@ -198,7 +198,7 @@ void Keyboard::FillCommand(Control control, TypePress typePress)
 {
     commands[pointer].control = control;
     commands[pointer++].typePress = typePress;
-    uint8 data[3] = {IN_BUTTON_PRESS, control, typePress};
+    uint8 data[3] = {IN_BUTTON_PRESS, (uint8)control, (uint8)typePress};
     fsmc.WriteBuffer(data, 3);  // Прерывание от клавиатуры имеет более низкий приоритет, чем чтения по шине, поэтому запись не запустится до тех
                                 // пор, пока не закончится чтение
 }   
@@ -262,9 +262,9 @@ bool IsRepeatable(Control control)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Keyboard::TimeBetweenRepeats(uint prevPause)
+uint Keyboard::TimeBetweenRepeats()
 {
-    uint retValue = prevPause / 1.1f;
+    uint retValue = (uint)(prevPause / 1.1f);
 
     if (retValue < 10)
     {

@@ -166,7 +166,7 @@ void ConfigSystemClock1(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void _Error_Handler(char * file, int line)
+void _Error_Handler(char *, int)
 {
     /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */

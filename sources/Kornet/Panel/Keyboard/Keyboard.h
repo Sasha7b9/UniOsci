@@ -28,7 +28,7 @@ private:
 
     void FillCommand(Control control, TypePress typePress);
 
-    uint TimeBetweenRepeats(uint time);
+    uint TimeBetweenRepeats();
 
     StructControl commands[10];
 

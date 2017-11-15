@@ -78,9 +78,6 @@
     <ClCompile Include="..\..\..\Kornet\Panel\Display\Painter.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Kornet\Panel\Display\font\Font.c">
-      <Filter>Display\font</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Panel\Hardware\Decoder.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -92,6 +89,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Panel\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Panel\Keyboard\Keyboard.cpp">
+      <Filter>Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Panel\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Panel\Display\font\Font.cpp">
+      <Filter>Display\font</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +147,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Panel\Hardware\Timer.h">
       <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Panel\Keyboard\Controls.h">
+      <Filter>Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Panel\Keyboard\Keyboard.h">
+      <Filter>Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Panel\defines.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

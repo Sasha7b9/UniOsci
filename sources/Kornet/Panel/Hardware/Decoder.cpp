@@ -60,7 +60,7 @@ void Decoder::AddData(uint8 data)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Decoder::InButtonPress(uint8 data)
+bool Decoder::InButtonPress(uint8)
 {
     if (step == 0)
     {
@@ -91,7 +91,7 @@ bool Decoder::BeginScene(uint8 data)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Decoder::EndScene(uint8 data)
+bool Decoder::EndScene(uint8)
 {
     painter.EndScene();
     return true;
@@ -267,7 +267,7 @@ bool Decoder::DrawText(uint8 data)
         case 4:
             numSymbols = data;
             readingSymbols = 0;
-            buffer = new char[numSymbols + 1];
+            buffer = new char[(uint)(numSymbols + 1)];
             break;
         default:
             buffer[readingSymbols++] = (char)data;

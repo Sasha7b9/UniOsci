@@ -84,10 +84,13 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>EnableAllWarnings</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F429xx;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4514;4820</DisableSpecificWarnings>
+      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <TargetMachine>MachineARM</TargetMachine>
@@ -128,17 +131,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Kornet\Panel\Display\Display.cpp" />
-    <ClCompile Include="..\..\..\Kornet\Panel\Display\font\Font.c" />
+    <ClCompile Include="..\..\..\Kornet\Panel\Display\font\Font.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\Hardware\Decoder.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\Hardware\Timer.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Panel\Keyboard\Keyboard.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\libs\stm32f4xx_hal_msp.c" />
     <ClCompile Include="..\..\..\Kornet\Panel\libs\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\..\Kornet\Panel\libs\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Panel\main.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -189,6 +194,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Kornet\Panel\defines.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\Display\Display.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\Display\font\Font.h" />
@@ -197,6 +203,8 @@
     <ClInclude Include="..\..\..\Kornet\Panel\Hardware\FSMC.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\Hardware\Hardware.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\Hardware\Timer.h" />
+    <ClInclude Include="..\..\..\Kornet\Panel\Keyboard\Controls.h" />
+    <ClInclude Include="..\..\..\Kornet\Panel\Keyboard\Keyboard.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\libs\stm32f4xx_it.h" />
   </ItemGroup>

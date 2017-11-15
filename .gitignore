@@ -8,8 +8,8 @@ sources/.vs/*
 sources/_VS/Kornet/.vs/*
 
 sources/Kornet/DebugConfig/*
-sources/Kornet/obj/*
-sources/Kornet/lst/*
+sources/Kornet/_obj/*
+sources/Kornet/_lst/*
 
 sources/S8-54/DebugConfig/*
 sources/S8-54/S8-54/DebugConfig/*

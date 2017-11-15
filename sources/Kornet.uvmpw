@@ -9,20 +9,23 @@
 
   <project>
     <PathAndName>.\Kornet\Device.uvprojx</PathAndName>
-  </project>
-
-  <project>
-    <PathAndName>.\Kornet\Panel.uvprojx</PathAndName>
-    <NodeIsActive>1</NodeIsActive>
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
-    <PathAndName>.\Kornet\DeviceBoot\DeviceBoot.uvprojx</PathAndName>
+    <PathAndName>.\Kornet\Panel.uvprojx</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
+  </project>
+
+  <project>
+    <PathAndName>.\Kornet\DeviceBoot.uvprojx</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
     <PathAndName>.\Kornet\PanelBoot.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>

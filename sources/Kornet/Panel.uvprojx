@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\obj\Panel\</OutputDirectory>
+          <OutputDirectory>.\_obj\Panel\</OutputDirectory>
           <OutputName>Panel</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>0</BrowseInformation>
-          <ListingPath>.\lst\Panel\</ListingPath>
+          <ListingPath>.\_lst\Panel\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -516,11 +516,6 @@
           <GroupName>Display/font</GroupName>
           <Files>
             <File>
-              <FileName>Font.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Panel\Display\font\Font.c</FilePath>
-            </File>
-            <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Panel\Display\font\Font.h</FilePath>
@@ -544,6 +539,11 @@
               <FileName>fontUGO2.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\Panel\Display\font\fontUGO2.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Panel\Display\font\Font.cpp</FilePath>
             </File>
           </Files>
         </Group>
