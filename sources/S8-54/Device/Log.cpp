@@ -1,11 +1,15 @@
-
-
 #include "Log.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
 #include "VCP/VCP.h"
 #include <stdarg.h>
 #include <string.h>
+
+
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4100 4101)
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -86,3 +90,7 @@ void Log_EnableLoggerUSB(bool enable)
 {
     loggerUSB = enable;
 }
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif

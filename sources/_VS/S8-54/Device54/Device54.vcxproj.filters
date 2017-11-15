@@ -483,6 +483,18 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\TablesWindow.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\cmsis_gcc.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Globals.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\main.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Tables.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -914,6 +926,18 @@
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Debug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Globals.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\defines.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\S8-54\Device\libs\startup_stm32f437xx.s">
@@ -946,5 +970,16 @@
     <None Include="..\..\..\S8-54\Device\Utils\CreateTables.py">
       <Filter>Utils</Filter>
     </None>
+    <None Include="..\..\..\S8-54\Device\Device54.sct">
+      <Filter>src</Filter>
+    </None>
+    <None Include="..\..\..\S8-54\Device\main2.s">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\S8-54\Device\FileTree.txt">
+      <Filter>src</Filter>
+    </Text>
   </ItemGroup>
 </Project>

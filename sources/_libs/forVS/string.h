@@ -20,4 +20,6 @@ int memcmp(const void *, const void *, int);
 
 char tolower(char);
 
+char toupper(char);
+
 void strcpy(char *, const char *);

@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\cmsis_gcc.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Data\Reader.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Data\DataSettings.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Data\DataStorage.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGA.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGATypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Globals.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Hardware\FLASH.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Hardware\FSMC.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Hardware\Hardware.h" />
@@ -171,6 +173,7 @@
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_diskio.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Log.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\main.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Menu.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuDrawing.h" />
@@ -201,6 +204,7 @@
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTime.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Tables.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Debug.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h" />
@@ -362,6 +366,7 @@
     <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataSettings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\defines.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.cpp" />
@@ -382,6 +387,7 @@
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\fpgaSettings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGATypes.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Globals.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Hardware\FLASH.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Hardware\Hardware.cpp" />
@@ -398,6 +404,7 @@
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbd_conf.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Log.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\main.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Menu.cpp" />
@@ -428,6 +435,7 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsService.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Debug.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp" />
@@ -699,6 +707,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\S8-54\Device\Device54.sct" />
     <None Include="..\..\..\S8-54\Device\Display\font\font5.inc" />
     <None Include="..\..\..\S8-54\Device\Display\font\font5display.inc" />
     <None Include="..\..\..\S8-54\Device\Display\font\font8.inc" />
@@ -708,7 +717,11 @@
     <None Include="..\..\..\S8-54\Device\Display\font\fontUGO2display.inc" />
     <None Include="..\..\..\S8-54\Device\Display\font\fontUGOdisplay.inc" />
     <None Include="..\..\..\S8-54\Device\libs\startup_stm32f437xx.s" />
+    <None Include="..\..\..\S8-54\Device\main2.s" />
     <None Include="..\..\..\S8-54\Device\Utils\CreateTables.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\S8-54\Device\FileTree.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
