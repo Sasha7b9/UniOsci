@@ -13,13 +13,10 @@ typedef unsigned short int uint16;
 typedef signed short int int16;
 typedef unsigned char uchar;
 
-#ifndef __cplusplus
-#ifndef bool
-typedef unsigned char bool;
-#define false   0
-#define true    (!false)
+#ifdef WIN32
+#define __attribute__(x)
 #endif
-#endif
+
 
 // ??? ?????
 typedef enum

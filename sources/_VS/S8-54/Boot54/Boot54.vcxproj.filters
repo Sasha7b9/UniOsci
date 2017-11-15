@@ -274,32 +274,8 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\globals.c">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\main.c">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.c">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FLASH.c">
-      <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FSMC.c">
-      <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Hardware.c">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Controls.c">
       <Filter>Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Panel.c">
-      <Filter>Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\PanelFunctions.c">
-      <Filter>Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.c">
-      <Filter>Settings</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.cpp">
       <Filter>Utils</Filter>
@@ -333,6 +309,30 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\Colors.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Hardware.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FLASH.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FSMC.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Panel.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\PanelFunctions.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.cpp">
+      <Filter>Settings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

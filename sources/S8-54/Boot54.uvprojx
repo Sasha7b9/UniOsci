@@ -599,14 +599,14 @@
               <FilePath>.\Boot54\globals.h</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\main.c</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -679,11 +679,6 @@
               <FilePath>.\Boot54\Display\DisplayTypes.h</FilePath>
             </File>
             <File>
-              <FileName>Painter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Display\Painter.c</FilePath>
-            </File>
-            <File>
               <FileName>Painter.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Display\Painter.h</FilePath>
@@ -712,6 +707,11 @@
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Display\Display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Display\Painter.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -754,29 +754,14 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
-              <FileName>FLASH.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Hardware\FLASH.c</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Hardware\FLASH.h</FilePath>
             </File>
             <File>
-              <FileName>FSMC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Hardware\FSMC.c</FilePath>
-            </File>
-            <File>
               <FileName>FSMC.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Hardware\FSMC.h</FilePath>
-            </File>
-            <File>
-              <FileName>Hardware.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Hardware\Hardware.c</FilePath>
             </File>
             <File>
               <FileName>Hardware.h</FileName>
@@ -792,6 +777,21 @@
               <FileName>Timer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Hardware\Timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FLASH.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Hardware\FLASH.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FSMC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Hardware\FSMC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hardware.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Hardware\Hardware.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -809,30 +809,25 @@
               <FilePath>.\Boot54\Panel\Controls.h</FilePath>
             </File>
             <File>
-              <FileName>Panel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Panel\Panel.c</FilePath>
-            </File>
-            <File>
               <FileName>Panel.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Panel\Panel.h</FilePath>
             </File>
             <File>
-              <FileName>PanelFunctions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Panel\PanelFunctions.c</FilePath>
+              <FileName>Panel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Panel\Panel.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PanelFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Panel\PanelFunctions.cpp</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Settings</GroupName>
           <Files>
-            <File>
-              <FileName>Settings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot54\Settings\Settings.c</FilePath>
-            </File>
             <File>
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
@@ -842,6 +837,11 @@
               <FileName>SettingsTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot54\Settings\SettingsTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot54\Settings\Settings.cpp</FilePath>
             </File>
           </Files>
         </Group>

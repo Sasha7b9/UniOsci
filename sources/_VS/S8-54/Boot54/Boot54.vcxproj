@@ -83,13 +83,13 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\font\Font.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\globals.c" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FLASH.c" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FSMC.c" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Hardware.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FLASH.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FSMC.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\system_stm32f4xx.c">
@@ -100,11 +100,11 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\main.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\main.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Controls.c" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Panel.c" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\PanelFunctions.c" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.c" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Panel.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\PanelFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -277,8 +277,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F437xx;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <DisableSpecificWarnings>4201;4820</DisableSpecificWarnings>
-      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
+      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <TargetMachine>MachineARM</TargetMachine>
