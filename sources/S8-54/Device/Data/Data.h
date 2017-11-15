@@ -94,7 +94,6 @@ typedef struct
 {
     uint8    data[NumChannels][281 * 2];    ///< ƒанные обоих каналов. “очек в два раза больше, чем на экране, дл€ пикового детектора
     bool     needDraw[NumChannels];         ///< ≈сли true, то канал 1 надо рисовать
-    uint8    unused[2];
     int      posBreak;                      ///< ѕозици€ в координатах сетки, на которой нужно рисовать линию разрыва поточечного вывода
     ModeWork forMode;                       ///< ƒл€ какого режима считываютс€ данные
 } StructDataDrawing;

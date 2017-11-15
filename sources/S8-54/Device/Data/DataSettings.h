@@ -44,7 +44,6 @@ typedef struct
     uint        multiplierB     : 1;
     uint        enumPoints      : 3;
     PackedTime  time;
-    uint8       unused[4];
 } DataSettings;
 
 int BytesInChannel(DataSettings *ds);
