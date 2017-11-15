@@ -132,6 +132,18 @@
     <ClCompile Include="..\..\..\Kornet\Device\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Display\Display.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Display\Grid.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Display\Painter.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Display\PainterData.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Device\libs\startup_stm32f437xx.s">
@@ -222,6 +234,21 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\main.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Display\Display.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Display\Grid.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Display\Painter.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Display\PainterData.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Display\TypeSymbols.h">
+      <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

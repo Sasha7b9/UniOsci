@@ -49,7 +49,7 @@ void Painter::SetColor(uint8 color)
 void Painter::FillRegion(int x, int y, int width, int height, uint8 color)
 {
     SetColor(color);
-    uint8 buffer[7] = {PAINT_FILL_REGION, (uint8)x, (uint8)(x >> 8), y, (uint8)width, (uint8)(width >> 8), height};
+    uint8 buffer[7] = {PAINT_FILL_REGION, (uint8)x, (uint8)(x >> 8), (uint8)y, (uint8)width, (uint8)(width >> 8), (uint8)height};
     fsmc.WriteToPanel(buffer, 7);
 }
 
@@ -64,18 +64,18 @@ void Painter::DrawText(int x, int y, const char *text, uint8 color)
     }
        
     SetColor(color);
-    size_t size = 1 + 2 + 1 + 1 + strlen(text);
-    uint8 buffer[MAX_SIZE_BUFFER] = {PAINT_DRAW_TEXT, (uint8)x, (uint8)(x >> 8), y, size - 5};
+    size_t size = (size_t)(1 + 2 + 1 + 1 + strlen(text));
+    uint8 buffer[MAX_SIZE_BUFFER] = {PAINT_DRAW_TEXT, (uint8)x, (uint8)(x >> 8), (uint8)y, (uint8)(size - 5)};
 
     uint8 *pointer = &buffer[5];
 
     for (int i = 0; i < strlen(text); i++)
     {
-        *pointer++ = text[i];
+        *pointer++ = (uint8)text[i];
     }
-    fsmc.WriteToPanel(buffer, size);
+    fsmc.WriteToPanel(buffer, (int)size);
 
-    }
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SetPalette(uint8 numColor, uint valueColor)
@@ -89,8 +89,7 @@ void Painter::SetPalette(uint8 numColor, uint valueColor)
 void Painter::DrawRectangle(int x, int y, int width, int height, uint8 color)
 {
     SetColor(color);
-    uint8 buffer[7] = {PAINT_DRAW_RECTANGLE, (uint8)
-    x, (uint8)(x >> 8), y, (uint8)width, (uint8)(width >> 8), height};
+    uint8 buffer[7] = {PAINT_DRAW_RECTANGLE, (uint8)x, (uint8)(x >> 8), (uint8)y, (uint8)width, (uint8)(width >> 8), (uint8)height};
     fsmc.WriteToPanel(buffer, 7);
 }
 

@@ -19,7 +19,7 @@ Display display;
 uint8 color = 0;
 
 #define SIZE_CONSOLE    20
-static CHAR_BUF2(buffer, SIZE_CONSOLE, 100);
+static CHAR_BUF2(bufferConsole, SIZE_CONSOLE, 100);
 static int stringInConsole = 0;
 
 
@@ -43,23 +43,18 @@ void Display::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
-    uint timeStart = gTimeUS;
-//    debug.ClearTimeCounter();
+    typedef void (Display::*pFuncDisplayVV)();
 
-    typedef void (Display::*pFuncVV)();
-
-    static const pFuncVV funcs[NumDeviceModes] =
+    static const pFuncDisplayVV funcs[NumDeviceModes] =
     {
         &Display::UpdateOsci,
         &Display::UpdateTester,
         &Display::UpdateMultimeter
     };
 
-    pFuncVV func = funcs[device.CurrentMode()];
+    pFuncDisplayVV func = funcs[device.CurrentMode()];
 
     (this->*func)();
-
-    //LOG_MESSAGE("время : полное - %d, ожидание - %d", gTimeUS - timeStart, debug.GetTimeCounterUS());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -193,7 +188,9 @@ int Display::WriteChannel(Channel ch, int x, int y)
     
     x += 7;
 
-    static const char symbols[3] = {SYMBOL_COUPLE_AC, SYMBOL_COUPLE_DC, SYMBOL_COUPLE_GND};
+    static const char symbols[3] = {SYMBOL_COUPLE_AC, 
+        SYMBOL_COUPLE_DC, 
+        SYMBOL_COUPLE_GND};
 
     char string[2] = {symbols[SET_COUPLE(ch)], 0};
 
@@ -256,11 +253,11 @@ void LogEntity::AddToConsole(char *string)
         {
             for (int i = 1; i < SIZE_CONSOLE; i++)
             {
-                strcpy(buffer[i - 1], buffer[i]);
+                strcpy(bufferConsole[i - 1], bufferConsole[i]);
             }
             stringInConsole--;
         }
-        sprintf(buffer[stringInConsole], "%d %s", count++, string);
+        sprintf(bufferConsole[stringInConsole], "%d %s", count++, string);
         stringInConsole++;
     }
 }
@@ -276,7 +273,7 @@ void Display::DrawConsole()
 
     for (int i = 0; i < stringInConsole; i++)
     {
-        painter.DrawText(1, y, buffer[i], Color::FILL);
+        painter.DrawText(1, y, bufferConsole[i], Color::FILL);
         y += 6;
     }
 

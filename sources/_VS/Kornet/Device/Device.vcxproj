@@ -129,6 +129,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Kornet\Device\Device.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Display\Display.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Display\Grid.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Display\Painter.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Device\Display\PainterData.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.c" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\system_stm32f4xx.c">
@@ -211,6 +215,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\Kornet\Device\defines.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Device.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Display\Display.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Display\Grid.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Display\Painter.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Display\PainterData.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\..\Kornet\Device\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Log.h" />

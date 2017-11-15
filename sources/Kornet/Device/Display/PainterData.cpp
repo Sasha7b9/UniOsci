@@ -50,8 +50,8 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
             {
                 float value = bottom - data[i] * scale;
 
-                painter.DrawVLine(left + i - 2, valuePrev, value);
-                painter.DrawVLine(left + i, valuePrev, value);
+                painter.DrawVLine(left + i - 2, (int)valuePrev, (int)value);
+                painter.DrawVLine(left + i, (int)valuePrev, (int)value);
 
                 valuePrev = value;
             }
@@ -67,7 +67,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
             float valuePrev = bottom - data[i - 1] * scale;
             value += math.Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
                                                             // ния двух вертикальных линий
-            painter.DrawVLine(x++, valuePrev, value);
+            painter.DrawVLine(x++, (int)valuePrev, (int)value);
         }
     }
     else
@@ -79,8 +79,8 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
             for (int i = 0; i < 280; i++)
             {
                 float value = bottom - data[i] * scale;
-                painter.DrawHLine(value, left + i - 1, left + i + 1);
-                painter.DrawVLine(left + i, value - 1, value + 1);
+                painter.DrawHLine((int)value, left + i - 1, left + i + 1);
+                painter.DrawVLine(left + i, (int)value - 1, (int)value + 1);
             }
         }
 
@@ -89,7 +89,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         for (int i = 0; i < 280; i++)
         {
             float value = bottom - data[i] * scale;
-            painter.SetPoint(left + i, value);
+            painter.SetPoint(left + i, (int)value);
         }
     }
 }

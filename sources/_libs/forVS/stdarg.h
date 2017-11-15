@@ -1,6 +1,6 @@
 #pragma once
 
-#define va_list int
-#define va_start(x, y)
+#define va_list char *
+#define va_start(x, y) x = y;
 #define vsprintf(x, y, z)
 #define va_end(x)
