@@ -289,7 +289,7 @@ uint Timer_LogPointMS(char *name)
 {
     uint interval = gTimerTics - timePrevPoint;
     timePrevPoint = gTimerTics;
-    LOG_WRITE("%s %.2f ms", name, interval / 120e3);
+    LOG_WRITE("%s %.2f ms", name, interval / 120e3f);
     return interval;
 }
 

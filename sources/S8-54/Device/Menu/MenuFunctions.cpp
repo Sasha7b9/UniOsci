@@ -274,7 +274,7 @@ void ChangeItem(void *item, int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Page *PagePointerFromName(NamePage namePage)
+Page *PagePointerFromName(NamePage)
 {
     return 0;
 }

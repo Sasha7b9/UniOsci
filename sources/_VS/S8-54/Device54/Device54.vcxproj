@@ -170,6 +170,13 @@
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbd_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_diskio.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Log.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\Menu.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuDrawing.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuFunctions.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuItems.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuItemsDefs.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_desc.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\VCP.h" />
@@ -357,6 +364,13 @@
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\main.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\Menu.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuDrawing.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItems.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItemsGraphics.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItemsLogic.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_core.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_desc.cpp" />

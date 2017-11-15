@@ -128,11 +128,13 @@ static void ProcessButtonForHint(PanelButton button)
         "Ã≈Õﬁ button performs the following functions:\n"
             "1. At the closed menu pressing or pressing with deduction during 0.5s opens the menu.\n"
             "2. At the open menu deduction of the button during 0.5s closes the menu.\n"
+#ifndef WIN32
 #pragma push
 #pragma diag_suppress 192
             "3. At control \"SERVICE\x99Mode btn MENU\x99\Close\" current becomes the page of the previous level of the menu. If the root page is "
             "current, the menu is closed.\n"
 #pragma pop
+#endif
             "4. At control \"SERVICE\x99Mode btn MENU\x99Toggle\" current becomes the page of the current level of the menu. If the current page the "
             "last in the current level, happens transition to the previous level of the menu.\n"
             "5. If the menu is in the mode of small buttons, pressing closes the page.";
@@ -227,11 +229,13 @@ static void ProcessButtonForHint(PanelButton button)
             "ÒËÌıÓÌËÁ‡ˆËË 0¬."
             :
             "1. —»Õ’– button opens a menu settings synchronization.\n"
+#ifndef WIN32
 #pragma push
 #pragma diag_suppress 192
             "2. Pressing and holding the button —»Õ’– for 0.5s when setting \"SERVICE\x99Mode long TRIG\x99\Autolevel\" automatically adjust the "
             "trigger level.\n"
 #pragma pop
+#endif
             "3. Pressing and holding the button —»Õ’– for 0.5s when setting \"SERVICE\x99Mode long TRIG\x99SReset trig level\" sets the trigger "
             "level 0V.";
     }
@@ -314,7 +318,7 @@ void *Menu::ItemUnderKey(void)
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::SetAutoHide(bool active)
+void Menu::SetAutoHide(bool)
 {
     if(!MENU_IS_SHOWN)
     {
@@ -326,7 +330,7 @@ void Menu::SetAutoHide(bool active)
     }
     else
     {
-        Timer_SetAndStartOnce(kMenuAutoHide, OnTimerAutoHide, sDisplay_TimeMenuAutoHide());
+        Timer_SetAndStartOnce(kMenuAutoHide, OnTimerAutoHide, (uint)sDisplay_TimeMenuAutoHide());
     }
 }
 
@@ -373,7 +377,7 @@ static void ProcessingShortPressureButton(void)
     {
         if (shortPressureButton == B_Memory && MODE_BTN_MEMORY_SAVE && FDRIVE_IS_CONNECTED)
         {
-            EXIT_FROM_SETNAME_TO = MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU;
+            EXIT_FROM_SETNAME_TO = (uint)(MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
             Memory_SaveSignalToFlashDrive();
             shortPressureButton = B_Empty;
             return;

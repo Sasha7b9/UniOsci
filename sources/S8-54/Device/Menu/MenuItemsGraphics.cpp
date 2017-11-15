@@ -141,7 +141,7 @@ void Governor::DrawValue(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Governor::DrawLowPart(int x, int y, bool pressed, bool shade)
+void Governor::DrawLowPart(int x, int y, bool, bool shade)
 {
     char buffer[20];
 
@@ -258,7 +258,7 @@ void IPaddress::DrawValue(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void IPaddress::DrawLowPart(int x, int y, bool pressed, bool shade)
+void IPaddress::DrawLowPart(int x, int y, bool, bool shade)
 {
     const int SIZE = 20;
     char buffer[SIZE];
@@ -339,7 +339,7 @@ void MACaddress::DrawValue(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MACaddress::DrawLowPart(int x, int y, bool pressed, bool shade)
+void MACaddress::DrawLowPart(int x, int y, bool, bool shade)
 {
     const int SIZE = 20;
     char buffer[SIZE];
@@ -389,7 +389,7 @@ void Formula::DrawClosed(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Formula::DrawLowPart(int x, int y, bool pressed, bool shade)
+void Formula::DrawLowPart(int x, int y, bool, bool shade)
 {
     Color colorTextDown = Color::BLACK;
 
@@ -404,16 +404,16 @@ void Formula::DrawLowPart(int x, int y, bool pressed, bool shade)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Formula::WriteText(int x, int y, bool opened)
+void Formula::WriteText(int x, int y, bool)
 {
-    Function function = (Function)(function);
+    Function func = (Function)(*function);
 
-    if (function != Function_Mul && function != Function_Sum)
+    if (func != Function_Mul && func != Function_Sum)
     {
         return;
     }
 
-    bool funcIsMul = function == Function_Mul;
+    bool funcIsMul = func == Function_Mul;
     int8 koeff1 = funcIsMul ? *koeff1mul : *koeff1add;
     int8 koeff2 = funcIsMul ? *koeff2mul : *koeff2add;
     if (koeff1 != 0)
@@ -596,18 +596,18 @@ void Time::DrawClosed(int x, int y)
     int startX = 3;
     y += 21;
     PackedTime time = RTC_GetPackedTime();
-    painter.DrawText(x + startX, y, trans.Int2String(time.hours, false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
+    painter.DrawText(x + startX, y, trans.Int2String((int)time.hours, false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
     painter.DrawText(x + startX + deltaField, y, ":");
-    painter.DrawText(x + startX + deltaField + deltaSeparator, y, trans.Int2String(time.minutes, false, 2, buffer));
+    painter.DrawText(x + startX + deltaField + deltaSeparator, y, trans.Int2String((int)time.minutes, false, 2, buffer));
     painter.DrawText(x + startX + 2 * deltaField + deltaSeparator, y, ":");
-    painter.DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, trans.Int2String(time.seconds, false, 2, buffer));
+    painter.DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, trans.Int2String((int)time.seconds, false, 2, buffer));
 
     startX = 44;
-    painter.DrawText(x + startX, y, trans.Int2String(time.day, false, 2, buffer));
+    painter.DrawText(x + startX, y, trans.Int2String((int)time.day, false, 2, buffer));
     painter.DrawText(x + startX + deltaField, y, ":");
-    painter.DrawText(x + startX + deltaField + deltaSeparator, y, trans.Int2String(time.month, false, 2, buffer));
+    painter.DrawText(x + startX + deltaField + deltaSeparator, y, trans.Int2String((int)time.month, false, 2, buffer));
     painter.DrawText(x + startX + 2 * deltaField + deltaSeparator, y, ":");
-    painter.DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, trans.Int2String(time.year, false, 2, buffer));
+    painter.DrawText(x + startX + 2 * deltaField + 2 * deltaSeparator, y, trans.Int2String((int)time.year, false, 2, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

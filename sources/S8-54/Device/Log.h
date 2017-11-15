@@ -14,6 +14,12 @@
 #define LOG_TRACE               Log_Write(TypeTrace_Info, "%s : %d", __MODULE__, __LINE__);
 #define ASSEERT(cond, ...)      if(cond)(LOG_ERROR_TRACE(__VA_ARGS__));
 #define ASSERT_RET(cond, ...)   if(cond) {LOG_ERROR_TRACE(__VA_ARGS__); return; }
+#elif defined(WIN32)
+void LOG_WRITE(char *, char *, float);
+void LOG_WRITE(char *, int, uint16, uint16);
+void LOG_WRITE(char *, uint);
+#define ASSERT_RET(cont, ...)
+#define LOG_ERROR_TRACE(...)
 #else
 #define LOG_WRITE(...)
 #define LOG_ERROR(...)

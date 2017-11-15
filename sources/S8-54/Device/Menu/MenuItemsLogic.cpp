@@ -416,11 +416,11 @@ void IPaddress::ChangeValue(int delta)
     {
         if (numByte == 4)
         {
-            *port = (int16)newValue;
+            *port = (uint16)newValue;
         }
         else
         {
-            ip0[numByte] = (int8)newValue;
+            ip0[numByte] = (uint8)newValue;
         }
         Sound_GovernorChangedValue();
         display.ShowWarning(NeedRebootDevice);

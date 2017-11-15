@@ -350,7 +350,7 @@ bool FM_GetNameForNewFile(char name[255])
     {
         PackedTime time = RTC_GetPackedTime();
                            //  1          2           3         4           5             6
-        int values[] = {0, time.year, time.month, time.day, time.hours, time.minutes, time.seconds};
+        uint values[] = {0u, time.year, time.month, time.day, time.hours, time.minutes, time.seconds};
 
         char *ch = FILE_NAME_MASK;
         char *wr = name;
@@ -380,7 +380,7 @@ bool FM_GetNameForNewFile(char name[255])
                 {
                     if (*ch >= 0x01 && *ch <= 0x06)
                     {
-                        strcpy(wr, trans.Int2String(values[*ch], false, 2, buffer));
+                        strcpy(wr, trans.Int2String((int)values[*ch], false, 2, buffer));
                         wr += strlen(buffer);
                     }
                 }
