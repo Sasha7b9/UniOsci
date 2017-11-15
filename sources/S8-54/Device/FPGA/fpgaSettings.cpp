@@ -34,21 +34,29 @@
     D15  0       1        0             D9      0   1   0   1
 */
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4310)
+#endif
 
 static const uint8 masksRange[RangeSize] =
-{         //  543210
-    BINARY_U8(010011),  ///< Range_2mV
-    BINARY_U8(010111),  ///< Range_5mV
-    BINARY_U8(011010),  ///< Range_10mV
-    BINARY_U8(000011),  ///< Range_20mV
-    BINARY_U8(000111),  ///< Range_50mV
-    BINARY_U8(001010),  ///< Range_100mV
-    BINARY_U8(010110),  ///< Range_200mV
-    BINARY_U8(011010),  ///< Range_500mV
-    BINARY_U8(000011),  ///< Range_1V
-    BINARY_U8(000110),  ///< Range_2V
-    BINARY_U8(001010)   ///< Range_5V
+{         //  76543210
+    BINARY_U8(00010011),  ///< Range_2mV
+    BINARY_U8(00010111),  ///< Range_5mV
+    BINARY_U8(00011010),  ///< Range_10mV
+    BINARY_U8(00000011),  ///< Range_20mV
+    BINARY_U8(00000111),  ///< Range_50mV
+    BINARY_U8(00001010),  ///< Range_100mV
+    BINARY_U8(00010110),  ///< Range_200mV
+    BINARY_U8(00011010),  ///< Range_500mV
+    BINARY_U8(00000011),  ///< Range_1V
+    BINARY_U8(00000110),  ///< Range_2V
+    BINARY_U8(00001010)   ///< Range_5V
 };
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 
 
 /// Добавочные смещения по времени для разверёток режима рандомизатора.
@@ -60,6 +68,10 @@ typedef struct
     uint8 maskPeackDet;     ///< Маска. Требуется для записи в аппаратную часть при включенном режиме пикового детектора.
 } TBaseMaskStruct;
 
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4310)
+#endif
 
 static const TBaseMaskStruct masksTBase[TBaseSize] =
 {
@@ -96,6 +108,9 @@ static const TBaseMaskStruct masksTBase[TBaseSize] =
     {BINARY_U8(01111111), BINARY_U8(01011111)}  ///< TBase_10s
 };
 
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 
 uint16 gPost = 1024;
 int16 gPred = 1024;
@@ -181,7 +196,7 @@ void LoadTShift(void)
         gAddNStop = 0;
     }
 
-    gPost = ~(gPost + 1);                   // Здесь просто для записи в железо дополняем
+    gPost = (uint16)(~(gPost + 1));                   // Здесь просто для записи в железо дополняем
 
     if(!FPGA_IN_PROCESS_OF_READ)
     {
@@ -191,7 +206,7 @@ void LoadTShift(void)
             --gPred;
         }
         FPGA_Write(RecordFPGA, WR_POST, gPost, true);
-        FPGA_Write(RecordFPGA, WR_PRED, gPred, true);
+        FPGA_Write(RecordFPGA, WR_PRED, (uint)gPred, true);
     }
 }
 
@@ -268,8 +283,8 @@ static void LoadTrigLev(void)
 
     if ((TRIG_INPUT_LPF || TRIG_INPUT_FULL) && !TRIGSOURCE_EXT)
     {
-        int delta = (CalculateDeltaRShift((Channel)TRIGSOURCE) * divR[SET_RANGE(TRIGSOURCE)]);
-        trigLev = (int)trigLev + delta;
+        int delta = (int)(CalculateDeltaRShift((Channel)TRIGSOURCE) * divR[SET_RANGE(TRIGSOURCE)]);
+        trigLev = (uint)((int)trigLev + delta);
         if (trigLev < TrigLevMin)
         {
             trigLev = TrigLevMin;
@@ -418,7 +433,7 @@ static void LoadRange(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void LoadTrigPolarity(void)
 {
-    FPGA_Write(RecordFPGA, WR_TRIG, TRIG_POLARITY_FRONT ? 0x01 : 0x00, true);
+    FPGA_Write(RecordFPGA, WR_TRIG, TRIG_POLARITY_FRONT ? 1u : 0u, true);
 }
 
 
@@ -504,8 +519,8 @@ void FPGA_SetRange(Channel ch, Range range)
         sChannel_SetRange(ch, range);
         if (LINKING_RSHIFT == LinkingRShift_Voltage)
         {
-            SET_RSHIFT(ch) = (int16)math.RShift2Rel(rShiftAbs, range);
-            SET_TRIGLEV(ch) = (int16)math.RShift2Rel(trigLevAbs, range);
+            SET_RSHIFT(ch) = (uint16)math.RShift2Rel(rShiftAbs, range);
+            SET_TRIGLEV(ch) = (uint16)math.RShift2Rel(trigLevAbs, range);
         }
         LoadRange(ch);
         LoadTrigLev();

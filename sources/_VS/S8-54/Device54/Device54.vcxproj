@@ -154,6 +154,9 @@
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\lwipopts.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGA.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGATypes.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\ffconf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.h" />
@@ -326,6 +329,10 @@
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\ethernetif.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGA.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\fpgaSettings.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGATypes.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c">

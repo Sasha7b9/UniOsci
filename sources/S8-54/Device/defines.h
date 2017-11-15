@@ -109,7 +109,7 @@ typedef int     (*pFuncIU8I)(uint8 *, int);
 
 #ifdef WIN32
 #pragma warning(push)
-#pragma warning(disable:4201)
+#pragma warning(disable:4201 4310)
 #endif
 
 
@@ -188,10 +188,6 @@ typedef struct
     int16  rel;
     float  abs;
 } StructRelAbs;
-
-#ifdef WIN64
-#pragma warning(pop)
-#endif
 
 #define _bitset(bits)                               \
   ((uint8)(                                         \

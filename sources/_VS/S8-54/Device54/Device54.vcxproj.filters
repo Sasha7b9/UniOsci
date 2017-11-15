@@ -46,6 +46,9 @@
     <Filter Include="FlashDrive">
       <UniqueIdentifier>{14f1c1c1-e86d-4c62-8f34-d88a46d8eba5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FPGA">
+      <UniqueIdentifier>{137bdca4-801b-4c2c-ba17-3b12cd10d048}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -302,6 +305,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.h">
       <Filter>FlashDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGA.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGATypes.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -586,6 +598,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.cpp">
       <Filter>FlashDrive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGATypes.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\fpgaSettings.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGA.cpp">
+      <Filter>FPGA</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

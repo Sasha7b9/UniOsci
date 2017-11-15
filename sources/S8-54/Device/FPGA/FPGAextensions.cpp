@@ -111,7 +111,7 @@ typedef struct
 
 CalibrationStruct *cal;
 
-static float freq = 0.0f;                   ///< Частота, намеренная альтерой.
+static float frequency = 0.0f;              ///< Частота, намеренная альтерой.
 static float prevFreq = 0.0f;
 static volatile bool readPeriod = false;    ///< Установленный в true флаг означает, что частоту нужно считать по счётчику периода.
 static BitSet32 freqSet;
@@ -158,14 +158,14 @@ static void LoadSettingsCalcAddRShift(Channel ch)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static bool RunFuncAndWaitFlag(pFuncVV func, uint8 flag)
+static bool RunFuncAndWaitFlag(pFuncVV func, uint8 fl)
 {
     func();
 
     const uint timeWait = 1000;
     uint startTime = gTimeMS;
 
-    while (GetBit(FSMC_READ(RD_FL), flag) == 0 && (gTimeMS - startTime > timeWait))
+    while (GetBit(FSMC_READ(RD_FL), fl) == 0 && (gTimeMS - startTime > timeWait))
     {
     };
     if (gTimeMS - startTime > timeWait)
@@ -216,7 +216,7 @@ static int16 CalculateAdditionRShift(Channel ch, Range range)
 
         uint16 *addrRead = ADDRESS_READ(ch);
 
-        for(int i = 0; i < 250; i += 2)
+        for(int j = 0; j < 250; j += 2)
         {
             uint16 data = *addrRead;
             uint8 data0 = (uint8)data;
@@ -275,11 +275,11 @@ static float CalculateStretchADC(Channel ch)
 
 #define NUM_POINTS 1024
 
-        for (int i = 0; i < NUM_POINTS / 2; i++)
+        for (int j = 0; j < NUM_POINTS / 2; j++)
         {
             uint16 value = *addressRead;
 
-            for (int i = 0; i < 2; i++)
+            for (int z = 0; z < 2; z++)
             {
                 uint8 val = (uint8)value;
                 if (val > AVE_VALUE + 60 && val <= MAX_VALUE)
@@ -296,7 +296,7 @@ static float CalculateStretchADC(Channel ch)
                 {
                     numNot++;
                 }               
-                value = value >> 8;
+                value = (uint16)(value >> 8);
             }
         }
     }
@@ -624,11 +624,11 @@ static void RestoreSettingsForCalibration(const Settings *savedSettings)
     
     Settings_RestoreState(savedSettings);
 
-    for(int ch = 0; ch < 2; ch++)
+    for(int ch = 0; ch < 2; ++ch)
     {
-        for(int type = 0; type < 3; type++)
+        for(int t = 0; t < 3; ++t)
         {
-            NRST_STRETCH_ADC(ch, type) = stretch[ch][type];
+            NRST_STRETCH_ADC(ch, t) = stretch[ch][t];
         }
     }
 
@@ -795,10 +795,10 @@ bool FreqMeter_Init(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static float FreqSetToFreq(const BitSet32 *freq)
+static float FreqSetToFreq(const BitSet32 *fr)
 {
     const float k[3] = {10.0f, 1.0f, 0.1f};
-    return FREQ_METER_ENABLED ? (freq->word * k[FREQ_METER_TIMECOUNTING]) : (freq->word * 10.0f);
+    return FREQ_METER_ENABLED ? (fr->word * k[FREQ_METER_TIMECOUNTING]) : (fr->word * 10.0f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -856,7 +856,7 @@ void FreqMeter_Draw(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float FreqMeter_GetFreq(void)
 {
-    return freq;
+    return frequency;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -874,11 +874,11 @@ static void ReadFreq(void)
         float fr = FreqSetToFreq(&freqSet);
         if (fr < prevFreq * 0.9f || fr > prevFreq * 1.1f)
         {
-            freq = ERROR_VALUE_FLOAT;
+            frequency = ERROR_VALUE_FLOAT;
         }
         else
         {
-            freq = fr;
+            frequency = fr;
         }
         prevFreq = fr;
     }
@@ -893,11 +893,11 @@ static void ReadPeriod(void)
     float fr = PeriodSetToFreq(&periodSet);
     if (fr < prevFreq * 0.9f || fr > prevFreq * 1.1f)
     {
-        freq = ERROR_VALUE_FLOAT;
+        frequency = ERROR_VALUE_FLOAT;
     }
     else
     {
-        freq = fr;
+        frequency = fr;
     }
     prevFreq = fr;
     readPeriod = false;
@@ -1046,7 +1046,7 @@ static uint8 GetBound(uint8 data[512], uint8 *_min, uint8 *_max)
     *_min = min;
     *_max = max;
 
-    return max - min;
+    return (uint8)(max - min);
 }
 
 
@@ -1134,7 +1134,7 @@ static void FuncDrawAutoFind(void)
     
     char buffer[101] = "";
     uint progress = ((HAL_GetTick() - s->startTime) / 20) % 80;
-    for(int i = 0; i < progress; i++)
+    for(uint i = 0; i < progress; i++)
     {
         strcat(buffer, ".");
     }
@@ -1146,7 +1146,7 @@ static void FuncDrawAutoFind(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FindParams(Channel ch, TBase *tBase)
+static bool FindParams(Channel, TBase *tBase)
 {
     FPGA_SetTrigInput(TrigInput_Full);
 

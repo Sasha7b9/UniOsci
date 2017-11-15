@@ -1249,19 +1249,9 @@
           <GroupName>FPGA</GroupName>
           <Files>
             <File>
-              <FileName>FPGA.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\FPGA\FPGA.c</FilePath>
-            </File>
-            <File>
               <FileName>FPGA.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\FPGA\FPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>FPGAextensions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\FPGA\FPGAextensions.c</FilePath>
             </File>
             <File>
               <FileName>FPGAextensions.h</FileName>
@@ -1269,19 +1259,29 @@
               <FilePath>.\Device\FPGA\FPGAextensions.h</FilePath>
             </File>
             <File>
-              <FileName>fpgaSettings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\FPGA\fpgaSettings.c</FilePath>
-            </File>
-            <File>
-              <FileName>FPGATypes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\FPGA\FPGATypes.c</FilePath>
-            </File>
-            <File>
               <FileName>fpgaTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\FPGA\fpgaTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\FPGA.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAextensions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\FPGAextensions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>fpgaSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\fpgaSettings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGATypes.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FPGA\FPGATypes.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -131,7 +131,7 @@ static void OnTimerCanReadData(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA_SetENumSignalsInSec(int numSigInSec) 
 {
-    Timer_SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (int)(1000.f / numSigInSec));
+    Timer_SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (uint)(1000.f / numSigInSec));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -228,8 +228,8 @@ static bool ReadPoint(void)
 void FPGA_WriteStartToHardware(void)
 {
     *WR_POST = gPost;
-    *WR_PRED = gPred;
-    *WR_TRIG = TRIG_POLARITY_FRONT ? 1 : 0;
+    *WR_PRED = (uint16)gPred;
+    *WR_TRIG = TRIG_POLARITY_FRONT ? 1u : 0u;
     *WR_START = 0xffff;
 }
 
@@ -508,7 +508,7 @@ static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave)
         // Ќо считывать будем с адреса на 3 меньшего, чем расчЄтный. Ћишние данные нужны, чтобы достроить те точки вначале, 
         // которые выпадают при программном сдвиге.
         // ѕроцедуре чтени€ мы укажем сколько первых точек выбросить через параметр numSkipped
-        uint16 addrFirstRead = *RD_ADDR_NSTOP + 16384 - (uint16)(bytesInChannel / step) - 1 - NUM_ADD_STEPS;
+        uint16 addrFirstRead = (uint16)(*RD_ADDR_NSTOP + 16384 - (uint16)(bytesInChannel / step) - 1 - NUM_ADD_STEPS);
 
         //uint startRead = gTimerTics;
 
@@ -552,7 +552,7 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
 
     if (shift)
     {
-        *((uint8 *)p) = ((*address) >> 8);
+        *((uint8 *)p) = (uint8)((*address) >> 8);
 
         p = (uint16 *)(((uint8 *)p) + 1);
         endP -= 8;                          // Ёто нужно, чтбы не выйти за границу буфера - ведь мы сдвигаем данные на один байт
@@ -602,7 +602,7 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
 //  ажетс€, рассчитываем адрес последней записи
 uint16 ReadNStop(void)
 {
-    return *RD_ADDR_NSTOP + 16384 - (uint16)NUM_BYTES(&ds) / 2 - 1 - (uint16)gAddNStop;
+    return (uint16)(*RD_ADDR_NSTOP + 16384 - (uint16)NUM_BYTES(&ds) / 2 - 1 - (uint16)gAddNStop);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -925,7 +925,7 @@ static void OnPressStartStopInP2P(void)
         }
         else
         {   // то устанавливаем признак того, что после окончани€ не надо запускать следующий цикл
-            NEED_STOP_AFTER_READ_FRAME_2P2 = !NEED_STOP_AFTER_READ_FRAME_2P2;
+            NEED_STOP_AFTER_READ_FRAME_2P2 = NEED_STOP_AFTER_READ_FRAME_2P2 == 0 ? 1u : 0u;
             FPGA_Stop(false);
         }
     }
@@ -1027,13 +1027,13 @@ void FPGA_FindAndSetTrigLevel(void)
     uint8 min = math.GetMinFromArray_RAM(data, 0, lastPoint);
     uint8 max = math.GetMaxFromArray_RAM(data, 0, lastPoint);
 
-    uint8 aveValue = ((int)min + (int)max) / 2;
+    uint8 aveValue = (uint8)(((int)min + (int)max) / 2);
 
     static const float scale = (float)(TrigLevMax - TrigLevZero) / (float)(MAX_VALUE - AVE_VALUE) / 2.4f;
 
     int trigLev = (int)(TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT(TRIGSOURCE) - RShiftZero));
 
-    FPGA_SetTrigLev(TRIGSOURCE, (int16)trigLev);
+    FPGA_SetTrigLev(TRIGSOURCE, (uint16)trigLev);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
