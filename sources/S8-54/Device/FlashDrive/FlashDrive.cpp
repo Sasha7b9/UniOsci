@@ -34,7 +34,7 @@ static void SetTimeForFile(char *nameFile);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id)
+void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 {
     switch(id)
     {
@@ -144,7 +144,7 @@ void FDrive_Update(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_AppendStringToFile(const char *string)
+bool FDrive_AppendStringToFile(const char *)
 {
     return false;
 }
@@ -172,7 +172,7 @@ void FDrive_GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles
     
 
     char nameDir[_MAX_LFN + 1];
-    memcpy(nameDir, fullPath, strlen(fullPath));
+    memcpy(nameDir, (void *)fullPath, strlen(fullPath));
     nameDir[strlen(fullPath)] = '\0';
 
     if (f_opendir(&dir, nameDir) == FR_OK)
@@ -215,7 +215,7 @@ void FDrive_GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FDrive_GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s)
 {
-    memcpy(s->nameDir, fullPath, strlen(fullPath));
+    memcpy(s->nameDir, (void *)fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
@@ -303,7 +303,7 @@ void FDrive_CloseCurrentDir(StructForReadDir *s)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FDrive_GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
-    memcpy(s->nameDir, fullPath, strlen(fullPath));
+    memcpy(s->nameDir, (void *)fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
@@ -387,7 +387,7 @@ bool FDrive_OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *stru
     {
         return false;
     }
-    strcpy(structForWrite->name, fullPathToFile);
+    strcpy(structForWrite->name, (char *)fullPathToFile);
     structForWrite->sizeData = 0;
     return true;
 }
@@ -410,7 +410,7 @@ bool FDrive_WriteToFile(uint8 *data, int sizeData, StructForWrite *structForWrit
         if (structForWrite->sizeData == SIZE_FLASH_TEMP_BUFFER)
         {
             uint wr = 0;
-            if (f_write(&structForWrite->fileObj, structForWrite->tempBuffer, structForWrite->sizeData, &wr) != FR_OK || structForWrite->sizeData != (int)wr)
+            if (f_write(&structForWrite->fileObj, structForWrite->tempBuffer, (uint)structForWrite->sizeData, &wr) != FR_OK || structForWrite->sizeData != (int)wr)
             {
                 return false;
             }
@@ -428,7 +428,7 @@ bool FDrive_CloseFile(StructForWrite *structForWrite)
     if (structForWrite->sizeData != 0)
     {
         uint wr = 0;
-        if (f_write(&structForWrite->fileObj, structForWrite->tempBuffer, structForWrite->sizeData, &wr) != FR_OK || structForWrite->sizeData != (int)wr)
+        if (f_write(&structForWrite->fileObj, structForWrite->tempBuffer, (uint)structForWrite->sizeData, &wr) != FR_OK || structForWrite->sizeData != (int)wr)
         {
             f_close(&structForWrite->fileObj);
             return false;

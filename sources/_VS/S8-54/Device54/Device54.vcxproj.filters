@@ -43,6 +43,9 @@
     <Filter Include="Ethernet">
       <UniqueIdentifier>{07d1a7b3-29e3-4fbd-aaf8-752323520e26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FlashDrive">
+      <UniqueIdentifier>{14f1c1c1-e86d-4c62-8f34-d88a46d8eba5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\defines.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.h">
+      <Filter>FlashDrive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -577,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.cpp">
       <Filter>Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.cpp">
+      <Filter>FlashDrive</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

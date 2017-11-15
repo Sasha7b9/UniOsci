@@ -159,7 +159,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;2&gt;.\Device\FlashDrive\FlashDrive.c</Filename>
+          <Filename>D:\Projects\UniOsci\sources\S8-54\Device\FlashDrive\FlashDrive.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Device\Device/FlashDrive/FlashDrive.c\399</Expression>
         </Bp>
@@ -2009,7 +2009,7 @@
 
   <Group>
     <GroupName>Ethernet</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2125,31 +2125,31 @@
 
   <Group>
     <GroupName>FlashDrive</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>13</GroupNumber>
       <FileNumber>152</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\FlashDrive\FlashDrive.c</PathWithFileName>
-      <FilenameWithoutPath>FlashDrive.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>13</GroupNumber>
-      <FileNumber>153</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Device\FlashDrive\FlashDrive.h</PathWithFileName>
       <FilenameWithoutPath>FlashDrive.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>153</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\FlashDrive\FlashDrive.cpp</PathWithFileName>
+      <FilenameWithoutPath>FlashDrive.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
