@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include "Log.h"
 #include "Display/Display.h"
@@ -16,10 +14,6 @@
 #include "Utils/GlobalFunctions.h"
 #include <stm32f437xx.h>
 #include <stm32f4xx_hal.h>
-#include <stm32f4xx_hal_tim.h>
-#include <stm32f4xx_hal_gpio.h>
-#include <stm32f4xx_hal_rcc.h>
-#include <stm32f4xx_hal_dac.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

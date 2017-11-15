@@ -1289,19 +1289,9 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
-              <FileName>FLASH.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\FLASH.c</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Hardware\FLASH.h</FilePath>
-            </File>
-            <File>
-              <FileName>FSMC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\FSMC.c</FilePath>
             </File>
             <File>
               <FileName>FSMC.h</FileName>
@@ -1309,19 +1299,9 @@
               <FilePath>.\Device\Hardware\FSMC.h</FilePath>
             </File>
             <File>
-              <FileName>Hardware.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\Hardware.c</FilePath>
-            </File>
-            <File>
               <FileName>Hardware.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Hardware\Hardware.h</FilePath>
-            </File>
-            <File>
-              <FileName>RAM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\RAM.c</FilePath>
             </File>
             <File>
               <FileName>RAM.h</FileName>
@@ -1329,19 +1309,9 @@
               <FilePath>.\Device\Hardware\RAM.h</FilePath>
             </File>
             <File>
-              <FileName>RTC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\RTC.c</FilePath>
-            </File>
-            <File>
               <FileName>RTC.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Hardware\RTC.h</FilePath>
-            </File>
-            <File>
-              <FileName>Sound.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\Sound.c</FilePath>
             </File>
             <File>
               <FileName>Sound.h</FileName>
@@ -1349,14 +1319,44 @@
               <FilePath>.\Device\Hardware\Sound.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Hardware\Timer.c</FilePath>
-            </File>
-            <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Hardware\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>FLASH.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\FLASH.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FSMC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\FSMC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hardware.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\Hardware.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RAM.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\RAM.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RTC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\RTC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Sound.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\Sound.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Hardware\Timer.cpp</FilePath>
             </File>
           </Files>
         </Group>

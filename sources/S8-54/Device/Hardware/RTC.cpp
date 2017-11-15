@@ -1,5 +1,3 @@
-
-
 #include "RTC.h"
 #include "Globals.h"
 #include "Log.h"
@@ -9,7 +7,6 @@
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include <stm32f4xx_hal.h>
-#include <stm32f4xx_hal_rtc.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,9 +93,9 @@ bool RTC_SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minute
 {
     RTC_DateTypeDef dateStruct;
     dateStruct.WeekDay = RTC_WEEKDAY_MONDAY;
-    dateStruct.Month = month;
-    dateStruct.Date = day;
-    dateStruct.Year = year;
+    dateStruct.Month = (uint8)month;
+    dateStruct.Date = (uint8)day;
+    dateStruct.Year = (uint8)year;
 
     if(HAL_RTC_SetDate((RTC_HandleTypeDef*)&rtcHandle, &dateStruct, FORMAT_BIN) != HAL_OK)
     {
@@ -106,9 +103,9 @@ bool RTC_SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minute
     };
 
     RTC_TimeTypeDef timeStruct;
-    timeStruct.Hours = hours;
-    timeStruct.Minutes = minutes;
-    timeStruct.Seconds = seconds;
+    timeStruct.Hours = (uint8)hours;
+    timeStruct.Minutes = (uint8)minutes;
+    timeStruct.Seconds = (uint8)seconds;
     timeStruct.TimeFormat = RTC_HOURFORMAT_24;
     timeStruct.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
     timeStruct.StoreOperation = RTC_STOREOPERATION_SET;
@@ -125,5 +122,5 @@ void RTC_SetCorrection(int8 correction)
 {
     NRST_CORRECTION_TIME = correction;
     
-    HAL_RTCEx_SetCoarseCalib(&rtcHandle, correction < 0 ? RTC_CALIBSIGN_NEGATIVE : RTC_CALIBSIGN_POSITIVE, correction & 0x7f);
+    HAL_RTCEx_SetCoarseCalib(&rtcHandle, (uint)(correction < 0 ? RTC_CALIBSIGN_NEGATIVE : RTC_CALIBSIGN_POSITIVE), (uint)(correction & 0x7f));
 }

@@ -1,5 +1,3 @@
-
-
 #include "Timer.h"
 #include "Log.h"
 
@@ -199,7 +197,7 @@ static void StartTIM(uint timeStopMS)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *)
 {
     uint time = gTimeMS;
     uint nearestTime = NearestTime();

@@ -117,7 +117,7 @@ void FLASH_LoadSettings(void)
         address -= 1024;
 
         // Читаем в Settings set количество байт, указанное в (int16)*address
-        ReadBufferBytes(address, &set, READ_HALF_WORD(address));
+        ReadBufferBytes((uint)address, &set, READ_HALF_WORD(address));
     }
 }
 
@@ -142,7 +142,7 @@ void FLASH_SaveSettings(void)
         address = ADDR_SECTOR_SETTINGS;
     }
 
-    WriteBufferBytes(address, &set, sizeof(Settings));
+    WriteBufferBytes((uint)address, &set, sizeof(Settings));
 }
 
 
@@ -320,7 +320,7 @@ void FLASH_DeleteData(int num)
     {
         if (i != numNotWritted)
         {
-            WriteBufferWords(addressSector + sizeQuartPart * i, (void *)(ADDR_DATA_TEMP + sizeQuartPart * i), sizeQuartPart / 4);
+            WriteBufferWords(addressSector + sizeQuartPart * i, (void *)(ADDR_DATA_TEMP + sizeQuartPart * i), (int)sizeQuartPart / 4);
         }
     }
     

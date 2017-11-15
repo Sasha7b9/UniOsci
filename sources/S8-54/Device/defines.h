@@ -9,7 +9,7 @@
 #endif
 
 #include <stm32f4xx_hal.h>
-#include <math.h>
+//#include <math.h>
 #include <limits.h>
 
 #define S8_54
@@ -61,6 +61,8 @@ typedef const char * const      pString;
 
 #ifndef WIN32
 typedef signed      char        int8_t;
+#else
+#define __attribute__(x)
 #endif
 
 

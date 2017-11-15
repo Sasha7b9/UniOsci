@@ -134,7 +134,7 @@ void RAM_WriteRead_Asinch(uint16 *src, uint16 *dest, int numHalfWords)
 
     transferComplete = false;
 
-    HAL_DMA_Start_IT(&handleDMA_RAM, (uint)src, (uint)dest, numHalfWords * 2);
+    HAL_DMA_Start_IT(&handleDMA_RAM, (uint)src, (uint)dest, (uint32)numHalfWords * 2);
     
     RAM_WaitWriteReadComplete();
 }
@@ -143,7 +143,7 @@ void RAM_WriteRead_Asinch(uint16 *src, uint16 *dest, int numHalfWords)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void RAM_MemSet_Sinch(uint8 *dest, uint8 value_, int numBytes)
 {
-    uint16 value = (value_ << 8) | value_;
+    uint16 value = (uint16)((value_ << 8) | value_);
     
     uint16 *address = (uint16 *)dest;
     for (int i = 0; i < numBytes / 2; i++)
@@ -168,13 +168,13 @@ void RAM_WaitWriteReadComplete(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void TransferComplete(DMA_HandleTypeDef *dmaHandle)
+static void TransferComplete(DMA_HandleTypeDef *)
 {
     transferComplete = true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void TransferError(DMA_HandleTypeDef *dmaHandle)
+static void TransferError(DMA_HandleTypeDef *)
 {
     HARDWARE_ERROR
 }
@@ -206,12 +206,12 @@ void RAM_WriteByte(void *dest, uint8 value)
     if ((int)dest & 0x1)
     {
         uint16 *addr = (uint16 *)((int)dest & 0xfffffffe);
-        *addr = (value << 8) + (uint8)(*addr);
+        *addr = (uint16)((value << 8) + (uint8)(*addr));
     }
     else
     {
         uint16 *addr = (uint16 *)dest;      
-        *addr = ((*addr) & 0xff00) + value;
+        *addr = (uint16)(((*addr) & 0xff00) + value);
     }
 }
 
@@ -259,7 +259,7 @@ uint8 RAM_ReadByte(void *src)
 
     if(odd)
     {
-        value = value >> 8;
+        value = (uint16)(value >> 8);
     }
 
     return (uint8)value;
@@ -272,7 +272,7 @@ uint RAM_ReadWord(void *src)
     uint16 *addr0 = (uint16 *)((int)src);
     uint16 *addr1 = addr0 + 1;
 
-    return (*addr0) + ((*addr1) << 16);
+    return (uint)((*addr0) + ((*addr1) << 16));
 }
 
 

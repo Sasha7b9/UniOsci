@@ -157,6 +157,13 @@
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGA.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGATypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\FLASH.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\FSMC.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\Hardware.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\RAM.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\RTC.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\Sound.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Hardware\Timer.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\ffconf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.h" />
@@ -333,6 +340,13 @@
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\fpgaSettings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGATypes.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\FLASH.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\FSMC.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\Hardware.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\RAM.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\RTC.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\Sound.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c">
