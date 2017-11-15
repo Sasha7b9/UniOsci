@@ -58,7 +58,7 @@
     </View>
     <View>
       <WinId>466</WinId>
-      <ViewName>Source Browser</ViewName>
+      <ViewName>Source Browser - *** Not Enabled ***</ViewName>
       <UserString>500</UserString>
       <TableColWidths>300</TableColWidths>
     </View>
@@ -91,10 +91,10 @@
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>0</Top>
-        <Left>676</Left>
-        <Right>1920</Right>
-        <Bottom>1172</Bottom>
+        <Top>49</Top>
+        <Left>530</Left>
+        <Right>1774</Right>
+        <Bottom>1221</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
