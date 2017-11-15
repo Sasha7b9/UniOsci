@@ -281,9 +281,9 @@ LabelReadByte:
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 FSMC::ReadPAN()
 {
-    uint8 bit0 = HAL_GPIO_ReadPin(PORT_PAN_0, PIN_PAN_0) == GPIO_PIN_SET ? 1 : 0;
-    uint8 bit1 = HAL_GPIO_ReadPin(PORT_PAN_1, PIN_PAN_1) == GPIO_PIN_SET ? 1 : 0;
-    return bit0 + bit1 * 2;
+    uint8 bit0 = (uint8)(HAL_GPIO_ReadPin(PORT_PAN_0, PIN_PAN_0) == GPIO_PIN_SET ? 1 : 0);
+    uint8 bit1 = (uint8)(HAL_GPIO_ReadPin(PORT_PAN_1, PIN_PAN_1) == GPIO_PIN_SET ? 1 : 0);
+    return (uint8)(bit0 + bit1 * 2);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -347,7 +347,7 @@ uint8 FSMC::GetOutData()
     uint dataD = GPIOD->IDR;
     uint dataE = GPIOE->IDR;
     
-    return ((dataD >> 14) & 0x3) | ((dataD & 0x3) << 2) | ((dataE & 0x780) >> 3);
+    return (uint8)(((dataD >> 14) & 0x3) | ((dataD & 0x3) << 2) | ((dataE & 0x780) >> 3));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

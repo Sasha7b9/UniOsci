@@ -98,7 +98,7 @@ uint FlashMemory::FirstFreeAddressForSettings()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint FlashMemory::AddressSavedSettings(int fromEnd)
+uint FlashMemory::AddressSavedSettings(int)
 {
     uint addrPrev = 0;
 
@@ -187,7 +187,7 @@ void FlashMemory::ReadBytes(uint address, void *data, uint size)
 {
     uint8 *buffer = (uint8 *)data;
 
-    for (int i = 0; i < size; i++)
+    for (uint i = 0; i < size; i++)
     {
         buffer[i] = READ_BYTE(address++);
     }

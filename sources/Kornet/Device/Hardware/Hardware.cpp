@@ -351,7 +351,7 @@ void Hardware::MX_GPIO_Init(void)
 }
 
 
-void _Error_Handler(char * file, int line)
+void _Error_Handler(char *, int)
 {
     while (1)
     {
