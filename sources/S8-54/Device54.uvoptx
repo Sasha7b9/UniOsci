@@ -1621,7 +1621,7 @@
 
   <Group>
     <GroupName>Display</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2009,25 +2009,13 @@
 
   <Group>
     <GroupName>Ethernet</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>12</GroupNumber>
       <FileNumber>143</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\Ethernet\app_ethernet.c</PathWithFileName>
-      <FilenameWithoutPath>app_ethernet.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>144</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2039,19 +2027,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>145</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\Ethernet\Ethernet.c</PathWithFileName>
-      <FilenameWithoutPath>Ethernet.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>146</FileNumber>
+      <FileNumber>144</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2063,19 +2039,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>147</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\Ethernet\ethernetif.c</PathWithFileName>
-      <FilenameWithoutPath>ethernetif.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>148</FileNumber>
+      <FileNumber>145</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2087,7 +2051,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>149</FileNumber>
+      <FileNumber>146</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2099,25 +2063,61 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>150</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\Ethernet\TcpSocket.c</PathWithFileName>
-      <FilenameWithoutPath>TcpSocket.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>151</FileNumber>
+      <FileNumber>147</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Device\Ethernet\TcpSocket.h</PathWithFileName>
       <FilenameWithoutPath>TcpSocket.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>148</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\Ethernet\app_ethernet.cpp</PathWithFileName>
+      <FilenameWithoutPath>app_ethernet.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>149</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\Ethernet\Ethernet.cpp</PathWithFileName>
+      <FilenameWithoutPath>Ethernet.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>150</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\Ethernet\ethernetif.cpp</PathWithFileName>
+      <FilenameWithoutPath>ethernetif.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>151</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\Ethernet\TcpSocket.cpp</PathWithFileName>
+      <FilenameWithoutPath>TcpSocket.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

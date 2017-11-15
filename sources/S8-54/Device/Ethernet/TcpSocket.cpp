@@ -1,9 +1,12 @@
-
-
 #include "TcpSocket.h"
 #include <lwip/tcp.h>
 #include <string.h>
 #include <stdarg.h>
+
+#ifdef WIN32
+#pragma warning(push)
+#pragma warning(disable : 4100 4101)
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -401,6 +404,10 @@ static err_t CallbackOnAccept(void *arg, struct tcp_pcb *newPCB, err_t err)
 
     return ret_err;
 }
+
+#ifdef WIN32
+#pragma warning(pop)
+#endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /*

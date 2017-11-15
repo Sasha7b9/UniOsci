@@ -1,5 +1,3 @@
-
-
 /**
   ******************************************************************************
   * @file    LwIP/LwIP_HTTP_Server_Raw/Src/ethernetif.c
@@ -45,7 +43,6 @@ uint gEthTimeLastEthifInput = 0;    //  Время последнего входа в процедуру ether
 
 #define IFNAME0 's'
 #define IFNAME1 't'
-
 
 #if defined ( __ICCARM__ ) /*!< IAR Compiler */
   #pragma data_alignment=4   
@@ -162,7 +159,7 @@ static void low_level_init(struct netif *netif)
   *       to become availale since the stack doesn't retry to send a packet
   *       dropped because of memory failure (except for the TCP timers).
   */
-static err_t low_level_output(struct netif *netif, struct pbuf *p)
+static err_t low_level_output(struct netif *, struct pbuf *p)
 {
   err_t errval;
   struct pbuf *q;
@@ -194,7 +191,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
     while( (byteslefttocopy + bufferoffset) > ETH_TX_BUF_SIZE )
     {
       /* Copy data to Tx buffer*/
-      memcpy( (uint8_t*)((uint8_t*)buffer + bufferoffset), (uint8_t*)((uint8_t*)q->payload + payloadoffset), (ETH_TX_BUF_SIZE - bufferoffset) );
+      memcpy( (uint8_t*)((uint8_t*)buffer + bufferoffset), (uint8_t*)((uint8_t*)q->payload + payloadoffset), (int)(ETH_TX_BUF_SIZE - bufferoffset) );
       
       /* Point to next descriptor */
       DmaTxDesc = (ETH_DMADescTypeDef *)(DmaTxDesc->Buffer2NextDescAddr);
@@ -215,7 +212,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
     }
     
     /* Copy the remaining bytes */
-    memcpy( (uint8_t*)((uint8_t*)buffer + bufferoffset), (uint8_t*)((uint8_t*)q->payload + payloadoffset), byteslefttocopy );
+    memcpy( (uint8_t*)((uint8_t*)buffer + bufferoffset), (uint8_t*)((uint8_t*)q->payload + payloadoffset), (int)byteslefttocopy );
     bufferoffset = bufferoffset + byteslefttocopy;
     framelength = framelength + byteslefttocopy;
   }
@@ -247,7 +244,7 @@ error:
   * @return a pbuf filled with the received packet (including MAC header)
   *         NULL on memory error
   */
-static struct pbuf * low_level_input(struct netif *netif)
+static struct pbuf * low_level_input(struct netif *)
 {
   struct pbuf *p = NULL;
   struct pbuf *q;
@@ -288,7 +285,7 @@ static struct pbuf * low_level_input(struct netif *netif)
       while( (byteslefttocopy + bufferoffset) > ETH_RX_BUF_SIZE )
       {
         /* Copy data to pbuf */
-        memcpy( (uint8_t*)((uint8_t*)q->payload + payloadoffset), (uint8_t*)((uint8_t*)buffer + bufferoffset), (ETH_RX_BUF_SIZE - bufferoffset));
+        memcpy( (uint8_t*)((uint8_t*)q->payload + payloadoffset), (uint8_t*)((uint8_t*)buffer + bufferoffset), (int)(ETH_RX_BUF_SIZE - bufferoffset));
         
         /* Point to next descriptor */
         dmarxdesc = (ETH_DMADescTypeDef *)(dmarxdesc->Buffer2NextDescAddr);
@@ -300,7 +297,7 @@ static struct pbuf * low_level_input(struct netif *netif)
       }
       
       /* Copy remaining data in pbuf */
-      memcpy( (uint8_t*)((uint8_t*)q->payload + payloadoffset), (uint8_t*)((uint8_t*)buffer + bufferoffset), byteslefttocopy);
+      memcpy( (uint8_t*)((uint8_t*)q->payload + payloadoffset), (uint8_t*)((uint8_t*)buffer + bufferoffset), (int)byteslefttocopy);
       bufferoffset = bufferoffset + byteslefttocopy;
     }
   } 
@@ -515,8 +512,7 @@ void ethernetif_update_config(struct netif *netif)
       assert_param(IS_ETH_DUPLEX_MODE(EthHandle.Init.DuplexMode));
       
       /* Set MAC Speed and Duplex Mode to PHY */
-      HAL_ETH_WritePHYRegister(&EthHandle, PHY_BCR, ((uint16_t)(EthHandle.Init.DuplexMode >> 3) |
-                                                     (uint16_t)(EthHandle.Init.Speed >> 1))); 
+      HAL_ETH_WritePHYRegister(&EthHandle, PHY_BCR, (uint)((uint16_t)(EthHandle.Init.DuplexMode >> 3) | (uint16_t)(EthHandle.Init.Speed >> 1))); 
     }
 
     /* ETHERNET MAC Re-Configuration */
@@ -539,7 +535,7 @@ void ethernetif_update_config(struct netif *netif)
   * @param  netif: the network interface
   * @retval None
   */
-__weak void ethernetif_notify_conn_changed(struct netif *netif)
+__weak void ethernetif_notify_conn_changed(struct netif *)
 {
   /* NOTE : This is function clould be implemented in user file 
             when the callback is needed,

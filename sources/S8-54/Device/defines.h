@@ -1,8 +1,11 @@
 #pragma once
 
-#ifdef WIN
+#ifdef WIN32
 #define __DSB()
 #define __NOP()
+#define __ALIGN_BEGIN
+#define __ALIGN_END
+#define __weak
 #endif
 
 #include <stm32f4xx_hal.h>

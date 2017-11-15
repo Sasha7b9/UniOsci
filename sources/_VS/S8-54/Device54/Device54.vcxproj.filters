@@ -40,6 +40,9 @@
     <Filter Include="Display\fonts">
       <UniqueIdentifier>{8d5e1928-9f84-4652-ba9d-9bdc84275d6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ethernet">
+      <UniqueIdentifier>{07d1a7b3-29e3-4fbd-aaf8-752323520e26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -275,6 +278,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Display\font\Font.h">
       <Filter>Display\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\Ethernet.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\ethernetif.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\lwipopts.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\defines.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -544,6 +565,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Display\font\Font.cpp">
       <Filter>Display\fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.cpp">
+      <Filter>Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\ethernetif.cpp">
+      <Filter>Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\Ethernet.cpp">
+      <Filter>Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.cpp">
+      <Filter>Ethernet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

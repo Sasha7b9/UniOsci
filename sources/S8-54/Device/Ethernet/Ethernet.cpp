@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include "ethernetif.h"
 #include "Log.h"
@@ -75,7 +73,7 @@ void Ethernet_Update(uint timeMS)
 
     do 
     {
-        CABLE_LAN_IS_CONNECTED = HAL_GetTick() - gEthTimeLastEthifInput <= 1500;
+        CABLE_LAN_IS_CONNECTED = (HAL_GetTick() - gEthTimeLastEthifInput <= 1500) ? 1U : 0U;
 
         ethernetif_input(&gnetif);
         sys_check_timeouts();

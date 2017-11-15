@@ -1184,29 +1184,14 @@
           <GroupName>Ethernet</GroupName>
           <Files>
             <File>
-              <FileName>app_ethernet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Ethernet\app_ethernet.c</FilePath>
-            </File>
-            <File>
               <FileName>app_ethernet.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Ethernet\app_ethernet.h</FilePath>
             </File>
             <File>
-              <FileName>Ethernet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Ethernet\Ethernet.c</FilePath>
-            </File>
-            <File>
               <FileName>Ethernet.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Ethernet\Ethernet.h</FilePath>
-            </File>
-            <File>
-              <FileName>ethernetif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Ethernet\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>ethernetif.h</FileName>
@@ -1219,14 +1204,29 @@
               <FilePath>.\Device\Ethernet\lwipopts.h</FilePath>
             </File>
             <File>
-              <FileName>TcpSocket.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Ethernet\TcpSocket.c</FilePath>
-            </File>
-            <File>
               <FileName>TcpSocket.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Ethernet\TcpSocket.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_ethernet.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Ethernet\app_ethernet.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Ethernet.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Ethernet\Ethernet.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ethernetif.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Ethernet\ethernetif.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TcpSocket.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Ethernet\TcpSocket.cpp</FilePath>
             </File>
           </Files>
         </Group>
