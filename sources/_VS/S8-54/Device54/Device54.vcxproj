@@ -184,6 +184,9 @@
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageDisplay.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageHelp.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageMemory.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Panel\Controls.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Panel\Panel.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\Panel\PanelFunctions.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_desc.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\VCP.h" />
@@ -379,8 +382,8 @@
     <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItemsLogic.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\Definition.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.c" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageDebug.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageDisplay.cpp" />
@@ -389,8 +392,9 @@
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageMemory.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageService.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTime.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.c" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\Panel\Panel.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_core.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_desc.cpp" />

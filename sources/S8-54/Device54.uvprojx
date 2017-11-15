@@ -1444,11 +1444,6 @@
               <FilePath>.\Device\Menu\Pages\Definition.h</FilePath>
             </File>
             <File>
-              <FileName>HelpContent.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\HelpContent.c</FilePath>
-            </File>
-            <File>
               <FileName>HelpContent.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Menu\Pages\HelpContent.h</FilePath>
@@ -1457,11 +1452,6 @@
               <FileName>HelpContentPages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Menu\Pages\HelpContentPages.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageChannels.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Menu\Pages\PageChannels.c</FilePath>
             </File>
             <File>
               <FileName>PageCursors.h</FileName>
@@ -1527,6 +1517,16 @@
               <FileName>PageTime.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Menu\Pages\PageTime.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HelpContent.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\HelpContent.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageChannels.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Menu\Pages\PageChannels.cpp</FilePath>
             </File>
           </Files>
         </Group>

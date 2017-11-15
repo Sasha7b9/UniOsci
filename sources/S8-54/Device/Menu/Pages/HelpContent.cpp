@@ -1,5 +1,3 @@
-
-
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Display/Grid.h"

@@ -15,7 +15,7 @@ static const uint MIN_TIME = 500;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Long_Help(void)
 {
-    HINT_MODE_ENABLE = !HINT_MODE_ENABLE;
+    HINT_MODE_ENABLE = HINT_MODE_ENABLE == 0u ? 1u : 0u;
     gStringForHint = 0;
     gItemHint = 0;
 }
@@ -56,7 +56,7 @@ void Func_Start(int key)                    // B_Start
     {
         if (MODE_PAUSE_CONSOLE)             // Если кнопка ПУСК/СТОП управляет выводом на консоль
         {
-            CONSOLE_IN_PAUSE = CONSOLE_IN_PAUSE ? 0 : 1;
+            CONSOLE_IN_PAUSE = CONSOLE_IN_PAUSE ? 0u : 1u;
         }
         if (MODE_WORK_DIR)                  // Если кнопка ПУСК/СТОП выполняет стнадартную функцию
         {
@@ -77,13 +77,13 @@ void Long_Start(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void EFB(int delta)
+void EFB(int)
 {
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Func_Power(int key)                        // B_Power
+void Func_Power(int)                // B_Power
 {
     SET_FLAG(NEED_DISABLE_POWER);
     if (IsPageSB(OpenedItem()))     // Если открата страница малых кнопок,
@@ -133,7 +133,7 @@ int CalculateCount(int *prevTime)
 {
     uint time = gTimeMS;
     uint delta = time - *prevTime;
-    *prevTime = time;
+    *prevTime = (int)time;
 
     if (delta > 75)
     {
@@ -327,18 +327,6 @@ void XShift(int delta)
     {
         ChangeTShift(&prevTime, FPGA_SetTShift, (int16)delta);
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void XShiftLeft(void)
-{
-    XShift(-1);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void XShiftRigth(void)
-{
-    XShift(1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

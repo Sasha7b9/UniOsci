@@ -19,13 +19,13 @@ extern void OnPress_ResetSettings(void);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define MAX_DATA            20
 
-#define LED_CHANA_ENABLE    129
-#define LED_CHANA_DISABLE   1
-#define LED_CHANB_ENABLE    130
-#define LED_CHANB_DISABLE   2
-#define LED_TRIG_ENABLE     131
-#define LED_TRIG_DISABLE    3
-#define POWER_OFF           4
+#define LED_CHANA_ENABLE    129u
+#define LED_CHANA_DISABLE   1u
+#define LED_CHANB_ENABLE    130u
+#define LED_CHANB_DISABLE   2u
+#define LED_TRIG_ENABLE     131u
+#define LED_TRIG_DISABLE    3u
+#define POWER_OFF           4u
 
 
 static PanelButton pressedKey = B_Empty;
@@ -606,12 +606,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* handleSPI)
+void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* hSPI)
 {
     if (!panel.ProcessingCommandFromPIC(dataSPIfromPanel))
     {
-        HAL_SPI_DeInit(handleSPI);
-        HAL_SPI_Init(handleSPI);
+        HAL_SPI_DeInit(hSPI);
+        HAL_SPI_Init(hSPI);
     }
 
     SPI1->DR = panel.NextData();

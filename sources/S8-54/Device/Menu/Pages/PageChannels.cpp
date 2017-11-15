@@ -80,7 +80,7 @@ DEF_PAGE_7(pChanA, ,
 );
 
 //--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Вход ---
-void OnChanged_ChanA_Input(bool active)
+void OnChanged_ChanA_Input(bool)
 {
     panel.EnableLEDChannel(A, SET_ENABLED_A);
 }
@@ -97,7 +97,7 @@ DEF_CHOICE_2
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Связь ---
-static void OnChanged_ChanA_Couple(bool active)
+static void OnChanged_ChanA_Couple(bool)
 {
     FPGA_SetModeCouple(A, SET_COUPLE_A);
 }
@@ -116,7 +116,7 @@ DEF_CHOICE_3
 
 
 //------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Полоса ---
-static void OnChanged_ChanA_Bandwidth(bool active)
+static void OnChanged_ChanA_Bandwidth(bool)
 {
     FPGA_SetBandwidth(A);
 }
@@ -133,7 +133,7 @@ DEF_CHOICE_2
 );
 
 //------------------------------------------------------------------------------------------------------------------------ КАНАЛ 1 - Сопротивление ---
-static void OnChanged_ChanA_Resistance(bool active)
+static void OnChanged_ChanA_Resistance(bool)
 {
     FPGA_SetResistance(A, SET_RESISTANCE_A);
     if (SET_RESISTANCE_A == Resistance_50Om)
@@ -154,7 +154,7 @@ DEF_CHOICE_2
 );
 
 //----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Инверсия ---
-static void OnChanged_ChanA_Inverse(bool active)
+static void OnChanged_ChanA_Inverse(bool)
 {
     FPGA_SetRShift(A, SET_RSHIFT_A);
 }
@@ -259,13 +259,13 @@ DEF_CHOICE_3
     "Земля", "Ground"
 );
 
-static void OnChanged_ChanB_Couple(bool active)
+static void OnChanged_ChanB_Couple(bool)
 {
     FPGA_SetModeCouple(B, SET_COUPLE_B);
 }
 
 //------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Полоса ---
-static void OnChanged_ChanB_Bandwidth(bool active)
+static void OnChanged_ChanB_Bandwidth(bool)
 {
     FPGA_SetBandwidth(B);
 }
@@ -282,7 +282,7 @@ DEF_CHOICE_2
 );
 
 //------------------------------------------------------------------------------------------------------------------------ КАНАЛ 2 - Сопротивление ---
-static void OnChanged_ChanB_Resistance(bool active)
+static void OnChanged_ChanB_Resistance(bool)
 {
     FPGA_SetResistance(B, SET_RESISTANCE_B);
     if (SET_RESISTANCE_B == Resistance_50Om)
@@ -302,7 +302,7 @@ DEF_CHOICE_2
 );
 
 //----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Инверсия ---
-static void OnChanged_ChanB_Inverse(bool active)
+static void OnChanged_ChanB_Inverse(bool)
 {
     FPGA_SetRShift(B, SET_RSHIFT_B);
 }

@@ -58,6 +58,9 @@
     <Filter Include="Menu\Pages">
       <UniqueIdentifier>{d5f4e1ec-6bb3-4300-8608-794c7aa1ccf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Panel">
+      <UniqueIdentifier>{575d68b6-7810-4030-975c-e04f25e2d063}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h">
@@ -386,6 +389,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageMemory.h">
       <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Panel\Controls.h">
+      <Filter>Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Panel\Panel.h">
+      <Filter>Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Panel\PanelFunctions.h">
+      <Filter>Panel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -728,15 +740,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\Definition.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.c">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.c">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.c">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
@@ -763,6 +766,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.cpp">
       <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.c">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Panel\Panel.cpp">
+      <Filter>Panel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
