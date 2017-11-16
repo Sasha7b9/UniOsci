@@ -1504,11 +1504,6 @@
           <GroupName>Panel</GroupName>
           <Files>
             <File>
-              <FileName>Controls.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Panel\Controls.c</FilePath>
-            </File>
-            <File>
               <FileName>Controls.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Panel\Controls.h</FilePath>
@@ -1524,9 +1519,14 @@
               <FilePath>.\Device53\Panel\Panel.h</FilePath>
             </File>
             <File>
-              <FileName>PanelFunctions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Panel\PanelFunctions.c</FilePath>
+              <FileName>Controls.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Panel\Controls.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PanelFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Panel\PanelFunctions.cpp</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>

@@ -43,6 +43,9 @@
     <Filter Include="Menu\Pages">
       <UniqueIdentifier>{fe0b4803-db1f-4158-89ff-2d7aa8f8cea6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Panel">
+      <UniqueIdentifier>{f58cc03d-a935-4f60-8c06-7ea1166d85aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -420,6 +423,15 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageTrig.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\Panel.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\Controls.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\PanelFunctions.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -646,6 +658,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.h">
       <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Panel\Controls.h">
+      <Filter>Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Panel\Panel.h">
+      <Filter>Panel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

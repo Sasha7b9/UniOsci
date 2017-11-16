@@ -2606,25 +2606,13 @@
 
   <Group>
     <GroupName>Panel</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>14</GroupNumber>
       <FileNumber>195</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device53\Panel\Controls.c</PathWithFileName>
-      <FilenameWithoutPath>Controls.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>196</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2636,7 +2624,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>197</FileNumber>
+      <FileNumber>196</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2648,7 +2636,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>198</FileNumber>
+      <FileNumber>197</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2660,13 +2648,25 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>199</FileNumber>
-      <FileType>1</FileType>
+      <FileNumber>198</FileNumber>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Device53\Panel\PanelFunctions.c</PathWithFileName>
-      <FilenameWithoutPath>PanelFunctions.c</FilenameWithoutPath>
+      <PathWithFileName>.\Device53\Panel\Controls.cpp</PathWithFileName>
+      <FilenameWithoutPath>Controls.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>199</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device53\Panel\PanelFunctions.cpp</PathWithFileName>
+      <FilenameWithoutPath>PanelFunctions.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

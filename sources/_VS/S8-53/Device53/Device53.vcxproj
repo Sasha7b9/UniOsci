@@ -179,6 +179,9 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageService.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageTime.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageTrig.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\Controls.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\Panel.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\PanelFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -433,6 +436,8 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageHelp.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Panel\Controls.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Panel\Panel.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
