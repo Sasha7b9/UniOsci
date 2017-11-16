@@ -43,7 +43,7 @@ void FDrive_Init(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id)
+void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 {
     switch (id)
     {
@@ -227,7 +227,7 @@ int FDrive_OpenFileForRead(char *fileName)
 int FDrive_ReadFromFile(int numBytes, uint8 *buffer)
 {
     uint readed = 0;
-    if (f_read(&ms->drive.file, buffer, numBytes, &readed) == FR_OK)
+    if (f_read(&ms->drive.file, buffer, (uint)numBytes, &readed) == FR_OK)
     {
         return (int)readed;
     }

@@ -491,14 +491,14 @@
           <GroupName>FlashDrive</GroupName>
           <Files>
             <File>
-              <FileName>FlashDrive.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\FlashDrive\FlashDrive.c</FilePath>
-            </File>
-            <File>
               <FileName>FlashDrive.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\FlashDrive\FlashDrive.h</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\FlashDrive\FlashDrive.cpp</FilePath>
             </File>
           </Files>
         </Group>
