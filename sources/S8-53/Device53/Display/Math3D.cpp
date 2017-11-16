@@ -15,12 +15,12 @@ void FillMatriceRotation(Mat4x4 *mat, float angleX, float angleY, float angleZ)
     Mat4x4 matZ = {0};
     Mat4x4 matTemp = {0};
 
-    float cosX = cos(angleX);
-    float sinX = sin(angleX);
-    float cosY = cos(angleY);
-    float sinY = sin(angleY);
-    float cosZ = cos(angleZ);
-    float sinZ = sin(angleZ);
+    float cosX = cosf(angleX);
+    float sinX = sinf(angleX);
+    float cosY = cosf(angleY);
+    float sinY = sinf(angleY);
+    float cosZ = cosf(angleZ);
+    float sinZ = sinf(angleZ);
 
     matZ.n[0][0] = cosZ;
     matZ.n[0][1] = sinZ;
@@ -81,8 +81,8 @@ void TransformPoint(Mat4x4 *mat, Point *pointIn, Point *pointOut)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PresentPointToScreen(Point *point, float *x, float *y)
 {
-    *x = point->x * (500.0 / point->z);
-    *y = point->y * (500.0 / point->z);
+    *x = point->x * (500.0f / point->z);
+    *y = point->y * (500.0f / point->z);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

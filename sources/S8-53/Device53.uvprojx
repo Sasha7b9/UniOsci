@@ -964,11 +964,6 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\Colors.c</FilePath>
-            </File>
-            <File>
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\Colors.h</FilePath>
@@ -982,11 +977,6 @@
               <FileName>Display.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\Display.h</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayPrimitives.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\DisplayPrimitives.c</FilePath>
             </File>
             <File>
               <FileName>DisplayPrimitives.h</FileName>
@@ -1009,11 +999,6 @@
               <FilePath>.\Device53\Display\Grid.h</FilePath>
             </File>
             <File>
-              <FileName>Math3D.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\Math3D.c</FilePath>
-            </File>
-            <File>
               <FileName>Math3D.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\Math3D.h</FilePath>
@@ -1034,19 +1019,9 @@
               <FilePath>.\Device53\Display\PainterC.h</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\PainterMem.c</FilePath>
-            </File>
-            <File>
               <FileName>PainterMem.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\PainterMem.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterText.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\PainterText.c</FilePath>
             </File>
             <File>
               <FileName>Symbols.h</FileName>
@@ -1054,25 +1029,45 @@
               <FilePath>.\Device53\Display\Symbols.h</FilePath>
             </File>
             <File>
-              <FileName>WelcomeScreen.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\WelcomeScreen.c</FilePath>
-            </File>
-            <File>
               <FileName>WelcomeScreen.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\WelcomeScreen.h</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\Colors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\DisplayPrimitives.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math3D.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\Math3D.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterMem.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\PainterMem.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>WelcomeScreen.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\WelcomeScreen.cpp</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Display/font</GroupName>
           <Files>
-            <File>
-              <FileName>Font.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Display\font\Font.c</FilePath>
-            </File>
             <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
@@ -1117,6 +1112,11 @@
               <FileName>fontUGOdisplay.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\font\fontUGOdisplay.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Display\font\Font.cpp</FilePath>
             </File>
           </Files>
         </Group>

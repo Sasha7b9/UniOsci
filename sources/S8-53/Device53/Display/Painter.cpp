@@ -275,12 +275,12 @@ void Painter::DrawLineC(int x0, int y0, int x1, int y1, Color color)
 void Painter::DrawVPointLine(int x, int y0, int y1, float delta, Color color)
 {
     SetColor(color);
-    int8 numPoints = (y1 - y0) / delta;
+    int8 numPoints = (int8)((y1 - y0) / delta);
     uint8 command[6];
     command[0] = DRAW_VPOINT_LINE;
     *((int16*)(command + 1)) = (int16)x;
     *(command + 3) = y0;
-    *(command + 4) = delta;
+    *(command + 4) = (uint8)delta;
     *(command + 5) = numPoints;
     SendToDisplay(command, 6);
 }
@@ -288,9 +288,9 @@ void Painter::DrawVPointLine(int x, int y0, int y1, float delta, Color color)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawHPointLine(int y, int x0, int x1, float delta)
 {
-    for (int x = x0; x <= x1; x += delta)
+    for (float x = (float)x0; (int)x <= x1; x += delta)
     {
-        SetPoint(x, y);
+        SetPoint((int)x, y);
     }
 }
 
@@ -616,11 +616,11 @@ void Painter::DrawPicture(int x, int y, int width, int height, uint8 *address)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint16 Painter::ReduceBrightness(uint16 colorValue, float newBrightness)
 {
-    int red = R_FROM_COLOR(colorValue) * newBrightness;
+    int red = (int)(R_FROM_COLOR(colorValue) * newBrightness);
     LIMITATION(red, red, 0, 31);
-    int green = G_FROM_COLOR(colorValue) * newBrightness;
+    int green = (int)(G_FROM_COLOR(colorValue) * newBrightness);
     LIMITATION(green, green, 0, 63);
-    int blue = B_FROM_COLOR(colorValue) * newBrightness;
+    int blue = (int)(B_FROM_COLOR(colorValue) * newBrightness);
     LIMITATION(blue, blue, 0, 31);
     return MAKE_COLOR(red, green, blue);
 }
@@ -728,9 +728,9 @@ bool Painter::SaveScreenToFlashDrive(void) {
     for(int i = 0; i < 16; i++)
     {
         uint16 color = set.display.colors[i];
-        colorStruct.blue = (float)B_FROM_COLOR(color) / 31.0f * 255.0f;
-        colorStruct.green = (float)G_FROM_COLOR(color) / 63.0f * 255.0f;
-        colorStruct.red = (float)R_FROM_COLOR(color) / 31.0f * 255.0f;
+        colorStruct.blue = (uint8)(B_FROM_COLOR(color) / 31.0f * 255.0f);
+        colorStruct.green = (uint8)(G_FROM_COLOR(color) / 63.0f * 255.0f);
+        colorStruct.red = (uint8)(R_FROM_COLOR(color) / 31.0f * 255.0f);
         colorStruct.rgbReserved = 0;
         ((RGBQUAD*)(buffer))[i] = colorStruct;
     }

@@ -7,7 +7,7 @@
 #define LOG_ERROR(...)
 #define LOG_FUNC_ENTER
 #define LOG_FUNC_LEAVE
-#define LOG_TRACe
+#define LOG_TRACE
 
 #else
 

@@ -199,13 +199,13 @@ static void DrawMarkersForMeasure(float scale, Channel chan)
         int pos = Processing_GetMarkerHorizontal(chan, numMarker);
         if(pos != ERROR_VALUE_INT && pos > 0 && pos < 200)
         {
-            painter.DrawDashedHLine(grid.FullBottom() - pos * scale, grid.Left(), grid.Right(), 3, 2, 0);
+            painter.DrawDashedHLine((int)(grid.FullBottom() - pos * scale), grid.Left(), grid.Right(), 3, 2, 0);
         }
 
         pos = Processing_GetMarkerVertical(chan, numMarker);
         if (pos != ERROR_VALUE_INT && pos > 0 && pos < grid.Right())
         {
-            painter.DrawDashedVLine(grid.Left() + pos * scale, GRID_TOP, grid.FullBottom(), 3, 2, 0);
+            painter.DrawDashedVLine((int)(grid.Left() + pos * scale), GRID_TOP, grid.FullBottom(), 3, 2, 0);
         }
        
     }
@@ -213,9 +213,9 @@ static void DrawMarkersForMeasure(float scale, Channel chan)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-#define CONVERT_DATA_TO_DISPLAY(out, in)        \
-    out = maxY - ((in) - MIN_VALUE) * scaleY;   \
-    if(out < minY)          { out = minY; }     \
+#define CONVERT_DATA_TO_DISPLAY(out, in)                \
+    out = (uint8)(maxY - ((in) - MIN_VALUE) * scaleY);  \
+    if(out < minY)          { out = minY; }             \
     else if (out > maxY)    { out = maxY; };
 
 
@@ -343,7 +343,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
             int index = i - startPoint;
             int dat = 0;
             CONVERT_DATA_TO_DISPLAY(dat, Math_CalculateFiltr(data, i, numPoints, numSmoothing));
-            painter.SetPoint(grid.Left() + index * scaleX, dat);
+            painter.SetPoint((int)(grid.Left() + index * scaleX), dat);
         }
     }
 }
@@ -464,7 +464,7 @@ static void DrawSpectrumChannel(const float *spectrum, Color color)
 	int gridHeight = grid.MathHeight();
     for (int i = 0; i < 256; i++) 
     {
-        painter.DrawVLine(gridLeft + i, gridBottom, gridBottom - gridHeight * spectrum[i]);
+        painter.DrawVLine(gridLeft + i, gridBottom, (int)(gridBottom - gridHeight * spectrum[i]));
     }
 }
 
@@ -850,7 +850,7 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
             float lastElem = firstElem + elemsInColumn - 1;
             min[col] = data[(int)firstElem];
             max[col] = data[(int)firstElem + 1];
-            for (int elem = firstElem + 2; elem <= lastElem; elem += 2)
+            for (int elem = (int)firstElem + 2; elem <= (int)lastElem; elem += 2)
             {
                 SET_MIN_IF_LESS(data[elem], min[col]);
                 SET_MAX_IF_LARGER(data[elem + 1], max[col]);
@@ -864,8 +864,8 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
 
         for (int col = 0; col < width; col++, iMin++, iMax++)
         {
-            int firstElem = col * elemsInColumn;
-            int lastElem = firstElem + elemsInColumn - 1;
+            int firstElem = (int)(col * elemsInColumn);
+            int lastElem = firstElem + (int)elemsInColumn - 1;
             *iMin = data[firstElem];
             *iMax = data[firstElem];
             for (int elem = firstElem + 1; elem <= lastElem; elem++)
@@ -883,7 +883,7 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
             float lastElem = firstElem + elemsInColumn - 1;
             min[col] = data[(int)firstElem];
             max[col] = data[(int)firstElem + shiftForPeakDet];
-            for (int elem = firstElem + 1; elem <= lastElem; elem++)
+            for (int elem = (int)firstElem + 1; elem <= lastElem; elem++)
             {
                 SET_MIN_IF_LESS(data[elem], min[col]);
                 SET_MAX_IF_LARGER(data[elem + shiftForPeakDet], max[col]);
@@ -895,7 +895,7 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     int height = 14;
     float scale = (float)height / (float)(MAX_VALUE - MIN_VALUE);
 
-#define ORDINATE(x) bottom - scale * LimitationInt(x - MIN_VALUE, 0, 200)
+#define ORDINATE(x) ((uint8)(bottom - scale * LimitationInt(x - MIN_VALUE, 0, 200)))
 
 #define NUM_POINTS (300 * 2)
     uint8 points[NUM_POINTS];
@@ -968,7 +968,7 @@ void DrawMemoryWindow(void)
         rightX = 68;
     }
 
-    int timeWindowRectWidth = (rightX - leftX) * (282.0f / sMemory_GetNumPoints(false));
+    int timeWindowRectWidth = (int)((rightX - leftX) * (282.0f / sMemory_GetNumPoints(false)));
     float scaleX = (float)(rightX - leftX + 1) / sMemory_GetNumPoints(false);
 
     int16 shiftInMemory = SHIFT_IN_MEMORY;
@@ -976,8 +976,8 @@ void DrawMemoryWindow(void)
     int startI = shiftInMemory;
     int endI = startI + 281;
 
-    const int xVert0 = leftX + shiftInMemory * scaleX;
-    const int xVert1 = leftX + shiftInMemory * scaleX + timeWindowRectWidth;
+    const int xVert0 = (int)(leftX + shiftInMemory * scaleX);
+    const int xVert1 = (int)(leftX + shiftInMemory * scaleX + timeWindowRectWidth);
     bool showFull = set.display.showFullMemoryWindow;
     painter.DrawRectangleC(xVert0, top + (showFull ? 0 : 1), xVert1 - xVert0, bottom - top - (showFull ? 0 : 2), COLOR_FILL);
 
@@ -1029,25 +1029,25 @@ void DrawMemoryWindow(void)
     float scale = (float)(rightX - leftX + 1) / ((float)sMemory_GetNumPoints(false) - (sMemory_GetNumPoints(false) == 281 ? 1 : 0));
     float xShift = 1 + (sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, (int)gDSet->length1channel, TPOS) - sTime_TShiftInPoints((PeackDetMode)gDSet->peakDet)) * scale;
 
-    painter.FillRegionC(xShift - 1, 3, 6, 6, COLOR_BACK);
-    painter.FillRegionC(xShift, 4, 4, 4, COLOR_FILL);
+    painter.FillRegionC((int)xShift - 1, 3, 6, 6, COLOR_BACK);
+    painter.FillRegionC((int)xShift, 4, 4, 4, COLOR_FILL);
     painter.SetColor(COLOR_BACK);
     if(xShift < leftX - 2)
     {
-        xShift = leftX - 2;
-        painter.DrawLine(xShift + 3, 5, xShift + 3, 7);
-        painter.DrawLine(xShift + 1, 6, xShift + 2, 6);
+        xShift = (float)(leftX - 2);
+        painter.DrawLine((int)xShift + 3, 5, (int)xShift + 3, 7);
+        painter.DrawLine((int)xShift + 1, 6, (int)xShift + 2, 6);
     }
     else if(xShift > rightX - 1)
     {
-        xShift = rightX - 2;
-        painter.DrawLine(xShift + 1, 5, xShift + 1, 7);
-        painter.DrawLine(xShift + 2, 6, xShift + 3, 6);
+        xShift = (float)(rightX - 2);
+        painter.DrawLine((int)xShift + 1, 5, (int)xShift + 1, 7);
+        painter.DrawLine((int)xShift + 2, 6, (int)xShift + 3, 6);
     }
     else
     {
-        painter.DrawLine(xShift + 1, 5, xShift + 3, 5);
-        painter.DrawLine(xShift + 2, 6, xShift + 2, 7);
+        painter.DrawLine((int)xShift + 1, 5, (int)xShift + 3, 5);
+        painter.DrawLine((int)xShift + 2, 6, (int)xShift + 2, 7);
     }
 }
 
@@ -1079,7 +1079,7 @@ void Display::WriteCursors()
             x = startX + 49;
             float pos0 = Math_VoltageCursor(sCursors_GetCursPosU(source, 0), SET_RANGE(source), SET_RSHIFT(source));
             float pos1 = Math_VoltageCursor(sCursors_GetCursPosU(source, 1), SET_RANGE(source), SET_RSHIFT(source));
-            float delta = fabs(pos1 - pos0);
+            float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dU=");
             painter.DrawText(x + 17, y1, Voltage2String(delta, false, buffer));
             painter.DrawText(x, y2, ":");
@@ -1100,7 +1100,7 @@ void Display::WriteCursors()
             x = startX + 153;
             float pos0 = Math_TimeCursor(CURS_POS_T0(source), TBASE);
             float pos1 = Math_TimeCursor(CURS_POS_T1(source) , TBASE);
-            float delta = fabs(pos1 - pos0);
+            float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
             char buffer[20];
             painter.DrawText(x + 17, y1, Time2String(delta, false, buffer));
@@ -1226,7 +1226,7 @@ static bool NeedForClearScreen()
         gBF.needFinishDraw = 0;
         return true;
     }
-    if (MODE_ACCUM_IS_RESET && gBF.numDrawingSignals >= numAccum)
+    if (MODE_ACCUM_IS_RESET && gBF.numDrawingSignals >= (uint)numAccum)
     {
         gBF.numDrawingSignals = 0;
         return true;
@@ -1353,7 +1353,7 @@ void DrawGridSpectrum()
         float scale = (float)grid.MathHeight() / numParts;
         for (int i = 1; i < numParts; i++)
         {
-            int y = grid.MathTop() + i * scale;
+            int y = (int)(grid.MathTop() + i * scale);
             painter.DrawHLineC(y, grid.Left(), grid.Left() + 256, ColorGrid());
             if (!MenuIsMinimize())
             {
@@ -1373,7 +1373,7 @@ void DrawGridSpectrum()
         float scale = (float)grid.MathHeight() / 5;
         for (int i = 1; i < 5; i++)
         {
-            int y = grid.MathTop() + i * scale;
+            int y = (int)(grid.MathTop() + i * scale);
             painter.DrawHLineC(y, grid.Left(), grid.Left() + 256, ColorGrid());
             if (!MenuIsMinimize())
             {
@@ -1456,37 +1456,37 @@ static void DrawGridType1(int left, int top, int right, int bottom, float center
     masX[0] = left + 1;
     for (int i = 1; i < 7; i++)
     {
-        masX[i] = left + deltaX * i;
+        masX[i] = (uint16)(left + deltaX * i);
     }
     for (int i = 7; i < 10; i++)
     {
-        masX[i] = centerX - 8 + i;
+        masX[i] = (uint16)(centerX - 8 + i);
     }
     for (int i = 10; i < 16; i++)
     {
-        masX[i] = centerX + deltaX * (i - 9);
+        masX[i] = (uint16)(centerX + deltaX * (i - 9));
     }
     masX[16] = right - 1;
 
-    painter.DrawMultiVPointLine(17, top + stepY, masX, stepY, CalculateCountV(), ColorGrid());
+    painter.DrawMultiVPointLine(17, (int)(top + stepY), masX, (int)stepY, CalculateCountV(), ColorGrid());
 
     uint8 mas[13];
     mas[0] = top + 1;
     for (int i = 1; i < 5; i++)
     {
-        mas[i] = top + deltaY * i;
+        mas[i] = (uint8)(top + deltaY * i);
     }
     for (int i = 5; i < 8; i++)
     {
-        mas[i] = centerY - 6 + i;
+        mas[i] = (uint8)(centerY - 6 + i);
     }
     for (int i = 8; i < 12; i++)
     {
-        mas[i] = centerY + deltaY * (i - 7);
+        mas[i] = (uint8)(centerY + deltaY * (i - 7));
     }
     mas[12] = bottom - 1;
 
-    painter.DrawMultiHPointLine(13, left + stepX, mas, stepX, CalculateCountH(), ColorGrid());
+    painter.DrawMultiHPointLine(13, (int)(left + stepX), mas, (int)stepX, CalculateCountH(), ColorGrid());
 }
 
 
@@ -1516,11 +1516,13 @@ static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX, int stepY)
 {
-    painter.DrawHPointLine(centerY, left + stepX, right, stepX);
-    uint8 masY[6] = {top + 1, top + 2, centerY - 1, centerY + 1, bottom - 2, bottom - 1};
+    painter.DrawHPointLine(centerY, left + stepX, right, (float)stepX);
+    uint8 masY[6] = {(uint8)(top + 1), (uint8)(top + 2), (uint8)(centerY - 1), (uint8)(centerY + 1), 
+        (uint8)(bottom - 2), (uint8)(bottom - 1)};
     painter.DrawMultiHPointLine(6, left + deltaX, masY, deltaX, (right - top) / deltaX, ColorGrid());
-    painter.DrawVPointLine(centerX, top + stepY, bottom, stepY, ColorGrid());
-    uint16 masX[6] = {left + 1, left + 2, centerX - 1, centerX + 1, right - 2, right - 1};
+    painter.DrawVPointLine(centerX, top + stepY, bottom, (float)stepY, ColorGrid());
+    uint16 masX[6] = {(uint16)(left + 1), (uint16)(left + 2), (uint16)(centerX - 1), (uint16)(centerX + 1), 
+        (uint16)(right - 2), (uint16)(right - 1)};
     painter.DrawMultiVPointLine(6, top + deltaY, masX, deltaY, (bottom - top) / deltaY, ColorGrid());
 
 }
@@ -1557,15 +1559,15 @@ void Display::DrawGrid(int left, int top, int width, int height)
     painter.SetColor(ColorGrid());
     if (TYPE_GRID_IS_1)
     {
-        DrawGridType1(left, top, right, bottom, centerX, centerY, deltaX, deltaY, stepX, stepY);
+        DrawGridType1(left, top, right, bottom, (float)centerX, (float)centerY, deltaX, deltaY, stepX, stepY);
     }
     else if (TYPE_GRID_IS_2)
     {
-        DrawGridType2(left, top, right, bottom, deltaX, deltaY, stepX, stepY);
+        DrawGridType2(left, top, right, bottom, (int)deltaX, (int)deltaY, (int)stepX, (int)stepY);
     }
     else if (TYPE_GRID_IS_3)
     {
-        DrawGridType3(left, top, right, bottom, centerX, centerY, deltaX, deltaY, stepX, stepY);
+        DrawGridType3(left, top, right, bottom, centerX, centerY, (int)deltaX, (int)deltaY, (int)stepX, (int)stepY);
     }
 }
 
@@ -1618,8 +1620,8 @@ void Display::DrawCursorTrigLevel()
     }
     int trigLev = TRIG_LEVEL(chan) + ((chan == TrigSource_Ext) ? 0 : SET_RSHIFT(chan) - RShiftZero);
     float scale = 1.0f / ((TrigLevMax - TrigLevMin) / 2 / grid.ChannelHeight());
-    int y0 = (GRID_TOP + grid.ChannelBottom()) / 2 + scale * (TrigLevZero - TrigLevMin);
-    int y = y0 - scale * (trigLev - TrigLevMin);
+    int y0 = (int)((GRID_TOP + grid.ChannelBottom()) / 2 + scale * (TrigLevZero - TrigLevMin));
+    int y = (int)(y0 - scale * (trigLev - TrigLevMin));
 
     if(chan != TrigSource_Ext)
     {
@@ -1663,7 +1665,7 @@ void Display::DrawCursorTrigLevel()
         int shiftFullMax = RShiftMax + TrigLevMax;
         scale = (float)height / (shiftFullMax - shiftFullMin);
         int shiftFull = TRIG_LEVEL_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : SET_RSHIFT(chan));
-        int yFull = GRID_TOP + DELTA + height - scale * (shiftFull - RShiftMin - TrigLevMin) - 4;
+        int yFull = (int)(GRID_TOP + DELTA + height - scale * (shiftFull - RShiftMin - TrigLevMin) - 4);
         painter.FillRegionC(left + 2, yFull + 1, 4, 6, ColorTrig());
         painter.SetFont(TypeFont_5);
         painter.DrawCharC(left + 3, yFull - 5 + dY, simbols[TRIG_SOURCE], COLOR_BACK);
@@ -1674,13 +1676,13 @@ void Display::DrawCursorTrigLevel()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawCursorRShift(Channel chan)
 {
-    float x = grid.Right() - grid.Width() - Measure_GetDeltaGridLeft();
+    int x = grid.Right() - grid.Width() - Measure_GetDeltaGridLeft();
 
     if (chan == Math)
     {
         int rShift = SET_RSHIFT_MATH;
         float scale = (float)grid.MathHeight() / 960;
-        float y = (grid.MathTop() + grid.MathBottom()) / 2 - scale * (rShift - RShiftZero);
+        int y = (int)((grid.MathTop() + grid.MathBottom()) / 2 - scale * (rShift - RShiftZero));
         painter.DrawCharC(x - 9, y - 4, SYMBOL_RSHIFT_NORMAL, COLOR_FILL);
         painter.DrawCharC(x - 8, y - 5, 'm', COLOR_BACK);
         return;
@@ -1693,10 +1695,10 @@ void Display::DrawCursorRShift(Channel chan)
     int rShift = SET_RSHIFT(chan);
  
     float scale = (float)grid.ChannelHeight() / (STEP_RSHIFT * 200);
-    float y = grid.ChannelCenterHeight() - scale * (rShift - RShiftZero);
+    int y = (int)(grid.ChannelCenterHeight() - scale * (rShift - RShiftZero));
 
     float scaleFull = (float)grid.ChannelHeight() / (RShiftMax - RShiftMin) * (sService_MathEnabled() ? 0.9f : 0.91f);
-    float yFull = grid.ChannelCenterHeight() - scaleFull *(rShift - RShiftZero);
+    int yFull = (int)(grid.ChannelCenterHeight() - scaleFull *(rShift - RShiftZero));
 
     if(y > grid.ChannelBottom())
     {
@@ -1729,7 +1731,7 @@ void Display::DrawCursorRShift(Channel chan)
         painter.FillRegionC(4, yFull - 3, 4, 6, ColorChannel(chan));
         painter.DrawCharC(5, yFull - 9 + dY, chan == A ? '1' : '2', COLOR_BACK);
     }
-    painter.DrawCharC(x - 7, y - 9 + dY, chan == A ? '1' : '2', COLOR_BACK);
+    painter.DrawCharC((int)(x - 7), (int)(y - 9 + dY), chan == A ? '1' : '2', COLOR_BACK);
     painter.SetFont(TypeFont_8);
 }
 
@@ -1742,9 +1744,9 @@ void Display::DrawCursorTShift()
 
     // Рисуем TPos
     int shiftTPos = sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, gDSet->length1channel, TPOS) - SHIFT_IN_MEMORY;
-    float scale = (lastPoint - firstPoint) / grid.Width();
+    float scale = (lastPoint - firstPoint) / (float)grid.Width();
     int gridLeft = grid.Left();
-    int x = gridLeft + shiftTPos * scale - 3;
+    int x = (int)(gridLeft + shiftTPos * scale - 3);
     if (IntInRange(x + 3, gridLeft, grid.Right() + 1))
     {
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, COLOR_BACK, COLOR_FILL);
@@ -1819,10 +1821,10 @@ void Display::DrawCursors()
 
         if (bothCursors)
         {
-            x0 = grid.Left() + CURS_POS_T0(source);
-            x1 = grid.Left() + CURS_POS_T1(source);
-            y0 = GRID_TOP + sCursors_GetCursPosU(source, 0);
-            y1 = GRID_TOP + sCursors_GetCursPosU(source, 1);
+            x0 = (int)(grid.Left() + CURS_POS_T0(source));
+            x1 = (int)(grid.Left() + CURS_POS_T1(source));
+            y0 = (int)(GRID_TOP + sCursors_GetCursPosU(source, 0));
+            y1 = (int)(GRID_TOP + sCursors_GetCursPosU(source, 1));
 
             painter.DrawRectangle(x0 - 2, y0 - 2, 4, 4);
             painter.DrawRectangle(x1 - 2, y1 - 2, 4, 4);
@@ -1831,14 +1833,14 @@ void Display::DrawCursors()
         CursCntrl cntrl = CURS_CNTRL_T(source);
         if (cntrl != CursCntrl_Disable)
         {
-            DrawVerticalCursor(CURS_POS_T0(source), y0);
-            DrawVerticalCursor(CURS_POS_T1(source), y1);
+            DrawVerticalCursor((int)CURS_POS_T0(source), y0);
+            DrawVerticalCursor((int)CURS_POS_T1(source), y1);
         }
         cntrl = CURsU_CNTRL;
         if (cntrl != CursCntrl_Disable)
         {
-            DrawHorizontalCursor(sCursors_GetCursPosU(source, 0), x0);
-            DrawHorizontalCursor(sCursors_GetCursPosU(source, 1), x1);
+            DrawHorizontalCursor((int)sCursors_GetCursPosU(source, 0), x0);
+            DrawHorizontalCursor((int)sCursors_GetCursPosU(source, 1), x1);
         }
     }
 }
@@ -2523,7 +2525,7 @@ static void OnTimerShowWarning()
     uint time = gTimerMS;
     for (int i = 0; i < NUM_WARNINGS; i++)
     {
-        if (time - timeWarnings[i] > TIME_MESSAGES * 1000)
+        if ((int)(time - timeWarnings[i]) > TIME_MESSAGES * 1000)
         {
             timeWarnings[i] = 0;
             warnings[i] = 0;

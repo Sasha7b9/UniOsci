@@ -119,6 +119,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\S8-53\Device53\defines.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\Colors.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\font\Font.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\Grid.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\Math3D.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\Painter.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterMem.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterText.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp" />
@@ -338,6 +348,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\defines.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Colors.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayTypes.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\font\Font.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Grid.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Math3D.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Painter.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterC.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterMem.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Symbols.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Globals.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ethernetif.h" />
@@ -380,6 +402,14 @@
   <ItemGroup>
     <None Include="..\..\..\S8-53\Device53\check.bat" />
     <None Include="..\..\..\S8-53\Device53\Device53.sct" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\font5.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\font5display.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\font8.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\font8display.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\fontUGO.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\fontUGO2.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\fontUGO2display.inc" />
+    <None Include="..\..\..\S8-53\Device53\Display\font\fontUGOdisplay.inc" />
     <None Include="..\..\..\S8-53\Device53\libs\startup_stm32f207xx.s">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>

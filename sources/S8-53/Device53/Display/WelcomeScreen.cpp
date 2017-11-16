@@ -114,7 +114,7 @@ bool WelcomeScreen_Run()
         }
     }
 
-    painter.DrawBigText(45, y, 8, "МНИПИ");
+    painter.DrawBigText(45, (int)y, 8, "МНИПИ");
 
     painter.DrawStringInCenterRect(0, 190, 320, 20, "Для получения помощи нажмите и удерживайте кнопку ПОМОЩЬ");
     painter.DrawStringInCenterRect(0, 205, 320, 20, "Отдел маркетинга: тел./факс. 8-017-262-57-50");
@@ -169,7 +169,7 @@ void WelcomeScreen_Update() {
         PresentPointToScreen(&p0out3, &x0, &y0);
         PresentPointToScreen(&p1out3, &x1, &y1);
 
-        painter.DrawLineC(x0, y0, x1, y1, COLOR_WHITE);
+        painter.DrawLineC((int)x0, (int)y0, (int)x1, (int)y1, COLOR_WHITE);
     }
     painter.EndScene();
 }
