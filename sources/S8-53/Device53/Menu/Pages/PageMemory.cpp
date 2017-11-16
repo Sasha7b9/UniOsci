@@ -15,6 +15,7 @@
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/FLASH.h"
 #include "Hardware/Sound.h"
@@ -100,12 +101,12 @@ void PressSB_MemLastSelect()
 
 void PressSB_MemLast_Next()
 {
-    CircleIncreaseInt16(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
+    math.CircleIncrease<int16>(gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
 }
 
 void PressSB_MemLast_Prev()
 {
-    CircleDecreaseInt16(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
+    math.CircleDecrease<int16>(gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
 }
 
 static void RotateSB_MemLast(int angle)
@@ -389,12 +390,14 @@ void PressSB_SetName_Insert()
 }
 
 void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
-{
-    int8(*func[3])(int8 *, int8, int8) =
+{   
+    typedef void (Math::*pFuncRI8II)(int8&, int, int);
+    
+    static const pFuncRI8II func[3] =
     {
-        CircleDecreaseInt8,
-        CircleDecreaseInt8,
-        CircleIncreaseInt8
+        &Math::CircleDecrease<int8>,
+        &Math::CircleDecrease<int8>,
+        &Math::CircleIncrease<int8>
     };
 
     painter.ResetFlash();
@@ -402,7 +405,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = maxIndex - 1;
     }
-    func[Math_Sign(angle) + 1](&INDEX_SYMBOL, 0, maxIndex - 1);
+    (math.*func[Math_Sign(angle) + 1])((int8&)INDEX_SYMBOL, 0, maxIndex - 1);
     sound.RegulatorSwitchRotate();
 
 }
@@ -629,11 +632,11 @@ static void FuncOnRegSetMemInt(int delta)
     sound.RegulatorSwitchRotate();
     if (delta < 0)
     {
-        CircleDecreaseInt8(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
+        math.CircleDecrease<int8>(gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     else if (delta > 0)
     {
-        CircleIncreaseInt8(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
+        math.CircleIncrease<int8>(gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     painter.ResetFlash();
@@ -730,7 +733,7 @@ static void DrawSB_MemInt_ModeShow(int x, int y)
 
 static void PressSB_MemInt_ModeShow()
 {
-    CircleIncreaseInt8((int8*)&MODE_SHOW_MEMINT, 0, 2);
+    math.CircleIncrease<int8>((int8&)MODE_SHOW_MEMINT, 0, 2);
 }
 
 static const arrayHints hintsMemIntModeShow =

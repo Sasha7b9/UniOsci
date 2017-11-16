@@ -7,6 +7,7 @@
 #include "Display/Colors.h"
 #include "Display/Grid.h"
 #include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Utils/ProcessingSignal.h"
 #include "Utils/GlobalFunctions.h"
 #include "Hardware/Sound.h"
@@ -95,14 +96,14 @@ void SetCursSource(Channel chan)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void IncCursCntrlU(Channel chan)
 {
-    CircleIncreaseInt8((int8*)&CURsU_CNTRL_CH(chan), 0, 3);
+    math.CircleIncrease<int8>((int8&)CURsU_CNTRL_CH(chan), 0, 3);
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void IncCursCntrlT(Channel chan)
 {
-    CircleIncreaseInt8((int8*)&CURS_CNTRL_T(chan), 0, 3);
+    math.CircleIncrease<int8>((int8&)CURS_CNTRL_T(chan), 0, 3);
 }
 
 
@@ -695,7 +696,7 @@ static const SmallButton sbSetPointsPercents
 
 static void PressSB_Cursors_PointsPercents(void)
 {
-    CircleIncreaseInt8((int8*)&CURS_MOVEMENT, 0, 1);
+    math.CircleIncrease<int8>((int8&)CURS_MOVEMENT, 0, 1);
 }
 
 static void DrawSB_Cursors_PointsPercents(int x, int y)

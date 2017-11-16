@@ -323,7 +323,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>1</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -336,7 +336,7 @@
               <MiscControls>--cpp</MiscControls>
               <Define>USE_HAL_DRIVER, STM32F207xx, __cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;.\Device53;.\Device53\libs;..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system;..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\drivers</IncludePath>
+              <IncludePath>..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system;..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\drivers;..\common;.\Device53;.\Device53\libs</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1714,11 +1714,6 @@
               <FilePath>.\Device53\Utils\Map.h</FilePath>
             </File>
             <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Utils\Math.h</FilePath>
-            </File>
-            <File>
               <FileName>Measures.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Measures.h</FilePath>
@@ -1769,11 +1764,6 @@
               <FilePath>.\Device53\Utils\Map.cpp</FilePath>
             </File>
             <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Measures.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Utils\Measures.cpp</FilePath>
@@ -1787,6 +1777,26 @@
               <FileName>Strings.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Utils\Strings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>_Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\_Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>_Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device53\Utils\_Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Math.h</FilePath>
             </File>
           </Files>
         </Group>

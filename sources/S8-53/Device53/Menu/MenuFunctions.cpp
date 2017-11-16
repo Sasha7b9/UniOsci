@@ -9,7 +9,7 @@
 #include "Tables.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Panel/Panel.h"
 #include "Log.h"
 #include "Hardware/Sound.h"

@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include "MenuItems.h"
+#include "Utils/Math.h"
 #include "Hardware/Sound.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
@@ -206,7 +207,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            CircleIncreaseInt8(cell, 0, NumSubItems() - 1);
+            math.CircleIncrease<uint8>((uint8&)cell, 0, NumSubItems() - 1);
         }
         else if (tsChoice.inMoveDecrease == 1)
         {
@@ -216,7 +217,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            CircleDecreaseInt8(cell, 0, NumSubItems() - 1);
+            math.CircleDecrease<int8>((int8&)cell, 0, NumSubItems() - 1);
         }
         tsChoice.choice = 0;
         FuncOnChanged(menu.ItemIsActive(this));

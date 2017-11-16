@@ -336,7 +336,7 @@
               <MiscControls>--cpp</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F437xx,__cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\Device\libs;.\Device;..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
+              <IncludePath>..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common;.\Device;.\Device\libs</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -838,12 +838,12 @@
             <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Math.cpp</FilePath>
+              <FilePath>..\common\Utils\Math.cpp</FilePath>
             </File>
             <File>
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Math.h</FilePath>
+              <FilePath>..\common\Utils\Math.h</FilePath>
             </File>
           </Files>
         </Group>

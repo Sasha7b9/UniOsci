@@ -1,11 +1,7 @@
 #pragma once
-
-
 #include "Generator.h"
-#include "Math.h"
+#include "_Math.h"
 #include "Settings/Settings.h"
-
-
 #include <stdlib.h>
 #include <math.h>
 

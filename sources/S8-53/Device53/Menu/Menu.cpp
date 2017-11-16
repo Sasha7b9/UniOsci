@@ -12,6 +12,7 @@
 #include "Display/Display.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Measures.h"
+#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "FPGA/DataStorage.h"
@@ -653,7 +654,7 @@ void Menu::ShortPress_MAC(void *item)
 {
     if (OpenedItem() == item)
     {
-        CircleIncreaseInt8(&gCurDigit, 0, 5);
+        math.CircleIncrease<int8>(gCurDigit, 0, 5);
     }
 }
 
@@ -667,7 +668,7 @@ void Menu::ShortPress_GovernorColor(void *governorColor)
     GovernorColor *governor = (GovernorColor*)governorColor;
     if(OpenedItem() == governor)
     {
-        CircleIncreaseInt8(&(governor->colorType->currentField), 0, 3);
+        math.CircleIncrease<int8>(governor->colorType->currentField, 0, 3);
     }
     else
     {

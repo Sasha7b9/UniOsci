@@ -6,7 +6,7 @@
 #include "Log.h"
 #include "Display/Display.h"
 #include "Utils/GlobalFunctions.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Hardware/FSMC.h"
 #include "Display/Grid.h"
 
