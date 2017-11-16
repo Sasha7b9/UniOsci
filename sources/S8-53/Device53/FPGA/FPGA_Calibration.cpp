@@ -389,7 +389,7 @@ float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *del
             }
         }
         
-        bar->passedTime = gTimerMS - *startTime;
+        bar->passedTime = (float)(gTimerMS - *startTime);
         bar->fullTime = bar->passedTime * (float)numCicles / (cicle + 1);
     }
 
@@ -404,9 +404,9 @@ float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *del
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void AlignmentADC(void)
 {
-    shiftADC0 = (deltaADCold[0] > 0) ? (deltaADCold[0] + 0.5) : (deltaADCold[0] - 0.5);
+    shiftADC0 = (int8)((deltaADCold[0] > 0) ? (deltaADCold[0] + 0.5f) : (deltaADCold[0] - 0.5f));
     SET_BALANCE_ADC_A = shiftADC0;
-    shiftADC1 = (deltaADCold[1] > 0) ? (deltaADCold[1] + 0.5) : (deltaADCold[1] - 0.5);
+    shiftADC1 = (int8)((deltaADCold[1] > 0) ? (deltaADCold[1] + 0.5f) : (deltaADCold[1] - 0.5f));
     SET_BALANCE_ADC_B = shiftADC1;
     FSMC_Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
     FSMC_Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
@@ -468,7 +468,7 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
     }
 
     float aveValue = (float)sum / numPoints;
-    int16 retValue = -(aveValue - AVE_VALUE) * 2;
+    int16 retValue = (int16)(-(aveValue - AVE_VALUE) * 2);
 
     if(retValue < - 100 || retValue > 100)
     {

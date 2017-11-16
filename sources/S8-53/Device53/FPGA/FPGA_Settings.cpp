@@ -105,8 +105,8 @@ void FPGA::LoadSettings(void)
             }
             else
             {
-                WriteToHardware(WR_ADD_RSHIFT_DAC1, BALANCE_ADC_A, false);
-                WriteToHardware(WR_ADD_RSHIFT_DAC2, BALANCE_ADC_B, false);
+                WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)BALANCE_ADC_A, false);
+                WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
             }
             break;
     }
@@ -423,7 +423,7 @@ void FPGA::LoadRegUPR(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadKoeffCalibration(Channel chan)
 {
-    fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, STRETCH_ADC(chan) * 0x80, false);
+    fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)(STRETCH_ADC(chan) * 0x80), false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

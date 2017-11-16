@@ -88,7 +88,7 @@ static void CalculateAroundAverage(uint8 *data0, uint8 *data1, DataSettings *dss
         {
             numAveData = sDisplay_NumAverage();
         }
-        float numAveDataF = numAveData;
+        float numAveDataF = (float)numAveData;
         float numAveDataFless = numAveDataF - 1.0f;
         float numAveDataInv = 1.0f / numAveDataF;
         float* aData0 = &aveData0[0];

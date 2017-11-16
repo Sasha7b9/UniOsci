@@ -3,7 +3,13 @@
 
 #ifdef WIN32
 
-#define LOG_WRITE(...)
+void LOG_WRITE(char *);
+void LOG_WRITE(char *, char *);
+void LOG_WRITE(char *, const char *);
+void LOG_WRITE(char *, uint16);
+void LOG_WRITE(char *, char *, uint16, uint16, uint16);
+void LOG_WRITE(char *, DataSettings *, void *, void *, int);
+void LOG_WRITE(char *, const char *, int, int, int);
 #define LOG_ERROR(...)
 #define LOG_FUNC_ENTER
 #define LOG_FUNC_LEAVE

@@ -31,6 +31,9 @@
     <Filter Include="FlashDrive">
       <UniqueIdentifier>{c53e6a35-a8f6-4859-aebb-bfaa540f7f40}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FPGA">
+      <UniqueIdentifier>{a810a3b9-fab1-44ae-bced-808c26376922}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -315,6 +318,18 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp">
       <Filter>FlashDrive</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\DataStorage.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Calibration.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Settings.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -478,6 +493,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h">
       <Filter>FlashDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\DataStorage.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA_Types.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

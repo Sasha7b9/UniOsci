@@ -132,6 +132,10 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\DataStorage.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Calibration.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Settings.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp" />
@@ -366,6 +370,9 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\DataStorage.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA_Types.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Globals.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ethernetif.h" />

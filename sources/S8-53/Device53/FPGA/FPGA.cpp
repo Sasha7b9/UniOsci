@@ -66,7 +66,7 @@ void FPGA::Init(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetNumSignalsInSec(int numSigInSec) 
 {
-    Timer_Enable(kNumSignalsInSec, 1000.f / numSigInSec, OnTimerCanReadData);
+    Timer_Enable(kNumSignalsInSec, (int)(1000.f / numSigInSec), OnTimerCanReadData);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -534,8 +534,8 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
         min = 0xffff;
         max = 0;
     }
-    *eMin = minGate;
-    *eMax = maxGate;
+    *eMin = (uint16)minGate;
+    *eMax = (uint16)maxGate;
 
     //LOG_WRITE("min %u, max %u, rand %d", *eMin, *eMax, rand);
     return true;
@@ -567,8 +567,8 @@ int FPGA::CalculateShift(void)            // \todo Не забыть восстановить функци
 
     if (sTime_RandomizeModeEnabled())
     {
-        float tin = (float)(rand - min) / (max - min) * 10e-9;
-        int retValue = tin / 10e-9 * Kr[TBASE];
+        float tin = (rand - min) / (max - min) * 10e-9f;
+        int retValue = (int)(tin / 10e-9f * Kr[TBASE]);
         return retValue;
     }
 
@@ -1172,7 +1172,7 @@ void FPGA::FindAndSetTrigLevel(void)
 
     static const float scale = (float)(TrigLevMax - TrigLevZero) / (float)(MAX_VALUE - AVE_VALUE) / 2.4f;
 
-    int trigLev = TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT(chanTrig) - RShiftZero);
+    int trigLev = (int)(TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT(chanTrig) - RShiftZero));
 
     FPGA::SetTrigLev(trigSource, trigLev);
 }
