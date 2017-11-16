@@ -182,6 +182,15 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Panel\Controls.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Panel\Panel.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Panel\PanelFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsChannel.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsCursors.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsDebug.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsDisplay.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsMeasures.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsMemory.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsService.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -438,6 +447,18 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Panel\Controls.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Panel\Panel.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\Settings.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsChannel.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsCursors.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsDebug.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsDisplay.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsMath.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsMeasures.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsMemory.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsService.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTime.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTrig.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />

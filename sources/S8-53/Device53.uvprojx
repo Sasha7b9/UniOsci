@@ -1584,19 +1584,9 @@
           <GroupName>Settings</GroupName>
           <Files>
             <File>
-              <FileName>Settings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\Settings.c</FilePath>
-            </File>
-            <File>
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Settings\Settings.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsChannel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsChannel.c</FilePath>
             </File>
             <File>
               <FileName>SettingsChannel.h</FileName>
@@ -1604,29 +1594,14 @@
               <FilePath>.\Device53\Settings\SettingsChannel.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsCursors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsCursors.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsCursors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Settings\SettingsCursors.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsDebug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsDebug.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsDebug.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Settings\SettingsDebug.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsDisplay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsDisplay.c</FilePath>
             </File>
             <File>
               <FileName>SettingsDisplay.h</FileName>
@@ -1639,19 +1614,9 @@
               <FilePath>.\Device53\Settings\SettingsMath.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsMeasures.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsMeasures.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsMeasures.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Settings\SettingsMeasures.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsMemory.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsMemory.c</FilePath>
             </File>
             <File>
               <FileName>SettingsMemory.h</FileName>
@@ -1659,19 +1624,9 @@
               <FilePath>.\Device53\Settings\SettingsMemory.h</FilePath>
             </File>
             <File>
-              <FileName>SettingsService.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsService.c</FilePath>
-            </File>
-            <File>
               <FileName>SettingsService.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Settings\SettingsService.h</FilePath>
-            </File>
-            <File>
-              <FileName>SettingsTime.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Settings\SettingsTime.c</FilePath>
             </File>
             <File>
               <FileName>SettingsTime.h</FileName>
@@ -1687,6 +1642,51 @@
               <FileName>SettingsTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Settings\SettingsTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\Settings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsChannel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsChannel.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsCursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsCursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDebug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsDebug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsDisplay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsDisplay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMeasures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsMeasures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsMemory.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsService.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsService.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTime.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Settings\SettingsTime.cpp</FilePath>
             </File>
           </Files>
         </Group>
