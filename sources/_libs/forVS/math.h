@@ -7,3 +7,4 @@ float fabsf(float);
 float sqrtf(float);
 float log10f(float);
 bool isnan(float);
+float sqrtf(float);

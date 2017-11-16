@@ -172,7 +172,7 @@ float CalculateVoltageMax(Channel chan)
     EXIT_IF_ERROR_FLOAT(max);
     if(MEAS_MARKED == Measure_VoltageMax)
     {
-        markerHor[chan][0] = max;                           // Здесь не округляем, потому что max может быть только целым
+        markerHor[chan][0] = (int)max;                           // Здесь не округляем, потому что max может быть только целым
     }
 
     return POINT_2_VOLTAGE(max, dataSet->range[chan], chan == A ? dataSet->rShiftCh0 : dataSet->rShiftCh1) * VALUE_MULTIPLIER(chan);
@@ -184,7 +184,7 @@ float CalculateVoltageMin(Channel chan)
     EXIT_IF_ERROR_FLOAT(min);
     if(MEAS_MARKED == Measure_VoltageMin)
     {
-        markerHor[chan][0] = min;                           // Здесь не округляем, потому что min может быть только целым
+        markerHor[chan][0] = (int)min;                           // Здесь не округляем, потому что min может быть только целым
     }
 
     return POINT_2_VOLTAGE(min, dataSet->range[chan], chan == A ? dataSet->rShiftCh0 : dataSet->rShiftCh1) * VALUE_MULTIPLIER(chan);
@@ -199,8 +199,8 @@ float CalculateVoltagePic(Channel chan)
 
     if(MEAS_MARKED == Measure_VoltagePic)
     {
-        markerHor[chan][0] = CalculateMaxRel(chan);
-        markerHor[chan][1] = CalculateMinRel(chan);
+        markerHor[chan][0] = (int)CalculateMaxRel(chan);
+        markerHor[chan][1] = (int)CalculateMinRel(chan);
     }
     return max - min;
 }
@@ -211,7 +211,7 @@ float CalculateVoltageMinSteady(Channel chan)
     EXIT_IF_ERROR_FLOAT(min);
     if(MEAS_MARKED == Measure_VoltageMinSteady)
     {
-        markerHor[chan][0] = ROUND(min);
+        markerHor[chan][0] = (int)ROUND(min);
     }
 
     return (POINT_2_VOLTAGE(min, dataSet->range[chan], chan == A ? dataSet->rShiftCh0 : dataSet->rShiftCh1) * VALUE_MULTIPLIER(chan));
@@ -225,7 +225,7 @@ float CalculateVoltageMaxSteady(Channel chan)
 
     if(MEAS_MARKED == Measure_VoltageMaxSteady)
     {
-        markerHor[chan][0] = max;
+        markerHor[chan][0] = (int)max;
     }
 
     Range range = dataSet->range[chan];
@@ -243,8 +243,8 @@ float CalculateVoltageVybrosPlus(Channel chan)
 
     if (MEAS_MARKED == Measure_VoltageVybrosPlus)
     {
-        markerHor[chan][0] = max;
-        markerHor[chan][1] = maxSteady;
+        markerHor[chan][0] = (int)max;
+        markerHor[chan][1] = (int)maxSteady;
     }
 
     int16 rShift = chan == A ? dataSet->rShiftCh0 : dataSet->rShiftCh1;
@@ -259,8 +259,8 @@ float CalculateVoltageVybrosMinus(Channel chan)
 
     if (MEAS_MARKED == Measure_VoltageVybrosMinus)
     {
-        markerHor[chan][0] = min;
-        markerHor[chan][1] = minSteady;
+        markerHor[chan][0] = (int)min;
+        markerHor[chan][1] = (int)minSteady;
     }
 
     int16 rShift = chan == A ? dataSet->rShiftCh0 : dataSet->rShiftCh1;
@@ -276,8 +276,8 @@ float CalculateVoltageAmpl(Channel chan)
 
     if(MEAS_MARKED == Measure_VoltageAmpl)
     {
-        markerHor[chan][0] = CalculateMaxSteadyRel(chan);
-        markerHor[chan][1] = CalculateMinSteadyRel(chan);
+        markerHor[chan][0] = (int)CalculateMaxSteadyRel(chan);
+        markerHor[chan][1] = (int)CalculateMinSteadyRel(chan);
     }
     return max - min;
 }
@@ -295,7 +295,7 @@ float CalculateVoltageAverage(Channel chan)
         sum += *data++;
     }
 
-    uint8 aveRel = (float)sum / period;
+    uint8 aveRel = (uint8)((float)sum / period);
 
     if(MEAS_MARKED == Measure_VoltageAverage)
     {
@@ -321,10 +321,10 @@ float CalculateVoltageRMS(Channel chan)
 
     if(MEAS_MARKED == Measure_VoltageRMS)
     {
-        markerHor[chan][0] = Math_VoltageToPoint(sqrt(rms / period), dataSet->range[chan], rShift);
+        markerHor[chan][0] = Math_VoltageToPoint(sqrtf(rms / period), dataSet->range[chan], rShift);
     }
 
-    return sqrt(rms / period) * VALUE_MULTIPLIER(chan);
+    return sqrtf(rms / period) * VALUE_MULTIPLIER(chan);
 }
 
 float CalculatePeriod(Channel chan)
@@ -340,13 +340,13 @@ float CalculatePeriod(Channel chan)
         }
         else
         {
-            float intersectionDownToTop = FindIntersectionWithHorLine(chan, 1, true, aveValue);
-            float intersectionTopToDown = FindIntersectionWithHorLine(chan, 1, false, aveValue);
+            float intersectionDownToTop = FindIntersectionWithHorLine(chan, 1, true, (uint8)aveValue);
+            float intersectionTopToDown = FindIntersectionWithHorLine(chan, 1, false, (uint8)aveValue);
 
             EXIT_IF_ERRORS_FLOAT(intersectionDownToTop, intersectionTopToDown);
 
             float firstIntersection = intersectionDownToTop < intersectionTopToDown ? intersectionDownToTop : intersectionTopToDown;
-            float secondIntersection = FindIntersectionWithHorLine(chan, 2, intersectionDownToTop < intersectionTopToDown, aveValue);
+            float secondIntersection = FindIntersectionWithHorLine(chan, 2, intersectionDownToTop < intersectionTopToDown, (uint8)aveValue);
 
             EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
@@ -380,7 +380,7 @@ int CalculatePeriodAccurately(Channel chan)
         {
             EXIT_FROM_PERIOD_ACCURACY
         }
-        int delta = pic * 5;
+        int delta = (int)(pic * 5.0);
         sums[firstPoint] = dataIn[chan][firstPoint];
 
         int i = firstPoint + 1;
@@ -400,7 +400,7 @@ int CalculatePeriodAccurately(Channel chan)
         }
 
         int addShift = firstPoint - 1;
-        int maxPeriod = numPoints * 0.95f;
+        int maxPeriod = (int)(numPoints * 0.95f);
 
         for(int nextPeriod = 10; nextPeriod < maxPeriod; nextPeriod++)
         {
@@ -499,14 +499,14 @@ float CalculateDurationPlus(Channel chan)
     float aveValue = CalculateAverageRel(chan);
     EXIT_IF_ERROR_FLOAT(aveValue);
 
-    float firstIntersection = FindIntersectionWithHorLine(chan, 1, true, aveValue);
-    float secondIntersection = FindIntersectionWithHorLine(chan, 1, false, aveValue);
+    float firstIntersection = FindIntersectionWithHorLine(chan, 1, true, (uint8)aveValue);
+    float secondIntersection = FindIntersectionWithHorLine(chan, 1, false, (uint8)aveValue);
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(chan, 2, false, aveValue);
+        secondIntersection = FindIntersectionWithHorLine(chan, 2, false, (uint8)aveValue);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -519,14 +519,14 @@ float CalculateDurationMinus(Channel chan)
     float aveValue = CalculateAverageRel(chan);
     EXIT_IF_ERROR_FLOAT(aveValue);
 
-    float firstIntersection = FindIntersectionWithHorLine(chan, 1, false, aveValue);
-    float secondIntersection = FindIntersectionWithHorLine(chan, 1, true, aveValue);
+    float firstIntersection = FindIntersectionWithHorLine(chan, 1, false, (uint8)aveValue);
+    float secondIntersection = FindIntersectionWithHorLine(chan, 1, true, (uint8)aveValue);
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(chan, 2, true, aveValue);
+        secondIntersection = FindIntersectionWithHorLine(chan, 2, true, (uint8)aveValue);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -545,14 +545,14 @@ float CalculateTimeNarastaniya(Channel chan)                    // WARN Здесь, в
     float max09 = maxSteady - value01;
     float min01 = minSteady + value01;
 
-    float firstIntersection = FindIntersectionWithHorLine(chan, 1, true, min01);
-    float secondIntersection = FindIntersectionWithHorLine(chan, 1, true, max09);
+    float firstIntersection = FindIntersectionWithHorLine(chan, 1, true, (uint8)min01);
+    float secondIntersection = FindIntersectionWithHorLine(chan, 1, true, (uint8)max09);
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
     
     if (secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(chan, 2, true, max09);
+        secondIntersection = FindIntersectionWithHorLine(chan, 2, true, (uint8)max09);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -561,10 +561,10 @@ float CalculateTimeNarastaniya(Channel chan)                    // WARN Здесь, в
 
     if (MEAS_MARKED == Measure_TimeNarastaniya)
     {
-        markerHor[chan][0] = max09;
-        markerHor[chan][1] = min01;
-        markerVert[chan][0] = firstIntersection - SHIFT_IN_MEMORY;
-        markerVert[chan][1] = secondIntersection - SHIFT_IN_MEMORY;
+        markerHor[chan][0] = (int)max09;
+        markerHor[chan][1] = (int)min01;
+        markerVert[chan][0] = (int)(firstIntersection - SHIFT_IN_MEMORY);
+        markerVert[chan][1] = (int)(secondIntersection - SHIFT_IN_MEMORY);
     }
 
     return retValue;
@@ -581,14 +581,14 @@ float CalculateTimeSpada(Channel chan)                          // WARN Аналогич
     float max09 = maxSteady - value01;
     float min01 = minSteady + value01;
 
-    float firstIntersection = FindIntersectionWithHorLine(chan, 1, false, max09);
-    float secondIntersection = FindIntersectionWithHorLine(chan, 1, false, min01);
+    float firstIntersection = FindIntersectionWithHorLine(chan, 1, false, (uint8)max09);
+    float secondIntersection = FindIntersectionWithHorLine(chan, 1, false, (uint8)min01);
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
     if (secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(chan, 2, false, min01);
+        secondIntersection = FindIntersectionWithHorLine(chan, 2, false, (uint8)min01);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -597,10 +597,10 @@ float CalculateTimeSpada(Channel chan)                          // WARN Аналогич
 
     if (MEAS_MARKED == Measure_TimeSpada)
     {
-        markerHor[chan][0] = max09;
-        markerHor[chan][1] = min01;
-        markerVert[chan][0] = firstIntersection - SHIFT_IN_MEMORY;
-        markerVert[chan][1] = secondIntersection - SHIFT_IN_MEMORY;
+        markerHor[chan][0] = (int)max09;
+        markerHor[chan][1] = (int)min01;
+        markerVert[chan][0] = (int)firstIntersection - SHIFT_IN_MEMORY;
+        markerVert[chan][1] = (int)secondIntersection - SHIFT_IN_MEMORY;
     }
 
     return retValue;
@@ -742,7 +742,7 @@ float CalculateMaxSteadyRel(Channel chan)
                 float value = pic / 9.0f;
 
                 data = &dataIn[chan][firstPoint];
-                uint8 _max = max[chan];
+                uint8 _max = (uint8)max[chan];
                 while (data <= end)
                 {
                     uint8 d = *data++;
@@ -853,14 +853,14 @@ float CalculateDelayPlus(Channel chan)
     Channel firstChannel = chan == A ? A : B;
     Channel secondChannel = chan == A ? B : A;
 
-    firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, true, averageFirst);
-    secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, true, averageSecond);
+    firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, true, (uint8)averageFirst);
+    secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, true, (uint8)averageSecond);
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, true, averageSecond);
+        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, true, (uint8)averageSecond);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -892,14 +892,14 @@ float CalculateDelayMinus(Channel chan)
     Channel firstChannel = chan == A ? A : B;
     Channel secondChannel = chan == A ? B : A;
 
-    firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, false, averageFirst);
-    secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, false, averageSecond);
+    firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, false, (uint8)averageFirst);
+    secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, false, (uint8)averageSecond);
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection);
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, false, averageSecond);
+        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, false, (uint8)averageSecond);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection);
@@ -972,7 +972,7 @@ float Processing_GetCursU(Channel chan, float posCurT)
     sDisplay_PointsOnDisplay(&firstPoint, &lastPoint);
 
     float retValue = 0.0f;
-    LIMITATION(retValue, 200 - (dataIn[chan])[firstPoint + (int)posCurT] + MIN_VALUE, 0, 200);
+    LIMITATION(retValue, 200.0f - (dataIn[chan])[firstPoint + (int)posCurT] + MIN_VALUE, 0.0f, 200.0f);
     return retValue;
 }
 
@@ -999,7 +999,7 @@ float Processing_GetCursT(Channel chan, float posCurU, int numCur)
         {
             if(numCur == 0)
             {
-                return i - firstPoint;
+                return (float)(i - firstPoint);
             }
             else
             {
@@ -1009,7 +1009,7 @@ float Processing_GetCursT(Channel chan, float posCurU, int numCur)
                 }
                 else
                 {
-                    return i - firstPoint;
+                    return (float)(i - firstPoint);
                 }
             }
         }
@@ -1018,7 +1018,7 @@ float Processing_GetCursT(Channel chan, float posCurU, int numCur)
         {
             if(numCur == 0)
             {
-                return i - firstPoint;
+                return (float)(i - firstPoint);
             }
             else
             {
@@ -1028,7 +1028,7 @@ float Processing_GetCursT(Channel chan, float posCurU, int numCur)
                 }
                 else
                 {
-                    return i - firstPoint;
+                    return (float)(i - firstPoint);
                 }
             }
         }
@@ -1095,7 +1095,7 @@ void Processing_InterpolationSinX_X(uint8 data[FPGA_MAX_POINTS], TBase tBase)
         {
             int part = num % ((delta - 1) * 2);
             num++;
-            float sinX = (part < delta - 1) ? sin(PI / delta * (part + 1)) : sin(PI / delta * (part - (delta - 1) * 2));
+            float sinX = (part < delta - 1) ? sinf(PI / delta * (part + 1)) : sinf(PI / delta * (part - (delta - 1) * 2));
 
             if (tBase > TBase_5ns)                 // Здесь используем более быструю, но более неправильную арифметику целвых чисел
             {
@@ -1204,7 +1204,7 @@ void CountedToCurrentSettings()
         for (int i = 0; i < numPoints; i++)
         {
             float absValue = POINT_2_VOLTAGE(dataOut0[i], dataSet->range[0], dataSet->rShiftCh0);
-            int relValue = (absValue + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE;
+            int relValue = (int)((absValue + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE);
 
             if (relValue < MIN_VALUE)       { dataOut0[i] = MIN_VALUE; }
             else if (relValue > MAX_VALUE)  { dataOut0[i] = MAX_VALUE; }
@@ -1219,7 +1219,7 @@ void CountedToCurrentSettings()
         for (int i = 0; i < numPoints; i++)
         {
             float absValue = POINT_2_VOLTAGE(dataOut1[i], dataSet->range[1], dataSet->rShiftCh1);
-            int relValue = (absValue + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE;
+            int relValue = (int)((absValue + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE);
 
             if (relValue < MIN_VALUE)       { dataOut1[i] = MIN_VALUE; }
             else if (relValue > MAX_VALUE)  { dataOut1[i] = MAX_VALUE; }

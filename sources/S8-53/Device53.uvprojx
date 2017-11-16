@@ -1699,19 +1699,9 @@
               <FilePath>.\Device53\Utils\CreateTables.py</FilePath>
             </File>
             <File>
-              <FileName>Generator.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\Generator.c</FilePath>
-            </File>
-            <File>
               <FileName>Generator.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Generator.h</FilePath>
-            </File>
-            <File>
-              <FileName>GlobalFunctions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\GlobalFunctions.c</FilePath>
             </File>
             <File>
               <FileName>GlobalFunctions.h</FileName>
@@ -1719,19 +1709,9 @@
               <FilePath>.\Device53\Utils\GlobalFunctions.h</FilePath>
             </File>
             <File>
-              <FileName>Map.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\Map.c</FilePath>
-            </File>
-            <File>
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Map.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\Math.c</FilePath>
             </File>
             <File>
               <FileName>Math.h</FileName>
@@ -1739,19 +1719,9 @@
               <FilePath>.\Device53\Utils\Math.h</FilePath>
             </File>
             <File>
-              <FileName>Measures.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\Measures.c</FilePath>
-            </File>
-            <File>
               <FileName>Measures.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Measures.h</FilePath>
-            </File>
-            <File>
-              <FileName>ProcessingSignal.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\ProcessingSignal.c</FilePath>
             </File>
             <File>
               <FileName>ProcessingSignal.h</FileName>
@@ -1769,11 +1739,6 @@
               <FilePath>.\Device53\Utils\Stack2500uint16.h</FilePath>
             </File>
             <File>
-              <FileName>Strings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Utils\Strings.c</FilePath>
-            </File>
-            <File>
               <FileName>Strings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Strings.h</FilePath>
@@ -1787,6 +1752,41 @@
               <FileName>TablesWindow.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\TablesWindow.h</FilePath>
+            </File>
+            <File>
+              <FileName>Generator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\Generator.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GlobalFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\GlobalFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Map.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\Map.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\Measures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ProcessingSignal.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\ProcessingSignal.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Utils\Strings.cpp</FilePath>
             </File>
           </Files>
         </Group>

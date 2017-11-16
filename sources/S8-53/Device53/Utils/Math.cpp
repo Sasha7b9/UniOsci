@@ -9,7 +9,7 @@
 #include <math.h>
 
 
-const float tableScalesRange[RangeSize] = {2e-3, 5e-3, 10e-3, 20e-3, 50e-3, 100e-3, 200e-3, 500e-3, 1.0f, 2.0f, 5.0f, 10.0f, 20.0f};
+const float tableScalesRange[RangeSize] = {2e-3f, 5e-3f, 10e-3f, 20e-3f, 50e-3f, 100e-3f, 200e-3f, 500e-3f, 1.0f, 2.0f, 5.0f, 10.0f, 20.0f};
 /*
 static const float tableScalesTBase[TBaseSize] = 
     {2e-9, 5e-9, 10e-9, 20e-9, 50e-9, 100e-9, 200e-9, 500e-9,
@@ -20,36 +20,36 @@ static const float tableScalesTBase[TBaseSize] =
 
 const float absStepRShift[] =
 {
-    2e-3 / 20 / STEP_RSHIFT,
-    5e-3 / 20 / STEP_RSHIFT,
-    10e-3 / 20 / STEP_RSHIFT,
-    20e-3 / 20 / STEP_RSHIFT,
-    50e-3 / 20 / STEP_RSHIFT,
-    100e-3 / 20 / STEP_RSHIFT,
-    200e-3 / 20 / STEP_RSHIFT,
-    500e-3 / 20 / STEP_RSHIFT,
-    1.0 / 20 / STEP_RSHIFT,
-    2.0 / 20 / STEP_RSHIFT,
-    5.0 / 20 / STEP_RSHIFT,
-    10.0 / 20 / STEP_RSHIFT,
-    20.0 / 20 / STEP_RSHIFT
+    2e-3f / 20 / STEP_RSHIFT,
+    5e-3f / 20 / STEP_RSHIFT,
+    10e-3f / 20 / STEP_RSHIFT,
+    20e-3f / 20 / STEP_RSHIFT,
+    50e-3f / 20 / STEP_RSHIFT,
+    100e-3f / 20 / STEP_RSHIFT,
+    200e-3f / 20 / STEP_RSHIFT,
+    500e-3f / 20 / STEP_RSHIFT,
+    1.0f / 20 / STEP_RSHIFT,
+    2.0f / 20 / STEP_RSHIFT,
+    5.0f / 20 / STEP_RSHIFT,
+    10.0f / 20 / STEP_RSHIFT,
+    20.0f / 20 / STEP_RSHIFT
 };
 
 const float voltsInPixel[] =
 {
-    2e-3 / 20,      // 2mV
-    5e-3 / 20,      // 5mV
-    10e-3 / 20,     // 10mV
-    20e-3 / 20,     // 20mV
-    50e-3 / 20,     // 50mV
-    100e-3 / 20,    // 100mV
-    200e-3 / 20,    // 200mV
-    500e-3 / 20,    // 500mV
-    1.0 / 20,       // 1V
-    2.0 / 20,       // 2V
-    5.0 / 20,       // 5V
-    10.0 / 20,      // 10V
-    20.0 / 20       // 20V
+    2e-3f / 20,      // 2mV
+    5e-3f / 20,      // 5mV
+    10e-3f / 20,     // 10mV
+    20e-3f / 20,     // 20mV
+    50e-3f / 20,     // 50mV
+    100e-3f / 20,    // 100mV
+    200e-3f / 20,    // 200mV
+    500e-3f / 20,    // 500mV
+    1.0f / 20,       // 1V
+    2.0f / 20,       // 2V
+    5.0f / 20,       // 5V
+    10.0f / 20,      // 10V
+    20.0f / 20       // 20V
 };
 
 const int voltsInPixelInt[] =   // Коэффициент 20000
@@ -71,10 +71,10 @@ const int voltsInPixelInt[] =   // Коэффициент 20000
 
 const float absStepTShift[] =
 {
-    2e-9 / 20, 5e-9 / 20, 10e-9 / 20, 20e-9 / 20, 50e-9 / 20, 100e-9 / 20, 200e-9 / 20, 500e-9 / 20,
-    1e-6 / 20, 2e-6 / 20, 5e-6 / 20, 10e-6 / 20, 20e-6 / 20, 50e-6 / 20, 100e-6 / 20, 200e-6 / 20, 500e-6 / 20,
-    1e-3 / 20, 2e-3 / 20, 5e-3 / 20, 10e-3 / 20, 20e-3 / 20, 50e-3 / 20, 100e-3 / 20, 200e-3 / 20, 500e-3 / 20,
-    1.0 / 20, 2.0 / 20, 5.0 / 20, 10.0 / 20
+    2e-9f / 20, 5e-9f / 20, 10e-9f / 20, 20e-9f / 20, 50e-9f / 20, 100e-9f / 20, 200e-9f / 20, 500e-9f / 20,
+    1e-6f / 20, 2e-6f / 20, 5e-6f / 20, 10e-6f / 20, 20e-6f / 20, 50e-6f / 20, 100e-6f / 20, 200e-6f / 20, 500e-6f / 20,
+    1e-3f / 20, 2e-3f / 20, 5e-3f / 20, 10e-3f / 20, 20e-3f / 20, 50e-3f / 20, 100e-3f / 20, 200e-3f / 20, 500e-3f / 20,
+    1.0f / 20, 2.0f / 20, 5.0f / 20, 10.0f / 20
 };
 
 int Math_MinFrom2Int(int val0, int val1)
@@ -88,7 +88,7 @@ int Math_MinFrom2Int(int val0, int val1)
 
 int Math_RShift2Rel(float rShiftAbs, Range range)
 {
-    int retValue = RShiftZero + rShiftAbs / absStepRShift[range];
+    int retValue = (int)(RShiftZero + rShiftAbs / absStepRShift[range]);
     if(retValue < RShiftMin)
     {
         retValue = RShiftMin;
@@ -148,7 +148,7 @@ void Math_DataExtrapolation(uint8 *data, uint8 *there, int size)
             float deltaX = (float)(data[pointer2] - data[pointer]) / deltaY;
             for(int i = 1; i < deltaY; i++)
             {
-                data[pointer + i] = data[pointer] + i * deltaX;
+                data[pointer + i] = (uint8)(data[pointer] + i * deltaX);
             }
         }
         pointer = pointer2 + 1;
@@ -160,8 +160,8 @@ void Math_PointsRelToVoltage(const uint8 *points, int numPoints, Range range, in
     int voltInPixel = voltsInPixelInt[range];
     float maxVoltsOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
     float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    int diff = (MIN_VALUE * voltInPixel) + (maxVoltsOnScreen + rShiftAbs) * 20e3;;
-    float koeff = 1.0f / 20e3;
+    int diff = (int)((MIN_VALUE * voltInPixel) + (maxVoltsOnScreen + rShiftAbs) * 20e3f);
+    float koeff = 1.0f / 20e3f;
     for (int i = 0; i < numPoints; i++)
     {
         voltage[i] = (points[i] * voltInPixel - diff) * koeff;
@@ -180,7 +180,7 @@ void Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, i
 
     for (int i = 0; i < numPoints; i++)
     {
-        int value = voltage[i] * voltInPixel + delta;
+        int value = (int)(voltage[i] * voltInPixel + delta);
         if (value < 0)
         {
             points[i] = 0;
@@ -197,7 +197,7 @@ void Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, i
 
 uint8 Math_VoltageToPoint(float voltage, Range range, int16 rShift)
 {
-    int relValue = (voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE;
+    int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE);
     LIMITATION(relValue, relValue, 0, 255);
     return relValue;
 }
@@ -206,7 +206,7 @@ float Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int
 {
     if(y0 == y1)
     {
-        return x1;
+        return (float)x1;
     }
 
     return (yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + x0;
@@ -214,11 +214,11 @@ float Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int
 
 bool Math_FloatsIsEquals(float value0, float value1, float epsilonPart)
 {
-    float max = fabs(value0) > fabs(value1) ? fabs(value0) : fabs(value1);
+    float max = fabsf(value0) > fabsf(value1) ? fabsf(value0) : fabsf(value1);
 
     float epsilonAbs = max * epsilonPart;
 
-    return fabs(value0 - value1) < epsilonAbs;
+    return fabsf(value0 - value1) < epsilonAbs;
 }
 
 float Math_MinFrom3float(float value1, float value2, float value3)
@@ -303,7 +303,7 @@ static void MultiplyToWindow(float *data, int numPoints)
     {
         for (int i = 0; i < numPoints; i++)
         {
-            data[i] *= 0.53836 - 0.46164 * cos(2 * 3.1415926 * i / (numPoints - 1));
+            data[i] *= 0.53836f - 0.46164f * cosf(2 * M_PI * i / (numPoints - 1));
         }
     }
     else if (WINDOW_FFT_IS_BLACKMAN)
@@ -314,14 +314,14 @@ static void MultiplyToWindow(float *data, int numPoints)
         float a2 = alpha / 2.0f;
         for (int i = 0; i < numPoints; i++)
         {
-            data[i] *= a0 - a1 * cos(2 * 3.1415926 * i / (numPoints - 1)) + a2 * cos(4 * 3.1415926 * i / (numPoints - 1));
+            data[i] *= a0 - a1 * cosf(2 * M_PI * i / (numPoints - 1)) + a2 * cosf(4 * M_PI * i / (numPoints - 1));
         }
     }
     else if (WINDOW_FFT_IS_HANN)
     {
         for (int i = 0; i < numPoints; i++)
         {
-            data[i] *= 0.5f * (1.0f - cos(2.0f * 3.1415926 * i / (numPoints - 1.0f)));
+            data[i] *= 0.5f * (1.0f - cosf(2.0f * M_PI * i / (numPoints - 1.0f)));
         }
     }
 #endif
@@ -333,9 +333,9 @@ static void MultiplyToWindow(float *data, int numPoints)
 
 void Math_CalculateFFT(float *dataR, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1)
 {
-    float scale = 1.0 / absStepTShift[TBASE] / 1024.0;
+    float scale = 1.0f / absStepTShift[TBASE] / 1024.0f;
 
-    float k = 1024.0 / numPoints;
+    float k = 1024.0f / numPoints;
 
     *freq0 = scale * FFT_POS_CURSOR_0 * k;
     *freq1 = scale * FFT_POS_CURSOR_1 * k;
@@ -439,7 +439,7 @@ void Math_CalculateFFT(float *dataR, int numPoints, float *result, float *freq0,
 
     for (int i = 0; i < 256; i++)
     {
-        result[i] = sqrt(dataR[i] * dataR[i] + result[i] * result[i]);
+        result[i] = sqrtf(dataR[i] * dataR[i] + result[i] * result[i]);
     }
 
     result[0] = 0.0f;       // WARN нулевая составляющая мешает постоянно. надо её убрать
@@ -453,7 +453,7 @@ void Math_CalculateFFT(float *dataR, int numPoints, float *result, float *freq0,
         for (int i = 0; i < 256; i++)
         {
 #ifdef DEBUG
-            result[i] = 20 * log10(result[i]);
+            result[i] = 20 * log10f(result[i]);
 #else
             result[i] = Log10[(int)(result[i] * 10000)];
 #endif
@@ -477,8 +477,8 @@ void Math_CalculateFFT(float *dataR, int numPoints, float *result, float *freq0,
         *density0 = result[FFT_POS_CURSOR_0];
         *density1 = result[FFT_POS_CURSOR_1];
     }
-    *y0 = grid.MathBottom() - result[FFT_POS_CURSOR_0] * grid.MathHeight();
-    *y1 = grid.MathBottom() - result[FFT_POS_CURSOR_1] * grid.MathHeight();
+    *y0 = (int)(grid.MathBottom() - result[FFT_POS_CURSOR_0] * grid.MathHeight());
+    *y1 = (int)(grid.MathBottom() - result[FFT_POS_CURSOR_1] * grid.MathHeight());
 }
 
 void Math_CalculateMathFunction(float *data0andResult, float *data1, int numPoints)

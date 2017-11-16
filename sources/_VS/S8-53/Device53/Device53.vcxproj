@@ -79,6 +79,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F207xx;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <TargetMachine>MachineARM</TargetMachine>
@@ -192,6 +194,14 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsService.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Generator.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\GlobalFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Map.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Math.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Measures.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Strings.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -460,6 +470,16 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Generator.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\GlobalFunctions.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Map.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Math.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Measures.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Strings.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesLog.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesWindow.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
@@ -501,6 +521,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="..\..\..\S8-53\Device53\main2.s" />
+    <None Include="..\..\..\S8-53\Device53\Utils\CreateTables.py" />
     <None Include="..\..\..\_libs\forVS\algorithm" />
   </ItemGroup>
   <ItemGroup>
