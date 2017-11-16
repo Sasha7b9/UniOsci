@@ -25,6 +25,21 @@
     <Filter Include="libs">
       <UniqueIdentifier>{64a61d03-cc30-46a9-a8af-72ce22205a12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Panel">
+      <UniqueIdentifier>{16dfce74-c008-4797-a629-0dbbedfad285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{652e5ca9-46bd-4c71-902a-1865cbac69e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="USBH">
+      <UniqueIdentifier>{0dc7e33c-b28f-40c1-923b-4e914e266a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{5892bb12-c681-4de5-9f7b-838044c2aaa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{a9221ba6-b6de-48ea-9b58-7a31cdecd9db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\PainterText.cpp">
@@ -134,6 +149,51 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_hal_msp.cpp">
       <Filter>libs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Panel\Controls.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Panel\Panel.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Settings\Settings.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_bot.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_scsi.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_core.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ioreq.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_pipes.c">
+      <Filter>USBH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\defines.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\globals.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\main.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +325,33 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Boot53\libs\usbh_conf.h">
       <Filter>libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Controls.h">
+      <Filter>Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Panel.h">
+      <Filter>Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Settings\Settings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsTypes.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\Math.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\defines.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\globals.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\main.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

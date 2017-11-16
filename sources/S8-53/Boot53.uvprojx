@@ -651,16 +651,6 @@
               <FilePath>.\Boot53\libs\stm32f2xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f2xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\libs\stm32f2xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f2xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\libs\stm32f2xx_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f2xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\libs\stm32f2xx_it.h</FilePath>
@@ -671,14 +661,24 @@
               <FilePath>.\Boot53\libs\system_stm32f2xx.c</FilePath>
             </File>
             <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\libs\usbh_conf.c</FilePath>
-            </File>
-            <File>
               <FileName>usbh_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\libs\usbh_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f2xx_hal_msp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\libs\stm32f2xx_hal_msp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f2xx_it.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\libs\stm32f2xx_it.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\libs\usbh_conf.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -686,35 +686,30 @@
           <GroupName>Panel</GroupName>
           <Files>
             <File>
-              <FileName>Controls.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Panel\Controls.c</FilePath>
-            </File>
-            <File>
               <FileName>Controls.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Panel\Controls.h</FilePath>
-            </File>
-            <File>
-              <FileName>Panel.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Panel\Panel.c</FilePath>
             </File>
             <File>
               <FileName>Panel.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Panel\Panel.h</FilePath>
             </File>
+            <File>
+              <FileName>Controls.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Panel\Controls.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Panel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Panel\Panel.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Settings</GroupName>
           <Files>
-            <File>
-              <FileName>Settings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Settings\Settings.c</FilePath>
-            </File>
             <File>
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
@@ -724,6 +719,11 @@
               <FileName>SettingsTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Settings\SettingsTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Settings\Settings.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -774,19 +774,9 @@
               </FileOption>
             </File>
             <File>
-              <FileName>defines.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\defines.c</FilePath>
-            </File>
-            <File>
               <FileName>defines.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\defines.h</FilePath>
-            </File>
-            <File>
-              <FileName>globals.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\globals.c</FilePath>
             </File>
             <File>
               <FileName>globals.h</FileName>
@@ -794,14 +784,24 @@
               <FilePath>.\Boot53\globals.h</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\main.c</FilePath>
-            </File>
-            <File>
               <FileName>main.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\main.h</FilePath>
+            </File>
+            <File>
+              <FileName>defines.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\defines.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>globals.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\globals.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\main.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -849,24 +849,24 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>GlobalFunctions.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Utils\GlobalFunctions.c</FilePath>
-            </File>
-            <File>
               <FileName>GlobalFunctions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Utils\GlobalFunctions.h</FilePath>
             </File>
             <File>
-              <FileName>Math.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Utils\Math.c</FilePath>
-            </File>
-            <File>
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>GlobalFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Utils\GlobalFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Utils\Math.cpp</FilePath>
             </File>
           </Files>
         </Group>

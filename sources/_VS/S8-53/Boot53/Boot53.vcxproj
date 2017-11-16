@@ -119,12 +119,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\S8-53\Boot53\defines.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\font\Font.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\FlashDrive\FlashDrive.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\globals.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\FLASH.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\Hardware.cpp" />
@@ -135,6 +137,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\libs\usbh_conf.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\main.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\Panel\Controls.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\Panel\Panel.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -183,6 +191,27 @@
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_ll_usb.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_bot.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_scsi.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_core.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ioreq.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_pipes.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\diskio.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -203,6 +232,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\S8-53\Boot53\defines.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\Colors.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\Display.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\DisplayTypes.h" />
@@ -211,6 +241,7 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\PainterC.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\PainterText.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\FlashDrive\FlashDrive.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\globals.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FLASH.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FSMC.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\Hardware.h" />
@@ -219,6 +250,13 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_it.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\libs\usbh_conf.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\main.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Controls.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Panel.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Settings\Settings.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\Math.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
