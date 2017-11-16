@@ -133,12 +133,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -741,19 +741,9 @@
           <GroupName>libs</GroupName>
           <Files>
             <File>
-              <FileName>app_ethernet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\app_ethernet.c</FilePath>
-            </File>
-            <File>
               <FileName>app_ethernet.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\libs\app_ethernet.h</FilePath>
-            </File>
-            <File>
-              <FileName>ethernetif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\ethernetif.c</FilePath>
             </File>
             <File>
               <FileName>ethernetif.h</FileName>
@@ -781,16 +771,6 @@
               <FilePath>.\Device53\libs\stm32f2xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f2xx_hal_msp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\stm32f2xx_hal_msp.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f2xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\stm32f2xx_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f2xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\libs\stm32f2xx_it.h</FilePath>
@@ -801,19 +781,9 @@
               <FilePath>.\Device53\libs\system_stm32f2xx.c</FilePath>
             </File>
             <File>
-              <FileName>usbd_cdc_interface.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\usbd_cdc_interface.c</FilePath>
-            </File>
-            <File>
               <FileName>usbd_cdc_interface.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\libs\usbd_cdc_interface.h</FilePath>
-            </File>
-            <File>
-              <FileName>usbd_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\usbd_conf.c</FilePath>
             </File>
             <File>
               <FileName>usbd_conf.h</FileName>
@@ -831,14 +801,44 @@
               <FilePath>.\Device53\libs\usbd_desc.h</FilePath>
             </File>
             <File>
-              <FileName>usbh_conf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\libs\usbh_conf.c</FilePath>
-            </File>
-            <File>
               <FileName>usbh_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\libs\usbh_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_ethernet.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\app_ethernet.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ethernetif.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\ethernetif.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f2xx_hal_msp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\stm32f2xx_hal_msp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f2xx_it.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\stm32f2xx_it.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_cdc_interface.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\usbd_cdc_interface.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbd_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\usbd_conf.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\libs\usbh_conf.cpp</FilePath>
             </File>
           </Files>
         </Group>

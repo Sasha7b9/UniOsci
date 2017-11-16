@@ -2,7 +2,7 @@
 
 
 // Идентификаторы кнопок.
-typedef enum
+enum PanelButton
 {
     B_Empty     = 0,        // кнопка не нажата
     B_Channel0  = 1,        // КАНАЛ 1
@@ -24,7 +24,7 @@ typedef enum
     B_F4        = 17,       // 4
     B_F5        = 18,       // 5
     B_NumButtons            // общее количество кнопок
-} PanelButton;
+};
 
 PanelButton& operator++(PanelButton &button);
 

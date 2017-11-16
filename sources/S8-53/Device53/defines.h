@@ -6,7 +6,6 @@
 
 
 typedef signed      char        int8;
-typedef signed      char        int8_t;
 typedef signed      short   int int16;
 typedef unsigned    char        uint8;
 typedef unsigned    char        uint8_t;
@@ -16,6 +15,14 @@ typedef unsigned    int         uint;
 typedef unsigned long long int  uint64;
 typedef unsigned    int         uint32_t;
 typedef unsigned    char        uchar;
+
+#ifndef WIN32
+typedef signed      char        int8_t;
+#else
+#define __ALIGN_BEGIN
+#define __ALIGN_END
+#define __weak
+#endif
 
 
 // Тип цвета

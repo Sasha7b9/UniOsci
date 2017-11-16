@@ -41,7 +41,7 @@ typedef enum
 } Divider;
 
 /// Масштаб по напряжению.
-typedef enum
+enum Range
 {
     Range_2mV,
     Range_5mV,
@@ -57,7 +57,7 @@ typedef enum
     Range_10V,
     Range_20V,
     RangeSize
-} Range;
+};
 
 Range& operator++(Range &range);
 Range& operator--(Range &range);
