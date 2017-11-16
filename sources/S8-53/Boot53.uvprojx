@@ -591,19 +591,9 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
-              <FileName>FLASH.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Hardware\FLASH.c</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Hardware\FLASH.h</FilePath>
-            </File>
-            <File>
-              <FileName>FSMC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Hardware\FSMC.c</FilePath>
             </File>
             <File>
               <FileName>FSMC.h</FileName>
@@ -611,24 +601,34 @@
               <FilePath>.\Boot53\Hardware\FSMC.h</FilePath>
             </File>
             <File>
-              <FileName>Hardware.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Hardware\Hardware.c</FilePath>
-            </File>
-            <File>
               <FileName>Hardware.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Hardware\Hardware.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Hardware\Timer.c</FilePath>
-            </File>
-            <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Hardware\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>FLASH.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Hardware\FLASH.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FSMC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Hardware\FSMC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Hardware.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Hardware\Hardware.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Hardware\Timer.cpp</FilePath>
             </File>
           </Files>
         </Group>

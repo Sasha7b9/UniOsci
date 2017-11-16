@@ -16,6 +16,12 @@
     <Filter Include="FlashDrive">
       <UniqueIdentifier>{5bb53e09-8c8c-4786-bd4e-5e3d927d6687}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HAL">
+      <UniqueIdentifier>{b4f7c517-d9e2-4ca7-9548-d30fdea22d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hardware">
+      <UniqueIdentifier>{07655a25-5294-4332-b569-32a56565ea60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\PainterText.cpp">
@@ -53,6 +59,66 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\FlashDrive\FlashDrive.cpp">
       <Filter>FlashDrive</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_cortex.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_dma.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_dma_ex.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_flash.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_flash_ex.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_gpio.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_hcd.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_rcc.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_rcc_ex.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_spi.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_sram.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_tim.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal_tim_ex.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_ll_fsmc.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_ll_usb.c">
+      <Filter>HAL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\Timer.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\Hardware.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\FSMC.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\FLASH.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +226,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Boot53\FlashDrive\FlashDrive.h">
       <Filter>FlashDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FLASH.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FSMC.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\Hardware.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\Timer.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
