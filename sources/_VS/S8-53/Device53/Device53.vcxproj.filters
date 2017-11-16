@@ -52,6 +52,12 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{c509fd62-8b88-44a2-b47e-312e5c0859be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="VCP">
+      <UniqueIdentifier>{540e0af4-ecf2-46fb-b2e6-479f4cb73cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VCP\SCPI">
+      <UniqueIdentifier>{ce88dc7d-ee60-41a1-a0e7-a714ab1d876d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -489,6 +495,30 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Strings.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\VCP.cpp">
+      <Filter>VCP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\channelSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\displaySCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\SCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\tbaseSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\trigSCPI.cpp">
+      <Filter>VCP\SCPI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -787,6 +817,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesWindow.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\VCP\VCP.h">
+      <Filter>VCP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.h">
+      <Filter>VCP\SCPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.h">
+      <Filter>VCP\SCPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\SCPI.h">
+      <Filter>VCP\SCPI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

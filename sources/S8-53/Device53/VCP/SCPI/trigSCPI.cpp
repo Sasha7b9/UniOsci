@@ -179,7 +179,7 @@ void Process_OFFSET(uint8 *buffer)
     ENTER_ANALYSIS
         if (value == 0)
         {
-            int retValue = 0.5f * (TRIG_LEVEL_SOURCE - RShiftZero);
+            int retValue = (int)(0.5f * (TRIG_LEVEL_SOURCE - RShiftZero));
             SCPI_SEND(":TRIGGER:OFFSET %d", retValue);
         }
     LEAVE_ANALYSIS
