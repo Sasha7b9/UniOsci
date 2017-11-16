@@ -1359,19 +1359,9 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>Definition.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\Definition.c</FilePath>
-            </File>
-            <File>
               <FileName>Definition.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Menu\Pages\Definition.h</FilePath>
-            </File>
-            <File>
-              <FileName>HelpContent.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\HelpContent.c</FilePath>
             </File>
             <File>
               <FileName>HelpContent.h</FileName>
@@ -1384,34 +1374,54 @@
               <FilePath>.\Device53\Menu\Pages\HelpContentPages.h</FilePath>
             </File>
             <File>
-              <FileName>PageChannels.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageChannels.c</FilePath>
-            </File>
-            <File>
-              <FileName>PageCursors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageCursors.c</FilePath>
-            </File>
-            <File>
               <FileName>PageCursors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Menu\Pages\PageCursors.h</FilePath>
             </File>
             <File>
-              <FileName>PageDebug.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageDebug.c</FilePath>
+              <FileName>PageHelp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageHelp.h</FilePath>
             </File>
             <File>
-              <FileName>PageDisplay.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageDisplay.c</FilePath>
+              <FileName>PageMemory.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageMemory.h</FilePath>
             </File>
             <File>
-              <FileName>PageHelp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageHelp.c</FilePath>
+              <FileName>Definition.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\Definition.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HelpContent.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\HelpContent.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageChannels.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageChannels.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageCursors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageCursors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDebug.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageDebug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDisplay.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageDisplay.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageHelp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageHelp.cpp</FilePath>
               <FileOption>
                 <CommonProperty>
                   <UseCPPCompiler>2</UseCPPCompiler>
@@ -1464,39 +1474,29 @@
               </FileOption>
             </File>
             <File>
-              <FileName>PageHelp.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageHelp.h</FilePath>
+              <FileName>PageMeasures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageMeasures.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageMeasures.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageMeasures.c</FilePath>
+              <FileName>PageMemory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageMemory.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageMemory.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageMemory.c</FilePath>
+              <FileName>PageService.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageService.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageMemory.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageMemory.h</FilePath>
+              <FileName>PageTime.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageTime.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageService.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageService.c</FilePath>
-            </File>
-            <File>
-              <FileName>PageTime.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageTime.c</FilePath>
-            </File>
-            <File>
-              <FileName>PageTrig.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\Pages\PageTrig.c</FilePath>
+              <FileName>PageTrig.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\Pages\PageTrig.cpp</FilePath>
             </File>
           </Files>
         </Group>

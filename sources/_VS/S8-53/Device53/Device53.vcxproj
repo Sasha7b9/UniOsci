@@ -165,6 +165,20 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItems.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\Definition.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageChannels.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageDebug.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageDisplay.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageHelp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageMeasures.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageService.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageTime.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageTrig.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -413,6 +427,12 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItems.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\Definition.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContentPages.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageHelp.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
