@@ -16,6 +16,9 @@
     <Filter Include="forVS">
       <UniqueIdentifier>{dc8167d9-f775-4239-8bf3-a1fb77c726e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb0bcadc-7460-48d1-a19e-f28adb2de1dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -246,6 +249,21 @@
     <ClCompile Include="..\..\..\S8-53\Device53\libs\stm32f2xx_hal_msp.cpp">
       <Filter>libs</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\defines.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -350,6 +368,21 @@
     <ClInclude Include="..\..\..\_libs\forVS\inttypes.h">
       <Filter>forVS</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\defines.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Globals.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\main.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Tables.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\S8-53\Device53\libs\startup_stm32f207xx.s">
@@ -358,5 +391,22 @@
     <None Include="..\..\..\_libs\forVS\algorithm">
       <Filter>forVS</Filter>
     </None>
+    <None Include="..\..\..\S8-53\Device53\check.bat">
+      <Filter>src</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Device53\Device53.sct">
+      <Filter>src</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Device53\main2.s">
+      <Filter>src</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\S8-53\Device53\err.txt">
+      <Filter>src</Filter>
+    </Text>
+    <Text Include="..\..\..\S8-53\Device53\includes.txt">
+      <Filter>src</Filter>
+    </Text>
   </ItemGroup>
 </Project>

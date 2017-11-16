@@ -851,11 +851,6 @@
               <FilePath>.\Device53\check.bat</FilePath>
             </File>
             <File>
-              <FileName>defines.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\defines.c</FilePath>
-            </File>
-            <File>
               <FileName>defines.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\defines.h</FilePath>
@@ -864,11 +859,6 @@
               <FileName>err.txt</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\err.txt</FilePath>
-            </File>
-            <File>
-              <FileName>Globals.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Globals.c</FilePath>
             </File>
             <File>
               <FileName>Globals.h</FileName>
@@ -881,19 +871,9 @@
               <FilePath>.\Device53\includes.txt</FilePath>
             </File>
             <File>
-              <FileName>Log.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Log.c</FilePath>
-            </File>
-            <File>
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Log.h</FilePath>
-            </File>
-            <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\main.c</FilePath>
             </File>
             <File>
               <FileName>main.h</FileName>
@@ -906,14 +886,77 @@
               <FilePath>.\Device53\main2.s</FilePath>
             </File>
             <File>
-              <FileName>Tables.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Tables.c</FilePath>
-            </File>
-            <File>
               <FileName>Tables.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Tables.h</FilePath>
+            </File>
+            <File>
+              <FileName>defines.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\defines.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Device53.sct</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\Device53\Device53.sct</FilePath>
+              <FileOption>
+                <CommonProperty>
+                  <UseCPPCompiler>2</UseCPPCompiler>
+                  <RVCTCodeConst>0</RVCTCodeConst>
+                  <RVCTZI>0</RVCTZI>
+                  <RVCTOtherData>0</RVCTOtherData>
+                  <ModuleSelection>0</ModuleSelection>
+                  <IncludeInBuild>0</IncludeInBuild>
+                  <AlwaysBuild>0</AlwaysBuild>
+                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
+                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
+                  <PublicsOnly>2</PublicsOnly>
+                  <StopOnExitCode>11</StopOnExitCode>
+                  <CustomArgument></CustomArgument>
+                  <IncludeLibraryModules></IncludeLibraryModules>
+                  <ComprImg>1</ComprImg>
+                </CommonProperty>
+                <FileArmAds>
+                  <Aads>
+                    <interw>2</interw>
+                    <Ropi>2</Ropi>
+                    <Rwpi>2</Rwpi>
+                    <thumb>2</thumb>
+                    <SplitLS>2</SplitLS>
+                    <SwStkChk>2</SwStkChk>
+                    <NoWarn>2</NoWarn>
+                    <uSurpInc>2</uSurpInc>
+                    <useXO>2</useXO>
+                    <uClangAs>2</uClangAs>
+                    <VariousControls>
+                      <MiscControls></MiscControls>
+                      <Define></Define>
+                      <Undefine></Undefine>
+                      <IncludePath></IncludePath>
+                    </VariousControls>
+                  </Aads>
+                </FileArmAds>
+              </FileOption>
+            </File>
+            <File>
+              <FileName>Globals.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Globals.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Log.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Log.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>main.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Tables.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Tables.cpp</FilePath>
             </File>
           </Files>
         </Group>
