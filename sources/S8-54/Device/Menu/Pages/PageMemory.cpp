@@ -66,10 +66,10 @@ static void     OnPress_Internal_EraseAll(void);
 static void        Draw_Internal_EraseAll(int x, int y);
 */
 extern const   SButton bInternal_Scale;                         ///< ÏÀÌßÒÜ - ÂÍÓÒÐ ÇÓ - Ìåñøòàá
-static void     OnPress_Internal_Scale(void);
-static void        Draw_Internal_Scale(int x, int y);
-static void        Draw_Internal_Scale_Recalculated(int x, int y);
-static void        Draw_Internal_Scale_Original(int x, int y);
+//static void     OnPress_Internal_Scale(void);
+//static void        Draw_Internal_Scale(int x, int y);
+//static void        Draw_Internal_Scale_Recalculated(int x, int y);
+//static void        Draw_Internal_Scale_Original(int x, int y);
 extern const   SButton bInternal_SaveToMemory;                  ///< ÏÀÌßÒÜ - ÂÍÓÒÐ ÇÓ - Ñîõðàíèòü
 static void     OnPress_Internal_SaveToMemory(void);
 static void        Draw_Internal_SaveToMemory(int x, int y);
@@ -700,11 +700,14 @@ static void Draw_Internal_EraseAll(int x, int y)
 */
 
 // ÏÀÌßÒÜ - ÂÍÓÒÐ ÇÓ - Ìàñøòàá -----------------------------------------------------------------------------------------------------------------------
+/*
 void OnPress_Internal_Scale(void)
 {
     CircleIncreaseInt8((int8 *)&MEM_DATA_SCALE, 0, 1);
 }
+*/
 
+/*
 void Draw_Internal_Scale(int x, int y)
 {
     if (MEM_DATA_SCALE_RECALC)
@@ -716,7 +719,9 @@ void Draw_Internal_Scale(int x, int y)
         Draw_Internal_Scale_Original(x, y);
     }
 }
+*/
 
+/*
 void Draw_Internal_Scale_Recalculated(int x, int y)
 {
     painter.DrawText(x + 8, y + 2, DICT(DM));
@@ -724,7 +729,9 @@ void Draw_Internal_Scale_Recalculated(int x, int y)
     painter.DrawText(x + 5, y + 9, DICT(DABS));
     painter.SetFont(TypeFont_8);
 }
+*/
 
+/*
 void Draw_Internal_Scale_Original(int x, int y)
 {
     painter.DrawText(x + 8, y + 2, DICT(DM));
@@ -732,7 +739,9 @@ void Draw_Internal_Scale_Original(int x, int y)
     painter.DrawText(x + 5, y + 9, DICT(DREL));
     painter.SetFont(TypeFont_8);
 }
+*/
 
+/*
 DEF_SMALL_BUTTON_HINTS_2
 (
     bInternal_Scale,
@@ -746,6 +755,7 @@ DEF_SMALL_BUTTON_HINTS_2
     Draw_Internal_Scale_Original,       "Ñèãíàë ðèñóåòñÿ â òàêîì âèäå, â êîòîðîì ñ÷èòàí",
                                         "The signal is drawn in the form in which the readout"
 );
+*/
 
 // ÏÀÌßÒÜ - ÂÍÓÒÐ ÇÓ - Ñîõðàíèòü â ïàìÿòè ------------------------------------------------------------------------------------------------------------
 static void SaveSignalToIntMemory(void)
