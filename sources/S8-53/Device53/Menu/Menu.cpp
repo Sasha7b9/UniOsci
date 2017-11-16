@@ -93,10 +93,12 @@ static void ProcessButtonForHint(PanelButton button)
         "MENU button performs the following functions:\n"
             "1. At the closed menu pressing or pressing with deduction during 0.5s opens the menu.\n"
             "2. At the open menu deduction of the button during 0.5s closes the menu.\n"
+#ifndef WIN32
 #pragma push
 #pragma diag_suppress 192
             "3. At control \"SERVICE\x99Mode btn MENU\x99\Close\" current becomes the page of the previous level of the menu. If the root page is current, the menu is closed.\n"
 #pragma pop
+#endif
             "4. At control \"SERVICE\x99Mode btn MENU\x99Toggle\" current becomes the page of the current level of the menu. If the current page the last in the current level, happens transition to the previous level of the menu.\n"
             "5. If the menu is in the mode of small buttons, pressing closes the page.";
 
@@ -188,10 +190,12 @@ static void ProcessButtonForHint(PanelButton button)
             "3. Нажатие и удержание в течение 0.5с кнопки СИНХР при настройке \"СЕРВИС\x99Реж длит СИНХР\x99Сброс уровня\" устанавливает уровень синхронизации 0В."
             :
             "1. СИНХР button opens a menu settings synchronization.\n"
+#ifndef WIN32
 #pragma push
 #pragma diag_suppress 192
             "2. Pressing and holding the button СИНХР for 0.5s when setting \"SERVICE\x99Mode long TRIG\x99\Autolevel\" automatically adjust the trigger level.\n"
 #pragma pop
+#endif
             "3. Pressing and holding the button СИНХР for 0.5s when setting \"SERVICE\x99Mode long TRIG\x99SReset trig level\" sets the trigger level 0V.";
     }
     else

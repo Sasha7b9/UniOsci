@@ -1289,11 +1289,6 @@
           <GroupName>Menu</GroupName>
           <Files>
             <File>
-              <FileName>FileManager.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\FileManager.c</FilePath>
-            </File>
-            <File>
               <FileName>FileManager.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Menu\FileManager.h</FilePath>
@@ -1314,11 +1309,6 @@
               <FilePath>.\Device53\Menu\Menu_reference.txt</FilePath>
             </File>
             <File>
-              <FileName>MenuDrawing.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\MenuDrawing.c</FilePath>
-            </File>
-            <File>
               <FileName>MenuFunctions.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Menu\MenuFunctions.cpp</FilePath>
@@ -1334,24 +1324,34 @@
               <FilePath>.\Device53\Menu\MenuItems.h</FilePath>
             </File>
             <File>
-              <FileName>MenuItemsGraphics.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\MenuItemsGraphics.c</FilePath>
-            </File>
-            <File>
               <FileName>MenuItemsGraphics.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Menu\MenuItemsGraphics.h</FilePath>
             </File>
             <File>
-              <FileName>MenuItemsLogic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device53\Menu\MenuItemsLogic.c</FilePath>
-            </File>
-            <File>
               <FileName>MenuItemsLogic.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Menu\MenuItemsLogic.h</FilePath>
+            </File>
+            <File>
+              <FileName>FileManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\FileManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuDrawing.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\MenuDrawing.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsGraphics.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\MenuItemsGraphics.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsLogic.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\Menu\MenuItemsLogic.cpp</FilePath>
             </File>
           </Files>
         </Group>

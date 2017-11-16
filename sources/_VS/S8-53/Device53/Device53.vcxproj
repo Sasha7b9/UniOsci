@@ -158,6 +158,13 @@
     <ClCompile Include="..\..\..\S8-53\Device53\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Log.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\main.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Menu.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuDrawing.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItems.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -401,6 +408,11 @@
     <ClInclude Include="..\..\..\S8-53\Device53\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Log.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\main.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Menu.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItems.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
@@ -448,6 +460,7 @@
   <ItemGroup>
     <Text Include="..\..\..\S8-53\Device53\err.txt" />
     <Text Include="..\..\..\S8-53\Device53\includes.txt" />
+    <Text Include="..\..\..\S8-53\Device53\Menu\Menu_reference.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

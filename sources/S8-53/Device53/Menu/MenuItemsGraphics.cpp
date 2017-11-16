@@ -111,16 +111,16 @@ void DrawGovernorLowPart(Governor *governor, int x, int y, bool pressed, bool sh
             int limHeight = MI_HEIGHT_VALUE - 1;
             if(delta > 0.0f)
             {
-                x = painter.DrawTextWithLimitationC(drawX, y + 21 - delta, Int2String(*governor->cell, false, 1, buffer), 
+                x = painter.DrawTextWithLimitationC(drawX, (int)(y + 21 - delta), Int2String(*governor->cell, false, 1, buffer), 
                                             COLOR_BACK, limX, limY, limWidth, limHeight);
-                painter.DrawTextWithLimitationC(drawX, y + 21 + 10 - delta, Int2String(Governor_NextValue(governor), false, 1, buffer),
+                painter.DrawTextWithLimitationC(drawX, (int)(y + 21 + 10 - delta), Int2String(Governor_NextValue(governor), false, 1, buffer),
                                             COLOR_BACK, limX, limY, limWidth, limHeight);
             }
             if(delta < 0.0f)
             {
-                x = painter.DrawTextWithLimitationC(drawX, y + 21 - delta, Int2String(*governor->cell, false, 1, buffer), 
+                x = painter.DrawTextWithLimitationC(drawX, (int)(y + 21 - delta), Int2String(*governor->cell, false, 1, buffer), 
                                             COLOR_BACK, limX, limY, limWidth, limHeight);
-                painter.DrawTextWithLimitationC(drawX, y + 21 - 10 - delta, Int2String(Governor_PrevValue(governor), false, 1, buffer),
+                painter.DrawTextWithLimitationC(drawX, (int)(y + 21 - 10 - delta), Int2String(Governor_PrevValue(governor), false, 1, buffer),
                     COLOR_BACK, limX, limY, limWidth, limHeight);
             }
         }
@@ -438,7 +438,7 @@ void DrawGovernorColorValue(int x, int y, GovernorColor *govColor, int delta)
         Color_Init(ct);
     }
 
-    int16 vals[4] = {ct->brightness * 100, blue, green, red};
+    int16 vals[4] = {(int16)(ct->brightness * 100), (int16)blue, (int16)green, (int16)red};
 
     painter.FillRegionC(x, y, MI_WIDTH + delta - 2, MI_HEIGHT / 2 - 3, COLOR_BLACK);
     x += 92;
@@ -618,7 +618,8 @@ void ItemChoice_DrawClosed(Choice *choice, int x, int y)
     }
     else
     {
-        painter.DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 2, ColorMenuField(), ColorMenuItemBrighter(), ColorMenuItemLessBright(), true, shade);
+        painter.DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 2, ColorMenuField(), ColorMenuItemBrighter(), 
+                                 ColorMenuItemLessBright(), true, shade);
     }
 
     float deltaY = choice->Step();
@@ -630,9 +631,11 @@ void ItemChoice_DrawClosed(Choice *choice, int x, int y)
     }
     else
     {
-        painter.DrawTextWithLimitationC(x + 4, y + 21 - deltaY, choice->NameCurrentSubItem(), colorText, x, y + 19, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
-        painter.DrawHLineC(y + (deltaY > 0 ? 31 : 19) - deltaY, x + 3, x + MI_WIDTH_VALUE + 1, COLOR_BLACK);
-        painter.DrawTextWithLimitationC(x + 4, y + (deltaY > 0 ? 33 : 9) - deltaY, deltaY > 0 ? choice->NameNextSubItem() : choice->NamePrevSubItem(), colorText, x, y + 19, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
+        painter.DrawTextWithLimitationC(x + 4, (int)(y + 21 - deltaY), choice->NameCurrentSubItem(), colorText, x, y + 19, MI_WIDTH_VALUE, 
+                                        MI_HEIGHT_VALUE - 1);
+        painter.DrawHLineC((int)(y + (deltaY > 0 ? 31 : 19) - deltaY), x + 3, x + MI_WIDTH_VALUE + 1, COLOR_BLACK);
+        painter.DrawTextWithLimitationC(x + 4, (int)(y + (deltaY > 0 ? 33 : 9) - deltaY), 
+                    deltaY > 0 ? choice->NameNextSubItem() : choice->NamePrevSubItem(), colorText, x, y + 19, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1);
     }
     painter.DrawHLineC(y + MI_HEIGHT + 1, x, x + MI_WIDTH, ColorBorderMenu(false));
 

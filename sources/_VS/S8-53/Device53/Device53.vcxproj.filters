@@ -37,6 +37,9 @@
     <Filter Include="Hardware">
       <UniqueIdentifier>{f5122187-ae57-4951-9359-2cc193552af2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{a153c0c9-1961-4c15-a5c6-fe81666e7df5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -357,6 +360,27 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Menu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuFunctions.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItems.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuDrawing.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -551,6 +575,21 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Timer.h">
       <Filter>Hardware</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Menu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItems.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\S8-53\Device53\libs\startup_stm32f207xx.s">
@@ -602,6 +641,9 @@
     </Text>
     <Text Include="..\..\..\S8-53\Device53\includes.txt">
       <Filter>src</Filter>
+    </Text>
+    <Text Include="..\..\..\S8-53\Device53\Menu\Menu_reference.txt">
+      <Filter>Menu</Filter>
     </Text>
   </ItemGroup>
 </Project>

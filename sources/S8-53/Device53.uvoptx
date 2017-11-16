@@ -2218,25 +2218,13 @@
 
   <Group>
     <GroupName>Menu</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>12</GroupNumber>
       <FileNumber>164</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device53\Menu\FileManager.c</PathWithFileName>
-      <FilenameWithoutPath>FileManager.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>165</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2248,7 +2236,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>166</FileNumber>
+      <FileNumber>165</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2260,7 +2248,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>167</FileNumber>
+      <FileNumber>166</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2272,7 +2260,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>168</FileNumber>
+      <FileNumber>167</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2284,19 +2272,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>169</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device53\Menu\MenuDrawing.c</PathWithFileName>
-      <FilenameWithoutPath>MenuDrawing.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>170</FileNumber>
+      <FileNumber>168</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2308,7 +2284,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>171</FileNumber>
+      <FileNumber>169</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2320,7 +2296,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>172</FileNumber>
+      <FileNumber>170</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2332,19 +2308,7 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>173</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device53\Menu\MenuItemsGraphics.c</PathWithFileName>
-      <FilenameWithoutPath>MenuItemsGraphics.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>174</FileNumber>
+      <FileNumber>171</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2356,25 +2320,61 @@
     </File>
     <File>
       <GroupNumber>12</GroupNumber>
-      <FileNumber>175</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device53\Menu\MenuItemsLogic.c</PathWithFileName>
-      <FilenameWithoutPath>MenuItemsLogic.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>176</FileNumber>
+      <FileNumber>172</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Device53\Menu\MenuItemsLogic.h</PathWithFileName>
       <FilenameWithoutPath>MenuItemsLogic.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>173</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device53\Menu\FileManager.cpp</PathWithFileName>
+      <FilenameWithoutPath>FileManager.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>174</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device53\Menu\MenuDrawing.cpp</PathWithFileName>
+      <FilenameWithoutPath>MenuDrawing.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>175</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device53\Menu\MenuItemsGraphics.cpp</PathWithFileName>
+      <FilenameWithoutPath>MenuItemsGraphics.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>176</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device53\Menu\MenuItemsLogic.cpp</PathWithFileName>
+      <FilenameWithoutPath>MenuItemsLogic.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
