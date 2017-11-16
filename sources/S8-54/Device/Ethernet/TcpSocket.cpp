@@ -90,7 +90,7 @@ void TCPSocket_SendFormatString(char *format, ...)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ETH_SendFormatString(char *format, ...)
+void ETH_SendFormatString(char *, ...)
 {
 
 }
