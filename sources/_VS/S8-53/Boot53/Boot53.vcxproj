@@ -129,6 +129,12 @@
     <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Hardware\Timer.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_hal_msp.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_it.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Boot53\libs\system_stm32f2xx.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -209,6 +215,10 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FSMC.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\Hardware.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\Timer.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\libs\ffconf.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_hal_conf.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\libs\stm32f2xx_it.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
@@ -254,6 +264,9 @@
     <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGO2.inc" />
     <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGO2display.inc" />
     <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGOdisplay.inc" />
+    <None Include="..\..\..\S8-53\Boot53\libs\startup_stm32f207xx.s">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </None>
     <None Include="..\..\..\_libs\forVS\algorithm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
