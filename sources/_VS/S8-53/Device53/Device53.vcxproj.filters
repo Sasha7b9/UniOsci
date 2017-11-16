@@ -25,6 +25,12 @@
     <Filter Include="Display\fonts">
       <UniqueIdentifier>{74cd3a7f-6a8e-4bb4-97c8-88f4bf53e69a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ethernet">
+      <UniqueIdentifier>{4ae90f0a-c30e-46db-ae5a-42e4462f309c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FlashDrive">
+      <UniqueIdentifier>{c53e6a35-a8f6-4859-aebb-bfaa540f7f40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -300,6 +306,15 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.cpp">
+      <Filter>Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.cpp">
+      <Filter>Ethernet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp">
+      <Filter>FlashDrive</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -454,6 +469,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Display\font\Font.h">
       <Filter>Display\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.h">
+      <Filter>Ethernet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h">
+      <Filter>FlashDrive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

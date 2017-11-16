@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\Debug\</OutDir>
-    <IncludePath>..\..\..\_libs\forVS;..\..\..\S8-53\Device53;..\..\..\S8-53\Device53\libs;..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system</IncludePath>
+    <IncludePath>..\..\..\_libs\forVS;..\..\..\S8-53\Device53;..\..\..\S8-53\Device53\libs;..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system;D:\Projects\UniOsci\sources\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\drivers</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -129,6 +129,9 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterMem.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp" />
@@ -360,6 +363,9 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterMem.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Symbols.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Globals.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ethernetif.h" />
