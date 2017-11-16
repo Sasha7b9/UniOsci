@@ -1,2 +1,152 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Display">
+      <UniqueIdentifier>{847d3583-b947-4116-9b14-aa088848637b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="forVS">
+      <UniqueIdentifier>{474a7d0d-56a8-4c9a-8f21-2036ea944cf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Display\fonts">
+      <UniqueIdentifier>{b1854a03-afef-4db0-bdb7-e6833876a51a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Display\PainterText.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Display\Painter.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Display\Display.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Display\Colors.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Display\font\Font.cpp">
+      <Filter>Display\fonts</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\Colors.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\Display.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\DisplayTypes.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\Painter.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\PainterC.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\PainterText.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\ctype.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\ff.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\ff_gen_drv.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\limits.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\math.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdarg.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdint.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdio.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stdlib.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\stm32f4xx_hal.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\string.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\tchar.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_cdc.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_core.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_def.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbd_ioreq.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbh_core.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbh_def.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbh_msc.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\usbh_msc_bot.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\windows.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h">
+      <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Display\font\Font.h">
+      <Filter>Display\fonts</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\_libs\forVS\algorithm">
+      <Filter>forVS</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\font5.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\font5display.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\font8.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\font8display.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGO.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGO2.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGO2display.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Boot53\Display\font\fontUGOdisplay.inc">
+      <Filter>Display\fonts</Filter>
+    </None>
+  </ItemGroup>
+</Project>

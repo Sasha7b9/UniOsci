@@ -1,13 +1,11 @@
-#include "../../defines.h"
-#include "../DisplayTypes.h"
+#include "defines.h"
+#include "Display/DisplayTypes.h"
 #include "font.h"
-
 
 #include "font8display.inc"
 #include "font5display.inc"
 #include "fontUGOdisplay.inc"
 #include "fontUGO2display.inc"
-
 
 #include "font8.inc"
 #include "font5.inc"
@@ -41,14 +39,14 @@ int Font_GetLengthText(const char *text)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-int Font_GetHeightSymbol(char symbol)
+int Font_GetHeightSymbol(char)
 {
     return 9;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-int Font_GetLengthSymbol(uchar symbol)
+int Font_GetLengthSymbol(char symbol)
 {
     return font->symbol[symbol].width + 1;
 }

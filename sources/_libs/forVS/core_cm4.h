@@ -1,3 +1,4 @@
+#pragma once
 #pragma warning(push)
 #pragma warning(disable:4312 4464 4514 4820)
 

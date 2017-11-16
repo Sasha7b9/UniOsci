@@ -44,6 +44,9 @@ sources/_VS/S8-54/Device54/Release/*
 sources/_VS/S8-54/Device54/x64/*
 sources/_VS/S8-54/.vs/*
 
+sources/_VS/S8-53/Boot53/Debug/*
+sources/_VS/S8-53/Device53/Debug/*
+
 doc/Kornet/doxygen/Device/*
 doc/Kornet/doxygen/Panel/*
 

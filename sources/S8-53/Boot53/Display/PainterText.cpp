@@ -24,7 +24,7 @@ void Painter_SetFont(TypeFont typeFont)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter_LoadFont(TypeFont typeFont)
+void Painter_LoadFont(TypeFont)
 {
 }
 
@@ -57,9 +57,9 @@ static bool BitInFontIsExist(int eChar, int numByte, int bit)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCharInColorDisplay(int eX, int eY, uchar symbol)
+static void DrawCharInColorDisplay(int eX, int eY, char symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -84,7 +84,7 @@ static void DrawCharInColorDisplay(int eX, int eY, uchar symbol)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int Painter_DrawBigChar(int eX, int eY, int size, char symbol)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -174,7 +174,7 @@ int Painter_DrawText(int x, int y, const char *text)
     uint8 command[SIZE_BUFFER];
     command[0] = DRAW_TEXT;
     *((int16*)(command + 1)) = (int16)x;
-    *(command + 3) = (int8)(y + 1);
+    *(command + 3) = (uint8)(y + 1);
     uint8 *pointer = command + 5;
     uint8 length = 0;
 
@@ -206,9 +206,9 @@ int Painter_DrawTextC(int x, int y, const char *text, Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int DrawCharWithLimitation(int eX, int eY, uchar symbol, int limitX, int limitY, int limitWidth, int limitHeight)
+static int DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)
@@ -687,9 +687,9 @@ int Painter_DrawTextInRectWithTransfers(int eX, int eY, int eWidth, int eHeight,
                 int lengthString = Font_GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
-                    int numSymbols = DrawPartWord(word, x, y, right, true);
+                    int numSymb = DrawPartWord(word, x, y, right, true);
                     x = right;
-                    curSymbol += numSymbols;
+                    curSymbol += numSymb;
                     continue;
                 }
                 else
@@ -709,7 +709,7 @@ int Painter_DrawTextInRectWithTransfers(int eX, int eY, int eWidth, int eHeight,
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int Painter_DrawBigCharInBuffer(int eX, int eY, int size, char symbol, uint8 buffer[320][240])
 {
-    int8 width = font->symbol[symbol].width;
+    int8 width = (int8)font->symbol[symbol].width;
     int8 height = (int8)font->height;
 
     for (int b = 0; b < height; b++)

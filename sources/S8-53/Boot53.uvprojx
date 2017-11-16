@@ -381,19 +381,9 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Display\Colors.c</FilePath>
-            </File>
-            <File>
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Display\Colors.h</FilePath>
-            </File>
-            <File>
-              <FileName>Display.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Display\Display.c</FilePath>
             </File>
             <File>
               <FileName>Display.h</FileName>
@@ -406,11 +396,6 @@
               <FilePath>.\Boot53\Display\DisplayTypes.h</FilePath>
             </File>
             <File>
-              <FileName>Painter.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Display\Painter.c</FilePath>
-            </File>
-            <File>
               <FileName>Painter.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Display\Painter.h</FilePath>
@@ -421,14 +406,29 @@
               <FilePath>.\Boot53\Display\PainterC.h</FilePath>
             </File>
             <File>
-              <FileName>PainterText.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Display\PainterText.c</FilePath>
-            </File>
-            <File>
               <FileName>PainterText.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Display\PainterText.h</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Display\Colors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Display\Display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Display\Painter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Display\PainterText.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -874,11 +874,6 @@
           <GroupName>Display/fonts</GroupName>
           <Files>
             <File>
-              <FileName>Font.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Boot53\Display\font\Font.c</FilePath>
-            </File>
-            <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Display\font\Font.h</FilePath>
@@ -922,6 +917,11 @@
               <FileName>fontUGOdisplay.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\Boot53\Display\font\fontUGOdisplay.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Display\font\Font.cpp</FilePath>
             </File>
           </Files>
         </Group>
