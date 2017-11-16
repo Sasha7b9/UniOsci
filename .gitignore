@@ -2,6 +2,7 @@
 *.lst
 *.o
 *.obj
+*.out
 *.tmp
 
 sources/.vs/*

@@ -228,6 +228,7 @@ const Choice mcMeasuresSignal =
 // ÈÇÌÅĞÅÍÈß -> ÇÎÍÀ
 extern const Page mspMeasuresField;
 
+/*
 // ÈÇÌÅĞÅÍÈß -> ÇÎÍÀ -> Îáëàñòü
 const Choice mcMeasuresFieldType =
 {
@@ -244,6 +245,7 @@ const Choice mcMeasuresFieldType =
     },
     (int8*)&MEAS_FIELD
 };
+*/
 
 CursCntrl GetMeasuresCursCntrlActive()
 {
