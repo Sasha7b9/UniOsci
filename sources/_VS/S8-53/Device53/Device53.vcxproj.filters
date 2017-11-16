@@ -34,6 +34,9 @@
     <Filter Include="FPGA">
       <UniqueIdentifier>{a810a3b9-fab1-44ae-bced-808c26376922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hardware">
+      <UniqueIdentifier>{f5122187-ae57-4951-9359-2cc193552af2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
@@ -330,6 +333,30 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Settings.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\ADC.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\RTC.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Sound.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\FLASH.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\FSMC.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Hardware.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\MSP_USBH.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Timer.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -503,6 +530,27 @@
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA_Types.h">
       <Filter>FPGA</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\ADC.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\FLASH.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\FSMC.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Hardware.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\RTC.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Sound.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Timer.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\S8-53\Device53\libs\startup_stm32f207xx.s">
@@ -543,6 +591,9 @@
     </None>
     <None Include="..\..\..\S8-53\Device53\Display\font\fontUGOdisplay.inc">
       <Filter>Display\fonts</Filter>
+    </None>
+    <None Include="..\..\..\S8-53\Device53\Hardware\DisplayHardware.inc">
+      <Filter>Hardware</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

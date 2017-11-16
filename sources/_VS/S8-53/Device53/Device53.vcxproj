@@ -137,6 +137,14 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Calibration.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Settings.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\ADC.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\FLASH.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\FSMC.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Hardware.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\MSP_USBH.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\RTC.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Sound.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\stm32f2xx_hal_msp.cpp" />
@@ -374,6 +382,13 @@
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA_Types.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Globals.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\ADC.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\FLASH.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\FSMC.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Hardware.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\RTC.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Sound.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Timer.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ethernetif.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ffconf.h" />
@@ -423,6 +438,7 @@
     <None Include="..\..\..\S8-53\Device53\Display\font\fontUGO2.inc" />
     <None Include="..\..\..\S8-53\Device53\Display\font\fontUGO2display.inc" />
     <None Include="..\..\..\S8-53\Device53\Display\font\fontUGOdisplay.inc" />
+    <None Include="..\..\..\S8-53\Device53\Hardware\DisplayHardware.inc" />
     <None Include="..\..\..\S8-53\Device53\libs\startup_stm32f207xx.s">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
