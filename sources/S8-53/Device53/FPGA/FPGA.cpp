@@ -567,7 +567,7 @@ int FPGA::CalculateShift(void)            // \todo Не забыть восстановить функци
 
     if (sTime_RandomizeModeEnabled())
     {
-        float tin = (rand - min) / (max - min) * 10e-9f;
+        float tin = (rand - min) * 10e-9f / (max - min);
         int retValue = (int)(tin / 10e-9f * Kr[TBASE]);
         return retValue;
     }
