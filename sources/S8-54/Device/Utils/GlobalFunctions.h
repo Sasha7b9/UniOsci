@@ -25,10 +25,6 @@ void AddLimitationFloat(float *val,             ///< по этому адресу хранитс€ зн
                         float min,              ///< нижн€€ граница диапазона.
                         float max               ///< верхн€€ граница диапазона.
                         );
-/// ќбменивает местами содержимое пам€ти по адресам value0 и value1
-void SwapInt(int *value0, int *value1);
-/// –азмещает переменные value0 и value1 в пор€дке возрастани€
-void SortInt(int *value0, int *value1);
 /// ¬озвращает изображение регул€тора, соответствующее его текущему положению
 char GetSymbolForGovernor(int value);
 /// ‘ункци€-заглушка. Ќичего не делает

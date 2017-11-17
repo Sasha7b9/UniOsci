@@ -869,8 +869,8 @@ static void DrawMeasures(void)
         int y0 = POS_MEAS_CUR_U_0 + GRID_TOP;
         int x1 = POS_MEAS_CUR_T_1 - SHIFT_IN_MEMORY + grid.Left();
         int y1 = POS_MEAS_CUR_U_1 + GRID_TOP;
-        SortInt(&x0, &x1);
-        SortInt(&y0, &y1);
+        math.SortInt(&x0, &x1);
+        math.SortInt(&y0, &y1);
         painter.DrawRectangle(x0, y0, x1 - x0, y1 - y0, gColorFill);
     }
 

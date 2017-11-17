@@ -15,8 +15,6 @@ void    AddLimitationFloat                                              // Приба
                             float min,                                  // нижняя граница диапазона.
                             float max                                   // верхняя граница диапазона.
                             );
-void    SwapInt(int *value0, int *value1);                      // Обменивает местами содержимое памяти по адресам value0 и value1.
-void    SortInt(int *value0, int *value1);                      // Размещает переменные value0 и value1 в порядке возрастания.
 char    GetSymbolForGovernor(int value);                        // Возвращает изображение регулятора, соответствующее его текущему положению.
 void    EmptyFuncVV();                                      // Функция-заглушка. Ничего не делает.
 void    EmptyFuncVI(int);

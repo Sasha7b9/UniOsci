@@ -106,3 +106,20 @@ float Math::MaxFloat(float val1, float val2, float val3)
     }
     return retValue;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Math::SwapInt(int *value0, int *value1)
+{
+    int temp = *value0;
+    *value0 = *value1;
+    *value1 = temp;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Math::SortInt(int *value0, int *value1)
+{
+    if (*value1 < *value0)
+    {
+        SwapInt(value0, value1);
+    }
+}

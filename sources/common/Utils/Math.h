@@ -23,6 +23,10 @@ public:
     void Smoothing(uint8 *data, int numPoints, int numSmooth);
     /// Возвращает максимальное значение из трёх
     float MaxFloat(float val1, float val2, float val3);
+    /// Обменивает местами содержимое памяти по адресам value0 и value1
+    void SwapInt(int *value0, int *value1);
+    /// Размещает переменные value0 и value1 в порядке возрастания
+    void SortInt(int *value0, int *value1);
 
     template<class T>
     void CircleIncrease(T *value, int min, int max)
