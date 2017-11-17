@@ -1582,11 +1582,6 @@
           <GroupName>Panel</GroupName>
           <Files>
             <File>
-              <FileName>Controls.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Panel\Controls.c</FilePath>
-            </File>
-            <File>
               <FileName>Controls.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Panel\Controls.h</FilePath>
@@ -1605,6 +1600,11 @@
               <FileName>PanelFunctions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Panel\PanelFunctions.h</FilePath>
+            </File>
+            <File>
+              <FileName>Controls.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Panel\Controls.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1752,11 +1752,6 @@
               <FilePath>.\Device\Utils\GlobalFunctions.h</FilePath>
             </File>
             <File>
-              <FileName>Map.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Utils\Map.c</FilePath>
-            </File>
-            <File>
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\Map.h</FilePath>
@@ -1780,11 +1775,6 @@
               <FileName>ProcessingSignal.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\ProcessingSignal.h</FilePath>
-            </File>
-            <File>
-              <FileName>Strings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\Utils\Strings.c</FilePath>
             </File>
             <File>
               <FileName>Strings.h</FileName>
@@ -1860,6 +1850,16 @@
               <FileName>Dictionary.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Dictionary.h</FilePath>
+            </File>
+            <File>
+              <FileName>Strings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Strings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Map.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\Map.cpp</FilePath>
             </File>
           </Files>
         </Group>

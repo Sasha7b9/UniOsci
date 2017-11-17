@@ -67,17 +67,6 @@ typedef signed      char        int8_t;
 #endif
 
 
-#ifndef __cplusplus
-
-#ifndef bool
-typedef unsigned char bool;
-#define false   0
-#define true    (!false)
-#endif
-
-#endif
-
-
 #define DEBUG
 
 
@@ -90,7 +79,6 @@ typedef bool    (*pFuncBV)(void);
 typedef void    (*pFuncVB)(bool);
 typedef void    (*pFuncVI)(int);
 typedef void    (*pFuncVII)(int, int);
-//typedef void    (*pFuncVIIC)(int, int, Color);
 typedef void    (*pFuncVI16)(int16);
 typedef bool    (*pFuncBU8)(uint8);
 typedef void    (*pFuncVI16pI16pI16)(int16, int16 *, int16 *);
@@ -101,15 +89,11 @@ typedef void    (*pFuncVU8)(uint8 *);
 typedef void    (*pFuncVpVIIB)(void *, int, int, bool);
 typedef int     (*pFuncIU8I)(uint8 *, int);
 
-#define BIT_MASK(numBit) (1 << (numBit))
-
-#ifndef WIN32
-#pragma anon_unions
-#endif
-
 #ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4201 4310)
+#else
+#pragma anon_unions
 #endif
 
 

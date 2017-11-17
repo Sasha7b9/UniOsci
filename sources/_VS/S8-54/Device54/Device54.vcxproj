@@ -438,7 +438,7 @@
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageService.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTime.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Panel\Panel.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\Settings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsChannel.cpp" />
@@ -452,11 +452,11 @@
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Debug.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\_Math.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.c" />
+    <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\channelSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.cpp" />

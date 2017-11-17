@@ -56,7 +56,7 @@ bool GetWord(const uint8 *string, Word *word, const int numWord)
             int numSymbols = word->numSymbols;
             for (int i = 0; i < numSymbols; i++)
             {
-                *pointer = (uint8)toupper(*pointer);
+                *pointer = (uint8)toupper((char)*pointer);
                 pointer++;
             }
             return true;

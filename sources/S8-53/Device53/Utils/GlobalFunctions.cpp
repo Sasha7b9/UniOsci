@@ -9,15 +9,6 @@
 #include <string.h>
 
 
-char*    Bin2String(uint8 value, char buffer[9])
-{
-    for(int bit = 0; bit < 8; bit++)
-    {
-        buffer[7 - bit] = _GET_BIT(value, bit) ? '1' : '0';
-    }
-    return buffer;
-}
-
 char GetSymbolForGovernor(int value)
 {
     static const char chars[] =
@@ -33,8 +24,6 @@ char GetSymbolForGovernor(int value)
     }
     return chars[value % 4];
 }
-
-void EmptyFuncVI16(int16 i) {}
 
 void IntToStrCat(char *_buffer, int _value)
 {

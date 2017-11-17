@@ -893,9 +893,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.c">
-      <Filter>Panel</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Panel\Panel.cpp">
       <Filter>Panel</Filter>
     </ClCompile>
@@ -923,16 +920,10 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\Settings.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.c">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Measures.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.c">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp">
@@ -990,6 +981,15 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.cpp">
+      <Filter>Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>

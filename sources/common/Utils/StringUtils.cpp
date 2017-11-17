@@ -253,7 +253,7 @@ char *StringUtils::Freq2StringAccuracy(float freq, char bufferOut[20], int numDi
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Bin2String(uint8 value, char buffer[9])
+char *Bin2String(uint8 value, char buffer[9])
 {
     for (int bit = 0; bit < 8; bit++)
     {
@@ -264,7 +264,7 @@ char *StringUtils::Bin2String(uint8 value, char buffer[9])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Bin2String16(uint16 value, char valBuffer[19])
+char *Bin2String16(uint16 value, char valBuffer[19])
 {
     char buffer[9];
     strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));

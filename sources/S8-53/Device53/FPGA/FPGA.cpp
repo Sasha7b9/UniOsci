@@ -1193,7 +1193,7 @@ void FPGA::WriteToAnalog(TypeWriteAnalog type, uint data)
 #define pinSelect   GPIO_PIN_5
 
     char buffer[19];
-    char *str = strUtils.Bin2String16(data, buffer);
+    char *str = Bin2String16(data, buffer);
     if (type == TypeWriteAnalog_Range0 && IS_SHOW_REG_RANGE_A)
     {
         LOG_WRITE("range 0 = %s", str);
@@ -1237,15 +1237,15 @@ void FPGA::WriteToDAC(TypeWriteDAC type, uint16 data)
     char buffer[19];
     if (type == TypeWriteDAC_RShiftA && IS_SHOW_REG_RSHIFT_A)
     {
-        LOG_WRITE("rShift 0 = %s", strUtils.Bin2String16(data, buffer));
+        LOG_WRITE("rShift 0 = %s", Bin2String16(data, buffer));
     }
     else if (type == TypeWriteDAC_RShiftB && IS_SHOW_REG_RSHIFT_B)
     {
-        LOG_WRITE("rShfit 1 = %s", strUtils.Bin2String16(data, buffer));
+        LOG_WRITE("rShfit 1 = %s", Bin2String16(data, buffer));
     }
     else if (type == TypeWriteDAC_TrigLev && IS_SHOW_REG_TRIGLEV)
     {
-        LOG_WRITE("trigLev = %s", strUtils.Bin2String16(data, buffer));
+        LOG_WRITE("trigLev = %s", Bin2String16(data, buffer));
     }
 
     CHIP_SELECT_IN_LOW
