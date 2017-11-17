@@ -7,6 +7,7 @@
 #include "Utils/Debug.h"
 #include "Utils/Dictionary.h"
 #include "Utils/_Math.h"
+#include "Utils/StringUtils.h"
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
@@ -19,97 +20,7 @@ Translate trans;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 char *Translate::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 {
-    return Float2String(value, alwaysSign, 4, bufferOut);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static int NumDigitsInIntPart(float value)
-{
-    float fabsValue = fabsf(value);
-
-    int numDigitsInInt = 0;
-    if (fabsValue >= 10000)
-    {
-        numDigitsInInt = 5;
-    }
-    else if (fabsValue >= 1000)
-    {
-        numDigitsInInt = 4;
-    }
-    else if (fabsValue >= 100)
-    {
-        numDigitsInInt = 3;
-    }
-    else if (fabsValue >= 10)
-    {
-        numDigitsInInt = 2;
-    }
-    else
-    {
-        numDigitsInInt = 1;
-    }
-
-    return numDigitsInInt;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
-{
-    bufferOut[0] = 0;
-    char *pBuffer = bufferOut;
-
-    if (value == ERROR_VALUE_FLOAT)
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-    if (!alwaysSign)
-    {
-        if (value < 0)
-        {
-            *pBuffer = '-';
-            pBuffer++;
-        }
-    }
-    else
-    {
-        *pBuffer = value < 0 ? '-' : '+';
-        pBuffer++;
-    }
-    char format[] = "%4.2f\0\0";
-
-    format[1] = (char)numDigits + 0x30;
-
-    int numDigitsInInt = NumDigitsInIntPart(value);
-
-    format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
-    if (numDigits == numDigitsInInt)
-    {
-        format[5] = '.';
-    }
-
-    snprintf(pBuffer, 15, format, fabsf(value));
-
-    float val = (float)atof(pBuffer);
-
-    if (NumDigitsInIntPart(val) != numDigitsInInt)
-    {
-        numDigitsInInt = NumDigitsInIntPart(val);
-        format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
-        if (numDigits == numDigitsInInt)
-        {
-            format[5] = '.';
-        }
-        snprintf(pBuffer, 20, format, value);
-    }
-
-    bool signExist = alwaysSign || value < 0;
-    while ((uint)strlen(bufferOut) < (uint)numDigits + (signExist ? 2 : 1))
-    {
-        strcat(bufferOut, "0");
-    }
-
-    return bufferOut;
+    return strUtils.Float2String(value, alwaysSign, 4, bufferOut);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -235,7 +146,7 @@ char *Translate::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20
     }
 
     char bufferOut[20];
-    strcat(buffer, Float2String(time, alwaysSign, numDigits, bufferOut));
+    strcat(buffer, strUtils.Float2String(time, alwaysSign, numDigits, bufferOut));
     strcat(buffer, suffix);
 
     return buffer;
@@ -268,7 +179,7 @@ char *Translate::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigi
         freq /= 1e3f;
     }
     char buffer[20];
-    strcat(bufferOut, Float2String(freq, false, numDigits, buffer));
+    strcat(bufferOut, strUtils.Float2String(freq, false, numDigits, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
 }
@@ -278,7 +189,7 @@ char *Translate::Phase2String(float phase, bool, char bufferOut[20])
 {
     const int SIZE = 20;
     char buffer[SIZE];
-    snprintf(bufferOut, SIZE, "%s\xa8", Float2String(phase, false, 4, buffer));
+    snprintf(bufferOut, SIZE, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
     return bufferOut;
 }
 
@@ -287,7 +198,7 @@ char *Translate::Float2Db(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char buffer[20];
-    strcat(bufferOut, Float2String(value, false, numDigits, buffer));
+    strcat(bufferOut, strUtils.Float2String(value, false, numDigits, buffer));
     strcat(bufferOut, "Да");
     return bufferOut;
 }
