@@ -189,7 +189,7 @@
     <ClCompile Include="..\..\..\S8-53\Boot53\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\_Math.cpp">
+    <ClCompile Include="..\..\..\common\Utils\Math.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,7 +344,7 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\main.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\_Math.h">
+    <ClInclude Include="..\..\..\common\Utils\Math.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

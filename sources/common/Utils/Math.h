@@ -1,10 +1,11 @@
 #pragma once
 #include "defines.h"
-//#include "FPGA/FPGA.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)rShift)) * absStepRShift[(uint)(range)])
+
+#define LIMIT_BELOW(x, min)         if(x < min) { x = min; }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,6 +88,12 @@ template<class T> int Sign(T x)
     if (x > (T)(0)) { return 1; }
     if (x < (T)(0)) { return -1; }
     return 0;
+}
+
+template<class T> T Abs(T x)
+{
+    if (x < (T)0)   { return -x; }
+    return x;
 }
 
 typedef void (Math::*pFuncMathPI8II)(int8 *, int, int);
