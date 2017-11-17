@@ -177,8 +177,8 @@ void Governor_NextPosition(Governor *governor)
 
 int Governor_NumDigits(Governor *governor)
 {
-    int min = Math_NumDigitsInNumber(Math_FabsInt(governor->minValue));
-    int max = Math_NumDigitsInNumber(Math_FabsInt(governor->maxValue));
+    int min = Math_NumDigitsInNumber(Abs(governor->minValue));
+    int max = Math_NumDigitsInNumber(Abs(governor->maxValue));
     if (min > max)
     {
         max = min;

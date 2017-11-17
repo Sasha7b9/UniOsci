@@ -17,6 +17,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Generator.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Math.h"
 #include "Hardware/RTC.h"
 #include "Hardware/Timer.h"
 
@@ -235,11 +236,11 @@ bool FPGA::IsRunning(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-#define WRITE_AND_OR_INVERSE(addr, data, ch)                                                      \
-    if(SET_INVERSE(ch))                                                                   \
-    {                                                                                               \
-        data = (uint8)((int)(2 * AVE_VALUE) - LimitationUInt8(data, MIN_VALUE, MAX_VALUE));    \
-    }                                                                                               \
+#define WRITE_AND_OR_INVERSE(addr, data, ch)                                                            \
+    if(SET_INVERSE(ch))                                                                                 \
+    {                                                                                                   \
+        data = (uint8)((int)(2 * AVE_VALUE) - math.LimitationRet<uint8>(data, MIN_VALUE, MAX_VALUE));   \
+    }                                                                                                   \
     *addr = data;
 
 /*
@@ -835,7 +836,7 @@ void FPGA::InverseDataIsNecessary(Channel chan, uint8 *data)
     {
         for (int i = 0; i < FPGA_MAX_POINTS; i++)
         {
-            data[i] = (uint8)((int)(2 * AVE_VALUE) - LimitationUInt8(data[i], MIN_VALUE, MAX_VALUE));
+            data[i] = (uint8)((int)(2 * AVE_VALUE) - math.LimitationRet<uint8>(data[i], MIN_VALUE, MAX_VALUE));
         }
     }
 }

@@ -124,7 +124,7 @@ void Color_BrightnessChange(ColorType *colorType, int delta)
         return;
     }
 
-    int sign = Math_Sign(delta);
+    int sign = Sign(delta);
 
     LIMITATION(colorType->brightness, colorType->brightness + sign * 0.01f, 0.0f, 1.0f);
 
@@ -182,7 +182,7 @@ void Color_ComponentChange(ColorType * const colorType, int delta)
 
     if (index >= 1 && index <= 3)
     {
-        *(pointers[index]) += (float)Math_Sign(delta);
+        *(pointers[index]) += (float)Sign(delta);
         math.Limitation<float>(pointers[index], 0.0f, maxs[index]);
     }
 

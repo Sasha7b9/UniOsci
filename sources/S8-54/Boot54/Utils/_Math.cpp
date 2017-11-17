@@ -1,6 +1,7 @@
 #include "_Math.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,58 +29,11 @@ bool Math_FloatsIsEquals(float value0, float value1, float epsilonPart)
     return fabsf(value0 - value1) < epsilonAbs;
 }
 
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float Math_MinFrom3float(float value1, float value2, float value3)
-{
-    float retValue = value1;
-    if(value2 < retValue)
-    {
-        retValue = value2;
-    }
-    if(value3 < retValue)
-    {
-        retValue = value3;
-    }
-    return retValue;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_MaxInt(int val1, int val2)
-{
-    return val1 > val2 ? val1 : val2;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_MinInt(int val1, int val2)
-{
-    return val1 < val2 ? val1 : val2;
-}
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float Math_RandFloat(float min, float max)
 {
     float delta = max - min;
     return min + ((rand() / (float)RAND_MAX) * delta);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_Sign(int value)
-{
-    if (value > 0)
-    {
-        return 1;
-    }
-    if (value < 0)
-    {
-        return -1;
-    }
-    return 0;
 }
 
 
@@ -100,20 +54,13 @@ int Math_Pow10(int pow)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Math_NumDigitsInNumber(int value)
 {
-    value = Math_FabsInt(value);
+    value = Abs(value);
     int num = 1;
     while ((value /= 10) > 0)
     {
         num++;
     }
     return num;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_FabsInt(int value)
-{
-    return value >= 0 ? value : -value;
 }
 
 
@@ -231,21 +178,6 @@ uint8 Math_GetMaxFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint
     if (value <= min) { return min; }   \
     if (value >= max) { return max; }   \
     return value;
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int LimitationInt(int value, int min, int max)
-{
-    LIMIT
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 LimitationUInt8(uint8 value, uint8 min, uint8 max)
-{
-    LIMIT
-}
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float LimitationFloat(float value, float min, float max)

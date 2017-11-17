@@ -897,15 +897,13 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     int height = 14;
     float scale = (float)height / (float)(MAX_VALUE - MIN_VALUE);
 
-#define ORDINATE(x) ((uint8)(bottom - scale * LimitationInt(x - MIN_VALUE, 0, 200)))
+#define ORDINATE(x) ((uint8)(bottom - scale * math.LimitationRet<uint8>(x - MIN_VALUE, 0, 200)))
 
 #define NUM_POINTS (300 * 2)
     uint8 points[NUM_POINTS];
 
     points[0] = ORDINATE(max[0]);
     points[1] = ORDINATE(min[0]);
-
-
 
     for(int i = 1; i < width; i++)
     {
@@ -1890,7 +1888,7 @@ void Display::DrawMeasures()
             {
                 painter.FillRegionC(x, y, dX, dY, COLOR_BACK);
                 painter.DrawRectangleC(x, y, dX, dY, COLOR_FILL);
-                gBF.topMeasures = Math_MinFrom2Int(gBF.topMeasures, y);
+                gBF.topMeasures = math.MinFrom2Int(gBF.topMeasures, y);
             }
             if(active)
             {

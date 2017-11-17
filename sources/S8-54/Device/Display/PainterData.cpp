@@ -11,6 +11,7 @@
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Utils/ProcessingSignal.h"
 
 
@@ -1000,7 +1001,9 @@ static int Ordinate(uint8 x, float scale)
         return -1;
     }
 
-    return (int)((17.0f - scale * _math.LimitationInt(x - MIN_VALUE, 0, (MAX_VALUE - MIN_VALUE))) + 0.5f);
+    math.LimitationRet<uint8>((uint8)(x - MIN_VALUE), 0, (MAX_VALUE - MIN_VALUE));
+
+    return (int)((17.0f - scale * x) + 0.5f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

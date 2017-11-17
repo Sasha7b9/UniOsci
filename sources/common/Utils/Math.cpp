@@ -123,3 +123,13 @@ void Math::SortInt(int *value0, int *value1)
         SwapInt(value0, value1);
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Math::MinFrom2Int(int val0, int val1)
+{
+    if (val0 < val1)
+    {
+        return val0;
+    }
+    return val1;
+}

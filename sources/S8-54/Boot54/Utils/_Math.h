@@ -48,19 +48,12 @@ uint8   Math_GetMinFromArray_RAM(const uint16 *data, int firstPoint, int lastPoi
 
 float   Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);   // ¬озвращает координату x пересечени€ линии, проход€щей через (x0, y0), (x1, y1), с горизонтальной линией, проход€щей через точку с ординатой yHorLine.
 bool    Math_FloatsIsEquals(float value0, float value1, float epsilonPart);                     // —равнивает два числа. ¬озвращает true, если числа отличаютс€ друг от друга не более, чем на epsilonPart. ѕри этом дл€ расчЄта epsilonPart используетс€ большее в смысле модул€ число.
-float   Math_MinFrom3float(float value1, float value2, float value3);
-int     Math_MinInt(int val1, int val2);
-int     Math_MaxInt(int val1, int val2);
 void    Math_CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
 void    Math_CalculateMathFunction(float *data0andResult, float *dataB, int numPoints);
 float   Math_RandFloat(float min, float max);
-int     Math_Sign(int vlaue);
 int     Math_Pow10(int pow);                                                                    // ¬ычисл€ет 10**pow.
 int     Math_NumDigitsInNumber(int value);                                                      // ¬ычисл€ет число разр€дов в целом типа int.
-int     Math_FabsInt(int value);                                                                // ¬озвращает модуль value.
 
-int     LimitationInt(int value, int min, int max);
-uint8   LimitationUInt8(uint8 value, uint8 min, uint8 max);
 float   LimitationFloat(float value, float min, float max);
 
 uint8   Math_CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);

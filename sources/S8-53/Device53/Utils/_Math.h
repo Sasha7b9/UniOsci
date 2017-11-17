@@ -31,7 +31,6 @@ extern const float absStepRShift[];
 extern const float voltsInPixel[];
 extern const float absStepTShift[];
 
-int     Math_MinFrom2Int(int val0, int val1);
 int     Math_RShift2Rel(float rShiftAbs, Range range);
 float   Math_VoltageCursor(float shiftCurU, Range range, int16 rShift);
 float   Math_TimeCursor(float shiftCurT, TBase tBase);
@@ -49,8 +48,6 @@ float   Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, i
 /// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
 /// используется большее в смысле модуля число.
 bool    Math_FloatsIsEquals(float value0, float value1, float epsilonPart);
-float   Math_MinFrom3float(float value1, float value2, float value3);
-int     Math_MinInt(int val1, int val2);
 void    Math_CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
 void    Math_CalculateMathFunction(float *data0andResult, float *data1, int numPoints);
 float   Math_RandFloat(float min, float max);
@@ -59,11 +56,7 @@ int8    Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max);
 int     Math_Pow10(int pow);
 /// Вычисляет число разрядов в целом типа int.
 int     Math_NumDigitsInNumber(int value);
-/// Возвращает модуль value.
-int     Math_FabsInt(int value);
 
-int     LimitationInt(int value, int min, int max);
-uint8   LimitationUInt8(uint8 value, uint8 min, uint8 max);
 float   LimitationFloat(float value, float min, float max);
 
 uint8   Math_CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);

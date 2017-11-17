@@ -101,10 +101,6 @@ public:
     /// Возвращает модуль value
     int FabsInt(int value);
 
-    int LimitationInt(int value, int min, int max);
-
-    uint8 LimitationUInt8(uint8 value, uint8 min, uint8 max);
-
     float LimitationFloat(float value, float min, float max);
 
     uint8 CalculateFiltr(const uint8 *data, int x, int numPoints);

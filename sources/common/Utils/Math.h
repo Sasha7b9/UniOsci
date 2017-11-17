@@ -28,6 +28,8 @@ public:
     void SwapInt(int *value0, int *value1);
     /// –азмещает переменные value0 и value1 в пор€дке возрастани€
     void SortInt(int *value0, int *value1);
+    
+    int MinFrom2Int(int val0, int val1);
 
     template<class T>
     void CircleIncrease(T *value, int min, int max)
@@ -77,6 +79,14 @@ public:
     {
         if (*value < min)       { *value = min; }
         else if (*value > max)  { *value = max; }
+    }
+
+    template<class T>
+    static T LimitationRet(T value, T min, T max)
+    {
+        if(value < min) { return min; }
+        if(value > max) { return max; }
+        return value;
     }
 };
 

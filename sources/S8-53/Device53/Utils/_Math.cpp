@@ -80,15 +80,6 @@ const float absStepTShift[] =
     1.0f / 20, 2.0f / 20, 5.0f / 20, 10.0f / 20
 };
 
-int Math_MinFrom2Int(int val0, int val1)
-{
-    if (val0 < val1)
-    {
-        return val0;
-    }
-    return val1;
-}
-
 int Math_RShift2Rel(float rShiftAbs, Range range)
 {
     int retValue = (int)(RShiftZero + rShiftAbs / absStepRShift[range]);
@@ -222,25 +213,6 @@ bool Math_FloatsIsEquals(float value0, float value1, float epsilonPart)
     float epsilonAbs = max * epsilonPart;
 
     return fabsf(value0 - value1) < epsilonAbs;
-}
-
-float Math_MinFrom3float(float value1, float value2, float value3)
-{
-    float retValue = value1;
-    if(value2 < retValue)
-    {
-        retValue = value2;
-    }
-    if(value3 < retValue)
-    {
-        retValue = value3;
-    }
-    return retValue;
-}
-
-int Math_MinInt(int val1, int val2)
-{
-    return val1 < val2 ? val1 : val2;
 }
 
 /*
@@ -542,18 +514,13 @@ int Math_Pow10(int pow)
 
 int Math_NumDigitsInNumber(int value)
 {
-    value = Math_FabsInt(value);
+    value = Abs(value);
     int num = 1;
     while ((value /= 10) > 0)
     {
         num++;
     }
     return num;
-}
-
-int Math_FabsInt(int value)
-{
-    return value >= 0 ? value : -value;
 }
 
 uint8 Math_GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
@@ -628,16 +595,6 @@ uint8 Math_GetMaxFromArray(const uint8 *data, int firstPoint, int lastPoint)
     if (value <= min) { return min; }   \
     if (value >= max) { return max; }   \
     return value;
-
-int LimitationInt(int value, int min, int max)
-{
-    LIMIT
-}
-
-uint8 LimitationUInt8(uint8 value, uint8 min, uint8 max)
-{
-    LIMIT
-}
 
 float LimitationFloat(float value, float min, float max)
 {
