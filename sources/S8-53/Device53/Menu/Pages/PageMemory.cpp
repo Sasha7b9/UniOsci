@@ -115,7 +115,7 @@ static void RotateSB_MemLast(int angle)
     {
         sound.RegulatorSwitchRotate();
     }
-    if (Math_Sign(angle) > 0)
+    if (math.Sign<int>(angle) > 0)
     {
         PressSB_MemLast_Next();
     }
@@ -391,8 +391,6 @@ void PressSB_SetName_Insert()
 
 void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 {   
-    typedef void (Math::*pFuncRI8II)(int8&, int, int);
-    
     static const pFuncRI8II func[3] =
     {
         &Math::CircleDecrease<int8>,
@@ -405,7 +403,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = maxIndex - 1;
     }
-    (math.*func[Math_Sign(angle) + 1])((int8&)INDEX_SYMBOL, 0, maxIndex - 1);
+    (math.*func[math.Sign<int>(angle) + 1])((int8&)INDEX_SYMBOL, 0, maxIndex - 1);
     sound.RegulatorSwitchRotate();
 
 }

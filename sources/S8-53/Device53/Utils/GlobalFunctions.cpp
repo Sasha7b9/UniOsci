@@ -3,18 +3,12 @@
 #include "Log.h"
 #include "Display/Symbols.h"
 #include "Math.h"
-
-
+#include "Utils/StringUtils.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
 
-
-char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
-{
-    return Float2String(value, alwaysSign, 4, bufferOut);
-}
-
+/*
 static int NumDigitsInIntPart(float value)
 {
     float fabsValue = fabsf(value);
@@ -43,67 +37,7 @@ static int NumDigitsInIntPart(float value)
 
     return numDigitsInInt;
 }
-
-char* Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
-{
-    bufferOut[0] = 0;
-    char *pBuffer = bufferOut;
-
-    if(value == ERROR_VALUE_FLOAT)
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-
-    if(!alwaysSign)
-    {
-        if(value < 0)
-        {
-            *pBuffer = '-';
-            pBuffer++;
-        }
-    }
-    else
-    {
-        *pBuffer = value < 0 ? '-' : '+';
-        pBuffer++;
-    }
-
-    char format[] = "%4.2f\0\0";
-
-    format[1] = (char)numDigits + 0x30;
-
-    int numDigitsInInt = NumDigitsInIntPart(value);
-
-    format[3] = (numDigits - numDigitsInInt) + 0x30;
-    if(numDigits == numDigitsInInt)
-    {
-        format[5] = '.';
-    }
-    
-    snprintf(pBuffer, 19, format, fabsf(value));
-
-    float val = atof(pBuffer);
-
-    if (NumDigitsInIntPart(val) != numDigitsInInt)
-    {
-        numDigitsInInt = NumDigitsInIntPart(val);
-        format[3] = (numDigits - numDigitsInInt) + 0x30;
-        if (numDigits == numDigitsInInt)
-        {
-            format[5] = '.';
-        }
-        sprintf(pBuffer, format, value);
-    }
-
-    bool signExist = alwaysSign || value < 0;
-    while(strlen(bufferOut) < numDigits + (signExist ? 2 : 1))
-    {
-        strcat(bufferOut, "0");
-    }
-
-    return bufferOut;
-}
+*/
 
 char* Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
@@ -176,119 +110,11 @@ char* Hex8toString(uint8 value, char buffer[3])
     return buffer;
 }
 
-char*    Voltage2String(float voltage, bool alwaysSign, char buffer[20])
-{
-    buffer[0] = 0;
-    char *suffix;
-    if(voltage == ERROR_VALUE_FLOAT)
-    {
-        strcat(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    else if(fabsf(voltage) + 0.5e-4 < 1e-3)
-    {
-        suffix = set.common.lang == Russian ? "\x10ìêÂ" : "\x10uV";
-        voltage *= 1e6;
-    }
-    else if(fabsf(voltage) + 0.5e-4 < 1)
-    {
-        suffix = set.common.lang == Russian ? "\x10ìÂ" : "\x10mV" ;
-        voltage *= 1e3;
-    }
-    else if(fabsf(voltage) + 0.5e-4 < 1000)
-    {
-        suffix = set.common.lang == Russian ? "\x10Â" : "\x10V";
-    }
-    else
-    {
-        suffix = set.common.lang == Russian ? "\x10êÂ" : "\x10kV";
-        voltage *= 1e-3f;
-    }
-
-    char bufferOut[20];
-
-    Float2String(voltage, alwaysSign, 4, bufferOut);
-    strcat(buffer, bufferOut);
-    strcat(buffer, suffix);
-    return buffer;
-}
-
-char* Time2String(float time, bool alwaysSign, char buffer[20])
-{
-    buffer[0] = 0;
-    char *suffix = 0;
-    if(time == ERROR_VALUE_FLOAT)
-    {
-        strcat(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    else if(fabsf(time) + 0.5e-10 < 1e-6)
-    {
-        suffix = set.common.lang == Russian ? "íñ" : "ns";
-        time *= 1e9;
-    }
-    else if(fabsf(time) + 0.5e-7 < 1e-3)
-    {
-        suffix = set.common.lang == Russian ? "ìêñ" : "us";
-        time *= 1e6;
-    }
-    else if(fabsf(time) + 0.5e-3 < 1)
-    {
-        suffix = set.common.lang == Russian ? "ìñ" : "ms";
-        time *= 1e3;
-    }
-    else
-    {
-        suffix = set.common.lang == Russian ? "ñ" : "s";
-    }
-
-    char bufferOut[20];
-    strcat(buffer, Float2String(time, alwaysSign, 4, bufferOut));
-    strcat(buffer, suffix);
-    return buffer;
-}
-
-char* Phase2String(float phase, bool empty, char bufferOut[20])
-{
-    char buffer[20];
-    sprintf(bufferOut, "%s\xa8", Float2String(phase, false, 4, buffer));
-    return bufferOut;
-}
-
-char *  Freq2String(float freq, bool alwaysSign, char bufferOut[20])
-{
-    bufferOut[0] = 0;
-    char *suffix = 0;
-    if(freq == ERROR_VALUE_FLOAT)
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-    if(freq >= 1e6)
-    {
-        suffix = set.common.lang == Russian ? "ÌÃö" : "MHz";
-        freq /= 1e6;
-    }
-    else if (freq >= 1e3)
-    {
-        suffix = set.common.lang == Russian ? "êÃö" : "kHz";
-        freq /= 1e3;
-    }
-    else
-    {
-        suffix = set.common.lang == Russian ? "Ãö" : "Hz";
-    }
-    char buffer[20];
-    strcat(bufferOut, Float2String(freq, false, 4, buffer));
-    strcat(bufferOut, suffix);
-    return bufferOut;
-}
-
 char* Float2Db(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char buffer[20];
-    strcat(bufferOut, Float2String(value, false, numDigits, buffer));
+    strcat(bufferOut, strUtils.Float2String(value, false, numDigits, buffer));
     strcat(bufferOut, "äÁ");
     return bufferOut;
 }

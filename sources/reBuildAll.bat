@@ -25,7 +25,7 @@ if ERRORLEVEL 1 goto BadPanel
 :FinePanel
 c:\Keil_v5\UV4\UV4 -c Kornet\Device.uvprojx -j0
 c:\Keil_v5\UV4\UV4 -b Kornet\Device.uvprojx -j0 -z -o Device.out
-if ERRORLEVEL 1 goto BadDevice54
+if ERRORLEVEL 1 goto BadDevice
 
 :FineDevice
 

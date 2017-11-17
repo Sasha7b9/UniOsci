@@ -528,19 +528,6 @@ int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
     return retValue;
 }
 
-int Math_Sign(int value)
-{
-    if (value > 0)
-    {
-        return 1;
-    }
-    if (value < 0)
-    {
-        return -1;
-    }
-    return 0;
-}
-
 int Math_Pow10(int pow)
 {
     int retValue = 1;

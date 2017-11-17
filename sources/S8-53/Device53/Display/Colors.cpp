@@ -3,6 +3,7 @@
 #include "Log.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Hardware/Timer.h"
 #include <math.h>
 
@@ -145,7 +146,7 @@ void Color_BrightnessChange(ColorType *colorType, int delta)
         return;
     }
 
-    int sign = Math_Sign(delta);
+    int sign = math.Sign<int>(delta);
 
     LIMITATION(colorType->brightness, colorType->brightness + sign * 0.01f, 0.0f, 1.0f);
 
@@ -198,7 +199,7 @@ void Color_ComponentChange(ColorType *colorType, int delta)
 
     if (index >= 1 && index <= 3)
     {
-        AddLimitationFloat(pointers[index], (float)Math_Sign(delta), 0.0f, maxs[index]);
+        AddLimitationFloat(pointers[index], (float)math.Sign<int>(delta), 0.0f, maxs[index]);
     }
 
     SetColor(colorType);

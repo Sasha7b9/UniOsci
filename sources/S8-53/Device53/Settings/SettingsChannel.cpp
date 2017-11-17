@@ -1,10 +1,9 @@
-
-
 #include "Settings.h"
 #include "SettingsChannel.h"
 #include "FPGA/FPGA.h"
-#include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/Math.h"
+#include "Utils/StringUtils.h"
 
 
 /** @addtogroup Settings
@@ -79,7 +78,7 @@ const char* sChannel_Range2String(Range range, Divider multiplier)
 const char* sChannel_RShift2String(int16 rShiftRel, Range range, Divider multiplier, char buffer[20])
 {
     float rShiftVal = RSHIFT_2_ABS(rShiftRel, range) * sChannel_MultiplierRel2Abs(multiplier);
-    return Voltage2String(rShiftVal, true, buffer);
+    return strUtils.Voltage2String(rShiftVal, true, buffer);
 };
 
 

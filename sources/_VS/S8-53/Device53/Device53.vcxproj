@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\Debug\</OutDir>
-    <IncludePath>..\..\..\_libs\forVS;..\..\..\S8-53\Device53;..\..\..\S8-53\Device53\libs;..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system;D:\Projects\UniOsci\sources\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\drivers</IncludePath>
+    <IncludePath>..\..\..\_libs\forVS;..\..\..\S8-53\Device53;..\..\..\S8-53\Device53\libs;..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\..\..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system;..\..\..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\drivers;..\..\..\common</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -120,6 +120,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
+    <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\defines.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp" />
@@ -197,11 +199,11 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Generator.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\GlobalFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Map.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Strings.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Utils\_Math.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\channelSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.cpp" />
@@ -443,6 +445,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\common\Utils\Math.h" />
+    <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\defines.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Colors.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h" />
@@ -511,13 +515,13 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Generator.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\GlobalFunctions.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Map.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Math.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Strings.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesLog.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesWindow.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Utils\_Math.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\SCPI.h" />

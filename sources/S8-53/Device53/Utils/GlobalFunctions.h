@@ -1,19 +1,8 @@
 #pragma once
-
-
 #include "defines.h"
 
                                                 
-char*   FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
-
-char*   Float2String                            //  Преобразует value типа float в текстовую строку.
-                                                //  @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопироавать себе.
-                                                //  @retval указатель на строку с числом.
-                    (float value,               //  значение.
-                    bool alwaysSign,            //  если установлен в true, перед числом всегда будет знак, если установлен в false, только если число отрицательное.
-                    int numDigits,              //  число разрядов мантиссы.
-                    char bufferOut[20]
-                    );                         
+                   
 char*   Bin2String                              //  Преобразует value в текстовую строку. При этом выводятся все 8 разрядов.
                                                 //  @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе.
                     (uint8 value,
@@ -34,19 +23,6 @@ char*   Int2String                              // Преобразует value в текстовую
                     char buffer[20]
                     );
 bool    String2Int(char *str, int *value);
-char*   Voltage2String                          // Преобразует voltage вольт в текстовую строку.
-                                                // @attention Страка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопитровать себе.
-                        (float voltage,         // значение напряжения в вольтах.
-                        bool alwaysSign,        // если установлено в true, знак выводится всегда.
-                        char buffer[20]
-                        );                      
-char*   Time2String                             // Преобразует time секунд в текстовую строку.
-                    (float time,                // время в секундах. Может быть отрицательным.
-                    bool alwaysSign,            // если установлен в true, знак отображается всегда.
-                    char buffer[20]
-                    );
-char*   Freq2String(float freq, bool, char bufferOut[20]);      // Преобразует freq герц в текстовую строку.
-char*   Phase2String(float phase, bool, char bufferOut[20]);    // Преобразует градусы в строку.
 char*   Float2Db(float value, int numDigits, char bufferOut[20]);   // Преобразует децибелы в текстовую строку.
 bool    IntInRange                              // Возвращает true, если value входит в диапазон [min; max].
                    (int value,                  // проверяемое значение.

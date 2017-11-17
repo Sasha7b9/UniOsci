@@ -82,3 +82,5 @@ public:
 
 
 extern class Math math;
+
+typedef void (Math::*pFuncRI8II)(int8&, int, int);

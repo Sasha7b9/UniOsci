@@ -139,3 +139,83 @@ int StringUtils::NumDigitsInIntPart(float value)
 
     return numDigitsInInt;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* StringUtils::Time2String(float time, bool alwaysSign, char buffer[20])
+{
+    buffer[0] = 0;
+    char *suffix = 0;
+    if (time == ERROR_VALUE_FLOAT)
+    {
+        strcat(buffer, ERROR_STRING_VALUE);
+        return buffer;
+    }
+    else if (fabsf(time) + 0.5e-10f < 1e-6f)
+    {
+        suffix = LANG_RU ? "íñ" : "ns";
+        time *= 1e9f;
+    }
+    else if (fabsf(time) + 0.5e-7f < 1e-3f)
+    {
+        suffix = LANG_RU ? "ìêñ" : "us";
+        time *= 1e6f;
+    }
+    else if (fabsf(time) + 0.5e-3f < 1.0f)
+    {
+        suffix = LANG_RU ? "ìñ" : "ms";
+        time *= 1e3f;
+    }
+    else
+    {
+        suffix = LANG_RU ? "ñ" : "s";
+    }
+
+    char bufferOut[20];
+    strcat(buffer, strUtils.Float2String(time, alwaysSign, 4, bufferOut));
+    strcat(buffer, suffix);
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *StringUtils::Freq2String(float freq, bool alwaysSign, char bufferOut[20])
+{
+    bufferOut[0] = 0;
+    char *suffix = 0;
+    if (freq == ERROR_VALUE_FLOAT)
+    {
+        strcat(bufferOut, ERROR_STRING_VALUE);
+        return bufferOut;
+    }
+    if (freq >= 1e6f)
+    {
+        suffix = LANG_RU ? "ÌÃö" : "MHz";
+        freq /= 1e6f;
+    }
+    else if (freq >= 1e3f)
+    {
+        suffix = LANG_RU ? "êÃö" : "kHz";
+        freq /= 1e3f;
+    }
+    else
+    {
+        suffix = LANG_RU ? "Ãö" : "Hz";
+    }
+    char buffer[20];
+    strcat(bufferOut, strUtils.Float2String(freq, false, 4, buffer));
+    strcat(bufferOut, suffix);
+    return bufferOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* StringUtils::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
+{
+    return strUtils.Float2String(value, alwaysSign, 4, bufferOut);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* StringUtils::Phase2String(float phase, bool empty, char bufferOut[20])
+{
+    char buffer[20];
+    sprintf(bufferOut, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
+    return bufferOut;
+}

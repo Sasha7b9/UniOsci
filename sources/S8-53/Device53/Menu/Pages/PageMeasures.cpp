@@ -1,6 +1,7 @@
 #include "Settings/SettingsTypes.h"
 #include "Utils/Measures.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "PageMemory.h"
 #include "Definition.h"
 #include "../MenuItems.h"
@@ -55,7 +56,7 @@ void RotateRegMeasureSetField(int angle)
     CursCntrl cursCntrl = GetMeasuresCursCntrlActive();
     CursActive cursActive = MEAS_CURS_ACTIVE;
 
-    int sign = Math_Sign(angle);
+    int sign = math.Sign<int>(angle);
 
     if (cursCntrl == CursCntrl_1 || cursCntrl == CursCntrl_1_2)
     {

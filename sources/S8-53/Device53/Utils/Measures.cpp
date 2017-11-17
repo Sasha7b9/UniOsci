@@ -1,13 +1,13 @@
 #include "Measures.h"
 #include "GlobalFunctions.h"
-#include "Math.h"
-#include "../Settings/SettingsTypes.h"
-#include "../Settings/Settings.h"
-#include "../Display/Display.h"
-#include "../Display/Colors.h"
-#include "../Display/Painter.h"
-#include "../Display/Grid.h"
-#include "../Hardware/Sound.h"
+#include "Utils/Math.h"
+#include "Settings/SettingsTypes.h"
+#include "Settings/Settings.h"
+#include "Display/Display.h"
+#include "Display/Colors.h"
+#include "Display/Painter.h"
+#include "Display/Grid.h"
+#include "Hardware/Sound.h"
 
 
 #include <stdio.h>
@@ -169,7 +169,7 @@ void Measure_RotateRegSet(int angle)
     }
     if (pageChoiceIsActive)
     {
-        posOnPageChoice += Math_Sign(currentAngle);
+        posOnPageChoice += math.Sign<int8>(currentAngle);
         sound.RegulatorSwitchRotate();
         if (posOnPageChoice < 0)
         {
@@ -187,7 +187,7 @@ void Measure_RotateRegSet(int angle)
         int row = 0;
         int col = 0;
         Measure_GetActive(&row, &col);
-        col += Math_Sign(currentAngle);
+        col += math.Sign<int8>(currentAngle);
         if (col < 0)
         {
             col = Measure_NumCols() - 1;
