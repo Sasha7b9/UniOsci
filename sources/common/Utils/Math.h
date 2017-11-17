@@ -93,6 +93,9 @@ public:
 
 extern class Math math;
 
+/// Вычисление 10**pow.
+int Pow10(int pow);
+
 template<class T> int Sign(T x)
 {
     if (x > (T)(0)) { return 1; }

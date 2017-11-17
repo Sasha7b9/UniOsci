@@ -222,7 +222,7 @@ float Governor::Step()
 void Governor::ChangeValue(int delta)
 {
     int16 oldValue = *cell;
-    *cell += (int16)(Sign(delta) * _math.Pow10(gCurDigit));
+    *cell += (int16)(Sign(delta) * Pow10(gCurDigit));
     LIMITATION(*cell, minValue, maxValue);
     if (*cell != oldValue)
     {
@@ -410,7 +410,7 @@ void IPaddress::ChangeValue(int delta)
         oldValue = *port;
     }
 
-    int newValue = oldValue + Sign(delta) * _math.Pow10(numPos);
+    int newValue = oldValue + Sign(delta) * Pow10(numPos);
     LIMITATION(newValue, 0, numByte == 4 ? 65535 : 255);
 
     if (oldValue != newValue)

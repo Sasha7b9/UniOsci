@@ -49,7 +49,6 @@ bool    Math_FloatsIsEquals(float value0, float value1, float epsilonPart);     
 void    Math_CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
 void    Math_CalculateMathFunction(float *data0andResult, float *dataB, int numPoints);
 float   Math_RandFloat(float min, float max);
-int     Math_Pow10(int pow);                                                                    // Вычисляет 10**pow.
 int     Math_NumDigitsInNumber(int value);                                                      // Вычисляет число разрядов в целом типа int.
 
 float   LimitationFloat(float value, float min, float max);

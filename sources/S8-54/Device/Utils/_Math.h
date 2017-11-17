@@ -93,9 +93,6 @@ public:
     float RandFloat(float min, float max);
 
     int8 AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max);
-
-    /// Вычисляет 10**pow
-    int Pow10(int pow);
     /// Вычисляет число разрядов в целом типа int
     int NumDigitsInNumber(int value);
     /// Возвращает модуль value

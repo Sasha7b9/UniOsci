@@ -52,8 +52,6 @@ void    Math_CalculateFFT(float *data, int numPoints, float *result, float *freq
 void    Math_CalculateMathFunction(float *data0andResult, float *data1, int numPoints);
 float   Math_RandFloat(float min, float max);
 int8    Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max);
-/// Вычисляет 10**pow.
-int     Math_Pow10(int pow);
 /// Вычисляет число разрядов в целом типа int.
 int     Math_NumDigitsInNumber(int value);
 

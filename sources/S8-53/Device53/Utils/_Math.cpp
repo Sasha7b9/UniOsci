@@ -500,18 +500,6 @@ int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
     return retValue;
 }
 
-int Math_Pow10(int pow)
-{
-    int retValue = 1;
-
-    while (pow--)
-    {
-        retValue *= 10;
-    }
-
-    return retValue;
-}
-
 int Math_NumDigitsInNumber(int value)
 {
     value = Abs(value);
