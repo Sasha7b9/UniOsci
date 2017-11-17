@@ -52,6 +52,8 @@ private:
     static int NumDigitsInIntPart(float value);
 };
 
+bool String2Int(char *str, int *value);
+
 extern StringUtils strUtils;
 
 typedef char *(StringUtils::*pFuncPCFBPC)(float, bool, char*);

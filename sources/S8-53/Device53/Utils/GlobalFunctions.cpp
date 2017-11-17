@@ -8,36 +8,6 @@
 #include <stdio.h>
 #include <string.h>
 
-bool String2Int(char *str, int *value)  
-{
-    int sign = str[0] == '-' ? -1 : 1;
-    if (str[0] < '0' || str[0] > '9')
-    {
-        str++;
-    }
-    int length = strlen(str);
-    if (length == 0)
-    {
-        return false;
-    }
-    *value = 0;
-    int pow = 1;
-    for(int i = length - 1; i >= 0; i--)
-    {
-        int val = str[i] & (~(0x30));
-        if(val < 0 || val > 9)
-        {
-            return false;
-        }
-        *value += val * pow;
-        pow *= 10;
-    }
-    if(sign == -1)
-    {
-        *value *= -1;
-    }
-    return true;
-}
 
 char*    Bin2String(uint8 value, char buffer[9])
 {

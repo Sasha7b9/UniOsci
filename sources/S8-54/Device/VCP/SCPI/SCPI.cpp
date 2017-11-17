@@ -1,11 +1,10 @@
-
-
 #include "defines.h"
 #include "SCPI.h"
 #include "commonSCPI.h"
 #include "controlSCPI.h"
 #include "Utils/Strings.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/StringUtils.h"
 #include <ctype.h>
 
 
@@ -106,7 +105,7 @@ bool SCPI_FirstIsInt(uint8 *buffer, int *value, int min, int max)
         char n[256];
         memcpy(n, param.address, param.numSymbols);
         n[param.numSymbols] = '\0';
-        if (trans.String2Int(n, value) && *value >= min && *value <= max)
+        if (String2Int(n, value) && *value >= min && *value <= max)
         {
             return true;
         }

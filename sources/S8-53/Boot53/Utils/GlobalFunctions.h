@@ -1,7 +1,6 @@
 #pragma once
 
 
-bool    String2Int(char *str, int *value);
 // Преобразует time секунд в текстовую строку
 // time - время в секундах. Может быть отрицательным
 // numDigits - количество цифр в строке
