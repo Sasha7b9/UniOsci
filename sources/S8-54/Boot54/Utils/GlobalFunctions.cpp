@@ -124,7 +124,6 @@ char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numD
     return buffer;
 }
 
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char* Phase2String(float phase, bool, char bufferOut[20])
 {
@@ -133,14 +132,6 @@ char* Phase2String(float phase, bool, char bufferOut[20])
     snprintf(bufferOut, 20, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
     return bufferOut;
 }
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char*  Freq2String(float freq, bool, char bufferOut[20])
-{
-    return Freq2StringAccuracy(freq, bufferOut, 4);
-}
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)

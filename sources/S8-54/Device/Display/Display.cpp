@@ -734,7 +734,7 @@ static void DrawLowPart(void)
         }
         else
         {
-            strcat(mesFreq, trans.Freq2String(freq, false, buffer));
+            strcat(mesFreq, strUtils.Freq2String(freq, false, buffer));
         }
         painter.DrawText(x + 3, GRID_BOTTOM + 2, mesFreq);
     }
@@ -1514,7 +1514,7 @@ static void WriteCursors(void)
                 painter.DrawRectangle(x, GRID_TOP, width, 12, gColorFill);
                 painter.FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, gColorBack);
                 painter.DrawText(x + 1, GRID_TOP + 2, "1/dT=", colorText);
-                painter.DrawText(x + 25, GRID_TOP + 2, trans.Freq2String(1.0f / delta, false, buffer));
+                painter.DrawText(x + 25, GRID_TOP + 2, strUtils.Freq2String(1.0f / delta, false, buffer));
             }
         }
     }
@@ -1875,9 +1875,9 @@ static void WriteParametersFFT(Channel ch, float freq0, float density0, float fr
 
     char buffer[20];
     painter.SetColor(gColorFill);
-    painter.DrawText(x, y, trans.Freq2String(freq0, false, buffer));
+    painter.DrawText(x, y, strUtils.Freq2String(freq0, false, buffer));
     y += dY;
-    painter.DrawText(x, y, trans.Freq2String(freq1, false, buffer));
+    painter.DrawText(x, y, strUtils.Freq2String(freq1, false, buffer));
     if(ch == A)
     {
         y += dY + 2;

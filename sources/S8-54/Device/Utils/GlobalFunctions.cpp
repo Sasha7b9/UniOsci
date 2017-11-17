@@ -153,12 +153,6 @@ char *Translate::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Freq2String(float freq, bool, char bufferOut[20])
-{
-    return Freq2StringAccuracy(freq, bufferOut, 4);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
 {
     bufferOut[0] = 0;
