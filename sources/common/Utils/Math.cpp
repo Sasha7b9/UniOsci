@@ -48,27 +48,6 @@ int Math::LowSignedBit(uint value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Math::Bin2String16(uint16 value, char valBuffer[19])
-{
-    char buffer[9];
-    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
-    strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
-    valBuffer[18] = '\0';
-    return valBuffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Math::Bin2String(uint8 value, char buffer[9])
-{
-    for (int bit = 0; bit < 8; bit++)
-    {
-        buffer[7 - bit] = _GET_BIT(value, bit) ? '1' : '0';
-    }
-    buffer[8] = '\0';
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
 {
     if (numSmooth == 0 || numSmooth == 1)

@@ -69,8 +69,6 @@ public:
 
     int LowSignedBit(uint value);
 
-    char *Bin2String16(uint16 value, char valBuffer[19]);
-
     template<class T>
     int Sign(T x)
     {
@@ -80,10 +78,6 @@ public:
     }
 
     void Smoothing(uint8 *data, int numPoints, int numSmooth);
-
-private:
-
-    char *Bin2String(uint8 value, char buffer[9]);
 };
 
 

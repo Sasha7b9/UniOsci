@@ -4,6 +4,7 @@
 *.obj
 *.out
 *.tmp
+*.uvgui*.*
 
 sources/.vs/*
 sources/_VS/Kornet/.vs/*
