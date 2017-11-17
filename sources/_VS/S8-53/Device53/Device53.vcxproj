@@ -81,6 +81,7 @@
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F207xx;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <DisableSpecificWarnings>4514;4820</DisableSpecificWarnings>
+      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <TargetMachine>MachineARM</TargetMachine>

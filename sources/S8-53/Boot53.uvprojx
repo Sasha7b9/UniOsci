@@ -854,19 +854,9 @@
               <FilePath>.\Boot53\Utils\GlobalFunctions.h</FilePath>
             </File>
             <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Boot53\Utils\Math.h</FilePath>
-            </File>
-            <File>
               <FileName>GlobalFunctions.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot53\Utils\GlobalFunctions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Boot53\Utils\Math.cpp</FilePath>
             </File>
             <File>
               <FileName>StringUtils.cpp</FileName>
@@ -887,6 +877,26 @@
               <FileName>Dictionary.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Dictionary.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>_Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Boot53\Utils\_Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>_Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Boot53\Utils\_Math.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -2,6 +2,7 @@
 #include "Painter.h"
 #include "Hardware/Timer.h"
 #include "main.h"
+#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include <math.h>
@@ -229,8 +230,9 @@ static void DrawBigMNIPI(void)
 
     uint time = HAL_GetTick() - startTime;
 
-    int numColor = 0;
-    LIMITATION(numColor, (int)(time / (float)TIME_WAIT * 13.0f), 0, 13);
+    int numColor = (int)(time / (float)TIME_WAIT * 13.0f);
+    math.Limitation<int>(&numColor, 0, 13);
+
     Painter_SetColor((Color)(numColor + 2));
 
     float amplitude = 3.0f - (time / (TIME_WAIT / 2.0f)) * 3;

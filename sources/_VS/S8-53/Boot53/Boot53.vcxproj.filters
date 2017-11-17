@@ -183,9 +183,6 @@
     <ClCompile Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\Math.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\defines.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -194,6 +191,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\main.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\_Math.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -341,9 +341,6 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Boot53\defines.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -352,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Boot53\main.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\_Math.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
