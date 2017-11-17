@@ -18,11 +18,6 @@ char*    Bin2String(uint8 value, char buffer[9])
     return buffer;
 }
 
-bool IntInRange(int value, int min, int max)
-{
-    return (value >= min) && (value <= max);
-}
-
 float MaxFloat(float val1, float val2, float val3)
 {
     float retValue = val1;

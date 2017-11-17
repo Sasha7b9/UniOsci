@@ -972,14 +972,14 @@ static void DrawCursorTShift(void)
     int gridRight = grid.Right();
 
     int x = gridLeft + (int)(shiftTPos * scale) - 3;
-    if(IntInRange(x + 3, gridLeft, gridRight + 1))
+    if(math.IntInRange(x + 3, gridLeft, gridRight + 1))
     {
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_1, gColorBack, gColorFill);
     };
 
     // Рисуем tShift
     int shiftTShift = TPOS_IN_POINTS - TSHIFT_IN_POINTS;
-    if(IntInRange(shiftTShift, FIRST_POINT, LAST_POINT))
+    if(math.IntInRange(shiftTShift, FIRST_POINT, LAST_POINT))
     {
         x = gridLeft + shiftTShift - FIRST_POINT - 3;
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, gColorBack, gColorFill);

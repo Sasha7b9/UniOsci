@@ -85,3 +85,9 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
     free(buffer);
     free(num);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Math::IntInRange(int value, int min, int max)
+{
+    return (value >= min) && (value <= max);
+}

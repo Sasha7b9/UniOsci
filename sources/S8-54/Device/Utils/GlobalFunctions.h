@@ -11,17 +11,10 @@
  *  @{
  */
 
-
-/// Возвращает true, если value входит в диапазон [min; max]
-bool IntInRange(int value,                      ///< проверяемое значение
-                int min,                        ///< нижняя граница диапазона
-                int max                         ///< верхняя граница диапазона
-                );
 /// Выделяет память из кучи для канала. Настройки длины памяти берёт из ds или set (если ds == 0)
 void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds);
 /// Возвращает количество памяти, требуемой для сохранения данных одного канала
 int RequestBytesForChannel(Channel ch, DataSettings *ds);
-void BubbleSortINT(int array[], int num);
 /// Возвращает максимальное значение из трёх
 float MaxFloat(float val1, float val2, float val3);
 /// Увелечивает значение по адресу val на delta. Затем, если результат больше max, приравнивает его min

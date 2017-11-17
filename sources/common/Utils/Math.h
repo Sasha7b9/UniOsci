@@ -15,7 +15,12 @@ extern const float absStepRShift[];
 class Math
 {
 public:
+    /// Возвращает true, если value входит в диапазон [min; max]
+    bool IntInRange(int value, int min, int max );
 
+    int LowSignedBit(uint value);
+
+    void Smoothing(uint8 *data, int numPoints, int numSmooth);
 
     template<class T>
     void CircleIncrease(T *value, int min, int max)
@@ -67,8 +72,6 @@ public:
         else if (*value > max)  { *value = max; }
     }
 
-    int LowSignedBit(uint value);
-
     template<class T>
     int Sign(T x)
     {
@@ -76,8 +79,6 @@ public:
         if (x < (T)(0)) { return -1; }
         return 0;
     }
-
-    void Smoothing(uint8 *data, int numPoints, int numSmooth);
 };
 
 

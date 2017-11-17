@@ -1749,14 +1749,14 @@ void Display::DrawCursorTShift()
     float scale = (lastPoint - firstPoint) / (float)grid.Width();
     int gridLeft = grid.Left();
     int x = (int)(gridLeft + shiftTPos * scale - 3);
-    if (IntInRange(x + 3, gridLeft, grid.Right() + 1))
+    if (math.IntInRange(x + 3, gridLeft, grid.Right() + 1))
     {
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, COLOR_BACK, COLOR_FILL);
     };
 
     // Рисуем tShift
     int shiftTShift = sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, gDSet->length1channel, TPOS) - sTime_TShiftInPoints((PeackDetMode)gDSet->peakDet);
-    if(IntInRange(shiftTShift, firstPoint, lastPoint))
+    if(math.IntInRange(shiftTShift, firstPoint, lastPoint))
     {
         int x = gridLeft + shiftTShift - firstPoint - 3;
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, COLOR_BACK, COLOR_FILL);

@@ -7,11 +7,6 @@ char*   Bin2String                              //  Преобразует value в текстову
                                                 //  @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе.
                     (uint8 value,
                     char buffer[9]);
-bool    IntInRange                              // Возвращает true, если value входит в диапазон [min; max].
-                   (int value,                  // проверяемое значение.
-                   int min,                     // нижняя граница диапазона.
-                   int max                      // верхняя граница диапазона.
-                   );
 float   MaxFloat(float val1, float val2, float val3);                   // Возвращает максимальное значение из трёх.
 float   CircleAddFloat(float *val, float delta, float min, float max);  // Увелечивает значение по адресу val на delta. Затем, если результат больше max, приравнивает его min.
 float   CircleSubFloat(float *val, float delta, float min, float max);  // Уменьшает значение по адресу val на delta. Затем, елси результат меньше min, приравнивает его masx.
