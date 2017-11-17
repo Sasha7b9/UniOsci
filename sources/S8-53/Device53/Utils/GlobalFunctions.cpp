@@ -18,33 +18,6 @@ char*    Bin2String(uint8 value, char buffer[9])
     return buffer;
 }
 
-float CircleSubFloat(float *val, float delta, float min, float max)
-{
-    *val -= delta;
-    if(*val < min)
-    {
-        *val = max;
-    }
-    return *val;
-}
-
-void AddLimitationFloat(float *val, float delta, float min, float max)
-{
-    float sum = *val + delta;
-    if(sum < min)
-    {
-        *val = min;
-    }
-    else if(sum > max)
-    {
-        *val = max;
-    }
-    else
-    {
-        *val = sum;
-    }
-}
-
 char GetSymbolForGovernor(int value)
 {
     static const char chars[] =

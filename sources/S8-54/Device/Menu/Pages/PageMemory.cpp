@@ -244,7 +244,7 @@ static void OnRegSet_Last(int angle)
     {
         Sound_RegulatorSwitchRotate();
     }
-    if (_math.Sign(angle) > 0)
+    if (Sign(angle) > 0)
     {
         OnPress_Last_Next();
     }
@@ -1280,7 +1280,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = (int8)(maxIndex - 1);
     }
-    (math.*func[_math.Sign(angle) + 1])(&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
+    (math.*func[Sign(angle) + 1])(&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
     Sound_RegulatorSwitchRotate();
 
 }

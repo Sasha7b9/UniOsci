@@ -165,7 +165,7 @@ void ColorType::BrightnessChange(int delta)
         return;
     }
 
-    int sign = _math.Sign(delta);
+    int sign = Sign(delta);
 
     brightness += sign * 0.01f;
     LIMITATION(brightness, 0.0f, 1.0f);
@@ -208,7 +208,8 @@ void ColorType::ComponentChange(int delta)
 
     if (index >= 1 && index <= 3)
     {
-        AddLimitationFloat(pointers[index], (float)_math.Sign(delta), 0.0f, maxs[index]);
+        *(pointers[index]) += (float)Sign(delta);
+        math.Limitation<float>(pointers[index], 0.0f, maxs[index]);
     }
 
     SetColor();

@@ -65,7 +65,7 @@ void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
         {
             float value = bottom - data[i] * scale;
             float valuePrev = bottom - data[i - 1] * scale;
-            value += math.Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
+            value += Sign(valuePrev - value);          // Это сделано чтобы не ухудшать вывод двумя точками на горизонтали в месте соприкоснове-
                                                             // ния двух вертикальных линий
             painter.DrawVLine(x++, (int)valuePrev, (int)value);
         }

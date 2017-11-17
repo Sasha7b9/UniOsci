@@ -56,7 +56,7 @@ void RotateRegMeasureSetField(int angle)
     CursCntrl cursCntrl = GetMeasuresCursCntrlActive();
     CursActive cursActive = MEAS_CURS_ACTIVE;
 
-    int sign = math.Sign<int>(angle);
+    int sign = Sign(angle);
 
     if (cursCntrl == CursCntrl_1 || cursCntrl == CursCntrl_1_2)
     {

@@ -96,7 +96,6 @@ public:
 
     int8 AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max);
 
-    int Sign(int vlaue);
     /// Вычисляет 10**pow
     int Pow10(int pow);
     /// Вычисляет число разрядов в целом типа int

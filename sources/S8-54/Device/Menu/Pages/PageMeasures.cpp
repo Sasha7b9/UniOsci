@@ -3,6 +3,7 @@
 #include "Utils/Measures.h"
 #include "Settings/Settings.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "Menu/Pages/Definition.h"
 #include "Hardware/Sound.h"
@@ -233,7 +234,7 @@ static void OnRegSet_Tune(int angle)
     }
     if (pageChoiceIsActive)
     {
-        posOnPageChoice += (int8)_math.Sign(currentAngle);
+        posOnPageChoice += (int8)Sign(currentAngle);
         Sound_RegulatorSwitchRotate();
         if (posOnPageChoice < 0)
         {
@@ -251,7 +252,7 @@ static void OnRegSet_Tune(int angle)
         int row = 0;
         int col = 0;
         measures.GetActive(&row, &col);
-        col += _math.Sign(currentAngle);
+        col += Sign(currentAngle);
         if (col < 0)
         {
             col = measures.NumCols() - 1;

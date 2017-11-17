@@ -77,18 +77,17 @@ public:
         if (*value < min)       { *value = min; }
         else if (*value > max)  { *value = max; }
     }
-
-    template<class T>
-    int Sign(T x)
-    {
-        if (x > (T)(0)) { return 1; }
-        if (x < (T)(0)) { return -1; }
-        return 0;
-    }
 };
 
 
 extern class Math math;
+
+template<class T> int Sign(T x)
+{
+    if (x > (T)(0)) { return 1; }
+    if (x < (T)(0)) { return -1; }
+    return 0;
+}
 
 typedef void (Math::*pFuncMathPI8II)(int8 *, int, int);
 typedef void (Math::*pFuncMathPIII)(int *, int, int);

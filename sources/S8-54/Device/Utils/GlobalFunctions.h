@@ -15,14 +15,6 @@
 void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds);
 /// ¬озвращает количество пам€ти, требуемой дл€ сохранени€ данных одного канала
 int RequestBytesForChannel(Channel ch, DataSettings *ds);
-/// ”меньшает значение по адресу val на delta. «атем, елси результат меньше min, приравнивает его masx
-float CircleSubFloat(float *val, float delta, float min, float max);
-/// ѕрибавить к значению по адресу val delta. ≈сли результат не вписываетс€ в диапазон [min; max], ограничить
-void AddLimitationFloat(float *val,             ///< по этому адресу хранитс€ значение.
-                        float delta,            ///< а это дельта.
-                        float min,              ///< нижн€€ граница диапазона.
-                        float max               ///< верхн€€ граница диапазона.
-                        );
 /// ¬озвращает изображение регул€тора, соответствующее его текущему положению
 char GetSymbolForGovernor(int value);
 /// ‘ункци€-заглушка. Ќичего не делает
