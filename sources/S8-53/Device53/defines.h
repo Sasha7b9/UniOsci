@@ -1,6 +1,7 @@
 #pragma once
 #include <stm32f2xx_hal.h>
 
+#include "commonDefines.h"
 
 #define NUM_VER "1.3"
 
@@ -71,10 +72,6 @@ typedef char*   (*pFuncCFB)(float, bool);
 typedef char*   (*pFuncCFBC)(float, bool, char*);
 typedef void    (*pFuncpU8)(uint8*);
 typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
-
-#define _GET_BIT(value, bit) (((value) >> bit) & 0x01)
-#define _SET_BIT(value, bit) ((value) |= (1 << bit))
-#define _CLEAR_BIT(value, bit) ((value) &= (~(1 << bit)))
 
 // Объединение размером 32 бита
 typedef union

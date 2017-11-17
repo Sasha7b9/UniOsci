@@ -101,9 +101,6 @@ typedef void    (*pFuncVU8)(uint8 *);
 typedef void    (*pFuncVpVIIB)(void *, int, int, bool);
 typedef int     (*pFuncIU8I)(uint8 *, int);
 
-#define GetBit(value, bit) (((value) >> (bit)) & 0x01)
-#define SetBit_(value, bit) ((value) |= (1 << (bit)))
-
 #define BIT_MASK(numBit) (1 << (numBit))
 
 #ifndef WIN32

@@ -18,27 +18,6 @@ Translate trans;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *Translate::Bin2String(uint8 value, char buffer[9])
-{
-    for (int bit = 0; bit < 8; bit++)
-    {
-        buffer[7 - bit] = GetBit(value, bit) ? '1' : '0';
-    }
-    buffer[8] = '\0';
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Bin2String16(uint16 value, char valBuffer[19])
-{
-    char buffer[9];
-    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
-    strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
-    valBuffer[18] = '\0';
-    return valBuffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Hex8toString(uint8 value, char buffer[3], bool upper)
 {
     sprintf(buffer, upper ? "%02X" : "%02x", value);

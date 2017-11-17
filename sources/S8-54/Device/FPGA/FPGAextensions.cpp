@@ -166,7 +166,7 @@ static bool RunFuncAndWaitFlag(pFuncVV func, uint8 fl)
     const uint timeWait = 1000;
     uint startTime = gTimeMS;
 
-    while (GetBit(FSMC_READ(RD_FL), fl) == 0 && (gTimeMS - startTime > timeWait))
+    while (_GET_BIT(FSMC_READ(RD_FL), fl) == 0 && (gTimeMS - startTime > timeWait))
     {
     };
     if (gTimeMS - startTime > timeWait)
@@ -196,7 +196,7 @@ static int16 CalculateAdditionRShift(Channel ch, Range range)
 
         FPGA_WriteStartToHardware();
 
-        while(GetBit(FSMC_READ(RD_FL), FL_PRED_READY) == 0 && (gTimeMS - startTime < timeWait)) {};
+        while(_GET_BIT(FSMC_READ(RD_FL), FL_PRED_READY) == 0 && (gTimeMS - startTime < timeWait)) {};
         if(gTimeMS - startTime > timeWait)         // Если прошло слишком много времени -
         {
             return ERROR_VALUE_INT16;               // выход с ошибкой
@@ -206,7 +206,7 @@ static int16 CalculateAdditionRShift(Channel ch, Range range)
 
         startTime = gTimeMS;
 
-        while(GetBit(FSMC_READ(RD_FL), FL_DATA_READY) == 0 && (gTimeMS - startTime < timeWait)) {};
+        while(_GET_BIT(FSMC_READ(RD_FL), FL_DATA_READY) == 0 && (gTimeMS - startTime < timeWait)) {};
         if(gTimeMS - startTime > timeWait)         // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;               // выход с ошибкой.
@@ -533,10 +533,10 @@ static float CalculateDeltaADC(Channel ch, float *avgADC1, float *avgADC2, float
     for(int cicle = 0; cicle < numCicles; cicle++)
     {
         FPGA_WriteStartToHardware();
-        while(GetBit(FSMC_READ(RD_FL), FL_PRED_READY) == 0) {};
+        while(_GET_BIT(FSMC_READ(RD_FL), FL_PRED_READY) == 0) {};
 
         FPGA_SwitchingTrig();
-        while(GetBit(FSMC_READ(RD_FL), FL_DATA_READY) == 0) {};
+        while(_GET_BIT(FSMC_READ(RD_FL), FL_DATA_READY) == 0) {};
 
         for(int i = 0; i < 512; i++)
         {
@@ -782,7 +782,7 @@ bool FreqMeter_Init(void)
         }
         else
         {
-            SetBit_(data, 2);
+            _SET_BIT(data, 2);
         }
 
         *WR_FREQ_METER_PARAMS = data;
@@ -839,13 +839,13 @@ void FreqMeter_Draw(int x, int y)
     char buffer[30];
     float freq = FreqSetToFreq(&freqActual);
 
-    bool condFreq = GetBit(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
+    bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
 
     painter.DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : strUtils.Freq2StringAccuracy(freq, buffer, 6));
 
     freq = PeriodSetToFreq(&periodActual);
 
-    bool condPeriod = GetBit(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
+    bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
     painter.SetColor(Color::Trig());
     painter.DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : trans.Time2StringAccuracy(1.0f / freq, false, buffer, 6));
@@ -909,8 +909,8 @@ void FreqMeter_Update(uint16 flag_)
 {
     flag = flag_;
 
-    bool freqReady = GetBit(flag, FL_FREQ_READY) == 1;
-    bool periodReady = GetBit(flag, FL_PERIOD_READY) == 1;
+    bool freqReady = _GET_BIT(flag, FL_FREQ_READY) == 1;
+    bool periodReady = _GET_BIT(flag, FL_PERIOD_READY) == 1;
 
     if (freqReady)
     {
@@ -1152,7 +1152,7 @@ static bool FindParams(Channel, TBase *tBase)
     FPGA_SetTrigInput(TrigInput_Full);
 
     FPGA_Start();
-    while (GetBit(ReadFlag(), FL_FREQ_READY) == 0)
+    while (_GET_BIT(ReadFlag(), FL_FREQ_READY) == 0)
     {
         FuncDrawAutoFind();
     };
@@ -1162,7 +1162,7 @@ static bool FindParams(Channel, TBase *tBase)
     FPGA_SetTrigInput(freq < 1e6f ? TrigInput_LPF : TrigInput_Full);
 
     FPGA_Start();
-    while (GetBit(ReadFlag(), FL_FREQ_READY) == 0)
+    while (_GET_BIT(ReadFlag(), FL_FREQ_READY) == 0)
     {
     };
     FPGA_Stop(false);

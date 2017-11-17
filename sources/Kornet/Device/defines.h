@@ -2,6 +2,8 @@
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 
+#include "commonDefines.h"
+
 
 typedef unsigned char       uchar;
 typedef signed char         int8;
@@ -53,10 +55,6 @@ typedef union
         uint8 byte7;
     };
 } BitSet64;
-
-
-#define _SET_BIT_VALUE(value, numBit, bitValue) (value |= (bitValue << numBit))
-#define _GET_BIT(value, numBit) ((value >> numBit) & 1)
 
 
 #define _bitset(bits)                               \

@@ -176,7 +176,7 @@ char* StringUtils::Time2String(float time, bool alwaysSign, char buffer[20])
     }
 
     char bufferOut[20];
-    strcat(buffer, strUtils.Float2String(time, alwaysSign, 4, bufferOut));
+    strcat(buffer, Float2String(time, alwaysSign, 4, bufferOut));
     strcat(buffer, suffix);
     return buffer;
 }
@@ -206,7 +206,7 @@ char *StringUtils::Freq2String(float freq, bool, char bufferOut[20])
         suffix = LANG_RU ? "Ãö" : "Hz";
     }
     char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(freq, false, 4, buffer));
+    strcat(bufferOut, Float2String(freq, false, 4, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
 }
@@ -214,14 +214,14 @@ char *StringUtils::Freq2String(float freq, bool, char bufferOut[20])
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char* StringUtils::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 {
-    return strUtils.Float2String(value, alwaysSign, 4, bufferOut);
+    return Float2String(value, alwaysSign, 4, bufferOut);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char* StringUtils::Phase2String(float phase, bool, char bufferOut[20])
 {
     char buffer[20];
-    sprintf(bufferOut, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
+    sprintf(bufferOut, "%s\xa8", Float2String(phase, false, 4, buffer));
     return bufferOut;
 }
 
@@ -246,7 +246,28 @@ char *StringUtils::Freq2StringAccuracy(float freq, char bufferOut[20], int numDi
         freq /= 1e3f;
     }
     char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(freq, false, numDigits, buffer));
+    strcat(bufferOut, Float2String(freq, false, numDigits, buffer));
     strcat(bufferOut, suffix);
     return bufferOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *StringUtils::Bin2String(uint8 value, char buffer[9])
+{
+    for (int bit = 0; bit < 8; bit++)
+    {
+        buffer[7 - bit] = _GET_BIT(value, bit) ? '1' : '0';
+    }
+    buffer[8] = '\0';
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *StringUtils::Bin2String16(uint16 value, char valBuffer[19])
+{
+    char buffer[9];
+    strcpy(valBuffer, Bin2String((uint8)(value >> 8), buffer));
+    strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
+    valBuffer[18] = '\0';
+    return valBuffer;
 }

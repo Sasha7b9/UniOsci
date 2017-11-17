@@ -158,7 +158,7 @@ uint16 ReadFlag(void)
 
     if (!RECORDER_MODE)
     {
-        if(GetBit(flag, FL_TRIG_READY) == 1 && timeStart > timeSwitchingTrig)
+        if(_GET_BIT(flag, FL_TRIG_READY) == 1 && timeStart > timeSwitchingTrig)
         {
             panel.EnableLEDTrig(true);
         }
@@ -612,7 +612,7 @@ static void ReadRealMode(uint8 *dataA, uint8 *dataB)
 
     uint16 nStop = ReadNStop();
 
-    bool shift = GetBit(ReadFlag(), FL_LAST_RECOR) == 0;    // Если true, будем сдвигать точки на одну
+    bool shift = _GET_BIT(ReadFlag(), FL_LAST_RECOR) == 0;    // Если true, будем сдвигать точки на одну
 
     int balanceA = 0;
     int balanceB = 0;
@@ -724,7 +724,7 @@ bool ProcessingData(void)
     {
         uint16 flag = ReadFlag();
 
-        if (GetBit(flag, FL_PRED_READY) == 0)       // Если предзапуск не отсчитан - выходим
+        if (_GET_BIT(flag, FL_PRED_READY) == 0)       // Если предзапуск не отсчитан - выходим
         {
             break;
         }
@@ -738,19 +738,19 @@ bool ProcessingData(void)
         {
             uint time = gTimeMS;
             // В рандомизаторных развёртках при повторных считываниях нужно подождать флага синхронизации
-            while (GetBit(flag, FL_TRIG_READY) == 0 && GetBit(flag, FL_DATA_READY) == 0 && (gTimeMS - time) < 10)
+            while (_GET_BIT(flag, FL_TRIG_READY) == 0 && _GET_BIT(flag, FL_DATA_READY) == 0 && (gTimeMS - time) < 10)
             {                                                       // Это нужно для низких частот импульсов на входе
                 flag = ReadFlag();
             }
-            if (GetBit(flag, FL_DATA_READY) == 0) 
+            if (_GET_BIT(flag, FL_DATA_READY) == 0) 
             {
                 i = num;
             }
         }
 
-        if (GetBit(flag, FL_TRIG_READY))                            // Если прошёл импульс синхронизации
+        if (_GET_BIT(flag, FL_TRIG_READY))                            // Если прошёл импульс синхронизации
         {
-            if (GetBit(flag, FL_DATA_READY) == 1)                   // Проверяем готовность данных
+            if (_GET_BIT(flag, FL_DATA_READY) == 1)                   // Проверяем готовность данных
             {
                 fpgaStateWork = StateWorkFPGA_Stop;                 // И считываем, если данные готовы
                 HAL_NVIC_DisableIRQ(EXTI2_IRQn);                    // Отключаем чтение точек

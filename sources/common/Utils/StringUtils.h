@@ -28,6 +28,12 @@ public:
     char* Phase2String(float phase, bool, char bufferOut[20]);
     /// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
     char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
+    /// @brief Преобразует value в текстовую строку. При этом выводятся все 8 разрядов
+    /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
+    char* Bin2String(uint8 value, char bufferOut[9]);
+    /// @brief Преобразует value в текстовую строку
+    /// @attention Строка будте храниться до следующего вызова функции. Если рузультат нужен большее количество времени, то его нужно скопировать себе
+    char* Bin2String16(uint16 value, char bufferOut[19]);
 private:
     static int NumDigitsInIntPart(float value);
 };

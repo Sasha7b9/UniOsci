@@ -30,7 +30,7 @@ TypeItem TypeMenuItem(const void *address)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool    CurrentItemIsOpened(NamePage namePage)
 {
-    bool retValue = GetBit(MENU_POS_ACT_ITEM(namePage), 7) == 1;
+    bool retValue = _GET_BIT(MENU_POS_ACT_ITEM(namePage), 7) == 1;
     return retValue;
 }
 
