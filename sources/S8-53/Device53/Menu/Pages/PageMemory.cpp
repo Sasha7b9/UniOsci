@@ -17,6 +17,7 @@
 #include "Utils/Math.h"
 #include "Utils/_Math.h"
 #include "Utils/StringUtils.h"
+#include "Utils/CommonFunctions.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/FLASH.h"
 #include "Hardware/Sound.h"

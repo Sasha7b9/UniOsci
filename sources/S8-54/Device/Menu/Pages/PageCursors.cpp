@@ -14,6 +14,7 @@
 #include "Hardware/Sound.h"
 #include "Menu/MenuFunctions.h"
 #include "Utils/Math.h"
+#include "Utils/CommonFunctions.h"
 #include <math.h>
 #include <string.h>
 

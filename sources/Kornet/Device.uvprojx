@@ -816,16 +816,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>CommonFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\CommonFunctions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>CommonFunctions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\CommonFunctions.h</FilePath>
-            </File>
-            <File>
               <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Utils\Debug.cpp</FilePath>
@@ -864,6 +854,26 @@
               <FileName>Dictionary.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Dictionary.h</FilePath>
+            </File>
+            <File>
+              <FileName>_CommonFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\_CommonFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>_CommonFunctions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Utils\_CommonFunctions.h</FilePath>
+            </File>
+            <File>
+              <FileName>CommonFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\CommonFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CommonFunctions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\CommonFunctions.h</FilePath>
             </File>
           </Files>
         </Group>

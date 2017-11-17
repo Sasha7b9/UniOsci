@@ -3,6 +3,7 @@
 #include "Menu/MenuItems.h"
 #include "Definition.h"
 #include "HelpContent.h"
+#include "Utils/CommonFunctions.h"
 
 
 /** @addtogroup Menu

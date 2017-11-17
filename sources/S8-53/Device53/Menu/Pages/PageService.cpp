@@ -9,6 +9,7 @@
 #include "Hardware/Timer.h"
 #include "Utils/_Math.h"
 #include "Utils/Math.h"
+#include "Utils/CommonFunctions.h"
 
 /** @addtogroup Menu
  *  @{

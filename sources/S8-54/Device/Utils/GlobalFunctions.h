@@ -17,11 +17,7 @@ void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds);
 int RequestBytesForChannel(Channel ch, DataSettings *ds);
 /// Возвращает изображение регулятора, соответствующее его текущему положению
 char GetSymbolForGovernor(int value);
-/// Функция-заглушка. Ничего не делает
-void EmptyFuncVV(void);
-/// Функция-заглушка. Ничего не делает
 void EmptyFuncVpV(void *);
-/// Функция-заглушка. Ничего не делает
 void EmptyFuncVII(int, int);
 void EmptyFuncVI(int);
 bool EmptyFuncBV();

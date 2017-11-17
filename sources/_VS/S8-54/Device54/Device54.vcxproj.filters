@@ -516,6 +516,9 @@
     <ClInclude Include="..\..\..\common\commonDefines.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -984,6 +987,9 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>

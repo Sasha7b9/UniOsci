@@ -204,9 +204,6 @@
     <ClCompile Include="..\..\..\Kornet\Device\Tester\Tester.cpp">
       <Filter>Tester</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Kornet\Device\Utils\CommonFunctions.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -214,6 +211,9 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Device\Utils\_CommonFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -376,9 +376,6 @@
     <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h">
       <Filter>Tester</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Kornet\Device\Utils\CommonFunctions.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -389,6 +386,9 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\Math.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Utils\_CommonFunctions.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

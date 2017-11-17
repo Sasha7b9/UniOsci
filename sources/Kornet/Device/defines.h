@@ -17,7 +17,6 @@ typedef uint64_t            uint64;
 typedef void(*pFuncVV)();
 typedef void(*pFuncVB)(bool);
 
-inline void EmptyFuncVV(){};
 inline void EmptyFuncVB(bool){};
 
 

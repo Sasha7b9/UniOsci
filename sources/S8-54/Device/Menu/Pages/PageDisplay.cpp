@@ -5,6 +5,7 @@
 #include "Settings/SettingsDisplay.h"
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/CommonFunctions.h"
 #include "PageDisplay.h"
 #include "Definition.h"
 
