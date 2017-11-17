@@ -11,14 +11,6 @@
  *  @{
  */
 
-class Translate
-{
-public:
-    int BCD2Int(uint bcd);
-};
-
-
-extern Translate trans;
 
 /// Возвращает true, если value входит в диапазон [min; max]
 bool IntInRange(int value,                      ///< проверяемое значение

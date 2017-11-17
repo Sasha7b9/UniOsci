@@ -77,8 +77,6 @@ static int nBytes = 0;
 
 typedef float (*pFuncFCh)(Channel);
 
-typedef char *(Translate::*pFuncTrans)(float, bool, char*);
-
 typedef struct
 {
     char        *name;

@@ -177,21 +177,3 @@ char* IntToStrCat(char *_buffer, int _value)
 
     return _buffer;
 }
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-int BCD2Int(uint bcd)
-{
-    int pow = 1;
-
-    int value = 0;
-
-    for (int i = 0; i < 8; i++)
-    {
-        value += (bcd & 0x0f) * pow;
-        pow *= 10;
-        bcd = bcd >> 4;
-    }
-
-    return value;
-}

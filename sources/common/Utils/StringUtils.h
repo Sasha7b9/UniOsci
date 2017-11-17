@@ -62,6 +62,8 @@ char* Time2StringAccuracy(float time,           ///< время в секундах. Может быт
 /// Преобразует децибелы в текстовую строку
 char* Db2String(float value, int numDigits, char bufferOut[20]);
 
+int BCD2Int(uint bcd);
+
 extern StringUtils strUtils;
 
 typedef char *(StringUtils::*pFuncPCFBPC)(float, bool, char*);
