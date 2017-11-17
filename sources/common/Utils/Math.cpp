@@ -91,3 +91,18 @@ bool Math::IntInRange(int value, int min, int max)
 {
     return (value >= min) && (value <= max);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+float Math::MaxFloat(float val1, float val2, float val3)
+{
+    float retValue = val1;
+    if (val2 > retValue)
+    {
+        retValue = val2;
+    }
+    if (val3 > retValue)
+    {
+        retValue = val3;
+    }
+    return retValue;
+}

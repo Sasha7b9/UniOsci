@@ -15,8 +15,6 @@
 void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds);
 /// Возвращает количество памяти, требуемой для сохранения данных одного канала
 int RequestBytesForChannel(Channel ch, DataSettings *ds);
-/// Возвращает максимальное значение из трёх
-float MaxFloat(float val1, float val2, float val3);
 /// Увелечивает значение по адресу val на delta. Затем, если результат больше max, приравнивает его min
 float CircleAddFloat(float *val, float delta, float min, float max);
 /// Уменьшает значение по адресу val на delta. Затем, елси результат меньше min, приравнивает его masx

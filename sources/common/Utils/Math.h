@@ -21,6 +21,8 @@ public:
     int LowSignedBit(uint value);
 
     void Smoothing(uint8 *data, int numPoints, int numSmooth);
+    /// Возвращает максимальное значение из трёх
+    float MaxFloat(float val1, float val2, float val3);
 
     template<class T>
     void CircleIncrease(T *value, int min, int max)

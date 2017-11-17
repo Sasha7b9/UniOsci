@@ -54,21 +54,6 @@ int RequestBytesForChannel(Channel ch, DataSettings *ds)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float MaxFloat(float val1, float val2, float val3)
-{
-    float retValue = val1;
-    if(val2 > retValue)
-    {
-        retValue = val2;
-    }
-    if(val3 > retValue)
-    {
-        retValue = val3;
-    }
-    return retValue;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 float CircleAddFloat(float *val, float delta, float min, float max)
 {
     *val += delta;

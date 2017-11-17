@@ -110,7 +110,7 @@ static void ColorType_CalcSteps(ColorType *colorType)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void ColorType_SetBrightness(ColorType *colorType)
 {
-    colorType->brightness = MaxFloat(colorType->red / 31.0f, colorType->green / 63.0f, colorType->blue / 31.0f);
+    colorType->brightness = math.MaxFloat(colorType->red / 31.0f, colorType->green / 63.0f, colorType->blue / 31.0f);
 
     ColorType_CalcSteps(colorType);
 }

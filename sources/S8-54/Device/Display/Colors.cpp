@@ -2,6 +2,7 @@
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +120,7 @@ void ColorType::SetBrightness(float bright)
 {
     if (bright == -1.0f)
     {
-        brightness = MaxFloat(red / 31.0f, green / 63.0f, blue / 31.0f);
+        brightness = math.MaxFloat(red / 31.0f, green / 63.0f, blue / 31.0f);
 
         CalcSteps();
     }
