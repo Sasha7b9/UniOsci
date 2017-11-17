@@ -519,8 +519,8 @@ void FPGA_SetRange(Channel ch, Range range)
         sChannel_SetRange(ch, range);
         if (LINKING_RSHIFT == LinkingRShift_Voltage)
         {
-            SET_RSHIFT(ch) = (uint16)math.RShift2Rel(rShiftAbs, range);
-            SET_TRIGLEV(ch) = (uint16)math.RShift2Rel(trigLevAbs, range);
+            SET_RSHIFT(ch) = (uint16)_math.RShift2Rel(rShiftAbs, range);
+            SET_TRIGLEV(ch) = (uint16)_math.RShift2Rel(trigLevAbs, range);
         }
         LoadRange(ch);
         LoadTrigLev();

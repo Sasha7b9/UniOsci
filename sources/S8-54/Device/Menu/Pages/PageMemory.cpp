@@ -242,7 +242,7 @@ static void OnRegSet_Last(int angle)
     {
         Sound_RegulatorSwitchRotate();
     }
-    if (math.Sign(angle) > 0)
+    if (_math.Sign(angle) > 0)
     {
         OnPress_Last_Next();
     }
@@ -1278,7 +1278,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = (int8)(maxIndex - 1);
     }
-    func[math.Sign(angle) + 1](&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
+    func[_math.Sign(angle) + 1](&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
     Sound_RegulatorSwitchRotate();
 
 }

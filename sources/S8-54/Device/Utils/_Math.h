@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
 
@@ -49,7 +49,7 @@ extern const float absStepTShift[];
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Math
+class Math_
 {
 public:
     int RShift2Rel(float rShiftAbs, Range range);
@@ -118,7 +118,7 @@ public:
 };
 
 
-extern Math math;
+extern Math_ _math;
 
 
 /** @}  @}

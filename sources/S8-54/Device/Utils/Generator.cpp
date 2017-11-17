@@ -63,7 +63,7 @@ uint8 GetSampleSinusWave(Channel ch, int numSample)
 {
     float dT = numSample * TSHIFT_2_ABS(1, SET_TBASE);
     float voltage = ampl[ch] * sinf(2.0f * M_PI * freq[ch] * dT + angle[ch]) + NewNoiseValue(ch);
-    return math.VoltageToPoint(voltage, SET_RANGE(ch), SET_RSHIFT(ch));
+    return _math.VoltageToPoint(voltage, SET_RANGE(ch), SET_RSHIFT(ch));
 }
 
 
@@ -85,16 +85,16 @@ float NewNoiseValue(Channel ch)
 
     float deltaRand = halfAmplNoiseAbs;
 
-    noise += math.RandFloat(-deltaRand, deltaRand);
+    noise += _math.RandFloat(-deltaRand, deltaRand);
 
     while (noise < -halfAmplNoiseAbs)
     {
-        noise += math.RandFloat(0, deltaRand * 2);
+        noise += _math.RandFloat(0, deltaRand * 2);
     }
 
     while (noise > halfAmplNoiseAbs)
     {
-        noise -= math.RandFloat(0, deltaRand * 2);
+        noise -= _math.RandFloat(0, deltaRand * 2);
     }
 
     prevNoise[ch] = noise;

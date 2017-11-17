@@ -507,6 +507,12 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\_Math.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Math.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\StringUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -969,6 +975,12 @@
       <Filter>VCP\SCPI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\_Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Math.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>

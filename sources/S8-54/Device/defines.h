@@ -9,7 +9,7 @@
 #endif
 
 #include <stm32f4xx_hal.h>
-//#include <math.h>
+//#include <_math.h>
 #include <limits.h>
 
 #define S8_54
@@ -229,3 +229,8 @@ void HardwareErrorHandler(const char *file, const char *function, int line);
 #ifdef WIN32
 #pragma warning(pop)
 #endif
+
+
+// Для определения задания буферов лучше пользоваться этими макросами, чтобы потом легче было отследить, где можно памяти освободить
+#define CHAR_BUF(name, size)            char name[size]
+#define CHAR_BUF2(name, size1, size2)   char name[size1][size2]
