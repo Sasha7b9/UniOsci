@@ -177,7 +177,7 @@ char* StringUtils::Time2String(float time, bool alwaysSign, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Freq2String(float freq, bool alwaysSign, char bufferOut[20])
+char *StringUtils::Freq2String(float freq, bool, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char *suffix = 0;
@@ -213,7 +213,7 @@ char* StringUtils::FloatFract2String(float value, bool alwaysSign, char bufferOu
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* StringUtils::Phase2String(float phase, bool empty, char bufferOut[20])
+char* StringUtils::Phase2String(float phase, bool, char bufferOut[20])
 {
     char buffer[20];
     sprintf(bufferOut, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));

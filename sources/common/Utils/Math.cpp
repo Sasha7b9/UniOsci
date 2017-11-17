@@ -55,8 +55,8 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
         return;
     }
 
-    float *buffer = (float *)malloc(numPoints * sizeof(float));
-    int  *num = (int *)malloc(numPoints * sizeof(int));
+    float *buffer = (float *)malloc(numPoints * (int)sizeof(float));
+    int  *num = (int *)malloc(numPoints * (int)sizeof(int));
 
     for (int i = 1; i < numPoints; i++)
     {

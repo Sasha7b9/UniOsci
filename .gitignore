@@ -4,6 +4,7 @@
 *.obj
 *.out
 *.tmp
+*.uvgui.*
 *.uvgui*.*
 
 sources/.vs/*
