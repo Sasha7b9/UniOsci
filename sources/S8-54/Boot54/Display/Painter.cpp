@@ -7,6 +7,7 @@
 #include "Settings/Settings.h"
 #include "Hardware/FSMC.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "FlashDrive/FlashDrive.h"
 
@@ -521,10 +522,13 @@ void Painter_DrawPicture(int x, int y, int width, int height, uint8 *address)
 uint16 Painter_ReduceBrightness(uint16 colorValue, float newBrightness)
 {
     int red = (int)(R_FROM_COLOR(colorValue) * newBrightness);
-    LIMITATION(red, red, 0, 31);
+    math.Limitation(&red, 0, 31);
+
     int green = (int)(G_FROM_COLOR(colorValue) * newBrightness);
-    LIMITATION(green, green, 0, 63);
+    math.Limitation(&green, 0, 63);
+
     int blue = (int)(B_FROM_COLOR(colorValue) * newBrightness);
-    LIMITATION(blue, blue, 0, 31);
+    math.Limitation(&blue, 0, 31);
+
     return (uint16)MAKE_COLOR(red, green, blue);
 }

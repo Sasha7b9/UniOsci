@@ -222,8 +222,9 @@ static void DrawBigMNIPI(void)
 
     uint time = gTimerMS - startTime;
 
-    int numColor = 0;
-    LIMITATION(numColor, (int)(time / (float)TIME_WAIT * 13.0f), 0, 13);
+    int numColor = (int)(time / (float)TIME_WAIT * 13.0f);
+    math.Limitation(&numColor, 0, 13);
+
     Painter_SetColor((Color)(numColor + 2));
 
     float amplitude = 3.0f - (time / (TIME_WAIT / 2.0f)) * 3;

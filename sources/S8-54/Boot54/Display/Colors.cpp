@@ -126,7 +126,8 @@ void Color_BrightnessChange(ColorType *colorType, int delta)
 
     int sign = Sign(delta);
 
-    LIMITATION(colorType->brightness, colorType->brightness + sign * 0.01f, 0.0f, 1.0f);
+    colorType->brightness += sign * 0.01f;
+    math.Limitation<float>(&colorType->brightness, 0.0f, 1.0f);
 
     colorType->red += sign * colorType->stepRed;
     colorType->green += sign * colorType->stepGreen;
