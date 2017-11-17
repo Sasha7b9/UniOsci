@@ -4,7 +4,7 @@
 #include "SettingsChannel.h"
 #include "FPGA/FPGA.h"
 #include "Panel/Panel.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Utils/GlobalFunctions.h"
 
 

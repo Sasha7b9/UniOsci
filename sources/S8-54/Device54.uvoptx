@@ -3280,30 +3280,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\Utils\Math.cpp</PathWithFileName>
-      <FilenameWithoutPath>Math.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>21</GroupNumber>
-      <FileNumber>243</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\Device\Utils\Math.h</PathWithFileName>
-      <FilenameWithoutPath>Math.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>21</GroupNumber>
-      <FileNumber>244</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>.\Device\Utils\Measures.cpp</PathWithFileName>
       <FilenameWithoutPath>Measures.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -3311,7 +3287,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>245</FileNumber>
+      <FileNumber>243</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3323,7 +3299,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>246</FileNumber>
+      <FileNumber>244</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3335,7 +3311,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>247</FileNumber>
+      <FileNumber>245</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3347,7 +3323,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>248</FileNumber>
+      <FileNumber>246</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3359,7 +3335,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>249</FileNumber>
+      <FileNumber>247</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3371,7 +3347,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>250</FileNumber>
+      <FileNumber>248</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3383,7 +3359,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>251</FileNumber>
+      <FileNumber>249</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3395,7 +3371,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>252</FileNumber>
+      <FileNumber>250</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3407,7 +3383,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>253</FileNumber>
+      <FileNumber>251</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3419,7 +3395,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>254</FileNumber>
+      <FileNumber>252</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3431,7 +3407,7 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>255</FileNumber>
+      <FileNumber>253</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -3443,13 +3419,37 @@
     </File>
     <File>
       <GroupNumber>21</GroupNumber>
-      <FileNumber>256</FileNumber>
+      <FileNumber>254</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Device\Utils\GlobalFunctions.cpp</PathWithFileName>
       <FilenameWithoutPath>GlobalFunctions.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>21</GroupNumber>
+      <FileNumber>255</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\Utils\_Math.cpp</PathWithFileName>
+      <FilenameWithoutPath>_Math.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>21</GroupNumber>
+      <FileNumber>256</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\Device\Utils\_Math.h</PathWithFileName>
+      <FilenameWithoutPath>_Math.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

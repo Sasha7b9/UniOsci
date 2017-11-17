@@ -6,7 +6,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Debug.h"
 #include "Utils/Dictionary.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>

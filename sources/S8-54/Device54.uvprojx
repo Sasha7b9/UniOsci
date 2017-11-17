@@ -1762,16 +1762,6 @@
               <FilePath>.\Device\Utils\Map.h</FilePath>
             </File>
             <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Math.h</FilePath>
-            </File>
-            <File>
               <FileName>Measures.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Utils\Measures.cpp</FilePath>
@@ -1835,6 +1825,16 @@
               <FileName>GlobalFunctions.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Utils\GlobalFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>_Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\Utils\_Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>_Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Utils\_Math.h</FilePath>
             </File>
           </Files>
         </Group>

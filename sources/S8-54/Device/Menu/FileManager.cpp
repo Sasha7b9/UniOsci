@@ -8,7 +8,7 @@
 #include "Display/font/Font.h"
 #include "Display/Grid.h"
 #include "Utils/GlobalFunctions.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/Sound.h"
 #include "Hardware/RTC.h"
