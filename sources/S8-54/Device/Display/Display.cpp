@@ -1503,7 +1503,7 @@ static void WriteCursors(void)
             float pos1 = _math.TimeCursor(CURsT_POS(source, 1), SET_TBASE);
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
-            painter.DrawText(x + 17, y1, trans.Time2String(delta, false, buffer));
+            painter.DrawText(x + 17, y1, strUtils.Time2String(delta, false, buffer));
             painter.DrawText(x, y2, ":");
             painter.DrawText(x + 8, y2, sCursors_GetCursorPercentsT(source, buffer));
 

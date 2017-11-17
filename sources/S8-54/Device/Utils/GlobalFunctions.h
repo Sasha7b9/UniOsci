@@ -45,12 +45,7 @@ public:
     );
 
     bool String2Int(char *str, int *value);
-    /// @brief Преобразует time секунд в текстовую строку
-    char* Time2String(float time,                   ///< время в секундах. Может быть отрицательным
-                      bool alwaysSign,              ///< если true, знак показывается даже если time > 0
-                      char bufferOut[20]            ///< сюда записывается возвращаемое значение
-    );
-    /// @brief Преобразует time секунд в текстовую строку
+        /// @brief Преобразует time секунд в текстовую строку
     char* Time2StringAccuracy(float time,           ///< время в секундах. Может быть отрицательным
                               bool alwaysSign,      ///< если true, знак показывается даже если time > 0
                               char bufferOut[20],   ///< сюда записывается возвращаемое значение

@@ -206,12 +206,6 @@ bool Translate::String2Int(char *str, int *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Time2String(float time, bool alwaysSign, char buffer[20])
-{
-    return Time2StringAccuracy(time, alwaysSign, buffer, 4);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
 {
     buffer[0] = 0;

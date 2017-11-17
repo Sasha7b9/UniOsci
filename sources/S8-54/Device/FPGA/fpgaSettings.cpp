@@ -10,6 +10,7 @@
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/StringUtils.h"
 
 
 /*
@@ -744,7 +745,7 @@ void FPGA_EnableRecorderMode(bool enable)
 const char *FPGA_GetTShiftString(int16 tShiftRel, char buffer[20])
 {
     float tShiftVal = TSHIFT_2_ABS(tShiftRel, SET_TBASE);
-    return trans.Time2String(tShiftVal, true, buffer);
+    return strUtils.Time2String(tShiftVal, true, buffer);
 }
 
 

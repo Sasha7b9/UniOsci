@@ -46,7 +46,7 @@ const char *sCursors_GetCursorTime(Channel source, int numCur, char buffer[20])
 
     float time = _math.TimeCursor(CURsT_POS(source, numCur), SET_TBASE);
         
-    return trans.Time2String(time, true, buffer);
+    return strUtils.Time2String(time, true, buffer);
 }
 
 
