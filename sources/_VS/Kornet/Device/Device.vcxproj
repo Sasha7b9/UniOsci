@@ -130,6 +130,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
+    <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Device.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Display\Display.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Display\Grid.cpp" />
@@ -164,7 +166,6 @@
     <ClCompile Include="..\..\..\Kornet\Device\Tester\Tester.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp" />
-    <ClCompile Include="..\..\..\Kornet\Device\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -238,6 +239,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\common\Utils\Math.h" />
+    <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\Kornet\Device\defines.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Device.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\Display.h" />
@@ -269,7 +272,6 @@
     <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h" />
-    <ClInclude Include="..\..\..\Kornet\Device\Utils\Math.h" />
     <ClInclude Include="..\..\..\_libs\forVS\algorithm" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />

@@ -4,7 +4,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define RSHIFT_2_ABS(rShift, range) (-((float)RShiftZero - (float)(rShift)) * absStepRShift[(uint)(range)])
+#define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - (rShift)) * absStepRShift[(uint)(range)])
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,11 +23,11 @@ public:
         if (value < max)    { ++value; }
         else                { value = (T)min; }
     }
-    
+
     template<class T>
     void CircleDecrease(T &value, int min, int max)
     {
-        if(value > min)     { --value; }
+        if (value > min)    { --value; }
         else                { value = (T)max; }
     }
 
@@ -50,44 +50,21 @@ public:
     {
         if (term > 0)
         {
-            if (max - term >= *value)
-            {
-                *value += (uint16)term;
-            }
-            else
-            {
-                *value = max;
-            }
+            if (max - term >= *value)   { *value += (T)term; }
+            else                        { *value = max;      }
         }
         else
         {
-            if (min - term <= *value)
-            {
-                *value += (uint16)term;
-            }
-            else
-            {
-                *value = min;
-            }
+            if (min - term <= *value)   { *value += (T)term; }
+            else                        { *value = min;      }
         }
     }
-
-    /// Переводит значение voltage в тествоый вид в готовом для вывода на экран виде
-    char *Voltage2String(float voltage, bool alwaysSign, char buffer[20]);
-    /// Переводит число с плавающей точкой в текстовый вид. numDigits - число цифровых знакомест
-    char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
 
     template<class T>
     static void Limitation(T *value, T min, T max)
     {
-        if (*value < min)
-        {
-            *value = min;
-        }
-        else if (*value > max)
-        {
-            *value = max;
-        }
+        if (*value < min)       { *value = min; }
+        else if (*value > max)  { *value = max; }
     }
 
     int LowSignedBit(uint value);
@@ -105,7 +82,6 @@ public:
     void Smoothing(uint8 *data, int numPoints, int numSmooth);
 
 private:
-    static int NumDigitsInIntPart(float value);
 
     char *Bin2String(uint8 value, char buffer[9]);
 };

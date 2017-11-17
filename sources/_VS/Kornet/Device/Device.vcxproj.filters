@@ -210,7 +210,10 @@
     <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Kornet\Device\Utils\Math.cpp">
+    <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Math.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
@@ -379,11 +382,14 @@
     <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Kornet\Device\Utils\Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\_libs\forVS\algorithm">
       <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\StringUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Math.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
