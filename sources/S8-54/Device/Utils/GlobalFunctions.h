@@ -14,12 +14,6 @@
 class Translate
 {
 public:
-    /// @brief Преобразует value в текстовую строку в шестнадцатиричном виде
-    /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
-    char* Hex8toString(uint8 value, char bufferOut[3], bool upper);
-
-    char* Hex16toString(uint16 value, char bufferOut[5], bool upper);
-
     char* Hex32toString(uint32 value, char bufferOut[9], bool upper);
     /// @brief Преобразует value в текстовую строку
     /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе

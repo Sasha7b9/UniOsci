@@ -14,6 +14,7 @@
 #include "Utils/Dictionary.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
+#include "Utils/StringUtils.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1036,14 +1037,14 @@ static void OnChanged_Pred(void)
 {
     gPred = ~pred;
     static char buffer[30];
-    LOG_WRITE("pred %d %s", pred, trans.Hex16toString((uint16)gPred, buffer, true));
+    LOG_WRITE("pred %d %s", pred, strUtils.Hex16toString((uint16)gPred, buffer, true));
 }
 
 static void OnChanged_Post(void)
 {
     gPost = (uint16)~post;
     static char buffer[30];
-    LOG_WRITE("post %d %s", post, trans.Hex16toString(gPost, buffer, true));
+    LOG_WRITE("post %d %s", post, strUtils.Hex16toString(gPost, buffer, true));
 }
 
 //---------------------------------------------------------------------------------------------------------------- ОТЛАДКА - РАНД-ТОР - Информация ---

@@ -62,21 +62,6 @@ bool String2Int(char *str, int *value)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Hex8toString(uint8 value, char buffer[3], bool upper)
-{
-    sprintf(value < 16 ? (buffer[0] = '0', buffer + 1) :  (buffer), upper ? "%X" : "%x", value);
-    return buffer;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Hex16toString(uint16 value, char buffer[5], bool)
-{
-    sprintf(buffer, "%04X", value);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
 {
     buffer[0] = 0;

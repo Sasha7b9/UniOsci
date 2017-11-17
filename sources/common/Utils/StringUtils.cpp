@@ -271,3 +271,17 @@ char *StringUtils::Bin2String16(uint16 value, char valBuffer[19])
     valBuffer[18] = '\0';
     return valBuffer;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *StringUtils::Hex8toString(uint8 value, char buffer[3], bool upper)
+{
+    sprintf(buffer, upper ? "%02X" : "%02x", value);
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char* StringUtils::Hex16toString(uint16 value, char buffer[5], bool)
+{
+    sprintf(buffer, "%04X", value);
+    return buffer;
+}

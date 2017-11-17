@@ -18,19 +18,6 @@ Translate trans;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *Translate::Hex8toString(uint8 value, char buffer[3], bool upper)
-{
-    sprintf(buffer, upper ? "%02X" : "%02x", value);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Hex16toString(uint16 value, char buffer[5], bool upper)
-{
-    sprintf(buffer, upper ? "%04X" : "%04x", value);
-    return buffer;
-}
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Hex32toString(uint32 value, char buffer[9], bool upper)
 {
