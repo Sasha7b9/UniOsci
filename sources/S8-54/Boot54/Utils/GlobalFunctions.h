@@ -1,15 +1,6 @@
 #pragma once
 
-char*   FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
-
-char*   Float2String                            //  Преобразует value типа float в текстовую строку.
-                                                //  @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопироавать себе.
-                                                //  @retval указатель на строку с числом.
-                    (float value,               //  значение.
-                    bool alwaysSign,            //  если установлен в true, перед числом всегда будет знак, если установлен в false, только если число отрицательное.
-                    int numDigits,              //  число разрядов мантиссы.
-                    char bufferOut[20]
-                    );                         
+char*   FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);                     
 char*   Bin2String                              //  Преобразует value в текстовую строку. При этом выводятся все 8 разрядов.
                                                 //  @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе.
                     (uint8 value,

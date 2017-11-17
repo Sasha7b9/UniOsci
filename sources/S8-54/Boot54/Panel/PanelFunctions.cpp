@@ -1,5 +1,5 @@
 #include "Panel.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Hardware/Timer.h"

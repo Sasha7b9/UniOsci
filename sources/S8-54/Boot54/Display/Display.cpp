@@ -2,7 +2,7 @@
 #include "Painter.h"
 #include "Hardware/Timer.h"
 #include "main.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Settings/Settings.h"
 #include <math.h>
 

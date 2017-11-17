@@ -43,6 +43,9 @@
     <Filter Include="forVS">
       <UniqueIdentifier>{c9e4a5e2-d31b-4e05-929d-57e874fc64fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FPGA">
+      <UniqueIdentifier>{ef02bf99-6aaa-4622-b80f-c0dd48414e20}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-54\Boot54\libs\ffconf.h">
@@ -126,9 +129,6 @@
     <ClInclude Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Boot54\Utils\Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\cmsis_armcc.h">
       <Filter>CMSIS</Filter>
     </ClInclude>
@@ -179,6 +179,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\_libs\forVS\stdarg.h">
       <Filter>forVS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\Utils\_Math.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\FPGA\FPGA.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -295,9 +301,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\font\Font.cpp">
       <Filter>Display\fonts</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\Math.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\usbh_diskio.cpp">
       <Filter>libs</Filter>
     </ClCompile>
@@ -333,6 +336,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.cpp">
       <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\_Math.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

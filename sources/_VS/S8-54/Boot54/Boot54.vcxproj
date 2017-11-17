@@ -28,6 +28,7 @@
     <ClInclude Include="..\..\..\S8-54\Boot54\Display\PainterC.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Display\PainterText.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\FlashDrive\FlashDrive.h" />
+    <ClInclude Include="..\..\..\S8-54\Boot54\FPGA\FPGA.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\globals.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\FLASH.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\FSMC.h" />
@@ -43,7 +44,7 @@
     <ClInclude Include="..\..\..\S8-54\Boot54\Settings\Settings.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.h" />
-    <ClInclude Include="..\..\..\S8-54\Boot54\Utils\Math.h" />
+    <ClInclude Include="..\..\..\S8-54\Boot54\Utils\_Math.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
     <ClInclude Include="..\..\..\_libs\forVS\math.h" />
@@ -106,7 +107,7 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Panel\PanelFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\Math.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\_Math.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

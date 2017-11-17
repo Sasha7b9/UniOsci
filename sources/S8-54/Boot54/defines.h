@@ -2,6 +2,8 @@
 #include <stm32f4xx_hal.h>
 #include "globals.h"
 
+#define LANG_RU true
+
 #define S8_54
 
 #define VERSION "54-1.0"
@@ -65,3 +67,8 @@ typedef void    (*pFuncVpVIIB)(void *, int, int, bool);
 #define ERROR_VALUE_INT     INT_MAX
 #define ERROR_STRING_VALUE  "--.--"
 #define M_PI                3.14159265358979323846f
+
+
+// Для определения задания буферов лучше пользоваться этими макросами, чтобы потом легче было отследить, где можно памяти освободить
+#define CHAR_BUF(name, size)            char name[size]
+#define CHAR_BUF2(name, size1, size2)   char name[size1][size2]

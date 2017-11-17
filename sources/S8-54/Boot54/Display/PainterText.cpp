@@ -2,7 +2,7 @@
 #include "PainterText.h"
 #include "Painter.h"
 #include "Font/font.h"
-#include "Utils/Math.h"
+#include "Utils/_Math.h"
 #include "Settings/Settings.h"
 #include <stdarg.h>
 

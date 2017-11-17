@@ -4,6 +4,7 @@
 #include "Painter.h"
 #include "PainterData.h"
 #include "Log.h"
+#include "FPGA/FPGA.h"
 #include "Hardware/Timer.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
