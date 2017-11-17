@@ -3,6 +3,7 @@
 #include "SettingsCursors.h"
 #include "Utils/_Math.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/StringUtils.h"
 #include "Menu/MenuFunctions.h"
 #include "FPGA/FPGAtypes.h"
 #include <math.h>
@@ -31,7 +32,7 @@ const char *sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20])
     {
         voltage *= 10.0f;
     }
-    return trans.Voltage2String(voltage, true, buffer);
+    return strUtils.Voltage2String(voltage, true, buffer);
 }
 
 

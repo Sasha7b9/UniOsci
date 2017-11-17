@@ -6,6 +6,7 @@
 *.tmp
 *.uvgui.*
 *.uvgui*.*
+*.uvoptx
 
 sources/.vs/*
 sources/_VS/Kornet/.vs/*

@@ -1223,7 +1223,7 @@ void CountedToCurrentSettings()
 
             if (relValue < MIN_VALUE)       { dataOut1[i] = MIN_VALUE; }
             else if (relValue > MAX_VALUE)  { dataOut1[i] = MAX_VALUE; }
-            else                            { dataOut1[i] = relValue; }
+            else                            { dataOut1[i] = relValue;  }
         }
     }
 }

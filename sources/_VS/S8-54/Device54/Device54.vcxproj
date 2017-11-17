@@ -77,7 +77,7 @@
     <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\S8-54\Device;C:\My\Work\UniOsci\sources\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\UniOsci\sources\S8-54\Device\libs;C:\My\Work\UniOsci\sources\S8-54\Device\VCP</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\system;..\..\..\sources\common;..\..\..\S8-54\Device;..\..\..\S8-54\Device\libs;..\..\..\S8-54\Device\VCP;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\system;..\..\..\common;..\..\..\S8-54\Device;..\..\..\S8-54\Device\libs;..\..\..\S8-54\Device\VCP;$(IncludePath)</IncludePath>
     <OutDir>..\Debug\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

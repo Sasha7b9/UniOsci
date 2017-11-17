@@ -5,8 +5,12 @@
 class StringUtils
 {
 public:
-    /// Переводит значение voltage в тествоый вид в готовом для вывода на экран виде
-    char *Voltage2String(float voltage, bool alwaysSign, char buffer[20]);
+    /// @brief Преобразует voltage вольт в текстовую строку
+    /// @attention Страка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопитровать себе
+    char *Voltage2String(float voltage,     ///< значение напряжения в вольтах
+                         bool alwaysSign,   ///< если установлено в true, знак выводится всегда
+                         char buffer[20]    ///< сюда записывается возвращаемое значение
+    );
     /// Переводит число с плавающей точкой в текстовый вид. numDigits - число цифровых знакомест
     char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20]);
     /// Преобразует time секунд в текстовую строку.

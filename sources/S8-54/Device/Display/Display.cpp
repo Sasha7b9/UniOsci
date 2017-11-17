@@ -21,6 +21,7 @@
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
 #include "Utils/ProcessingSignal.h"
+#include "Utils/StringUtils.h"
 #include <math.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1099,7 +1100,7 @@ static void WriteValueTrigLevel(void)
         char buffer[20];
         strcpy(buffer, (char *)DICT(DTrigLev));
         char bufForVolt[20];
-        strcat(buffer, trans.Voltage2String(trigLev, true, bufForVolt));
+        strcat(buffer, strUtils.Voltage2String(trigLev, true, bufForVolt));
         int width = 96;
 
         // Рассчитаем координаты вывода строки уровня синхронизации.
@@ -1471,7 +1472,7 @@ static void WriteCursors(void)
                 delta *= 10;
             }
             painter.DrawText(x, y1, ":dU=");
-            painter.DrawText(x + 17, y1, trans.Voltage2String(delta, false, buffer));
+            painter.DrawText(x + 17, y1, strUtils.Voltage2String(delta, false, buffer));
             painter.DrawText(x, y2, ":");
             painter.DrawText(x + 10, y2, sCursors_GetCursorPercentsU(source, buffer));
         }

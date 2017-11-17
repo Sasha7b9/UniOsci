@@ -206,44 +206,6 @@ bool Translate::String2Int(char *str, int *value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
-{
-    buffer[0] = 0;
-    const char *suffix = DICT(D10kV);
-    if (voltage == ERROR_VALUE_FLOAT)
-    {
-        strcat(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    else if (fabsf(voltage) + 0.5e-4f < 1e-3f)
-    {
-        suffix = DICT(D10uV);
-        voltage *= 1e6f;
-    }
-    else if (fabsf(voltage) + 0.5e-4f < 1.0f)
-    {
-        suffix = DICT(D10mV);
-        voltage *= 1e3f;
-    }
-    else if (fabsf(voltage) + 0.5e-4f < 1000.0f)
-    {
-        suffix = DICT(D10V);
-    }
-    else
-    {
-        voltage *= 1e-3f;
-    }
-
-    char bufferOut[20];
-
-    Float2String(voltage, alwaysSign, 4, bufferOut);
-
-    strcat(buffer, bufferOut);
-    strcat(buffer, suffix);
-    return buffer;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Time2String(float time, bool alwaysSign, char buffer[20])
 {
     return Time2StringAccuracy(time, alwaysSign, buffer, 4);
