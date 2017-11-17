@@ -96,12 +96,6 @@ char*    Bin2String(uint8 value, char buffer[9])
     return buffer;
 }
 
-char* Hex8toString(uint8 value, char buffer[3])
-{
-    sprintf(value < 16 ? (buffer[0] = '0', buffer + 1) :  (buffer), "%x", value);
-    return buffer;
-}
-
 char* Float2Db(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;

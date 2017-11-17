@@ -274,14 +274,14 @@ char *StringUtils::Bin2String16(uint16 value, char valBuffer[19])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Hex8toString(uint8 value, char buffer[3], bool upper)
+char *StringUtils::Hex8toString(uint8 value, char buffer[3])
 {
-    sprintf(buffer, upper ? "%02X" : "%02x", value);
+    sprintf(buffer, "%02X", value);
     return buffer;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* StringUtils::Hex16toString(uint16 value, char buffer[5], bool)
+char* StringUtils::Hex16toString(uint16 value, char buffer[5])
 {
     sprintf(buffer, "%04X", value);
     return buffer;

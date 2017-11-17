@@ -36,9 +36,9 @@ public:
     char* Bin2String16(uint16 value, char bufferOut[19]);
     /// @brief Преобразует value в текстовую строку в шестнадцатиричном виде
     /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
-    char* Hex8toString(uint8 value, char bufferOut[3], bool upper);
+    char* Hex8toString(uint8 value, char bufferOut[3]);
 
-    char* Hex16toString(uint16 value, char bufferOut[5], bool upper);
+    char* Hex16toString(uint16 value, char bufferOut[5]);
 private:
     static int NumDigitsInIntPart(float value);
 };
