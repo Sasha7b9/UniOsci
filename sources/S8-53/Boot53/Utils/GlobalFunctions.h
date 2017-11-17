@@ -1,10 +1,5 @@
 #pragma once
 
-char*   FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
-char*   Bin2String                              //  Преобразует value в текстовую строку. При этом выводятся все 8 разрядов.
-//  @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе.
-(uint8 value,
-char buffer[9]);
 char*   Hex8toString                            // Преобразует value в текстовую строку в шестнадцатиричном виде.
 // @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе.
 (uint8 value,
@@ -19,22 +14,10 @@ int numMinFields,           // минимальное число занимаемых знакомест. Если для 
 char buffer[20]
 );
 bool    String2Int(char *str, int *value);
-// Преобразует time секунд в текстовую строку.
-// time - время в секундах. Может быть отрицательным.
-char*   Time2String(float time, bool alwaysSign, char buffer[20]);
-
 // Преобразует time секунд в текстовую строку
 // time - время в секундах. Может быть отрицательным
 // numDigits - количество цифр в строке
 char*   Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits);
-
-// Преобразует freq герц в текстовую строку.
-char*   Freq2String(float freq, bool, char bufferOut[20]);
-
-// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
-char*   Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
-
-char*   Phase2String(float phase, bool, char bufferOut[20]);    // Преобразует градусы в строку.
 
 char*   Float2Db(float value, int numDigits, char bufferOut[20]);   // Преобразует децибелы в текстовую строку.
 

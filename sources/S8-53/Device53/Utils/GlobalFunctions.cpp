@@ -96,14 +96,6 @@ char*    Bin2String(uint8 value, char buffer[9])
     return buffer;
 }
 
-char*   Bin2String16(uint16 value, char valBuffer[19])
-{
-    char buffer[9];
-    strcpy(valBuffer, Bin2String(value >> 8, buffer));
-    strcpy((valBuffer[8] = ' ', valBuffer + 9), Bin2String((uint8)value, buffer));
-    return valBuffer;
-}
-
 char* Hex8toString(uint8 value, char buffer[3])
 {
     sprintf(value < 16 ? (buffer[0] = '0', buffer + 1) :  (buffer), "%x", value);

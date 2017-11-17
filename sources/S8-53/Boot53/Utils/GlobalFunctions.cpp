@@ -9,14 +9,6 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
-{
-    return strUtils.Float2String(value, alwaysSign, 4, bufferOut);
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
 char* Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
     char format[20] = "%";
@@ -67,7 +59,6 @@ bool String2Int(char *str, int *value)
     return true;
 }
 
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 char* Hex8toString(uint8 value, char buffer[3], bool upper)
 {
@@ -75,21 +66,12 @@ char* Hex8toString(uint8 value, char buffer[3], bool upper)
     return buffer;
 }
 
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 char* Hex16toString(uint16 value, char buffer[5], bool)
 {
     sprintf(buffer, "%04X", value);
     return buffer;
 }
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-char* Time2String(float time, bool alwaysSign, char buffer[20])
-{
-    return Time2StringAccuracy(time, alwaysSign, buffer, 4);
-}
-
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
@@ -132,54 +114,6 @@ char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numD
     return buffer;
 }
 
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-char* Phase2String(float phase, bool, char bufferOut[20])
-{
-    char buffer[20];
-    sprintf(bufferOut, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
-    return bufferOut;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-char*  Freq2String(float freq, bool, char bufferOut[20])
-{
-    return Freq2StringAccuracy(freq, bufferOut, 4);
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
-{
-    bufferOut[0] = 0;
-    char *suffix = 0;
-    if (freq == ERROR_VALUE_FLOAT)
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-    if (freq >= 1e6f)
-    {
-        suffix = set.common.lang == Russian ? "ÌÃö" : "MHz";
-        freq /= 1e6f;
-    }
-    else if (freq >= 1e3f)
-    {
-        suffix = set.common.lang == Russian ? "êÃö" : "kHz";
-        freq /= 1e3f;
-    }
-    else
-    {
-        suffix = set.common.lang == Russian ? "Ãö" : "Hz";
-    }
-    char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(freq, false, numDigits, buffer));
-    strcat(bufferOut, suffix);
-    return bufferOut;
-}
-
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 char* Float2Db(float value, int numDigits, char bufferOut[20])
 {
@@ -190,13 +124,11 @@ char* Float2Db(float value, int numDigits, char bufferOut[20])
     return bufferOut;
 }
 
-
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 bool IntInRange(int value, int min, int max)
 {
     return (value >= min) && (value <= max);
 }
-
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 float MaxFloat(float val1, float val2, float val3)
