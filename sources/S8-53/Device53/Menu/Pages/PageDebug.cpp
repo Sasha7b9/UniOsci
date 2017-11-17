@@ -953,17 +953,17 @@ static void OnRegSet_SerialNumber(int angle)
     
     typedef void (Math::*pFuncRIII)(int&, int, int);
 
-    pFuncRIII p = angle > 0 ? &Math::CircleIncrease<int> : &Math::CircleDecrease<int>;
+    pFuncMathPIII p = angle > 0 ? &Math::CircleIncrease<int> : &Math::CircleDecrease<int>;
 
     ACCESS_EXTRAMEM(StructForSN, s);
 
     if (s->curDigt == 0)
     {
-        (math.*p)(s->number, 1, 99);
+        (math.*p)(&s->number, 1, 99);
     }
     else
     {
-        (math.*p)(s->year, 2014, 2050);
+        (math.*p)(&s->year, 2014, 2050);
     }
     sound.GovernorChangedValue();
 }

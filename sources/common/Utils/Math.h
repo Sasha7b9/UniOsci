@@ -4,7 +4,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - (rShift)) * absStepRShift[(uint)(range)])
+#define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)rShift)) * absStepRShift[(uint)(range)])
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,17 +18,17 @@ public:
 
 
     template<class T>
-    void CircleIncrease(T &value, int min, int max)
+    void CircleIncrease(T *value, int min, int max)
     {
-        if (value < max)    { ++value; }
-        else                { value = (T)min; }
+        if (*value < max)   { ++(*value); }
+        else                { *value = (T)min; }
     }
 
     template<class T>
-    void CircleDecrease(T &value, int min, int max)
+    void CircleDecrease(T *value, int min, int max)
     {
-        if (value > min)    { --value; }
-        else                { value = (T)max; }
+        if (*value > min)   { --(*value); }
+        else                { *value = (T)max; }
     }
 
     template<class T>
@@ -83,4 +83,5 @@ public:
 
 extern class Math math;
 
-typedef void (Math::*pFuncRI8II)(int8&, int, int);
+typedef void (Math::*pFuncMathPI8II)(int8 *, int, int);
+typedef void (Math::*pFuncMathPIII)(int *, int, int);

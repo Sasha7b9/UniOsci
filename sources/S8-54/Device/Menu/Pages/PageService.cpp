@@ -14,6 +14,7 @@
 #include "Utils/Dictionary.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -668,7 +669,7 @@ static void OnPress_Function_Screen(void)
     }
     else
     {
-        CircleIncreaseInt8((int8 *)&FUNC_MODE_DRAW, 0, 2);
+        math.CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
     }
 }
 
@@ -719,7 +720,7 @@ DEF_SMALL_BUTTON_HINTS_3
 //------------------------------------------------------------------------------------------------------------------------- —≈–¬»— - ‘”Õ ÷»ﬂ - ¬Ë‰ ---
 static void OnPress_Function_Type(void)
 {
-    CircleIncreaseInt8((int8 *)&MATH_FUNC, 0, 1);
+    math.CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
 }
 
 static void Draw_Function_Type(int x, int y)
@@ -755,7 +756,7 @@ DEF_SMALL_BUTTON_HINTS_2
 //------------------------------------------------------------------------------------------------------- —≈–¬»— - ‘”Õ ÷»ﬂ - –ÂÊËÏ Û˜ÍË ”—“¿ÕŒ¬ ¿ ---
 static void OnPress_Function_ModeRegSet(void)
 {
-    CircleIncreaseInt8((int8 *)&MATH_MODE_REG_SET, 0, 1);
+    math.CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
 }
 
 static void Draw_Function_ModeRegSet(int x, int y)

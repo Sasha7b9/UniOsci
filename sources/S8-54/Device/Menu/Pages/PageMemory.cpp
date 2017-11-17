@@ -13,6 +13,7 @@
 #include "Utils/Dictionary.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -289,7 +290,7 @@ DEF_SMALL_BUTTON
 // œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - —ÎÂ‰Û˛˘ËÈ --------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Next(void)
 {
-    CircleIncreaseInt16(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
+    math.CircleIncrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Next(int x, int y)
@@ -312,7 +313,7 @@ DEF_SMALL_BUTTON
 // œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - œÂ‰˚‰Û˘ËÈ -------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Prev(void)
 {
-    CircleDecreaseInt16(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
+    math.CircleDecrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Prev(int x, int y)
@@ -499,11 +500,11 @@ static void OnRegSet_Internal(int delta)
     Sound_RegulatorSwitchRotate();
     if (delta < 0)
     {
-        CircleDecreaseInt8(&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
+        math.CircleDecrease<int8>(&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     else if (delta > 0)
     {
-        CircleIncreaseInt8(&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
+        math.CircleIncrease<int8>(&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     painter.ResetFlash();
 }
@@ -610,7 +611,7 @@ DEF_SMALL_BUTTON_HINTS_2
 //---------------------------------------------------------------------------------------------------------------- œ¿Ãﬂ“‹ - ¬Õ”“– «” - ¬Ë‰ ÒË„Ì‡Î‡ ---
 static void OnPress_Internal_ModeShow(void)
 {
-    CircleIncreaseInt8((int8 *)&SHOW_IN_INT, 0, 2);
+    math.CircleIncrease<int8>((int8 *)&SHOW_IN_INT, 0, 2);
 }
 
 static void Draw_Internal_ModeShow(int x, int y)
@@ -1266,11 +1267,11 @@ static void OnRegSet_SetName(int angle)
 
 void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 {
-    int8(*func[3])(int8 *, int8, int8) =
+    static const pFuncMathPI8II func[3] =
     {
-        CircleDecreaseInt8,
-        CircleDecreaseInt8,
-        CircleIncreaseInt8
+        &Math::CircleDecrease<int8>,
+        &Math::CircleDecrease<int8>,
+        &Math::CircleIncrease<int8>
     };
 
     painter.ResetFlash();
@@ -1278,7 +1279,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = (int8)(maxIndex - 1);
     }
-    func[_math.Sign(angle) + 1](&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
+    (math.*func[_math.Sign(angle) + 1])(&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
     Sound_RegulatorSwitchRotate();
 
 }

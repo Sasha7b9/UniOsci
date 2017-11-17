@@ -27,8 +27,6 @@
 
 #define MAX_VOLTAGE_ON_SCREEN(range)        (tableScalesRange[(range)] * 5)
 
-#define RSHIFT_2_ABS(rShift, range)         (-((RShiftZero - ((int)rShift)) * absStepRShift[(range)]))
-
 #define POINT_2_VOLTAGE(value, range, rShift) (((value) - MIN_VALUE) * voltsInPoint[(range)] - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)))
 
 #define TSHIFT_2_ABS(tShift, tBase)         (absStepTShift[(tBase)] * (tShift) * 2.0f)

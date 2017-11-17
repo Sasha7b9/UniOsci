@@ -97,7 +97,7 @@ char *Choice::NameItem() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Choice::PressKey(Key) const
 {
-    math.CircleIncrease<uint8>(*(cells[numAlternate]), 0, max[numAlternate]);
+    math.CircleIncrease<uint8>(cells[numAlternate], 0, max[numAlternate]);
     funcOnChanged();
 }
 

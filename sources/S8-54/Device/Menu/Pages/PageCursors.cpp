@@ -13,6 +13,7 @@
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
 #include "Menu/MenuFunctions.h"
+#include "Utils/Math.h"
 #include <math.h>
 #include <string.h>
 
@@ -505,7 +506,7 @@ DEF_SMALL_BUTTON_HINTS_2
 
 static void OnPress_Set_Movement(void)
 {
-    CircleIncreaseInt8((int8 *)&CURS_MOVEMENT, 0, 1);
+    math.CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
 }
 
 static void Draw_Set_Movement(int x, int y)
@@ -601,12 +602,12 @@ static void SetCursSource(Channel ch)
 
 static void IncCursCntrlU(Channel ch)
 {
-    CircleIncreaseInt8((int8 *)&CURsU_CNTRL_CH(ch), 0, 3);
+    math.CircleIncrease<int8>((int8 *)&CURsU_CNTRL_CH(ch), 0, 3);
 }
 
 static void IncCursCntrlT(Channel ch)
 {
-    CircleIncreaseInt8((int8 *)&CURsT_CNTRL_CH(ch), 0, 3);
+    math.CircleIncrease<int8>((int8 *)&CURsT_CNTRL_CH(ch), 0, 3);
 }
 
 void CursorsUpdate(void)

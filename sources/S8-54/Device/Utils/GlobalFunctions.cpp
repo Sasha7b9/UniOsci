@@ -18,12 +18,6 @@ Translate trans;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *Translate::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
-{
-    return strUtils.Float2String(value, alwaysSign, 4, bufferOut);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Bin2String(uint8 value, char buffer[9])
 {
     for (int bit = 0; bit < 8; bit++)
@@ -179,15 +173,6 @@ char *Translate::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigi
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Phase2String(float phase, bool, char bufferOut[20])
-{
-    const int SIZE = 20;
-    char buffer[SIZE];
-    snprintf(bufferOut, SIZE, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
-    return bufferOut;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Float2Db(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
@@ -273,72 +258,6 @@ float MaxFloat(float val1, float val2, float val3)
         retValue = val3;
     }
     return retValue;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int8 CircleIncreaseInt8(int8 *val, int8 min, int8 max)
-{
-    (*val)++;
-    if((*val) > max)
-    {
-        (*val) = min;
-    }
-    return (*val);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int16 CircleIncreaseInt16(int16 *val, int16 min, int16 max)
-{
-    (*val)++;
-    if((*val) > max)
-    {
-        (*val) = min;
-    }
-    return (*val);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int CircleIncreaseInt(int *val, int min, int max)
-{
-    (*val)++;
-    if((*val) > max)
-    {
-        (*val) = min;
-    }
-    return (*val);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int8 CircleDecreaseInt8(int8 *val, int8 min, int8 max)
-{
-    (*val)--;
-    if((*val) < min)
-    {
-        (*val) = max;
-    }
-    return *val;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int16 CircleDecreaseInt16(int16 *val, int16 min, int16 max)
-{
-    (*val)--;
-    if((*val) < min)
-    {
-        (*val) = max;
-    }
-    return (*val);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int CircleDecreaseInt(int *val, int min, int max)
-{
-    (*val)--;
-    if((*val) < min)
-    {
-        (*val) = max;
-    }
-    return (*val);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

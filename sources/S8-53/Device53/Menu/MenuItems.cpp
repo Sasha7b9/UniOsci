@@ -207,7 +207,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            math.CircleIncrease<uint8>((uint8&)cell, 0, NumSubItems() - 1);
+            math.CircleIncrease<int8>(cell, 0, NumSubItems() - 1);
         }
         else if (tsChoice.inMoveDecrease == 1)
         {
@@ -217,7 +217,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            math.CircleDecrease<int8>((int8&)cell, 0, NumSubItems() - 1);
+            math.CircleDecrease<int8>(cell, 0, NumSubItems() - 1);
         }
         tsChoice.choice = 0;
         FuncOnChanged(menu.ItemIsActive(this));

@@ -386,7 +386,7 @@ static void OnPress_Math_Function_ModeDraw(void)
     }
     else
     {
-        math.CircleIncrease<int8>((int8&)MODE_DRAW_MATH, 0, 2);
+        math.CircleIncrease<int8>((int8 *)&MODE_DRAW_MATH, 0, 2);
     }
 }
 
@@ -438,7 +438,7 @@ static const SmallButton sbMath_Function_Type
 
 static void OnPress_Math_Function_Type(void)
 {
-    math.CircleIncrease<int8>((int8&)MATH_FUNC, 0, 1);
+    math.CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
 }
 
 static void Draw_Math_Function_Type(int x, int y)
@@ -480,7 +480,7 @@ static const SmallButton sbMath_Function_ModeRegSet
 
 static void OnPress_Math_Function_ModeRegSet(void)
 {
-    math.CircleIncrease<int8>((int8&)MATH_MODE_REG_SET, 0, 1);
+    math.CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
 }
 
 static void Draw_Math_Function_ModeRegSet(int x, int y)

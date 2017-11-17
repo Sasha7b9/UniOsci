@@ -10,6 +10,7 @@
 #include "Hardware/Sound.h"
 #include "Hardware/RTC.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "Pages/PageDisplay.h"
 
@@ -81,7 +82,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            CircleIncreaseInt8(&index, 0, (int8)NumSubItems() - 1);
+            math.CircleIncrease<int8>(&index, 0, (int8)NumSubItems() - 1);
         }
         else if (tsChoice.dir == DECREASE)
         {
@@ -91,7 +92,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            CircleDecreaseInt8(&index, 0, (int8)NumSubItems() - 1);
+            math.CircleDecrease<int8>(&index, 0, (int8)NumSubItems() - 1);
         }
         *cell = index;
         tsChoice.address = 0;
@@ -238,7 +239,7 @@ void Governor::NextPosition()
 {
     if (OpenedItem() == this)
     {
-        CircleIncreaseInt8(&gCurDigit, 0, (int8)(NumDigits() - 1));
+        math.CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
     }
 }
 
@@ -321,7 +322,7 @@ void Time::SetNewTime()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::SelectNextPosition()
 {
-    CircleIncreaseInt8(curField, 0, 7);
+    math.CircleIncrease<int8>(curField, 0, 7);
     painter.ResetFlash();
 }
 
@@ -386,7 +387,7 @@ void GovernorColor::ChangeValue(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void IPaddress::NextPosition()
 {
-    CircleIncreaseInt8(&gCurDigit, 0, port == 0 ? 11 : 16);
+    math.CircleIncrease<int8>(&gCurDigit, 0, port == 0 ? 11 : 16);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

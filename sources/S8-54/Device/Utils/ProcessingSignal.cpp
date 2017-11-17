@@ -12,6 +12,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Debug.h"
 #include "Utils/StringUtils.h"
+#include "Utils/Math.h"
 #include <math.h>
 #include <string.h>
 #include <limits.h>

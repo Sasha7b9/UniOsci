@@ -12,6 +12,7 @@
 #include "Pages/PageMemory.h"
 #include "Panel/Panel.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -756,7 +757,7 @@ void ShortPress_MAC(void *item)
 {
     if (OpenedItem() == item)
     {
-        CircleIncreaseInt8(&gCurDigit, 0, 5);
+        math.CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
 }
 
@@ -770,7 +771,7 @@ void ShortPress_GovernorColor(void *governorColor)
     GovernorColor *governor = (GovernorColor*)governorColor;
     if(OpenedItem() == governor)
     {
-        CircleIncreaseInt8(&(governor->ct->currentField), 0, 3);
+        math.CircleIncrease<int8>(&(governor->ct->currentField), 0, 3);
     }
     else
     {

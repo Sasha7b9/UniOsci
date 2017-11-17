@@ -8,6 +8,7 @@
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,7 +101,7 @@ void HelpContent_NextParagraph(void)
 {
     if(currentPage->type == TypePage_Content)
     {
-        CircleIncreaseInt(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
+        math.CircleIncrease<int>(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
     }
 }
 
@@ -109,7 +110,7 @@ void HelpContent_PrevParagraph(void)
 {
     if(currentPage->type == TypePage_Content)
     {
-        CircleDecreaseInt(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
+        math.CircleDecrease<int>(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
     }
 }
 

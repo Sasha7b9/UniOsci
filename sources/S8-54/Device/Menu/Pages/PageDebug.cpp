@@ -13,6 +13,7 @@
 #include "Utils/Debug.h"
 #include "Utils/Dictionary.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1255,17 +1256,17 @@ static void OnRegSet_SerialNumber(int angle)
 {
     typedef int (*pFunc)(int *, int, int);
 
-    pFunc p = angle > 0 ? CircleIncreaseInt : CircleDecreaseInt;
+    pFuncMathPIII p = (angle > 0) ? (&Math::CircleIncrease<int>) : (&Math::CircleDecrease<int>);
 
     ACCESS_EXTRAMEM(StructForSN, s);
 
     if (s->curDigt == 0)
     {
-        p(&s->number, 1, 99);
+        (math.*p)(&s->number, 1, 99);
     }
     else
     {
-        p(&s->year, 2016, 2050);
+        (math.*p)(&s->year, 2016, 2050);
     }
     Sound_GovernorChangedValue();
 }

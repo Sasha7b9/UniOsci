@@ -1,7 +1,9 @@
 @echo off
 
-echo %TIME%
-echo Compile Boot53   , 1 / 6 ...
+@echo Build All ...
+
+@echo %TIME%
+@echo Compile Boot53   , 1 / 6 ...
 
 c:\Keil_v5\UV4\UV4 -b S8-53\Boot53.uvprojx -j0 -z -o Boot53.out
 if ERRORLEVEL 1 goto BadBoot53

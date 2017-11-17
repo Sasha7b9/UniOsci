@@ -1,5 +1,7 @@
 @echo off
 
+@echo Rebuild All...
+
 @echo %TIME%
 echo Compile Boot53   , 1 / 6 ...
 
