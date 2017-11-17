@@ -18,16 +18,6 @@ char*    Bin2String(uint8 value, char buffer[9])
     return buffer;
 }
 
-float CircleAddFloat(float *val, float delta, float min, float max)
-{
-    *val += delta;
-    if(*val > max)
-    {
-        *val = min;
-    }
-    return *val;
-}
-
 float CircleSubFloat(float *val, float delta, float min, float max)
 {
     *val -= delta;
