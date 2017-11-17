@@ -282,7 +282,8 @@ void FPGA::SetRShift(Channel chan, int16 rShift)
         display.ShowWarningBad(chan == A ? LimitChan1_RShift : LimitChan2_RShift);
     }
 
-    LIMITATION(rShift, rShift, RShiftMin, RShiftMax);
+    math.Limitation<int16>(&rShift, RShiftMin, RShiftMax);
+
     if (rShift > RShiftZero)
     {
         rShift &= 0xfffe;                                            // ƒелаем кратным двум, т.к. у нас 800 значений на 400 точек
@@ -327,7 +328,8 @@ void FPGA::SetTrigLev(TrigSource chan, int16 trigLev)
     {
         display.ShowWarningBad(LimitSweep_Level);
     }
-    LIMITATION(trigLev, trigLev, TrigLevMin, TrigLevMax);
+
+    math.Limitation<int16>(&trigLev, TrigLevMin, TrigLevMax);
 
     if (trigLev > TrigLevZero)
     {
@@ -368,7 +370,7 @@ void FPGA::SetTShift(int tShift)
 
     if (tShift < sTime_TShiftMin() || tShift > TShiftMax)
     {
-        LIMITATION(tShift, tShift, sTime_TShiftMin(), TShiftMax);
+        math.Limitation<int>(&tShift, sTime_TShiftMin(), TShiftMax);
         display.ShowWarningBad(LimitSweep_TShift);
     }
 

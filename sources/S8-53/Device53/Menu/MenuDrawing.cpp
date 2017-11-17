@@ -13,6 +13,7 @@
 #include "Display/Grid.h"
 #include "Settings/Settings.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Utils/Measures.h"
 #include "Hardware/Timer.h"
 #include "Log.h"
@@ -280,7 +281,7 @@ void Menu::DrawItemsPage(Page *page, int layer, int yTop)
     };
     int posFirstItem = PosItemOnTop(page);
     int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
-    LIMITATION(posLastItem, posLastItem, 0, NumItemsInPage(page) - 1);
+    math.Limitation<int>(&posLastItem, 0, NumItemsInPage(page) - 1);
     int count = 0;
     Page *p = 0;
     for(int posItem = posFirstItem; posItem <= posLastItem; posItem++)

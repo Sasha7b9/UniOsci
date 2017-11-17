@@ -4,6 +4,7 @@
 #include "Menu/Pages/PageMemory.h"
 #include "Settings/Settings.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Log.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
@@ -147,7 +148,7 @@ void DataStorage::CalculateLimits(uint8 *data0, uint8 *data1, DataSettings *dss)
     else
     {
         int allDatas = dataStorage.NumElementsWithSameSettings();
-        LIMITATION(allDatas, allDatas, 1, NUM_MIN_MAX);
+        math.Limitation<int>(&allDatas, 1, NUM_MIN_MAX);
         
         if(dataStorage.NumElementsWithSameSettings() >= NUM_MIN_MAX)
         {

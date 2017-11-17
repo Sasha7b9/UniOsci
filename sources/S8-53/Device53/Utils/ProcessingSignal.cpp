@@ -971,8 +971,8 @@ float Processing_GetCursU(Channel chan, float posCurT)
     int lastPoint = 0;
     sDisplay_PointsOnDisplay(&firstPoint, &lastPoint);
 
-    float retValue = 0.0f;
-    LIMITATION(retValue, 200.0f - (dataIn[chan])[firstPoint + (int)posCurT] + MIN_VALUE, 0.0f, 200.0f);
+    float retValue = 200.0f - (dataIn[chan])[firstPoint + (int)posCurT] + MIN_VALUE;
+    math.Limitation<float>(&retValue, 0.0f, 200.0f);
     return retValue;
 }
 

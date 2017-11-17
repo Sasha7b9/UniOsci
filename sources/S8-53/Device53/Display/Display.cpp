@@ -671,7 +671,7 @@ bool DrawDataInModeNormal()
     Processing_GetData(&data0, &data1, &ds);
 
     int16 numSignals = dataStorage.NumElementsWithSameSettings();
-    LIMITATION(numSignals, numSignals, 1, NUM_ACCUM);
+    math.Limitation<int16>(&numSignals, 1, NUM_ACCUM);
     if (numSignals == 1 || ENUM_ACCUM_IS_INFINITY || MODE_ACCUM_IS_RESET || sTime_RandomizeModeEnabled())
     {
         DrawBothChannels(0, 0);
@@ -2301,7 +2301,8 @@ void Display::Clear()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::ShiftScreen(int delta)
 {
-    LIMITATION(SHIFT_IN_MEMORY, SHIFT_IN_MEMORY + delta, 0, sMemory_GetNumPoints(false) - 282);
+    SHIFT_IN_MEMORY += delta;
+    math.Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - 282);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

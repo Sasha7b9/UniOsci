@@ -26,7 +26,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -389,7 +389,9 @@
     <ClCompile Include="..\..\..\S8-54\Device\Display\WelcomeScreen.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\Ethernet.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\ethernetif.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\ethernetif.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGA.cpp" />

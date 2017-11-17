@@ -37,7 +37,7 @@ extern const       Governor gGrid_Brightness;                   ///< ÄÈÑÏËÅÉ - Ñ
        void        OnChanged_Grid_Brightness(void);
 static void       BeforeDraw_Grid_Brightness(void);
 extern const         Choice cScaleYtype;                        ///< ÄÈÑÏËÅÉ - Ñìåùåíèå
-extern const          Page ppSettings;                          ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ
+extern const          Page ppDisplaySettings;                          ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ
 extern const         Page pppSettings_Colors;                   ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ
 extern const         Choice cSettings_Colors_Scheme;            ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Öâåòîâàÿ ñõåìà
 extern const GovernorColor gcSettings_Colors_ChannelA;          ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 1
@@ -75,7 +75,7 @@ DEF_PAGE_9(     pDisplay, ,
     cRefreshFPS,    // ÄÈÑÏËÅÉ - ×àñòîòà îáíîâë
     ppGrid,         // ÄÈÑÏËÅÉ - ÑÅÒÊÀ
     cScaleYtype,    // ÄÈÑÏËÅÉ - Ñìåùåíèå
-    ppSettings      // ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ
+    ppDisplaySettings      // ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ
 );
 
 //-------------------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - Îòîáðàæåíèå ---
@@ -365,7 +365,7 @@ DEF_CHOICE_2
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ ///
-DEF_PAGE_7(     ppSettings, static,
+DEF_PAGE_7(     ppDisplaySettings, static,
     Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage,
     "ÍÀÑÒÐÎÉÊÈ", "SETTINGS",
     "Äîïîëíèòåëüíûå íàñòðîéêè äèñïëåÿ",
@@ -382,7 +382,7 @@ DEF_PAGE_7(     ppSettings, static,
 //-------------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ ---
 /// \todo Äîáàâèòü äîïîëíèòåëüíûå öâåòà 1-ãî è 2-ãî êàíàëîâ
 DEF_PAGE_5(     pppSettings_Colors, static,
-    Page_Display_Settings_Colors, &ppSettings, FuncActive, EmptyPressPage,
+    Page_Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage,
     "ÖÂÅÒÀ", "COLORS",
     "Âûáîð öâåòîâ äèñïëåÿ",
     "The choice of colors display",
@@ -499,7 +499,7 @@ DEF_GOVERNOR
     "ßðêîñòü", "Brightness",
     "Óñòàíîâêà ÿðêîñòè ñâå÷åíèÿ äèñïëåÿ",
     "Setting the brightness of the display",
-    ppSettings, BRIGHTNESS_DISPLAY, 0, 100, FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
+    ppDisplaySettings, BRIGHTNESS_DISPLAY, 0, 100, FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - Óðîâíè ---
@@ -509,7 +509,7 @@ DEF_GOVERNOR
     "Óðîâíè", "Levels",
     "Çàäà¸ò âðåìÿ, â òå÷åíèå êîòîðîãî ïîñëå ïîâîðîòà ðó÷êè ñåùåíèÿ íàïðÿæåíèÿ íà ýêðàíå îñòà¸òñÿ âñïîìîãàòåëüíàÿ ìåòêà óðîâíÿ ñìåùåíèÿ",
     "Defines the time during which, after turning the handle visits to the voltage on the screen remains auxiliary label offset level",
-    ppSettings, TIME_SHOW_LEVELS, 0, 125, FuncActive, FuncChanged, FuncBeforeDraw
+    ppDisplaySettings, TIME_SHOW_LEVELS, 0, 125, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - Âðåìÿ ---
@@ -519,13 +519,13 @@ DEF_GOVERNOR
     "Âðåìÿ", "Time",
     "Óñòàíîâêà âðåìåíè, â òå÷åíèå êîòîðîãî ñîîáùåíèÿ áóäóò íàõîäèòüñÿ íà ýêðàíå",
     "Set the time during which the message will be on the screen",
-    ppSettings, TIME_MESSAGES, 1, 99, FuncActive, FuncChanged, FuncBeforeDraw
+    ppDisplaySettings, TIME_MESSAGES, 1, 99, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - Ñòðîêà ìåíþ ---
 DEF_CHOICE_3
 (
-    cSettings_StringNavigation, ppSettings,
+    cSettings_StringNavigation, ppDisplaySettings,
     SHOW_STRING_NAVI, FuncActive, FuncChangedChoice, FuncDraw,
     "Ñòðîêà ìåíþ", "Path menu",
     "Ïðè âûáîðå \nÏîêàçûâàòü\n ñëåâà ââåðõó ýêðàíà âûâîäèòñÿ ïîëíûé ïóòü äî òåêóùåé ñòðàíèöû ìåíþ", /// \todo Èñïðàâèòü ïåðåâîä
@@ -543,7 +543,7 @@ static void OnChanged_Settings_AltMarkers(bool active)
 
 DEF_CHOICE_3
 (
-    cSettings_AltMarkers, ppSettings,
+    cSettings_AltMarkers, ppDisplaySettings,
     ALT_MARKERS, FuncActive, OnChanged_Settings_AltMarkers, FuncDraw,
     "Äîï. ìàðêåðû", "Alt. markers",
     "Óñòàíàâëèâàåò ðåæèì îòîáðàæåíèÿ äîïîëíèòåëüíûõ ìàðêåðîâ óðîâíåé ñìåùåíèÿ è ñèíõðîíèçàöèè:\n"
@@ -568,7 +568,7 @@ static void OnChanged_Settings_AutoHide(bool autoHide)
 
 DEF_CHOICE_6
 (
-    cSettings_AutoHide, ppSettings,
+    cSettings_AutoHide, ppDisplaySettings,
     MENU_AUTO_HIDE, FuncActive, OnChanged_Settings_AutoHide, FuncDraw,
     "Ñêðûâàòü", "Hide",
     "Óñòàíîâêà ïîñëå ïîñëåäíåãî íàæàòèÿ êíîïêè èëè ïîâîðîòà ðó÷êè, ïî èñòå÷åíèè êîòîðîãî ìåíþ àâòîìàòè÷åñêè óáèðàåòñÿ ñ ýêðàíà",

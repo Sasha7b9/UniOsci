@@ -4,6 +4,8 @@
 *.obj
 *.out
 *.tmp
+*.lib
+*.pdb
 *.uvgui.*
 *.uvgui*.*
 *.uvoptx
@@ -50,6 +52,7 @@ sources/_VS/S8-54/.vs/*
 
 sources/_VS/S8-53/Boot53/Debug/*
 sources/_VS/S8-53/Device53/Debug/*
+sources/_VS/S8-53/Debug/*
 
 doc/Kornet/doxygen/Device/*
 doc/Kornet/doxygen/Panel/*

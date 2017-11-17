@@ -9,6 +9,7 @@
 #include "Display/Grid.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/Sound.h"
 #include "Hardware/RTC.h"
@@ -270,7 +271,8 @@ static void DecCurrentDir(void)
         if (numCurDir < 0)
         {
             numCurDir = numDirs - 1;
-            LIMITATION(numFirstDir, numDirs - RECS_ON_PAGE, 0, numCurDir);
+            numFirstDir = numDirs - RECS_ON_PAGE;
+            math.Limitation<int>(&numFirstDir, 0, numCurDir);
         }
         if (numCurDir < numFirstDir)
         {
@@ -306,7 +308,8 @@ static void DecCurrentFile(void)
         if (numCurFile < 0)
         {
             numCurFile = numFiles - 1;
-            LIMITATION(numFirstFile, numFiles - RECS_ON_PAGE, 0, numCurFile);
+            numFirstFile = numFiles - RECS_ON_PAGE;
+            math.Limitation<int>(&numFirstFile, 0, numCurFile);
         }
         if (numCurFile < numFirstFile)
         {
@@ -349,7 +352,7 @@ bool FM_GetNameForNewFile(char name[255])
 
     if (FILE_NAMING_MODE_IS_HAND)
     {
-        LIMITATION(size, size, 1, 95);
+        math.Limitation<int>(&size, 1, 95);
         strcat(name, FILE_NAME);
         strcat(name, ".");
         strcat(name, MODE_SAVE_SIGNAL_IS_BMP ? "bmp" : "txt");

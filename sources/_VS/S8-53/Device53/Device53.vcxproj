@@ -26,7 +26,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -151,7 +151,9 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\app_ethernet.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\libs\stm32f2xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\stm32f2xx_it.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\system_stm32f2xx.c">
@@ -186,7 +188,9 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageTrig.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Panel\Controls.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Panel\Panel.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Panel\PanelFunctions.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Panel\PanelFunctions.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\Settings.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsChannel.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsCursors.cpp" />

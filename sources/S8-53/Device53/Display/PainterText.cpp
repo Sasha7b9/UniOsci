@@ -3,6 +3,7 @@
 #include "Painter.h"
 #include "Font/font.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
 #include <stdarg.h>
@@ -631,7 +632,8 @@ bool Painter::GetHeightTextWithTransfers(int left, int top, int right, const cha
         y += 9;
     }
 
-    LIMITATION(*height, y - top + 4, 0, 239);
+    *height = y - top + 4;
+    math.Limitation<int>(height, 0, 239);
 
     return curSymbol == numSymbols;
 }

@@ -7,6 +7,7 @@
 #include "Display/Display.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Hardware/FSMC.h"
 #include "Display/Grid.h"
 
@@ -134,7 +135,8 @@ void OnChanged_PeakDet(bool active)
         else if (PEAKDET_IS_ENABLE)
         {
             int centerX = SHIFT_IN_MEMORY + grid.Width() / 2;
-            LIMITATION(SHIFT_IN_MEMORY, centerX / 2 - grid.Width() / 2, 0, sMemory_GetNumPoints(false) - grid.Width());
+            SHIFT_IN_MEMORY = centerX / 2 - grid.Width() / 2;
+            math.Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - grid.Width());
             ChangeC_Memory_NumPoints(true);
         }
     }

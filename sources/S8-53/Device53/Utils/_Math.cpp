@@ -201,7 +201,7 @@ void Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, i
 uint8 Math_VoltageToPoint(float voltage, Range range, int16 rShift)
 {
     int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE);
-    LIMITATION(relValue, relValue, 0, 255);
+    math.Limitation<int>(&relValue, 0, 255);
     return relValue;
 }
 
