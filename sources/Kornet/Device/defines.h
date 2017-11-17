@@ -17,9 +17,6 @@ typedef uint64_t            uint64;
 typedef void(*pFuncVV)();
 typedef void(*pFuncVB)(bool);
 
-inline void EmptyFuncVB(bool){};
-
-
 #ifndef WIN32
 #pragma anon_unions
 #endif

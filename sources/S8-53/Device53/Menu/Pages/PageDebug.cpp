@@ -1182,7 +1182,7 @@ const Governor mgDebugInfoVersion =
         "Установка номера версии",
         "Setting the version number"
     },
-    EmptyFuncBV,
+     EmptyFuncBV,
     &set.debug.infoVer, 10, 100
 };
 

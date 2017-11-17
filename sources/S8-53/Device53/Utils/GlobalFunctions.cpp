@@ -34,15 +34,7 @@ char GetSymbolForGovernor(int value)
     return chars[value % 4];
 }
 
-void EmptyFuncVI(int i) { }
-
-void EmptyFuncVpV(void *empty) { }
-
-void EmptyFuncpVII(void *v, int i, int ii) { }
-
 void EmptyFuncVI16(int16 i) {}
-
-void EmptyFuncVB(bool b) {}
 
 void IntToStrCat(char *_buffer, int _value)
 {

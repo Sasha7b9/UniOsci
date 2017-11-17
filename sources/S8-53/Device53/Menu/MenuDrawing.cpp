@@ -15,6 +15,7 @@
 #include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Utils/Measures.h"
+#include "Utils/CommonFunctions.h"
 #include "Hardware/Timer.h"
 #include "Log.h"
 
