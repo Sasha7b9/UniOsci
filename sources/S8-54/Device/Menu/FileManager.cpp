@@ -9,6 +9,7 @@
 #include "Display/Grid.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/StringUtils.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/Sound.h"
 #include "Hardware/RTC.h"
@@ -372,7 +373,7 @@ bool FM_GetNameForNewFile(char name[255])
                 if (*ch == 0x07)
                 {
                     number++;
-                    strcpy(wr, trans.Int2String(number, false, *(ch + 1), buffer));
+                    strcpy(wr, strUtils.Int2String(number, false, *(ch + 1), buffer));
                     wr += strlen(buffer);
                     ch++;
                 }
@@ -380,7 +381,7 @@ bool FM_GetNameForNewFile(char name[255])
                 {
                     if (*ch >= 0x01 && *ch <= 0x06)
                     {
-                        strcpy(wr, trans.Int2String((int)values[*ch], false, 2, buffer));
+                        strcpy(wr, strUtils.Int2String((int)values[*ch], false, 2, buffer));
                         wr += strlen(buffer);
                     }
                 }

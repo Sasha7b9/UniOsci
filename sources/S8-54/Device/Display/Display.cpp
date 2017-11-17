@@ -1663,11 +1663,11 @@ static void DrawTime(int x, int y)
             time.seconds = TIME_SECONDS_DS;
             time.month = TIME_MONTH_DS;
             time.year = TIME_YEAR_DS;
-            painter.DrawText(x, y, trans.Int2String((int)time.day, false, 2, buffer));
+            painter.DrawText(x, y, strUtils.Int2String((int)time.day, false, 2, buffer));
             painter.DrawText(x + dField, y, ":");
-            painter.DrawText(x + dField + dSeparator, y, trans.Int2String((int)time.month, false, 2, buffer));
+            painter.DrawText(x + dField + dSeparator, y, strUtils.Int2String((int)time.month, false, 2, buffer));
             painter.DrawText(x + 2 * dField + dSeparator, y, ":");
-            painter.DrawText(x + 2 * dField + 2 * dSeparator, y, trans.Int2String((int)time.year + 2000, false, 4, buffer));
+            painter.DrawText(x + 2 * dField + 2 * dSeparator, y, strUtils.Int2String((int)time.year + 2000, false, 4, buffer));
             y += 9;
         }
         else
@@ -1676,11 +1676,11 @@ static void DrawTime(int x, int y)
         }
     }
 
-    painter.DrawText(x, y, trans.Int2String((int)time.hours, false, 2, buffer));
+    painter.DrawText(x, y, strUtils.Int2String((int)time.hours, false, 2, buffer));
     painter.DrawText(x + dField, y, ":");
-    painter.DrawText(x + dField + dSeparator, y, trans.Int2String((int)time.minutes, false, 2, buffer));
+    painter.DrawText(x + dField + dSeparator, y, strUtils.Int2String((int)time.minutes, false, 2, buffer));
     painter.DrawText(x + 2 * dField + dSeparator, y, ":");
-    painter.DrawText(x + 2 * dField + 2 * dSeparator, y, trans.Int2String((int)time.seconds, false, 2, buffer));
+    painter.DrawText(x + 2 * dField + 2 * dSeparator, y, strUtils.Int2String((int)time.seconds, false, 2, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

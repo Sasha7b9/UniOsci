@@ -9,23 +9,6 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char* Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
-{
-    char format[20] = "%";
-    sprintf(&(format[1]), "0%d", numMinFields);
-    strcat(format, "d");
-    if (alwaysSign && value >= 0)
-    {
-        buffer[0] = '+';
-        sprintf(buffer + 1, format, value);
-    }
-    else
-    {
-        sprintf(buffer, format, value);
-    }
-    return buffer;
-}
-
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 bool String2Int(char *str, int *value)

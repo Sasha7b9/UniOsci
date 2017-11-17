@@ -8,54 +8,6 @@
 #include <stdio.h>
 #include <string.h>
 
-/*
-static int NumDigitsInIntPart(float value)
-{
-    float fabsValue = fabsf(value);
-
-    int numDigitsInInt = 0;
-    if (fabsValue >= 10000)
-    {
-        numDigitsInInt = 5;
-    }
-    else if (fabsValue >= 1000)
-    {
-        numDigitsInInt = 4;
-    }
-    else if (fabsValue >= 100)
-    {
-        numDigitsInInt = 3;
-    }
-    else if (fabsValue >= 10)
-    {
-        numDigitsInInt = 2;
-    }
-    else
-    {
-        numDigitsInInt = 1;
-    }
-
-    return numDigitsInInt;
-}
-*/
-
-char* Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
-{
-    char format[20] = "%";
-    sprintf(&(format[1]), "0%d", numMinFields);
-    strcat(format, "d");
-    if(alwaysSign && value >= 0)
-    {
-        buffer[0] = '+';
-        sprintf(buffer + 1, format, value);
-    }
-    else
-    {
-        sprintf(buffer, format, value);
-    }
-    return buffer;
-}
-
 bool String2Int(char *str, int *value)  
 {
     int sign = str[0] == '-' ? -1 : 1;

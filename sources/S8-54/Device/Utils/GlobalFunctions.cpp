@@ -18,31 +18,9 @@ Translate trans;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Hex32toString(uint32 value, char buffer[9], bool upper)
-{
-    sprintf(buffer, upper ? "%08X" : "%08x", value);
-    return buffer;
-}
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
-{
-    const int SIZE = 20;
-    char format[SIZE] = "%";
-    snprintf(&(format[1]), SIZE, "0%d", numMinFields);
-    strcat(format, "d");
-    if (alwaysSign && value >= 0)
-    {
-        buffer[0] = '+';
-        snprintf(buffer + 1, SIZE - 1, format, value);
-    }
-    else
-    {
-        snprintf(buffer, SIZE, format, value);
-    }
-    return buffer;
-}
+
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Translate::String2Int(char *str, int *value)
