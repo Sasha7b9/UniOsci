@@ -1,7 +1,6 @@
 #include "FSMC.h"
 #include "Hardware.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Hardware/Timer.h"
 #include <stm32f2xx_hal.h>
 #include <stm32f2xx_ll_fsmc.h>

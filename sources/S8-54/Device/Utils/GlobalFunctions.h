@@ -22,10 +22,5 @@ void FillArrayUINT8(uint8 *data, uint8 value, int numElements);
 /// Найти первый элемент массива, не соотвествующий заданному
 int FindAnotherElement(uint8 *data, uint8 value, int numElements);
 
-char* IntToStrCat(char *_buffer, int _value);
-/// Выводит numElements элементов массива array в одной строке консоли
-void LoggingArrayUINT8(char *label, uint8 *array, int numElements);
-
-
 /** @}  @}
  */

@@ -849,16 +849,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>GlobalFunctions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Boot53\Utils\GlobalFunctions.h</FilePath>
-            </File>
-            <File>
-              <FileName>GlobalFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Boot53\Utils\GlobalFunctions.cpp</FilePath>
-            </File>
-            <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Utils\StringUtils.cpp</FilePath>

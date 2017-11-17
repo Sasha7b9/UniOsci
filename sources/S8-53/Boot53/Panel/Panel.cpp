@@ -1,7 +1,6 @@
 #include "Panel.h"
 #include "Controls.h"
 #include "Utils/Math.h"
-#include "Utils/GlobalFunctions.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Hardware/Timer.h"

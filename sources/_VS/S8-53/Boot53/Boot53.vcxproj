@@ -143,7 +143,6 @@
     <ClCompile Include="..\..\..\S8-53\Boot53\Panel\Controls.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Panel\Panel.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Settings\Settings.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-53\Boot53\Utils\_Math.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Src\stm32f2xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -257,7 +256,6 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Panel.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Settings\Settings.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsTypes.h" />
-    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Utils\_Math.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />

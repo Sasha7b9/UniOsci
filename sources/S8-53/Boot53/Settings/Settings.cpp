@@ -5,7 +5,6 @@
 #include "Display/Colors.h"
 #include "Panel/Panel.h"
 #include "Utils/Math.h"
-#include "Utils/GlobalFunctions.h"
 #include "Display/Display.h"
 
 

@@ -130,21 +130,3 @@ void Init()
     VCP_Init();
 }
 
-/*
-void FuncConnect(int _id) {
-    static char message[100];
-    message[0] = '\0'; 
-    strcpy(message, "Connection ");
-    IntToStrCat(message, _id);
-    strcat(message, " is establishes. All ");
-    IntToStrCat(message, TCP_SOCKET_AllConnections());
-    strcat(message, " connections");
-    TCP_SOCKET_SendToOne(_id, message, strlen(message));
-}
-*/
-
-/*
-void FuncReciever(int _id, const char *eBuffer, uint length) {
-    TCP_SOCKET_SendToOne(_id, eBuffer, length);
-}
-*/

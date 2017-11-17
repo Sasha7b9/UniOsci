@@ -180,9 +180,6 @@
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_pipes.c">
       <Filter>USBH</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\defines.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -337,9 +334,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsTypes.h">
       <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Boot53\Utils\GlobalFunctions.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Boot53\defines.h">
       <Filter>src</Filter>
