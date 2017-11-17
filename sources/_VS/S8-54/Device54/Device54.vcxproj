@@ -130,8 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
+    <ClInclude Include="..\..\..\common\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-54\Device\cmsis_gcc.h" />
@@ -208,7 +210,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Tables.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Debug.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Map.h" />
@@ -368,6 +369,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />
@@ -444,7 +446,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Debug.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.c" />

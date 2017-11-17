@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "Settings/Settings.h"
 
 
@@ -9,12 +9,12 @@
  *  @defgroup SettingsService Settings Service
  *  @{
  */
-
-#define RECORDER_MODE                   (set.serv_Recorder)
-
+ 
 #define LANG                            (set.com_Lang)
 #define LANG_RU                         (LANG == Russian)
 #define LANG_EN                         (LANG == English)
+
+#define RECORDER_MODE                   (set.serv_Recorder)
 
 #define TIME_SHOW_LEVELS                (set.disp_TimeShowLevels)
 

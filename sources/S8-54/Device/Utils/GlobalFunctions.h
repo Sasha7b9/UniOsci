@@ -42,8 +42,6 @@ public:
                               char bufferOut[20],   ///< сюда записывается возвращаемое значение
                               int numDigits         ///< количество цифр в строке
     );
-    /// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
-    char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
     /// Преобразует децибелы в текстовую строку
     char* Float2Db(float value, int numDigits, char bufferOut[20]);
 

@@ -147,32 +147,6 @@ char *Translate::Time2StringAccuracy(float time, bool alwaysSign, char buffer[20
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *Translate::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
-{
-    bufferOut[0] = 0;
-    const char *suffix = DICT(DHz);
-    if (freq == ERROR_VALUE_FLOAT)
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-    if (freq >= 1e6f)
-    {
-        suffix = DICT(DMHz);
-        freq /= 1e6f;
-    }
-    else if (freq >= 1e3f)
-    {
-        suffix = DICT(DkHz);
-        freq /= 1e3f;
-    }
-    char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(freq, false, numDigits, buffer));
-    strcat(bufferOut, suffix);
-    return bufferOut;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Translate::Float2Db(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;

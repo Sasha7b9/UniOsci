@@ -1,5 +1,5 @@
 #pragma once
-#include "Settings/SettingsService.h"
+#include "commonDefines.h"
 
 
 typedef enum

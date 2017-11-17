@@ -22,7 +22,6 @@
  *  @{
  */
 
-
 #define ETH_ENABLED         (set.eth_enable)
 #define ETH_PORT            (set.eth_port)
 

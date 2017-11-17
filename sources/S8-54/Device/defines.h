@@ -1,5 +1,7 @@
 #pragma once
 
+#include "commonDefines.h"
+
 #ifdef WIN32
 #define __DSB()
 #define __NOP()
@@ -56,7 +58,6 @@ typedef unsigned    int         uint32;
 typedef unsigned    int         uint32_t;
 typedef unsigned    char        uchar;
 typedef uint8                   BYTE;
-typedef const char * const      pString;
 
 
 #ifndef WIN32

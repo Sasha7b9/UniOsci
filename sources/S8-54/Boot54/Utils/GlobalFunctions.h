@@ -26,8 +26,6 @@ bool    String2Int(char *str, int *value);
 // time - время в секундах. Может быть отрицательным
 // numDigits - количество цифр в строке
 char*   Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits);
-// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
-char*   Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
 char*   Float2Db(float value, int numDigits, char bufferOut[20]);   // Преобразует децибелы в текстовую строку.
 
 bool    IntInRange                              // Возвращает true, если value входит в диапазон [min; max].

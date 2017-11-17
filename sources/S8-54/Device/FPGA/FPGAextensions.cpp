@@ -11,6 +11,7 @@
 #include "Utils/Dictionary.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/_Math.h"
+#include "Utils/StringUtils.h"
 
 
 /** @addtogroup FPGA
@@ -840,7 +841,7 @@ void FreqMeter_Draw(int x, int y)
 
     bool condFreq = GetBit(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
 
-    painter.DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : trans.Freq2StringAccuracy(freq, buffer, 6));
+    painter.DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : strUtils.Freq2StringAccuracy(freq, buffer, 6));
 
     freq = PeriodSetToFreq(&periodActual);
 

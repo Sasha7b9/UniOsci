@@ -118,37 +118,6 @@ char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numD
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
-{
-    bufferOut[0] = 0;
-    char *suffix = 0;
-    if (freq == ERROR_VALUE_FLOAT)
-    {
-        strcat(bufferOut, ERROR_STRING_VALUE);
-        return bufferOut;
-    }
-    if (freq >= 1e6f)
-    {
-        suffix = set.common.lang == Russian ? "ÌÃö" : "MHz";
-        freq /= 1e6f;
-    }
-    else if (freq >= 1e3f)
-    {
-        suffix = set.common.lang == Russian ? "êÃö" : "kHz";
-        freq /= 1e3f;
-    }
-    else
-    {
-        suffix = set.common.lang == Russian ? "Ãö" : "Hz";
-    }
-    char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(freq, false, numDigits, buffer));
-    strcat(bufferOut, suffix);
-    return bufferOut;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 char* Float2Db(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;

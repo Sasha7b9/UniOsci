@@ -1021,6 +1021,11 @@
               <FileType>8</FileType>
               <FilePath>.\Device\Tables.cpp</FilePath>
             </File>
+            <File>
+              <FileName>commonDefines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\commonDefines.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1737,11 +1742,6 @@
               <FilePath>.\Device\Utils\Debug.h</FilePath>
             </File>
             <File>
-              <FileName>Dictionary.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Dictionary.h</FilePath>
-            </File>
-            <File>
               <FileName>Generator.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\Generator.h</FilePath>
@@ -1812,11 +1812,6 @@
               <FilePath>.\Device\Utils\Debug.cpp</FilePath>
             </File>
             <File>
-              <FileName>Dictionary.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Dictionary.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Generator.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Utils\Generator.cpp</FilePath>
@@ -1855,6 +1850,16 @@
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\StringUtils.h</FilePath>
+            </File>
+            <File>
+              <FileName>Dictionary.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Dictionary.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Dictionary.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Dictionary.h</FilePath>
             </File>
           </Files>
         </Group>

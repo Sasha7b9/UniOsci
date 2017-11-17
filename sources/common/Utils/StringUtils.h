@@ -26,6 +26,8 @@ public:
     char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
     /// Преобразует градусы в строку.
     char* Phase2String(float phase, bool, char bufferOut[20]);
+    /// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
+    char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
 private:
     static int NumDigitsInIntPart(float value);
 };

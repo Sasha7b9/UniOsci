@@ -1,9 +1,14 @@
 #include "defines.h"
 #include "StringUtils.h"
 #include "Settings/Settings.h"
+#include "Dictionary.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
+
+#ifndef LANG
+#define LANG 0
+#endif
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -217,5 +222,31 @@ char* StringUtils::Phase2String(float phase, bool, char bufferOut[20])
 {
     char buffer[20];
     sprintf(bufferOut, "%s\xa8", strUtils.Float2String(phase, false, 4, buffer));
+    return bufferOut;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *StringUtils::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
+{
+    bufferOut[0] = 0;
+    const char *suffix = DICT(DHz);
+    if (freq == ERROR_VALUE_FLOAT)
+    {
+        strcat(bufferOut, ERROR_STRING_VALUE);
+        return bufferOut;
+    }
+    if (freq >= 1e6f)
+    {
+        suffix = DICT(DMHz);
+        freq /= 1e6f;
+    }
+    else if (freq >= 1e3f)
+    {
+        suffix = DICT(DkHz);
+        freq /= 1e3f;
+    }
+    char buffer[20];
+    strcat(bufferOut, strUtils.Float2String(freq, false, numDigits, buffer));
+    strcat(bufferOut, suffix);
     return bufferOut;
 }

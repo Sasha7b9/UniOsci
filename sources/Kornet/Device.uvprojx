@@ -855,6 +855,16 @@
               <FileType>5</FileType>
               <FilePath>..\common\Utils\StringUtils.h</FilePath>
             </File>
+            <File>
+              <FileName>Dictionary.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Dictionary.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Dictionary.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Dictionary.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

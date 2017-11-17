@@ -456,9 +456,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Debug.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Dictionary.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -512,6 +509,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Dictionary.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\commonDefines.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -935,9 +938,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Dictionary.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Debug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -981,6 +981,9 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
