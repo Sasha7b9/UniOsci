@@ -344,3 +344,49 @@ bool String2Int(char *str, int *value)
     }
     return true;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
+{
+    buffer[0] = 0;
+    const char *suffix = DICT(Ds);
+
+    float fabsTime = fabsf(time);
+
+    if (time == ERROR_VALUE_FLOAT)
+    {
+        strcat(buffer, ERROR_STRING_VALUE);
+        return buffer;
+    }
+    else if (fabsTime + 0.5e-10f < 1e-6f)
+    {
+        suffix = DICT(Dns);
+        time *= 1e9f;
+    }
+    else if (fabsTime + 0.5e-7f < 1e-3f)
+    {
+        suffix = DICT(Dus);
+        time *= 1e6f;
+    }
+    else if (fabsTime + 0.5e-3f < 1.0f)
+    {
+        suffix = DICT(Dms);
+        time *= 1e3f;
+    }
+
+    char bufferOut[20];
+    strcat(buffer, strUtils.Float2String(time, alwaysSign, numDigits, bufferOut));
+    strcat(buffer, suffix);
+
+    return buffer;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *Db2String(float value, int numDigits, char bufferOut[20])
+{
+    bufferOut[0] = 0;
+    char buffer[20];
+    strcat(bufferOut, strUtils.Float2String(value, false, numDigits, buffer));
+    strcat(bufferOut, "Да");
+    return bufferOut;
+}

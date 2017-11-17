@@ -11,57 +11,6 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-char* Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits)
-{
-    buffer[0] = 0;
-    char *suffix = 0;
-
-    float fabsTime = fabsf(time);
-    bool russian = set.common.lang == Russian;
-
-    if (time == ERROR_VALUE_FLOAT)
-    {
-        strcat(buffer, ERROR_STRING_VALUE);
-        return buffer;
-    }
-    else if (fabsTime + 0.5e-10f < 1e-6f)
-    {
-        suffix = russian ? "нс" : "ns";
-        time *= 1e9f;
-    }
-    else if (fabsTime + 0.5e-7f < 1e-3f)
-    {
-        suffix = russian ? "мкс" : "us";
-        time *= 1e6f;
-    }
-    else if (fabsTime + 0.5e-3f < 1.0f)
-    {
-        suffix = russian ? "мс" : "ms";
-        time *= 1e3f;
-    }
-    else
-    {
-        suffix = russian ? "с" : "s";
-    }
-
-    char bufferOut[20];
-    strcat(buffer, strUtils.Float2String(time, alwaysSign, numDigits, bufferOut));
-    strcat(buffer, suffix);
-
-    return buffer;
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-char* Float2Db(float value, int numDigits, char bufferOut[20])
-{
-    bufferOut[0] = 0;
-    char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(value, false, numDigits, buffer));
-    strcat(bufferOut, "дЅ");
-    return bufferOut;
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
 bool IntInRange(int value, int min, int max)
 {
     return (value >= min) && (value <= max);

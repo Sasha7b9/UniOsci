@@ -848,7 +848,7 @@ void FreqMeter_Draw(int x, int y)
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
     painter.SetColor(Color::Trig());
-    painter.DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : trans.Time2StringAccuracy(1.0f / freq, false, buffer, 6));
+    painter.DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
 
     /** @todo Последняя страка оставлена, потому что без неё получается артефакт изображения */
     painter.DrawText(x + 71, y + 10, "");

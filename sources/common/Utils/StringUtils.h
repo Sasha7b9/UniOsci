@@ -53,6 +53,14 @@ private:
 };
 
 bool String2Int(char *str, int *value);
+/// @brief ѕреобразует time секунд в текстовую строку
+char* Time2StringAccuracy(float time,           ///< врем€ в секундах. ћожет быть отрицательным
+                          bool alwaysSign,      ///< если true, знак показываетс€ даже если time > 0
+                          char bufferOut[20],   ///< сюда записываетс€ возвращаемое значение
+                          int numDigits         ///< количество цифр в строке
+);
+/// ѕреобразует децибелы в текстовую строку
+char* Db2String(float value, int numDigits, char bufferOut[20]);
 
 extern StringUtils strUtils;
 

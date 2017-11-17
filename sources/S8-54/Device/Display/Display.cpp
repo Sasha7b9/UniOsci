@@ -1888,9 +1888,9 @@ static void WriteParametersFFT(Channel ch, float freq0, float density0, float fr
         y += dY * 3 + 4;
     }
     painter.SetColor(gColorChan[ch]);
-    painter.DrawText(x, y, SCALE_FFT_LOG ? trans.Float2Db(density0, 4, buffer) : strUtils.Float2String(density0, false, 7, buffer));
+    painter.DrawText(x, y, SCALE_FFT_LOG ? Db2String(density0, 4, buffer) : strUtils.Float2String(density0, false, 7, buffer));
     y += dY;
-    painter.DrawText(x, y, SCALE_FFT_LOG ? trans.Float2Db(density1, 4, buffer) : strUtils.Float2String(density1, false, 7, buffer));
+    painter.DrawText(x, y, SCALE_FFT_LOG ? Db2String(density1, 4, buffer) : strUtils.Float2String(density1, false, 7, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

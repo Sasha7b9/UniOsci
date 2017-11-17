@@ -18,15 +18,6 @@ char*    Bin2String(uint8 value, char buffer[9])
     return buffer;
 }
 
-char* Float2Db(float value, int numDigits, char bufferOut[20])
-{
-    bufferOut[0] = 0;
-    char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(value, false, numDigits, buffer));
-    strcat(bufferOut, "Да");
-    return bufferOut;
-}
-
 bool IntInRange(int value, int min, int max)
 {
     return (value >= min) && (value <= max);

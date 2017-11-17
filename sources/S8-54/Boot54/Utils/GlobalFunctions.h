@@ -1,12 +1,6 @@
 #pragma once
 
 
-// Преобразует time секунд в текстовую строку
-// time - время в секундах. Может быть отрицательным
-// numDigits - количество цифр в строке
-char*   Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numDigits);
-char*   Float2Db(float value, int numDigits, char bufferOut[20]);   // Преобразует децибелы в текстовую строку.
-
 bool    IntInRange                              // Возвращает true, если value входит в диапазон [min; max].
                    (int value,                  // проверяемое значение.
                    int min,                     // нижняя граница диапазона.
