@@ -79,8 +79,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F207xx;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>4514;4820</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <TargetMachine>MachineARM</TargetMachine>

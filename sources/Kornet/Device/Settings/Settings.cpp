@@ -83,7 +83,7 @@ const char *NameRange(Range range)
         {"20Â",     "20V"}
     };
 
-    return names[range][LANGUAGE];
+    return names[range][LANG];
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -123,5 +123,5 @@ const char *NameTBase(TBase tBase)
         {"10ñ",     "10s"}
     };
 
-    return names[tBase][LANGUAGE];
+    return names[tBase][LANG];
 }

@@ -18,7 +18,7 @@ static const Button bResetSettings("—брос настроек", "Reset settings", OnPress_R
 static const char *itemsLanguage[] = { "–усский",    "Russian",
                                        "јнглийский", "English" };
 
-static const Choice cLanguage("язык", "Language", itemsLanguage, &LANGUAGE, 2);
+static const Choice cLanguage("язык", "Language", itemsLanguage, &LANG, 2);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// —≈–¬»— //

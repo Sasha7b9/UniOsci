@@ -121,8 +121,4 @@ typedef struct
 #define HARDWARE_ERROR HardwareErrorHandler(__FILE__, __FUNCTION__, __LINE__);
 void HardwareErrorHandler(const char *file, const char *function, int line);
 
-// Для определения задания буферов лучше пользоваться этими макросами, чтобы потом легче было отследить, где можно памяти освободить
-#define CHAR_BUF(name, size)            char name[size]
-#define CHAR_BUF2(name, size1, size2)   char name[size1][size2]
-
 #include "Globals.h"

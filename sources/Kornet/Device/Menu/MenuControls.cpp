@@ -67,7 +67,7 @@ const Control *Page::ControlUnderKey(Key key) const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 char *Control::Title() const
 {
-    return title_[LANGUAGE];
+    return title_[LANG];
 }
 
 
@@ -88,10 +88,10 @@ char *Choice::NameItem() const
 {
     if(numAlternate == 0)
     {
-        return (char *)items0[*(cells[numAlternate]) * 2 + (int)LANGUAGE];
+        return (char *)items0[*(cells[numAlternate]) * 2 + (int)LANG];
     }
     
-    return (char *)items1[*(cells[numAlternate]) * 2 + (int)LANGUAGE];
+    return (char *)items1[*(cells[numAlternate]) * 2 + (int)LANG];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

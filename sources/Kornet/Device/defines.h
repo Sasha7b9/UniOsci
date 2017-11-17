@@ -80,12 +80,6 @@ typedef union
 
 #define MAX_UINT 0xffffffff
 
-
-// Для определения задания буферов лучше пользоваться этими макросами, чтобы потом легче было отследить, где можно памяти освободить
-#define CHAR_BUF(name, size)            char name[size]
-#define CHAR_BUF2(name, size1, size2)   char name[size1][size2]
-
-
 #define ENABLE_RU "Вкл"
 #define ENABLE_EN "On"
 

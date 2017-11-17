@@ -8,6 +8,7 @@
 
 #ifndef LANG
 #define LANG 0
+#define LANG_RU true
 #endif
 
 
