@@ -3,22 +3,12 @@
 #include "Settings/SettingsTypes.h"
 
 
-#define SET_MIN_IF_LESS(x, min)     if((x) < (min)) { (min) = (x); }
-
-#define SET_MAX_IF_LARGER(x, max)   if((x) > (max)) { (max) = (x); }
-
-#define LIMITATION_BOUND(var, min, max)     if((var) < (min)) { (min) = (var); }; if((var) > (max)) { (max) = (var); };
-
-#define MAX_VOLTAGE_ON_SCREEN(range) (tableScalesRange[(range)] * 5.0f)
-
 #define POINT_2_VOLTAGE(value, range, rShift)   \
                 (((float)(value) - (float)MIN_VALUE) * voltsInPixel[(range)] - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)))
 
 #define TSHIFT_2_ABS(tShift, tBase)  (absStepTShift[(tBase)] * (tShift) * 2.0f)
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
-
-#define ROUND(x) (x += 0.5f, x)
 
 #define PI 3.141592653589793f
 

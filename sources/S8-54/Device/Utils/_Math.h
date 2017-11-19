@@ -21,15 +21,11 @@
 
 #define LIMITATION(var, min, max)           if(var < (min)) { (var) = (min); } else if(var > (max)) { var = (max); };
 
-#define MAX_VOLTAGE_ON_SCREEN(range)        (tableScalesRange[(range)] * 5)
-
 #define POINT_2_VOLTAGE(value, range, rShift) (((value) - MIN_VALUE) * voltsInPoint[(range)] - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)))
 
 #define TSHIFT_2_ABS(tShift, tBase)         (absStepTShift[(tBase)] * (tShift) * 2.0f)
 
 #define TSHIFT_2_REL(tShiftAbs, tBase)      ((tShiftAbs) / absStepTShift[(tBase)] / 2.0f)
-
-#define ROUND(x)                            ((x) += 0.5f, (x))
 
 #define IN_RANGE(x, min, max)               ((x) >= (min) && (x) <= (max))
 

@@ -9,6 +9,16 @@
 
 #define LIMIT_ABOVE(x, max)         if((x) > (max)) { x = (max); }
 
+#define SET_MIN_IF_LESS(x, min)     if((x) < (min)) { (min) = (x); }
+
+#define SET_MAX_IF_LARGER(x, max)   if((x) > (max)) { (max) = (x); }
+
+#define LIMITATION_BOUND(var, min, max)     if((var) < (min)) { (min) = (var); }; if((var) > (max)) { (max) = (var); };
+
+#define MAX_VOLTAGE_ON_SCREEN(range) (tableScalesRange[(range)] * 5.0f)
+
+#define ROUND(x) ((x) += 0.5f, (x))
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const float absStepRShift[];
 
