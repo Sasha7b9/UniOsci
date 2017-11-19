@@ -6,7 +6,6 @@
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
 #include "Hardware/FSMC.h"
-#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "FlashDrive/FlashDrive.h"

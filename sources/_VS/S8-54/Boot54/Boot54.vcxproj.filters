@@ -180,9 +180,6 @@
     <ClInclude Include="..\..\..\_libs\forVS\stdarg.h">
       <Filter>forVS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Boot54\Utils\_Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Boot54\FPGA\FPGA.h">
       <Filter>FPGA</Filter>
     </ClInclude>
@@ -331,14 +328,8 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Panel.cpp">
       <Filter>Panel</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Panel\PanelFunctions.cpp">
-      <Filter>Panel</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.cpp">
       <Filter>Settings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\_Math.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

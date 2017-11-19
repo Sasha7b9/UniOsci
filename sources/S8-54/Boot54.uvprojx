@@ -818,11 +818,6 @@
               <FileType>8</FileType>
               <FilePath>.\Boot54\Panel\Panel.cpp</FilePath>
             </File>
-            <File>
-              <FileName>PanelFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Boot54\Panel\PanelFunctions.cpp</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -857,16 +852,6 @@
               <FileName>GlobalFunctions.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Utils\GlobalFunctions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>_Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Boot54\Utils\_Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>_Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Boot54\Utils\_Math.h</FilePath>
             </File>
             <File>
               <FileName>Math.cpp</FileName>
