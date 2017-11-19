@@ -216,6 +216,9 @@
     <ClCompile Include="..\..\..\Kornet\Device\Utils\_CommonFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Device\libs\startup_stm32f437xx.s">
@@ -389,6 +392,12 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Utils\_CommonFunctions.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Dictionary.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

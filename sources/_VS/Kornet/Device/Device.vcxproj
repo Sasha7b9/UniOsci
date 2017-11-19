@@ -77,7 +77,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>.\Debug\</OutDir>
-    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\..\Kornet\Device;..\..\..\Kornet\Device\libs;..\..\..\common</IncludePath>
+    <IncludePath>..\..\..\_libs;..\..\..\common;..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\..\..\Kornet\Device;..\..\..\Kornet\Device\libs</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>.\Release\</OutDir>
@@ -91,6 +91,7 @@
       <DisableSpecificWarnings>4201;4514;4626;4820;5027</DisableSpecificWarnings>
       <AdditionalOptions>-MP %(AdditionalOptions)</AdditionalOptions>
       <MinimalRebuild>false</MinimalRebuild>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <TargetMachine>MachineARM</TargetMachine>
@@ -130,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Device.cpp" />
@@ -239,6 +241,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
+    <ClInclude Include="..\..\..\common\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\Kornet\Device\defines.h" />
