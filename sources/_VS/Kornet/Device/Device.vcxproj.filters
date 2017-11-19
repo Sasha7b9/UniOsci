@@ -204,9 +204,6 @@
     <ClCompile Include="..\..\..\Kornet\Device\Tester\Tester.cpp">
       <Filter>Tester</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -378,9 +375,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h">
       <Filter>Tester</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\_libs\forVS\algorithm">
       <Filter>forVS</Filter>

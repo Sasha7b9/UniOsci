@@ -816,16 +816,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Debug.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Debug.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Debug.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Debug.h</FilePath>
-            </File>
-            <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Utils\Math.cpp</FilePath>
