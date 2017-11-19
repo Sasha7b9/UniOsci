@@ -453,9 +453,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\SelfRecorder\SelfRecorder.h">
       <Filter>SelfRecorder</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Debug.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -930,9 +927,6 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Debug.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp">
