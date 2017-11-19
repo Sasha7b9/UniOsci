@@ -7,7 +7,6 @@
 #include "Settings/Settings.h"
 #include "Hardware/FSMC.h"
 #include "Utils/Math.h"
-#include "Utils/GlobalFunctions.h"
 #include "FlashDrive/FlashDrive.h"
 
 

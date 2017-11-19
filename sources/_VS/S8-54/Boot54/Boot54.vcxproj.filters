@@ -34,9 +34,6 @@
     <Filter Include="Settings">
       <UniqueIdentifier>{8a2cf2c6-e627-4a9e-9ab5-722a8b74bad1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utils">
-      <UniqueIdentifier>{db2e90c3-e22c-4e2d-8879-cad40780b8fa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CMSIS">
       <UniqueIdentifier>{c9836d03-e64d-4f8a-81b9-fa062c4ccbd8}</UniqueIdentifier>
     </Filter>
@@ -125,9 +122,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Boot54\Settings\SettingsTypes.h">
       <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Include\cmsis_armcc.h">
       <Filter>CMSIS</Filter>
@@ -279,9 +273,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Panel\Controls.c">
       <Filter>Panel</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Utils\GlobalFunctions.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Display\PainterText.cpp">
       <Filter>Display</Filter>

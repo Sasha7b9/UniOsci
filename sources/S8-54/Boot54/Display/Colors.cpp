@@ -1,8 +1,6 @@
 #include "defines.h"
 #include "Colors.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
-//#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Display/Painter.h"
 #include <math.h>

@@ -2,7 +2,6 @@
 #include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 
 
 #ifdef WIN64
