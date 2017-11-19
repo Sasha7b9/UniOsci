@@ -10,8 +10,6 @@
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
 
-#define PI 3.141592653589793f
-
 extern const float tableScalesRange[RangeSize];
 extern const float absStepRShift[];
 extern const float voltsInPixel[];
@@ -26,22 +24,11 @@ uint8   Math_VoltageToPoint(float voltage, Range range, int16 rShift);
 void	Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
 uint8   Math_GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
 uint8   Math_GetMinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
-uint8   Math_GetMaxFromArray(const uint8 *data, int firstPoint, int lastPoint);
-uint8   Math_GetMinFromArray(const uint8 *data, int firstPoint, int lastPoint);
 /// \brief ¬озвращает координату x пересечени€ линии, проход€щей через (x0, y0), (x1, y1), с горизонтальной линией, проход€щей через точку с 
 /// ординатой yHorLine.
 float   Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
-/// \brief —равнивает два числа. ¬озвращает true, если числа отличаютс€ друг от друга не более, чем на epsilonPart. ѕри этом дл€ расчЄта epsilonPart 
-/// используетс€ большее в смысле модул€ число.
-bool    Math_FloatsIsEquals(float value0, float value1, float epsilonPart);
 void    Math_CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
 void    Math_CalculateMathFunction(float *data0andResult, float *data1, int numPoints);
-float   Math_RandFloat(float min, float max);
 int8    Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max);
-/// ¬ычисл€ет число разр€дов в целом типа int.
-int     Math_NumDigitsInNumber(int value);
-
-float   LimitationFloat(float value, float min, float max);
-
 uint8   Math_CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
 void    Math_CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);

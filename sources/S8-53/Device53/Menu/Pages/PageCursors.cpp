@@ -83,8 +83,8 @@ static void SetCursPosU(Channel chan, int numCur, float pos);           ///< Уст
 static void SetCursPosT(Channel chan, int numCur, float pos);           ///< Установить значение курсора по времени.
 
 
-#define MAX_POS_U   200
-#define MAX_POS_T   280
+#define MAX_POS_U   200.0f
+#define MAX_POS_T   280.0f
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -146,11 +146,11 @@ void SetCursPosU(Channel chan, int numCur, float pos)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_U(chan, numCur) = LimitationFloat(pos, 0, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = math.LimitationRet(pos, 0.0f, MAX_POS_U);
     }
     else
     {
-        CURS_POS_U(chan, numCur) = LimitationFloat(pos, 0, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = math.LimitationRet(pos, 0.0f, MAX_POS_U);
     }
 }
 
@@ -160,11 +160,11 @@ void SetCursPosT(Channel chan, int numCur, float pos)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_T(chan, numCur) = LimitationFloat(pos, 0, MAX_POS_T);
+        CURS_POS_T(chan, numCur) = math.LimitationRet(pos, 0.0f, (float)MAX_POS_T);
     }
     else
     {
-        CURS_POS_T(chan, numCur) = LimitationFloat(pos, 0, MAX_POS_T);
+        CURS_POS_T(chan, numCur) = math.LimitationRet(pos, 0.0f, (float)MAX_POS_T);
     }
 }
 
@@ -348,11 +348,11 @@ static void SetShiftCursPosU(Channel chan, int numCur, float delta)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_U(chan, numCur) = LimitationFloat(CURS_POS_U(chan, numCur) - delta, 0, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = math.LimitationRet(CURS_POS_U(chan, numCur) - delta, 0.0f, MAX_POS_U);
     }
     else
     {
-        CURS_POS_U(chan, numCur) = LimitationFloat(CURS_POS_U(chan, numCur) - delta, 0, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = math.LimitationRet(CURS_POS_U(chan, numCur) - delta, 0.0f, MAX_POS_U);
     }
 }
 
@@ -383,11 +383,11 @@ static void SetShiftCursPosT(Channel chan, int numCur, float delta)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_T(chan, numCur) = LimitationFloat(CURS_POS_T(chan, numCur) + delta, 0, MAX_POS_T);
+        CURS_POS_T(chan, numCur) = math.LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
     }
     else
     {
-        CURS_POS_T(chan, numCur) = LimitationFloat(CURS_POS_T(chan, numCur) + delta, 0, MAX_POS_T);
+        CURS_POS_T(chan, numCur) = math.LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
     }
 }
 

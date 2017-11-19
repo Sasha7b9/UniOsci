@@ -146,3 +146,70 @@ int Pow10(int pow)
 
     return retValue;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint8 Math::MaxFromArray(const uint8 *data, int firstPoint, int lastPoint)
+{
+
+#define MAX_IF_ABOVE if(d > max) { max = d; }
+
+    uint8 max = 0;
+    const uint8 *pointer = &data[firstPoint];
+
+    for (int i = firstPoint; i < lastPoint; i += 2)
+    {
+        uint8 d = *pointer++;
+        MAX_IF_ABOVE;
+        d = *pointer++;
+        MAX_IF_ABOVE;
+    }
+    if ((lastPoint - firstPoint + 1) & 1)
+    {
+        uint8 d = *pointer;
+        MAX_IF_ABOVE
+    }
+
+    return max;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint8 Math::MinFromArray(const uint8 *data, int firstPoint, int lastPoint)
+{
+
+#define MIN_IF_LESS if(d < min) { min = d; }
+
+    uint8 min = 255;
+    const uint8 *pointer = &data[firstPoint];
+
+    for (int i = firstPoint; i < lastPoint; i += 2)
+    {
+        uint8 d = *pointer++;
+        MIN_IF_LESS
+            d = *pointer++;
+        MIN_IF_LESS
+    }
+    if ((lastPoint - firstPoint + 1) & 1)
+    {
+        uint8 d = *pointer;
+        MIN_IF_LESS
+    }
+
+    return min;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Math::FloatsIsEquals(float value0, float value1, float epsilonPart)
+{
+    float max = fabsf(value0) > fabsf(value1) ? fabsf(value0) : fabsf(value1);
+
+    float epsilonAbs = max * epsilonPart;
+
+    return fabsf(value0 - value1) < epsilonAbs;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+float Math::RandFloat(float min, float max)
+{
+    float delta = max - min;
+    return min + ((rand() / (float)RAND_MAX) * delta);
+}

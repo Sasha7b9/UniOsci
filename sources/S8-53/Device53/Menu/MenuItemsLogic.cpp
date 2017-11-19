@@ -10,6 +10,7 @@
 #include "Hardware/RTC.h"
 #include "Utils/_Math.h"
 #include "Utils/Math.h"
+#include "Utils/StringUtils.h"
 
 
 int8 gCurDigit = 0;
@@ -177,8 +178,8 @@ void Governor_NextPosition(Governor *governor)
 
 int Governor_NumDigits(Governor *governor)
 {
-    int min = Math_NumDigitsInNumber(Abs(governor->minValue));
-    int max = Math_NumDigitsInNumber(Abs(governor->maxValue));
+    int min = strUtils.NumDigitsInNumber(Abs(governor->minValue));
+    int max = strUtils.NumDigitsInNumber(Abs(governor->maxValue));
     if (min > max)
     {
         max = min;

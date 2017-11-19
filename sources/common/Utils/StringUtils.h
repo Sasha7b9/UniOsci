@@ -46,6 +46,8 @@ public:
     int NumWords(char *string);
     /// Возвращает указатель на n слово в строке. Если char == 0 - слова нет, если ret value == 0xffffffff - выходной буфер слишком мал
     char *GetWord(char *string, int n, char *out, int size);
+    /// Вычисляет число разрядов в целом типа int.
+    int NumDigitsInNumber(int value);
 private:
     static int NumDigitsInIntPart(float value);
 };

@@ -2,6 +2,7 @@
 #include "StringUtils.h"
 #include "Settings/Settings.h"
 #include "Dictionary.h"
+#include "Math.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -489,4 +490,16 @@ char *StringUtils::GetWord(char *string, int n, char *out, int size)
     out[length] = 0;
 
     return out;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int StringUtils::NumDigitsInNumber(int value)
+{
+    value = Abs(value);
+    int num = 1;
+    while ((value /= 10) > 0)
+    {
+        num++;
+    }
+    return num;
 }

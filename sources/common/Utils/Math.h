@@ -3,6 +3,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define PI 3.141592653589793f
+
 #define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)(rShift))) * absStepRShift[(uint)(range)])
 
 #define LIMIT_BELOW(x, min)         if((x) < (min)) { x = (min); }
@@ -41,6 +43,15 @@ public:
     void SortInt(int *value0, int *value1);
     
     int MinFrom2Int(int val0, int val1);
+
+    uint8 MaxFromArray(const uint8 *data, int firstPoint, int lastPoint);
+
+    uint8 MinFromArray(const uint8 *data, int firstPoint, int lastPoint);
+    /// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
+    /// используется большее в смысле модуля число.
+    bool FloatsIsEquals(float value0, float value1, float epsilonPart);
+
+    float RandFloat(float min, float max);
 
     template<class T>
     void CircleIncrease(T *value, int min, int max)

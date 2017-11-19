@@ -206,15 +206,6 @@ float Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int
     return (yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + x0;
 }
 
-bool Math_FloatsIsEquals(float value0, float value1, float epsilonPart)
-{
-    float max = fabsf(value0) > fabsf(value1) ? fabsf(value0) : fabsf(value1);
-
-    float epsilonAbs = max * epsilonPart;
-
-    return fabsf(value0 - value1) < epsilonAbs;
-}
-
 /*
     Быстрое преобразование Фурье. Вычисляет модуль спектра для дейсвтительного сигнала.
     Количество отсчётов должно быть 2**N
@@ -480,12 +471,6 @@ void Math_CalculateMathFunction(float *data0andResult, float *data1, int numPoin
     }
 }
 
-float Math_RandFloat(float min, float max)
-{
-    float delta = max - min;
-    return min + ((rand() / (float)RAND_MAX) * delta);
-}
-
 int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
 {
     int8 retValue = value + delta;
@@ -500,20 +485,9 @@ int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
     return retValue;
 }
 
-int Math_NumDigitsInNumber(int value)
-{
-    value = Abs(value);
-    int num = 1;
-    while ((value /= 10) > 0)
-    {
-        num++;
-    }
-    return num;
-}
-
 uint8 Math_GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
 {
-    uint8 max = Math_GetMaxFromArray(data, firstPoint, lastPoint);
+    uint8 max = math.MaxFromArray(data, firstPoint, lastPoint);
     if (max >= MAX_VALUE)
     {
         max = ERROR_VALUE_UINT8;
@@ -523,70 +497,12 @@ uint8 Math_GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int l
 
 uint8 Math_GetMinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
 {
-    uint8 min = Math_GetMinFromArray(data, firstPoint, lastPoint);
+    uint8 min = math.MinFromArray(data, firstPoint, lastPoint);
     if (min < MIN_VALUE || min >= MAX_VALUE)
     {
         min = ERROR_VALUE_UINT8;
     }
     return min;
-}
-
-uint8 Math_GetMinFromArray(const uint8 *data, int firstPoint, int lastPoint)
-{
-
-#define MIN_IF_LESS if(d < min) { min = d; }
-
-    uint8 min = 255;
-    const uint8 *pointer = &data[firstPoint];
-
-    for (int i = firstPoint; i < lastPoint; i += 2)
-    {
-        uint8 d = *pointer++;
-        MIN_IF_LESS
-        d = *pointer++;
-        MIN_IF_LESS
-    }
-    if ((lastPoint - firstPoint + 1) & 1)
-    {
-        uint8 d = *pointer;
-        MIN_IF_LESS
-    }
-
-    return min;
-}
-
-uint8 Math_GetMaxFromArray(const uint8 *data, int firstPoint, int lastPoint)
-{
-
-#define MAX_IF_ABOVE if(d > max) { max = d; }
-
-    uint8 max = 0;
-    const uint8 *pointer = &data[firstPoint];
-
-    for (int i = firstPoint; i < lastPoint; i += 2)
-    {
-        uint8 d = *pointer++;
-        MAX_IF_ABOVE;
-        d = *pointer++;
-        MAX_IF_ABOVE;
-    }
-    if ((lastPoint - firstPoint + 1) & 1)
-    {
-        uint8 d = *pointer;
-        MAX_IF_ABOVE
-    }
-
-    return max;
-}
-
-#define LIMIT                           \
-    if (value <= min) { return min; }   \
-    if (value >= max) { return max; }   \
-    return value;
-
-float LimitationFloat(float value, float min, float max)
-{
-    LIMIT
 }
 
 uint8 Math_CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing)

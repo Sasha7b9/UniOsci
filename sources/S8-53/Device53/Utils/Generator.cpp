@@ -2,6 +2,7 @@
 #include "Generator.h"
 #include "_Math.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -72,16 +73,16 @@ float NewNoiseValue(Channel channel)
 
     float deltaRand = halfAmplNoiseAbs;
 
-    noise += Math_RandFloat(-deltaRand, deltaRand);
+    noise += math.RandFloat(-deltaRand, deltaRand);
 
     while (noise < -halfAmplNoiseAbs)
     {
-        noise += Math_RandFloat(0, deltaRand * 2);
+        noise += math.RandFloat(0, deltaRand * 2);
     }
 
     while (noise > halfAmplNoiseAbs)
     {
-        noise -= Math_RandFloat(0, deltaRand * 2);
+        noise -= math.RandFloat(0, deltaRand * 2);
     }
 
     prevNoise[channel] = noise;

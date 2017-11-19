@@ -1167,8 +1167,8 @@ void FPGA::FindAndSetTrigLevel(void)
 
     int lastPoint = ds->length1channel - 1;
 
-    uint8 min = Math_GetMinFromArray(data, 0, lastPoint);
-    uint8 max = Math_GetMaxFromArray(data, 0, lastPoint);
+    uint8 min = math.MinFromArray(data, 0, lastPoint);
+    uint8 max = math.MaxFromArray(data, 0, lastPoint);
 
     uint8 aveValue = ((int)min + (int)max) / 2;
 
