@@ -42,6 +42,10 @@ public:
                      int numMinFields,              ///< минимальное число занимаемых знакомест. Если для вывода числа столько не требуется, лишние заполняются нулями
                      char bufferOut[20]             ///< сюда записывается возвращаемое значение
     );
+    /// Возвращает число слов в строке string
+    int NumWords(char *string);
+    /// Возвращает указатель на n слово в строке. Если char == 0 - слова нет, если ret value == 0xffffffff - выходной буфер слишком мал
+    char *GetWord(char *string, int n, char *out, int size);
 private:
     static int NumDigitsInIntPart(float value);
 };

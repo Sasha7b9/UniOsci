@@ -407,3 +407,86 @@ int BCD2Int(uint bcd)
 
     return value;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int StringUtils::NumWords(char *string)
+{
+    int num = 0;
+
+    do
+    {
+        if (*string != ' ' && *string != 0)             // Если очередной символ - не пробел
+        {
+            ++num;                                      // то нашли очередное слово
+            while (*string != ' ' && *string != 0)      // Выбираем символы этоого слова
+            {
+                ++string;
+            }
+        }
+        while (*string == ' ')                          // Выбираем пробелы
+        {
+            ++string;
+        }
+    } while (*string);
+
+    return num;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char *StringUtils::GetWord(char *string, int n, char *out, int size)
+{
+    if (n >= NumWords(string))
+    {
+        return 0;
+    }
+
+    if (n == 1)
+    {
+        n = 1;
+    }
+
+    // Находим начало искомого слова
+    int currentWord = 0;
+    do
+    {
+        if (*string != ' ')                         // Если текущий символ - не пробел, то нашли новое слово
+        {
+            if (currentWord == n)                   // Если текущее слово - наше
+            {
+                break;                              // то выходим - string указаывает на искомое слово
+            }
+            ++currentWord;
+            while (*string != ' ' && *string != 0)     // Выбираем буквы этого слова
+            {
+                ++string;
+            }
+        }
+        while (*string == ' ')
+        {
+            ++string;                   // Выбираем пробелы
+        }
+    } while (*string);
+
+    // Находим конец искомого символа
+    char *end = string;
+
+    while (*end != ' ' && *end != 0)
+    {
+        ++end;                          // Ищем конец слова
+    }
+
+    int length = end - string;
+
+    if (length + 1 > size)
+    {
+        return (char *)0xffffffff;              // Не хватит места в выходном буфере - выходим с соответствующим кодом
+    }
+
+    for (int i = 0; i < length; i++)
+    {
+        out[i] = string[i];
+    }
+    out[length] = 0;
+
+    return out;
+}

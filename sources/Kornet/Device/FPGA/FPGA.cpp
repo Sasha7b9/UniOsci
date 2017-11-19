@@ -9,7 +9,6 @@
 #include "Hardware/GPIO.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/Timer.h"
-#include "Utils/_CommonFunctions.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Storage.h"

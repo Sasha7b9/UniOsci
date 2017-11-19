@@ -5,8 +5,8 @@
 #include "Display/Painter.h"
 #include "Settings/Settings.h"
 #include "Keyboard/Buttons.h"
-#include "Utils/_CommonFunctions.h"
 #include "Utils/Math.h"
+#include "Utils/StringUtils.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,14 +120,14 @@ void Button::Draw(int x, int y) const
 {
     painter.DrawBoundedRegion(x, y, Control::Width(), Control::HEIGHT, Color::BACK, Color::FILL);
 
-    if (cf.NumWords(Title()) == 1)
+    if (strUtils.NumWords(Title()) == 1)
     {
         painter.DrawText(x + 3, y + 5, Title(), Color::FILL);
     }
     else
     {
         char buffer[20];
-        painter.DrawText(x + 3, y + 3, cf.GetWord(Title(), 0, buffer, 20), Color::FILL);
-        painter.DrawText(x + 3, y + 12, cf.GetWord(Title(), 1, buffer, 20), Color::FILL);
+        painter.DrawText(x + 3, y + 3, strUtils.GetWord(Title(), 0, buffer, 20), Color::FILL);
+        painter.DrawText(x + 3, y + 12, strUtils.GetWord(Title(), 1, buffer, 20), Color::FILL);
     }
 }

@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
@@ -166,7 +167,6 @@
     <ClCompile Include="..\..\..\Kornet\Device\Osci\Osci.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Settings\Settings.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Tester\Tester.cpp" />
-    <ClCompile Include="..\..\..\Kornet\Device\Utils\_CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Utils\Debug.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -274,7 +274,6 @@
     <ClInclude Include="..\..\..\Kornet\Device\Settings\Settings.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h" />
-    <ClInclude Include="..\..\..\Kornet\Device\Utils\_CommonFunctions.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Utils\Debug.h" />
     <ClInclude Include="..\..\..\_libs\forVS\algorithm" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
