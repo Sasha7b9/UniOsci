@@ -5,8 +5,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define PI 3.141592653589793f
 
-#define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)(rShift))) * absStepRShift[(uint)(range)])
-
 #define LIMIT_BELOW(x, min)         if((x) < (min)) { x = (min); }
 
 #define LIMIT_ABOVE(x, max)         if((x) > (max)) { x = (max); }
@@ -16,8 +14,6 @@
 #define SET_MAX_IF_LARGER(x, max)   if((x) > (max)) { (max) = (x); }
 
 #define LIMITATION_BOUND(var, min, max)     if((var) < (min)) { (min) = (var); }; if((var) > (max)) { (max) = (var); };
-
-#define MAX_VOLTAGE_ON_SCREEN(range) (tableScalesRange[(range)] * 5.0f)
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
 

@@ -1,6 +1,7 @@
 #include "Settings.h"
 #include "SettingsChannel.h"
 #include "FPGA/FPGA.h"
+#include "FPGA/FPGAMath.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"

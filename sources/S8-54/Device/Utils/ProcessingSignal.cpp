@@ -5,6 +5,7 @@
 #include "GlobalFunctions.h"
 #include "Log.h"
 #include "Data/Reader.h"
+#include "FPGA/FPGAMath.h"
 #include "Hardware/Timer.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/RAM.h"

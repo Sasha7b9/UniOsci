@@ -3,6 +3,7 @@
 #include "Utils/Math.h"
 #include "GlobalFunctions.h"
 #include "Log.h"
+#include "FPGA/FPGAMath.h"
 #include "Hardware/Timer.h"
 #include "Menu/Pages/PageMemory.h"
 #include "Settings/Settings.h"

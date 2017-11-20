@@ -1,6 +1,7 @@
 #include "Definition.h"
 #include "Display/Symbols.h"
 #include "FPGA/FPGA.h"
+#include "FPGA/FPGAMath.h"
 #include "Menu/Menu.h"
 #include "Panel/Panel.h"
 #include "Hardware/FLASH.h"

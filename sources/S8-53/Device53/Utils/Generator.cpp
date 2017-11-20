@@ -3,6 +3,7 @@
 #include "_Math.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "FPGA/FPGAMath.h"
 #include <stdlib.h>
 #include <math.h>
 

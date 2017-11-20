@@ -2,6 +2,7 @@
 #include "Settings/Settings.h"
 #include "Log.h"
 #include "FPGA/FPGAtypes.h"
+#include "FPGA/FPGAMath.h"
 #include "Display/Grid.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"

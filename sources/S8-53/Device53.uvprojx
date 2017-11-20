@@ -1203,6 +1203,16 @@
               <FileType>5</FileType>
               <FilePath>.\Device53\FPGA\FPGATypes.h</FilePath>
             </File>
+            <File>
+              <FileName>FPGAMath.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\FPGA\FPGAMath.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\FPGA\FPGAMath.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

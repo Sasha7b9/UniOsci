@@ -9,6 +9,7 @@
 #include "font/Font.h"
 #include "FPGA/fpga.h"
 #include "FPGA/fpgaExtensions.h"
+#include "FPGA/FPGAMath.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/RAM.h"
 #include "Hardware/Sound.h"

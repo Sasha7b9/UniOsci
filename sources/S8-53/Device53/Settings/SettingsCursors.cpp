@@ -6,6 +6,7 @@
 #include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
 #include "FPGA/FPGATypes.h"
+#include "FPGA/FPGAMath.h"
 #include <math.h>
 
 
@@ -25,7 +26,7 @@ bool sCursors_NecessaryDrawCursors()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char* sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20])
 {
-    float voltage = Math_VoltageCursor(sCursors_GetCursPosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
+    float voltage = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
     return strUtils.Voltage2String(voltage, true, buffer);
 }
 

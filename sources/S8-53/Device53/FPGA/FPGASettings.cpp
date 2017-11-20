@@ -1,5 +1,6 @@
 #include "FPGATypes.h"
 #include "FPGA.h"
+#include "FPGA/FPGAMath.h"
 #include "Settings/Settings.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/FSMC.h"

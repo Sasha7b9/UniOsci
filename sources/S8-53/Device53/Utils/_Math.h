@@ -8,13 +8,8 @@
 
 #define TSHIFT_2_ABS(tShift, tBase)  (absStepTShift[(tBase)] * (tShift) * 2.0f)
 
-extern const float tableScalesRange[RangeSize];
-extern const float absStepRShift[];
-extern const float voltsInPixel[];
-extern const float absStepTShift[];
-
 int     Math_RShift2Rel(float rShiftAbs, Range range);
-float   Math_VoltageCursor(float shiftCurU, Range range, int16 rShift);
+
 float   Math_TimeCursor(float shiftCurT, TBase tBase);
 void    Math_DataExtrapolation(uint8 *data, uint8 *there, int size);
 void    Math_PointsRelToVoltage(const uint8 *points, int numPoints, Range range, int16 rShift, float *voltage);

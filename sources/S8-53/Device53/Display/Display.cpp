@@ -10,6 +10,7 @@
 #include "Colors.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
+#include "FPGA/FPGAMath.h"
 #include "FPGA/FPGATypes.h"
 #include "FPGA/DataStorage.h"
 #include "Hardware/FSMC.h"
@@ -1077,8 +1078,8 @@ void Display::WriteCursors()
             painter.DrawText(x, y1, sCursors_GetCursVoltage(source, 0, buffer));
             painter.DrawText(x, y2, sCursors_GetCursVoltage(source, 1, buffer));
             x = startX + 49;
-            float pos0 = Math_VoltageCursor(sCursors_GetCursPosU(source, 0), SET_RANGE(source), SET_RSHIFT(source));
-            float pos1 = Math_VoltageCursor(sCursors_GetCursPosU(source, 1), SET_RANGE(source), SET_RSHIFT(source));
+            float pos0 = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, 0), SET_RANGE(source), SET_RSHIFT(source));
+            float pos1 = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, 1), SET_RANGE(source), SET_RSHIFT(source));
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dU=");
             painter.DrawText(x + 17, y1, strUtils.Voltage2String(delta, false, buffer));

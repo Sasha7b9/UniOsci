@@ -4,6 +4,7 @@
 #include "Display/Symbols.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
+#include "fpga/FPGAMath.h"
 #include "Hardware/FLASH.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/RTC.h"

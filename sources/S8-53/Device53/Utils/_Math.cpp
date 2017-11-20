@@ -3,14 +3,12 @@
 #include "Settings/Settings.h"
 #include "Log.h"
 #include "FPGA/FPGATypes.h"
+#include "FPGA/FPGAMath.h"
 #include "Display/Grid.h"
 #include "Hardware/Timer.h"
-
-
 #include <math.h>
 
 
-const float tableScalesRange[RangeSize] = {2e-3f, 5e-3f, 10e-3f, 20e-3f, 50e-3f, 100e-3f, 200e-3f, 500e-3f, 1.0f, 2.0f, 5.0f, 10.0f, 20.0f};
 /*
 static const float tableScalesTBase[TBaseSize] = 
     {2e-9, 5e-9, 10e-9, 20e-9, 50e-9, 100e-9, 200e-9, 500e-9,
@@ -93,11 +91,6 @@ int Math_RShift2Rel(float rShiftAbs, Range range)
     }
     return retValue;
 };
-
-float Math_VoltageCursor(float shiftCurU, Range range, int16 rShift)
-{
-    return MAX_VOLTAGE_ON_SCREEN(range) - shiftCurU * voltsInPixel[range] - RSHIFT_2_ABS(rShift, range);
-}
 
 float Math_TimeCursor(float shiftCurT, TBase tBase)
 {
