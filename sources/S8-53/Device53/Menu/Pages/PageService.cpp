@@ -331,7 +331,7 @@ static void OnRegSet_Math_Function(int delta)
             if (SET_RANGE_MATH < RangeSize - 1)
             {
                 ++SET_RANGE_MATH;
-                SET_RSHIFT_MATH = Math_RShift2Rel(rShiftAbs, SET_RANGE_MATH);
+                SET_RSHIFT_MATH = RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
                 sound.RegulatorSwitchRotate();
             }
             sum = 0;
@@ -341,7 +341,7 @@ static void OnRegSet_Math_Function(int delta)
             if (SET_RANGE_MATH > 0)
             {
                 --SET_RANGE_MATH;
-                SET_RSHIFT_MATH = Math_RShift2Rel(rShiftAbs, SET_RANGE_MATH);
+                SET_RSHIFT_MATH = RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
                 sound.RegulatorSwitchRotate();
             }
             sum = 0;

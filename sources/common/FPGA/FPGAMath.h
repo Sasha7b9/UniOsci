@@ -9,6 +9,8 @@
 #define POINT_2_VOLTAGE(value, range, rShift)   \
                 (((float)(value) - (float)MIN_VALUE) * voltsInPixel[(range)] - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)))
 
+#define RSHIFT_2_REL(rShiftAbs, range) mathFPGA.RShift2Rel(rShiftAbs, range)
+
 #define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)(rShift))) * absStepRShift[(uint)(range)])
 
 #define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
@@ -27,6 +29,7 @@ class MathFPGA
 {
 public:
     float VoltageCursor(float shiftCurU, Range range, int16 rShift);
+    int RShift2Rel(float rShiftAbs, Range range);
 };
 
 

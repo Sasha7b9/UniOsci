@@ -47,3 +47,18 @@ float MathFPGA::VoltageCursor(float shiftCurU, Range range, int16 rShift)
 {
     return MAX_VOLTAGE_ON_SCREEN(range) - shiftCurU * voltsInPixel[range] - RSHIFT_2_ABS(rShift, range);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int MathFPGA::RShift2Rel(float rShiftAbs, Range range)
+{
+    int retValue = RShiftZero + (int)(rShiftAbs / absStepRShift[range]);
+    if (retValue < RShiftMin)
+    {
+        retValue = RShiftMin;
+    }
+    else if (retValue > RShiftMax)
+    {
+        retValue = RShiftMax;
+    }
+    return retValue;
+};

@@ -36,7 +36,7 @@ extern const float absStepTShift[];
 class Math_
 {
 public:
-    int RShift2Rel(float rShiftAbs, Range range);
+    
     /// Смещение относительно нулевого в пикселях экрана
     int RShift2Pixels(uint16 rShift, int heightGrid);
 

@@ -62,22 +62,6 @@ const float absStepTShift[] =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int Math_::RShift2Rel(float rShiftAbs, Range range)
-{
-    int retValue = RShiftZero + (int)(rShiftAbs / absStepRShift[range]);
-    if(retValue < RShiftMin)
-    {
-        retValue = RShiftMin;
-    }
-    else if(retValue > RShiftMax)
-    {
-        retValue = RShiftMax;
-    }
-    return retValue;
-};
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Math_::RShift2Pixels(uint16 rShift, int heightGrid)
 {
     float scale = (float)heightGrid / (STEP_RSHIFT * 200);

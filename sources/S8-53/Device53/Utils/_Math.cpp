@@ -34,20 +34,6 @@ const float absStepTShift[] =
     1.0f / 20, 2.0f / 20, 5.0f / 20, 10.0f / 20
 };
 
-int Math_RShift2Rel(float rShiftAbs, Range range)
-{
-    int retValue = (int)(RShiftZero + rShiftAbs / absStepRShift[range]);
-    if(retValue < RShiftMin)
-    {
-        retValue = RShiftMin;
-    }
-    else if(retValue > RShiftMax)
-    {
-        retValue = RShiftMax;
-    }
-    return retValue;
-};
-
 float Math_TimeCursor(float shiftCurT, TBase tBase)
 {
     return shiftCurT * absStepTShift[tBase];

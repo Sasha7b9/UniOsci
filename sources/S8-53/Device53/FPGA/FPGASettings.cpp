@@ -175,8 +175,8 @@ void FPGA::SetRange(Channel chan, Range range)
         sChannel_SetRange(chan, range);
         if (LINKING_RSHIFT_IS_VOLTAGE)
         {
-            SET_RSHIFT(chan) = Math_RShift2Rel(rShiftAbs, range);
-            TRIG_LEVEL(chan) = Math_RShift2Rel(trigLevAbs, range);
+            SET_RSHIFT(chan) = RSHIFT_2_REL(rShiftAbs, range);
+            TRIG_LEVEL(chan) = RSHIFT_2_REL(trigLevAbs, range);
         }
         LoadRange(chan);
     }

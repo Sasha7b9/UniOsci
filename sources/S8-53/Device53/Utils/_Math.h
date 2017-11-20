@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
 
-int     Math_RShift2Rel(float rShiftAbs, Range range);
 
 float   Math_TimeCursor(float shiftCurT, TBase tBase);
 void    Math_DataExtrapolation(uint8 *data, uint8 *there, int size);
