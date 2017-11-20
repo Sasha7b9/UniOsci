@@ -5,7 +5,7 @@
 #include "Utils/_Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
-#include "FPGA/FPGA_Types.h"
+#include "FPGA/FPGATypes.h"
 #include <math.h>
 
 

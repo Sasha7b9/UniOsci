@@ -8,7 +8,7 @@
 #include "Display/Symbols.h"
 #include "Utils/GlobalFunctions.h"
 #include "FPGA/FPGA.h"
-#include "FPGA/FPGA_Types.h"
+#include "FPGA/FPGATypes.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/Sound.h"
 #include "Hardware/FLASH.h"

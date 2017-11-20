@@ -1,6 +1,6 @@
 #include "FPGA.h"
 #include "DataStorage.h"
-#include "FPGA_Types.h"
+#include "FPGATypes.h"
 #include "Menu/Pages/PageMemory.h"
 #include "Display/Display.h"
 #include "Hardware/FSMC.h"

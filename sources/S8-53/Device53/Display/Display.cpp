@@ -10,7 +10,7 @@
 #include "Colors.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
-#include "FPGA/FPGA_Types.h"
+#include "FPGA/FPGATypes.h"
 #include "FPGA/DataStorage.h"
 #include "Hardware/FSMC.h"
 #include "Hardware/FLASH.h" 

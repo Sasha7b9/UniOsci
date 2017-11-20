@@ -1,6 +1,6 @@
 #pragma once
 #include "defines.h"
-#include "FPGA_Types.h"
+#include "FPGATypes.h"
 #include "Panel/Controls.h"
 #include "DataStorage.h"
 #include "Settings/SettingsTrig.h"

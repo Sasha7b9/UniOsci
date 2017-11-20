@@ -1,5 +1,5 @@
 #include "DataStorage.h"
-#include "FPGA_Types.h"
+#include "FPGATypes.h"
 #include "FPGA.h"
 #include "Menu/Pages/PageMemory.h"
 #include "Settings/Settings.h"

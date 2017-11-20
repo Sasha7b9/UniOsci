@@ -328,9 +328,6 @@
     <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA.h">
       <Filter>FPGA</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA_Types.h">
-      <Filter>FPGA</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\FPGA\Storage.h">
       <Filter>FPGA</Filter>
     </ClInclude>
@@ -390,6 +387,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\Dictionary.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGATypes.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

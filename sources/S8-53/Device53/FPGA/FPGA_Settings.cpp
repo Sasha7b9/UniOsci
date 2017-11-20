@@ -1,4 +1,4 @@
-#include "FPGA_Types.h"
+#include "FPGATypes.h"
 #include "FPGA.h"
 #include "Settings/Settings.h"
 #include "Hardware/Hardware.h"

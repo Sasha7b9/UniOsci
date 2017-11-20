@@ -1,6 +1,6 @@
 #include "FPGA.h"
 #include "AD9286.h"
-#include "FPGA_Types.h"
+#include "FPGATypes.h"
 #include "Log.h"
 #include "FPGA/FPGA.h"
 #include "Utils/Math.h"

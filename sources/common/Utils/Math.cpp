@@ -1,5 +1,6 @@
 #include "Math.h"
 #include "Settings/Settings.h"
+#include "FPGA/FPGATypes.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>

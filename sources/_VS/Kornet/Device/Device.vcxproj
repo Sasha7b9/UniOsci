@@ -253,7 +253,7 @@
     <ClInclude Include="..\..\..\Kornet\Device\Display\TypeSymbols.h" />
     <ClInclude Include="..\..\..\Kornet\Device\FPGA\AD9286.h" />
     <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA.h" />
-    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGA_Types.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGATypes.h" />
     <ClInclude Include="..\..\..\Kornet\Device\FPGA\Storage.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Hardware\Decoder.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Hardware\FLASH.h" />
