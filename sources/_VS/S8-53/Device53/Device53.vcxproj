@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\defines.cpp" />
@@ -450,6 +451,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\common\commonDefines.h" />
+    <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\defines.h" />
@@ -470,7 +473,7 @@
     <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\DataStorage.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA_Types.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGATypes.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Globals.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\ADC.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\FLASH.h" />

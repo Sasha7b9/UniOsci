@@ -19,6 +19,8 @@
 
 #define MAX_VOLTAGE_ON_SCREEN(range) (tableScalesRange[(range)] * 5.0f)
 
+#define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
+
 #define ROUND(x) ((x) += 0.5f, (x))
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +49,10 @@ public:
     uint8 MaxFromArray(const uint8 *data, int firstPoint, int lastPoint);
 
     uint8 MinFromArray(const uint8 *data, int firstPoint, int lastPoint);
+
+    uint8 MaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
+
+    uint8 MinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
     /// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
     /// используется большее в смысле модуля число.
     bool FloatsIsEquals(float value0, float value1, float epsilonPart);

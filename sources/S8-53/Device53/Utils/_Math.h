@@ -8,8 +8,6 @@
 
 #define TSHIFT_2_ABS(tShift, tBase)  (absStepTShift[(tBase)] * (tShift) * 2.0f)
 
-#define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
-
 extern const float tableScalesRange[RangeSize];
 extern const float absStepRShift[];
 extern const float voltsInPixel[];
@@ -22,8 +20,6 @@ void    Math_DataExtrapolation(uint8 *data, uint8 *there, int size);
 void    Math_PointsRelToVoltage(const uint8 *points, int numPoints, Range range, int16 rShift, float *voltage);
 uint8   Math_VoltageToPoint(float voltage, Range range, int16 rShift);
 void	Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
-uint8   Math_GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
-uint8   Math_GetMinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
 /// \brief Возвращает координату x пересечения линии, проходящей через (x0, y0), (x1, y1), с горизонтальной линией, проходящей через точку с 
 /// ординатой yHorLine.
 float   Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);

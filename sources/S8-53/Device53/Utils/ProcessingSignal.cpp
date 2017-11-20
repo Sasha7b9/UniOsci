@@ -780,7 +780,7 @@ float CalculateMaxRel(Channel chan)
 
     if(!maxIsCalculating[chan])
     {
-        uint8 val = Math_GetMaxFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
+        uint8 val = math.MaxFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
         max[chan] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         maxIsCalculating[chan] = true;
     }
@@ -794,7 +794,7 @@ float CalculateMinRel(Channel chan)
 
     if (!minIsCalculating[chan])
     {
-        uint8 val = Math_GetMinFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
+        uint8 val = math.MinFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
         min[chan] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         minIsCalculating[chan] = true;
     }

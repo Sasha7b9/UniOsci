@@ -15,10 +15,6 @@
 #define TShiftMin       0
 #define TShiftMax       60000
 
-/// На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
-#define STEP_RSHIFT     (((RShiftMax - RShiftMin) / 24) / 20)
-#define STEP_TRIGLEV    STEP_RSHIFT
-
 enum Pin
 {
     SPI3_SCK,

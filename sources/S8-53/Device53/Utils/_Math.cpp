@@ -269,7 +269,7 @@ static void MultiplyToWindow(float *data, int numPoints)
     {
         for (int i = 0; i < numPoints; i++)
         {
-            data[i] *= 0.53836f - 0.46164f * cosf(2 * M_PI * i / (numPoints - 1));
+            data[i] *= 0.53836f - 0.46164f * cosf(2 * PI * i / (numPoints - 1));
         }
     }
     else if (WINDOW_FFT_IS_BLACKMAN)
@@ -280,14 +280,14 @@ static void MultiplyToWindow(float *data, int numPoints)
         float a2 = alpha / 2.0f;
         for (int i = 0; i < numPoints; i++)
         {
-            data[i] *= a0 - a1 * cosf(2 * M_PI * i / (numPoints - 1)) + a2 * cosf(4 * M_PI * i / (numPoints - 1));
+            data[i] *= a0 - a1 * cosf(2 * PI * i / (numPoints - 1)) + a2 * cosf(4 * PI * i / (numPoints - 1));
         }
     }
     else if (WINDOW_FFT_IS_HANN)
     {
         for (int i = 0; i < numPoints; i++)
         {
-            data[i] *= 0.5f * (1.0f - cosf(2.0f * M_PI * i / (numPoints - 1.0f)));
+            data[i] *= 0.5f * (1.0f - cosf(2.0f * PI * i / (numPoints - 1.0f)));
         }
     }
 #endif
@@ -483,26 +483,6 @@ int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
         return max;
     }
     return retValue;
-}
-
-uint8 Math_GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
-{
-    uint8 max = math.MaxFromArray(data, firstPoint, lastPoint);
-    if (max >= MAX_VALUE)
-    {
-        max = ERROR_VALUE_UINT8;
-    }
-    return max;
-}
-
-uint8 Math_GetMinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
-{
-    uint8 min = math.MinFromArray(data, firstPoint, lastPoint);
-    if (min < MIN_VALUE || min >= MAX_VALUE)
-    {
-        min = ERROR_VALUE_UINT8;
-    }
-    return min;
 }
 
 uint8 Math_CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing)

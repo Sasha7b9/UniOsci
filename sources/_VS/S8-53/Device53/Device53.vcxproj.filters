@@ -561,6 +561,9 @@
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -731,9 +734,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA.h">
       <Filter>FPGA</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA_Types.h">
-      <Filter>FPGA</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\ADC.h">
       <Filter>Hardware</Filter>
     </ClInclude>
@@ -889,6 +889,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\commonDefines.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGATypes.h">
+      <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

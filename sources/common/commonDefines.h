@@ -11,3 +11,10 @@ typedef const char * const      pString;
 // Для определения задания буферов лучше пользоваться этими макросами, чтобы потом легче было отследить, где можно памяти освободить
 #define CHAR_BUF(name, size)            char name[size]
 #define CHAR_BUF2(name, size1, size2)   char name[size1][size2]
+
+
+#define ERROR_VALUE_FLOAT   1.111e29f
+#define ERROR_VALUE_INT16   SHRT_MAX
+#define ERROR_VALUE_UINT8   255
+#define ERROR_VALUE_INT     INT_MAX
+#define ERROR_STRING_VALUE  "--.--"
