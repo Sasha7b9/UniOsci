@@ -4,7 +4,6 @@
 
 
 float   Math_TimeCursor(float shiftCurT, TBase tBase);
-void    Math_DataExtrapolation(uint8 *data, uint8 *there, int size);
 void    Math_PointsRelToVoltage(const uint8 *points, int numPoints, Range range, int16 rShift, float *voltage);
 uint8   Math_VoltageToPoint(float voltage, Range range, int16 rShift);
 void	Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
