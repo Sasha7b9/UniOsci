@@ -140,8 +140,8 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\DataStorage.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Calibration.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Settings.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGACalibration.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGASettings.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\ADC.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\FLASH.cpp" />

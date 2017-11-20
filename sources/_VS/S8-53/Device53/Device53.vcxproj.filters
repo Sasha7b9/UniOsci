@@ -354,12 +354,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Calibration.cpp">
-      <Filter>FPGA</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA_Settings.cpp">
-      <Filter>FPGA</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\ADC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -562,6 +556,12 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGACalibration.cpp">
+      <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGASettings.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
   </ItemGroup>
