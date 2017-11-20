@@ -1,6 +1,7 @@
 #pragma once
 #include "Generator.h"
 #include "_Math.h"
+#include "FPGA/FPGAMath.h"
 #include "Settings/Settings.h"
 #include <stdlib.h>
 #include <math.h>

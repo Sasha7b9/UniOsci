@@ -1,4 +1,5 @@
 #include "FPGA.h"
+#include "FPGA/FPGAMath.h"
 #include "FPGATypes.h"
 #include "Log.h"
 #include "Data/Reader.h"

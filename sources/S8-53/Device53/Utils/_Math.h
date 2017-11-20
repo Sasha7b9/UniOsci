@@ -2,12 +2,6 @@
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
 
-
-#define POINT_2_VOLTAGE(value, range, rShift)   \
-                (((float)(value) - (float)MIN_VALUE) * voltsInPixel[(range)] - MAX_VOLTAGE_ON_SCREEN((range)) - RSHIFT_2_ABS((rShift), (range)))
-
-#define TSHIFT_2_ABS(tShift, tBase)  (absStepTShift[(tBase)] * (tShift) * 2.0f)
-
 int     Math_RShift2Rel(float rShiftAbs, Range range);
 
 float   Math_TimeCursor(float shiftCurT, TBase tBase);
