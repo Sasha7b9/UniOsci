@@ -1331,6 +1331,16 @@
               <FileType>8</FileType>
               <FilePath>.\Device\FPGA\FPGATypes.cpp</FilePath>
             </File>
+            <File>
+              <FileName>FPGAMath.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\FPGA\FPGAMath.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\FPGA\FPGAMath.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

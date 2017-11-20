@@ -601,11 +601,6 @@
               <FilePath>.\Device\FPGA\FPGA.h</FilePath>
             </File>
             <File>
-              <FileName>FPGA_Types.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\FPGA\FPGA_Types.h</FilePath>
-            </File>
-            <File>
               <FileName>Storage.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\FPGA\Storage.cpp</FilePath>
@@ -614,6 +609,21 @@
               <FileName>Storage.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\FPGA\Storage.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGATypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\FPGA\FPGATypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAMath.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\FPGA\FPGAMath.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGAMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\FPGA\FPGAMath.h</FilePath>
             </File>
           </Files>
         </Group>

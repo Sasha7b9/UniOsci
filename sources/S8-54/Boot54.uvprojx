@@ -875,6 +875,16 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>FPGA</GroupName>
+          <Files>
+            <File>
+              <FileName>FPGATypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Boot54\FPGA\FPGATypes.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

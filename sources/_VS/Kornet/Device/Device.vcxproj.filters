@@ -391,5 +391,8 @@
     <ClInclude Include="..\..\..\Kornet\Device\FPGA\FPGATypes.h">
       <Filter>FPGA</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Display\DisplayTypes.h">
+      <Filter>Display</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,8 +8,11 @@
 
 #define RSHIFT_2_ABS(rShift, range) (-(RShiftZero - ((int)(rShift))) * absStepRShift[(uint)(range)])
 
+#define TSHIFT_2_REL(tShiftAbs, tBase) ((int)((tShiftAbs) / absStepTShift[(tBase)] / 2.0f))
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const float tableScalesRange[RangeSize];
+extern const float tableScalesRange[];
 extern const float absStepRShift[];
 extern const float voltsInPixel[];
 extern const float absStepTShift[];

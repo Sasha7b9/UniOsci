@@ -247,6 +247,7 @@
     <ClInclude Include="..\..\..\Kornet\Device\defines.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Device.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\Display.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\Grid.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\Painter.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Display\PainterData.h" />

@@ -14,47 +14,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Math_ _math;
 
-const float tableScalesRange[RangeSize] = {2e-3f, 5e-3f, 10e-3f, 20e-3f, 50e-3f, 100e-3f, 200e-3f, 500e-3f, 1.0f, 2.0f, 5.0f};
-/*
-static const float tableScalesTBase[TBaseSize] = 
-    {2e-9, 5e-9, 10e-9, 20e-9, 50e-9, 100e-9, 200e-9, 500e-9,
-    1e-6, 2e-6, 5e-6, 10e-6, 20e-6, 50e-6, 100e-6, 200e-6, 500e-6,
-    1e-3, 2e-3, 5e-3, 10e-3, 20e-3, 50e-3, 100e-3, 200e-3, 500e-3,
-    1.0f, 2.0f, 5.0f, 10.0f};
-*/
-
-/*
-const float absStepRShift[RangeSize] =
-{
-    2e-3f / 20 / STEP_RSHIFT,
-    5e-3f / 20 / STEP_RSHIFT,
-    10e-3f / 20 / STEP_RSHIFT,
-    20e-3f / 20 / STEP_RSHIFT,
-    50e-3f / 20 / STEP_RSHIFT,
-    100e-3f / 20 / STEP_RSHIFT,
-    200e-3f / 20 / STEP_RSHIFT,
-    500e-3f / 20 / STEP_RSHIFT,
-    1.0f / 20 / STEP_RSHIFT,
-    2.0f / 20 / STEP_RSHIFT,
-    5.0f / 20 / STEP_RSHIFT
-};
-*/
-
-const float voltsInPixel[RangeSize] =
-{
-    2e-3f / 20,     // 2mV
-    5e-3f / 20,     // 5mV
-    10e-3f / 20,    // 10mV
-    20e-3f / 20,    // 20mV
-    50e-3f / 20,    // 50mV
-    100e-3f / 20,   // 100mV
-    200e-3f / 20,   // 200mV
-    500e-3f / 20,   // 500mV
-    1.0f / 20,      // 1V
-    2.0f / 20,      // 2V
-    5.0f / 20       // 5V
-};
-
 const float voltsInPoint[RangeSize] =
 {
     2e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 2mV

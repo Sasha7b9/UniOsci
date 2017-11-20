@@ -40,6 +40,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{a9221ba6-b6de-48ea-9b58-7a31cdecd9db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FPGA">
+      <UniqueIdentifier>{abb63513-dc6e-4ff0-a465-7f777ce7fb4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\S8-53\Boot53\Display\PainterText.cpp">
@@ -346,6 +349,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\Math.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\FPGA\FPGATypes.h">
+      <Filter>FPGA</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

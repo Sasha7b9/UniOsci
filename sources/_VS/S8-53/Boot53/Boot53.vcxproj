@@ -243,6 +243,7 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\PainterC.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Display\PainterText.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\FlashDrive\FlashDrive.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\FPGA\FPGATypes.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\globals.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FLASH.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Hardware\FSMC.h" />

@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\common\commonDefines.h" />
+    <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
@@ -369,6 +370,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />

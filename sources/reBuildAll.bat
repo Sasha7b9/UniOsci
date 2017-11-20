@@ -49,25 +49,31 @@ if ERRORLEVEL 1 goto BadDevice
 exit
 
 :BadBoot53
+echo ERROR!!! Boot53 failed!!!
 "c:\Program Files\Notepad++\notepad++.exe" -multiInst -alwaysOnTop S8-53\Boot53.out -n1000 -x0 -y0
 goto FineBoot53
 
 :BadDevice53
+echo ERROR!!! Device53 failed!!!
 "c:\Program Files\Notepad++\notepad++.exe" -multiInst -alwaysOnTop S8-53\Device53.out -n1000 -x0 -y0
 goto FineDevice53
 
 :BadBoot54
+echo ERROR!!! Boot54 failed!!!
 "c:\Program Files\Notepad++\notepad++.exe" -multiInst -alwaysOnTop S8-54\Boot54.out -n1000 -x0 -y0
 goto FineBoot54
 
 :BadDevice54
+echo ERROR!!! Device54 failed!!!
 "c:\Program Files\Notepad++\notepad++.exe" -multiInst -alwaysOnTop S8-54\Device54.out -n1000 -x0 -y0
 goto FineDevice54
 
 :BadPanel
+echo ERROR!!! Panel failed!!!
 "c:\Program Files\Notepad++\notepad++.exe" -multiInst -alwaysOnTop Kornet\Panel.out -n1000 -x0 -y0
 goto FinePanel
 
 :BadDevice
+echo ERROR!!! Device failed!!!
 "c:\Program Files\Notepad++\notepad++.exe" -multiInst -alwaysOnTop Kornet\Device.out -n1000 -x0 -y0
 goto FineDevice
