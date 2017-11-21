@@ -2,6 +2,7 @@
 #include "Hardware.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
+#include <limits.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +85,7 @@ uint FlashMemory::FirstFreeAddressForSettings()
     {
         uint value = READ_DOUBLEWORD(address);
 
-        if (value == MAX_UINT)              // Ёто условие означает, что по этому адресу ещЄ ничего не записывалось, иначе здесь был бы записан
+        if (value == UINT_MAX)              // Ёто условие означает, что по этому адресу ещЄ ничего не записывалось, иначе здесь был бы записан
         {                                   // размер структуры (Settings), чьим первым байтом €вл€лось бы это слово
             return address;
         }
@@ -94,7 +95,7 @@ uint FlashMemory::FirstFreeAddressForSettings()
     } while(address < (ADDR_SECTOR_SETTINGS_1 + SIZE_SECTOR_128));
     
     
-    return MAX_UINT;        // ¬ообще-то до этой точки дойти никак не может. ≈сли мы оказались здесь, произошла ошибка
+    return UINT_MAX;        // ¬ообще-то до этой точки дойти никак не может. ≈сли мы оказались здесь, произошла ошибка
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -104,7 +105,7 @@ uint FlashMemory::AddressSavedSettings(int)
 
     uint address = ADDR_SECTOR_SETTINGS_1;
 
-    while (READ_DOUBLEWORD(address) != MAX_UINT)
+    while (READ_DOUBLEWORD(address) != UINT_MAX)
     {
         addrPrev = address;
         address += READ_DOUBLEWORD(address);

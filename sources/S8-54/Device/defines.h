@@ -175,8 +175,6 @@ typedef struct
 
 #define BINARY_U8( bits ) _bitset(0##bits)
 
-#define MAX_UINT ((uint)-1)
-
 #define DISABLE_RU  "Откл"
 #define DISABLE_EN  "Disable"
 #define ENABLE_RU   "Вкл"

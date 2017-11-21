@@ -5,6 +5,7 @@
 #include "Settings/Settings.h"
 #include "Device.h"
 #include <string.h>
+#include <limits.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +36,7 @@ extern Page pageTester;
     }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Menu::Menu() : timeDoubleClick(250), timeLastPressedButton(MAX_UINT)
+Menu::Menu() : timeDoubleClick(250), timeLastPressedButton(UINT_MAX)
 {
     memset(timePrevPress, 0, 4 * 4);
 
@@ -372,9 +373,9 @@ void Menu::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::SaveSettings()
 {
-    if ((timeLastPressedButton != MAX_UINT) && (gTimeMS - timeLastPressedButton > 5000))
+    if ((timeLastPressedButton != UINT_MAX) && (gTimeMS - timeLastPressedButton > 5000))
     {
-        timeLastPressedButton = MAX_UINT;
+        timeLastPressedButton = UINT_MAX;
         if (device.CurrentMode() != Mode_Tester)
         {
             set.Save();

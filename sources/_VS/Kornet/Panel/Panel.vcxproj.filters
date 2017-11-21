@@ -63,9 +63,6 @@
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c">
       <Filter>HAL</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Kornet\Panel\libs\stm32f4xx_hal_msp.c">
-      <Filter>libs</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Panel\libs\system_stm32f4xx.c">
       <Filter>libs</Filter>
     </ClCompile>
@@ -98,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Panel\Display\font\Font.cpp">
       <Filter>Display\font</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Kornet\Panel\libs\stm32f4xx_hal_msp.cpp">
+      <Filter>libs</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

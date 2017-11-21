@@ -35,7 +35,7 @@ static void TuneTIM(TypeTimer2 type);   // Настроить систему на таймер
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 bool Timer_IsRun(TypeTimer2 type)
 {
-    return TIME_NEXT(type) != MAX_UINT;
+    return TIME_NEXT(type) != UINT_MAX;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ void Timer_Init(void)
 {
     for(uint i = 0; i < NumTimers; i++)
     {
-        timers[i].timeNextMS = MAX_UINT;
+        timers[i].timeNextMS = UINT_MAX;
     }
 
     __HAL_RCC_TIM2_CLK_ENABLE();    // Для тиков
@@ -155,7 +155,7 @@ static void TuneTIM(TypeTimer2 type)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer_Disable(TypeTimer2 type)
 {
-    timers[type].timeNextMS = MAX_UINT;
+    timers[type].timeNextMS = UINT_MAX;
     timers[type].repeat = false;
 }
 
@@ -163,7 +163,7 @@ void Timer_Disable(TypeTimer2 type)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static uint NearestTime(void)
 {
-    uint time = MAX_UINT;
+    uint time = UINT_MAX;
 
     for(uint type = 0; type < NumTimers; type++)
     {
@@ -182,7 +182,7 @@ static void StartTIM(uint timeStopMS)
 {
     StopTIM();
 
-    if(timeStopMS == MAX_UINT)
+    if(timeStopMS == UINT_MAX)
     {
         return;
     }
@@ -221,7 +221,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *)
             }
             else
             {
-                timer->timeNextMS = MAX_UINT;
+                timer->timeNextMS = UINT_MAX;
             }
         }
     }

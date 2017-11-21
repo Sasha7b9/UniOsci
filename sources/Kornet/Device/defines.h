@@ -60,8 +60,6 @@ typedef union
 
 #define HEX_FROM_2(hex1, hex0) ((uint)(0x##hex1) << 16 | (uint)0x##hex0)
 
-#define MAX_UINT 0xffffffff
-
 #define ENABLE_RU "Âêë"
 #define ENABLE_EN "On"
 

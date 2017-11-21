@@ -49,3 +49,4 @@ typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
 #define ERROR_VALUE_UINT8   255
 #define ERROR_VALUE_INT     INT_MAX
 #define ERROR_STRING_VALUE  "--.--"
+

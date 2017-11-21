@@ -2,13 +2,9 @@
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
 
+#define KORNET
 
-typedef unsigned int        uint;
-typedef unsigned short int  uint16;
-typedef signed short int    int16;
-typedef unsigned char       uint8;
-typedef unsigned char       uchar;
-typedef signed char         int8;
+#include "commonDefines.h"
 
 #ifdef WIN32
 typedef unsigned int uint32_t;

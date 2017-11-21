@@ -6,6 +6,7 @@
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/GlobalFunctions.h"
+#include <limits.h>
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,7 +193,7 @@ static void ReadBufferBytes(uint addressSrc, void *bufferDest, int size)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool EraseSector(uint startAddress)
 {
-    if (GetSector(startAddress) == MAX_UINT)    // если неизвестный сектор
+    if (GetSector(startAddress) == UINT_MAX)    // если неизвестный сектор
     {
         return false;
     }
@@ -254,7 +255,7 @@ static uint GetSector(uint startAddress)
 
     LOG_ERROR_TRACE("Неправильный адрес сектора %d", startAddress);
 
-    return MAX_UINT;
+    return UINT_MAX;
 }
 
 
@@ -271,7 +272,7 @@ void FLASH_GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES])
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FLASH_ExistData(int num)
 {
-    return (CurrentArray()->datas[num].address != MAX_UINT);
+    return (CurrentArray()->datas[num].address != UINT_MAX);
 }
 
 
@@ -326,7 +327,7 @@ void FLASH_DeleteData(int num)
     
     ArrayDatas array = *CurrentArray();
 
-    array.datas[num].address = MAX_UINT;                        // Пишем признак того, что данные num ещё не записаны
+    array.datas[num].address = UINT_MAX;                        // Пишем признак того, что данные num ещё не записаны
     memset(&array.datas[num].ds, 0xff, sizeof(DataSettings));   // Заполняем место для структуры DataSettings значением 0xff, чтобы корректно произошёл
                                                                 // процесс записи в бубущем
     SaveArrayDatas(array);
@@ -492,7 +493,7 @@ bool FLASH_GetData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB)
 
     uint addrData = array.datas[num].address;
 
-    if (addrData == MAX_UINT)   // Если данных нет
+    if (addrData == UINT_MAX)   // Если данных нет
     {
         return false;           // сообщаем об этом пользователю
     }
