@@ -8,6 +8,17 @@
 #define S8_54_55
 #endif
 
+#if defined S8_53
+#define MODEL_RU "Ñ8-53"
+#define MODEL_EN "S8-53"
+#elif defined S8_54
+#define MODEL_RU "Ñ8-54"
+#define MODEL_EN "S8-54"
+#elif defined S8_55
+#define MODEL_RU "Ñ8-55"
+#define MODEL_EN "S8-55"
+#endif
+
 
 typedef const    char *const    pString;
 typedef unsigned char           uint8;
@@ -17,6 +28,7 @@ typedef unsigned short int      uint16;
 typedef signed   short int      int16;
 typedef unsigned char           uchar;
 typedef unsigned long  long int uint64;
+typedef unsigned char           BYTE;
 
 #ifdef WIN32
 typedef unsigned int uint32_t;
@@ -31,11 +43,11 @@ typedef void    (*pFuncVI)(int);
 typedef void    (*pFuncVII)(int, int);
 typedef void    (*pFuncVI16)(int16);
 typedef bool    (*pFuncBU8)(uint8);
-typedef void    (*pFuncVI16pI16pI16)(int16, int16*, int16*);
+typedef void    (*pFuncVI16pI16pI16)(int16, int16 *, int16 *);
 typedef float   (*pFuncFU8)(uint8);
 typedef char*   (*pFuncCFB)(float, bool);
 typedef char*   (*pFuncCFBC)(float, bool, char*);
-typedef void    (*pFuncpU8)(uint8*);
+typedef void    (*pFuncVU8)(uint8 *);
 typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
 
 #define _GET_BIT(value, bit)    (((value) >> bit) & 0x01)

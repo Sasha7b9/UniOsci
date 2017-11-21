@@ -1,57 +1,18 @@
 #pragma once
+#include <stm32f4xx_hal.h>
+#include <limits.h>
 
 #define S8_54
 
 #include "commonDefines.h"
 
-#ifdef WIN32
-#define __DSB()
-#define __NOP()
-#define __ALIGN_BEGIN
-#define __ALIGN_END
-#define __weak
-#endif
-
-#include <stm32f4xx_hal.h>
-#include <limits.h>
-
 #define NUM_VER "1.3"
-
-#ifdef S8_54
-#define MODEL_RU "С8-54"
-#define MODEL_EN "S8-54"
-#endif
-
-#ifdef S8_55
-#define MODEL_RU "С8-55"
-#define MODEL_EN "S8-55"
-#endif
-
-
 
 #define INTERRUPT_P2P   // Если определено, то для чтения точек используется прерывание
  
-#include <stm32f4xx_hal.h>
-
-
 #define OLD_RECORDER
 
-typedef signed      char        int8;
-typedef signed      short   int int16;
-typedef unsigned    char        uint8;
-typedef unsigned    char        uint8_t;
-typedef unsigned    short   int uint16;
-typedef unsigned    short   int uint16_t;
-typedef unsigned    int         uint;
-typedef unsigned    int         uint32;
-typedef unsigned    int         uint32_t;
-typedef unsigned    char        uchar;
-typedef uint8                   BYTE;
-
-
-#ifndef WIN32
-typedef signed      char        int8_t;
-#else
+#ifdef WIN32
 #define __attribute__(x)
 #endif
 
@@ -61,7 +22,7 @@ typedef signed      char        int8_t;
 
 #define __IO volatile
     
-
+/*
 typedef void    (*pFuncVV)(void);               ///< Указатель на функцию, ничего не принимающую и ничего не возвращающую.
 typedef void    (*pFuncVpV)(void *);            ///< Указатель на функцию, принимающую указатель на void и ничего не возвращающую.
 typedef bool    (*pFuncBV)(void);
@@ -74,9 +35,9 @@ typedef void    (*pFuncVI16pI16pI16)(int16, int16 *, int16 *);
 typedef float   (*pFuncFU8)(uint8);
 typedef char   *(*pFuncCFB)(float, bool);
 typedef char   *(*pFuncCFBC)(float, bool, char *);
-typedef void    (*pFuncVU8)(uint8 *);
 typedef void    (*pFuncVpVIIB)(void *, int, int, bool);
 typedef int     (*pFuncIU8I)(uint8 *, int);
+*/
 
 #ifdef WIN32
 #pragma warning(push)

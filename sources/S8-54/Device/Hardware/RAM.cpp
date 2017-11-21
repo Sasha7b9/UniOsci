@@ -134,7 +134,7 @@ void RAM_WriteRead_Asinch(uint16 *src, uint16 *dest, int numHalfWords)
 
     transferComplete = false;
 
-    HAL_DMA_Start_IT(&handleDMA_RAM, (uint)src, (uint)dest, (uint32)numHalfWords * 2);
+    HAL_DMA_Start_IT(&handleDMA_RAM, (uint)src, (uint)dest, (uint)numHalfWords * 2);
     
     RAM_WaitWriteReadComplete();
 }
