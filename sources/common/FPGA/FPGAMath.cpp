@@ -147,7 +147,7 @@ uint8 MathFPGA::Voltage2Point(float voltage, Range range, int16 rShift)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MathFPGA::PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points)
+void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points)
 {
     float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
     float rShiftAbs = RSHIFT_2_ABS(rShift, range);

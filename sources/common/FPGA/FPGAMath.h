@@ -39,7 +39,7 @@ public:
 
     uint8 Voltage2Point(float voltage, Range range, int16 rShift);
 
-    void PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
+    void PointsVoltage2Rel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
 };
 
 
