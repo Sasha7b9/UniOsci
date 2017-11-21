@@ -79,12 +79,12 @@ void Hardware_Init(void)
 
     if (HAL_TIM_Base_Init(&handleTIM6forTimer) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     if (HAL_TIM_Base_Start_IT(&handleTIM6forTimer) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     // Таймер для тиков
@@ -101,12 +101,12 @@ void Hardware_Init(void)
 
     if (HAL_TIM_Base_Init(&tim2handle) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     if (HAL_TIM_Base_Start(&tim2handle) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     sound.Init();
@@ -144,7 +144,7 @@ void Hardware_Init(void)
     crcHandle.Instance = CRC;
     if (HAL_CRC_Init(&crcHandle) != HAL_OK)
     {
-        HARDWARE_ERROR;
+        ERROR_HANDLER();
     }
 }
 
@@ -191,7 +191,7 @@ static void SystemClock_Config(void)
     if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
         // Initialization Error
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
     // Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 clocks dividers
     RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
@@ -202,7 +202,7 @@ static void SystemClock_Config(void)
     if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
     {
         // Initialization Error
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 }
 

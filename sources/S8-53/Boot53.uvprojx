@@ -53,7 +53,7 @@
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
-          <DebugInformation>1</DebugInformation>
+          <DebugInformation>0</DebugInformation>
           <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\_lst\Boot53\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
@@ -789,11 +789,6 @@
               <FilePath>.\Boot53\main.h</FilePath>
             </File>
             <File>
-              <FileName>defines.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Boot53\defines.cpp</FilePath>
-            </File>
-            <File>
               <FileName>globals.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot53\globals.cpp</FilePath>
@@ -802,6 +797,16 @@
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot53\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>commonDefines.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\commonDefines.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>commonDefines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\commonDefines.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -183,9 +183,6 @@
     <ClCompile Include="..\..\..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_pipes.c">
       <Filter>USBH</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Boot53\defines.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Boot53\globals.cpp">
       <Filter>src</Filter>
     </ClCompile>

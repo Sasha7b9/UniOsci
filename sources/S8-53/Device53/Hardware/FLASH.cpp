@@ -525,7 +525,7 @@ void WriteBufferBytes(uint address, uint8 *buffer, int size)
     {
         if (HAL_FLASH_Program(TYPEPROGRAM_BYTE, address, (uint64_t)(buffer[i])) != HAL_OK)
         {
-            HARDWARE_ERROR;
+            ERROR_HANDLER();
         }
         address++;
     }

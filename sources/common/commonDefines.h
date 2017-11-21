@@ -18,6 +18,10 @@ typedef signed   short int      int16;
 typedef unsigned char           uchar;
 typedef unsigned long  long int uint64;
 
+#ifdef WIN32
+typedef unsigned int uint32_t;
+#endif
+
 
 typedef void    (*pFuncVV)(void);
 typedef void    (*pFuncVpV)(void*);
@@ -112,3 +116,14 @@ typedef union
 #define ENABLE_EN "On"
 #define DISABLE_RU "Откл"
 #define DISABLE_EN "Off"
+
+
+#define ERROR_HANDLER() _Error_Handler(__FILE__, __LINE__);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+    void _Error_Handler(char *, int);
+#ifdef __cplusplus
+}
+#endif

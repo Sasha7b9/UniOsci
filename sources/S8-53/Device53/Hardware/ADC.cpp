@@ -58,7 +58,7 @@ void ADConverter::Init(void)
 
     if (HAL_ADC_Init(&handleADC) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     ADC_ChannelConfTypeDef sConfig;
@@ -70,12 +70,12 @@ void ADConverter::Init(void)
 
     if (HAL_ADC_ConfigChannel(&handleADC, &sConfig) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     if (HAL_ADC_Start_IT(&handleADC) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 }
 

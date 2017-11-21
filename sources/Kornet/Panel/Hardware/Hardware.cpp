@@ -55,7 +55,7 @@ void Hardware::ConfigSystemClock()
   RCC_OscInitStruct.PLL.PLLQ = 4;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    ERROR_HANDLER();
   }
 
     /**Initializes the CPU, AHB and APB busses clocks 
@@ -69,7 +69,7 @@ void Hardware::ConfigSystemClock()
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    ERROR_HANDLER();
   }
 
   PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
@@ -78,7 +78,7 @@ void Hardware::ConfigSystemClock()
   PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_4;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
+    ERROR_HANDLER();
   }
 
     /**Configure the Systick interrupt time 
@@ -162,16 +162,4 @@ void ConfigSystemClock1(void)
 
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void _Error_Handler(char *, int)
-{
-    /* USER CODE BEGIN Error_Handler_Debug */
-    /* User can add his own implementation to report the HAL error return state */
-    while (1)
-    {
-    }
-    /* USER CODE END Error_Handler_Debug */
 }

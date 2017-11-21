@@ -380,7 +380,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataSettings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\defines.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.cpp" />

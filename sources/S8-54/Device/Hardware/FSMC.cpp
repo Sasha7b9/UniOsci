@@ -137,7 +137,7 @@ void FSMC_SetMode(ModeFSMC mode)
             if (HAL_SRAM_Init((SRAM_HandleTypeDef*)(&sramHandle), (FMC_NORSRAM_TimingTypeDef*)(&sramTiming), 
                 (FMC_NORSRAM_TimingTypeDef*)(&sramTiming)) != HAL_OK)
             {
-                HARDWARE_ERROR
+                ERROR_HANDLER();
             };
         }
         else if (curMode == ModeFSMC_FPGA)
@@ -157,7 +157,7 @@ void FSMC_SetMode(ModeFSMC mode)
             if (HAL_SRAM_Init((SRAM_HandleTypeDef*)(&gSramHandle), (FMC_NORSRAM_TimingTypeDef*)(&sramTiming), 
                 (FMC_NORSRAM_TimingTypeDef*)(&sramTiming)) != HAL_OK)
             {
-                HARDWARE_ERROR
+                ERROR_HANDLER();
             };
         }
         else if (curMode == ModeFSMC_RAM)
@@ -189,7 +189,7 @@ void FSMC_SetMode(ModeFSMC mode)
             if (HAL_SRAM_Init((SRAM_HandleTypeDef*)(&gSramHandle), (FMC_NORSRAM_TimingTypeDef*)(&sramTimingWrite), 
                 (FMC_NORSRAM_TimingTypeDef*)(&sramTimingRead)) != HAL_OK)
             {
-                HARDWARE_ERROR
+                ERROR_HANDLER();
             };
         }
 

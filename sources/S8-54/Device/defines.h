@@ -127,9 +127,6 @@ typedef struct
 #define SET_FLAG(flag)      ((flag) = 1)
 #define CLEAR_FLAG(flag)    ((flag) = 0)
 
-#define HARDWARE_ERROR HardwareErrorHandler(__FILE__, __FUNCTION__, __LINE__);
-void HardwareErrorHandler(const char *file, const char *function, int line);
-
 #define SAFE_FREE(x) if(x) free(x); (x) = 0;
 
 #ifdef WIN32

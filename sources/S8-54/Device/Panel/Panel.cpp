@@ -524,7 +524,7 @@ void Panel::Init(void)
     
     if (HAL_SPI_Init(&handleSPI) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     HAL_NVIC_SetPriority(SPI1_IRQn, PRIORITY_PANEL_SPI1);

@@ -144,7 +144,7 @@ static void SystemClock_Config(void)
     RCC_OscInitStruct.PLL.PLLQ = 5;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
-        HARDWARE_ERROR;
+        ERROR_HANDLER();
     };
     // Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 clocks dividers
     RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
@@ -154,6 +154,6 @@ static void SystemClock_Config(void)
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
     {
-        HARDWARE_ERROR;
+        ERROR_HANDLER();
     };
 }

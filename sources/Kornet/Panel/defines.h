@@ -6,11 +6,6 @@
 
 #include "commonDefines.h"
 
-#ifdef WIN32
-typedef unsigned int uint32_t;
-#endif
-
-#define ERROR_HANDLER() _Error_Handler(__FILE__, __LINE__);
 
 enum Color
 {
@@ -20,12 +15,3 @@ enum Color
 
 
 #define TIME_UPDATE_KEYBOARD 2   ///< Время между опросами клавиатуры
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-void _Error_Handler(char *, int);
-#ifdef __cplusplus
-}
-#endif

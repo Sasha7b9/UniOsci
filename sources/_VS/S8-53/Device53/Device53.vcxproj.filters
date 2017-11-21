@@ -294,9 +294,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\libs\stm32f2xx_hal_msp.cpp">
       <Filter>libs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\defines.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Globals.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -564,6 +561,7 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGASettings.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\commonDefines.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">

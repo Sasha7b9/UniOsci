@@ -176,7 +176,7 @@ static void TransferComplete(DMA_HandleTypeDef *)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void TransferError(DMA_HandleTypeDef *)
 {
-    HARDWARE_ERROR
+    ERROR_HANDLER();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ void RAM_Init(void)
 
     if (HAL_DMA_Init(&handleDMA_RAM) != HAL_OK)
     {
-        HARDWARE_ERROR
+        ERROR_HANDLER();
     }
 
     HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, PRIORITY_RAM_DMA2_STREAM0);

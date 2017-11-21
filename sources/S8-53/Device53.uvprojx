@@ -53,7 +53,7 @@
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
-          <DebugInformation>1</DebugInformation>
+          <DebugInformation>0</DebugInformation>
           <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\_lst\Device53\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
@@ -891,11 +891,6 @@
               <FilePath>.\Device53\Tables.h</FilePath>
             </File>
             <File>
-              <FileName>defines.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\defines.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Device53.sct</FileName>
               <FileType>2</FileType>
               <FilePath>.\Device53\Device53.sct</FilePath>
@@ -962,6 +957,11 @@
               <FileName>commonDefines.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\commonDefines.h</FilePath>
+            </File>
+            <File>
+              <FileName>commonDefines.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\commonDefines.cpp</FilePath>
             </File>
           </Files>
         </Group>

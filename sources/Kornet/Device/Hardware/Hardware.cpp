@@ -73,7 +73,7 @@ void Hardware::SystemClock_Config(void)
     RCC_OscInitStruct.PLL.PLLQ = 5;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
     /**Initializes the CPU, AHB and APB busses clocks 
@@ -87,7 +87,7 @@ void Hardware::SystemClock_Config(void)
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
     /**Configure the Systick interrupt time 
@@ -125,7 +125,7 @@ void Hardware::MX_ADC3_Init(void)
     hadc3.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
     if (HAL_ADC_Init(&hadc3) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
     /**Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
@@ -135,7 +135,7 @@ void Hardware::MX_ADC3_Init(void)
     sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
     if (HAL_ADC_ConfigChannel(&hadc3, &sConfig) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
 }
@@ -151,7 +151,7 @@ void Hardware::MX_DAC_Init(void)
     hdac.Instance = DAC;
     if (HAL_DAC_Init(&hdac) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
     /**DAC channel OUT1 config 
@@ -160,14 +160,14 @@ void Hardware::MX_DAC_Init(void)
     sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
     if (HAL_DAC_ConfigChannel(&hdac, &sConfig, DAC_CHANNEL_1) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
     /**DAC channel OUT2 config 
     */
     if (HAL_DAC_ConfigChannel(&hdac, &sConfig, DAC_CHANNEL_2) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
 }
@@ -189,7 +189,7 @@ void Hardware::MX_SPI4_Init(void)
     hspi4.Init.CRCPolynomial = 10;
     if (HAL_SPI_Init(&hspi4) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
 }
@@ -206,7 +206,7 @@ void Hardware::MX_USART3_UART_Init(void)
     huart3.Init.OverSampling = UART_OVERSAMPLING_16;
     if (HAL_UART_Init(&huart3) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 }
 
@@ -225,7 +225,7 @@ void Hardware::MX_USB_OTG_FS_PCD_Init(void)
     hpcd_USB_OTG_FS.Init.use_dedicated_ep1 = DISABLE;
     if (HAL_PCD_Init(&hpcd_USB_OTG_FS) != HAL_OK)
     {
-        _Error_Handler(__FILE__, __LINE__);
+        ERROR_HANDLER();
     }
 
 }
@@ -349,19 +349,3 @@ void Hardware::MX_GPIO_Init(void)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     HAL_GPIO_Init(FL_DISP_GPIO_Port, &GPIO_InitStruct);
 }
-
-
-void _Error_Handler(char *, int)
-{
-    while (1)
-    {
-    }
-}
-
-#ifdef USE_FULL_ASSERT
-
-void assert_failed(uint8_t* file, uint32_t line)
-{
-}
-
-#endif

@@ -29,6 +29,3 @@ void Hardware_Init(void);
 void Hardware_WriteToAnalog(TypeWriteAnalog type, uint data);
 
 void Hardware_WriteToDAC(TypeWriteDAC type, uint16 data);
-
-#define HARDWARE_ERROR HardwareErrorHandler(__FILE__, __FUNCTION__, __LINE__);
-void HardwareErrorHandler(const char *file, const char *function, int line);

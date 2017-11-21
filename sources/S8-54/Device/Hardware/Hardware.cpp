@@ -117,7 +117,7 @@ void Hardware_Init(void)
     crcHandle.Instance = CRC;
     if (HAL_CRC_Init(&crcHandle) != HAL_OK)
     {
-        HARDWARE_ERROR;
+        ERROR_HANDLER();
     }
 }
 

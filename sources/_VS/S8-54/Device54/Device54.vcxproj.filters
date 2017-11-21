@@ -941,9 +941,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Globals.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\defines.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\channelSCPI.cpp">
       <Filter>VCP\SCPI</Filter>
     </ClCompile>

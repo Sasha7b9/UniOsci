@@ -19,9 +19,7 @@ typedef unsigned long long int  uint64;
 typedef unsigned    int         uint32_t;
 typedef unsigned    char        uchar;
 
-#ifndef WIN32
-typedef signed      char        int8_t;
-#else
+#ifdef WIN32
 #define __ALIGN_BEGIN
 #define __ALIGN_END
 #define __weak
@@ -86,8 +84,5 @@ typedef struct
     int16 rel;
     float abs;
 } StructRelAbs;
-
-#define HARDWARE_ERROR HardwareErrorHandler(__FILE__, __FUNCTION__, __LINE__);
-void HardwareErrorHandler(const char *file, const char *function, int line);
 
 #include "Globals.h"
