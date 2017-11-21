@@ -145,3 +145,35 @@ uint8 MathFPGA::Voltage2Point(float voltage, Range range, int16 rShift)
     math.Limitation<int>(&relValue, 0, 255);
     return (uint8)relValue;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MathFPGA::PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points)
+{
+    float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
+    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
+#ifdef S8_54
+    float voltInPixel = 1.0f / (voltsInPixel[range] / ((MAX_VALUE - MIN_VALUE) / 200.0f));
+#else
+    float voltInPixel = 1.0f / voltsInPixel[range];
+#endif
+
+    float add = maxVoltOnScreen + rShiftAbs;
+
+    float delta = add * voltInPixel + MIN_VALUE;
+
+    for (int i = 0; i < numPoints; i++)
+    {
+        int value = (int)(voltage[i] * voltInPixel + delta);
+        if (value < 0)
+        {
+            points[i] = 0;
+            continue;
+        }
+        else if (value > 255)
+        {
+            points[i] = 255;
+            continue;
+        }
+        points[i] = (uint8)value;
+    }
+}

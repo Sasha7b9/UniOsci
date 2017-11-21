@@ -90,36 +90,6 @@ void Math_::DataExtrapolation(uint8 *data, uint8 *there, int size)
     }
 }
 
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math_::PointsVoltageToRel(const float *voltage, int numPoints, Range range, uint16 rShift, uint8 *points)
-{
-    float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
-    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    float voltInPixel = 1.0f / (voltsInPixel[range] / ((MAX_VALUE - MIN_VALUE) / 200.0f));
-
-    float add = maxVoltOnScreen + rShiftAbs;
-
-    float delta = add * voltInPixel + MIN_VALUE;
-
-    for (int i = 0; i < numPoints; i++)
-    {
-        int value = (int)(voltage[i] * voltInPixel + delta);
-        if (value < 0)
-        {
-            points[i] = 0;
-            continue;
-        }
-        else if (value > 255)
-        {
-            points[i] = 255;
-            continue;
-        }
-        points[i] = (uint8)value;
-    }
-}
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float Math_::GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine)
 {

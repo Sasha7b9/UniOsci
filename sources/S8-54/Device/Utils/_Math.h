@@ -44,8 +44,6 @@ public:
 
     void DataExtrapolation(uint8 *data, uint8 *there, int size);
 
-    void PointsVoltageToRel(const float *voltage, int numPoints, Range range, uint16 rShift, uint8 *points);
-
     uint8 GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
 
     uint8 GetMinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);

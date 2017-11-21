@@ -2,8 +2,6 @@
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
 
-
-void	Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
 /// \brief Возвращает координату x пересечения линии, проходящей через (x0, y0), (x1, y1), с горизонтальной линией, проходящей через точку с 
 /// ординатой yHorLine.
 float   Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);

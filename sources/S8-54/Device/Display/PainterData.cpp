@@ -519,7 +519,7 @@ void PainterData::DrawMath(void)
 
     uint8 points[FPGA_MAX_POINTS];
 
-    _math.PointsVoltageToRel(dataAbsA, numPoints, SET_RANGE_MATH, SET_RSHIFT_MATH, points);
+    mathFPGA.PointsVoltageToRel(dataAbsA, numPoints, SET_RANGE_MATH, (int16)SET_RSHIFT_MATH, points);
 
     DrawChannel_Math(points);
 

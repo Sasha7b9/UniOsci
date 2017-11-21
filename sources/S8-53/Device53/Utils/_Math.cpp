@@ -9,34 +9,6 @@
 #include <math.h>
 
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points)
-{
-    float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
-    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    float voltInPixel = 1.0f / voltsInPixel[range];
-
-    float add = maxVoltOnScreen + rShiftAbs;
-
-    float delta = add * voltInPixel + MIN_VALUE;
-
-    for (int i = 0; i < numPoints; i++)
-    {
-        int value = (int)(voltage[i] * voltInPixel + delta);
-        if (value < 0)
-        {
-            points[i] = 0;
-            continue;
-        }
-        else if (value > 255)
-        {
-            points[i] = 255;
-            continue;
-        }
-        points[i] = value;
-    }
-}
-
 float Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine)
 {
     if(y0 == y1)
