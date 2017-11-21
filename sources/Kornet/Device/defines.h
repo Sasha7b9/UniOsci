@@ -1,20 +1,10 @@
 #pragma once
 #include <stm32f4xx.h>
 #include <stm32f4xx_hal.h>
+
+#define KORNET
+
 #include "commonDefines.h"
-
-
-typedef unsigned char       uchar;
-typedef signed char         int8;
-typedef unsigned char       uint8;
-typedef signed short int    int16;
-typedef unsigned short int  uint16;
-typedef unsigned int        uint;
-typedef uint64_t            uint64;
-
-
-typedef void(*pFuncVV)();
-typedef void(*pFuncVB)(bool);
 
 #ifndef WIN32
 #pragma anon_unions
@@ -69,9 +59,6 @@ typedef union
 #define BIN_U32(bits3, bits2, bits1, bits0) (BIN_U8(bits3) << 24 | BIN_U8(bits2) << 16 | BIN_U8(bits1) << 8 | BIN_U8(bits0))
 
 #define HEX_FROM_2(hex1, hex0) ((uint)(0x##hex1) << 16 | (uint)0x##hex0)
-
-#define ERROR_VALUE_FLOAT   1.111e29f
-#define ERROR_STRING_VALUE  "--.--"
 
 #define MAX_UINT 0xffffffff
 

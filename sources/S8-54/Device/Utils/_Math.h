@@ -42,8 +42,6 @@ public:
 
     float VoltageCursor(float shiftCurU, Range range, uint16 rShift);
 
-    float TimeCursor(float shiftCurT, TBase tBase);
-
     void DataExtrapolation(uint8 *data, uint8 *there, int size);
 
     void PointsRelToVoltage(const uint8 *points, int numPoints, Range range, uint16 rShift, float *voltage);

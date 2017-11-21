@@ -1501,8 +1501,8 @@ static void WriteCursors(void)
             memcpy(&p1, &CURsT_POS(source, 1), sizeof(float));
             */
 
-            float pos0 = _math.TimeCursor(CURsT_POS(source, 0), SET_TBASE);
-            float pos1 = _math.TimeCursor(CURsT_POS(source, 1), SET_TBASE);
+            float pos0 = mathFPGA.TimeCursor(CURsT_POS(source, 0), SET_TBASE);
+            float pos1 = mathFPGA.TimeCursor(CURsT_POS(source, 1), SET_TBASE);
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
             painter.DrawText(x + 17, y1, strUtils.Time2String(delta, false, buffer));

@@ -2,25 +2,19 @@
 #include <stm32f4xx_hal.h>
 #include "globals.h"
 
-#define LANG_RU true
-
 #define S8_54
 
-#define VERSION "54-1.0"
+#include "commonDefines.h"
 
-typedef unsigned char uint8;
-typedef unsigned int uint;
-typedef signed char int8;
-typedef unsigned short int uint16;
-typedef signed short int int16;
-typedef unsigned char uchar;
+#define LANG_RU true
+
+#define VERSION "54-1.0"
 
 #ifdef WIN32
 #define __attribute__(x)
 #endif
 
 
-// ??? ?????
 typedef enum
 {
     COLOR_BLACK             = 0x00,
@@ -44,26 +38,3 @@ typedef enum
     COLOR_FLASH_01,
     INVERSE
 } Color;
-
-typedef void    (*pFuncVV)(void);
-typedef void    (*pFuncVpV)(void *);
-typedef bool    (*pFuncBV)(void);
-typedef void    (*pFuncVB)(bool);
-typedef void    (*pFuncVI)(int);
-typedef void    (*pFuncVII)(int, int);
-typedef void    (*pFuncVIIC)(int, int, Color);
-typedef void    (*pFuncVI16)(int16);
-typedef bool    (*pFuncBU8)(uint8);
-typedef void    (*pFuncVI16pI16pI16)(int16, int16 *, int16 *);
-typedef float   (*pFuncFU8)(uint8);
-typedef char   *(*pFuncCFB)(float, bool);
-typedef char   *(*pFuncCFBC)(float, bool, char *);
-typedef void    (*pFuncpU8)(uint8 *);
-typedef void    (*pFuncVpVIIB)(void *, int, int, bool);
-
-#define ERROR_VALUE_FLOAT   1.111e29f
-#define ERROR_VALUE_INT16   SHRT_MAX
-#define ERROR_VALUE_UINT8   255
-#define ERROR_VALUE_INT     INT_MAX
-#define ERROR_STRING_VALUE  "--.--"
-#define M_PI                3.14159265358979323846f

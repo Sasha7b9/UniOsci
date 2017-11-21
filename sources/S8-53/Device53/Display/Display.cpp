@@ -1099,8 +1099,8 @@ void Display::WriteCursors()
             painter.DrawText(x, y1, sCursors_GetCursorTime(source, 0, buffer));
             painter.DrawText(x, y2, sCursors_GetCursorTime(source, 1, buffer));
             x = startX + 153;
-            float pos0 = Math_TimeCursor(CURS_POS_T0(source), TBASE);
-            float pos1 = Math_TimeCursor(CURS_POS_T1(source) , TBASE);
+            float pos0 = mathFPGA.TimeCursor(CURS_POS_T0(source), TBASE);
+            float pos1 = mathFPGA.TimeCursor(CURS_POS_T1(source) , TBASE);
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
             char buffer[20];

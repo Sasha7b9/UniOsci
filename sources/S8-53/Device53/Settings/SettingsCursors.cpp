@@ -33,7 +33,7 @@ const char* sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20])
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char* sCursors_GetCursorTime(Channel source, int numCur, char buffer[20])
 {
-    float time = Math_TimeCursor(CURS_POS_T(source, numCur), TBASE);
+    float time = mathFPGA.TimeCursor(CURS_POS_T(source, numCur), TBASE);
         
     return strUtils.Time2String(time, true, buffer);
 }

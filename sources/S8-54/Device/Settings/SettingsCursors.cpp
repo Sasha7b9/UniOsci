@@ -6,6 +6,7 @@
 #include "Utils/StringUtils.h"
 #include "Menu/MenuFunctions.h"
 #include "FPGA/FPGAtypes.h"
+#include "FPGA/FPGAMath.h"
 #include <math.h>
 #include <string.h>
 
@@ -44,7 +45,7 @@ const char *sCursors_GetCursorTime(Channel source, int numCur, char buffer[20])
     /// \todo Кака я-то дичь с зависанием. Временный костыль.
     //memcpy(&pos, &CURsT_POS(source, numCur), sizeof(float));
 
-    float time = _math.TimeCursor(CURsT_POS(source, numCur), SET_TBASE);
+    float time = mathFPGA.TimeCursor(CURsT_POS(source, numCur), SET_TBASE);
         
     return strUtils.Time2String(time, true, buffer);
 }

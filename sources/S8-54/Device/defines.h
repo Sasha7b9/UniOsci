@@ -1,5 +1,7 @@
 #pragma once
 
+#define S8_54
+
 #include "commonDefines.h"
 
 #ifdef WIN32
@@ -11,19 +13,7 @@
 #endif
 
 #include <stm32f4xx_hal.h>
-//#include <_math.h>
 #include <limits.h>
-
-#define S8_54
-//#define S8_55
-
-#if ((defined S8_54) && (defined S8_55))
-    #error ("Only S8_54 or S8_55 can be selected")
-#endif
-
-#if (!(defined S8_54) && !(defined S8_55))
-    #error ("Select the S8_54 or S8_55")
-#endif
 
 #define NUM_VER "1.3"
 
@@ -52,7 +42,6 @@ typedef unsigned    char        uint8;
 typedef unsigned    char        uint8_t;
 typedef unsigned    short   int uint16;
 typedef unsigned    short   int uint16_t;
-typedef unsigned long long int  uint64;
 typedef unsigned    int         uint;
 typedef unsigned    int         uint32;
 typedef unsigned    int         uint32_t;

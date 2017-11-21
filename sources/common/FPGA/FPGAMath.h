@@ -30,6 +30,7 @@ class MathFPGA
 public:
     float VoltageCursor(float shiftCurU, Range range, int16 rShift);
     int RShift2Rel(float rShiftAbs, Range range);
+    float TimeCursor(float shiftCurT, TBase tBase);
 };
 
 
