@@ -506,11 +506,6 @@
               <FilePath>.\Device\libs\stm32f4xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Device\libs\stm32f4xx_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\libs\stm32f4xx_it.h</FilePath>
@@ -524,6 +519,11 @@
               <FileName>stm32f4xx_hal_msp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\libs\stm32f4xx_hal_msp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_it.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\libs\stm32f4xx_it.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,10 +1,8 @@
+#include "defines.h"
 #include "FSMC.h"
 #include "Hardware.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
-#include <stm32f2xx_hal.h>
-#include <stm32f2xx_ll_fsmc.h>
-#include <stm32f2xx_hal_sram.h>
 
 /*
 static const char *addrNamesForWrite[32] =

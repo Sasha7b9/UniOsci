@@ -1,10 +1,9 @@
 #pragma once
-#include <stm32f4xx.h>
 
 #define KORNET
 
+#include <stm32f4xx.h>
 #include "commonDefines.h"
-
 
 enum Color
 {

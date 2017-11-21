@@ -1,16 +1,10 @@
 #include "defines.h"
+#include "defines.h"
 #include "Sound.h"
 #include "Hardware/Timer.h"
 #include "Utils/_Math.h"
 #include "Log.h"
 #include "Settings/Settings.h"
-#include <stm32f207xx.h>
-#include <stm32f2xx_hal.h>
-#include <stm32f2xx_hal_tim.h>
-#include <stm32f2xx_hal_dac.h>
-#include <stm32f2xx_hal_gpio.h>
-#include <stm32f2xx_hal_dma.h>
-#include <stm32f2xx_hal_dma_ex.h>
 #include <math.h>
 
 

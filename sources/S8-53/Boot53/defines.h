@@ -2,7 +2,6 @@
 
 #define S8_53
 
-#include <stm32f2xx.h>
 #include "commonDefines.h"
 #include "globals.h"
 

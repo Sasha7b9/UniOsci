@@ -136,6 +136,7 @@
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
+    <ClInclude Include="..\..\..\common\structs.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\common\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />

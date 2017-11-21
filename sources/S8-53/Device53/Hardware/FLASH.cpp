@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FLASH.h"
 #include "Hardware.h"
 #include "Sound.h"
@@ -5,7 +6,6 @@
 #include "Hardware/Timer.h"
 #include "Utils/GlobalFunctions.h"
 #include "Log.h"
-#include <stm32f2xx_hal.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

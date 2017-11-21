@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "ADC.h"
 #include "Hardware.h"
-#include <stm32f2xx_hal.h>
 
 
 ADConverter adc;

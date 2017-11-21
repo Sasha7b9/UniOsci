@@ -1,4 +1,4 @@
-#include "stm32f2xx_hal.h"
+#include "defines.h"
 #include "lwip/timeouts.h"
 #include "netif/etharp.h"
 #include "ethernetif.h"

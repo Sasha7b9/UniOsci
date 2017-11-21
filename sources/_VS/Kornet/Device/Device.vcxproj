@@ -151,7 +151,7 @@
     <ClCompile Include="..\..\..\Kornet\Device\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_hal_msp.cpp" />
-    <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.c" />
+    <ClCompile Include="..\..\..\Kornet\Device\libs\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\..\Kornet\Device\libs\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

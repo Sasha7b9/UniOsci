@@ -1,14 +1,10 @@
+#include "defines.h"
 #include "Panel.h"
 #include "Controls.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
-
-
-#include <stm32f2xx_hal.h>
-#include <stm32f2xx_hal_gpio.h>
-
 
 #include <stdio.h>
 #include <string.h>

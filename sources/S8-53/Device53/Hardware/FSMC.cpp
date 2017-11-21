@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FSMC.h"
 #include "Hardware.h"
 #include "FPGA/FPGATypes.h"
@@ -6,9 +7,6 @@
 #include "Hardware/Timer.h"
 #include "Utils/StringUtils.h"
 #include "Log.h"
-#include <stm32f2xx_hal.h>
-#include <stm32f2xx_ll_fsmc.h>
-#include <stm32f2xx_hal_sram.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
