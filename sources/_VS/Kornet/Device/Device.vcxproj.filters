@@ -216,6 +216,9 @@
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\commonDefines.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Device\libs\startup_stm32f437xx.s">
@@ -393,6 +396,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Device\Display\DisplayTypes.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\commonDefines.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

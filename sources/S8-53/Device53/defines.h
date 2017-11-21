@@ -1,30 +1,11 @@
 #pragma once
-#include <stm32f2xx_hal.h>
 
 #define S8_53
 
+#include <stm32f2xx_hal.h>
 #include "commonDefines.h"
 
 #define NUM_VER "1.3"
-
-
-typedef signed      char        int8;
-typedef signed      short   int int16;
-typedef unsigned    char        uint8;
-typedef unsigned    char        uint8_t;
-typedef unsigned    short   int uint16;
-typedef unsigned    short   int uint16_t;
-typedef unsigned    int         uint;
-typedef unsigned long long int  uint64;
-typedef unsigned    int         uint32_t;
-typedef unsigned    char        uchar;
-
-#ifdef WIN32
-#define __ALIGN_BEGIN
-#define __ALIGN_END
-#define __weak
-#endif
-
 
 // “ип цвета
 typedef enum
@@ -53,31 +34,6 @@ typedef enum
 
 
 #define DEBUG
-
-
-#define __IO volatile
-
-typedef void    (*pFuncVV)();               // ”казатель на функцию, ничего не принимающую и ничего не возвращающую.
-typedef void    (*pFuncVpV)(void*);             // ”казатель на функцию, принимающую указатель на void и ничего не возвращающую.
-typedef bool    (*pFuncBV)();
-typedef void    (*pFuncVB)(bool);
-typedef void    (*pFuncVI)(int);
-typedef void    (*pFuncVII)(int, int);
-typedef void    (*pFuncVI16)(int16);
-typedef bool    (*pFuncBU8)(uint8);
-typedef void    (*pFuncVI16pI16pI16)(int16, int16*, int16*);
-typedef float   (*pFuncFU8)(uint8);
-typedef char*   (*pFuncCFB)(float, bool);
-typedef char*   (*pFuncCFBC)(float, bool, char*);
-typedef void    (*pFuncpU8)(uint8*);
-typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
-
-// ќбъединение размером 32 бита
-typedef union
-{
-    uint  word;
-    uint8 byte[4]; //-V112
-} BitSet32;
 
 typedef struct
 {

@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\commonDefines.cpp" />
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
@@ -240,6 +241,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\common\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />

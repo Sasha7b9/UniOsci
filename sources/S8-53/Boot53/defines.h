@@ -1,10 +1,10 @@
 #pragma once
-#include <stm32f2xx_hal.h>
-#include "globals.h"
 
 #define S8_53
 
 #include "commonDefines.h"
+#include <stm32f2xx.h>
+#include "globals.h"
 
 typedef enum
 {

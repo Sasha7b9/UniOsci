@@ -66,9 +66,30 @@ typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
 #define ERROR_VALUE_INT     INT_MAX
 #define ERROR_STRING_VALUE  "--.--"
 
-#ifndef WIN32
+#ifdef WIN32
+#define __attribute__(x)
+#else
 #pragma anon_unions
 #endif
+
+typedef union
+{
+    uint    word;
+    uint16  halfWord[2];
+    struct
+    {
+        uint16 halfWord0;
+        uint16 halfWord1;
+    };
+    uint8   byte[4];
+    struct
+    {
+        uint8 byte0;
+        uint8 byte1;
+        uint8 byte2;
+        uint8 byte3;
+    };
+} BitSet32;
 
 typedef union
 {
@@ -139,3 +160,4 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+

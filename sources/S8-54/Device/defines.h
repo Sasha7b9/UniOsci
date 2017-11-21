@@ -59,26 +59,6 @@ typedef union
     };
 } BitSet16;
 
-// Объединение размером 32 бита
-typedef union
-{
-    uint    word;
-    uint16  halfWord[2];
-    struct
-    {
-        uint16 halfWord0;
-        uint16 halfWord1;
-    };
-    uint8   byte[4];
-    struct
-    {
-        uint8 byte0;
-        uint8 byte1;
-        uint8 byte2;
-        uint8 byte3;
-    };
-} BitSet32;
-
 typedef struct
 {
     int16  rel;

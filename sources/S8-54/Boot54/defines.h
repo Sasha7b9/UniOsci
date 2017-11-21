@@ -1,19 +1,14 @@
 #pragma once
-#include <stm32f4xx_hal.h>
-#include "globals.h"
 
 #define S8_54
 
+#include <stm32f4xx.h>
+#include "globals.h"
 #include "commonDefines.h"
 
 #define LANG_RU true
 
 #define VERSION "54-1.0"
-
-#ifdef WIN32
-#define __attribute__(x)
-#endif
-
 
 typedef enum
 {
