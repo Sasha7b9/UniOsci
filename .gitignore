@@ -10,6 +10,8 @@
 *.uvgui*.*
 *.uvoptx
 
+JLinkLog.txt
+
 sources/.vs/*
 sources/_VS/Kornet/.vs/*
 

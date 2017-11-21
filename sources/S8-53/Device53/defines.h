@@ -81,36 +81,11 @@ typedef union
     uint8 byte[4]; //-V112
 } BitSet32;
 
-// Объединение размером 64 бита
-typedef union
-{
-    long long unsigned int  dword;
-    unsigned int            word[2];
-} BitSet64;
-
 typedef struct
 {
     int16 rel;
     float abs;
 } StructRelAbs;
-
-#define _bitset(bits)                               \
-  ((uint8)(                                         \
-  (((uint8)((uint)bits / 01)        % 010) << 0) |  \
-  (((uint8)((uint)bits / 010)       % 010) << 1) |  \
-  (((uint8)((uint)bits / 0100)      % 010) << 2) |  \
-  (((uint8)((uint)bits / 01000)     % 010) << 3) |  \
-  (((uint8)((uint)bits / 010000)    % 010) << 4) |  \
-  (((uint8)((uint)bits / 0100000)   % 010) << 5) |  \
-  (((uint8)((uint)bits / 01000000)  % 010) << 6) |  \
-  (((uint8)((uint)bits / 010000000) % 010) << 7)))
-
-#define BINARY_U8( bits ) _bitset(0##bits)
-
-#define DISABLE_RU  "Откл"
-#define DISABLE_EN  "Disable"
-#define ENABLE_RU   "Вкл"
-#define ENABLE_EN   "Enable"
 
 #define HARDWARE_ERROR HardwareErrorHandler(__FILE__, __FUNCTION__, __LINE__);
 void HardwareErrorHandler(const char *file, const char *function, int line);

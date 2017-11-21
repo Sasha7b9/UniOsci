@@ -243,7 +243,7 @@ static int16 CalculateAdditionRShift(Channel ch, Range range)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static float CalculateStretchADC(Channel ch)
 {
-    FPGA_Write(RecordFPGA, WR_UPR, BINARY_U8(00000100), false);
+    FPGA_Write(RecordFPGA, WR_UPR, BIN_U8(00000100), false);
 
     FPGA_SetRange(ch, (SET_CALIBR_MODE(ch) == CalibrationMode_x1) ? Range_500mV : Range_50mV);
     FPGA_SetRShift(ch, RShiftZero - 2700 * 4);    // Смещаем сигнал на 4 клетки вниз

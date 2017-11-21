@@ -3,6 +3,7 @@
 #include "_Math.h"
 #include "FPGA/FPGAMath.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
 #include <stdlib.h>
 #include <math.h>
 
@@ -63,7 +64,7 @@ uint8 GetSampleWave(Channel ch)
 uint8 GetSampleSinusWave(Channel ch, int numSample)
 {
     float dT = numSample * TSHIFT_2_ABS(1, SET_TBASE);
-    float voltage = ampl[ch] * sinf(2.0f * M_PI * freq[ch] * dT + angle[ch]) + NewNoiseValue(ch);
+    float voltage = ampl[ch] * sinf(2.0f * PI * freq[ch] * dT + angle[ch]) + NewNoiseValue(ch);
     return _math.VoltageToPoint(voltage, SET_RANGE(ch), SET_RSHIFT(ch));
 }
 

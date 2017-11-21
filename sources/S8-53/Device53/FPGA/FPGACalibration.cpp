@@ -422,7 +422,7 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
     fpga.SetTrigPolarity(TrigPolarity_Front);
     fpga.SetTrigLev((TrigSource)chan, TrigLevZero);
 
-    fpga.WriteToHardware(WR_UPR, BINARY_U8(00000000), false);   // Устанавливаем выход калибратора в ноль
+    fpga.WriteToHardware(WR_UPR, BIN_U8(00000000), false);   // Устанавливаем выход калибратора в ноль
 
     int numMeasures = 8;
     int sum = 0;
@@ -480,7 +480,7 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float CalculateKoeffCalibration(Channel chan)
 {
-    fpga.WriteToHardware(WR_UPR, BINARY_U8(00000100), false);
+    fpga.WriteToHardware(WR_UPR, BIN_U8(00000100), false);
 
     fpga.SetRShift(chan, RShiftZero - 40 * 4);
     fpga.SetModeCouple(chan, ModeCouple_DC);
