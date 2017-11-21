@@ -1,3 +1,4 @@
+#include <stm32f4xx.h>
 #include "AD9286.h"
 #include "Hardware/Timer.h"
 

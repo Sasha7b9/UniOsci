@@ -1,3 +1,4 @@
+#include <stm32f4xx_hal.h>
 #include "FLASH.h"
 #include "Hardware.h"
 #include "Display/Display.h"
