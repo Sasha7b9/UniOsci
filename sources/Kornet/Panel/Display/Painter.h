@@ -1,5 +1,4 @@
 #pragma once
-#include "defines.h"
 #include "DisplayTypes.h"
 #include "Keyboard/Controls.h"
 

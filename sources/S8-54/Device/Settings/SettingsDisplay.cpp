@@ -74,8 +74,8 @@ BitSet64 sDisplay_PointsOnDisplay(void)
 {
     BitSet64 retValue;
 
-    retValue.word0 = (SET_PEAKDET_EN ? (SHIFT_IN_MEMORY / 2) : SHIFT_IN_MEMORY);
-    retValue.word1 = retValue.word0 + 281;
+    retValue.sword0 = (SET_PEAKDET_EN ? (SHIFT_IN_MEMORY / 2) : SHIFT_IN_MEMORY);
+    retValue.sword1 = retValue.sword0 + 281;
 
     return retValue;
 }
@@ -85,8 +85,8 @@ BitSet64 sDisplay_BytesOnDisplay(void)
 {
     BitSet64 retValue;
 
-    retValue.word0 = SHIFT_IN_MEMORY;
-    retValue.word1 = retValue.word0 + (SET_PEAKDET_EN ? 281 * 2 : 281);
+    retValue.sword0 = SHIFT_IN_MEMORY;
+    retValue.sword1 = retValue.sword0 + (SET_PEAKDET_EN ? 281 * 2 : 281);
 
     return retValue;
 }

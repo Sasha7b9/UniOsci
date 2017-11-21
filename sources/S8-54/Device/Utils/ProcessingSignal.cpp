@@ -1065,8 +1065,8 @@ void Processing::SetData(bool needSmoothing)
     isSet = true;
 
     BitSet64 points = sDisplay_BytesOnDisplay();
-    firstByte = points.word0;
-    lastByte = points.word1;
+    firstByte = points.sword0;
+    lastByte = points.sword1;
 
     nBytes = lastByte - firstByte;
     
@@ -1131,8 +1131,8 @@ float Processing::GetCursT(Channel ch, float posCurU, int numCur)
         return 0;
     }
 
-#define FIRST_POINT (points.word0)
-#define LAST_POINT  (points.word1)
+#define FIRST_POINT (points.sword0)
+#define LAST_POINT  (points.sword1)
     
     BitSet64 points = sDisplay_PointsOnDisplay();
 

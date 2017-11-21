@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Keyboard.h"
 #include "Display/Display.h"
 #include "Hardware/Decoder.h"

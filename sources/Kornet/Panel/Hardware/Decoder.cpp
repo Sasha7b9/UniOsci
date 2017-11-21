@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "Decoder.h"
 #include "FSMC.h"
 #include "Display/Display.h"

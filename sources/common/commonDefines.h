@@ -99,13 +99,13 @@ typedef union
     uint8  byte[8];
     struct
     {
-        uint uword0;
-        uint uword1;
+        int sword0;
+        int sword1;
     };
     struct
     {
-        int word0;
-        int word1;
+        uint word0;
+        uint word1;
     };
     struct
     {

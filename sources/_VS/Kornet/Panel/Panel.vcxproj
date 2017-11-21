@@ -144,6 +144,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\Kornet\Panel\main.cpp" />
+    <ClCompile Include="..\..\..\Kornet\Panel\stdafx.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -207,6 +208,7 @@
     <ClInclude Include="..\..\..\Kornet\Panel\Keyboard\Keyboard.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\Kornet\Panel\libs\stm32f4xx_it.h" />
+    <ClInclude Include="..\..\..\Kornet\Panel\stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

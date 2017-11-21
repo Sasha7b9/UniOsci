@@ -958,8 +958,8 @@ static void DrawStringNavigation(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawCursorTShift(void)
 {
-#define FIRST_POINT (points.word0)
-#define LAST_POINT  (points.word1)
+#define FIRST_POINT (points.sword0)
+#define LAST_POINT  (points.sword1)
     
     BitSet64 points = sDisplay_PointsOnDisplay();
     LAST_POINT = FIRST_POINT + 281;

@@ -563,7 +563,7 @@ static void DrawChannel_Math(uint8 *dataIn)
     if (IN_P2P_MODE &&                                 // ≈сли находимс€ в режиме медленных поточечных развЄрток
         TIME_MS(DS) == 0)                              // и считывание полного набора данных ещЄ не произошло
     {
-        points.word1 = FillDataP2P(data, &DS);
+        points.sword1 = FillDataP2P(data, &DS);
         if (points.word1 < 2)                          // ≈сли готово меньше двух точек - выход
         {
             return;
@@ -585,11 +585,11 @@ static void DrawChannel_Math(uint8 *dataIn)
     {
         if (MODE_DRAW_SIGNAL_LINES)
         {
-            DrawSignalLined(dataIn, points.word0, points.word1, minY, maxY, scaleY, scaleX, calculateFiltr);
+            DrawSignalLined(dataIn, points.sword0, points.sword1, minY, maxY, scaleY, scaleX, calculateFiltr);
         }
         else
         {
-            DrawSignalPointed(dataIn, points.word0, points.word1, minY, maxY, scaleY, scaleX);
+            DrawSignalPointed(dataIn, points.sword0, points.sword1, minY, maxY, scaleY, scaleX);
         }
     }
 }

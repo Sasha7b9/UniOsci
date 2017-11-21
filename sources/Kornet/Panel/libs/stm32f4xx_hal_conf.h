@@ -1,5 +1,4 @@
 #pragma once
-#include "defines.h"
 
 #define HAL_MODULE_ENABLED
 #define HAL_DMA_MODULE_ENABLED
