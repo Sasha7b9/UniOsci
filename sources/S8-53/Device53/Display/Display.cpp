@@ -518,7 +518,7 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
     int s = 2;
 
     mathFPGA.PointsRel2Voltage(data, numPoints, gDSet->range[channel], channel == A ? gDSet->rShiftCh0 : gDSet->rShiftCh1, dataR);
-    Math_CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
+    mathFPGA.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
     DrawSpectrumChannel(spectrum, ColorChannel(channel));
     if (!MenuIsShown() || MenuIsMinimize())
     {
@@ -845,7 +845,7 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     uint8 max[300];
 
 
-    if (TBASE >= TBase_20ms && PEAKDET)
+    if (SET_TBASE >= TBase_20ms && SET_PEAKDET)
     {
         for (int col = 0; col < width; col++)
         {
@@ -1099,8 +1099,8 @@ void Display::WriteCursors()
             painter.DrawText(x, y1, sCursors_GetCursorTime(source, 0, buffer));
             painter.DrawText(x, y2, sCursors_GetCursorTime(source, 1, buffer));
             x = startX + 153;
-            float pos0 = mathFPGA.TimeCursor(CURS_POS_T0(source), TBASE);
-            float pos1 = mathFPGA.TimeCursor(CURS_POS_T1(source) , TBASE);
+            float pos0 = mathFPGA.TimeCursor(CURS_POS_T0(source), SET_TBASE);
+            float pos1 = mathFPGA.TimeCursor(CURS_POS_T1(source) , SET_TBASE);
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
             char buffer[20];
@@ -1350,7 +1350,7 @@ void DrawGridSpectrum()
     {
         static const int nums[] = {4, 6, 8};
         static const char *strs[] = {"0", "-10", "-20", "-30", "-40", "-50", "-60", "-70"};
-        int numParts = nums[FFT_MAX_DB];
+        int numParts = nums[MAX_DB_FFT];
         float scale = (float)grid.MathHeight() / numParts;
         for (int i = 1; i < numParts; i++)
         {
@@ -2021,7 +2021,7 @@ void Display::DrawLowPart()
     x += 98;
     char buffer[100] = {0};
 
-    TBase tBase = TBASE;
+    TBase tBase = SET_TBASE;
     int16 tShift = TSHIFT;
 
     if (!MODE_WORK_IS_DIRECT)

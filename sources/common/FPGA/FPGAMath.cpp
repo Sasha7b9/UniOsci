@@ -1,7 +1,10 @@
 #include "FPGAMath.h"
 #include "Display/DisplayTypes.h"
+#include "Display/Grid.h"
 #include "FPGA/FPGATypes.h"
 #include "Utils/Math.h"
+#include "Settings/Settings.h"
+#include <math.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,5 +178,213 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
             continue;
         }
         points[i] = (uint8)value;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1)
+{
+    float scale = 1.0f / absStepTShift[SET_TBASE] / 1024.0f;
+
+    float koeff = 1024.0f / numPoints;
+
+    *freq0 = scale * FFT_POS_CURSOR_0 * koeff;
+    *freq1 = scale * FFT_POS_CURSOR_1 * koeff;
+    if (SET_PEAKDET)
+    {
+        *freq0 *= 2;
+        *freq1 *= 2;
+    }
+
+    for (int i = 0; i < numPoints; i++)
+    {
+        result[i] = 0.0f;
+    }
+
+    MultiplyToWindow(dataR, numPoints);
+
+    int logN = 8;
+    if (numPoints == 512)
+    {
+        logN = 9;
+    }
+    else if (numPoints == 1024)
+    {
+        logN = 10;
+    }
+    static const float Rcoef[14] =
+    {
+        -1.0000000000000000F, 0.0000000000000000F, 0.7071067811865475F,
+        0.9238795325112867F, 0.9807852804032304F, 0.9951847266721969F,
+        0.9987954562051724F, 0.9996988186962042F, 0.9999247018391445F,
+        0.9999811752826011F, 0.9999952938095761F, 0.9999988234517018F,
+        0.9999997058628822F, 0.9999999264657178F
+    };
+
+    static const float Icoef[14] =
+    {
+        0.0000000000000000F, -1.0000000000000000F, -0.7071067811865474F,
+        -0.3826834323650897F, -0.1950903220161282F, -0.0980171403295606F,
+        -0.0490676743274180F, -0.0245412285229122F, -0.0122715382857199F,
+        -0.0061358846491544F, -0.0030679567629659F, -0.0015339801862847F,
+        -0.0007669903187427F, -0.0003834951875714F
+    };
+
+    int nn = numPoints >> 1;
+    int ie = numPoints;
+
+    for (int n = 1; n <= logN; n++)
+    {
+        float rw = Rcoef[logN - n];
+        float iw = Icoef[logN - n];
+        int in = ie >> 1;
+        float ru = 1.0f;
+        float iu = 0.0f;
+        for (int j = 0; j < in; j++)
+        {
+            for (int i = j; i < numPoints; i += ie)
+            {
+                int io = i + in;
+                float dRi = dataR[i];
+                float dRio = dataR[io];
+                float ri = result[i];
+                float rio = result[io];
+                dataR[i] = dRi + dRio;
+                result[i] = ri + rio;
+                float rtq = dRi - dRio;
+                float itq = ri - rio;
+                dataR[io] = rtq * ru - itq * iu;
+                result[io] = itq * ru + rtq * iu;
+            }
+            float sr = ru;
+            ru = ru * rw - iu * iw;
+            iu = iu * rw + sr * iw;
+        }
+        ie >>= 1;
+    }
+
+    for (int j = 1, i = 1; i < numPoints; i++)
+    {
+        if (i < j)
+        {
+            int io = i - 1;
+            int in = j - 1;
+            float rtp = dataR[in];
+            float itp = result[in];
+            dataR[in] = dataR[io];
+            result[in] = result[io];
+            dataR[io] = rtp;
+            result[io] = itp;
+        }
+
+        int k = nn;
+
+        while (k < j)
+        {
+            j = j - k;
+            k >>= 1;
+        }
+
+        j = j + k;
+    }
+
+    for (int i = 0; i < 256; i++)
+    {
+        result[i] = sqrtf(dataR[i] * dataR[i] + result[i] * result[i]);
+    }
+
+    result[0] = 0.0f;       /// \todo нулева€ составл€юща€ мешает посто€нно. надо еЄ убрать
+
+    Normalize(result, 256);
+
+    if (SCALE_FFT_IS_LOG)
+    {
+        float minDB = MAX_DB_FOR_FFT;
+
+        for (int i = 0; i < 256; i++)
+        {
+#ifdef DEBUG
+            result[i] = 20 * log10f(result[i]);
+#else
+            result[i] = Log10[(int)(result[i] * 10000)];
+#endif
+            if (i == FFT_POS_CURSOR_0)
+            {
+                *density0 = result[i];
+            }
+            else if (i == FFT_POS_CURSOR_1)
+            {
+                *density1 = result[i];
+            }
+            if (result[i] < minDB)
+            {
+                result[i] = minDB;
+            }
+            result[i] = 1.0f - result[i] / minDB;
+        }
+    }
+    else
+    {
+        *density0 = result[FFT_POS_CURSOR_0];
+        *density1 = result[FFT_POS_CURSOR_1];
+    }
+    *y0 = (int)(grid.MathBottom() - result[FFT_POS_CURSOR_0] * grid.MathHeight());
+    *y1 = (int)(grid.MathBottom() - result[FFT_POS_CURSOR_1] * grid.MathHeight());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MathFPGA::MultiplyToWindow(float *data, int numPoints)
+{
+#ifndef DEBUG
+    float const *koeff = Koeff(numPoints);
+
+    for (int i = 0; i < numPoints; i++)
+    {
+        data[i] *= koeff[i];
+    }
+#else
+    if (WINDOW_FFT_IS_HAMMING)
+    {
+        for (int i = 0; i < numPoints; i++)
+        {
+            data[i] *= 0.53836f - 0.46164f * cosf(2 * PI * i / (numPoints - 1));
+        }
+    }
+    else if (WINDOW_FFT_IS_BLACKMAN)
+    {
+        float alpha = 0.16f;
+        float a0 = (1.0f - alpha) / 2.0f;
+        float a1 = 0.5f;
+        float a2 = alpha / 2.0f;
+        for (int i = 0; i < numPoints; i++)
+        {
+            data[i] *= a0 - a1 * cosf(2 * PI * i / (numPoints - 1)) + a2 * cosf(4 * PI * i / (numPoints - 1));
+        }
+    }
+    else if (WINDOW_FFT_IS_HANN)
+    {
+        for (int i = 0; i < numPoints; i++)
+        {
+            data[i] *= 0.5f * (1.0f - cosf(2.0f * PI * i / (numPoints - 1.0f)));
+        }
+    }
+#endif
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void MathFPGA::Normalize(float *data, int)
+{
+    float max = 0.0;
+    for (int i = 0; i < 256; i++)
+    {
+        if (data[i] > max)
+        {
+            max = data[i];
+        }
+    }
+
+    for (int i = 0; i < 256; i++)
+    {
+        data[i] /= max;
     }
 }

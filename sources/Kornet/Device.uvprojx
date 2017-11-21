@@ -805,6 +805,16 @@
               <FileType>5</FileType>
               <FilePath>.\Device\Settings\SettingsTypes.h</FilePath>
             </File>
+            <File>
+              <FileName>SettingsMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Settings\SettingsMath.h</FilePath>
+            </File>
+            <File>
+              <FileName>SettingsTime.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Settings\SettingsTime.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

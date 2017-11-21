@@ -99,9 +99,9 @@ void FPGA::LoadSettings(void)
             WriteToHardware(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B, false);
             break;
         case BalanceADC_Hand:
-            SetPeackDetMode(PEAKDET);
-            SetTBase(TBASE);
-            if (PEAKDET)
+            SetPeackDetMode(SET_PEAKDET);
+            SetTBase(SET_TBASE);
+            if (SET_PEAKDET)
             {
                 WriteToHardware(WR_ADD_RSHIFT_DAC1, 3, false);     // Почему-то при пиковом детекторе смещение появляется. Вот его и компенсируем.
                 WriteToHardware(WR_ADD_RSHIFT_DAC2, 3, false);
@@ -206,10 +206,10 @@ void FPGA::SetTBase(TBase tBase)
     }
     if (tBase < TBaseSize && (int)tBase >= 0)
     {
-        float tShiftAbsOld = TSHIFT_2_ABS(TSHIFT, TBASE);
+        float tShiftAbsOld = TSHIFT_2_ABS(TSHIFT, SET_TBASE);
         sTime_SetTBase(tBase);
         LoadTBase();
-        fpga.SetTShift(TSHIFT_2_REL(tShiftAbsOld, TBASE));
+        fpga.SetTShift(TSHIFT_2_REL(tShiftAbsOld, SET_TBASE));
         display.Redraw();
     }
     else
@@ -221,8 +221,8 @@ void FPGA::SetTBase(TBase tBase)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadTBase(void)
 {
-    TBase tBase = TBASE;
-    uint8 mask = PEAKDET ? masksTBase[tBase].maskPeackDet : masksTBase[tBase].maskNorm;
+    TBase tBase = SET_TBASE;
+    uint8 mask = SET_PEAKDET ? masksTBase[tBase].maskPeackDet : masksTBase[tBase].maskNorm;
     fpga.WriteToHardware(WR_RAZVERTKA, mask, true);
     ADD_SHIFT_T0 = deltaTShift[tBase];
 }
@@ -230,22 +230,22 @@ void FPGA::LoadTBase(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TBaseDecrease(void)
 {
-    if (PEAKDET && TBASE <= MIN_TBASE_PEC_DEAT)
+    if (SET_PEAKDET && SET_TBASE <= MIN_TBASE_PEC_DEAT)
     {
         display.ShowWarningBad(LimitSweep_Time);
         display.ShowWarningBad(EnabledPeakDet);
         return;
     }
 
-    if ((int)TBASE > 0)
+    if ((int)SET_TBASE > 0)
     {
-        if (SELFRECORDER && TBASE == MIN_TBASE_P2P)
+        if (SELFRECORDER && SET_TBASE == MIN_TBASE_P2P)
         {
             display.ShowWarningBad(TooFastScanForSelfRecorder);
         }
         else
         {
-            TBase base = (TBase)((int)TBASE - 1);
+            TBase base = (TBase)((int)SET_TBASE - 1);
             fpga.SetTBase(base);
         }
     }
@@ -258,9 +258,9 @@ void FPGA::TBaseDecrease(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TBaseIncrease(void)
 {
-    if (TBASE < (TBaseSize - 1))
+    if (SET_TBASE < (TBaseSize - 1))
     {
-        TBase base = (TBase)(TBASE + 1);
+        TBase base = (TBase)(SET_TBASE + 1);
         fpga.SetTBase(base);
     }
     else
@@ -383,14 +383,14 @@ void FPGA::SetTShift(int tShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetDeltaTShift(int16 shift)
 {
-    deltaTShift[TBASE] = shift;
+    deltaTShift[SET_TBASE] = shift;
     LoadTShift();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetPeackDetMode(PeackDetMode peackDetMode)
 {
-    PEAKDET = peackDetMode;
+    SET_PEAKDET = peackDetMode;
     LoadRegUPR();
 }
 
@@ -437,7 +437,7 @@ void FPGA::LoadTShift(void)
     static const int16 k[TBaseSize] = {50, 20, 10, 5, 2};
     int16 tShift = TSHIFT - sTime_TShiftMin() + 1;
     int16 tShiftOld = tShift;
-    TBase tBase = TBASE;
+    TBase tBase = SET_TBASE;
     if (tBase < TBase_100ns)
     {
         tShift = tShift / k[tBase] + deltaTShift[tBase];
@@ -457,7 +457,7 @@ void FPGA::LoadTShift(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *FPGA::GetTShiftString(int16 tShiftRel, char buffer[20])
 {
-    float tShiftVal = TSHIFT_2_ABS(tShiftRel, TBASE);
+    float tShiftVal = TSHIFT_2_ABS(tShiftRel, SET_TBASE);
     return strUtils.Time2String(tShiftVal, true, buffer);
 }
 

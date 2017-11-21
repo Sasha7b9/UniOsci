@@ -1,6 +1,8 @@
 #pragma once
 #include "defines.h"
 #include "SettingsTypes.h"
+#include "SettingsMath.h"
+#include "SettingsTime.h"
 #include "Menu/MenuControls.h"
 
 

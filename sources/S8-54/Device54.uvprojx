@@ -1732,14 +1732,14 @@
               <FilePath>.\Device\Settings\SettingsMemory.cpp</FilePath>
             </File>
             <File>
-              <FileName>SettingsService.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Settings\SettingsService.cpp</FilePath>
-            </File>
-            <File>
               <FileName>SettingsTime.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Settings\SettingsTime.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>commonSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Settings\commonSettings.cpp</FilePath>
             </File>
           </Files>
         </Group>

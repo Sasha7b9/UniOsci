@@ -48,7 +48,10 @@ public:
     bool FloatsIsEquals(float value0, float value1, float epsilonPart);
 
     float RandFloat(float min, float max);
-
+    /// \brief Возвращает координату x пересечения линии, проходящей через (x0, y0), (x1, y1), с горизонтальной линией, проходящей через точку с 
+    /// ординатой yHorLine.
+    float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
+    
     template<class T>
     void CircleIncrease(T *value, int min, int max)
     {

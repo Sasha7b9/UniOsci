@@ -449,7 +449,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsDebug.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsDisplay.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsMemory.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsService.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp" />

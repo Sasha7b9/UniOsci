@@ -553,7 +553,7 @@ float FindIntersectionWithHorLine(Channel ch, int numIntersection, bool downToUp
         return ERROR_VALUE_FLOAT;
     }
     
-    return _math.GetIntersectionWithHorizontalLine(x, data[x], x + step, data[x + step], yLine);
+    return math.GetIntersectionWithHorizontalLine(x, data[x], x + step, data[x + step], yLine);
 }
 
 

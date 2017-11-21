@@ -40,6 +40,13 @@ public:
     uint8 Voltage2Point(float voltage, Range range, int16 rShift);
 
     void PointsVoltage2Rel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points);
+
+    void CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1);
+
+private:
+    void MultiplyToWindow(float *data, int numPoints);
+
+    void Normalize(float *data, int numPoints);
 };
 
 

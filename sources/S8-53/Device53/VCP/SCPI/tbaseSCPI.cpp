@@ -72,7 +72,7 @@ void Process_RANGE(uint8 *buffer)
         if (TBaseSize > value) { fpga.SetTBase((TBase)value); }
         else if (255 == value)
         {
-            SCPI_SEND(":TBASE:SET_RANGE %s", Tables_GetTBaseStringEN(TBASE));
+            SCPI_SEND(":TBASE:SET_RANGE %s", Tables_GetTBaseStringEN(SET_TBASE));
         }
     LEAVE_ANALYSIS
 }
@@ -138,10 +138,10 @@ void Process_PEACKDET(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (value < 2) { PEAKDET = (value == 0) ? PeackDet_Disable : PeackDet_Enable; OnChanged_PeakDet(true); } // WARN SCPI для пикового детектора переделать
+        if (value < 2) { SET_PEAKDET = (value == 0) ? PeackDet_Disable : PeackDet_Enable; OnChanged_PeakDet(true); } // WARN SCPI для пикового детектора переделать
         else if (2 == value)
         {
-            SCPI_SEND(":TBASE:PEACKDET %s", PEAKDET ? "ON" : "OFF");
+            SCPI_SEND(":TBASE:PEACKDET %s", SET_PEAKDET ? "ON" : "OFF");
         }
     LEAVE_ANALYSIS
 }

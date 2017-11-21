@@ -725,7 +725,7 @@ static const Choice cMath_FFT_Limit =
         {"-60Да",   "-60dB"},
         {"-80Да",   "-80dB"}
     },
-    (int8*)&FFT_MAX_DB
+    (int8*)&MAX_DB_FFT
 };
 
 static bool IsActive_Math_FFT_Limit(void)

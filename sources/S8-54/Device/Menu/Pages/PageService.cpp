@@ -490,7 +490,7 @@ static bool IsActive_FFT_Cursors(void)
 
 static void OnRegSet_FFT_Cursors(int angle)
 {
-    POS_MATH_CUR(MATH_CURRENT_CUR) += (uint8)angle;
+    FFT_POS_CURSOR(MATH_CURRENT_CUR) += (uint8)angle;
     Sound_RegulatorShiftRotate();
 }
 
@@ -539,7 +539,7 @@ DEF_SMALL_BUTTON
 //--------------------------------------------------------------------------------------------------------------------- —≈–¬»— - —œ≈ “– - ƒË‡Ô‡ÁÓÌ ---
 static bool IsActive_FFT_Range(void)
 {
-    return SCALE_FFT_LOG;
+    return SCALE_FFT_IS_LOG;
 }
 
 DEF_CHOICE_3

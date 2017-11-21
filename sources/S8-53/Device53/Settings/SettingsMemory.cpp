@@ -18,7 +18,7 @@ int sMemory_GetNumPoints(bool forCalculate)
         return FPGA_MAX_POINTS_FOR_CALCULATE;
     }
 
-    return numPoints[PEAKDET][ENUM_POINTS];
+    return numPoints[SET_PEAKDET][ENUM_POINTS];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

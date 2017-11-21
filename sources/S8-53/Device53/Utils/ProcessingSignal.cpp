@@ -492,7 +492,7 @@ float FindIntersectionWithHorLine(Channel chan, int numIntersection, bool downTo
     {
         return ERROR_VALUE_FLOAT;
     }
-    return Math_GetIntersectionWithHorizontalLine(x, data[x], x + 1, data[x + 1], yLine);
+    return math.GetIntersectionWithHorizontalLine(x, data[x], x + 1, data[x + 1], yLine);
 }
 
 float CalculateDurationPlus(Channel chan)

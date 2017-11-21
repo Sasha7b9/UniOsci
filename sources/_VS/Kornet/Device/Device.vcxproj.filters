@@ -400,5 +400,11 @@
     <ClInclude Include="..\..\..\common\commonDefines.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsMath.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsTime.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

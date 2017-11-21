@@ -1703,6 +1703,16 @@
               <FileType>8</FileType>
               <FilePath>.\Device53\Settings\SettingsTime.cpp</FilePath>
             </File>
+            <File>
+              <FileName>commonSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Settings\commonSettings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>commonSettingsMath.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Settings\commonSettingsMath.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -1320,7 +1320,7 @@ static void DrawGrid(int left, int top, int width, int height)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawGridSpectrum(void)
 {
-    if(SCALE_FFT_LOG)
+    if(SCALE_FFT_IS_LOG)
     {
         static const int nums[] ={4, 6, 8};
         static pString strs[] ={"0", "-10", "-20", "-30", "-40", "-50", "-60", "-70"};
@@ -1342,7 +1342,7 @@ static void DrawGridSpectrum(void)
             painter.DrawText(5, grid.MathTop() + 1, "Да");
         }
     }
-    else if(SCALE_FFT_LIN)
+    else if(SCALE_FFT_IS_LINEAR)
     {
         static pString strs[] ={"1.0", "0.8", "0.6", "0.4", "0.2"};
         float scale = (float)grid.MathHeight() / 5;
@@ -1390,17 +1390,17 @@ static void DRAW_SPECTRUM(const uint8 *dataIn, int numPoints, Channel ch)
     RAM_MemCpy16((void *)dataIn, data, numPoints);
 
     mathFPGA.PointsRel2Voltage(data, numPoints, RANGE_DS(ch), (int16)RSHIFT_DS(ch), dataR);
-    _math.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
+    mathFPGA.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
     DrawSpectrumChannel(spectrum, gColorChan[ch]);
     if(!MENU_IS_SHOWN || MenuIsMinimize())
     {
         Color color = gColorFill;
         WriteParametersFFT(ch, freq0, density0, freq1, density1);
-        painter.DrawRectangle(POS_MATH_CUR_0 + grid.Left() - s, y0 - s, s * 2, s * 2, color);
-        painter.DrawRectangle(POS_MATH_CUR_1 + grid.Left() - s, y1 - s, s * 2, s * 2);
+        painter.DrawRectangle(FFT_POS_CURSOR_0 + grid.Left() - s, y0 - s, s * 2, s * 2, color);
+        painter.DrawRectangle(FFT_POS_CURSOR_1 + grid.Left() - s, y1 - s, s * 2, s * 2);
 
-        painter.DrawVLine(grid.Left() + POS_MATH_CUR_0, grid.MathBottom(), y0 + s);
-        painter.DrawVLine(grid.Left() + POS_MATH_CUR_1, grid.MathBottom(), y1 + s);
+        painter.DrawVLine(grid.Left() + FFT_POS_CURSOR_0, grid.MathBottom(), y0 + s);
+        painter.DrawVLine(grid.Left() + FFT_POS_CURSOR_1, grid.MathBottom(), y1 + s);
     }
 
     free(data);
@@ -1889,9 +1889,9 @@ static void WriteParametersFFT(Channel ch, float freq0, float density0, float fr
         y += dY * 3 + 4;
     }
     painter.SetColor(gColorChan[ch]);
-    painter.DrawText(x, y, SCALE_FFT_LOG ? Db2String(density0, 4, buffer) : strUtils.Float2String(density0, false, 7, buffer));
+    painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : strUtils.Float2String(density0, false, 7, buffer));
     y += dY;
-    painter.DrawText(x, y, SCALE_FFT_LOG ? Db2String(density1, 4, buffer) : strUtils.Float2String(density1, false, 7, buffer));
+    painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : strUtils.Float2String(density1, false, 7, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

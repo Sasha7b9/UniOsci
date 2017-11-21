@@ -274,6 +274,8 @@
     <ClInclude Include="..\..\..\Kornet\Device\Multimeter\Multimeter.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Osci\Osci.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Settings\Settings.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsMath.h" />
+    <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsTime.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\Kornet\Device\Tester\Tester.h" />
     <ClInclude Include="..\..\..\_libs\forVS\algorithm" />

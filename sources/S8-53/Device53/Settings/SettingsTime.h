@@ -13,7 +13,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define TBASE                               (set.time.tBase)        ///< SettingTime.tBase
+#define SET_TBASE                           (set.time.tBase)        ///< SettingTime.tBase
 
 #define TSHIFT                              (set.time.tShiftRel)    ///< SettingsTime.tShiftRel
 
@@ -29,9 +29,9 @@
 #define SAMPLE_TYPE_IS_EQUAL                (SAMPLE_TYPE == SampleType_Equal)
 #define SAMPLE_TYPE_IS_REAL                 (SAMPLE_TYPE == SampleType_Real)
 
-#define PEAKDET                             (set.time.peakDet)      ///< SettingsTime.peakDet
-#define PEAKDET_IS_DISABLE                  (PEAKDET == PeackDet_Disable)
-#define PEAKDET_IS_ENABLE                   (PEAKDET == PeackDet_Enable)
+#define SET_PEAKDET                         (set.time.peakDet)      ///< SettingsTime.peakDet
+#define PEAKDET_IS_DISABLE                  (SET_PEAKDET == PeackDet_Disable)
+#define PEAKDET_IS_ENABLE                   (SET_PEAKDET == PeackDet_Enable)
 
 #define SELFRECORDER                        (set.time.selfRecorder) ///< SettingsTime.selfRecorder
 

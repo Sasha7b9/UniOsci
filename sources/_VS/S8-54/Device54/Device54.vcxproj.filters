@@ -908,9 +908,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsMemory.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsService.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp">
       <Filter>Settings</Filter>
     </ClCompile>

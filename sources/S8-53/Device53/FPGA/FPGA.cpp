@@ -81,7 +81,7 @@ void OnTimerCanReadData(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::Start(void)
 {
-    if(TBASE >= MIN_TBASE_P2P)
+    if(SET_TBASE >= MIN_TBASE_P2P)
     {
         display.ResetP2Ppoints(false);
         Timer_Enable(kP2P, 1, ReadPoint);
@@ -110,7 +110,7 @@ bool FPGA::ProcessingData(void)
 {
     bool retValue = false;
 
-    int num = (sTime_RandomizeModeEnabled() && (!START_MODE_IS_SINGLE) && SAMPLE_TYPE_IS_EQUAL) ? Kr[TBASE] : 1;
+    int num = (sTime_RandomizeModeEnabled() && (!START_MODE_IS_SINGLE) && SAMPLE_TYPE_IS_EQUAL) ? Kr[SET_TBASE] : 1;
     
    for (int i = 0; i < num; i++)
    {
@@ -264,7 +264,7 @@ void FPGA::ReadRandomizeMode(void)
         return;
     };
 
-    int step = Kr[TBASE];
+    int step = Kr[SET_TBASE];
     int index = Tsm - step - additionShift;
 
     if (index < 0)
@@ -362,8 +362,8 @@ void FPGA::ReadRandomizeMode(void)
 
     if (START_MODE_IS_SINGLE || SAMPLE_TYPE_IS_REAL)
     {
-        Processing_InterpolationSinX_X(dataRel0, TBASE);
-        Processing_InterpolationSinX_X(dataRel1, TBASE);
+        Processing_InterpolationSinX_X(dataRel0, SET_TBASE);
+        Processing_InterpolationSinX_X(dataRel1, SET_TBASE);
     }
 }
 
@@ -405,7 +405,7 @@ void FPGA::ReadRealMode(bool necessaryShift)
         }
 
         int shift = 0;
-        if (TBASE == TBase_100ns || TBASE == TBase_200ns)
+        if (SET_TBASE == TBase_100ns || SET_TBASE == TBase_200ns)
         {
             shift = CalculateShift();
         }
@@ -552,7 +552,7 @@ int FPGA::CalculateShift(void)            // \todo Не забыть восстановить функци
     uint16 min = 0;
     uint16 max = 0;
 
-    if (TBASE == TBase_200ns)
+    if (SET_TBASE == TBase_200ns)
     {
         return rand < 3000 ? 0 : -1;    /// set.debug.altShift; \todo Остановились на жёстком задании дополнительного смещения. На PageDebug выбор 
                                         /// закомментирован, можно раскомментировать при необходимости
@@ -571,11 +571,11 @@ int FPGA::CalculateShift(void)            // \todo Не забыть восстановить функци
     if (sTime_RandomizeModeEnabled())
     {
         float tin = (rand - min) * 10e-9f / (max - min);
-        int retValue = (int)(tin / 10e-9f * Kr[TBASE]);
+        int retValue = (int)(tin / 10e-9f * Kr[SET_TBASE]);
         return retValue;
     }
 
-    if (TBASE == TBase_100ns && rand < (min + max) / 2)
+    if (SET_TBASE == TBase_100ns && rand < (min + max) / 2)
     {
         return 0;
     }
@@ -817,7 +817,7 @@ void FPGA::ClearData(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool FPGA::AllPointsRandomizer(void)
 {
-    if(TBASE < TBase_100ns) 
+    if(SET_TBASE < TBase_100ns) 
     {
         for(int i = 0; i < 281; i++) 
         {
@@ -935,7 +935,7 @@ Range FPGA::FindRange(Channel chan)
 
     SetTBase(TBase_50ms);
     FPGA::SetModeCouple(chan, ModeCouple_AC);
-    PeackDetMode peackDetMode = PEAKDET;
+    PeackDetMode peackDetMode = SET_PEAKDET;
     FPGA::SetPeackDetMode(PeackDet_Enable);
     for (int range = RangeSize - 1; range >= 0; range--)
     {
@@ -1136,14 +1136,14 @@ void FPGA::FillDataPointer(DataSettings *dp)
     dp->range[1] = SET_RANGE_B;
     dp->rShiftCh0 = SET_RSHIFT_A;
     dp->rShiftCh1 = SET_RSHIFT_B;
-    dp->tBase = TBASE;
+    dp->tBase = SET_TBASE;
     dp->tShift = TSHIFT;
     dp->modeCouple0 = SET_COUPLE_A;
     dp->modeCouple1 = SET_COUPLE_B;
     dp->length1channel = sMemory_GetNumPoints(false);
     dp->trigLevCh0 = TRIG_LEVEL_A;
     dp->trigLevCh1 = TRIG_LEVEL_B;
-    dp->peakDet = (uint)PEAKDET;
+    dp->peakDet = (uint)SET_PEAKDET;
     dp->multiplier0 = SET_DIVIDER_A;
     dp->multiplier1 = SET_DIVIDER_B;
 }

@@ -21,6 +21,8 @@ public:
     int Right();
     int NumRows();
     int NumCols();
+    int MathBottom() { return 0; };
+    int MathHeight() { return 0; };
 
 private:
 };

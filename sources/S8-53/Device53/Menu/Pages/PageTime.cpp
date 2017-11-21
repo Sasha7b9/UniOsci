@@ -95,20 +95,20 @@ static const Choice mcPeakDet =
         {ENABLE_RU,     ENABLE_EN}
         /* , {"Среднее",   "Average"} */
     },
-    (int8*)&PEAKDET, OnChanged_PeakDet
+    (int8*)&SET_PEAKDET, OnChanged_PeakDet
 };
 
 static bool IsActive_PeakDet(void)
 {
-    return (TBASE >= MIN_TBASE_PEC_DEAT);
+    return (SET_TBASE >= MIN_TBASE_PEC_DEAT);
 }
 
 void OnChanged_PeakDet(bool active)
 {
     if (active)
     {
-        fpga.SetPeackDetMode(PEAKDET);
-        fpga.SetTBase(TBASE);
+        fpga.SetPeackDetMode(SET_PEAKDET);
+        fpga.SetTBase(SET_TBASE);
         if (PEAKDET_IS_DISABLE)
         {
             int8 shift[2][3] =
@@ -187,7 +187,7 @@ static const Choice mcSelfRecorder =
 
 static bool IsActive_SelfRecorder(void)
 {
-    return TBASE >= MIN_TBASE_P2P;
+    return SET_TBASE >= MIN_TBASE_P2P;
 }
 
 // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ --------------------------------------------------------------------------------------------------------------------------

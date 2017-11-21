@@ -462,9 +462,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsMemory.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsService.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -561,7 +558,12 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGASettings.cpp">
       <Filter>FPGA</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\common\commonDefines.cpp" />
+    <ClCompile Include="..\..\..\common\commonDefines.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Settings\commonSettings.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -896,6 +898,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h">
       <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Settings\commonSettings.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Settings\commonSettingsMath.h">
+      <Filter>Settings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
