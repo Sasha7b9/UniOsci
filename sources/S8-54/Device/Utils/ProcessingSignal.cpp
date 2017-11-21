@@ -1,23 +1,12 @@
-#include "defines.h"
 #include "ProcessingSignal.h"
-#include "Globals.h"
 #include "_Math.h"
-#include "GlobalFunctions.h"
 #include "Log.h"
 #include "Data/Reader.h"
 #include "FPGA/FPGAMath.h"
-#include "Hardware/Timer.h"
-#include "Hardware/FSMC.h"
-#include "Hardware/RAM.h"
-#include "Menu/Pages/PageMemory.h"
 #include "Settings/Settings.h"
-#include "Utils/Debug.h"
 #include "Utils/StringUtils.h"
 #include "Utils/Math.h"
 #include <math.h>
-#include <string.h>
-#include <limits.h>
-#include <stdlib.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -361,7 +350,7 @@ float CalculateVoltageRMS(Channel ch)
 
     if(MARKED_MEAS == Meas_VoltageRMS)
     {
-        markerVoltage[ch][0] = _math.VoltageToPoint(sqrtf(rms / period), RANGE_DS(ch), rShift);
+        markerVoltage[ch][0] = mathFPGA.Voltage2Point(sqrtf(rms / period), RANGE_DS(ch), (int16)rShift);
     }
 
     return sqrtf(rms / period);
@@ -1472,7 +1461,7 @@ void Processing::CountedRange(Channel ch)
         if (d)
         {
             float abs = POINT_2_VOLTAGE(d, rangeIn, rShiftIn);
-            d = _math.VoltageToPoint(abs, rangeOut, (uint16)rShiftOut);
+            d = mathFPGA.Voltage2Point(abs, rangeOut, (int16)rShiftOut);
             LIMITATION(d, MIN_VALUE, MAX_VALUE);
             out[i] = (uint8)d;
         }

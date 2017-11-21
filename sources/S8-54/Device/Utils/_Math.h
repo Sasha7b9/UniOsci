@@ -44,10 +44,6 @@ public:
 
     void DataExtrapolation(uint8 *data, uint8 *there, int size);
 
-    void PointsRelToVoltage(const uint8 *points, int numPoints, Range range, uint16 rShift, float *voltage);
-
-    uint8 VoltageToPoint(float voltage, Range range, uint16 rShift);
-
     void PointsVoltageToRel(const float *voltage, int numPoints, Range range, uint16 rShift, uint8 *points);
 
     uint8 GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);

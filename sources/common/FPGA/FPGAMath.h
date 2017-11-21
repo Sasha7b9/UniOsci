@@ -28,9 +28,16 @@ extern const float absStepTShift[];
 class MathFPGA
 {
 public:
+
     float VoltageCursor(float shiftCurU, Range range, int16 rShift);
+
     int RShift2Rel(float rShiftAbs, Range range);
+
     float TimeCursor(float shiftCurT, TBase tBase);
+
+    void PointsRel2Voltage(const uint8 *points, int numPoints, Range range, int16 rShift, float *voltage);
+
+    uint8 Voltage2Point(float voltage, Range range, int16 rShift);
 };
 
 

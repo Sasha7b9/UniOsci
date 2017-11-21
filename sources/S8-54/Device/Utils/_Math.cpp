@@ -92,36 +92,6 @@ void Math_::DataExtrapolation(uint8 *data, uint8 *there, int size)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math_::PointsRelToVoltage(const uint8 *points, int numPoints, Range range, uint16 rShift, float *voltage)
-{
-    const int voltsInPointInt[RangeSize] =   // Коэффициент 20000
-    {
-        2,      // 2
-        5,      // 5
-        10,     // 10
-        20,     // 20
-        50,     // 50
-        100,    // 100
-        200,    // 200
-        500,    // 500
-        1000,   // 1
-        2000,   // 2
-        5000    // 5
-    };
-
-    float voltInPoint = voltsInPointInt[range] / ((MAX_VALUE - MIN_VALUE) / 200.0f);
-    float maxVoltsOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
-    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    int diff = (int)((MIN_VALUE * voltInPoint) + (int)((maxVoltsOnScreen + rShiftAbs) * 20e3f));
-    float koeff = 1.0f / 20e3f;
-    for (int i = 0; i < numPoints; i++)
-    {
-        voltage[i] = (points[i] * voltInPoint - diff) * koeff;
-    }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Math_::PointsVoltageToRel(const float *voltage, int numPoints, Range range, uint16 rShift, uint8 *points)
 {
     float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
@@ -147,15 +117,6 @@ void Math_::PointsVoltageToRel(const float *voltage, int numPoints, Range range,
         }
         points[i] = (uint8)value;
     }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 Math_::VoltageToPoint(float voltage, Range range, uint16 rShift)
-{
-    int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPoint[range]) + MIN_VALUE;
-    LIMITATION(relValue, 0, 255);
-    return (uint8)relValue;
 }
 
 

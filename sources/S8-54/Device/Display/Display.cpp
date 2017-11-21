@@ -1389,7 +1389,7 @@ static void DRAW_SPECTRUM(const uint8 *dataIn, int numPoints, Channel ch)
 
     RAM_MemCpy16((void *)dataIn, data, numPoints);
 
-    _math.PointsRelToVoltage(data, numPoints, RANGE_DS(ch), RSHIFT_DS(ch), dataR);
+    mathFPGA.PointsRel2Voltage(data, numPoints, RANGE_DS(ch), (int16)RSHIFT_DS(ch), dataR);
     _math.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
     DrawSpectrumChannel(spectrum, gColorChan[ch]);
     if(!MENU_IS_SHOWN || MenuIsMinimize())

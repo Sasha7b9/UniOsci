@@ -433,8 +433,8 @@ void Display::DrawMath()
     float dataAbs0[FPGA_MAX_POINTS];
     float dataAbs1[FPGA_MAX_POINTS];
 
-    Math_PointsRelToVoltage(dataRel0, ds->length1channel, ds->range[A], ds->rShiftCh0, dataAbs0);
-    Math_PointsRelToVoltage(dataRel1, ds->length1channel, ds->range[B], ds->rShiftCh1, dataAbs1);
+    mathFPGA.PointsRel2Voltage(dataRel0, ds->length1channel, ds->range[A], ds->rShiftCh0, dataAbs0);
+    mathFPGA.PointsRel2Voltage(dataRel1, ds->length1channel, ds->range[B], ds->rShiftCh1, dataAbs1);
 
     Math_CalculateMathFunction(dataAbs0, dataAbs1, ds->length1channel);
     
@@ -517,7 +517,7 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
     int y1 = 0;
     int s = 2;
 
-    Math_PointsRelToVoltage(data, numPoints, gDSet->range[channel], channel == A ? gDSet->rShiftCh0 : gDSet->rShiftCh1, dataR);
+    mathFPGA.PointsRel2Voltage(data, numPoints, gDSet->range[channel], channel == A ? gDSet->rShiftCh0 : gDSet->rShiftCh1, dataR);
     Math_CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
     DrawSpectrumChannel(spectrum, ColorChannel(channel));
     if (!MenuIsShown() || MenuIsMinimize())

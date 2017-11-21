@@ -9,36 +9,7 @@
 #include <math.h>
 
 
-const int voltsInPixelInt[] =   // Коэффициент 20000
-{
-    2,      // 2
-    5,      // 5
-    10,     // 10
-    20,     // 20
-    50,     // 50
-    100,    // 100
-    200,    // 200
-    500,    // 500
-    1000,   // 1
-    2000,   // 2
-    5000,   // 5
-    1000,   // 10
-    20000   // 20
-};
-
-void Math_PointsRelToVoltage(const uint8 *points, int numPoints, Range range, int16 rShift, float *voltage)
-{
-    int voltInPixel = voltsInPixelInt[range];
-    float maxVoltsOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
-    float rShiftAbs = RSHIFT_2_ABS(rShift, range);
-    int diff = (int)((MIN_VALUE * voltInPixel) + (maxVoltsOnScreen + rShiftAbs) * 20e3f);
-    float koeff = 1.0f / 20e3f;
-    for (int i = 0; i < numPoints; i++)
-    {
-        voltage[i] = (points[i] * voltInPixel - diff) * koeff;
-    }
-}
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, int16 rShift, uint8 *points)
 {
     float maxVoltOnScreen = MAX_VOLTAGE_ON_SCREEN(range);
@@ -64,13 +35,6 @@ void Math_PointsVoltageToRel(const float *voltage, int numPoints, Range range, i
         }
         points[i] = value;
     }
-}
-
-uint8 Math_VoltageToPoint(float voltage, Range range, int16 rShift)
-{
-    int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE);
-    math.Limitation<int>(&relValue, 0, 255);
-    return relValue;
 }
 
 float Math_GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine)

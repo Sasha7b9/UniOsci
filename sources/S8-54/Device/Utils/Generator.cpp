@@ -65,7 +65,7 @@ uint8 GetSampleSinusWave(Channel ch, int numSample)
 {
     float dT = numSample * TSHIFT_2_ABS(1, SET_TBASE);
     float voltage = ampl[ch] * sinf(2.0f * PI * freq[ch] * dT + angle[ch]) + NewNoiseValue(ch);
-    return _math.VoltageToPoint(voltage, SET_RANGE(ch), SET_RSHIFT(ch));
+    return mathFPGA.Voltage2Point(voltage, SET_RANGE(ch), (int16)SET_RSHIFT(ch));
 }
 
 
