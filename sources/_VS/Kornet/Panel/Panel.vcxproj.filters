@@ -99,9 +99,6 @@
     <ClCompile Include="..\..\..\Kornet\Panel\libs\stm32f4xx_hal_msp.cpp">
       <Filter>libs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Kornet\Panel\stdafx.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\Kornet\Panel\libs\startup_stm32f429xx.s">
@@ -158,9 +155,6 @@
       <Filter>Keyboard</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Kornet\Panel\defines.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Kornet\Panel\stdafx.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

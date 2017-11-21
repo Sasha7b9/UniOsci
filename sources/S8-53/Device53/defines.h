@@ -4,6 +4,7 @@
 
 #include <stm32f2xx_hal.h>
 #include "commonDefines.h"
+#include "globals.h"
 
 #define NUM_VER "1.3"
 
@@ -34,11 +35,3 @@ typedef enum
 
 
 #define DEBUG
-
-typedef struct
-{
-    int16 rel;
-    float abs;
-} StructRelAbs;
-
-#include "Globals.h"

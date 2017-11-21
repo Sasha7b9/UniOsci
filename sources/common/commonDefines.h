@@ -74,6 +74,17 @@ typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
 
 typedef union
 {
+    uint16 halfWord;
+    uint8  byte[2];
+    struct
+    {
+        uint8 byte0;
+        uint8 byte1;
+    };
+} BitSet16;
+
+typedef union
+{
     uint    word;
     uint16  halfWord[2];
     struct
@@ -150,14 +161,7 @@ typedef union
 #define DISABLE_RU "Откл"
 #define DISABLE_EN "Off"
 
+#define SAFE_FREE(x) if(x) free(x); (x) = 0;
 
 #define ERROR_HANDLER() _Error_Handler(__FILE__, __LINE__);
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-    void _Error_Handler(char *, int);
-#ifdef __cplusplus
-}
-#endif
-
+void _Error_Handler(char *, int);
