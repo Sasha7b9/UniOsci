@@ -14,6 +14,7 @@
 #include "Menu/Menu.h"
 #include "Utils/Math.h"
 #include "Log.h"
+#include "Utils/Dictionary.h"
 
 
 /** @addtogroup Menu
@@ -107,7 +108,7 @@ typedef struct
 } StructForSN;
 
 
-extern Page mainPage;
+extern const Page mainPage;
 
 
 // Œ“À¿ƒ ¿ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

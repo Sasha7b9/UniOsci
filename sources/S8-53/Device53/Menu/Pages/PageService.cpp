@@ -10,6 +10,7 @@
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
 #include "Utils/CommonFunctions.h"
+#include "Utils/Dictionary.h"
 
 /** @addtogroup Menu
  *  @{
@@ -93,7 +94,7 @@ static void Information_Draw();
 extern const SmallButton sbInformation_Exit;             ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß - Âûõîä
 static void        OnPress_Information_Exit();
 
-extern Page mainPage;
+extern const Page mainPage;
 
 // ÑÅÐÂÈÑ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static const arrayItems itemsService =

@@ -1,15 +1,8 @@
 #include "defines.h"
-#include "Settings/Settings.h"
-#include "Settings/SettingsTypes.h"
-#include "PageMemory.h"
-#include "FPGA/FPGAtypes.h"
 #include "FPGA/FPGA.h"
-#include "Log.h"
-#include "Display/Display.h"
+#include "PageMemory.h"
 #include "Utils/CommonFunctions.h"
-#include "Hardware/FSMC.h"
-#include "Display/Grid.h"
-#include "Definition.h"
+#include "Utils/Dictionary.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,6 +18,8 @@ extern const  Choice cDivRole;              ///< ÐÀÇÂÅÐÒÊÀ - Ô-öèÿ ÂÐ/ÄÅË
 extern const  Choice cShiftXtype;           ///< ÐÀÇÂÅÐÒÊÀ - Ñìåùåíèå
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÐÀÇÂÅÐÒÊÀ ///
+extern const Page mainPage;
+
 DEF_PAGE_5(     pTime, ,
     Page_Time, &mainPage, FuncActive, EmptyPressPage,
     "ÐÀÇÂÅÐÒÊÀ", "SCAN",

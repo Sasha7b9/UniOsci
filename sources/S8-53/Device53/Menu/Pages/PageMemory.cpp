@@ -21,6 +21,7 @@
 #include "Hardware/Sound.h"
 #include "Log.h"
 #include "Tables.h"
+#include "Utils/Dictionary.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -34,7 +35,7 @@
 
 extern const Page pMemory;
 
-extern Page mainPage;
+extern const Page mainPage;
 
 //extern USBH_USR_AppStateDataStruct_TypeDef USBH_USR_AppState;
 

@@ -13,6 +13,7 @@
 #include "Menu/MenuFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/CommonFunctions.h"
+#include "Utils/Dictionary.h"
 #include <math.h>
 #include <string.h>
 

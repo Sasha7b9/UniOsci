@@ -1,6 +1,7 @@
 #include "FPGA/FPGA.h"
 #include "Menu/MenuControls.h"
 #include "Settings/Settings.h"
+#include "Utils/Dictionary.h"
 #include "Log.h"
 
 

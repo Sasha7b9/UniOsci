@@ -9,6 +9,7 @@
 #include "Utils/Math.h"
 #include "Utils/ProcessingSignal.h"
 #include "Utils/CommonFunctions.h"
+#include "Utils/Dictionary.h"
 #include "Hardware/Sound.h"
 #include "Log.h"
 #include "Display/Painter.h"

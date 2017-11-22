@@ -33,5 +33,7 @@ pString dictWords[DNumWords][2] =
     {"ћ√ц", "MHz"},
     {"к√ц", "kHz"},
     {"√ц", "Hz"},
-    {"”дал€ю сохранЄнные данные", "I delete the saved data"}
+    {"”дал€ю сохранЄнные данные", "I delete the saved data"},
+    {"¬кл", "On"},
+    {"ќткл", "Off"}
 };

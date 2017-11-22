@@ -8,6 +8,7 @@
 #include "Utils/Math.h"
 #include "Hardware/FSMC.h"
 #include "Display/Grid.h"
+#include "Utils/Dictionary.h"
 
 
 /** @addtogroup Menu
@@ -32,7 +33,7 @@ static bool  IsActive_SelfRecorder();
 extern const Choice mcDivRole;          // ĞÀÇÂÅĞÒÊÀ - Ô-öèÿ ÂĞ/ÄÅË
 
 
-extern Page mainPage;
+extern const Page mainPage;
 
 
 // ĞÀÇÂÅĞÒÊÀ //////////////////////////////////////////////////////////////////////////////////////////////////////////

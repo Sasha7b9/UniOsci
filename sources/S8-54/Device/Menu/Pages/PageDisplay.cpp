@@ -1,12 +1,8 @@
 #include "defines.h"
-#include "Menu/Menu.h"
-#include "Menu/MenuItems.h"
 #include "FPGA/FPGA.h"
-#include "Settings/SettingsDisplay.h"
-#include "Settings/Settings.h"
+#include "Menu/Menu.h"
 #include "Utils/CommonFunctions.h"
-#include "PageDisplay.h"
-#include "Definition.h"
+#include "Utils/Dictionary.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +57,8 @@ void PageDisplay_Init(void)
 {
     OnChanged_Settings_Colors_Background(true);   // Заносим значения в гувернёры цветов
 }
+
+extern const Page mainPage;
 
 DEF_PAGE_9(     pDisplay, ,
     Page_Display, &mainPage, FuncActive, EmptyPressPage,

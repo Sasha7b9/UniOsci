@@ -7,6 +7,7 @@
 #include "FPGA/DataStorage.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
+#include "Utils/Dictionary.h"
 
 
 /** @addtogroup Menu
@@ -68,7 +69,7 @@ static void OnChanged_Settings_AutoHide(bool autoHide);     ///< Âûçûâàåòñÿ ïðè 
 
 
 // ÄÈÑÏËÅÉ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern Page mainPage;
+extern const Page mainPage;
 
 static const arrayItems itemsDisplay =
 {
