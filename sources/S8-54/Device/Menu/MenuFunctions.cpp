@@ -13,6 +13,7 @@
 #include "Settings/Settings.h"
 #include "Tables.h"
 #include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include "Utils/Measures.h"
 #include "Menu/Pages/Definition.h"
 

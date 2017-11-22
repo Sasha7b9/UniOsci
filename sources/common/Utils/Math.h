@@ -17,6 +17,15 @@
 
 #define ROUND(x) ((x) += 0.5f, (x))
 
+#define SET_IF_LARGER(x, max, newValue)     if((x) > (max)) { (x) = (newValue); }
+
+#define LIMITATION_ABOVE(var, value, max)   var = (value); if((var) > (max)) { (var) = (max); }
+
+#define LIMITATION(var, min, max)           if(var < (min)) { (var) = (min); } else if(var > (max)) { var = (max); };
+
+#define IN_RANGE(x, min, max)               ((x) >= (min) && (x) <= (max))
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Math
 {

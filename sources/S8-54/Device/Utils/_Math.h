@@ -11,19 +11,6 @@
  *  @{
  */
 
-#define SET_IF_LARGER(x, max, newValue)     if((x) > (max)) { (x) = (newValue); }
-
-#define SET_MIN_IF_LESS(x, min)             if((x) < (min)) { (min) = (x); }
-
-#define SET_MAX_IF_LARGER(x, max)           if((x) > (max)) { (max) = (x); }
-
-#define LIMITATION_ABOVE(var, value, max)   var = (value); if((var) > (max)) { (var) = (max); }
-
-#define LIMITATION(var, min, max)           if(var < (min)) { (var) = (min); } else if(var > (max)) { var = (max); };
-
-#define IN_RANGE(x, min, max)               ((x) >= (min) && (x) <= (max))
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const float tableScalesRange[RangeSize];
 extern const float absStepRShift[];

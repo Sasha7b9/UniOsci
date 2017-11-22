@@ -2,9 +2,10 @@
 #include "Log.h"
 #include "Painter.h"
 #include "Font/font.h"
-#include "Utils/_Math.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
+#include "Utils/_Math.h"
+#include "Utils/Math.h"
 #include <stdarg.h>
 #include <string.h>
 
