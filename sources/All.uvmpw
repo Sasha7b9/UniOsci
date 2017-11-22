@@ -17,7 +17,6 @@
 
   <project>
     <PathAndName>.\S8-54\Device54.uvprojx</PathAndName>
-    <NodeIsActive>1</NodeIsActive>
   </project>
 
   <project>
@@ -26,6 +25,7 @@
 
   <project>
     <PathAndName>.\Kornet\Device.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
   </project>
 
   <project>

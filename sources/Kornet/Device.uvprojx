@@ -336,7 +336,7 @@
               <MiscControls>--cpp</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F437xx,__cplusplus</Define>
               <Undefine></Undefine>
-              <IncludePath>..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common;.\Device;.\Device\libs</IncludePath>
+              <IncludePath>..\_libs\STM32Cube_F4\Drivers\CMSIS\Include;..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\Device;.\Device\libs;..\common</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
