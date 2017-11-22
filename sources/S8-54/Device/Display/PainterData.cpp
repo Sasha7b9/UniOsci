@@ -1,7 +1,7 @@
 #include "PainterData.h"
-#include "Symbols.h"
 #include "Data/Reader.h"
 #include "Display/Grid.h"
+#include "Display/Symbols.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "Hardware/RAM.h"

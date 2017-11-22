@@ -135,7 +135,10 @@
     <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\Display\Colors.h" />
     <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h" />
+    <ClInclude Include="..\..\..\common\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\..\common\Display\Grid.h" />
+    <ClInclude Include="..\..\..\common\Display\Painter.h" />
+    <ClInclude Include="..\..\..\common\Display\Symbols.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\Menu\Menu.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
@@ -157,14 +160,9 @@
     <ClInclude Include="..\..\..\S8-54\Device\Data\DataStorage.h" />
     <ClInclude Include="..\..\..\S8-54\Device\defines.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\font\Font.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Math3D.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Painter.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\PainterData.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\PainterMem.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Symbols.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\WelcomeScreen.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\Ethernet.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\ethernetif.h" />
@@ -370,6 +368,8 @@
     <ClCompile Include="..\..\..\common\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\common\Display\DisplayPrimitives.cpp" />
     <ClCompile Include="..\..\..\common\Display\Grid.cpp" />
+    <ClCompile Include="..\..\..\common\Display\Painter.cpp" />
+    <ClCompile Include="..\..\..\common\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
@@ -388,12 +388,8 @@
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\font\Font.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Math3D.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\PainterData.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterText.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\WelcomeScreen.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\Ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\ethernetif.cpp">

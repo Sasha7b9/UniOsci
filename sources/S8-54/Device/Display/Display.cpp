@@ -1,5 +1,5 @@
 #include "PainterData.h"
-#include "Symbols.h"
+#include "Display/Symbols.h"
 #include "Data/Reader.h"
 #include "Display/Grid.h"
 #include "Ethernet/TcpSocket.h"

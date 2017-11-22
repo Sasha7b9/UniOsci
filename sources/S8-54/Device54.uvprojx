@@ -1077,26 +1077,6 @@
               <FilePath>.\Device\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayTypes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\DisplayTypes.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math3D.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\Math3D.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\Painter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\Painter.h</FilePath>
-            </File>
-            <File>
               <FileName>PainterData.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Display\PainterData.cpp</FilePath>
@@ -1112,34 +1092,9 @@
               <FilePath>.\Device\Display\PainterMem.h</FilePath>
             </File>
             <File>
-              <FileName>PainterText.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\PainterText.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Symbols.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\Symbols.h</FilePath>
-            </File>
-            <File>
-              <FileName>WelcomeScreen.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\WelcomeScreen.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math3D.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\Math3D.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PainterMem.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Display\PainterMem.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>WelcomeScreen.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\WelcomeScreen.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
@@ -1171,10 +1126,35 @@
               <FileType>5</FileType>
               <FilePath>..\common\Display\Grid.h</FilePath>
             </File>
+            <File>
+              <FileName>DisplayTypes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\DisplayTypes.h</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Painter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Painter.h</FilePath>
+            </File>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Symbols.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Symbols.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Display/font</GroupName>
+          <GroupName>Display/Font</GroupName>
           <Files>
             <File>
               <FileName>Font.h</FileName>

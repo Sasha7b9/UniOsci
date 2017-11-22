@@ -264,30 +264,6 @@
     <ClInclude Include="..\..\..\_libs\forVS\usbd_ioreq.h">
       <Filter>forVS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayTypes.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Math3D.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Painter.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterData.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterMem.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Symbols.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\WelcomeScreen.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Data\DataSettings.h">
       <Filter>Data</Filter>
     </ClInclude>
@@ -498,10 +474,28 @@
     <ClInclude Include="..\..\..\common\Display\Colors.h">
       <Filter>Display</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\DisplayTypes.h">
+      <Filter>Display</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\common\Display\Grid.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h">
+    <ClInclude Include="..\..\..\common\Display\Painter.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Symbols.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterData.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterMem.h">
       <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>
@@ -731,21 +725,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Painter.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterData.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterText.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\WelcomeScreen.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp">
       <Filter>Data</Filter>
     </ClCompile>
@@ -754,12 +733,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataSettings.cpp">
       <Filter>Data</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Math3D.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp">
-      <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Display\font\Font.cpp">
       <Filter>Display\fonts</Filter>
@@ -953,10 +926,25 @@
     <ClCompile Include="..\..\..\common\Display\Colors.cpp">
       <Filter>Display</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\DisplayPrimitives.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\common\Display\Grid.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\common\Display\DisplayPrimitives.cpp">
+    <ClCompile Include="..\..\..\common\Display\Painter.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\PainterText.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterData.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp">
       <Filter>Display</Filter>
     </ClCompile>
   </ItemGroup>

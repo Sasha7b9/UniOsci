@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Log.h"
 #include "Painter.h"
-#include "Font/font.h"
+#include "Display/Font/font.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
