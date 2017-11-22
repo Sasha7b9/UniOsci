@@ -3,39 +3,9 @@
 #include "Settings/SettingsTypes.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/** @addtogroup Utils
- *  @{
- *  @defgroup Math
- *  @{
- */
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//extern const float tableScalesRange[RangeSize];
-//extern const float absStepRShift[];
-//extern const float voltsInPixel[];
-//extern const float voltsInPoint[];
-//extern const float absStepTShift[];
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Math_
 {
 public:
-    void DataExtrapolation(uint8 *data, uint8 *there, int size);
-
-    uint8 GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
-
-    uint8 GetMinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
-
-    uint8 GetMaxFromArray(const uint8 *data, int firstPoint, int lastPoint);
-
-    uint8 GetMaxFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint);
-
-    uint8 GetMinFromArray(const uint8 *data, int firstPoint, int lastPoint);
-    /// Работает с внешним ОЗУ - считывать можно 16-битные значения
-    uint8 GetMinFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint);
     /// Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart используется большее в смысле модуля число
     bool FloatsIsEquals(float value0, float value1, float epsilonPart);
 

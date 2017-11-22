@@ -878,7 +878,7 @@ float CalculateMaxRel(Channel ch)
 
     if(!maxIsCalculating[ch])
     {
-        uint8 val = _math.GetMaxFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
+        uint8 val = math.MaxFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
         max[ch] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         maxIsCalculating[ch] = true;
     }
@@ -894,7 +894,7 @@ float CalculateMinRel(Channel ch)
 
     if (!minIsCalculating[ch])
     {
-        uint8 val = _math.GetMinFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
+        uint8 val = math.MinFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
         min[ch] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         minIsCalculating[ch] = true;
     }
