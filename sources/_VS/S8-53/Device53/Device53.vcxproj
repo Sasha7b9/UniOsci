@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\common\commonDefines.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp" />
     <ClCompile Include="..\..\..\common\Settings\commonSettings.cpp" />
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Map.cpp" />
@@ -173,7 +174,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuDrawing.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuFunctions.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItems.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\Definition.cpp" />
@@ -449,6 +449,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
+    <ClInclude Include="..\..\..\common\Menu\MenuItems.h" />
+    <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h" />
     <ClInclude Include="..\..\..\common\Settings\commonSettings.h" />
     <ClInclude Include="..\..\..\common\Settings\commonSettingsMath.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
@@ -496,7 +498,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\main.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Menu.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItems.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsLogic.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\Definition.h" />

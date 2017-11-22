@@ -1,7 +1,7 @@
 #include "Log.h"
 #include "Menu.h" 
 #include "MenuDrawing.h"
-#include "MenuFunctions.h"
+#include "Menu/MenuFunctions.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Sound.h"
