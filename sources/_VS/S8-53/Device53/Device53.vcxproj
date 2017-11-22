@@ -209,7 +209,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Strings.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\_Math.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\channelSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.cpp" />
@@ -531,7 +530,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Strings.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesLog.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesWindow.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\_Math.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\SCPI.h" />

@@ -11,7 +11,6 @@
 #include "Panel/Controls.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsChannel.h"
-#include "Utils/_Math.h"
 #include "Utils/ProcessingSignal.h"
 #include "Utils/Generator.h"
 #include "Log.h"

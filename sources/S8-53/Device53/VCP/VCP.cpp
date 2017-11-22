@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "VCP.h"
-#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "SCPI/SCPI.h"
 #include "usbd_desc.h"

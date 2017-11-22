@@ -1,5 +1,4 @@
 #include "ProcessingSignal.h"
-#include "_Math.h"
 #include "Utils/Math.h"
 #include "GlobalFunctions.h"
 #include "Log.h"

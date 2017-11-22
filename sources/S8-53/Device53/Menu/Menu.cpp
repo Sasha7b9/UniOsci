@@ -12,7 +12,6 @@
 #include "Display/Display.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/Measures.h"
-#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "FPGA/DataStorage.h"

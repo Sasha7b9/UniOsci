@@ -182,6 +182,39 @@ void MathFPGA::PointsVoltage2Rel(const float *voltage, int numPoints, Range rang
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+/*
+    Быстрое преобразование Фурье. Вычисляет модуль спектра для дейсвтительного сигнала.
+    Количество отсчётов должно быть 2**N
+*/
+
+#ifndef DEBUG
+#include "TablesWindow.h"
+#include "TablesLog.h"
+
+static float const *Koeff(int numPoints)
+{
+    float const *tables[3][4] = {
+        {koeffsNorm256, koeffsHamming256, koeffsBlack256, koeffsHann256},
+        {koeffsNorm512, koeffsHamming512, koeffsBlack512, koeffsHann512},
+        {koeffsNorm1024, koeffsHamming1024, koeffsBlack1024, koeffsHann1024},
+    };
+
+    int row = 0;
+    if (numPoints == 512)
+    {
+        row = 1;
+    }
+    else if (numPoints == 1024)
+    {
+        row = 2;
+    }
+
+    return tables[row][PageServiceMath_GetWindowFFT()];
+}
+
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1)
 {
     float scale = 1.0f / absStepTShift[SET_TBASE] / 1024.0f;
