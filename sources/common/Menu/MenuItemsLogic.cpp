@@ -1,6 +1,6 @@
-#include "Menu.h"
+#include "Menu/Menu.h"
 #include "Globals.h"
-#include "MenuFunctions.h"
+#include "Menu/MenuFunctions.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
 #include "Display/Symbols.h"
@@ -12,7 +12,7 @@
 #include "Hardware/RTC.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
-#include "Pages/PageDisplay.h"
+#include "Menu/Pages/PageDisplay.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

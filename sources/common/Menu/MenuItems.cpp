@@ -1,5 +1,5 @@
 #include "MenuItems.h"
-#include "MenuFunctions.h"
+#include "Menu/MenuFunctions.h"
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 

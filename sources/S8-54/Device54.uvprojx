@@ -1462,16 +1462,6 @@
               <FilePath>.\Device\Menu\MenuFunctions.h</FilePath>
             </File>
             <File>
-              <FileName>MenuItems.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Menu\MenuItems.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItems.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Menu\MenuItems.h</FilePath>
-            </File>
-            <File>
               <FileName>MenuItemsDefs.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Menu\MenuItemsDefs.h</FilePath>
@@ -1482,9 +1472,19 @@
               <FilePath>.\Device\Menu\MenuItemsGraphics.cpp</FilePath>
             </File>
             <File>
+              <FileName>MenuItems.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\MenuItems.h</FilePath>
+            </File>
+            <File>
               <FileName>MenuItemsLogic.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device\Menu\MenuItemsLogic.cpp</FilePath>
+              <FilePath>..\common\Menu\MenuItemsLogic.cpp</FilePath>
             </File>
           </Files>
         </Group>

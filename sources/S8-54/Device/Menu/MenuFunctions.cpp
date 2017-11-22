@@ -5,7 +5,7 @@
 #include "Display/Display.h"
 #include "Display/DisplayTypes.h"
 #include "Hardware/Sound.h"
-#include "MenuItems.h"
+#include "Menu/MenuItems.h"
 #include "Menu.h"
 #include "Panel/Controls.h"
 #include "Panel/Panel.h"
