@@ -1500,7 +1500,7 @@ void Processing::CountedTBase()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void LinearInterpolation(uint8 *data, int numPoints)
 {
-    int index = FindAnotherElement(data, NONE_VALUE, numPoints);                // Находим индекс первого непустого элемента
+    int index = math.FindAnotherElement(data, NONE_VALUE, numPoints);                // Находим индекс первого непустого элемента
 
     if (index == -1)                                                            // Если такового элемента на нашлось - выходим
     {

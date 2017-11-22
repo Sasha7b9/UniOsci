@@ -17,10 +17,7 @@ void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds);
 int RequestBytesForChannel(Channel ch, DataSettings *ds);
 /// ¬озвращает изображение регул€тора, соответствующее его текущему положению
 char GetSymbolForGovernor(int value);
-/// «аполнить массив одним значением
-void FillArrayUINT8(uint8 *data, uint8 value, int numElements);
-/// Ќайти первый элемент массива, не соотвествующий заданному
-int FindAnotherElement(uint8 *data, uint8 value, int numElements);
+
 
 /** @}  @}
  */

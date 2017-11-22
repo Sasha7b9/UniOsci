@@ -70,6 +70,8 @@ public:
     uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
 
     void CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);
+    /// Найти первый элемент массива, не соотвествующий заданному
+    int FindAnotherElement(uint8 *data, uint8 value, int numElements);
 };
 
 

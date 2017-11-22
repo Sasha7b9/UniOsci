@@ -68,27 +68,3 @@ char GetSymbolForGovernor(int value)
     }
     return chars[value % 4];
 }
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void FillArrayUINT8(uint8 *data, uint8 value, int numElements)
-{
-    for (int i = 0; i < numElements; i++)
-    {
-        data[i] = value;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int FindAnotherElement(uint8 *data, uint8 value, int numElements)
-{
-    for (int i = 0; i < numElements; i++)
-    {
-        if (data[i] != value)
-        {
-            return i;
-        }
-    }
-
-    return -1;
-}
