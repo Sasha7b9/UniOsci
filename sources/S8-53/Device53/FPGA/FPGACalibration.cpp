@@ -8,7 +8,6 @@
 #include "Hardware/FSMC.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Hardware/Timer.h"
 #include "Log.h"

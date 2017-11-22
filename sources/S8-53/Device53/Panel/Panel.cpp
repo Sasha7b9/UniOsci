@@ -3,7 +3,6 @@
 #include "Controls.h"
 #include "FPGA/FPGA.h"
 #include "Utils/Math.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/CommonFunctions.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"

@@ -13,7 +13,6 @@
 #include "Display/Symbols.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Utils/CommonFunctions.h"

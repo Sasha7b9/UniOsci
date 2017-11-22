@@ -5,7 +5,6 @@
 #include "Sound.h"
 #include "Hardware/RTC.h"
 #include "FSMC.h"
-#include "Utils/GlobalFunctions.h"
 #include "Hardware/Timer.h"
 #include "Log.h"
 #include "Ethernet/Ethernet.h"

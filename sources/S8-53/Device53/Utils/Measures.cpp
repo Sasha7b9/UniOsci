@@ -1,5 +1,4 @@
 #include "Measures.h"
-#include "GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"

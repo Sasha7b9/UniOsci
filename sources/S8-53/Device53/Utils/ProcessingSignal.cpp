@@ -1,6 +1,5 @@
 #include "ProcessingSignal.h"
 #include "Utils/Math.h"
-#include "GlobalFunctions.h"
 #include "Log.h"
 #include "FPGA/FPGAMath.h"
 #include "Hardware/Timer.h"

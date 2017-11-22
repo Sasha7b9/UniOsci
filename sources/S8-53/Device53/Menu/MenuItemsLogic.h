@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "defines.h"
 #include "MenuItems.h"
 
@@ -26,5 +24,7 @@ void    ItemTime_IncCurrentPosition(Time *time);
 void    ItemTime_DecCurrentPosition(Time *time);
 
 void    GovernorColor_ChangeValue(GovernorColor *governor, int delta);  // Изменить яркость цвета в governor
+/// Возвращает изображение регулятора, соответствующее его текущему положению.
+char GetSymbolForGovernor(int value);
 
 extern int8 gCurDigit;

@@ -5,7 +5,6 @@
 #include "Hardware/Hardware.h"
 #include "Hardware/FSMC.h"
 #include "Display/Display.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Log.h"

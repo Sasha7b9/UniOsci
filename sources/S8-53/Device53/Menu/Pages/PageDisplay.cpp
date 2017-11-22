@@ -7,7 +7,6 @@
 #include "FPGA/DataStorage.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 
 
 /** @addtogroup Menu

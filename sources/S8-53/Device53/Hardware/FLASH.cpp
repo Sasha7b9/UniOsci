@@ -4,7 +4,6 @@
 #include "Sound.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
-#include "Utils/GlobalFunctions.h"
 #include "Log.h"
 
 

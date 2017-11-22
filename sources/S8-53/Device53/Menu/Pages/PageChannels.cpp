@@ -6,7 +6,6 @@
 #include "FPGA/FPGA.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 
 
 /** @addtogroup Menu

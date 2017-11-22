@@ -2,7 +2,6 @@
 #include "Display/Grid.h"
 #include "Menu/Menu.h"
 #include "SettingsCursors.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
 #include "FPGA/FPGATypes.h"
 #include "FPGA/FPGAMath.h"

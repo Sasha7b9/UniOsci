@@ -7,7 +7,6 @@
 #include "Display/Display.h"
 #include "Display/Painter.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
 #include "Log.h"
 #include <string.h>

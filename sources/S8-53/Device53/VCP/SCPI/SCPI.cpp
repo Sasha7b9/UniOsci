@@ -3,10 +3,7 @@
 #include "commonSCPI.h"
 #include "controlSCPI.h"
 #include "Utils/Strings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
-
-
 #include <ctype.h>
 
 

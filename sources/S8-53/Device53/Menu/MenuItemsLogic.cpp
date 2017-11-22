@@ -2,6 +2,7 @@
 #include "MenuItemsLogic.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
+#include "Display/Symbols.h"
 #include "Hardware/Timer.h"
 #include "Log.h"
 #include "Settings/Settings.h"
@@ -260,3 +261,19 @@ void GovernorColor_ChangeValue(GovernorColor *governor, int delta)
     }
 }
 
+
+char GetSymbolForGovernor(int value)
+{
+    static const char chars[] =
+    {
+        SYMBOL_GOVERNOR_SHIFT_0,
+        SYMBOL_GOVERNOR_SHIFT_1,
+        SYMBOL_GOVERNOR_SHIFT_2,
+        SYMBOL_GOVERNOR_SHIFT_3
+    };
+    while (value < 0)
+    {
+        value += 4;
+    }
+    return chars[value % 4];
+}

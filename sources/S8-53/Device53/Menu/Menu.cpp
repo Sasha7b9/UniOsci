@@ -10,7 +10,6 @@
 #include "MenuItemsLogic.h"
 #include "Tables.h"
 #include "Display/Display.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Measures.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"

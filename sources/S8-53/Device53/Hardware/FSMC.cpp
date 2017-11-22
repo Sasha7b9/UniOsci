@@ -3,7 +3,6 @@
 #include "Hardware.h"
 #include "FPGA/FPGATypes.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Hardware/Timer.h"
 #include "Utils/StringUtils.h"
 #include "Log.h"

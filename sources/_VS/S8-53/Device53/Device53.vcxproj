@@ -124,6 +124,7 @@
     <ClCompile Include="..\..\..\common\commonDefines.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Settings\commonSettings.cpp" />
+    <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\Colors.cpp" />
@@ -203,7 +204,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Generator.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\GlobalFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Map.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp" />
@@ -454,6 +454,7 @@
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\Settings\commonSettings.h" />
     <ClInclude Include="..\..\..\common\Settings\commonSettingsMath.h" />
+    <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\defines.h" />
@@ -522,7 +523,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Generator.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\GlobalFunctions.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Map.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h" />

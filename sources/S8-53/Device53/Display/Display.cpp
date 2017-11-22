@@ -25,7 +25,6 @@
 #include "Menu/Pages/PageHelp.h"
 #include "Utils/Measures.h"
 #include "Utils/Math.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/ProcessingSignal.h"
 #include "Utils/StringUtils.h"
 #include "Hardware/Timer.h"
