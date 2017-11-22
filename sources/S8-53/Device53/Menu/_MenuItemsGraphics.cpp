@@ -715,7 +715,7 @@ void ItemButton_Draw(Button *button, int x, int y)
     painter.DrawStringInCenterRectC(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, menu.TitleItem(button), color);
 }
 
-void ItemSmallButton_Draw(SmallButton *smallButton, int x, int y)
+void ItemSmallButton_Draw(SButton *smallButton, int x, int y)
 {
     if (menu.ItemIsActive(smallButton))
     {

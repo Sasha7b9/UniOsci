@@ -81,7 +81,7 @@ static void DrawHintItem(int x, int y, int width)
     y = painter.DrawTextInBoundedRectWithTransfers(x, y + 15, width, HINT(item), COLOR_BACK, COLOR_FILL);
     if (item->type == Item_SmallButton)
     {
-        painter.DrawHintsForSmallButton(x, y, width, (SmallButton*)item);
+        painter.DrawHintsForSmallButton(x, y, width, (SButton*)item);
     }
 }
 
@@ -233,7 +233,7 @@ static void DrawChoice(void *item, int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawSmallButton(void *item, int x, int y)
 {
-    ItemSmallButton_Draw((SmallButton *)item, LEFT_SB, y + 7);
+    ItemSmallButton_Draw((SButton *)item, LEFT_SB, y + 7);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

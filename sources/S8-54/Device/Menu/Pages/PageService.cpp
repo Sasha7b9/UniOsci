@@ -1,4 +1,4 @@
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "main.h"
 #include "Display/Display.h"
 #include "Display/Symbols.h"

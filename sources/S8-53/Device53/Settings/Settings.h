@@ -39,6 +39,8 @@ typedef struct
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Возвращает позицию активного пункта на странице namePage
+#define MENU_POS_ACT_ITEM(namePage) (set.menu.posActItem[namePage])
 
 #define MAC_ADDR0       (set.eth.mac0)
 #define MAC_ADDR1       (set.eth.mac1)
@@ -204,7 +206,7 @@ bool MenuIsMinimize();                                          ///< Если true -
 bool MenuPageDebugIsActive();                                   ///< Активна ли страница отладки.
 void SetMenuPageDebugActive(bool active);                           ///< Сделать/разделать активной страницу отладки.
 void CurrentPageSBregSet(int angle);                                ///< Повернуть ручку УСТАНОВКА на текущей странице малых кнопок.
-const SmallButton*  GetSmallButton(PanelButton button);             ///< Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
+const SButton*  GetSmallButton(PanelButton button);             ///< Вернуть указатель на малую кнопку, соответствующую данной кнопки панели.
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Струкура хранит все настройки прибора.

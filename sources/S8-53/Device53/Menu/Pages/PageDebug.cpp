@@ -89,12 +89,12 @@ extern const       Page ppSerialNumber;                     ///< ÎÒËÀÄÊÀ - Ñ/Í
 static void       OnPress_SerialNumber();
 static void Draw_EnterSerialNumber();
 static void      OnRegSet_SerialNumber(int);
-extern const SmallButton bSerialNumber_Exit;                ///< ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä
+extern const SButton bSerialNumber_Exit;                ///< ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä
 static void       OnPress_SerialNumber_Exit();
-extern const SmallButton bSerialNumber_Change;              ///< ÎÒËÀÄÊÀ - Ñ/Í - Ïåðåéòè
+extern const SButton bSerialNumber_Change;              ///< ÎÒËÀÄÊÀ - Ñ/Í - Ïåðåéòè
 static void       OnPress_SerialNumber_Change();
 static void          Draw_SerialNumber_Change(int, int);
-extern const  SmallButton bSerialNumber_Save;               ///< ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü
+extern const  SButton bSerialNumber_Save;               ///< ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü
 static void        OnPress_SerialNumber_Save();
 static void           Draw_SerialNumber_Save(int, int);
 
@@ -969,7 +969,7 @@ static void OnRegSet_SerialNumber(int angle)
 }
 
 // ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä -----------------------------------------------------------------------------------------------------------------------------
-static const SmallButton bSerialNumber_Exit
+static const SButton bSerialNumber_Exit
 (
     &ppSerialNumber,
     COMMON_BEGIN_SB_EXIT,
@@ -984,7 +984,7 @@ static void OnPress_SerialNumber_Exit(void)
 }
 
 // ÎÒËÀÄÊÀ - Ñ/Í - Âñòàâèòü --------------------------------------------------------------------------------------------------------------------------
-static const SmallButton bSerialNumber_Change
+static const SButton bSerialNumber_Change
 (
     &ppSerialNumber, 0,
     "Âñòàâèòü", "Insert",
@@ -1010,7 +1010,7 @@ static void Draw_SerialNumber_Change(int x, int y)
 }
 
 // ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü -------------------------------------------------------------------------------------------------------------------------
-static const SmallButton bSerialNumber_Save
+static const SButton bSerialNumber_Save
 (
     &ppSerialNumber, 0,
     "Ñîõðàíèòü", "Save",

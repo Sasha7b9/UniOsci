@@ -4,7 +4,7 @@
 #include "FPGA/FPGAtypes.h"
 #include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "Utils/CommonFunctions.h"
 
 

@@ -1880,7 +1880,7 @@ void Display::DrawMeasures()
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = Measure_IsActive(str, elem) && menu.GetNameOpenedPage() == Page_SB_MeasTuneMeas;
+            bool active = Measure_IsActive(str, elem) && menu.GetNameOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? COLOR_BACK : COLOR_FILL;
             Measure meas = Measure_Type(str, elem);
             if(meas != Measure_None)
@@ -1919,7 +1919,7 @@ void Display::DrawMeasures()
         }
     }
 
-    if(menu.GetNameOpenedPage() == Page_SB_MeasTuneMeas)
+    if(menu.GetNameOpenedPage() == PageSB_Measures_Tune)
     {
         Measure_DrawPageChoice();
     }

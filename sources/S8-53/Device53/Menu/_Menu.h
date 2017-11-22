@@ -1,6 +1,6 @@
 #pragma once
 #include "Panel/Controls.h"
-#include "MenuItems.h"
+#include "Menu/MenuItems.h"
 
 
 /** @defgroup Menu
@@ -106,7 +106,7 @@ public:
 
     bool PageIsSB(const Page *page);
 
-    SmallButton* SmallButonFromPage(Page *page, int numButton);
+    SButton* SmallButonFromPage(Page *page, int numButton);
 
     void ChangeStateFlashDrive();
 

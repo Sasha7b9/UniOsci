@@ -19,16 +19,4 @@ void DrawSB_Exit(int x, int y);
 /// Универсальная функция отработки нажатия кнопки выхода из режима малого меню.
 void OnPressSB_Exit(void);
 
-/*
-#ifdef __cplusplus
-extern "C" {
-#endif
-*/
-
 extern const Page mainPage;
-
-/*  
-#ifdef __cplusplus
-}
-#endif
-*/

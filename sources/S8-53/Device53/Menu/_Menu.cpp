@@ -5,7 +5,7 @@
 #include "Pages/Definition.h"
 #include "Pages/PageMemory.h"
 #include "Display/DisplayTypes.h"
-#include "MenuItems.h"
+#include "Menu/MenuItems.h"
 #include "defines.h"
 #include "MenuItemsLogic.h"
 #include "Tables.h"
@@ -677,7 +677,7 @@ void Menu::ShortPress_GovernorColor(void *governorColor)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ShortPress_SmallButton(void *smallButton)
 {
-    SmallButton *sb = (SmallButton *)smallButton;
+    SButton *sb = (SButton *)smallButton;
     if (sb)
     {
         pFuncVV func = sb->funcOnPress;
@@ -798,7 +798,7 @@ bool Menu::NeedForFireSetLED()    // Возвращает true, если лампочка УСТАНОВКА до
     NamePage name = GetNameOpenedPage();
     if (
         name == Page_SB_MathCursorsFFT      || 
-        name == Page_SB_MeasTuneMeas        || 
+        name == PageSB_Measures_Tune        || 
         name == Page_SB_MemLatest           || 
         name == Page_SB_MemInt              ||
         (name == Page_SB_MathFunction && !DISABLED_DRAW_MATH)

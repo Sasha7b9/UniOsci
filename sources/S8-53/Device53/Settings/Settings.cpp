@@ -365,12 +365,12 @@ void CurrentPageSBregSet(int angle)
     }
 }
 
-const SmallButton* GetSmallButton(PanelButton button)
+const SButton* GetSmallButton(PanelButton button)
 {
     if(MenuIsMinimize() && button >= B_Menu && button <= B_F5)
     {
         Page *page = (Page *)menu.OpenedItem();
-        SmallButton *sb = (SmallButton *)(*page->items)[button - B_Menu];
+        SButton *sb = (SButton *)(*page->items)[button - B_Menu];
         return sb;
     }
     return NULL;

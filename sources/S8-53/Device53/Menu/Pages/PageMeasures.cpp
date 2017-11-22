@@ -87,7 +87,7 @@ void RotateRegMeasureSetField(int angle)
 
 extern const Page mspMeasTune;
 
-const SmallButton sbMeasTuneSettings        // Настройка измерений.
+const SButton sbMeasTuneSettings        // Настройка измерений.
 (
     &mspMeasTune, 0,
     "Настройка", "Setup",
@@ -97,7 +97,7 @@ const SmallButton sbMeasTuneSettings        // Настройка измерений.
     DrawSB_MeasTune_Settings
 );
 
-const SmallButton sbMeasTuneMarkers        // Включение/отключение маркера для режима измерений.
+const SButton sbMeasTuneMarkers        // Включение/отключение маркера для режима измерений.
 (
     &mspMeasTune, 0,
     "Маркер", "Marker",
@@ -265,7 +265,7 @@ static void PressSB_MeasTune_Exit()
     display.RemoveAddDrawFunction();
 }
 
-static const SmallButton sbExitMeasTune
+static const SButton sbExitMeasTune
 (
     &mspMeasTune,
     COMMON_BEGIN_SB_EXIT,
@@ -290,7 +290,7 @@ static const Page mspMeasTune
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",
-    Page_SB_MeasTuneMeas, &itemsMeasTune, EmptyFuncVV, EmptyFuncVV, Measure_RotateRegSet
+    PageSB_Measures_Tune, &itemsMeasTune, EmptyFuncVV, EmptyFuncVV, Measure_RotateRegSet
 );
 
 

@@ -205,7 +205,7 @@ static void PressSB_MemExtSetNameSave()
 
 extern const Page mspMemLast;
 
-const SmallButton sbMemLastPrev
+const SButton sbMemLastPrev
 (
     &mspMemLast, 0,
     "Предыдущий", "Previous",
@@ -215,7 +215,7 @@ const SmallButton sbMemLastPrev
     DrawSB_MemLast_Prev
 );
 
-const SmallButton sbMemLastNext
+const SButton sbMemLastNext
 (
     &mspMemLast, 0,
     "Следующий", "Next",
@@ -233,7 +233,7 @@ void PressSB_MemLast_IntEnter()
     gMemory.exitFromIntToLast = 1;
 }
 
-const SmallButton sbMemLastIntEnter
+const SButton sbMemLastIntEnter
 (
     &mspMemLast, 0,
     "Внутр ЗУ", "Internal storage",
@@ -243,7 +243,7 @@ const SmallButton sbMemLastIntEnter
     DrawSB_MemLast_IntEnter
 );
 
-const SmallButton sbMemLastSaveToFlash
+const SButton sbMemLastSaveToFlash
 (
     &mspMemLast, 0,
     "Сохранить", "Save",
@@ -255,7 +255,7 @@ const SmallButton sbMemLastSaveToFlash
 
 extern const Page mpSetName;
 
-static const SmallButton sbSetNameSave
+static const SButton sbSetNameSave
 (
     &mpSetName, 0,
     "Сохранить", "Save",
@@ -416,7 +416,7 @@ static void OnMemExtSetMaskRegSet(int angle)
 
 extern const Page mspSetMask;
 
-const SmallButton sbSetMaskBackspace
+const SButton sbSetMaskBackspace
 (
     &mspSetMask, 0,
     "Backspace", "Backspace",
@@ -426,7 +426,7 @@ const SmallButton sbSetMaskBackspace
     DrawSB_SetMask_Backspace
 );
 
-const SmallButton sbSetMaskDelete
+const SButton sbSetMaskDelete
 (
     &mspSetMask, 0,
     "Удалить", "Delete",
@@ -436,7 +436,7 @@ const SmallButton sbSetMaskDelete
     DrawSB_SetMask_Delete
 );
 
-const SmallButton sbSetMaskInsert
+const SButton sbSetMaskInsert
 (
     &mspSetMask, 0,
     "Вставить", "Insert",
@@ -448,7 +448,7 @@ const SmallButton sbSetMaskInsert
 
 
 
-const SmallButton sbSetNameBackspace
+const SButton sbSetNameBackspace
 (
     &mpSetName, 0,
     "Backspace", "Backspace",
@@ -458,7 +458,7 @@ const SmallButton sbSetNameBackspace
     DrawSB_SetName_Backspace
 );
 
-const SmallButton sbSetNameDelete
+const SButton sbSetNameDelete
 (
     &mpSetName, 0,
     "Удалить", "Delete",
@@ -468,7 +468,7 @@ const SmallButton sbSetNameDelete
     DrawSB_SetName_Delete
 );
 
-const SmallButton sbSetNameInsert
+const SButton sbSetNameInsert
 (
     &mpSetName, 0,
     "Вставить", "Insert",
@@ -510,7 +510,7 @@ extern void PressSB_FM_Tab();
 
 extern const Page mspFileManager;
 
-const SmallButton sbFileManagerTab
+const SButton sbFileManagerTab
 (
     &mspFileManager, 0,
     "Tab", "Tab",
@@ -520,7 +520,7 @@ const SmallButton sbFileManagerTab
     DrawSB_FM_Tab
 );
 
-const SmallButton sbFileManagerLevelDown
+const SButton sbFileManagerLevelDown
 (
     &mspFileManager, 0,
     "Войти", "Enter",
@@ -530,7 +530,7 @@ const SmallButton sbFileManagerLevelDown
     DrawSB_FM_LevelDown
 );
 
-const SmallButton sbFileManagerLevelUp
+const SButton sbFileManagerLevelUp
 (
     &mspFileManager, 0,
     "Выйти", "Leave",
@@ -680,7 +680,7 @@ static const arrayHints hintsMemIntShowSignalAlways =
     {DrawSB_MemInt_ShowSignalAllways_No,  "сигнал из внутренней памяти виден только в режиме работы с внутренним запоминающим устройством", "the signal from internal memory is visible only in an operating mode with an internal memory"}
 };
 
-static const SmallButton sbMemIntShowSignalAlways
+static const SButton sbMemIntShowSignalAlways
 (
     &mspMemInt, 0,
     "Показывать всегда", "To show always",
@@ -742,7 +742,7 @@ static const arrayHints hintsMemIntModeShow =
     { DrawSB_MemInt_ModeShow_Both,   "на дисплее оба сигнала",        "on the display the both signals" }
 };
 
-static const SmallButton sbMemIntModeShow
+static const SButton sbMemIntModeShow
 (
     &mspMemInt, 0,
     "Вид сигнала", "Type of a signal",
@@ -753,7 +753,7 @@ static const SmallButton sbMemIntModeShow
     &hintsMemIntModeShow
 );
 
-const SmallButton sbMemIntSave
+const SButton sbMemIntSave
 (
     &mspMemInt, 0,
     "Сохранить", "Save",
@@ -763,7 +763,7 @@ const SmallButton sbMemIntSave
     DrawSB_MemInt_SaveToIntMemory
 );
 
-const SmallButton sbMemIntSaveToFlash
+const SButton sbMemIntSaveToFlash
 (
     &mspMemInt, 0,
     "Сохранить", "Save",
@@ -790,7 +790,7 @@ void PressSB_MemInt_Exit()
 
 extern const Page mpSetName;
 
-static const SmallButton sbExitSetName     // Кнопк для выхода из режима задания имени сохраняемому сигналу. Одновременно кнопка отказа от сохранения
+static const SButton sbExitSetName     // Кнопк для выхода из режима задания имени сохраняемому сигналу. Одновременно кнопка отказа от сохранения
 (
     &mpSetName, 0,
     EXIT_RU, EXIT_EN,
@@ -802,7 +802,7 @@ static const SmallButton sbExitSetName     // Кнопк для выхода из режима задания
 
 extern const Page mspMemInt;
 
-static const SmallButton sbExitMemInt    // Кнопка для выхода из режима малых кнопок.
+static const SButton sbExitMemInt    // Кнопка для выхода из режима малых кнопок.
 (
     &mspMemInt,
     COMMON_BEGIN_SB_EXIT,
@@ -1109,7 +1109,7 @@ void OnPressMemoryLatest()
     MODE_WORK = ModeWork_Latest;
 }
 
-static const SmallButton sbExitMemLast
+static const SButton sbExitMemLast
 (
     &mspMemLast,
     COMMON_BEGIN_SB_EXIT,
@@ -1142,7 +1142,7 @@ static void PressSB_SetMask_Exit()
     display.RemoveAddDrawFunction();
 }
 
-static const SmallButton sbExitSetMask
+static const SButton sbExitSetMask
 (
     &mspSetMask,
     COMMON_BEGIN_SB_EXIT,
@@ -1189,7 +1189,7 @@ static void PressSB_FM_Exit()
     display.RemoveAddDrawFunction();
 }
 
-const SmallButton sbExitFileManager
+const SButton sbExitFileManager
 (
     &mspFileManager, 0,
     EXIT_RU, EXIT_EN,

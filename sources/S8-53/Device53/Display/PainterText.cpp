@@ -711,7 +711,7 @@ int Painter::DrawStringInCenterRectAndBoundItC(int x, int y, int width, int heig
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawHintsForSmallButton(int x, int y, int width, void *smallButton)
 {
-    SmallButton *sb = (SmallButton*)smallButton;
+    SButton *sb = (SButton*)smallButton;
     FillRegionC(x, y, width, 239 - y, COLOR_BACK);
     DrawRectangleC(x, y, width, 239 - y, COLOR_FILL);
     const StructHelpSmallButton *structHelp = &(*sb->hintUGO)[0];

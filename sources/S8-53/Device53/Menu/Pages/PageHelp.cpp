@@ -47,7 +47,7 @@ void OnHelpRegSet(int angle)
 
 extern const Page mpHelp;
 
-const SmallButton sbHelpParagraphEnter
+const SButton sbHelpParagraphEnter
 (
     &mpHelp, HelpContent_EnterParagraphIsActive,
     "Открыть", "Open",
@@ -57,7 +57,7 @@ const SmallButton sbHelpParagraphEnter
     DrawSB_Help_ParagraphEnter
 );
 
-const SmallButton sbHelpParagraphLeave
+const SButton sbHelpParagraphLeave
 (
     &mpHelp, HelpContent_LeaveParagraphIsActive,
     "Закрыть", "Close",
@@ -67,7 +67,7 @@ const SmallButton sbHelpParagraphLeave
     DrawSB_Help_ParagraphLeave
 );
 
-const SmallButton sbHelpParagraphPrev
+const SButton sbHelpParagraphPrev
 (
     &mpHelp, 0,
     "Предыдущий раздел", "Previous section",
@@ -77,7 +77,7 @@ const SmallButton sbHelpParagraphPrev
     DrawSB_Help_ParagraphPrev
 );
 
-const SmallButton sbHelpParagraphNext
+const SButton sbHelpParagraphNext
 (
     &mpHelp, 0,
     "", "",
@@ -92,7 +92,7 @@ static void PressSB_Help_Exit()
     display.RemoveAddDrawFunction();
 }
 
-const SmallButton sbExitHelp
+const SButton sbExitHelp
 (
     &mpHelp,
     COMMON_BEGIN_SB_EXIT,

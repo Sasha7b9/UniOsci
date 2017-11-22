@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Globals.h"
 #include "Menu/MenuItems.h"
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "HelpContent.h"
 #include "Utils/CommonFunctions.h"
 

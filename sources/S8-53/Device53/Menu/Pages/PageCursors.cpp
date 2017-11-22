@@ -37,14 +37,14 @@ extern const Choice mcShowFreq;                         ///< ÊÓÐÎÑÐÛ - 1/dT
 
 extern const Page mspSet;                               ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ
 static void OnRotate_RegSet_Set(int angle);             ///< Âðàùåíèå ðó÷êè ÓÑÒÀÍÎÂÊÀ íà ñòðàíèöå ÊÓÐÑÎÐÛ-ÓÑÒÀÍÎÂÈÒÜ
-extern const SmallButton sbSetExit;                     ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Âûõîä
+extern const SButton sbSetExit;                     ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Âûõîä
 static void PressSB_Cursors_Exit();
-extern const SmallButton sbSetSource;                   ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Èñòî÷íèê
+extern const SButton sbSetSource;                   ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Èñòî÷íèê
 static void PressSB_Cursors_Source();
 static void DrawSB_Cursors_Source(int x, int y);
 static void DrawSB_Cursors_SourceA(int x, int y);
 static void DrawSB_Cursors_SourceB(int x, int y);
-extern const SmallButton sbSetU;                        ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóðñîðû U . Âûáîð êóðñîðà íàïðÿæåíèÿ - êóðñîð 1, êóðñîð 2, îáà êóðñîðà èëè îòêëþ÷åíû.
+extern const SButton sbSetU;                        ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóðñîðû U . Âûáîð êóðñîðà íàïðÿæåíèÿ - êóðñîð 1, êóðñîð 2, îáà êóðñîðà èëè îòêëþ÷åíû.
 static void PressSB_Cursors_U();
 static void DrawSB_Cursors_U(int x, int y);
 static void DrawSB_Cursors_U_Disable(int x, int y);
@@ -52,7 +52,7 @@ static void DrawSB_Cursors_U_Upper(int x, int y);
 static void DrawSB_Cursors_U_Lower(int x, int y);
 static void DrawSB_Cursors_U_Both_Enable(int x, int y);
 static void DrawSB_Cursors_U_Both_Disable(int x, int y);
-extern const SmallButton sbSetT;                        ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóðñîðû T . Âûáîð êóðñîðà âðåìåíè - êóðñîð 1, êóðñîð 2, îáà êóðñîðà èëè îòêëþ÷åíû.
+extern const SButton sbSetT;                        ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Êóðñîðû T . Âûáîð êóðñîðà âðåìåíè - êóðñîð 1, êóðñîð 2, îáà êóðñîðà èëè îòêëþ÷åíû.
 static void PressSB_Cursors_T();
 static void DrawSB_Cursors_T(int x, int y);
 static void DrawSB_Cursors_T_Disable(int x, int y);
@@ -60,10 +60,10 @@ static void DrawSB_Cursors_T_Both_Disable(int x, int y);
 static void DrawSB_Cursors_T_Left(int x, int y);
 static void DrawSB_Cursors_T_Right(int x, int y);
 static void DrawSB_Cursors_T_Both_Enable(int x, int y);
-extern const SmallButton sbSet100;                      ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - 100% . Óñòàíîâêà 100 ïðîöåíòîâ â òåêóùèå ìåñòà êóðñîðîâ.
+extern const SButton sbSet100;                      ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - 100% . Óñòàíîâêà 100 ïðîöåíòîâ â òåêóùèå ìåñòà êóðñîðîâ.
 static void DrawSB_Cursors_100(int x, int y);
 static void PressSB_Cursors_100();
-extern const SmallButton sbSetPointsPercents;           ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Ïåðåìåùåíèå . Ïåðåêëþ÷åíèå øàãà ïåðåìåùåíèÿ êóðñîðîâ - ïî ïèêñåëÿì èëè ïî ïðîöåíòàì.
+extern const SButton sbSetPointsPercents;           ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Ïåðåìåùåíèå . Ïåðåêëþ÷åíèå øàãà ïåðåìåùåíèÿ êóðñîðîâ - ïî ïèêñåëÿì èëè ïî ïðîöåíòàì.
 static void PressSB_Cursors_PointsPercents();
 static void DrawSB_Cursors_PointsPercents(int x, int y);
 static void DrawSB_Cursors_PointsPercents_Percents(int x, int y);
@@ -392,7 +392,7 @@ static void SetShiftCursPosT(Channel chan, int numCur, float delta)
 
 
 // ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - Âûõîä ----------------------------------------------------------------------------------------------------------------------
-static const SmallButton sbSetExit
+static const SButton sbSetExit
 (
     &mspSet,
     COMMON_BEGIN_SB_EXIT,
@@ -412,7 +412,7 @@ static const arrayHints hintsSetSource =
     { DrawSB_Cursors_SourceA, "êàíàë 1", "channel 1" }, { DrawSB_Cursors_SourceB, "êàíàë 2", "channel 2" }
 };
 
-static const SmallButton sbSetSource
+static const SButton sbSetSource
 (
     &mspSet, 0,
     "Èñòî÷íèê", "Source",
@@ -460,7 +460,7 @@ static const arrayHints hintsSetU =
                                     "cursors of tension are switched on, control of both cursors" }
 };
 
-static const SmallButton sbSetU
+static const SButton sbSetU
 (
     &mspSet, 0,
     "Êóðñîðû U", "Cursors U",
@@ -564,7 +564,7 @@ static const arrayHints hintsSetT =
                                         "cursors of time are switched on, control of both cursors" }    
 };
 
-static const SmallButton sbSetT
+static const SButton sbSetT
 (
     &mspSet, 0,
     "Êóðñîðû T", "Cursors T",
@@ -645,7 +645,7 @@ static void DrawSB_Cursors_T_Both_Enable(int x, int y)
 
 
 // ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ - 100% -----------------------------------------------------------------------------------------------------------------------
-static const SmallButton sbSet100
+static const SButton sbSet100
 (
     &mspSet, 0,
     "100%", "100%",
@@ -683,7 +683,7 @@ static const arrayHints hintsSetPointsPercents =
                                                 "the step of movement of the cursor is multiple to one pixel" }
 };
 
-static const SmallButton sbSetPointsPercents
+static const SButton sbSetPointsPercents
 (
     &mspSet, 0,
     "Ïåðåìåùåíèå", "Movement",

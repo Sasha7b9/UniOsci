@@ -37,27 +37,27 @@ extern const Page       pppMath_Function;               ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ
 static bool       IsActive_Math_Function();
 static void        OnPress_Math_Function();
 static void       OnRegSet_Math_Function(int delta);
-extern const SmallButton sbMath_Function_Exit;          ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Âûõîä
-extern const SmallButton sbMath_Function_ModeDraw;      ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ýêðàí
+extern const SButton sbMath_Function_Exit;          ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Âûõîä
+extern const SButton sbMath_Function_ModeDraw;      ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ýêðàí
 static void        OnPress_Math_Function_ModeDraw();
 static void           Draw_Math_Function_ModeDraw(int x, int y);
 static void           Draw_Math_Function_ModeDraw_Disable(int x, int y);
 static void           Draw_Math_Function_ModeDraw_Separate(int x, int y);
 static void           Draw_Math_Function_ModeDraw_Together(int x, int y);
-extern const SmallButton sbMath_Function_Type;          ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Âèä
+extern const SButton sbMath_Function_Type;          ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Âèä
 static void        OnPress_Math_Function_Type();
 static void           Draw_Math_Function_Type(int x, int y);
 static void           Draw_Math_Function_Type_Sum(int x, int y);
 static void           Draw_Math_Function_Type_Mul(int x, int y);
-extern const SmallButton sbMath_Function_ModeRegSet;    ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ðåæèì ðó÷êè ÓÑÒÀÍÎÂÊÀ
+extern const SButton sbMath_Function_ModeRegSet;    ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ðåæèì ðó÷êè ÓÑÒÀÍÎÂÊÀ
 static void        OnPress_Math_Function_ModeRegSet();
 static void           Draw_Math_Function_ModeRegSet(int x, int y);
 static void           Draw_Math_Function_ModeRegSet_Range(int x, int y);
 static void           Draw_Math_Function_ModeRegSet_RShift(int x, int y);
-extern const SmallButton sbMath_Function_RangeA;        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ìàñøòàá 1-ãî êàíàëà
+extern const SButton sbMath_Function_RangeA;        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ìàñøòàá 1-ãî êàíàëà
 static void        OnPress_Math_Function_RangeA();
 static void           Draw_Math_Function_RangeA(int x, int y);
-extern const SmallButton sbMath_Function_RangeB;        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ìàñøòàá 2-ãî êàíàëà
+extern const SButton sbMath_Function_RangeB;        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ìàñøòàá 2-ãî êàíàëà
 static void        OnPress_Math_Function_RangeB();
 static void           Draw_Math_Function_RangeB(int x, int y);
 extern const Page       pppMath_FFT;                    ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ
@@ -70,9 +70,9 @@ extern const Choice       cMath_FFT_Window;             ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ
 extern const Page      ppppMath_FFT_Cursors;            ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ
 static bool       IsActive_Math_FFT_Cursors();
 static void       OnRegSet_Math_FFT_Cursors(int angle);
-extern const SmallButton  cMath_FFT_Cursors_Exit;        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ - Âûõîä
+extern const SButton  cMath_FFT_Cursors_Exit;        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ - Âûõîä
 static void        OnPress_Math_FFT_Cursors_Exit();
-extern const SmallButton  cMath_FFT_Cursors_Source;      ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ - Èñòî÷íèê
+extern const SButton  cMath_FFT_Cursors_Source;      ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ - Èñòî÷íèê
 static void        OnPress_Math_FFT_Cursors_Source();
 static void           Draw_Math_FFT_Cursors_Source(int x, int y);
 extern const Choice       cMath_FFT_Limit;              ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - Äèàïàçîí
@@ -91,7 +91,7 @@ extern const Choice       cModeLongPressButtonTrig;     ///< ÑÅÐÂÈÑ - Ðåæ äëèò Ñ
 extern const Page        ppInformation;                 ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß
 static void        OnPress_Information();
 static void Information_Draw();
-extern const SmallButton sbInformation_Exit;             ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß - Âûõîä
+extern const SButton sbInformation_Exit;             ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß - Âûõîä
 static void        OnPress_Information_Exit();
 
 extern const Page mainPage;
@@ -350,7 +350,7 @@ static void OnRegSet_Math_Function(int delta)
 }
 
 // ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Âûõîä -------------------------------------------------------------------------------------------------------------
-static const SmallButton sbMath_Function_Exit
+static const SButton sbMath_Function_Exit
 (
     &pppMath_Function,
     COMMON_BEGIN_SB_EXIT,
@@ -369,7 +369,7 @@ static const arrayHints hintsMath_Function_ModeDraw =
                                             "Signals and mathematical function are removed in one window"}
 };
 
-static const SmallButton sbMath_Function_ModeDraw
+static const SButton sbMath_Function_ModeDraw
 (
     &pppMath_Function, 0,
     "Ýêðàí", "Display",
@@ -427,7 +427,7 @@ static const arrayHints hintsMath_Function_Type =
     { Draw_Math_Function_Type_Mul,      "Óìíîæåíèå",    "Multiplication" }
 };
 
-static const SmallButton sbMath_Function_Type
+static const SButton sbMath_Function_Type
 (
     &pppMath_Function, 0,
     "Âèä", "Type",
@@ -469,7 +469,7 @@ static const arrayHints hintsMath_Function_ModeRegSet =
     {Draw_Math_Function_ModeRegSet_RShift, "Óïðàâëåíèå ñìåùåíèåì", "Management of shift"}
 };
 
-static const SmallButton sbMath_Function_ModeRegSet
+static const SButton sbMath_Function_ModeRegSet
 (
     &pppMath_Function, 0,
     "Ðåæèì ðó÷êè ÓÑÒÀÍÎÂÊÀ", "Mode regulator SET",
@@ -502,7 +502,7 @@ static void Draw_Math_Function_ModeRegSet_RShift(int x, int y)
 }
 
 // ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ìàñøòàá 1-ãî êàíàëà -----------------------------------------------------------------------------------------------
-static const SmallButton sbMath_Function_RangeA
+static const SButton sbMath_Function_RangeA
 (
     &pppMath_Function, 0,
     "Ìàñøòàá 1-ãî êàíàëà", "Scale of the 1st channel",
@@ -524,7 +524,7 @@ static void Draw_Math_Function_RangeA(int x, int y)
 }
 
 // ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß - Ìàñøòàá 2-ãî êàíàëà -----------------------------------------------------------------------------------------------
-static const SmallButton sbMath_Function_RangeB
+static const SButton sbMath_Function_RangeB
 (
     &pppMath_Function, 0,
     "Ìàñøòàá 2-ãî êàíàëà", "Scale of the 2nd channel",
@@ -677,7 +677,7 @@ static void OnRegSet_Math_FFT_Cursors(int angle)
 }
 
 // ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ - Âûõîä ----------------------------------------------------------------------------------------------------
-static const SmallButton cMath_FFT_Cursors_Exit
+static const SButton cMath_FFT_Cursors_Exit
 (
     &ppppMath_FFT_Cursors,
     COMMON_BEGIN_SB_EXIT,
@@ -691,7 +691,7 @@ static void OnPress_Math_FFT_Cursors_Exit(void)
 }
 
 // ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ - Èñòî÷íèê -------------------------------------------------------------------------------------------------
-static const SmallButton cMath_FFT_Cursors_Source
+static const SButton cMath_FFT_Cursors_Source
 (
     &ppppMath_FFT_Cursors, 0,
     "Èñòî÷íèê", "Source",
@@ -990,7 +990,7 @@ static void Information_Draw(void)
 }
 
 // ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß - Âûõîä -----------------------------------------------------------------------------------------------------------------------
-const SmallButton sbInformation_Exit
+const SButton sbInformation_Exit
 (
     &ppInformation,
     COMMON_BEGIN_SB_EXIT,

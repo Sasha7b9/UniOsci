@@ -1,6 +1,6 @@
 #pragma once
 #include "defines.h"
-#include "MenuItems.h"
+#include "Menu/MenuItems.h"
 
 
 void    Governor_StartChange(Governor *governor, int detla);    // Запускает процессс анимации инкремента или декремента элемента меню типа Governor (в зависимости от знака delta)
