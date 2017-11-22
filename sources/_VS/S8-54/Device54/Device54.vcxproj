@@ -214,7 +214,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Tables.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Map.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h" />
@@ -449,7 +448,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp" />

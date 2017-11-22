@@ -1724,11 +1724,6 @@
               <FilePath>.\Device53\Utils\CreateTables.py</FilePath>
             </File>
             <File>
-              <FileName>Generator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Utils\Generator.h</FilePath>
-            </File>
-            <File>
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Map.h</FilePath>
@@ -1767,11 +1762,6 @@
               <FileName>TablesWindow.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\TablesWindow.h</FilePath>
-            </File>
-            <File>
-              <FileName>Generator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Utils\Generator.cpp</FilePath>
             </File>
             <File>
               <FileName>Map.cpp</FileName>

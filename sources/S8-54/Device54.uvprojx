@@ -1747,11 +1747,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Generator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Generator.h</FilePath>
-            </File>
-            <File>
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\Map.h</FilePath>
@@ -1795,11 +1790,6 @@
               <FileName>CreateTables.py</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\CreateTables.py</FilePath>
-            </File>
-            <File>
-              <FileName>Generator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Generator.cpp</FilePath>
             </File>
             <File>
               <FileName>Math.cpp</FileName>
