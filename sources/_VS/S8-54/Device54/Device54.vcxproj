@@ -217,7 +217,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Tables.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Strings.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.h" />
@@ -449,7 +448,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\channelSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.cpp" />

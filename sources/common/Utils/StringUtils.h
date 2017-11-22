@@ -59,6 +59,12 @@ public:
     bool GetWord(const char *string, Word *word, const int numWord);
 
     bool WordEqualZeroString(Word *word, char* string);
+    /// Сравнивает две строки. Число символов берётся из str1
+    bool EqualsStrings(char *str1, char *str2);
+
+    bool EqualsStrings(char *str1, char *str2, int size);
+
+    bool EqualsZeroStrings(char *str1, char *str2);
 private:
     static int NumDigitsInIntPart(float value);
     /// Возвращает false, если выбор невозможен - строка кончилась.

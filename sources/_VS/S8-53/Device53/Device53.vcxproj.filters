@@ -471,9 +471,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Strings.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\VCP.cpp">
       <Filter>VCP</Filter>
     </ClCompile>
@@ -825,9 +822,6 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Strings.h">
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\VCP.h">

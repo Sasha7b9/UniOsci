@@ -1767,11 +1767,6 @@
               <FilePath>.\Device\Utils\ProcessingSignal.h</FilePath>
             </File>
             <File>
-              <FileName>Strings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Strings.h</FilePath>
-            </File>
-            <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Utils\Math.cpp</FilePath>
@@ -1800,11 +1795,6 @@
               <FileName>Dictionary.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Dictionary.h</FilePath>
-            </File>
-            <File>
-              <FileName>Strings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Strings.cpp</FilePath>
             </File>
             <File>
               <FileName>Map.cpp</FileName>

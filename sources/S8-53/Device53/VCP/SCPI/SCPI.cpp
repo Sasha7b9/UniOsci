@@ -2,7 +2,6 @@
 #include "SCPI.h"
 #include "commonSCPI.h"
 #include "controlSCPI.h"
-#include "Utils/Strings.h"
 #include "Utils/StringUtils.h"
 #include <ctype.h>
 
@@ -119,7 +118,7 @@ void SCPI_ProcessingCommand(const StructCommand *commands, uint8 *buffer)
     {
         numCommand++;   
         name = commands[numCommand].name;
-    } while (name != 0 && (!EqualsStrings((char*)buffer, name, sizeNameCommand)));
+    } while (name != 0 && (!su.EqualsStrings((char*)buffer, name, sizeNameCommand)));
 
     if (name != 0) 
     {

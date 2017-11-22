@@ -1729,11 +1729,6 @@
               <FilePath>.\Device53\Utils\ProcessingSignal.h</FilePath>
             </File>
             <File>
-              <FileName>Strings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Utils\Strings.h</FilePath>
-            </File>
-            <File>
               <FileName>Measures.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Utils\Measures.cpp</FilePath>
@@ -1742,11 +1737,6 @@
               <FileName>ProcessingSignal.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Utils\ProcessingSignal.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Strings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Utils\Strings.cpp</FilePath>
             </File>
             <File>
               <FileName>Math.cpp</FileName>

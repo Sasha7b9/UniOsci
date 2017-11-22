@@ -591,3 +591,46 @@ bool StringUtils::WordEqualZeroString(Word *word, char* string)
 
     return (ch - string) == word->numSymbols;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::EqualsZeroStrings(char *str1, char *str2)
+{
+    while ((*str1) == (*str2))
+    {
+        if ((*str1) == '\0')
+        {
+            return true;
+        }
+        str1++;
+        str2++;
+    }
+    return false;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::EqualsStrings(char *str1, char *str2, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (str1[i] != str2[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::EqualsStrings(char *str1, char *str2)
+{
+    int size = strlen(str1);
+
+    for (int i = 0; i < size; i++)
+    {
+        if (str1[i] != str2[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
