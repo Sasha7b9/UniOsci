@@ -6,7 +6,6 @@
 #include "FPGA/FPGAMath.h"
 #include "Hardware/RAM.h"
 #include "Menu/Pages/PageMemory.h"
-#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Utils/ProcessingSignal.h"
 
@@ -725,7 +724,7 @@ static void DrawSignalLined(const uint8 *data, int startPoint, int endPoint, int
             if (x0 >= gridLeft && x0 <= gridRight)
             {
                 int index = i - startPoint;
-                int y = calculateFiltr ? _math.CalculateFiltr(data, i, numPoints) : data[i];
+                int y = calculateFiltr ? math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING) : data[i];
                 int newY = 0;
                 CONVERT_DATA_TO_DISPLAY(newY, y);
                 dataCD[index] = (uint8)newY;
@@ -800,7 +799,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
         for (int i = startPoint; i < endPoint; i++)
         {
             int index = i - startPoint;
-            CONVERT_DATA_TO_DISPLAY(dataCD[index], _math.CalculateFiltr(data, i, numPoints));
+            CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
         }
         painter.DrawSignal(grid.Left(), dataCD, false);
     }
@@ -810,7 +809,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
         {
             int index = i - startPoint;
             int dat = 0;
-            CONVERT_DATA_TO_DISPLAY(dat, _math.CalculateFiltr(data, i, numPoints));
+            CONVERT_DATA_TO_DISPLAY(dat, math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
             painter.SetPoint(grid.Left() + (int)(index * scaleX), dat);
         }
     }

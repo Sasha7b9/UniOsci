@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Measures.h"
 #include "GlobalFunctions.h"
-#include "_Math.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"

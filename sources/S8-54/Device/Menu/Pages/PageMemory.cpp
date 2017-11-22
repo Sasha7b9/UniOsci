@@ -12,7 +12,6 @@
 #include "Menu/Pages/Definition.h"
 #include "Utils/Dictionary.h"
 #include "Utils/GlobalFunctions.h"
-#include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Utils/CommonFunctions.h"

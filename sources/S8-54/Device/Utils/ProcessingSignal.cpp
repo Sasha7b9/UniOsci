@@ -1,5 +1,4 @@
 #include "ProcessingSignal.h"
-#include "_Math.h"
 #include "Log.h"
 #include "Data/Reader.h"
 #include "FPGA/FPGAMath.h"
@@ -1081,12 +1080,12 @@ void Processing::SetData(bool needSmoothing)
 
     if (ENABLED_DS_A)
     {
-        _math.CalculateFiltrArray(IN_A, OUT_A, length, needSmoothing);
+        math.CalculateFiltrArray(IN_A, OUT_A, length, needSmoothing ? NUM_SMOOTHING : 1);
         memcpy(IN_A, OUT_A, length);
     };
     if (ENABLED_DS_B)
     {
-        _math.CalculateFiltrArray(IN_B, OUT_B, length, needSmoothing);
+        math.CalculateFiltrArray(IN_B, OUT_B, length, needSmoothing ? NUM_SMOOTHING : 1);
         memcpy(IN_B, OUT_B, length);
     };
   

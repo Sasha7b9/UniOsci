@@ -1,7 +1,6 @@
 #include "Settings.h"
 #include "Display/Grid.h"
 #include "SettingsCursors.h"
-#include "Utils/_Math.h"
 #include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
 #include "Menu/MenuFunctions.h"

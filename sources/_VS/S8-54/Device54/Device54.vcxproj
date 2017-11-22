@@ -217,7 +217,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Map.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\_Math.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Strings.h" />
@@ -454,7 +453,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\_Math.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.cpp" />

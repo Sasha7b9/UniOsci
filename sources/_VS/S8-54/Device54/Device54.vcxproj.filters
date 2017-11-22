@@ -498,9 +498,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.h">
       <Filter>VCP\SCPI</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\_Math.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\Math.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -961,9 +958,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\trigSCPI.cpp">
       <Filter>VCP\SCPI</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\_Math.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\Math.cpp">
       <Filter>Utils</Filter>

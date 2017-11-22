@@ -1812,16 +1812,6 @@
               <FilePath>.\Device\Utils\GlobalFunctions.cpp</FilePath>
             </File>
             <File>
-              <FileName>_Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\_Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>_Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\_Math.h</FilePath>
-            </File>
-            <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Utils\Math.cpp</FilePath>

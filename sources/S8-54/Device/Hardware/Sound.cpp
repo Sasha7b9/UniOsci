@@ -3,7 +3,6 @@
 #include "Log.h"
 #include "Sound.h"
 #include "Settings/Settings.h"
-#include "Utils/_Math.h"
 #include "Hardware/Timer.h"
 #include <stm32f437xx.h>
 #include <stm32f4xx_hal.h>
