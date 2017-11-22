@@ -6,10 +6,6 @@
 class Math_
 {
 public:
-    /// Возвращает модуль value
-    int FabsInt(int value);
-
-    float LimitationFloat(float value, float min, float max);
 
     uint8 CalculateFiltr(const uint8 *data, int x, int numPoints);
 
