@@ -161,20 +161,20 @@ PanelButton ButtonIsPress(uint16 command)
     return button;
 }
 
-Regulator RegulatorLeft(uint16 command)
+PanelRegulator RegulatorLeft(uint16 command)
 {
     if(command >= 20 && command <= 27)
     {
-        return (Regulator)command;
+        return (PanelRegulator)command;
     }
     return R_Empty;
 }
 
-Regulator RegulatorRight(uint16 command)
+PanelRegulator RegulatorRight(uint16 command)
 {
     if(((command & 0x7f) >= 20) && ((command & 0x7f) <= 27))
     {
-        return (Regulator)(command & 0x7f);
+        return (PanelRegulator)(command & 0x7f);
     }
     return R_Empty;
 }
@@ -200,8 +200,8 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
 
     PanelButton releaseButton = ButtonIsRelease(command);
     PanelButton pressButton = ButtonIsPress(command);
-    Regulator regLeft = RegulatorLeft(command);
-    Regulator regRight = RegulatorRight(command);
+    PanelRegulator regLeft = RegulatorLeft(command);
+    PanelRegulator regRight = RegulatorRight(command);
 
     if (pressButton)
     {

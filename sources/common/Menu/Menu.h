@@ -51,6 +51,8 @@ public:
     void TemporaryEnableStrNavi(void);
     /// Ввыполнить эту функцию после Menu_UpdateInput().
     void RunAfterUpdate(pFuncVV func);
+    /// Нарисовать меню
+    void Draw();
 };
 
 

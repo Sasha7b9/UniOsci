@@ -360,20 +360,8 @@
     <ClInclude Include="..\..\..\S8-54\Device\Hardware\Timer.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Menu.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuDrawing.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Log.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\Definition.h">
-      <Filter>Menu\Pages</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.h">
       <Filter>Menu\Pages</Filter>
@@ -495,13 +483,25 @@
     <ClInclude Include="..\..\..\common\Utils\Map.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\Menu\MenuItems.h">
+    <ClInclude Include="..\..\..\common\Menu\Menu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h">
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h">
       <Filter>Menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\Menu\MenuItems.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Menu\Pages\Definition.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h">
       <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
@@ -821,21 +821,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Hardware\FLASH.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Menu.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuDrawing.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItemsGraphics.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\Definition.cpp">
-      <Filter>Menu\Pages</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
@@ -950,13 +935,28 @@
     <ClCompile Include="..\..\..\common\Utils\Map.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\Menu\Menu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Menu\MenuFunctions.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Menu\MenuItemsGraphics.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Menu\MenuItemsLogic.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\common\Menu\MenuFunctions.cpp">
+    <ClCompile Include="..\..\..\common\Menu\Pages\Definition.cpp">
+      <Filter>Menu\Pages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
   </ItemGroup>

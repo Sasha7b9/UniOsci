@@ -38,7 +38,7 @@ typedef enum
     R_TShift    = 25,
     R_TrigLev   = 26,   // УРОВЕНЬ
     R_Set       = 27    // УСТАНОВКА
-} Regulator;
+} PanelRegulator;
 
 // Направления вращения регуляторов.
 typedef enum

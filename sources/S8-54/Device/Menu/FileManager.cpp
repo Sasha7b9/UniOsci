@@ -1,23 +1,12 @@
-#include "FileManager.h"
 #include "Globals.h"
-#include "Menu/MenuDrawing.h"
-#include "Pages/PageMemory.h"
-#include "Settings/Settings.h"
-#include "Display/Colors.h"
-#include "Display/Display.h"
-#include "Display/font/Font.h"
 #include "Display/Grid.h"
+#include "Display/font/Font.h"
+#include "FlashDrive/FlashDrive.h"
+#include "Hardware/RTC.h"
+#include "Hardware/Sound.h"
+#include "Menu/Menu.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
-#include "Hardware/Hardware.h"
-#include "Hardware/Sound.h"
-#include "Hardware/RTC.h"
-#include "FlashDrive/FlashDrive.h"
-#include "Panel/Panel.h"
-#include "Log.h"
-#include "Hardware/Timer.h"
-#include "Hardware/FSMC.h"
-#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,7 +154,7 @@ void FM_Draw(void)
     if (FM_NEED_REDRAW == FM_REDRAW_FULL)
     {
         painter.BeginScene(gColorBack);
-        Menu_Draw();
+        menu.Draw();
         painter.DrawRectangle(0, 0, width, 239, gColorFill);
         painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, gColorBack);
         FDrive_GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);

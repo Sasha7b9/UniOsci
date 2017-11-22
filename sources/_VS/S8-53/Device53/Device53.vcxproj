@@ -123,9 +123,13 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\common\commonDefines.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItemsLogic.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\Pages\Definition.cpp" />
     <ClCompile Include="..\..\..\common\Settings\commonSettings.cpp" />
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Map.cpp" />
@@ -172,11 +176,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Log.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\main.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Menu.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuDrawing.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\Definition.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.cpp" />
@@ -449,9 +448,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
+    <ClInclude Include="..\..\..\common\Menu\Menu.h" />
+    <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItems.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h" />
+    <ClInclude Include="..\..\..\common\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\..\common\Settings\commonSettings.h" />
     <ClInclude Include="..\..\..\common\Settings\commonSettingsMath.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
@@ -497,10 +499,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Log.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\main.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Menu.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuItemsGraphics.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.h" />
@@ -585,7 +583,6 @@
   <ItemGroup>
     <Text Include="..\..\..\S8-53\Device53\err.txt" />
     <Text Include="..\..\..\S8-53\Device53\includes.txt" />
-    <Text Include="..\..\..\S8-53\Device53\Menu\Menu_reference.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

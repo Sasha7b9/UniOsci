@@ -244,7 +244,7 @@ void Display::Update(void)
 
     FreqMeter_Draw(grid.Left(), GRID_TOP);
 
-    Menu_Draw();
+    menu.Draw();
 
     if(SHOW_RAND_STAT)
     {

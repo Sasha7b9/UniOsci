@@ -134,9 +134,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
+    <ClInclude Include="..\..\..\common\Menu\Menu.h" />
+    <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItems.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h" />
+    <ClInclude Include="..\..\..\common\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
     <ClInclude Include="..\..\..\common\structs.h" />
@@ -188,9 +191,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Log.h" />
     <ClInclude Include="..\..\..\S8-54\Device\main.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Menu.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuDrawing.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.h" />
@@ -368,9 +368,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItemsLogic.cpp" />
+    <ClCompile Include="..\..\..\common\Menu\Pages\Definition.cpp" />
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Map.cpp" />
@@ -421,10 +425,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Log.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\main.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Menu.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuDrawing.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\MenuItemsGraphics.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\Definition.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.cpp" />

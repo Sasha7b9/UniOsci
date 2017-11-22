@@ -12,13 +12,13 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static void ResetItemsUnderButton(void);
 static void DrawOpenedPage(Page *page, int layer, int yTop);
 static void DrawTitlePage(Page *page, int layer, int yTop);
 static void DrawItemsPage(Page *page, int layer, int yTop);
 static void DrawPagesUGO(Page *page, int right, int bottom);
 static void DrawNestingPage(Page *page, int left, int bottom);
 static int CalculateX(int layer);
-static void ResetItemsUnderButton(void);
 static int ItemOpenedPosY(void *item);
 
 static void *itemUnderButton[B_NumButtons] = {0};
@@ -83,64 +83,6 @@ static void DrawHintItem(int x, int y, int width)
     if (item->type == Item_SmallButton)
     {
         painter.DrawHintsForSmallButton(x, y, width, (SButton*)item);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu_Draw(void)
-{
-    if(MENU_IS_SHOWN || TypeOpenedItem() != Item_Page)
-    {
-        ResetItemsUnderButton();
-        void *item = OpenedItem();
-        if(MENU_IS_SHOWN)
-        {
-            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : Keeper(item), 0, GRID_TOP);
-        }
-        else
-        {
-            if(TypeMenuItem(item) == Item_Choice || TypeMenuItem(item) == Item_ChoiceReg)
-            {
-                ((Choice *)item)->Draw(CalculateX(0), GRID_TOP, false);
-                painter.DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));
-                painter.DrawVLine(CalculateX(0) + 1, GRID_TOP + 1, GRID_TOP + 34);
-                painter.DrawVLine(GRID_RIGHT, GRID_TOP + 30, GRID_TOP + 40, gColorFill);
-                painter.DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, gColorBack);
-                painter.DrawHLine(GRID_TOP + 35, CalculateX(0) - 1, GRID_RIGHT - 1);
-            }
-            else if(TypeMenuItem(item) == Item_Governor)
-            {
-                ((Governor *)item)->Draw(CalculateX(0), GRID_TOP, true);
-                painter.DrawHLine(GRID_TOP, CalculateX(0) - 2, GRID_RIGHT, gColorFill);
-                painter.DrawVLine(GRID_RIGHT, GRID_TOP, GRID_TOP + 40);
-            }
-        }
-    }
-
-    if (HINT_MODE_ENABLE)
-    {
-        int x = 1;
-        int y = 0;
-        int width = 318;
-        if (MENU_IS_SHOWN)
-        {
-            width = MenuIsMinimize() ? 289 : 220;
-        }
-        painter.DrawTextInBoundedRectWithTransfers(x, y, width,
-            LANG_RU ?    "Включён режим подсказок. В этом режиме при нажатии на кнопку на экран выводится информация о её назначении. "
-                                                "Чтобы выключить этот режим, нажмите кнопку ПОМОЩЬ и удерживайте её в течение 0.5с." : 
-                                                "Mode is activated hints. In this mode, pressing the button displays the information on its purpose. "
-                                                "To disable this mode, press the button HELP and hold it for 0.5s.",
-                                                gColorBack, gColorFill);
-        y += LANG_RU ? 49 : 40;
-        if (gStringForHint)
-        {
-            painter.DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, gColorBack, Color::WHITE);
-        }
-        else if (gItemHint)
-        {
-            DrawHintItem(x, y, width);
-        }
     }
 }
 
@@ -407,15 +349,6 @@ void *ItemUnderButton(PanelButton button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ResetItemsUnderButton(void)
-{
-    for(int i = 0; i < B_NumButtons; i++)
-    {
-        itemUnderButton[i] = 0;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int ItemOpenedPosY(void *item)
 {
     Page *page = Keeper(item);
@@ -426,4 +359,71 @@ int ItemOpenedPosY(void *item)
         y = GRID_BOTTOM - HeightOpenedItem(item) - 2;
     }
     return y + 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::Draw(void)
+{
+    if (MENU_IS_SHOWN || TypeOpenedItem() != Item_Page)
+    {
+        ResetItemsUnderButton();
+        void *item = OpenedItem();
+        if (MENU_IS_SHOWN)
+        {
+            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : Keeper(item), 0, GRID_TOP);
+        }
+        else
+        {
+            if (TypeMenuItem(item) == Item_Choice || TypeMenuItem(item) == Item_ChoiceReg)
+            {
+                ((Choice *)item)->Draw(CalculateX(0), GRID_TOP, false);
+                painter.DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));
+                painter.DrawVLine(CalculateX(0) + 1, GRID_TOP + 1, GRID_TOP + 34);
+                painter.DrawVLine(GRID_RIGHT, GRID_TOP + 30, GRID_TOP + 40, gColorFill);
+                painter.DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, gColorBack);
+                painter.DrawHLine(GRID_TOP + 35, CalculateX(0) - 1, GRID_RIGHT - 1);
+            }
+            else if (TypeMenuItem(item) == Item_Governor)
+            {
+                ((Governor *)item)->Draw(CalculateX(0), GRID_TOP, true);
+                painter.DrawHLine(GRID_TOP, CalculateX(0) - 2, GRID_RIGHT, gColorFill);
+                painter.DrawVLine(GRID_RIGHT, GRID_TOP, GRID_TOP + 40);
+            }
+        }
+    }
+
+    if (HINT_MODE_ENABLE)
+    {
+        int x = 1;
+        int y = 0;
+        int width = 318;
+        if (MENU_IS_SHOWN)
+        {
+            width = MenuIsMinimize() ? 289 : 220;
+        }
+        painter.DrawTextInBoundedRectWithTransfers(x, y, width,
+                                                   LANG_RU ? "Включён режим подсказок. В этом режиме при нажатии на кнопку на экран выводится информация о её назначении. "
+                                                   "Чтобы выключить этот режим, нажмите кнопку ПОМОЩЬ и удерживайте её в течение 0.5с." :
+                                                   "Mode is activated hints. In this mode, pressing the button displays the information on its purpose. "
+                                                   "To disable this mode, press the button HELP and hold it for 0.5s.",
+                                                   gColorBack, gColorFill);
+        y += LANG_RU ? 49 : 40;
+        if (gStringForHint)
+        {
+            painter.DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, gColorBack, Color::WHITE);
+        }
+        else if (gItemHint)
+        {
+            DrawHintItem(x, y, width);
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ResetItemsUnderButton(void)
+{
+    for (int i = 0; i < B_NumButtons; i++)
+    {
+        itemUnderButton[i] = 0;
+    }
 }

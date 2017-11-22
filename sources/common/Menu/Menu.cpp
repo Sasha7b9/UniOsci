@@ -63,6 +63,7 @@ static  pFuncVpV    FuncForLongPressureOnItem(void *item);  ///< Возвращает функ
 
 static void OnTimerStrNaviAutoHide(void);                   ///< Функция, которая отключит вывод строки навигации меню.
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define SIZE_BUFFER_FOR_BUTTONS 10
 static PanelButton bufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_Empty};

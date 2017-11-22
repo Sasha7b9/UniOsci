@@ -6,15 +6,12 @@
 #include "FPGA/FPGA.h"
 #include "Hardware/FLASH.h"
 #include "Hardware/Sound.h"
-#include "Menu/MenuDrawing.h"
-#include "Menu/MenuFunctions.h"
+#include "Menu/Menu.h"
 #include "Menu/Pages/Definition.h"
-#include "Settings/SettingsDebug.h"
-#include "Utils/Debug.h"
+#include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
-#include "Utils/CommonFunctions.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1024,7 +1021,7 @@ static void DebugShowSetInfo_Draw(void)
 
     DRAW_FORMAT("numSmoothForRand : %d", NRST_NUM_SMOOTH_FOR_RAND);
 
-    Menu_Draw();
+    menu.Draw();
     painter.EndScene();
 }
 

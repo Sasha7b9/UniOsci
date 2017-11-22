@@ -47,7 +47,7 @@ typedef enum
     R_TShift_BTN    = 0x21,     // Установка нуля
     R_TrigLev_BTN   = 0x22,     // Установка нуля синхронизации или автоматической синхронизации
     R_Set_BTN       = 0x23
-} Regulator;
+} PanelRegulator;
 
 // Направления вращения регуляторов.
 typedef enum
@@ -62,4 +62,4 @@ typedef enum
 
 
 const char *NameButton(PanelButton button);
-const char *NameRegulator(Regulator regulator);
+const char *NameRegulator(PanelRegulator regulator);

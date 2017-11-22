@@ -1,20 +1,16 @@
-#include "Menu/Pages/Definition.h"
 #include "main.h"
-#include "Display/Display.h"
 #include "Display/Symbols.h"
-#include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
-#include "fpga/FPGAMath.h"
-#include "Hardware/FLASH.h"
+#include "FPGA/FPGAMath.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/RTC.h"
 #include "Hardware/Sound.h"
-#include "Menu/MenuDrawing.h"
-#include "Menu/MenuFunctions.h"
+#include "Menu/Menu.h"
+#include "Menu/Pages/Definition.h"
 #include "Panel/Panel.h"
+#include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
-#include "Utils/CommonFunctions.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1043,7 +1039,7 @@ static void Information_Draw(void)
     painter.DrawStringInCenterRect(0, 220 + dY, 320, 20, "Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-262-57-51");
 #endif
 
-    Menu_Draw();
+    menu.Draw();
     painter.EndScene();
 }
 
