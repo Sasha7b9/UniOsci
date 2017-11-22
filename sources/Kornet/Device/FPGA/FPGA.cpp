@@ -495,21 +495,21 @@ void FPGA::LoadSettings()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::IncreaseRange(Channel ch)
 {
-    Math::LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(RangeSize - 1));
+    LimitationIncrease<uint8>((uint8 *)(&SET_RANGE(ch)), (uint8)(RangeSize - 1));
     LoadRanges();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::DecreaseRange(Channel ch)
 {
-    Math::LimitationDecrease<uint8>((uint8 *)(&SET_RANGE(ch)), 0);
+    LimitationDecrease<uint8>((uint8 *)(&SET_RANGE(ch)), 0);
     LoadRanges();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::IncreaseTBase()
 {
-    Math::LimitationIncrease<uint8>((uint8 *)(&SET_TBASE), (uint8)(TBaseSize - 1));
+    LimitationIncrease<uint8>((uint8 *)(&SET_TBASE), (uint8)(TBaseSize - 1));
     LoadTBase();
     Start();
 }
@@ -517,7 +517,7 @@ void FPGA::IncreaseTBase()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::DecreaseTBase()
 {
-    Math::LimitationDecrease<uint8>((uint8 *)(&SET_TBASE), 0);
+    LimitationDecrease<uint8>((uint8 *)(&SET_TBASE), 0);
     LoadTBase();
     Start();
 }
@@ -722,7 +722,7 @@ void FPGA::LoadTShift()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetRShift(Channel ch, uint16 rShift)
 {
-    Math::Limitation<uint16>(&rShift, RShiftMin, RShiftMax);
+    Limitation<uint16>(&rShift, RShiftMin, RShiftMax);
     SET_RSHIFT(ch) = rShift;
     LoadRShift(ch);
 }

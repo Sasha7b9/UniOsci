@@ -107,7 +107,7 @@ int Menu::HeightOpenedItem(void *item)
     if(type == Item_Page)
     {
         int numItems = NumItemsInPage((const Page *)item) - NumCurrentSubPage((Page *)item) * MENU_ITEMS_ON_DISPLAY;
-        math.Limitation<int>(&numItems, 0, MENU_ITEMS_ON_DISPLAY);
+        Limitation<int>(&numItems, 0, MENU_ITEMS_ON_DISPLAY);
         return MP_TITLE_HEIGHT + MI_HEIGHT * numItems;
     } 
     else if(type == Item_Choice || type == Item_ChoiceReg)

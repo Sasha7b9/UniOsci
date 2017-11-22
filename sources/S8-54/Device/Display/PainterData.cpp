@@ -996,7 +996,7 @@ static int Ordinate(uint8 x, float scale)
         return -1;
     }
 
-    math.LimitationRet<uint8>((uint8)(x - MIN_VALUE), 0, (MAX_VALUE - MIN_VALUE));
+    LimitationRet<uint8>((uint8)(x - MIN_VALUE), 0, (MAX_VALUE - MIN_VALUE));
 
     return (int)((17.0f - scale * x) + 0.5f);
 }

@@ -71,19 +71,6 @@ public:
 
     void CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);
 
-    template<class T>
-    static void LimitationIncrease(T *value, T max)
-    {
-        if ((*value) < max) { ++(*value); }
-    }
-
-    /// Инкрементировать *value, но не больше, чем max
-    template<class T>
-    static void LimitationDecrease(T *value, T min)
-    {
-        if (*value > min)  { --(*value); }
-    }
-
     /// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
     template<class T>
     static void AddtionThisLimitation(T *value, int term, T min, T max)
@@ -98,21 +85,6 @@ public:
             if (min - term <= *value)   { *value += (T)term; }
             else                        { *value = min;      }
         }
-    }
-
-    template<class T>
-    static void Limitation(T *value, T min, T max)
-    {
-        if (*value < min)       { *value = min; }
-        else if (*value > max)  { *value = max; }
-    }
-
-    template<class T>
-    static T LimitationRet(T value, T min, T max)
-    {
-        if(value < min) { return min; }
-        if(value > max) { return max; }
-        return value;
     }
 };
 
@@ -156,7 +128,29 @@ template<class T> void CircleDecrease(T *value, T min, T max)
     if (*value > min) { --(*value); }
     else              { *value = (T)max; }
 }
+/// Инкрементировать *value, но не больше, чем max
+template<class T> static void LimitationIncrease(T *value, T max) 
+{
+    if ((*value) < max) { ++(*value); }
+}
+/// Декрементировать *value, но не меньше, чем min
+template<class T> static void LimitationDecrease(T *value, T min)
+{
+    if (*value > min) { --(*value); }
+}
 
+template<class T> static void Limitation(T *value, T min, T max)
+{
+    if (*value < min)      { *value = min; }
+    else if (*value > max) { *value = max; }
+}
+
+template<class T> static T LimitationRet(T value, T min, T max)
+{
+    if (value < min) { return min; }
+    if (value > max) { return max; }
+    return value;
+}
 
 #define _bitset(bits)                               \
   ((uint8)(                                         \

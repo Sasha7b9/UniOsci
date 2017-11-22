@@ -144,11 +144,11 @@ void SetCursPosU(Channel chan, int numCur, float pos)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_U(chan, numCur) = math.LimitationRet(pos, 0.0f, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = LimitationRet(pos, 0.0f, MAX_POS_U);
     }
     else
     {
-        CURS_POS_U(chan, numCur) = math.LimitationRet(pos, 0.0f, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = LimitationRet(pos, 0.0f, MAX_POS_U);
     }
 }
 
@@ -158,11 +158,11 @@ void SetCursPosT(Channel chan, int numCur, float pos)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_T(chan, numCur) = math.LimitationRet(pos, 0.0f, (float)MAX_POS_T);
+        CURS_POS_T(chan, numCur) = LimitationRet(pos, 0.0f, (float)MAX_POS_T);
     }
     else
     {
-        CURS_POS_T(chan, numCur) = math.LimitationRet(pos, 0.0f, (float)MAX_POS_T);
+        CURS_POS_T(chan, numCur) = LimitationRet(pos, 0.0f, (float)MAX_POS_T);
     }
 }
 
@@ -346,11 +346,11 @@ static void SetShiftCursPosU(Channel chan, int numCur, float delta)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_U(chan, numCur) = math.LimitationRet(CURS_POS_U(chan, numCur) - delta, 0.0f, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = LimitationRet(CURS_POS_U(chan, numCur) - delta, 0.0f, MAX_POS_U);
     }
     else
     {
-        CURS_POS_U(chan, numCur) = math.LimitationRet(CURS_POS_U(chan, numCur) - delta, 0.0f, MAX_POS_U);
+        CURS_POS_U(chan, numCur) = LimitationRet(CURS_POS_U(chan, numCur) - delta, 0.0f, MAX_POS_U);
     }
 }
 
@@ -381,11 +381,11 @@ static void SetShiftCursPosT(Channel chan, int numCur, float delta)
 {
     if (CURS_MOVEMENT_IS_PERCENTS)
     {
-        CURS_POS_T(chan, numCur) = math.LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
+        CURS_POS_T(chan, numCur) = LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
     }
     else
     {
-        CURS_POS_T(chan, numCur) = math.LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
+        CURS_POS_T(chan, numCur) = LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
     }
 }
 

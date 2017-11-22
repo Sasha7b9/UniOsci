@@ -134,7 +134,7 @@ void OnChanged_PeakDet(bool active)
         {
             int centerX = SHIFT_IN_MEMORY + grid.Width() / 2;
             SHIFT_IN_MEMORY = centerX / 2 - grid.Width() / 2;
-            math.Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - grid.Width());
+            Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - grid.Width());
             ChangeC_Memory_NumPoints(true);
         }
     }

@@ -431,7 +431,7 @@ static void ReadRandomizeChannel(Channel ch, uint16 addrFirstRead, uint8 *data, 
         while (data <= last)
         {
             newData = READ_DATA_ADC_16(addr, ch);
-            *data = (uint8)((int)(2 * AVE_VALUE) - math.LimitationRet<uint8>((uint8)newData, MIN_VALUE, MAX_VALUE));
+            *data = (uint8)((int)(2 * AVE_VALUE) - LimitationRet<uint8>((uint8)newData, MIN_VALUE, MAX_VALUE));
             data += step;
         }
     }
@@ -651,7 +651,7 @@ static void InverseDataIsNecessary(Channel ch, uint8 *data)
     {
         for (int i = 0; i < FPGA_MAX_POINTS; i++)
         {
-            data[i] = (uint8)((int)(2 * AVE_VALUE) - math.LimitationRet<uint8>(data[i], MIN_VALUE, MAX_VALUE));
+            data[i] = (uint8)((int)(2 * AVE_VALUE) - LimitationRet<uint8>(data[i], MIN_VALUE, MAX_VALUE));
         }
     }
 }

@@ -147,7 +147,7 @@ void DataStorage::CalculateLimits(uint8 *data0, uint8 *data1, DataSettings *dss)
     else
     {
         int allDatas = dataStorage.NumElementsWithSameSettings();
-        math.Limitation<int>(&allDatas, 1, NUM_MIN_MAX);
+        Limitation<int>(&allDatas, 1, NUM_MIN_MAX);
         
         if(dataStorage.NumElementsWithSameSettings() >= NUM_MIN_MAX)
         {

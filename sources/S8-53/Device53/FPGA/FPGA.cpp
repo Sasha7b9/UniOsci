@@ -239,7 +239,7 @@ bool FPGA::IsRunning(void)
 #define WRITE_AND_OR_INVERSE(addr, data, ch)                                                            \
     if(SET_INVERSE(ch))                                                                                 \
     {                                                                                                   \
-        data = (uint8)((int)(2 * AVE_VALUE) - math.LimitationRet<uint8>(data, MIN_VALUE, MAX_VALUE));   \
+        data = (uint8)((int)(2 * AVE_VALUE) - LimitationRet<uint8>(data, MIN_VALUE, MAX_VALUE));   \
     }                                                                                                   \
     *addr = data;
 
@@ -836,7 +836,7 @@ void FPGA::InverseDataIsNecessary(Channel chan, uint8 *data)
     {
         for (int i = 0; i < FPGA_MAX_POINTS; i++)
         {
-            data[i] = (uint8)((int)(2 * AVE_VALUE) - math.LimitationRet<uint8>(data[i], MIN_VALUE, MAX_VALUE));
+            data[i] = (uint8)((int)(2 * AVE_VALUE) - LimitationRet<uint8>(data[i], MIN_VALUE, MAX_VALUE));
         }
     }
 }

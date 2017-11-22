@@ -281,7 +281,7 @@ void FPGA::SetRShift(Channel chan, int16 rShift)
         display.ShowWarningBad(chan == A ? LimitChan1_RShift : LimitChan2_RShift);
     }
 
-    math.Limitation<int16>(&rShift, RShiftMin, RShiftMax);
+    Limitation<int16>(&rShift, RShiftMin, RShiftMax);
 
     if (rShift > RShiftZero)
     {
@@ -328,7 +328,7 @@ void FPGA::SetTrigLev(TrigSource chan, int16 trigLev)
         display.ShowWarningBad(LimitSweep_Level);
     }
 
-    math.Limitation<int16>(&trigLev, TrigLevMin, TrigLevMax);
+    Limitation<int16>(&trigLev, TrigLevMin, TrigLevMax);
 
     if (trigLev > TrigLevZero)
     {
@@ -369,7 +369,7 @@ void FPGA::SetTShift(int tShift)
 
     if (tShift < sTime_TShiftMin() || tShift > TShiftMax)
     {
-        math.Limitation<int>(&tShift, sTime_TShiftMin(), TShiftMax);
+        Limitation<int>(&tShift, sTime_TShiftMin(), TShiftMax);
         display.ShowWarningBad(LimitSweep_TShift);
     }
 

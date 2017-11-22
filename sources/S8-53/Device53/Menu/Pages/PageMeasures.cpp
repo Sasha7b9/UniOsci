@@ -62,12 +62,12 @@ void RotateRegMeasureSetField(int angle)
         if (cursActive == CursActive_T)
         {
             MEAS_POS_CUR_T0 -= sign;
-            math.Limitation<int16>(&MEAS_POS_CUR_T0, 0, sMemory_GetNumPoints(false) - 1);
+            Limitation<int16>(&MEAS_POS_CUR_T0, 0, sMemory_GetNumPoints(false) - 1);
         }
         else
         {
             MEAS_POS_CUR_U0 += sign;
-            math.Limitation<int16>(&MEAS_POS_CUR_U0, 0, 200);
+            Limitation<int16>(&MEAS_POS_CUR_U0, 0, 200);
         }
     }
     if (cursCntrl == CursCntrl_2 || cursCntrl == CursCntrl_1_2)
@@ -75,12 +75,12 @@ void RotateRegMeasureSetField(int angle)
         if (cursActive == CursActive_T)
         {
             MEAS_POS_CUR_T1 -= sign;
-            math.Limitation<int16>(&MEAS_POS_CUR_T1, 0, sMemory_GetNumPoints(false) - 1);
+            Limitation<int16>(&MEAS_POS_CUR_T1, 0, sMemory_GetNumPoints(false) - 1);
         }
         else
         {
             MEAS_POS_CUR_U1 += sign;
-            math.Limitation<int16>(&MEAS_POS_CUR_U1, 0, 200);
+            Limitation<int16>(&MEAS_POS_CUR_U1, 0, 200);
         }
     }
 }

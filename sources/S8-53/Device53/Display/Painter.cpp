@@ -616,13 +616,13 @@ void Painter::DrawPicture(int x, int y, int width, int height, uint8 *address)
 uint16 Painter::ReduceBrightness(uint16 colorValue, float newBrightness)
 {
     int red = (int)(R_FROM_COLOR(colorValue) * newBrightness);
-    math.Limitation<int>(&red, 0, 31);
+    Limitation<int>(&red, 0, 31);
 
     int green = (int)(G_FROM_COLOR(colorValue) * newBrightness);
-    math.Limitation<int>(&green, 0, 63);
+    Limitation<int>(&green, 0, 63);
 
     int blue = (int)(B_FROM_COLOR(colorValue) * newBrightness);
-    math.Limitation<int>(&blue, 0, 31);
+    Limitation<int>(&blue, 0, 31);
 
     return MAKE_COLOR(red, green, blue);
 }

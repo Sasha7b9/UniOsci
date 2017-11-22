@@ -670,7 +670,7 @@ bool DrawDataInModeNormal()
     Processing_GetData(&data0, &data1, &ds);
 
     int16 numSignals = dataStorage.NumElementsWithSameSettings();
-    math.Limitation<int16>(&numSignals, 1, NUM_ACCUM);
+    Limitation<int16>(&numSignals, 1, NUM_ACCUM);
     if (numSignals == 1 || ENUM_ACCUM_IS_INFINITY || MODE_ACCUM_IS_RESET || sTime_RandomizeModeEnabled())
     {
         DrawBothChannels(0, 0);
@@ -896,7 +896,7 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     int height = 14;
     float scale = (float)height / (float)(MAX_VALUE - MIN_VALUE);
 
-#define ORDINATE(x) ((uint8)(bottom - scale * math.LimitationRet<uint8>(x - MIN_VALUE, 0, 200)))
+#define ORDINATE(x) ((uint8)(bottom - scale * LimitationRet<uint8>(x - MIN_VALUE, 0, 200)))
 
 #define NUM_POINTS (300 * 2)
     uint8 points[NUM_POINTS];
@@ -2299,7 +2299,7 @@ void Display::Clear()
 void Display::ShiftScreen(int delta)
 {
     SHIFT_IN_MEMORY += delta;
-    math.Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - 282);
+    Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - 282);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

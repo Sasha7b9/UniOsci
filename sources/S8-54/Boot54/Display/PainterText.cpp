@@ -601,7 +601,7 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, const char 
     }
 
     *height = y - top + 4;
-    math.Limitation<int>(height, 0, 239);
+    Limitation<int>(height, 0, 239);
 
     return curSymbol == numSymbols;
 }

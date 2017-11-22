@@ -520,13 +520,13 @@ void Painter_DrawPicture(int x, int y, int width, int height, uint8 *address)
 uint16 Painter_ReduceBrightness(uint16 colorValue, float newBrightness)
 {
     int red = (int)(R_FROM_COLOR(colorValue) * newBrightness);
-    math.Limitation(&red, 0, 31);
+    Limitation(&red, 0, 31);
 
     int green = (int)(G_FROM_COLOR(colorValue) * newBrightness);
-    math.Limitation(&green, 0, 63);
+    Limitation(&green, 0, 63);
 
     int blue = (int)(B_FROM_COLOR(colorValue) * newBrightness);
-    math.Limitation(&blue, 0, 31);
+    Limitation(&blue, 0, 31);
 
     return (uint16)MAKE_COLOR(red, green, blue);
 }

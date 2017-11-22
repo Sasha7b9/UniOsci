@@ -208,7 +208,7 @@ void ColorType::ComponentChange(int delta)
     if (index >= 1 && index <= 3)
     {
         *(pointers[index]) += (float)Sign(delta);
-        math.Limitation<float>(pointers[index], 0.0f, maxs[index]);
+        Limitation<float>(pointers[index], 0.0f, maxs[index]);
     }
 
     SetColor();

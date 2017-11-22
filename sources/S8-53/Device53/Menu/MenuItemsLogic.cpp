@@ -39,7 +39,7 @@ void Governor_ChangeValue(Governor *governor, int delta)
 {
     int16 oldValue = *governor->cell;
     *governor->cell += Sign(delta) * Pow10(gCurDigit);
-    math.Limitation<int16>(governor->cell, governor->minValue, governor->maxValue);
+    Limitation<int16>(governor->cell, governor->minValue, governor->maxValue);
     if (*governor->cell != oldValue)
     {
         if (governor->funcOfChanged)
@@ -70,7 +70,7 @@ void IPaddress_ChangeValue(IPaddress *ip, int delta)
     }
 
     int newValue = oldValue + Sign(delta) * Pow10(numPos);
-    math.Limitation<int>(&newValue, 0, numByte == 4 ? 65535 : 255);
+    Limitation<int>(&newValue, 0, numByte == 4 ? 65535 : 255);
 
     if (oldValue != newValue)
     {

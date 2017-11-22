@@ -281,7 +281,7 @@ void Menu::DrawItemsPage(Page *page, int layer, int yTop)
     };
     int posFirstItem = PosItemOnTop(page);
     int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
-    math.Limitation<int>(&posLastItem, 0, NumItemsInPage(page) - 1);
+    Limitation<int>(&posLastItem, 0, NumItemsInPage(page) - 1);
     int count = 0;
     Page *p = 0;
     for(int posItem = posFirstItem; posItem <= posLastItem; posItem++)

@@ -271,7 +271,7 @@ static void DecCurrentDir(void)
         {
             numCurDir = numDirs - 1;
             numFirstDir = numDirs - RECS_ON_PAGE;
-            math.Limitation<int>(&numFirstDir, 0, numCurDir);
+            Limitation<int>(&numFirstDir, 0, numCurDir);
         }
         if (numCurDir < numFirstDir)
         {
@@ -308,7 +308,7 @@ static void DecCurrentFile(void)
         {
             numCurFile = numFiles - 1;
             numFirstFile = numFiles - RECS_ON_PAGE;
-            math.Limitation<int>(&numFirstFile, 0, numCurFile);
+            Limitation<int>(&numFirstFile, 0, numCurFile);
         }
         if (numCurFile < numFirstFile)
         {
@@ -351,7 +351,7 @@ bool FM_GetNameForNewFile(char name[255])
 
     if (FILE_NAMING_MODE_IS_HAND)
     {
-        math.Limitation<int>(&size, 1, 95);
+        Limitation<int>(&size, 1, 95);
         strcat(name, FILE_NAME);
         strcat(name, ".");
         strcat(name, MODE_SAVE_SIGNAL_IS_BMP ? "bmp" : "txt");

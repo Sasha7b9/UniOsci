@@ -145,7 +145,7 @@ void MathFPGA::PointsRel2Voltage(const uint8 *points, int numPoints, Range range
 uint8 MathFPGA::Voltage2Point(float voltage, Range range, int16 rShift)
 {
     int relValue = (int)((voltage + MAX_VOLTAGE_ON_SCREEN(range) + RSHIFT_2_ABS(rShift, range)) / voltsInPixel[range] + MIN_VALUE);
-    math.Limitation<int>(&relValue, 0, 255);
+    Limitation<int>(&relValue, 0, 255);
     return (uint8)relValue;
 }
 
