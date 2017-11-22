@@ -99,7 +99,7 @@ void SCPI_ProcessingCommand(const StructCommand *commands, uint8 *buffer)
 bool SCPI_FirstIsInt(uint8 *buffer, int *value, int min, int max)
 {
     Word param;
-    if (strUtils.GetWord((const char *)buffer, &param, 0))
+    if (su.GetWord((const char *)buffer, &param, 0))
     {
         char n[256];
         memcpy(n, param.address, param.numSymbols);

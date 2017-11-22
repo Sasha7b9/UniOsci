@@ -1037,14 +1037,14 @@ static void OnChanged_Pred(void)
 {
     gPred = ~pred;
     static char buffer[30];
-    LOG_WRITE("pred %d %s", pred, strUtils.Hex16toString((uint16)gPred, buffer));
+    LOG_WRITE("pred %d %s", pred, su.Hex16toString((uint16)gPred, buffer));
 }
 
 static void OnChanged_Post(void)
 {
     gPost = (uint16)~post;
     static char buffer[30];
-    LOG_WRITE("post %d %s", post, strUtils.Hex16toString(gPost, buffer));
+    LOG_WRITE("post %d %s", post, su.Hex16toString(gPost, buffer));
 }
 
 //---------------------------------------------------------------------------------------------------------------- ОТЛАДКА - РАНД-ТОР - Информация ---

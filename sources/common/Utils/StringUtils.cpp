@@ -16,7 +16,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-StringUtils strUtils;
+StringUtils su;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -378,7 +378,7 @@ char *Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numD
     }
 
     char bufferOut[20];
-    strcat(buffer, strUtils.Float2String(time, alwaysSign, numDigits, bufferOut));
+    strcat(buffer, su.Float2String(time, alwaysSign, numDigits, bufferOut));
     strcat(buffer, suffix);
 
     return buffer;
@@ -389,7 +389,7 @@ char *Db2String(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char buffer[20];
-    strcat(bufferOut, strUtils.Float2String(value, false, numDigits, buffer));
+    strcat(bufferOut, su.Float2String(value, false, numDigits, buffer));
     strcat(bufferOut, "Да");
     return bufferOut;
 }

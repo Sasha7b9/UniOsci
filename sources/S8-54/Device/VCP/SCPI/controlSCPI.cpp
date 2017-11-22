@@ -42,16 +42,16 @@ void Process_KEY(uint8 *buffer)
     Word command;
     Word parameter;
 
-    if (strUtils.GetWord((const char *)buffer, &command, 0) && strUtils.GetWord((const char *)buffer, &parameter, 1))
+    if (su.GetWord((const char *)buffer, &command, 0) && su.GetWord((const char *)buffer, &parameter, 1))
     {
         int numKey = 0;
         char *name = keys[numKey].key;
         while (name != 0)
         {
-            if (strUtils.WordEqualZeroString(&command, name))
+            if (su.WordEqualZeroString(&command, name))
             {
                 uint16 code = keys[numKey].value;
-                if (strUtils.WordEqualZeroString(&parameter, "DOWN"))
+                if (su.WordEqualZeroString(&parameter, "DOWN"))
                 {
                     code += 128;
                 }
@@ -84,15 +84,15 @@ void Process_GOVERNOR(uint8 *buffer)
     Word command;
     Word parameter;
 
-    if (strUtils.GetWord((const char *)buffer, &command, 0) && strUtils.GetWord((const char *)buffer, &parameter, 1))
+    if (su.GetWord((const char *)buffer, &command, 0) && su.GetWord((const char *)buffer, &parameter, 1))
     {
         int numGov = 0;
         char *name = governors[numGov].key;
         while (name != 0) {
-            if (strUtils.WordEqualZeroString(&command, name))
+            if (su.WordEqualZeroString(&command, name))
             {
                 uint16 code = governors[numGov].value;
-                if (strUtils.WordEqualZeroString(&parameter, "RIGHT"))
+                if (su.WordEqualZeroString(&parameter, "RIGHT"))
                 {
                     code += 128;
                 }

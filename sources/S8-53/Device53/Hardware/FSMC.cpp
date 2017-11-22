@@ -59,15 +59,15 @@ void FSMC_Write(uint8 *address, uint8 value)
     char buffer8[3];
     if((address != WR_START && address != WR_STOP && address != WR_TRIG_F) && IS_SHOW_REGISTERS_ALL)
     {
-        LOG_WRITE("%s-%s\x10->\x10%s", strUtils.Hex8toString(value, buffer8), Bin2String(value, buffer), addrNamesForWrite[address - ADDR_FPGA]);
+        LOG_WRITE("%s-%s\x10->\x10%s", su.Hex8toString(value, buffer8), Bin2String(value, buffer), addrNamesForWrite[address - ADDR_FPGA]);
     }
     else if (IS_SHOW_REG_TSHIFT && (address == WR_POST_LOW || address == WR_POST_HI || address == WR_PRED_HI || address == WR_PRED_LOW))
     {
-        LOG_WRITE("%s-%s\x10->\x10%s", strUtils.Hex8toString(value, buffer8), Bin2String(value, buffer), addrNamesForWrite[address - ADDR_FPGA]);
+        LOG_WRITE("%s-%s\x10->\x10%s", su.Hex8toString(value, buffer8), Bin2String(value, buffer), addrNamesForWrite[address - ADDR_FPGA]);
     }
     else if(IS_SHOW_REG_TBASE && address == WR_RAZVERTKA)
     {
-        LOG_WRITE("%s-%s\x10->\x10%s", strUtils.Hex8toString(value, buffer8), Bin2String(value, buffer), addrNamesForWrite[address - ADDR_FPGA]);
+        LOG_WRITE("%s-%s\x10->\x10%s", su.Hex8toString(value, buffer8), Bin2String(value, buffer), addrNamesForWrite[address - ADDR_FPGA]);
     };
     *address = value;
 }

@@ -134,9 +134,9 @@ static void FuncDrawingAdditionSPageMemoryLast()
     int height = 10;
     painter.FillRegionC(grid.Right() - width, GRID_TOP, width, height, COLOR_BACK);
     painter.DrawRectangleC(grid.Right() - width, GRID_TOP, width, height, COLOR_FILL);
-    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, strUtils.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
-    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, strUtils.Int2String(dataStorage.AllDatas(), false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, su.Int2String(dataStorage.AllDatas(), false, 3, buffer));
 }
 
 void DrawSB_MemLast_IntEnter(int x, int y)
@@ -598,7 +598,7 @@ static void DrawMemoryWave(int num, bool exist)
     painter.SetColor(num == gMemory.currentNumIntSignal ? COLOR_FLASH_01 : COLOR_FILL);
     if (exist)
     {
-        painter.DrawText(x + 2, y + 1, strUtils.Int2String(num + 1, false, 2, buffer));
+        painter.DrawText(x + 2, y + 1, su.Int2String(num + 1, false, 2, buffer));
     }
     else
     {

@@ -120,14 +120,14 @@ void Button::Draw(int x, int y) const
 {
     painter.DrawBoundedRegion(x, y, Control::Width(), Control::HEIGHT, Color::BACK, Color::FILL);
 
-    if (strUtils.NumWords(Title()) == 1)
+    if (su.NumWords(Title()) == 1)
     {
         painter.DrawText(x + 3, y + 5, Title(), Color::FILL);
     }
     else
     {
         char buffer[20];
-        painter.DrawText(x + 3, y + 3, strUtils.GetWord(Title(), 0, buffer, 20), Color::FILL);
-        painter.DrawText(x + 3, y + 12, strUtils.GetWord(Title(), 1, buffer, 20), Color::FILL);
+        painter.DrawText(x + 3, y + 3, su.GetWord(Title(), 0, buffer, 20), Color::FILL);
+        painter.DrawText(x + 3, y + 12, su.GetWord(Title(), 1, buffer, 20), Color::FILL);
     }
 }

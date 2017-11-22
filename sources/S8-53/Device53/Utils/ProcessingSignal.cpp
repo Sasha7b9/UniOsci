@@ -1154,7 +1154,7 @@ char* Processing_GetStringMeasure(Measure measure, Channel chan, char buffer[20]
         char bufferForFunc[20];
         pFuncPCFBPC func = measures[measure].FuncConvertate;
         float value = values[measure].value[chan];
-        char *text = (strUtils.*func)(value, measures[measure].showSign, bufferForFunc);
+        char *text = (su.*func)(value, measures[measure].showSign, bufferForFunc);
         strcat(buffer, text);
     }
     else

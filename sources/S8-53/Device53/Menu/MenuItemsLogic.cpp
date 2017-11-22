@@ -178,8 +178,8 @@ void Governor_NextPosition(Governor *governor)
 
 int Governor_NumDigits(Governor *governor)
 {
-    int min = strUtils.NumDigitsInNumber(Abs(governor->minValue));
-    int max = strUtils.NumDigitsInNumber(Abs(governor->maxValue));
+    int min = su.NumDigitsInNumber(Abs(governor->minValue));
+    int max = su.NumDigitsInNumber(Abs(governor->maxValue));
     if (min > max)
     {
         max = min;

@@ -1304,7 +1304,7 @@ char* Processing::GetStringMeasure(Meas measure, Channel ch, char* buffer, int l
         {
             value *= 10.0f;                         // Домножаем, если включён делитель
         }
-        char *text = (strUtils.*func)(value, sMeas[measure].showSign, bufferForFunc);
+        char *text = (su.*func)(value, sMeas[measure].showSign, bufferForFunc);
         int len = strlen(text) + strlen(buffer) + 1;
         if (len + 1 <= lenBuf)
         {

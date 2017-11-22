@@ -25,7 +25,7 @@ bool sCursors_NecessaryDrawCursors()
 const char* sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20])
 {
     float voltage = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, numCur), SET_RANGE(source), SET_RSHIFT(source));
-    return strUtils.Voltage2String(voltage, true, buffer);
+    return su.Voltage2String(voltage, true, buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@ const char* sCursors_GetCursorTime(Channel source, int numCur, char buffer[20])
 {
     float time = mathFPGA.TimeCursor(CURS_POS_T(source, numCur), SET_TBASE);
         
-    return strUtils.Time2String(time, true, buffer);
+    return su.Time2String(time, true, buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ const char* sCursors_GetCursorPercentsU(Channel source, char buffer[20])
     float dPerc = DELTA_U100(source);
     float dValue = fabsf(sCursors_GetCursPosU(source, 0) - sCursors_GetCursPosU(source, 1));
     char bufferOut[20];
-    char* percents = strUtils.Float2String(dValue / dPerc * 100.0f, false, 5, bufferOut);
+    char* percents = su.Float2String(dValue / dPerc * 100.0f, false, 5, bufferOut);
     strcat(buffer, percents);
     strcat(buffer, "%");
     return buffer;
@@ -56,7 +56,7 @@ const char* sCursors_GetCursorPercentsT(Channel source, char buffer[20])
     float dPerc = DELTA_T100(source);
     float dValue = fabsf(CURS_POS_T0(source) - CURS_POS_T1(source));
     char bufferOut[20];
-    char* percents = strUtils.Float2String(dValue / dPerc * 100.0f, false, 6, bufferOut);
+    char* percents = su.Float2String(dValue / dPerc * 100.0f, false, 6, bufferOut);
     strcat(buffer, percents);
     strcat(buffer, "%");
     return buffer;

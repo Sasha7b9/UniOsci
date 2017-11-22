@@ -85,6 +85,6 @@ char* Bin2String(uint8 value, char bufferOut[9]);
 /// @attention Строка будте храниться до следующего вызова функции. Если рузультат нужен большее количество времени, то его нужно скопировать себе
 char* Bin2String16(uint16 value, char bufferOut[19]);
 
-extern StringUtils strUtils;
+extern StringUtils su;
 
 typedef char *(StringUtils::*pFuncPCFBPC)(float, bool, char*);
