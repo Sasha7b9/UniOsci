@@ -245,7 +245,7 @@ static void DrawSignalLined(const uint8 *data, const DataSettings *ds, int start
             if (x0 >= gridLeft && x0 <= gridRight)
             {
                 int index = i - startPoint;
-                int y = calculateFiltr ? Math_CalculateFiltr(data, i, numPoints, numSmoothing) : data[i];
+                int y = calculateFiltr ? math.CalculateFiltr(data, i, numPoints, numSmoothing) : data[i];
                 CONVERT_DATA_TO_DISPLAY(dataCD[index], y);
             }
         }
@@ -321,7 +321,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
         for (int i = startPoint; i < endPoint; i++)
         {
             int index = i - startPoint;
-            CONVERT_DATA_TO_DISPLAY(dataCD[index], Math_CalculateFiltr(data, i, numPoints, numSmoothing));
+            CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, numSmoothing));
         }
         painter.DrawSignal(grid.Left(), dataCD, false);
 
@@ -334,7 +334,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
             for (int i = startPoint; i < endPoint; i++)
             {
                 int index = i - startPoint;
-                CONVERT_DATA_TO_DISPLAY(dataCD[index], Math_CalculateFiltr(data, i, numPoints, numSmoothing));
+                CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, numSmoothing));
             }
             painter.DrawSignal(grid.Left(), dataCD, false);
         }
@@ -345,7 +345,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
         {
             int index = i - startPoint;
             int dat = 0;
-            CONVERT_DATA_TO_DISPLAY(dat, Math_CalculateFiltr(data, i, numPoints, numSmoothing));
+            CONVERT_DATA_TO_DISPLAY(dat, math.CalculateFiltr(data, i, numPoints, numSmoothing));
             painter.SetPoint((int)(grid.Left() + index * scaleX), dat);
         }
     }

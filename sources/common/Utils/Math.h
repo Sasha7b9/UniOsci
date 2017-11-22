@@ -54,6 +54,8 @@ public:
     
     void CalculateMathFunction(float *data0andResult, float *data1, int numPoints);
 
+    uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
+
     template<class T>
     void CircleIncrease(T *value, int min, int max)
     {

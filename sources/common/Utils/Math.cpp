@@ -249,3 +249,40 @@ void Math::CalculateMathFunction(float *data0andResult, float *data1, int numPoi
         }
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+uint8 Math::CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing)
+{
+    if (numSmoothing < 2)
+    {
+        return data[x];
+    }
+
+    int count = 1;
+    int sum = data[x];
+    int startDelta = 1;
+
+    int endDelta = numSmoothing / 2;
+
+    for (int delta = startDelta; delta <= endDelta; delta++)
+    {
+        if (((x - delta) >= 0) && ((x + delta) < (numPoints)))
+        {
+            sum += data[x - delta];
+            sum += data[x + delta];
+            count += 2;
+        }
+    }
+
+    if ((numSmoothing % 2) == 1)
+    {
+        int delta = numSmoothing / 2;
+        if ((x + delta) < numPoints)
+        {
+            sum += data[x + delta];
+            count++;
+        }
+    }
+
+    return (uint8)(sum / (float)count);
+}
