@@ -940,8 +940,8 @@ void Processing_SetSignal(uint8 *data0, uint8 *data1, DataSettings *ds, int _fir
 
     int length = ds->length1channel * (ds->peakDet == PeackDet_Disable ? 1 : 2);
 
-    Math_CalculateFiltrArray(data0, &dataIn[A][0], length, numSmoothing);
-    Math_CalculateFiltrArray(data1, &dataIn[B][0], length, numSmoothing);
+    math.CalculateFiltrArray(data0, &dataIn[A][0], length, numSmoothing);
+    math.CalculateFiltrArray(data1, &dataIn[B][0], length, numSmoothing);
 
     dataSet = ds;
 

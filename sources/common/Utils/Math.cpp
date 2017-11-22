@@ -286,3 +286,46 @@ uint8 Math::CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoot
 
     return (uint8)(sum / (float)count);
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Math::CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing)
+{
+    if (numSmoothing < 2)
+    {
+        memcpy(dataOut, dataIn, numPoints);
+    }
+    else
+    {
+        bool addCalculation = (numSmoothing % 2) == 1;
+        int endDelta = numSmoothing / 2;
+        int startDelta = 1;
+        int d = numSmoothing / 2;
+
+        for (int i = 0; i < numPoints; i++)
+        {
+            int count = 1;
+            int sum = dataIn[i];
+
+            for (int delta = startDelta; delta <= endDelta; delta++)
+            {
+                if (((i - delta) >= 0) && ((i + delta) < (numPoints)))
+                {
+                    sum += dataIn[i - delta];
+                    sum += dataIn[i + delta];
+                    count += 2;
+                }
+            }
+
+            if (addCalculation)
+            {
+                if ((i + d) < numPoints)
+                {
+                    sum += dataIn[i + d];
+                    count++;
+                }
+            }
+
+            dataOut[i] = (uint8)(sum / (float)count);
+        }
+    }
+}
