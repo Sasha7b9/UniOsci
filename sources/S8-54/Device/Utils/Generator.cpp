@@ -87,16 +87,16 @@ float NewNoiseValue(Channel ch)
 
     float deltaRand = halfAmplNoiseAbs;
 
-    noise += _math.RandFloat(-deltaRand, deltaRand);
+    noise += math.RandFloat(-deltaRand, deltaRand);
 
     while (noise < -halfAmplNoiseAbs)
     {
-        noise += _math.RandFloat(0, deltaRand * 2);
+        noise += math.RandFloat(0, deltaRand * 2);
     }
 
     while (noise > halfAmplNoiseAbs)
     {
-        noise -= _math.RandFloat(0, deltaRand * 2);
+        noise -= math.RandFloat(0, deltaRand * 2);
     }
 
     prevNoise[ch] = noise;

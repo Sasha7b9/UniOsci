@@ -226,26 +226,26 @@ float Math::GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, in
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math::CalculateMathFunction(float *data0andResult, float *data1, int numPoints)
+void Math::CalculateMathFunction(float *dataAandResult, float *dataB, int numPoints)
 {
     if (MATH_FUNC_IS_SUM)
     {
-        int delta = data1 - data0andResult;
-        float *end = &data0andResult[numPoints];
-        while (data0andResult < end)
+        int delta = dataB - dataAandResult;
+        float *end = &dataAandResult[numPoints];
+        while (dataAandResult < end)
         {
-            *data0andResult += *(data0andResult + delta);
-            data0andResult++;
+            *dataAandResult += *(dataAandResult + delta);
+            dataAandResult++;
         }
     }
     else if (MATH_FUNC_IS_MUL)
     {
-        int delta = data1 - data0andResult;
-        float *end = &data0andResult[numPoints];
-        while (data0andResult < end)
+        int delta = dataB - dataAandResult;
+        float *end = &dataAandResult[numPoints];
+        while (dataAandResult < end)
         {
-            *data0andResult *= *(data0andResult + delta);
-            data0andResult++;
+            *dataAandResult *= *(dataAandResult + delta);
+            dataAandResult++;
         }
     }
 }

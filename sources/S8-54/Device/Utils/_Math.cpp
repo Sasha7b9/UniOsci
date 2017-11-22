@@ -14,45 +14,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Math_ _math;
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Math_::FloatsIsEquals(float value0, float value1, float epsilonPart)
-{
-    float max = fabsf(value0) > fabsf(value1) ? fabsf(value0) : fabsf(value1);
-
-    float epsilonAbs = max * epsilonPart;
-
-    return fabsf(value0 - value1) < epsilonAbs;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float Math_::MinFrom3float(float value1, float value2, float value3)
-{
-    float retValue = value1;
-    if(value2 < retValue)
-    {
-        retValue = value2;
-    }
-    if(value3 < retValue)
-    {
-        retValue = value3;
-    }
-    return retValue;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_::MaxInt(int val1, int val2)
-{
-    return val1 > val2 ? val1 : val2;
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_::MinInt(int val1, int val2)
-{
-    return val1 < val2 ? val1 : val2;
-}
 
 /*
     Быстрое преобразование Фурье. Вычисляет модуль спектра для дейсвтительного сигнала.
@@ -87,68 +48,6 @@ static float const *Koeff(int numPoints)
 }
 
 #endif
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math_::CalculateMathFunction(float *data0andResult, float *dataB, int numPoints)
-{
-    if (MATH_FUNC_IS_SUM)
-    {
-        int delta = dataB - data0andResult;
-        float *end = &data0andResult[numPoints];
-        while (data0andResult < end)
-        {
-            *data0andResult += *(data0andResult + delta);
-            data0andResult++;
-        }
-    }
-    else if (MATH_FUNC_IS_MUL)
-    {
-        int delta = dataB - data0andResult;
-        float *end = &data0andResult[numPoints];
-        while (data0andResult < end)
-        {
-            *data0andResult *= *(data0andResult + delta);
-            data0andResult++;
-        }
-    }
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float Math_::RandFloat(float min, float max)
-{
-    float delta = max - min;
-    return min + ((rand() / (float)RAND_MAX) * delta);
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int8 Math_::AddInt8WithLimitation(int8 value, int8 delta, int8, int8 max)
-{
-    int8 retValue = value + delta;
-    if (retValue < 0)
-    {
-        return 0;
-    }
-    if (retValue > max)
-    {
-        return max;
-    }
-    return retValue;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-int Math_::NumDigitsInNumber(int value)
-{
-    value = FabsInt(value);
-    int num = 1;
-    while ((value /= 10) > 0)
-    {
-        num++;
-    }
-    return num;
-}
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

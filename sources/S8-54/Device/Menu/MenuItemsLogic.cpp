@@ -12,6 +12,7 @@
 #include "Utils/_Math.h"
 #include "Utils/Math.h"
 #include "Utils/GlobalFunctions.h"
+#include "Utils/StringUtils.h"
 #include "Pages/PageDisplay.h"
 
 
@@ -246,8 +247,8 @@ void Governor::NextPosition()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Governor::NumDigits()
 {
-    int min = _math.NumDigitsInNumber(_math.FabsInt(minValue));
-    int max = _math.NumDigitsInNumber(_math.FabsInt(maxValue));
+    int min = strUtils.NumDigitsInNumber(_math.FabsInt(minValue));
+    int max = strUtils.NumDigitsInNumber(_math.FabsInt(maxValue));
     if (min > max)
     {
         max = min;

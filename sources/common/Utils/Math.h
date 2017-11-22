@@ -65,7 +65,7 @@ public:
     /// ординатой yHorLine.
     float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
     
-    void CalculateMathFunction(float *data0andResult, float *data1, int numPoints);
+    void CalculateMathFunction(float *dataAandResult, float *dataB, int numPoints);
 
     uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
 
@@ -147,6 +147,16 @@ template<class T> T Abs(T x)
 {
     if (x < (T)0)   { return -x; }
     return x;
+}
+
+template<class T> T Min(T x1, T x2)
+{
+    return x1 < x2 ? x1 : x2;
+}
+
+template<class T> T Max(T x1, T x2)
+{
+    return x1 > x2 ? x1 : x2;
 }
 
 typedef void (Math::*pFuncMathPI8II)(int8 *, int, int);

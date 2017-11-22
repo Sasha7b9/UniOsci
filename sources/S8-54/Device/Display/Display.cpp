@@ -896,7 +896,7 @@ static void DrawMeasures(void)
             {
                 painter.FillRegion(x, y, dX, dY, gColorBack);
                 painter.DrawRectangle(x, y, dX, dY, gColorFill);
-                TOP_MEASURES = _math.MinInt(TOP_MEASURES, y);
+                TOP_MEASURES = Min(TOP_MEASURES, y);
             }
             if(active)
             {
