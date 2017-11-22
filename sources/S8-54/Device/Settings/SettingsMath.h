@@ -27,8 +27,8 @@
 #define SCALE_FFT_IS_LINEAR         (SCALE_FFT == ScaleFFT_Linear)
 
 #define MATH_FUNC                   (set.math_Function)
-#define MATH_FUNC_MUL               (MATH_FUNC == Function_Mul)
-#define MATH_FUNC_SUM               (MATH_FUNC == Function_Sum)
+#define MATH_FUNC_IS_MUL            (MATH_FUNC == Function_Mul)
+#define MATH_FUNC_IS_SUM            (MATH_FUNC == Function_Sum)
 
 #define FUNC_MODE_DRAW              (set.math_ModeDraw)
 #define FUNC_ENABLED                (FUNC_MODE_DRAW != ModeDrawMath_Disable)

@@ -38,7 +38,6 @@ typedef struct
 } ColorType;
 
 void Color_Log(Color color);           // Вывести в лог значение цвета.
-void Color_BrightnessChange(ColorType *colorType, int delta);
 void Color_SetBrightness(ColorType *colorType, float brightness);
 void Color_Init(ColorType *colorType, bool forced);                 // Если forced == false, то инициализация происходит только при первом вызове функции
 void Color_ComponentChange(ColorType * const colorType, int delta);

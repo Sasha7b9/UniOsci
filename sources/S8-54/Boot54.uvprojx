@@ -844,16 +844,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Utils\Math.h</FilePath>
-            </File>
-            <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Utils\StringUtils.cpp</FilePath>

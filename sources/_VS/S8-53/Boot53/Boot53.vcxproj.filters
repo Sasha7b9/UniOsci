@@ -350,6 +350,9 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\FPGA\FPGATypes.h">
       <Filter>FPGA</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsMath.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\_libs\forVS\algorithm">

@@ -41,30 +41,6 @@ static float const *Koeff(int numPoints)
 
 #endif
 
-void Math_CalculateMathFunction(float *data0andResult, float *data1, int numPoints)
-{
-    if (MATH_FUNC_IS_SUM)
-    {
-        int delta = data1 - data0andResult;
-        float *end = &data0andResult[numPoints];
-        while (data0andResult < end)
-        {
-            *data0andResult += *(data0andResult + delta);
-            data0andResult++;
-        }
-    }
-    else if (MATH_FUNC_IS_MUL)
-    {
-        int delta = data1 - data0andResult;
-        float *end = &data0andResult[numPoints];
-        while (data0andResult < end)
-        {
-            *data0andResult *= *(data0andResult + delta);
-            data0andResult++;
-        }
-    }
-}
-
 int8 Math_AddInt8WithLimitation(int8 value, int8 delta, int8 min, int8 max)
 {
     int8 retValue = value + delta;

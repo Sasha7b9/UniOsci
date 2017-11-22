@@ -168,7 +168,7 @@ static float const *Koeff(int numPoints)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Math_::CalculateMathFunction(float *data0andResult, float *dataB, int numPoints)
 {
-    if (MATH_FUNC_SUM)
+    if (MATH_FUNC_IS_SUM)
     {
         int delta = dataB - data0andResult;
         float *end = &data0andResult[numPoints];
@@ -178,7 +178,7 @@ void Math_::CalculateMathFunction(float *data0andResult, float *dataB, int numPo
             data0andResult++;
         }
     }
-    else if (MATH_FUNC_MUL)
+    else if (MATH_FUNC_IS_MUL)
     {
         int delta = dataB - data0andResult;
         float *end = &data0andResult[numPoints];

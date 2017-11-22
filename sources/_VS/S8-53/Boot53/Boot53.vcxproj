@@ -256,6 +256,7 @@
     <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Controls.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Panel\Panel.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Settings\Settings.h" />
+    <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsMath.h" />
     <ClInclude Include="..\..\..\S8-53\Boot53\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm3.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />

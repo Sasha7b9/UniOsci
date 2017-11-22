@@ -52,6 +52,8 @@ public:
     /// ординатой yHorLine.
     float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
     
+    void CalculateMathFunction(float *data0andResult, float *data1, int numPoints);
+
     template<class T>
     void CircleIncrease(T *value, int min, int max)
     {

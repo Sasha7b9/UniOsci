@@ -224,3 +224,28 @@ float Math::GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, in
 
     return (yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + x0;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Math::CalculateMathFunction(float *data0andResult, float *data1, int numPoints)
+{
+    if (MATH_FUNC_IS_SUM)
+    {
+        int delta = data1 - data0andResult;
+        float *end = &data0andResult[numPoints];
+        while (data0andResult < end)
+        {
+            *data0andResult += *(data0andResult + delta);
+            data0andResult++;
+        }
+    }
+    else if (MATH_FUNC_IS_MUL)
+    {
+        int delta = data1 - data0andResult;
+        float *end = &data0andResult[numPoints];
+        while (data0andResult < end)
+        {
+            *data0andResult *= *(data0andResult + delta);
+            data0andResult++;
+        }
+    }
+}

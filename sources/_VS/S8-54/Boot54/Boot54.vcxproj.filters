@@ -43,6 +43,9 @@
     <Filter Include="FPGA">
       <UniqueIdentifier>{ef02bf99-6aaa-4622-b80f-c0dd48414e20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{1502d201-2f6d-4aff-a6dd-6ed9affd51b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-54\Boot54\libs\ffconf.h">
@@ -176,6 +179,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Boot54\FPGA\FPGA.h">
       <Filter>FPGA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Dictionary.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\StringUtils.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +330,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\Settings\Settings.cpp">
       <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

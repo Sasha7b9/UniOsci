@@ -1164,7 +1164,7 @@ const Button mbServicePreviousSettings =
 
 static bool ActiveF_MathFormula(void)
 {
-    return MATH_FUNC_MUL || MATH_FUNC_SUM;
+    return MATH_FUNC_IS_MUL || MATH_FUNC_IS_SUM;
 }
 
 static void ChangeF_MathFormula(void)

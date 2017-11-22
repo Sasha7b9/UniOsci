@@ -436,7 +436,7 @@ void Display::DrawMath()
     mathFPGA.PointsRel2Voltage(dataRel0, ds->length1channel, ds->range[A], ds->rShiftCh0, dataAbs0);
     mathFPGA.PointsRel2Voltage(dataRel1, ds->length1channel, ds->range[B], ds->rShiftCh1, dataAbs1);
 
-    Math_CalculateMathFunction(dataAbs0, dataAbs1, ds->length1channel);
+    math.CalculateMathFunction(dataAbs0, dataAbs1, ds->length1channel);
     
     uint8 points[FPGA_MAX_POINTS];
     mathFPGA.PointsVoltage2Rel(dataAbs0, ds->length1channel, SET_RANGE_MATH, SET_RSHIFT_MATH, points);
