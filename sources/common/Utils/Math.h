@@ -70,22 +70,6 @@ public:
     uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
 
     void CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);
-
-    /// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
-    template<class T>
-    static void AddtionThisLimitation(T *value, int term, T min, T max)
-    {
-        if (term > 0)
-        {
-            if (max - term >= *value)   { *value += (T)term; }
-            else                        { *value = max;      }
-        }
-        else
-        {
-            if (min - term <= *value)   { *value += (T)term; }
-            else                        { *value = min;      }
-        }
-    }
 };
 
 
@@ -150,6 +134,16 @@ template<class T> static T LimitationRet(T value, T min, T max)
     if (value < min) { return min; }
     if (value > max) { return max; }
     return value;
+}
+/// Прибавить к *value term и ограничить, если результат выходит за границы [min, max]
+template<class T> static void AddtionThisLimitation(T *value, int term, T min, T max)
+{
+    if (term > 0){
+        if (max - term >= *value) { *value += (T)term; }
+        else                      { *value = max; } }
+    else         {
+        if (min - term <= *value) { *value += (T)term; }
+        else                      { *value = min; } }
 }
 
 #define _bitset(bits)                               \

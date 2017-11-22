@@ -525,7 +525,7 @@ void FPGA::DecreaseTBase()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::RShiftChange(Channel ch, int delta)
 {
-    Math::AddtionThisLimitation<uint16>(&SET_RSHIFT(ch), STEP_RSHIFT * delta, RShiftMin, RShiftMax);
+    AddtionThisLimitation<uint16>(&SET_RSHIFT(ch), STEP_RSHIFT * delta, RShiftMin, RShiftMax);
 
     LoadRShift(ch);
 }
@@ -533,7 +533,7 @@ void FPGA::RShiftChange(Channel ch, int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TrigLevChange(int delta)
 {
-    Math::AddtionThisLimitation<uint16>(&SET_TRIGLEV, STEP_TRIGLEV * delta, TrigLevMin, TrigLevMax);
+    AddtionThisLimitation<uint16>(&SET_TRIGLEV, STEP_TRIGLEV * delta, TrigLevMin, TrigLevMax);
 
     LoadTrigLev();
 }
@@ -541,7 +541,7 @@ void FPGA::TrigLevChange(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TShiftChange(int delta)
 {
-    Math::AddtionThisLimitation<uint16>(&SET_TSHIFT, delta, TShiftMin, TShiftMax);
+    AddtionThisLimitation<uint16>(&SET_TSHIFT, delta, TShiftMin, TShiftMax);
 
     LoadTShift();
 }
