@@ -969,11 +969,6 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\Colors.h</FilePath>
-            </File>
-            <File>
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Display\Display.cpp</FilePath>
@@ -1039,11 +1034,6 @@
               <FilePath>.\Device53\Display\WelcomeScreen.h</FilePath>
             </File>
             <File>
-              <FileName>Colors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\Colors.cpp</FilePath>
-            </File>
-            <File>
               <FileName>DisplayPrimitives.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Display\DisplayPrimitives.cpp</FilePath>
@@ -1067,6 +1057,16 @@
               <FileName>WelcomeScreen.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Display\WelcomeScreen.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Colors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Colors.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1309,75 +1309,70 @@
               <FilePath>.\Device53\Menu\FileManager.h</FilePath>
             </File>
             <File>
-              <FileName>Menu.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\Menu.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Menu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\Menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>Menu_reference.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\Menu_reference.txt</FilePath>
-            </File>
-            <File>
-              <FileName>MenuFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\MenuFunctions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItems.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\MenuItems.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItems.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\MenuItems.h</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItemsGraphics.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\MenuItemsGraphics.h</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItemsLogic.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\MenuItemsLogic.h</FilePath>
-            </File>
-            <File>
               <FileName>FileManager.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Menu\FileManager.cpp</FilePath>
             </File>
             <File>
+              <FileName>Menu.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Menu\Menu.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\Menu.h</FilePath>
+            </File>
+            <File>
               <FileName>MenuDrawing.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\MenuDrawing.cpp</FilePath>
+              <FilePath>..\common\Menu\MenuDrawing.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuDrawing.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\MenuDrawing.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Menu\MenuFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuFunctions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\MenuFunctions.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\MenuItems.h</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItemsDefs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\MenuItemsDefs.h</FilePath>
             </File>
             <File>
               <FileName>MenuItemsGraphics.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\MenuItemsGraphics.cpp</FilePath>
+              <FilePath>..\common\Menu\MenuItemsGraphics.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItemsLogic.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\MenuItemsLogic.cpp</FilePath>
+              <FilePath>..\common\Menu\MenuItemsLogic.cpp</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>Menu/Pages</GroupName>
           <Files>
-            <File>
-              <FileName>Definition.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Menu\Pages\Definition.h</FilePath>
-            </File>
             <File>
               <FileName>HelpContent.h</FileName>
               <FileType>5</FileType>
@@ -1402,11 +1397,6 @@
               <FileName>PageMemory.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Menu\Pages\PageMemory.h</FilePath>
-            </File>
-            <File>
-              <FileName>Definition.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Menu\Pages\Definition.cpp</FilePath>
             </File>
             <File>
               <FileName>HelpContent.cpp</FileName>
@@ -1512,6 +1502,16 @@
               <FileName>PageTrig.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Menu\Pages\PageTrig.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Definition.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Menu\Pages\Definition.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Definition.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\Pages\Definition.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\common\commonDefines.h" />
+    <ClInclude Include="..\..\..\common\Display\Colors.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\Menu\Menu.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
@@ -153,7 +154,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Data\DataSettings.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Data\DataStorage.h" />
     <ClInclude Include="..\..\..\S8-54\Device\defines.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Colors.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayTypes.h" />
@@ -367,6 +367,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\common\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
@@ -383,7 +384,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataSettings.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Display\font\Font.cpp" />

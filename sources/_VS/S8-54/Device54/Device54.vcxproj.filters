@@ -264,9 +264,6 @@
     <ClInclude Include="..\..\..\_libs\forVS\usbd_ioreq.h">
       <Filter>forVS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Colors.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h">
       <Filter>Display</Filter>
     </ClInclude>
@@ -504,6 +501,9 @@
     <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h">
       <Filter>Menu</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Colors.h">
+      <Filter>Display</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -731,9 +731,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Colors.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -958,6 +955,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp">
       <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\Colors.cpp">
+      <Filter>Display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

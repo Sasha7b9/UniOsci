@@ -1067,16 +1067,6 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\Colors.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Colors.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\Colors.h</FilePath>
-            </File>
-            <File>
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Display\Display.cpp</FilePath>
@@ -1170,6 +1160,16 @@
               <FileName>WelcomeScreen.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Display\WelcomeScreen.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Colors.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Colors.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Colors.h</FilePath>
             </File>
           </Files>
         </Group>
