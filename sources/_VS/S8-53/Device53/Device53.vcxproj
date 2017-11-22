@@ -135,7 +135,6 @@
     <ClCompile Include="..\..\..\common\Utils\Map.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Colors.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\font\Font.cpp" />
@@ -176,6 +175,7 @@
     <ClCompile Include="..\..\..\S8-53\Device53\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Log.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\main.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.cpp" />
@@ -461,7 +461,6 @@
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\defines.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Colors.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayTypes.h" />
@@ -499,6 +498,7 @@
     <ClInclude Include="..\..\..\S8-53\Device53\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Log.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\main.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.h" />

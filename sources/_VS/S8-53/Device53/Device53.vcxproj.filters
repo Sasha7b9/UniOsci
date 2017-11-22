@@ -318,9 +318,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Display\font\Font.cpp">
       <Filter>Display\fonts</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Colors.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -549,6 +546,9 @@
     <ClCompile Include="..\..\..\common\Menu\MenuItemsLogic.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -667,9 +667,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h">
       <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Colors.h">
-      <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h">
       <Filter>Display</Filter>
@@ -870,6 +867,9 @@
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h">
       <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>

@@ -267,13 +267,7 @@
     <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h">
       <Filter>Display</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Display\DisplayTypes.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Grid.h">
       <Filter>Display</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Display\Math3D.h">
@@ -502,6 +496,12 @@
       <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\common\Display\Colors.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Grid.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h">
       <Filter>Display</Filter>
     </ClInclude>
   </ItemGroup>
@@ -734,9 +734,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp">
       <Filter>Display</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Grid.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Display\Painter.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -747,9 +744,6 @@
       <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Display\WelcomeScreen.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Display\DisplayPrimitives.cpp">
       <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp">
@@ -957,6 +951,12 @@
       <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Display\Colors.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\Grid.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\DisplayPrimitives.cpp">
       <Filter>Display</Filter>
     </ClCompile>
   </ItemGroup>

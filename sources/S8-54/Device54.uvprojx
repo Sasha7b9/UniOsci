@@ -1077,24 +1077,9 @@
               <FilePath>.\Device\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayPrimitives.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\DisplayPrimitives.h</FilePath>
-            </File>
-            <File>
               <FileName>DisplayTypes.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Display\DisplayTypes.h</FilePath>
-            </File>
-            <File>
-              <FileName>Grid.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\Grid.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Grid.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Display\Grid.h</FilePath>
             </File>
             <File>
               <FileName>Math3D.h</FileName>
@@ -1142,11 +1127,6 @@
               <FilePath>.\Device\Display\WelcomeScreen.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayPrimitives.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Display\DisplayPrimitives.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Math3D.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Display\Math3D.cpp</FilePath>
@@ -1170,6 +1150,26 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\DisplayPrimitives.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\DisplayPrimitives.h</FilePath>
+            </File>
+            <File>
+              <FileName>Grid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Grid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Grid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Grid.h</FilePath>
             </File>
           </Files>
         </Group>
