@@ -7,7 +7,6 @@
 #include "Hardware/Sound.h"
 #include "Hardware/Timer.h"
 #include "Menu/Menu.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/CommonFunctions.h"
 
 

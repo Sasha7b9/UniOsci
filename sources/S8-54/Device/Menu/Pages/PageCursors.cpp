@@ -7,7 +7,6 @@
 #include "Display/Colors.h"
 #include "Display/Grid.h"
 #include "Utils/ProcessingSignal.h"
-#include "Utils/GlobalFunctions.h"
 #include "Log.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"

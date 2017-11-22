@@ -456,9 +456,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Generator.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Map.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -924,9 +921,6 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Generator.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\GlobalFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp">

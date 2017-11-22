@@ -11,7 +11,6 @@
 #include "Pages/PageDisplay.h"
 #include "Pages/PageMemory.h"
 #include "Panel/Panel.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/CommonFunctions.h"
 

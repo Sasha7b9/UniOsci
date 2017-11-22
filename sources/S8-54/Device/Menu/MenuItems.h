@@ -1,7 +1,6 @@
 #pragma once
 #include "Display/Colors.h"
 #include "Display/Display.h"
-#include "Utils/GlobalFunctions.h"
 #include "defines.h"
 #include "MenuItemsDefs.h"
 
@@ -215,6 +214,8 @@ public:
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
+    /// Возвращает изображение регулятора, соответствующее его текущему положению
+    static char GetSymbol(int value);
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Choice ///

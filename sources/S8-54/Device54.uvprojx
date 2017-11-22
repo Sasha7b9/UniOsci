@@ -1752,11 +1752,6 @@
               <FilePath>.\Device\Utils\Generator.h</FilePath>
             </File>
             <File>
-              <FileName>GlobalFunctions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\GlobalFunctions.h</FilePath>
-            </File>
-            <File>
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device\Utils\Map.h</FilePath>
@@ -1805,11 +1800,6 @@
               <FileName>Generator.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Utils\Generator.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>GlobalFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\GlobalFunctions.cpp</FilePath>
             </File>
             <File>
               <FileName>Math.cpp</FileName>

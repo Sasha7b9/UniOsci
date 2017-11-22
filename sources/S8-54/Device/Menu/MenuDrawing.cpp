@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Menu/MenuItems.h"
 #include "Menu/MenuFunctions.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/CommonFunctions.h"
 #include "Display/Grid.h"
 #include "Menu/Menu.h"
@@ -176,7 +175,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
     x = painter.DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, TitleItem(page), colorText);
     if(condDrawRSet)
     {
-        painter.Draw4SymbolsInRect(x + 4, yTop + 11, GetSymbolForGovernor(page->NumCurrentSubPage()), colorText);
+        painter.Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(page->NumCurrentSubPage()), colorText);
     }
 
     itemUnderButton[GetFuncButtonFromY(yTop)] = page;

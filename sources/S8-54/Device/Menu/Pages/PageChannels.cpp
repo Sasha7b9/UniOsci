@@ -7,7 +7,6 @@
 #include "Panel/Panel.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsTypes.h"
-#include "Utils/GlobalFunctions.h"
 #include "Definition.h"
 #include "Utils/CommonFunctions.h"
 

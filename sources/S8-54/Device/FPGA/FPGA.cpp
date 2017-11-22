@@ -17,7 +17,6 @@
 #include "Panel/Controls.h"
 #include "Settings/Settings.h"
 #include "Utils/ProcessingSignal.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Debug.h"
 #include "Utils/Math.h"
 

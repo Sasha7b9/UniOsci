@@ -12,7 +12,6 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/Debug.h"
-#include "Utils/GlobalFunctions.h"
 #include <string.h>
 
 

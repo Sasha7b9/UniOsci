@@ -5,7 +5,6 @@
 #include "Hardware/Timer.h"
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include <limits.h>
 
 

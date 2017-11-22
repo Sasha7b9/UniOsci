@@ -4,7 +4,6 @@
 #include "Panel/Panel.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAtypes.h"
-#include "Utils/GlobalFunctions.h"
 #include "Display/Display.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuFunctions.h"

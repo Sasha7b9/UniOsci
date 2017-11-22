@@ -9,7 +9,6 @@
 #include "Panel/Panel.h"
 #include "Utils/Debug.h"
 #include "Utils/Dictionary.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 

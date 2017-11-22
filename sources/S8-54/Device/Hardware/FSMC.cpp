@@ -1,5 +1,3 @@
-
-
 #include "FSMC.h"
 #include "Log.h"
 #include "FPGA/FPGAtypes.h"
@@ -7,7 +5,6 @@
 #include "Hardware/Timer.h"
 #include "Hardware/RAM.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

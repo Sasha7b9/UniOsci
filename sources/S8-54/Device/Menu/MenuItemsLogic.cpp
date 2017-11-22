@@ -3,6 +3,7 @@
 #include "MenuFunctions.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
+#include "Display/Symbols.h"
 #include "Hardware/Timer.h"
 #include "Log.h"
 #include "Settings/Settings.h"
@@ -10,7 +11,6 @@
 #include "Hardware/Sound.h"
 #include "Hardware/RTC.h"
 #include "Utils/Math.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
 #include "Pages/PageDisplay.h"
 
@@ -254,6 +254,23 @@ int Governor::NumDigits()
     }
     return max;
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+char Governor::GetSymbol(int value)
+{
+    static const char chars[] =
+    {
+        SYMBOL_GOVERNOR_SHIFT_0,
+        SYMBOL_GOVERNOR_SHIFT_1,
+        SYMBOL_GOVERNOR_SHIFT_2,
+        SYMBOL_GOVERNOR_SHIFT_3
+    };
+    while (value < 0)
+    {
+        value += 4;
+    }
+    return chars[value % 4];
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Page::NumSubPages() const

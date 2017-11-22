@@ -8,7 +8,6 @@
 #include "Hardware/FSMC.h"
 #include "Hardware/RAM.h"
 #include "Settings/SettingsMemory.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/ProcessingSignal.h"
 

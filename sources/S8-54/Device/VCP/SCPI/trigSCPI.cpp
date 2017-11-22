@@ -1,10 +1,7 @@
-
-
 #include "defines.h"
 #include "SCPI.h"
 #include "Settings/Settings.h"
 #include "Utils/Map.h"
-#include "Utils/GlobalFunctions.h"
 #include "VCP/VCP.h"
 #include "FPGA/FPGA.h"
 

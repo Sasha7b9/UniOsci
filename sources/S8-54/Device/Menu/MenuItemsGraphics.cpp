@@ -2,7 +2,6 @@
 #include "Menu/MenuItems.h"
 #include "Menu/MenuFunctions.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Utils/StringUtils.h"
 #include "Menu/MenuDrawing.h"
 #include "Hardware/RTC.h"
@@ -812,11 +811,11 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
 
         if (type == Item_Governor)
         {
-            symbol = GetSymbolForGovernor(*((Governor*)item)->cell);
+            symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
         else if (type == Item_Governor || type == Item_ChoiceReg ||  (ItemIsOpened(item) && type == Item_Choice))
         {
-            symbol = GetSymbolForGovernor(*((Choice*)item)->cell);
+            symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
         else if (type == Item_Time)
         {
@@ -833,7 +832,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
                     *time->minutes,
                     *time->seconds
                 };
-                symbol = GetSymbolForGovernor(values[*time->curField]);
+                symbol = Governor::GetSymbol(values[*time->curField]);
             }
         }
 

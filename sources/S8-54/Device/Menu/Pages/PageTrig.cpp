@@ -1,11 +1,9 @@
 #include "defines.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "FPGA/FPGAtypes.h"
 #include "FPGA/FPGA.h"
 #include "Settings/Settings.h"
-#include "Utils/GlobalFunctions.h"
 #include "Definition.h"
 #include "Utils/CommonFunctions.h"
 

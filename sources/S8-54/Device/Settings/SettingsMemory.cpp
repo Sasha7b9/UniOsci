@@ -56,3 +56,43 @@ int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints)
     };
     return n[(uint)numPoints];
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds)
+{
+    int numBytes = RequestBytesForChannel(ch, ds);
+    if (numBytes)
+    {
+        return malloc(numBytes);
+    }
+    return 0;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+int RequestBytesForChannel(Channel ch, DataSettings *ds)
+{
+    ENumPointsFPGA numBytes;
+    PeakDetMode peakDet;
+
+    if (ds)
+    {
+        numBytes = (ENumPointsFPGA)ENUM_BYTES(ds);
+        peakDet = PEAKDET(ds);
+    }
+    else
+    {
+        numBytes = NumPoints_2_ENumPoints(NUM_BYTES(ds));
+        peakDet = SET_PEAKDET;
+    }
+
+    if ((numBytes == FNP_32k) || (numBytes == FNP_16k && peakDet == PeakDet_Enable))
+    {
+        if (ch == A)
+        {
+            return FPGA_MAX_POINTS * 2;
+        }
+        return 0;
+    }
+
+    return FPGA_MAX_POINTS;
+}

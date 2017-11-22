@@ -58,6 +58,10 @@ int sMemory_NumBytesInChannel_(void);
 ENumPointsFPGA NumPoints_2_ENumPoints(int numPoints);
 int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints);
 
+/// Выделяет память из кучи для канала. Настройки длины памяти берёт из ds или set (если ds == 0)
+void *AllocMemForChannelFromHeap(Channel ch, DataSettings *ds);
+/// Возвращает количество памяти, требуемой для сохранения данных одного канала
+int RequestBytesForChannel(Channel ch, DataSettings *ds);
 
 /** @}  @}
  */
