@@ -468,9 +468,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Map.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\Measures.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -823,9 +820,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTypes.h">
       <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Map.h">
-      <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Measures.h">
       <Filter>Utils</Filter>

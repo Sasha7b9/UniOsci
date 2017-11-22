@@ -453,9 +453,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\SelfRecorder\SelfRecorder.h">
       <Filter>SelfRecorder</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Map.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Measures.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -957,9 +954,6 @@
       <Filter>Panel</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\Strings.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Map.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp">

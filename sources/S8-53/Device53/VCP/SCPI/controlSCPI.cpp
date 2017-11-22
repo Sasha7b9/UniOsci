@@ -1,10 +1,8 @@
-#include "../../defines.h"
-
-
+#include "defines.h"
 #include "controlSCPI.h"
-#include "../Panel/Panel.h"
-#include "../../Utils/Strings.h"
-#include "../../Utils/Map.h"
+#include "Panel/Panel.h"
+#include "Utils/Strings.h"
+#include "Utils/Map.h"
 
 
 void Process_KEY(uint8 *buffer)

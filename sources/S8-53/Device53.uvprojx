@@ -1719,11 +1719,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Map.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Utils\Map.h</FilePath>
-            </File>
-            <File>
               <FileName>Measures.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Measures.h</FilePath>
@@ -1747,11 +1742,6 @@
               <FileName>Strings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Strings.h</FilePath>
-            </File>
-            <File>
-              <FileName>Map.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Utils\Map.cpp</FilePath>
             </File>
             <File>
               <FileName>Measures.cpp</FileName>
@@ -1807,6 +1797,16 @@
               <FileName>CommonFunctions.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\CommonFunctions.h</FilePath>
+            </File>
+            <File>
+              <FileName>Map.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Map.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Map.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Map.h</FilePath>
             </File>
           </Files>
         </Group>
