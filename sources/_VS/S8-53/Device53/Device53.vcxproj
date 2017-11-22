@@ -526,8 +526,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Stack2500uint16.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Strings.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesLog.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesWindow.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\SCPI.h" />
@@ -585,7 +583,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </None>
     <None Include="..\..\..\S8-53\Device53\main2.s" />
-    <None Include="..\..\..\S8-53\Device53\Utils\CreateTables.py" />
     <None Include="..\..\..\_libs\forVS\algorithm" />
   </ItemGroup>
   <ItemGroup>

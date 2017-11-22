@@ -465,12 +465,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Strings.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\TablesLog.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\TablesWindow.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\cmsis_gcc.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -999,9 +993,6 @@
     </None>
     <None Include="..\..\..\S8-54\Device\Display\font\fontUGOdisplay.inc">
       <Filter>Display\fonts</Filter>
-    </None>
-    <None Include="..\..\..\S8-54\Device\Utils\CreateTables.py">
-      <Filter>Utils</Filter>
     </None>
     <None Include="..\..\..\S8-54\Device\Device54.sct">
       <Filter>src</Filter>

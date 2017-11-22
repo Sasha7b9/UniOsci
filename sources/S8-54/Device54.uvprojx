@@ -1777,21 +1777,6 @@
               <FilePath>.\Device\Utils\Strings.h</FilePath>
             </File>
             <File>
-              <FileName>TablesLog.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\TablesLog.h</FilePath>
-            </File>
-            <File>
-              <FileName>TablesWindow.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\TablesWindow.h</FilePath>
-            </File>
-            <File>
-              <FileName>CreateTables.py</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\CreateTables.py</FilePath>
-            </File>
-            <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Utils\Math.cpp</FilePath>

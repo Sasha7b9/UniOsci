@@ -839,12 +839,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\Strings.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesLog.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\TablesWindow.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\VCP.h">
       <Filter>VCP</Filter>
     </ClInclude>
@@ -936,9 +930,6 @@
     </None>
     <None Include="..\..\..\S8-53\Device53\Hardware\DisplayHardware.inc">
       <Filter>Hardware</Filter>
-    </None>
-    <None Include="..\..\..\S8-53\Device53\Utils\CreateTables.py">
-      <Filter>Utils</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

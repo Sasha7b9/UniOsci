@@ -218,8 +218,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\Strings.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\TablesLog.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\TablesWindow.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.h" />
@@ -732,7 +730,6 @@
     <None Include="..\..\..\S8-54\Device\Display\font\fontUGOdisplay.inc" />
     <None Include="..\..\..\S8-54\Device\libs\startup_stm32f437xx.s" />
     <None Include="..\..\..\S8-54\Device\main2.s" />
-    <None Include="..\..\..\S8-54\Device\Utils\CreateTables.py" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\..\..\S8-54\Device\FileTree.txt" />
