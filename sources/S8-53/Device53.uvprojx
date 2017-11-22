@@ -1729,16 +1729,6 @@
               <FilePath>.\Device53\Utils\ProcessingSignal.h</FilePath>
             </File>
             <File>
-              <FileName>Stack2500uint16.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Utils\Stack2500uint16.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stack2500uint16.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Utils\Stack2500uint16.h</FilePath>
-            </File>
-            <File>
               <FileName>Strings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\Strings.h</FilePath>
