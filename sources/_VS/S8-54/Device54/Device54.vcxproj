@@ -139,6 +139,7 @@
     <ClInclude Include="..\..\..\common\structs.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\common\Utils\Dictionary.h" />
+    <ClInclude Include="..\..\..\common\Utils\Map.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-54\Device\cmsis_gcc.h" />
@@ -370,6 +371,7 @@
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Dictionary.cpp" />
+    <ClCompile Include="..\..\..\common\Utils\Map.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />

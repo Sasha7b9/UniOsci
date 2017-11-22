@@ -10,6 +10,7 @@
   <project>
     <PathAndName>.\S8-53\Device53.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
@@ -18,6 +19,7 @@
 
   <project>
     <PathAndName>.\S8-54\Device54.uvprojx</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>

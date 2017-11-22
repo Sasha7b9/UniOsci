@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <ctype.h>
 
 #ifndef LANG
 #define LANG 0
@@ -411,27 +412,24 @@ int BCD2Int(uint bcd)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int StringUtils::NumWords(char *string)
+int StringUtils::NumWords(const char *string)
 {
-    int num = 0;
+    ChooseSpaces(&string);
 
-    do
+    while (true)
     {
-        if (*string != ' ' && *string != 0)             // Если очередной символ - не пробел
-        {
-            ++num;                                      // то нашли очередное слово
-            while (*string != ' ' && *string != 0)      // Выбираем символы этоого слова
-            {
-                ++string;
-            }
-        }
-        while (*string == ' ')                          // Выбираем пробелы
-        {
-            ++string;
-        }
-    } while (*string);
+        int numWords = 0;
 
-    return num;
+        if (ChooseSymbols(&string))
+        {
+            numWords++;
+        }
+        else
+        {
+            return numWords;
+        }
+        ChooseSpaces(&string);
+    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -503,4 +501,93 @@ int StringUtils::NumDigitsInNumber(int value)
         num++;
     }
     return num;
+}
+
+#define  SYMBOL(x) (*(*(x)))
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::ChooseSymbols(const char **string)
+{
+    if (SYMBOL(string) == 0x0d && SYMBOL(string + 1) == 0x0a)
+    {
+        return false;
+    }
+
+    while (SYMBOL(string) != ' ' && SYMBOL(string) != 0x0d && SYMBOL(string + 1) != 0x0a)
+    {
+        (*string)++;
+    }
+
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::ChooseSpaces(const char **string)
+{
+    if (SYMBOL(string) == 0x0d && SYMBOL(string + 1) == 0x0a)
+    {
+        return false;
+    }
+
+    while (SYMBOL(string) == ' ')
+    {
+        (*string)++;
+    }
+
+    return true;
+}
+
+#undef SYMBOL
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::GetWord(const char *string, Word *word, const int numWord)
+{
+    ChooseSpaces(&string);
+
+    int currentWord = 0;
+
+    while (true)
+    {
+        if (currentWord == numWord)
+        {
+            word->address = (char *)string;
+            ChooseSymbols(&string);
+            word->numSymbols = (int8)(string - word->address);
+
+            char *pointer = word->address;
+            int numSymbols = word->numSymbols;
+            for (int i = 0; i < numSymbols; i++)
+            {
+                *pointer = toupper(*pointer);
+                pointer++;
+            }
+            return true;
+        }
+        if (ChooseSymbols(&string))
+        {
+            currentWord++;
+        }
+        else
+        {
+            return false;
+        }
+        ChooseSpaces(&string);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool StringUtils::WordEqualZeroString(Word *word, char* string)
+{
+    char *ch = string;
+    char *w = (char*)(word->address);
+
+    while (*ch != 0)
+    {
+        if (*ch++ != *w++)
+        {
+            return false;
+        }
+    }
+
+    return (ch - string) == word->numSymbols;
 }

@@ -504,6 +504,9 @@
     <ClInclude Include="..\..\..\common\structs.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Map.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
@@ -958,6 +961,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp">
       <Filter>FPGA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Map.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -552,6 +552,9 @@
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Map.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -873,6 +876,9 @@
       <Filter>Settings</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Map.h">
       <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>

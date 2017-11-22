@@ -2,6 +2,13 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+struct Word
+{
+    char   *address;
+    int8    numSymbols;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class StringUtils
 {
 public:
@@ -43,13 +50,21 @@ public:
                      char bufferOut[20]             ///< сюда записываетс€ возвращаемое значение
     );
     /// ¬озвращает число слов в строке string
-    int NumWords(char *string);
+    int NumWords(const char *string);
     /// ¬озвращает указатель на n слово в строке. ≈сли char == 0 - слова нет, если ret value == 0xffffffff - выходной буфер слишком мал
     char *GetWord(char *string, int n, char *out, int size);
     /// ¬ычисл€ет число разр€дов в целом типа int.
     int NumDigitsInNumber(int value);
+    /// Ёта команда сразу преобразует к верхенму регистру слово.
+    bool GetWord(const char *string, Word *word, const int numWord);
+
+    bool WordEqualZeroString(Word *word, char* string);
 private:
     static int NumDigitsInIntPart(float value);
+    /// ¬озвращает false, если выбор невозможен - строка кончилась.
+    bool ChooseSymbols(const char **string);
+    /// ¬озвращает false, если выбор невозможен - строка кончилась.
+    bool ChooseSpaces(const char **string);
 };
 
 bool String2Int(char *str, int *value);

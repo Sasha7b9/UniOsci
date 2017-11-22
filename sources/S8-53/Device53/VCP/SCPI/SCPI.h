@@ -2,6 +2,7 @@
 #include "Globals.h"
 #include "VCP/VCP.h"
 #include "Ethernet/TcpSocket.h"
+#include "Utils/StringUtils.h"
 
 
 /** @defgroup SCPI
@@ -10,9 +11,9 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define ENTER_ANALYSIS                                  \
-    Word parameter;                                     \
-    if (GetWord(buffer, &parameter, 0)) {               \
+#define ENTER_ANALYSIS                                              \
+    Word parameter;                                                 \
+    if (strUtils.GetWord((const char *)buffer, &parameter, 0)) {    \
         uint8 value = GetValueFromMap(map, &parameter); \
         if (value < 255) {
 
