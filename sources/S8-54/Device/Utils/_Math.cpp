@@ -14,36 +14,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Math_ _math;
 
-const float voltsInPoint[RangeSize] =
-{
-    2e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 2mV
-    5e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),   // 5mV
-    10e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),  // 10mV
-    20e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),  // 20mV
-    50e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),  // 50mV
-    100e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE), // 100mV
-    200e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE), // 200mV
-    500e-3f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE), // 500mV
-    1.0f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),    // 1V
-    2.0f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE),    // 2V
-    5.0f / 20 * GRID_HEIGHT / (MAX_VALUE - MIN_VALUE)     // 5V
-};
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int Math_::RShift2Pixels(uint16 rShift, int heightGrid)
-{
-    float scale = (float)heightGrid / (STEP_RSHIFT * 200);
-    return (int)(scale * (rShift - RShiftZero));
-}
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-float Math_::VoltageCursor(float shiftCurU, Range range, uint16 rShift)
-{
-    return MAX_VOLTAGE_ON_SCREEN(range) - shiftCurU * voltsInPixel[range] - RSHIFT_2_ABS(rShift, range);
-}
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Math_::DataExtrapolation(uint8 *data, uint8 *there, int size)
 {

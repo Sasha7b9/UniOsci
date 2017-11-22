@@ -1466,8 +1466,8 @@ static void WriteCursors(void)
             painter.DrawText(x, y1, sCursors_GetCursVoltage(source, 0, buffer));
             painter.DrawText(x, y2, sCursors_GetCursVoltage(source, 1, buffer));
             x = startX + 49;
-            float pos0 = _math.VoltageCursor(sCursors_GetCursPosU(source, 0), SET_RANGE(source), SET_RSHIFT(source));
-            float pos1 = _math.VoltageCursor(sCursors_GetCursPosU(source, 1), SET_RANGE(source), SET_RSHIFT(source));
+            float pos0 = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, 0), SET_RANGE(source), SET_RSHIFT(source));
+            float pos1 = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, 1), SET_RANGE(source), SET_RSHIFT(source));
             float delta = fabsf(pos1 - pos0);
             if(SET_DIVIDER_10(source))
             {
@@ -1915,7 +1915,7 @@ static void DrawCursorRShift(Channel ch)
 
     int rShift = SET_RSHIFT(ch);
 
-    int y = grid.ChannelCenterHeight() - _math.RShift2Pixels((uint16)rShift, grid.ChannelHeight());
+    int y = grid.ChannelCenterHeight() - mathFPGA.RShift2Pixels((uint16)rShift, grid.ChannelHeight());
 
     float scaleFull = (float)grid.ChannelHeight() / (RShiftMax - RShiftMin) * (MATH_ENABLED ? 0.9f : 0.91f);
     int yFull = grid.ChannelCenterHeight() - (int)(scaleFull * (rShift - RShiftZero));

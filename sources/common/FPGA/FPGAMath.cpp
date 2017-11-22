@@ -421,3 +421,10 @@ void MathFPGA::Normalize(float *data, int)
         data[i] /= max;
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int MathFPGA::RShift2Pixels(uint16 rShift, int heightGrid)
+{
+    float scale = (float)heightGrid / (STEP_RSHIFT * 200);
+    return (int)(scale * (rShift - RShiftZero));
+}

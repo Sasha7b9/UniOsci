@@ -12,23 +12,17 @@
  */
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const float tableScalesRange[RangeSize];
-extern const float absStepRShift[];
-extern const float voltsInPixel[];
-extern const float voltsInPoint[];
-extern const float absStepTShift[];
+//extern const float tableScalesRange[RangeSize];
+//extern const float absStepRShift[];
+//extern const float voltsInPixel[];
+//extern const float voltsInPoint[];
+//extern const float absStepTShift[];
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Math_
 {
 public:
-    
-    /// Смещение относительно нулевого в пикселях экрана
-    int RShift2Pixels(uint16 rShift, int heightGrid);
-
-    float VoltageCursor(float shiftCurU, Range range, uint16 rShift);
-
     void DataExtrapolation(uint8 *data, uint8 *there, int size);
 
     uint8 GetMaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
