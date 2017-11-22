@@ -72,20 +72,6 @@ public:
     void CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);
 
     template<class T>
-    void CircleIncrease(T *value, int min, int max)
-    {
-        if (*value < max)   { ++(*value); }
-        else                { *value = (T)min; }
-    }
-
-    template<class T>
-    void CircleDecrease(T *value, int min, int max)
-    {
-        if (*value > min)   { --(*value); }
-        else                { *value = (T)max; }
-    }
-
-    template<class T>
     static void LimitationIncrease(T *value, T max)
     {
         if ((*value) < max) { ++(*value); }
@@ -159,8 +145,17 @@ template<class T> T Max(T x1, T x2)
     return x1 > x2 ? x1 : x2;
 }
 
-typedef void (Math::*pFuncMathPI8II)(int8 *, int, int);
-typedef void (Math::*pFuncMathPIII)(int *, int, int);
+template<class T> void CircleIncrease(T *value, T min, T max)
+{
+    if (*value < max) { ++(*value); }
+    else              { *value = (T)min; }
+}
+
+template<class T> void CircleDecrease(T *value, T min, T max)
+{
+    if (*value > min) { --(*value); }
+    else              { *value = (T)max; }
+}
 
 
 #define _bitset(bits)                               \

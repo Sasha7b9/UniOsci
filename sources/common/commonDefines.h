@@ -46,6 +46,8 @@ typedef char*   (*pFuncCFB)(float, bool);
 typedef char*   (*pFuncCFBC)(float, bool, char*);
 typedef void    (*pFuncVU8)(uint8 *);
 typedef void    (*pFuncVpVIIB)(void*, int, int, bool);
+typedef void    (*pFuncVpIII)(int *, int, int);
+typedef void    (*pFuncVpI8I8I8)(int8 *, int8, int8);
 
 #define _GET_BIT(value, bit)                    (((value) >> bit) & 0x01)
 #define _SET_BIT(value, bit)                    ((value) |= (1 << bit))

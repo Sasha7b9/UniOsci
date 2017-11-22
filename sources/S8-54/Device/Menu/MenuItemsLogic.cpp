@@ -82,7 +82,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            math.CircleIncrease<int8>(&index, 0, (int8)NumSubItems() - 1);
+            CircleIncrease<int8>(&index, 0, (int8)NumSubItems() - 1);
         }
         else if (tsChoice.dir == DECREASE)
         {
@@ -92,7 +92,7 @@ float Choice::Step()
             {
                 return delta;
             }
-            math.CircleDecrease<int8>(&index, 0, (int8)NumSubItems() - 1);
+            CircleDecrease<int8>(&index, 0, (int8)NumSubItems() - 1);
         }
         *cell = index;
         tsChoice.address = 0;
@@ -239,7 +239,7 @@ void Governor::NextPosition()
 {
     if (OpenedItem() == this)
     {
-        math.CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
+        CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
     }
 }
 
@@ -322,7 +322,7 @@ void Time::SetNewTime()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::SelectNextPosition()
 {
-    math.CircleIncrease<int8>(curField, 0, 7);
+    CircleIncrease<int8>(curField, 0, 7);
     painter.ResetFlash();
 }
 
@@ -387,7 +387,7 @@ void GovernorColor::ChangeValue(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void IPaddress::NextPosition()
 {
-    math.CircleIncrease<int8>(&gCurDigit, 0, port == 0 ? 11 : 16);
+    CircleIncrease<int8>(&gCurDigit, 0, port == 0 ? 11 : 16);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

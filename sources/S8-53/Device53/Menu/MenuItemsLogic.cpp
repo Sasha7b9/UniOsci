@@ -172,7 +172,7 @@ void Governor_NextPosition(Governor *governor)
 {
     if (menu.OpenedItem() == governor)
     {
-        math.CircleIncrease<int8>(&gCurDigit, 0, Governor_NumDigits(   governor) - 1);
+        CircleIncrease<int8>(&gCurDigit, 0, Governor_NumDigits(   governor) - 1);
     }
 }
 
@@ -189,7 +189,7 @@ int Governor_NumDigits(Governor *governor)
 
 void IPaddress_NextPosition(IPaddress *ipEthernet_IP)
 {
-    math.CircleIncrease<int8>(&gCurDigit, 0, ipEthernet_IP->port == 0 ? 11 : 16);
+    CircleIncrease<int8>(&gCurDigit, 0, ipEthernet_IP->port == 0 ? 11 : 16);
 }
 
 void ItemTime_SetOpened(Time *item)
@@ -210,7 +210,7 @@ void ItemTime_SetNewTime(Time *time)
 
 void ItemTime_SelectNextPosition(Time *time)
 {
-    math.CircleIncrease<int8>(time->curField, 0, 7);
+    CircleIncrease<int8>(time->curField, 0, 7);
     painter.ResetFlash();
 }
 

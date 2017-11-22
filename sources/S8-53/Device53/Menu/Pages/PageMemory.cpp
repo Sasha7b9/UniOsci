@@ -101,12 +101,12 @@ void PressSB_MemLastSelect()
 
 void PressSB_MemLast_Next()
 {
-    math.CircleIncrease<int16>(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
+    CircleIncrease<int16>(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
 }
 
 void PressSB_MemLast_Prev()
 {
-    math.CircleDecrease<int16>(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
+    CircleDecrease<int16>(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
 }
 
 static void RotateSB_MemLast(int angle)
@@ -391,11 +391,11 @@ void PressSB_SetName_Insert()
 
 void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 {   
-    static const pFuncMathPI8II func[3] =
+    static const pFuncVpI8I8I8 func[3] =
     {
-        &Math::CircleDecrease<int8>,
-        &Math::CircleDecrease<int8>,
-        &Math::CircleIncrease<int8>
+        CircleDecrease<int8>,
+        CircleDecrease<int8>,
+        CircleIncrease<int8>
     };
 
     painter.ResetFlash();
@@ -403,7 +403,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     {
         INDEX_SYMBOL = maxIndex - 1;
     }
-    (math.*func[Sign(angle) + 1])((int8 *)&INDEX_SYMBOL, 0, maxIndex - 1);
+    func[Sign(angle) + 1]((int8 *)&INDEX_SYMBOL, 0, maxIndex - 1);
     sound.RegulatorSwitchRotate();
 
 }
@@ -630,11 +630,11 @@ static void FuncOnRegSetMemInt(int delta)
     sound.RegulatorSwitchRotate();
     if (delta < 0)
     {
-        math.CircleDecrease<int8>(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
+        CircleDecrease<int8>(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     else if (delta > 0)
     {
-        math.CircleIncrease<int8>(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
+        CircleIncrease<int8>(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
     }
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     painter.ResetFlash();
@@ -731,7 +731,7 @@ static void DrawSB_MemInt_ModeShow(int x, int y)
 
 static void PressSB_MemInt_ModeShow()
 {
-    math.CircleIncrease<int8>((int8 *)&MODE_SHOW_MEMINT, 0, 2);
+    CircleIncrease<int8>((int8 *)&MODE_SHOW_MEMINT, 0, 2);
 }
 
 static const arrayHints hintsMemIntModeShow =

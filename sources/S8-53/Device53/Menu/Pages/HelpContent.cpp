@@ -95,7 +95,7 @@ void HelpContent_NextParagraph()
 {
     if(currentPage->type == TypePage_Content)
     {
-        math.CircleIncrease<int>(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
+        CircleIncrease<int>(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
     }
 }
 
@@ -103,7 +103,7 @@ void HelpContent_PrevParagraph()
 {
     if(currentPage->type == TypePage_Content)
     {
-        math.CircleDecrease<int>(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
+        CircleDecrease<int>(&currentParagraph, 0, NumParagraphs(currentPage) - 1);
     }
 }
 

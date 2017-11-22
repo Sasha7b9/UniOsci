@@ -670,7 +670,7 @@ static void OnPress_Function_Screen(void)
     }
     else
     {
-        math.CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
+        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
     }
 }
 
@@ -721,7 +721,7 @@ DEF_SMALL_BUTTON_HINTS_3
 //------------------------------------------------------------------------------------------------------------------------- —≈–¬»— - ‘”Õ ÷»ﬂ - ¬Ë‰ ---
 static void OnPress_Function_Type(void)
 {
-    math.CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
+    CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
 }
 
 static void Draw_Function_Type(int x, int y)
@@ -757,7 +757,7 @@ DEF_SMALL_BUTTON_HINTS_2
 //------------------------------------------------------------------------------------------------------- —≈–¬»— - ‘”Õ ÷»ﬂ - –ÂÊËÏ Û˜ÍË ”—“¿ÕŒ¬ ¿ ---
 static void OnPress_Function_ModeRegSet(void)
 {
-    math.CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
+    CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
 }
 
 static void Draw_Function_ModeRegSet(int x, int y)

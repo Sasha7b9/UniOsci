@@ -652,7 +652,7 @@ void Menu::ShortPress_MAC(void *item)
 {
     if (OpenedItem() == item)
     {
-        math.CircleIncrease<int8>(&gCurDigit, 0, 5);
+        CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
 }
 
@@ -666,7 +666,7 @@ void Menu::ShortPress_GovernorColor(void *governorColor)
     GovernorColor *governor = (GovernorColor*)governorColor;
     if(OpenedItem() == governor)
     {
-        math.CircleIncrease<int8>(&(governor->colorType->currentField), 0, 3);
+        CircleIncrease<int8>(&(governor->colorType->currentField), 0, 3);
     }
     else
     {

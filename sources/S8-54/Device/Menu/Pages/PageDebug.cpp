@@ -1258,17 +1258,17 @@ static void OnRegSet_SerialNumber(int angle)
 {
     typedef int (*pFunc)(int *, int, int);
 
-    pFuncMathPIII p = (angle > 0) ? (&Math::CircleIncrease<int>) : (&Math::CircleDecrease<int>);
+    pFuncVpIII p = (angle > 0) ? (CircleIncrease<int>) : (CircleDecrease<int>);
 
     ACCESS_EXTRAMEM(StructForSN, s);
 
     if (s->curDigt == 0)
     {
-        (math.*p)(&s->number, 1, 99);
+        p(&s->number, 1, 99);
     }
     else
     {
-        (math.*p)(&s->year, 2016, 2050);
+        p(&s->year, 2016, 2050);
     }
     Sound_GovernorChangedValue();
 }
