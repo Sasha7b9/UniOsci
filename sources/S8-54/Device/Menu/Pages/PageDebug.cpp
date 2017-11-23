@@ -133,7 +133,9 @@ typedef struct
 } StructForSN;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Œ“À¿ƒ ¿ ///
-DEF_PAGE_13(    pDebug, ,
+DEF_PAGE_13
+(
+    pDebug, ,
     Page_Debug, &mainPage, FuncActive, EmptyPressPage,
     "Œ“À¿ƒ ¿", "DEBUG",
     "",
@@ -156,7 +158,9 @@ DEF_PAGE_13(    pDebug, ,
 const Page * pointerPageDebug = &pDebug;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Œ“À¿ƒ ¿ -  ŒÕ—ŒÀ‹ ///
-DEF_PAGE_5(     ppConsole, static,
+DEF_PAGE_5
+(
+    ppConsole, static,
     Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage,
     " ŒÕ—ŒÀ‹", "CONSOLE",
     "",
@@ -389,7 +393,9 @@ DEF_BUTTON
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Œ“À¿ƒ ¿ - ¿÷œ ///
-DEF_PAGE_3(     ppADC, static,
+DEF_PAGE_3
+(
+    ppADC, static,
     Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage,
     "¿÷œ", "ADC",
     "",
@@ -400,7 +406,9 @@ DEF_PAGE_3(     ppADC, static,
 );
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Œ“À¿ƒ ¿ - ¿÷œ - ¡¿À¿Õ— ///
-DEF_PAGE_3(     pppADC_Balance, static,
+DEF_PAGE_3
+(
+    pppADC_Balance, static,
     Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage,
     "¡¿À¿Õ—", "BALANCE",
     "",

@@ -1,5 +1,5 @@
 #include "defines.h"
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
@@ -23,81 +23,6 @@
  *  @{
  */
 
-extern const Page pDebug;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Choice     mcStats;                            ///< ÎÒËÀÄÊÀ - Ñòàòèñòèêà
-extern const Page       mpConsole;                          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-extern const Governor   mgConsole_NumStrings;               ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê
-extern const Choice     mcConsole_SizeFont;                 ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
-extern const Page       mpConsole_Registers;                ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
-extern const Choice     mcConsole_Registers_ShowAll;        ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå
-extern const Choice     mcConsole_Registers_RD_FL;          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL
-static bool      IsActive_Console_Registers_RD_FL();
-extern const Choice     mcConsole_Registers_RShiftA;        ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê
-extern const Choice     mcConsole_Registers_RShiftB;        ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê
-extern const Choice     mcConsole_Registers_TrigLev;        ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð.
-extern const Choice     mcConsole_Registers_RangeA;         ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1
-extern const Choice     mcConsole_Registers_RangeB;         ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2
-extern const Choice     mcConsole_Registers_TrigParam;      ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð.
-extern const Choice     mcConsole_Registers_ChanParamA;     ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1
-extern const Choice     mcConsole_Registers_ChanParamB;     ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
-extern const Choice     mcConsole_Registers_TBase;          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË
-extern const Choice     mcConsole_Registers_tShift;         ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì.
-extern const Page       mpADC;                              ///< ÎÒËÀÄÊÀ - ÀÖÏ
-extern const Page       mpADC_Balance;                      ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-extern const Choice     mcADC_Balance_Mode;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì
-static void     OnChanged_ADC_Balance_Mode(bool active);
-static void          Draw_ADC_Balance_Mode(int x, int y);
-extern const Governor   mgADC_Balance_ShiftA;               ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1
-static bool      IsActive_ADC_Balance_Shift();
-static void     OnChanged_ADC_Balance_ShiftA();
-extern const Governor   mgADC_Balance_ShiftB;               ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2
-static void     OnChanged_ADC_Balance_ShiftB();
-extern const Page       mpADC_Stretch;                      ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
-extern const Choice     mcADC_Stretch_Mode;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðåæèì
-static void     OnChanged_ADC_Stretch_Mode(bool active);
-void LoadStretchADC(Channel chan);
-extern const Governor   mgADC_Stretch_ADC_A;                ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Êîýôô. 1ê
-static bool      IsActive_ADC_Stretch_ADC();
-static void     OnChanged_ADC_Stretch_ADC_A();
-extern const Governor   mgADC_Stretch_ADC_B;                ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Êîýôô. 2ê
-static void     OnChanged_ADC_Stretch_ADC_B();
-extern const Page       mpADC_AltRShift;                    ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-extern const Button     mbADC_AltRShift_Reset;              ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñáðîñ
-static void       OnPress_ADC_AltRShift_Reset();
-extern const Governor   mbADC_AltRShift_2mV_DC_A;           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 2ìÂ ïîñò
-static void     OnChanged_ADC_AltRShift_A();
-extern const Governor   mbADC_AltRShift_2mV_DC_B;           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 2ìÂ ïîñò
-static void     OnChanged_ADC_AltRShift_B();
-extern const Governor   mbADC_AltRShift_5mV_DC_A;           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 5ìÂ ïîñò
-extern const Governor   mbADC_AltRShift_5mV_DC_B;           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 5ìÂ ïîñò
-extern const Governor   mbADC_AltRShift_10mV_DC_A;          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 10ìÂ ïîñò
-extern const Governor   mbADC_AltRShift_10mV_DC_B;          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 10ìÂ ïîñò
-extern const Page       mpRandomizer;                       ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
-extern const Governor   mgRandomizer_SamplesForGates;       ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Âûá-ê/âîðîòà
-static void     OnChanged_Randomizer_SamplesForGates();
-extern const Governor   mgRandomizer_AltTShift0;            ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - tShift äîï.
-static void     OnChanged_Randomizer_AltTShift0();
-extern const Governor   mgRandomizer_Average;               ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Óñðåäí.
-extern const Choice     mcSizeSettings;                     ///< ÎÒËÀÄÊÀ - Ðàçìåð íàñòðîåê
-static void        OnDraw_SizeSettings(int x, int y);
-extern const Button     mbSaveFirmware;                     ///< ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó
-static bool      IsActive_SaveFirmware();
-static void       OnPress_SaveFirmware();
-extern const       Page ppSerialNumber;                     ///< ÎÒËÀÄÊÀ - Ñ/Í
-static void       OnPress_SerialNumber();
-static void Draw_EnterSerialNumber();
-static void      OnRegSet_SerialNumber(int);
-extern const SButton bSerialNumber_Exit;                ///< ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä
-static void       OnPress_SerialNumber_Exit();
-extern const SButton bSerialNumber_Change;              ///< ÎÒËÀÄÊÀ - Ñ/Í - Ïåðåéòè
-static void       OnPress_SerialNumber_Change();
-static void          Draw_SerialNumber_Change(int, int);
-extern const  SButton bSerialNumber_Save;               ///< ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü
-static void        OnPress_SerialNumber_Save();
-static void           Draw_SerialNumber_Save(int, int);
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Â ýòîé ñòðóêòóðå áóäóò õðàíèòüñÿ äàííûå ñåðèéíîãî íîìåðà ïðè îòêðûòîé ñòðàíèöå ppSerialNumer
 typedef struct
@@ -109,334 +34,183 @@ typedef struct
 
 
 extern const Page mainPage;
+extern const Page mpConsole_Registers;
+extern const Page pDebug;
+extern const Page mpConsole;
 
-
-// ÎÒËÀÄÊÀ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsDebug =
-{
-    (void*)&mcStats,            // ÎÒËÀÄÊÀ - Ñòàòèñòèêà
-    (void*)&mpConsole,          // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-    (void*)&mpADC,              // ÎÒËÀÄÊÀ - ÀÖÏ
-    (void*)&mpRandomizer,       // ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
-    (void*)&mcSizeSettings,     // ÎÒËÀÄÊÀ - Ðàçìåð íàñòðîåê
-    (void*)&mbSaveFirmware      // ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó
-    //(void*)&ppSerialNumber     // ÎÒËÀÄÊÀ - Ñ/Í
-    //(void*)&mspDebugInformation
-};
-
-const Page pDebug
+//-------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå ---
+DEF_CHOICE_2
 (
-    &mainPage, 0,
-    "ÎÒËÀÄÊÀ", "DEBUG",
-    "",
-    "",
-    Page_Debug, &itemsDebug
+    mcConsole_Registers_ShowAll, mpConsole_Registers,
+    IS_SHOW_REGISTERS_ALL, FuncActive, FuncChangedChoice, FuncDraw,
+    "Ïîêàçûâàòü âñå", "Show all",
+    "Ïîêàçûâàòü âñå çíà÷åíèÿ, çàñûëàåìûå â ðåãèñòðû",
+    "To show all values transferred in registers",
+    "Íåò", "No",
+    "Äà",  "Yes"
 );
 
-// ÎÒËÀÄÊÀ - Ñòàòèñòèêà ------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcStats =
-{
-    Item_Choice, &pDebug, 0,
-    {
-        "Ñòàòèñòèêà", "Statistics",
-        "Ïîêàçûâàòü/íå ïîêàçûâàòü âðåìÿ/êàäð, êàäðîâ â ñåêóíäó, êîëè÷åñòâî ñèãíàëîâ ñ ïîñëåäíèìè íàñòðîéêàìè â ïàìÿòè/êîëè÷åñòâî ñîõðàíÿåìûõ â ïàìÿòè ñèãíàëîâ",
-        "To show/not to show a time/shot, frames per second, quantity of signals with the last settings in memory/quantity of the signals kept in memory"
-    },
-    {
-        "Íå ïîêàçûâàòü",    "Hide",
-        "Ïîêàçûâàòü",       "Show"
-    },
-    (int8*)&SHOW_STATS
-};
-
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsConsole =
-{
-    (void*)&mgConsole_NumStrings,   // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê
-    (void*)&mcConsole_SizeFont,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
-    (void*)&mpConsole_Registers     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
-};
-
-static const Page mpConsole
-(
-    &pDebug, 0,
-    "ÊÎÍÑÎËÜ", "CONSOLE",
-    "",
-    "",
-    Page_DebugConsole, &itemsConsole
-);
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê -------------------------------------------------------------------------------------------------------------------
-static const Governor mgConsole_NumStrings
-(
-    &mpConsole, 0,
-    "×èñëî ñòðîê", "Number strings",
-    "",
-    "",
-    &NUM_STRINGS,  0, 33
-);
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà -----------------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_SizeFont =
-{
-    Item_Choice, &mpConsole, 0,
-    {
-        "Ðàçìåð øðèôòà", "Size font",
-        "",
-        ""
-    },
-    {
-        "5",    "5",
-        "8",    "8"
-    },
-    (int8*)&SIZE_FONT_CONSOLE
-};
-
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsConsole_Registers =
-{
-    (void*)&mcConsole_Registers_ShowAll,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå
-    (void*)&mcConsole_Registers_RD_FL,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL
-    (void*)&mcConsole_Registers_RShiftA,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê
-    (void*)&mcConsole_Registers_RShiftB,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê
-    (void*)&mcConsole_Registers_TrigLev,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð.
-    (void*)&mcConsole_Registers_RangeA,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1
-    (void*)&mcConsole_Registers_RangeB,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2
-    (void*)&mcConsole_Registers_TrigParam,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð.
-    (void*)&mcConsole_Registers_ChanParamA, // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1
-    (void*)&mcConsole_Registers_ChanParamB, // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
-    (void*)&mcConsole_Registers_TBase,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË
-    (void*)&mcConsole_Registers_tShift      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì.
-};
-
-static const Page mpConsole_Registers
-(
-    &mpConsole, 0,
-    "ÐÅÃÈÑÒÐÛ", "REGISTERS",
-    "",
-    "",
-    Page_DebugShowRegisters, &itemsConsole_Registers
-);
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå -----------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_ShowAll =
-{
-    Item_Choice, &mpConsole_Registers, 0,
-    {
-        "Ïîêàçûâàòü âñå", "Show all",
-        "Ïîêàçûâàòü âñå çíà÷åíèÿ, çàñûëàåìûå â ðåãèñòðû",
-        "To show all values transferred in registers"
-    },
-    {
-        "Íåò",  "No",
-        "Äà",   "Yes"
-    },
-    (int8*)&IS_SHOW_REGISTERS_ALL
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL --------------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_RD_FL =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "RD_FL", "RD_FL",
-        "",
-        ""
-    },
-    {
-        DISABLE_RU, DISABLE_EN,
-        ENABLE_RU,  ENABLE_EN
-    },
-    (int8*)&set.debug.showRegisters.flag
-};
-
-static bool IsActive_Console_Registers_RD_FL(void)
+//----------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL ---
+static bool IsActive_Console_Registers(void)
 {
     return !IS_SHOW_REGISTERS_ALL;
 }
 
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê -----------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_RShiftA =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "U ñì. 1ê", "U shift 1ch",
-        "",
-        ""
-    },
-    {
-        DISABLE_RU, DISABLE_EN,
-        ENABLE_RU,  ENABLE_EN
-    },
-    (int8*)&set.debug.showRegisters.rShiftA
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê -----------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_RShiftB =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "U ñì. 2ê", "U shift 2ch",
-        "",
-        ""
-    },
-    {
-        DISABLE_RU, DISABLE_EN,
-        ENABLE_RU,  ENABLE_EN
-    },
-    (int8*)&set.debug.showRegisters.rShiftB
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð. -----------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_TrigLev =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "U ñèíõð.", "U trig.",
-        "",
-        ""
-    },
-    {
-        DISABLE_RU, DISABLE_EN,
-        ENABLE_RU,  ENABLE_EN
-    },
-    (int8*)&set.debug.showRegisters.trigLev
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1 --------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_RangeA =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "ÂÎËÜÒ/ÄÅË 1", "Range 1",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.range[0]
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2 --------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_RangeB =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "ÂÎËÜÒ/ÄÅË 2", "Range 2",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.range[1]
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð. ------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_TrigParam =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "Ïàðàì. ñèíõð.", "Trig param",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.trigParam
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1 ------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_ChanParamA =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "Ïàðàì. êàí. 1",  "Chan 1 param",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.chanParam[0]
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2 ------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_ChanParamB =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "Ïàðàì. êàí. 2", "Chan 2 param",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.chanParam[1]
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË ----------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_TBase =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "ÂÐÅÌß/ÄÅË", "TBase",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.tBase
-};
-
-// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì. --------------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_Registers_tShift =
-{
-    Item_Choice, &mpConsole_Registers, IsActive_Console_Registers_RD_FL,
-    {
-        "Ò ñì.", "tShift",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&set.debug.showRegisters.tShift
-};
-
-
-// ÎÒËÀÄÊÀ - ÀÖÏ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsADC =
-{
-    (void*)&mpADC_Balance,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-    (void*)&mpADC_Stretch,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
-    (void*)&mpADC_AltRShift     // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-    //, (void*)&mspDebugADCaltShift
-};
-
-static const Page mpADC
+DEF_CHOICE_2
 (
-    &pDebug, 0,
-    "ÀÖÏ", "ADC",
+    mcConsole_Registers_RD_FL, mpConsole_Registers,
+    set.debug.showRegisters.flag, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "RD_FL", "RD_FL",
     "",
     "",
-    Page_DebugADC, &itemsADC
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
 );
 
-// ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//-------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_RShiftA, mpConsole_Registers,
+    set.debug.showRegisters.rShiftA, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "U ñì. 1ê", "U shift 1ch",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//-------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_RShiftB, mpConsole_Registers,
+    set.debug.showRegisters.rShiftB, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "U ñì. 2ê", "U shift 2ch",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//-------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð. ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_TrigLev, mpConsole_Registers,
+    set.debug.showRegisters.trigLev, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "U ñèíõð.", "U trig.",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//----------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1 ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_RangeA, mpConsole_Registers,
+    set.debug.showRegisters.range[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "ÂÎËÜÒ/ÄÅË 1", "Range 1",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//----------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2 ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_RangeB, mpConsole_Registers,
+    set.debug.showRegisters.range[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "ÂÎËÜÒ/ÄÅË 2", "Range 2",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//--------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð. ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_TrigParam, mpConsole_Registers,
+    set.debug.showRegisters.trigParam, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "Ïàðàì. ñèíõð.", "Trig param",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//--------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1 ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_ChanParamA, mpConsole_Registers,
+    set.debug.showRegisters.chanParam[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "Ïàðàì. êàí. 1",  "Chan 1 param",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//--------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2 ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_ChanParamB, mpConsole_Registers,
+    set.debug.showRegisters.chanParam[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "Ïàðàì. êàí. 2", "Chan 2 param",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_TBase, mpConsole_Registers,
+    set.debug.showRegisters.tBase, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "ÂÐÅÌß/ÄÅË", "TBase",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+//----------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì. ---
+DEF_CHOICE_2
+(
+    mcConsole_Registers_tShift, mpConsole_Registers,
+    set.debug.showRegisters.tShift, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+    "Ò ñì.", "tShift",
+    "",
+    "",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ ///
+DEF_PAGE_12
+(
+    mpConsole_Registers, static,
+    Page_Debug_Console_Registers, &mpConsole, FuncActive, EmptyPressPage,
+    "ÐÅÃÈÑÒÐÛ", "REGISTERS",
+    "",
+    "",
+    mcConsole_Registers_ShowAll,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå
+    mcConsole_Registers_RD_FL,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL
+    mcConsole_Registers_RShiftA,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê
+    mcConsole_Registers_RShiftB,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê
+    mcConsole_Registers_TrigLev,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð.
+    mcConsole_Registers_RangeA,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1
+    mcConsole_Registers_RangeB,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2
+    mcConsole_Registers_TrigParam,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð.
+    mcConsole_Registers_ChanParamA, // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1
+    mcConsole_Registers_ChanParamB, // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
+    mcConsole_Registers_TBase,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË
+    mcConsole_Registers_tShift      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì.
+)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ ///
 static const arrayItems itemsADC_Balance =
 {
     (void*)&mcADC_Balance_Mode,     // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì
@@ -451,6 +225,24 @@ static const Page mpADC_Balance
     "",
     "",
     Page_DebugADCbalance, &itemsADC_Balance
+);
+
+DEF_PAGE_3
+(
+
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ - ÀÖÏ ///
+DEF_PAGE_3
+(
+    mpADC, static,
+    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage,
+    "ÀÖÏ", "ADC",
+    "",
+    "",
+    mpADC_Balance,  // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
+    mpADC_Stretch,  // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
+    mpADC_AltRShift // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
 );
 
 // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì --------------------------------------------------------------------------------------------------------------------
@@ -1041,167 +833,78 @@ static void Draw_SerialNumber_Save(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
+//--------------------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - Ñòàòèñòèêà ---
+DEF_CHOICE_2
+(
+    mcStats, pDebug,
+    SHOW_STATS, FuncActive, FuncChangedChoice, FuncDraw,
+    "Ñòàòèñòèêà", "Statistics"
+    ,
+    "Ïîêàçûâàòü/íå ïîêàçûâàòü âðåìÿ/êàäð, êàäðîâ â ñåêóíäó, êîëè÷åñòâî ñèãíàëîâ ñ ïîñëåäíèìè íàñòðîéêàìè â ïàìÿòè/êîëè÷åñòâî ñîõðàíÿåìûõ â ïàìÿòè "
+    "ñèãíàëîâ"
+    ,
+    "To show/not to show a time/shot, frames per second, quantity of signals with the last settings in memory/quantity of the signals kept in memory",
+    "Íå ïîêàçûâàòü", "Hide",
+    "Ïîêàçûâàòü", "Show"
+);
 
+//---------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê ---
+DEF_GOVERNOR
+(
+    mgConsole_NumStrings,
+    "×èñëî ñòðîê", "Number strings",
+    "",
+    "",
+    mpConsole, NUM_STRINGS, 0, 33, FuncActive, FuncChanged, FuncBeforeDraw
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ ///
+DEF_PAGE_3
+(
+    mpConsole, static,
+    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage,
+    "ÊÎÍÑÎËÜ", "CONSOLE",
+    "",
+    "",
+    mgConsole_NumStrings, // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê
+    mcConsole_SizeFont,   // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
+    mpConsole_Registers   // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
+);
+
+
+
+// ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà -----------------------------------------------------------------------------------------------------------------
+static const Choice mcConsole_SizeFont =
+{
+    Item_Choice, &mpConsole, 0,
+    {
+        "Ðàçìåð øðèôòà", "Size font",
+        "",
+        ""
+    },
+    {
+        "5",    "5",
+        "8",    "8"
+    },
+    (int8*)&SIZE_FONT_CONSOLE
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ ///
+DEF_PAGE_6
+(
+    pDebug, ,
+    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
+    "ÎÒËÀÄÊÀ", "DEBUG",
+    "",
+    "",
+    mcStats,        // ÎÒËÀÄÊÀ - Ñòàòèñòèêà
+    mpConsole,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
+    mpADC,          // ÎÒËÀÄÊÀ - ÀÖÏ
+    mpRandomizer,   // ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
+    mcSizeSettings, // ÎÒËÀÄÊÀ - Ðàçìåð íàñòðîåê
+    mbSaveFirmware  // ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó
+);
 
 /** @}  @}
  */
-
-        /*
-        static void OnChangeRShiftADC(bool active)
-        {
-            fpga.SetRShift(A, SET_RSHIFT_A);
-            fpga.SetRShift(B, SET_RSHIFT_B);
-        }
-
-        const Choice mcDebugADCrShiftMode =
-        {
-            Item_Choice, &mpADC_AltRShift, {"Ðåæèì",      "Mode"},
-            {
-                "",
-                ""
-            },
-            EmptyFuncBV,
-            {                                    {DISABLE_RU,   DISABLE_EN},
-                                                 {"Ðåàëüíûé",   "Real"},
-                                                 {"Ðó÷íîé",     "Hand"}
-            },
-            (int8*)&set.debug.rShiftADCtype, OnChangeRShiftADC
-        };
-
-        // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ. ÑÌÅÙÅÍÈÅ - Ñìåùåíèå 1ê 2ìÂ
-        static TimeStructGovernor tsRShiftADC;
-        static bool IsActiveRShiftADC(void)
-        {
-            return set.debug.rShiftADCtype == RShiftADC_Hand;
-        }
-
-        static void OnChangeRShiftADC0(void)
-        {
-            fpga.SetRShift(A, SET_RSHIFT_A);
-        }
-
-        const Governor mgDebugRShiftADC00 =
-        {
-            &mpADC_AltRShift,
-            {
-                "Ñìåù 1ê 2ìÂ", "Shift 1ch"
-            },
-            {
-                "",
-                ""
-            },
-            IsActiveRShiftADC,
-            &set.debug.rShiftADC[0][0], -100, 100, &tsRShiftADC, OnChangeRShiftADC0
-        };
-
-        static TimeStructGovernor tsRShiftADC01;
-        const Governor mgDebugRShiftADC01 =
-        {
-            &mpADC_AltRShift,
-            {
-                "Ñìåù 1ê 500ìÂ", "Shift 1ch 500mV"
-            },
-            {
-                "",
-                ""
-            },
-            IsActiveRShiftADC,
-            &set.debug.rShiftADC[1][0], -100, 100, &tsRShiftADC01, OnChangeRShiftADC0
-        };
-
-        static void OnChangeRShiftADC1(void)
-        {
-            fpga.SetRShift(B, SET_RSHIFT_B);
-        }
-
-        // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ. ÑÌÅÙ. ÏÀÌ.
-const Page mspDebugADCaltShift;
-
-/// ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ. ÑÌÅÙ. ÏÀÌ. - Âåëè÷èíà
-const Governor mgDebugADCaltShift =
-{
-    &mspDebugADCaltShift, 0,
-    {
-        "Âåëè÷èíà", "Value",
-        "",
-        ""
-    },
-    &set.debug.altShift, -2, 2
-};
-
-// ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ ÏÀÌ /////////////////////////////////////////////////////////////////////////////////////////////
-const Page mspDebugADCaltShift =
-{
-    Item_Page, &mpADC, 0,
-    {
-        "ÄÎÏ ÑÌÅÙ ÏÀÌ", "ALT SHIFT MEM",
-        "",
-        ""
-    },
-    Page_DebugADCaltShift,
-    {
-        (void*)&mgDebugADCaltShift
-    }
-};
-
-const Governor mgDebugInfoNumber =
-{
-    &mspDebugInformation,
-    {
-        "Íîìåð", "Number"
-    },
-    {
-        "Óñòàíîâêà íîìåðà ñåðèéíîãî íîìåðà",
-        "Installation numbers of the serial number"
-    },
-    EmptyFuncBV,
-    &set.debug.infoNumber, 0, 100
-};
-
-const Governor mgDebugInfoYear =
-{
-    &mspDebugInformation,
-    {
-        "Ãîä", "Year"
-    },
-    {
-        "Óñòàíîâêà ãîäà ñåðèéíîãî íîìåðà",
-        "Installation year serial number"
-    },
-    EmptyFuncBV,
-    &set.debug.infoYear, 2015, 2050
-};
-
-const Governor mgDebugInfoVersion =
-{
-    &mspDebugInformation,
-    {
-        "Âåðñèÿ", "Version"
-    },
-    {
-        "Óñòàíîâêà íîìåðà âåðñèè",
-        "Setting the version number"
-    },
-     EmptyFuncBV,
-    &set.debug.infoVer, 10, 100
-};
-
-// ÎÒËÀÄÊÀ - ÈÍÔÎÐÌÀÖÈß ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const Page mspDebugInformation =
-{
-    Item_Page, &pDebug,
-    {
-        "ÈÍÔÎÐÌÀÖÈß", "INFORMATION",
-    },
-    {
-        "Ïîçâîëÿåò ââåñòè èíôîðìàöèþ äëÿ ìåíþ ÑÅÐÂÈÑ-ÈÍÔÎÐÌÀÖÈß",
-        "It allows you to enter information for SERVICE INFORMATION menu"
-    },
-    EmptyFuncBV, Page_DebugInformation,
-    {
-        (void*)&mgDebugInfoNumber,
-        (void*)&mgDebugInfoYear,
-        (void*)&mgDebugInfoVersion
-    }
-};
-*/
