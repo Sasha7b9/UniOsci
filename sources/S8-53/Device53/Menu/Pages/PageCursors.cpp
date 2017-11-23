@@ -258,9 +258,182 @@ DEF_SMALL_BUTTON_HINTS_5
                                     "cursors of tension are switched on, control of both cursors"
 );
 
+//--------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Курсоры T ---
+static void PressSB_Cursors_T(void)
+{
+    if (CURS_ACTIVE_IS_T || CURS_CNTRL_T_IS_DISABLE(CURS_SOURCE))
+    {
+        IncCursCntrlT(CURS_SOURCE);
+    }
+    CURS_ACTIVE = CursActive_T;
+}
+
+static void DrawSB_Cursors_T_Disable(int x, int y)
+{
+    painter.DrawText(x + 7, y + 5, "T");
+}
+
+static void DrawSB_Cursors_T_Both_Disable(int x, int y)
+{
+    DrawMenuCursTime(x, y, false, false);
+}
+
+static void DrawSB_Cursors_T_Left(int x, int y)
+{
+    DrawMenuCursTime(x, y, true, false);
+}
+
+static void DrawSB_Cursors_T_Right(int x, int y)
+{
+    DrawMenuCursTime(x, y, false, true);
+}
+
+static void DrawSB_Cursors_T_Both_Enable(int x, int y)
+{
+    DrawMenuCursTime(x, y, true, true);
+}
+
+static void DrawSB_Cursors_T(int x, int y)
+{
+    Channel source = CURS_SOURCE;
+    CursCntrl cursCntrl = CURS_CNTRL_T(source);
+    if (cursCntrl == CursCntrl_Disable)
+    {
+        DrawSB_Cursors_T_Disable(x, y);
+    }
+    else
+    {
+        if (!CURS_ACTIVE_IS_T)
+        {
+            DrawSB_Cursors_T_Both_Disable(x, y);
+        }
+        else
+        {
+            bool condLeft = false, condDown = false;
+            CalculateConditions((int16)CURS_POS_T0(source), (int16)CURS_POS_T1(source), cursCntrl, &condLeft, &condDown);
+            if (condLeft && condDown)
+            {
+                DrawSB_Cursors_T_Both_Enable(x, y);
+            }
+            else if (condLeft)
+            {
+                DrawSB_Cursors_T_Left(x, y);
+            }
+            else
+            {
+                DrawSB_Cursors_T_Right(x, y);
+            }
+        }
+    }
+}
+
+DEF_SMALL_BUTTON_HINTS_5
+(
+    sbSetT,
+    "Курсоры T", "Cursors T",
+    "Выбор курсоров времени для индикации и управления",
+    "Choice of cursors of time for indication and management",
+    mspSet, FuncActive, PressSB_Cursors_T,  DrawSB_Cursors_T,
+    hintsSetT,
+    DrawSB_Cursors_T_Disable,       "курсоры времени выключены",
+                                    "cursors of time are switched off",
+    DrawSB_Cursors_T_Both_Disable,  "курсоры времени включены",
+                                    "cursors of time are switched on",
+    DrawSB_Cursors_T_Left,          "курсоры времени включены, управление левым курсором",
+                                    "cursors of time are switched on, control of the left cursor",
+    DrawSB_Cursors_T_Right,         "курсоры времени включены, управление правым курсором",
+                                    "cursors of time are switched on, control of the right cursor",
+    DrawSB_Cursors_T_Both_Enable,   "курсоры времени включены, управление обоими курсорами",
+                                    "cursors of time are switched on, control of both cursors"
+);
+
+//-------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - 100% ---
+static void SetCursPos100(Channel chan)
+{
+    DELTA_U100(chan) = fabsf(CURS_POS_U0(chan) - CURS_POS_U1(chan));
+    DELTA_T100(chan) = fabsf(CURS_POS_T0(chan) - CURS_POS_T1(chan));
+}
+
+static void PressSB_Cursors_100(void)
+{
+    SetCursPos100(CURS_SOURCE);
+}
+
+static void DrawSB_Cursors_100(int x, int y)
+{
+    painter.SetFont(TypeFont_5);
+    painter.DrawText(x + 2, y + 3, "100%");
+    painter.SetFont(TypeFont_8);
+}
+
+DEF_SMALL_BUTTON
+(
+    sbSet100,
+    "100%", "100%",
+    "Используется для процентных измерений. Нажатие помечает расстояние между активными курсорами как 100%",
+    "It is used for percentage measurements. Pressing marks distance between active cursors as 100%",
+    mspSet, FuncActive, PressSB_Cursors_100, DrawSB_Cursors_100
+);
+
+//------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Перемещение ---
+static void PressSB_Cursors_PointsPercents(void)
+{
+    CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
+}
+
+static void DrawSB_Cursors_PointsPercents_Percents(int x, int y)
+{
+    painter.DrawText(x + 6, y + 5, "\x83");
+}
+
+static void DrawSB_Cursors_PointsPercents_Points(int x, int y)
+{
+    painter.SetFont(TypeFont_5);
+    painter.DrawText(x + 4, y + 3, "тчк");
+    painter.SetFont(TypeFont_8);
+}
+
+static void DrawSB_Cursors_PointsPercents(int x, int y)
+{
+    if (CURS_MOVEMENT_IS_PERCENTS)
+    {
+        DrawSB_Cursors_PointsPercents_Percents(x, y);
+    }
+    else
+    {
+        DrawSB_Cursors_PointsPercents_Points(x, y);
+    }
+}
+
+DEF_SMALL_BUTTON_HINTS_2
+(
+    sbSetPointsPercents,
+    "Перемещение", "Movement",
+    "Выбор шага перемещения курсоров - проценты или точки",
+    "Choice of a step of movement of cursors - percent or points",
+    mspSet, FuncActive, PressSB_Cursors_PointsPercents, DrawSB_Cursors_PointsPercents,
+    hintsSetPointsPercents,
+    DrawSB_Cursors_PointsPercents_Percents, "шаг перемещения курсоров кратен одному проценту",
+                                            "the step of movement of cursors is multiple to one percent",
+    DrawSB_Cursors_PointsPercents_Points,   "шаг перемещения курсора кратен одному пикселю",
+                                            "the step of movement of the cursor is multiple to one pixel"
+);
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КУРСОРЫ - УСТАНОВИТЬ ///
+static void OnRotate_RegSet_Set(int angle)
+{
+    if (CURS_ACTIVE_IS_U)
+    {
+        MoveCursUonPercentsOrPoints(angle);
+    }
+    else
+    {
+        MoveCursTonPercentsOrPoints(angle);
+    }
+    sound.RegulatorShiftRotate();
+}
+
 DEF_PAGE_SB
 (
     mspSet, static,
@@ -369,19 +542,6 @@ DEF_PAGE_5
     mspSet              // КУРСОРЫ - УСТАНОВИТЬ
 );
 
-static void OnRotate_RegSet_Set(int angle)
-{
-    if(CURS_ACTIVE_IS_U)
-    {
-        MoveCursUonPercentsOrPoints(angle);
-    }
-    else
-    {
-        MoveCursTonPercentsOrPoints(angle);
-    }
-    sound.RegulatorShiftRotate();
-}
-
 static void MoveCursUonPercentsOrPoints(int delta)
 {
     CursCntrl cursCntrl = CURsU_CNTRL;
@@ -451,180 +611,6 @@ static void SetShiftCursPosT(Channel chan, int numCur, float delta)
     {
         CURS_POS_T(chan, numCur) = LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
     }
-}
-
-// КУРСОРЫ - УСТАНОВИТЬ - Курсоры T ------------------------------------------------------------------------------------------------------------------
-static const arrayHints hintsSetT =
-{
-    { DrawSB_Cursors_T_Disable,         "курсоры времени выключены",
-                                        "cursors of time are switched off" },
-    { DrawSB_Cursors_T_Both_Disable,    "курсоры времени включены",
-                                        "cursors of time are switched on" },
-    { DrawSB_Cursors_T_Left,            "курсоры времени включены, управление левым курсором",
-                                        "cursors of time are switched on, control of the left cursor" },
-    { DrawSB_Cursors_T_Right,           "курсоры времени включены, управление правым курсором",
-                                        "cursors of time are switched on, control of the right cursor" },
-    { DrawSB_Cursors_T_Both_Enable,     "курсоры времени включены, управление обоими курсорами",
-                                        "cursors of time are switched on, control of both cursors" }    
-};
-
-static const SButton sbSetT
-(
-    &mspSet, 0,
-    "Курсоры T", "Cursors T",
-    "Выбор курсоров времени для индикации и управления",
-    "Choice of cursors of time for indication and management",
-    PressSB_Cursors_T,
-    DrawSB_Cursors_T,
-    &hintsSetT
-);
-
-static void PressSB_Cursors_T(void)
-{
-    if (CURS_ACTIVE_IS_T || CURS_CNTRL_T_IS_DISABLE(CURS_SOURCE))
-    {
-        IncCursCntrlT(CURS_SOURCE);
-    }
-    CURS_ACTIVE = CursActive_T;
-}
-
-static void DrawSB_Cursors_T(int x, int y)
-{
-    Channel source = CURS_SOURCE;
-    CursCntrl cursCntrl = CURS_CNTRL_T(source);
-    if (cursCntrl == CursCntrl_Disable)
-    {
-        DrawSB_Cursors_T_Disable(x, y);
-    }
-    else
-    {
-        if (!CURS_ACTIVE_IS_T)
-        {
-            DrawSB_Cursors_T_Both_Disable(x, y);
-        }
-        else
-        {
-            bool condLeft = false, condDown = false;
-            CalculateConditions((int16)CURS_POS_T0(source), (int16)CURS_POS_T1(source), cursCntrl, &condLeft, &condDown);
-            if (condLeft && condDown)
-            {
-                DrawSB_Cursors_T_Both_Enable(x, y);
-            }
-            else if (condLeft)
-            {
-                DrawSB_Cursors_T_Left(x, y);
-            }
-            else
-            {
-                DrawSB_Cursors_T_Right(x, y);
-            }
-        }
-    }
-}
-
-static void DrawSB_Cursors_T_Disable(int x, int y)
-{
-    painter.DrawText(x + 7, y + 5, "T");
-}
-
-static void DrawSB_Cursors_T_Both_Disable(int x, int y)
-{
-    DrawMenuCursTime(x, y, false, false);
-}
-
-static void DrawSB_Cursors_T_Left(int x, int y)
-{
-    DrawMenuCursTime(x, y, true, false);
-}
-
-static void DrawSB_Cursors_T_Right(int x, int y)
-{
-    DrawMenuCursTime(x, y, false, true);
-}
-
-static void DrawSB_Cursors_T_Both_Enable(int x, int y)
-{
-    DrawMenuCursTime(x, y, true, true);
-}
-
-
-// КУРСОРЫ - УСТАНОВИТЬ - 100% -----------------------------------------------------------------------------------------------------------------------
-static const SButton sbSet100
-(
-    &mspSet, 0,
-    "100%", "100%",
-    "Используется для процентных измерений. Нажатие помечает расстояние между активными курсорами как 100%",
-    "It is used for percentage measurements. Pressing marks distance between active cursors as 100%",
-    PressSB_Cursors_100,
-    DrawSB_Cursors_100
-);
-
-static void PressSB_Cursors_100(void)
-{
-    SetCursPos100(CURS_SOURCE);
-}
-
-static void SetCursPos100(Channel chan)
-{
-    DELTA_U100(chan) = fabsf(CURS_POS_U0(chan) - CURS_POS_U1(chan));
-    DELTA_T100(chan) = fabsf(CURS_POS_T0(chan) - CURS_POS_T1(chan));
-}
-
-static void DrawSB_Cursors_100(int x, int y)
-{
-    painter.SetFont(TypeFont_5);
-    painter.DrawText(x + 2, y + 3, "100%");
-    painter.SetFont(TypeFont_8);
-}
-
-
-// КУРСОРЫ - УСТАНОВИТЬ - Перемещение ----------------------------------------------------------------------------------------------------------------
-static const arrayHints hintsSetPointsPercents =
-{
-    { DrawSB_Cursors_PointsPercents_Percents,   "шаг перемещения курсоров кратен одному проценту",
-                                                "the step of movement of cursors is multiple to one percent" },
-    { DrawSB_Cursors_PointsPercents_Points,     "шаг перемещения курсора кратен одному пикселю",
-                                                "the step of movement of the cursor is multiple to one pixel" }
-};
-
-static const SButton sbSetPointsPercents
-(
-    &mspSet, 0,
-    "Перемещение", "Movement",
-    "Выбор шага перемещения курсоров - проценты или точки",
-    "Choice of a step of movement of cursors - percent or points",
-    PressSB_Cursors_PointsPercents,
-    DrawSB_Cursors_PointsPercents,
-    &hintsSetPointsPercents
-);
-
-static void PressSB_Cursors_PointsPercents(void)
-{
-    CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
-}
-
-static void DrawSB_Cursors_PointsPercents(int x, int y)
-{
-    if (CURS_MOVEMENT_IS_PERCENTS)
-    {
-        DrawSB_Cursors_PointsPercents_Percents(x, y);
-    }
-    else
-    {
-        DrawSB_Cursors_PointsPercents_Points(x, y);
-    }
-}
-
-static void DrawSB_Cursors_PointsPercents_Percents(int x, int y)
-{
-    painter.DrawText(x + 6, y + 5, "\x83");
-}
-
-static void DrawSB_Cursors_PointsPercents_Points(int x, int y)
-{
-    painter.SetFont(TypeFont_5);
-    painter.DrawText(x + 4, y + 3, "тчк");
-    painter.SetFont(TypeFont_8);
 }
 
 
