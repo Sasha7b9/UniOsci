@@ -245,16 +245,17 @@ void FuncAttScreen(void)
 
                 painter.DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :");
                 painter.DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :");
+                painter.SetColor(COLOR_FILL);
                 for (int i = 0; i < RangeSize; i++)
                 {
-                    painter.DrawFormatText(95 + i * 16 + dX, 55 + dY, COLOR_FILL, "%d", set.chan[A].rShiftAdd[i][0]);
-                    painter.DrawFormatText(95 + i * 16 + dX, 65 + dY, COLOR_FILL, "%d", set.chan[A].rShiftAdd[i][1]);
-                    painter.DrawFormatText(95 + i * 16 + dX, 80 + dY, COLOR_FILL, "%d", set.chan[B].rShiftAdd[i][0]);
-                    painter.DrawFormatText(95 + i * 16 + dX, 90 + dY, COLOR_FILL, "%d", set.chan[B].rShiftAdd[i][1]);
+                    painter.DrawFormatText(95 + i * 16 + dX, 55 + dY, "%d", set.chan[A].rShiftAdd[i][0]);
+                    painter.DrawFormatText(95 + i * 16 + dX, 65 + dY, "%d", set.chan[A].rShiftAdd[i][1]);
+                    painter.DrawFormatText(95 + i * 16 + dX, 80 + dY, "%d", set.chan[B].rShiftAdd[i][0]);
+                    painter.DrawFormatText(95 + i * 16 + dX, 90 + dY, "%d", set.chan[B].rShiftAdd[i][1]);
                 }
                 
-                painter.DrawFormatText(10 + dX, 110 + dY, COLOR_FILL, "Коэффициент калибровки 1к : %f, %d", STRETCH_ADC_A, (int)(STRETCH_ADC_A * 0x80));
-                painter.DrawFormatText(10 + dX, 130 + dY, COLOR_FILL, "Коэфффициент калибровки 2к : %f, %d", STRETCH_ADC_B, (int)(STRETCH_ADC_B * 0x80));
+                painter.DrawFormatText(10 + dX, 110 + dY, "Коэффициент калибровки 1к : %f, %d", STRETCH_ADC_A, (int)(STRETCH_ADC_A * 0x80));
+                painter.DrawFormatText(10 + dX, 130 + dY, "Коэфффициент калибровки 2к : %f, %d", STRETCH_ADC_B, (int)(STRETCH_ADC_B * 0x80));
 
                 DrawParametersChannel(A, 10 + dX, 150 + dY, false);
                 DrawParametersChannel(B, 10 + dX, 200 + dY, false);
@@ -298,15 +299,15 @@ void FuncAttScreen(void)
         int delta = 32;
         width = 80;
         height = 25;
-        DrawRectangle(x, y, width, height, COLOR_BLACK);
-        DrawStringInCenterRect(x, y, width, height, "ПРОДОЛЖИТЬ", COLOR_BLACK, false);
-        DrawRectangle(x, y - delta, width, height, COLOR_BLACK);
-        DrawStringInCenterRect(x, y - delta, width, height, "ОТМЕНИТЬ", COLOR_BLACK, false);
+        DrawRectangle(x, y, width, height, Color::BLACK);
+        DrawStringInCenterRect(x, y, width, height, "ПРОДОЛЖИТЬ", Color::BLACK, false);
+        DrawRectangle(x, y - delta, width, height, Color::BLACK);
+        DrawStringInCenterRect(x, y - delta, width, height, "ОТМЕНИТЬ", Color::BLACK, false);
     }
     */
     char buffer[100];
     sprintf(buffer, "%.1f", (gTimeMS - startTime) / 1000.0f);
-    painter.DrawTextC(0, 0, buffer, COLOR_BLACK);
+    painter.DrawText(0, 0, buffer, Color::BLACK);
 
     painter.EndScene();
 }

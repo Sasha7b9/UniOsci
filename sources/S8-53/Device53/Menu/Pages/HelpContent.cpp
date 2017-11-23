@@ -35,7 +35,7 @@ static void DrawPageContent()
         }
         else
         {
-            painter.DrawStringInCenterRectC(0, y, WIDTH, 10, title, COLOR_FILL);
+            painter.DrawStringInCenterRect(0, y, WIDTH, 10, title, COLOR_FILL);
         }
         y += 16;
         numPage++;
@@ -55,7 +55,7 @@ void HelpContent_Draw()
     painter.FillRegion(grid.Right(), 0, 319 - grid.Right(), 20, COLOR_BACK);
     painter.FillRegion(grid.Right(), 219, 319 - grid.Right(), 21);
     painter.FillRegion(1, 1, WIDTH, 237);
-    painter.DrawRectangleC(0, 0, WIDTH + 2, 239, COLOR_FILL);
+    painter.DrawRectangle(0, 0, WIDTH + 2, 239, COLOR_FILL);
 
     /*
     uint16 *addr1 = (uint16*)(0x08000000 + (rand() % 65535));
@@ -78,7 +78,8 @@ void HelpContent_Draw()
     {
         DrawPageDescription();
     }
-    painter.DrawFormatText(2, 230, COLOR_FILL, "%d", gTimeMS - startTime);
+    painter.SetColor(COLOR_FILL);
+    painter.DrawFormatText(2, 230, "%d", gTimeMS - startTime);
 }
 
 static int NumParagraphs(const PageHelp *page)

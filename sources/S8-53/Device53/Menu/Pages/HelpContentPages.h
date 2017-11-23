@@ -21,6 +21,9 @@ typedef struct
     void*           pages[MAX_PAGES];   ///< Массив содержит адреса ссылаемых страниц в случае TypePage_Content
 } PageHelp;
 
+#define TITLE(page) page->titleHint[LANG]
+#define HINT(page)  page->titleHint[LANG * 2]
+
 extern const PageHelp helpMenu;
 
 static const PageHelp helpMenuCommon =

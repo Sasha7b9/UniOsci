@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "PageCursors.h"
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
 #include "Panel/Controls.h"

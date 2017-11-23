@@ -133,7 +133,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
     int width = 40;
     int height = 10;
     painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, COLOR_BACK);
-    painter.DrawRectangleC(grid.Right() - width, GRID_TOP, width, height, COLOR_FILL);
+    painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, COLOR_FILL);
     painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
     painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, su.Int2String(dataStorage.AllDatas(), false, 3, buffer));
@@ -594,7 +594,7 @@ static void DrawMemoryWave(int num, bool exist)
     int y = grid.FullBottom() - 10;
     int width = 12;
     painter.FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? COLOR_FLASH_10 : COLOR_BACK);
-    painter.DrawRectangleC(x, y, width, 10, COLOR_FILL);
+    painter.DrawRectangle(x, y, width, 10, COLOR_FILL);
     painter.SetColor(num == gMemory.currentNumIntSignal ? COLOR_FLASH_01 : COLOR_FILL);
     if (exist)
     {
@@ -931,7 +931,7 @@ void DrawSetName()
     int width = grid.Width() - 80;
     int height = 80;
 
-    painter.DrawRectangleC(x0, y0, width, height, COLOR_FILL);
+    painter.DrawRectangle(x0, y0, width, height, COLOR_FILL);
     painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int index = 0;
@@ -966,7 +966,7 @@ void DrawSetName()
         position++;
     }
 
-    int x = painter.DrawTextC(x0 + deltaX, y0 + 65, FILE_NAME, COLOR_FILL);
+    int x = painter.DrawText(x0 + deltaX, y0 + 65, FILE_NAME, COLOR_FILL);
     painter.FillRegion(x, y0 + 65, 5, 8, COLOR_FLASH_10);
 }
 
@@ -1007,7 +1007,7 @@ void DrawSetMask()
     int width = grid.Width() - 80;
     int height = 160;
 
-    painter.DrawRectangleC(x0, y0, width, height, COLOR_FILL);
+    painter.DrawRectangle(x0, y0, width, height, COLOR_FILL);
     painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int index = 0;

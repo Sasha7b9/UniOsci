@@ -361,5 +361,10 @@ typedef struct
         c->funcOnChanged(val);              \
     }
 
+
+typedef void * pVOID;
+#define MAX_NUM_ITEMS_IN_PAGE 15
+typedef pVOID arrayItems[MAX_NUM_ITEMS_IN_PAGE];
+
 /** @}  @}
  */

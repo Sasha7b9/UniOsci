@@ -819,7 +819,7 @@ static const Choice mcSizeSettings =
 
 static void OnDraw_SizeSettings(int x, int y)
 {
-    painter.DrawFormatText(x + 5, y + 21, COLOR_BLACK, "Размер %d", sizeof(Settings));
+    painter.DrawFormatText(x + 5, y + 21, Color::BLACK, "Размер %d", sizeof(Settings));
 }
 
 
@@ -898,7 +898,7 @@ static void Draw_EnterSerialNumber(void)
     int width = grid.Width() - 80;
     int height = 160;
 
-    painter.DrawRectangleC(x0, y0, width, height, COLOR_FILL);
+    painter.DrawRectangle(x0, y0, width, height, COLOR_FILL);
     painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int deltaX = 10;

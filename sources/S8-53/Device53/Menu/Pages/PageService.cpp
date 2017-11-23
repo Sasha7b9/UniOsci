@@ -951,11 +951,11 @@ static void Information_Draw(void)
 {
     Language lang = LANG;
 
-    painter.BeginScene(COLOR_BLACK);
+    painter.BeginScene(Color::BLACK);
     int x = 100;
     int dY = 20;
     int y = 20;
-    painter.DrawRectangleC(0, 0, 319, 239, COLOR_FILL);
+    painter.DrawRectangle(0, 0, 319, 239, COLOR_FILL);
     y += dY;
     painter.DrawText(x, y, lang == Russian ? "»Õ‘Œ–Ã¿÷»ﬂ" : "INFORMATION");
     y += dY;
