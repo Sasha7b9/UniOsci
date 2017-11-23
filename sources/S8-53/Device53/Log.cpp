@@ -22,7 +22,7 @@ void Log_Write(char *format, ...)
     display.AddStringToIndicating(buffer);
     if(loggerUSB)
     {
-        VCP_SendFormatStringAsynch(buffer);
+        vcp.SendFormatStringAsynch(buffer);
     }
 }
 
@@ -48,8 +48,8 @@ void Log_Error(const char *module, const char *func, int numLine, char *format, 
     display.AddStringToIndicating(buffer);
     if(loggerUSB)
     {
-        VCP_SendFormatStringAsynch(message);
-        VCP_SendFormatStringAsynch(buffer);
+        vcp.SendFormatStringAsynch(message);
+        vcp.SendFormatStringAsynch(buffer);
     }
 }
 

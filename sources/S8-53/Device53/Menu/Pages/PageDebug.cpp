@@ -899,7 +899,7 @@ static void Draw_EnterSerialNumber(void)
     int height = 160;
 
     painter.DrawRectangleC(x0, y0, width, height, COLOR_FILL);
-    painter.FillRegionC(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
+    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int deltaX = 10;
 

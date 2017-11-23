@@ -31,6 +31,7 @@ typedef enum
     ImpossibleEnableFFT,
     FirmwareSaved,
     FullyCompletedOTP,
+    NeedRebootDevice,
     Warning_NumWarnings
 } Warning;
 

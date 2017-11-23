@@ -48,7 +48,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
     Color color = COLOR_FILL;
     if (hightlight)
     {
-        painter.FillRegionC(x - 1, y, WIDTH_COL + 9, 8, color);
+        painter.FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
         color = COLOR_BACK;
     }
 
@@ -66,7 +66,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawHat(int x, int y, char *string, int num1, int num2)
 {
-    painter.FillRegionC(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, COLOR_BACK);
+    painter.FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, COLOR_BACK);
     painter.DrawFormatText(x + 60, y, COLOR_FILL, string, num1, num2);
     painter.DrawHLine(y + 10, x + 2, x + 140);
 }
@@ -156,7 +156,7 @@ void FM_Draw(void)
         painter.BeginScene(COLOR_BACK);
         menu.Draw();
         painter.DrawRectangleC(0, 0, width, 239, COLOR_FILL);
-        painter.FillRegionC(left, top, grid.Width() - 2, grid.FullHeight() - 2, COLOR_BACK);
+        painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, COLOR_BACK);
         flashDrive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
         painter.DrawVLineC(left2col, top + 16, 239, COLOR_FILL);

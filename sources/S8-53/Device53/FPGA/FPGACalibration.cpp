@@ -220,7 +220,7 @@ void FPGA::ProcedureCalibration(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncAttScreen(void)
 {
-    painter.BeginScene(COLOR_BLACK);
+    painter.BeginScene(gColorBack);
 
     static bool first = true;
     static uint startTime = 0;
@@ -232,7 +232,7 @@ void FuncAttScreen(void)
     int16 y = 10;
     display.Clear();
     
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(gColorFill);
     
 #define dX 20
 #define dY -15

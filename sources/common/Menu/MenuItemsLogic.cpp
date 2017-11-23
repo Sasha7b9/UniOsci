@@ -13,11 +13,10 @@
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Menu/Pages/PageDisplay.h"
+#include "stub.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Структура используется для анимации элементов ГУИ Choice и Governor
-
 typedef enum
 {
     NONE,
@@ -25,11 +24,12 @@ typedef enum
     DECREASE
 } DIRECTION;
 
+/// Структура используется для анимации элементов ГУИ Choice и Governor
 typedef struct
 {
-    void *address;  // Адрес элемента. Если 0 - не движется
-    uint timeStart; // Время начала анимации в миллисекундах
-    DIRECTION dir;  // Направление изменения значения
+    void *address;  ///< Адрес элемента. Если 0 - не движется
+    uint timeStart; ///< Время начала анимации в миллисекундах
+    DIRECTION dir;  ///< Направление изменения значения
 } TimeStruct;
 
 static TimeStruct tsChoice = {0, 0, NONE};

@@ -132,7 +132,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
     
     int width = 40;
     int height = 10;
-    painter.FillRegionC(grid.Right() - width, GRID_TOP, width, height, COLOR_BACK);
+    painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, COLOR_BACK);
     painter.DrawRectangleC(grid.Right() - width, GRID_TOP, width, height, COLOR_FILL);
     painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
@@ -593,7 +593,7 @@ static void DrawMemoryWave(int num, bool exist)
     int x = grid.Left() + 2 + num * 12;
     int y = grid.FullBottom() - 10;
     int width = 12;
-    painter.FillRegionC(x, y, width, 10, num == gMemory.currentNumIntSignal ? COLOR_FLASH_10 : COLOR_BACK);
+    painter.FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? COLOR_FLASH_10 : COLOR_BACK);
     painter.DrawRectangleC(x, y, width, 10, COLOR_FILL);
     painter.SetColor(num == gMemory.currentNumIntSignal ? COLOR_FLASH_01 : COLOR_FILL);
     if (exist)
@@ -932,7 +932,7 @@ void DrawSetName()
     int height = 80;
 
     painter.DrawRectangleC(x0, y0, width, height, COLOR_FILL);
-    painter.FillRegionC(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
+    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int index = 0;
     int position = 0;
@@ -967,7 +967,7 @@ void DrawSetName()
     }
 
     int x = painter.DrawTextC(x0 + deltaX, y0 + 65, FILE_NAME, COLOR_FILL);
-    painter.FillRegionC(x, y0 + 65, 5, 8, COLOR_FLASH_10);
+    painter.FillRegion(x, y0 + 65, 5, 8, COLOR_FLASH_10);
 }
 
 static void DrawFileMask(int x, int y)
@@ -997,7 +997,7 @@ static void DrawFileMask(int x, int y)
         }
         ch++;
     }
-    painter.FillRegionC(x, y, 5, 8, COLOR_FLASH_10);
+    painter.FillRegion(x, y, 5, 8, COLOR_FLASH_10);
 }
 
 void DrawSetMask()
@@ -1008,7 +1008,7 @@ void DrawSetMask()
     int height = 160;
 
     painter.DrawRectangleC(x0, y0, width, height, COLOR_FILL);
-    painter.FillRegionC(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
+    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int index = 0;
     int position = 0;

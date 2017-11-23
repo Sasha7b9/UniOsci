@@ -4,10 +4,10 @@
 #include "Settings/Settings.h"
 #include "Symbols.h"
 #include "Display.h"
-#include "Grid.h"
-#include "Painter.h"
+#include "Display/Grid.h"
+#include "Display/Painter.h"
 #include "font/Font.h"
-#include "Colors.h"
+#include "Display/Colors.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
@@ -102,9 +102,9 @@ void DrawStringNavigation()
     {
         int length = Font_GetLengthText(string);
         int height = 10;
-        painter.DrawRectangleC(grid.Left(), GRID_TOP, length + 2, height, COLOR_FILL);
-        painter.FillRegionC(grid.Left() + 1, GRID_TOP + 1, length, height - 2, COLOR_BACK);
-        painter.DrawTextC(grid.Left() + 2, GRID_TOP + 1, string, COLOR_FILL);
+        painter.DrawRectangle(grid.Left(), GRID_TOP, length + 2, height, COLOR_FILL);
+        painter.FillRegion(grid.Left() + 1, GRID_TOP + 1, length, height - 2, COLOR_BACK);
+        painter.DrawText(grid.Left() + 2, GRID_TOP + 1, string, COLOR_FILL);
     }
 }
 
@@ -194,7 +194,7 @@ static void DrawMarkersForMeasure(float scale, Channel chan)
     {
         return;
     }
-    painter.SetColor(ColorCursors(chan));
+    painter.SetColor(Color::Cursors(chan));
     for(int numMarker = 0; numMarker < 2; numMarker++)
     {
         int pos = Processing_GetMarkerHorizontal(chan, numMarker);
@@ -396,7 +396,7 @@ void DrawDataChannel(uint8 *data, Channel chan, DataSettings *ds, int minY, int 
         }
     }
 
-    painter.SetColor(ColorChannel(chan));
+    painter.SetColor(COLOR_CHAN(chan));
     if(MODE_DRAW_IS_SIGNAL_LINES)
     {
         /*
@@ -444,10 +444,10 @@ void Display::DrawMath()
     static const int WIDTH = 71;
     static const int HEIGHT = 10;
     int delta = (SHOW_STRING_NAVIGATION && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
-    painter.DrawRectangleC(grid.Left(), grid.MathTop() + delta, WIDTH, HEIGHT, COLOR_FILL);
-    painter.FillRegionC(grid.Left() + 1, grid.MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, COLOR_BACK);
+    painter.DrawRectangle(grid.Left(), grid.MathTop() + delta, WIDTH, HEIGHT, COLOR_FILL);
+    painter.FillRegion(grid.Left() + 1, grid.MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, COLOR_BACK);
     Divider multiplier = MATH_MULTIPLIER;
-    painter.DrawTextC(grid.Left() + 2, grid.MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, multiplier), COLOR_FILL);
+    painter.DrawText(grid.Left() + 2, grid.MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, multiplier), COLOR_FILL);
     painter.DrawText(grid.Left() + 25, grid.MathTop() + 1 + delta, ":");
     char buffer[20];
     painter.DrawText(grid.Left() + 27, grid.MathTop() + 1 + delta, sChannel_RShift2String(SET_RSHIFT_MATH, SET_RANGE_MATH, multiplier, buffer));
@@ -490,7 +490,7 @@ static void WriteParametersFFT(Channel chan, float freq0, float density0, float 
     {
         y += dY * 3 + 4;
     }
-    painter.SetColor(ColorChannel(chan));
+    painter.SetColor(COLOR_CHAN(chan));
     painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : su.Float2String(density0, false, 7, buffer));
     y += dY;
     painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : su.Float2String(density1, false, 7, buffer));
@@ -517,12 +517,12 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
 
     mathFPGA.PointsRel2Voltage(data, numPoints, gDSet->range[channel], channel == A ? gDSet->rShiftCh0 : gDSet->rShiftCh1, dataR);
     mathFPGA.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
-    DrawSpectrumChannel(spectrum, ColorChannel(channel));
+    DrawSpectrumChannel(spectrum, COLOR_CHAN(channel));
     if (!MenuIsShown() || MenuIsMinimize())
     {
         Color color = COLOR_FILL;
         WriteParametersFFT(channel, freq0, density0, freq1, density1);
-        painter.DrawRectangleC(FFT_POS_CURSOR_0 + grid.Left() - s, y0 - s, s * 2, s * 2, color);
+        painter.DrawRectangle(FFT_POS_CURSOR_0 + grid.Left() - s, y0 - s, s * 2, s * 2, color);
         painter.DrawRectangle(FFT_POS_CURSOR_1 + grid.Left() - s, y1 - s, s * 2, s * 2);
 
         painter.DrawVLine(grid.Left() + FFT_POS_CURSOR_0, grid.MathBottom(), y0 + s);
@@ -1021,15 +1021,15 @@ void DrawMemoryWindow(void)
     int x0 = x[TPOS];
 
     // Маркер TPos
-    painter.FillRegionC(x0 - 3, 9, 6, 6, COLOR_BACK);
+    painter.FillRegion(x0 - 3, 9, 6, 6, COLOR_BACK);
     painter.DrawCharC(x0 - 3, 9, SYMBOL_TPOS_1, COLOR_FILL);
 
     // Маркер tShift
     float scale = (float)(rightX - leftX + 1) / ((float)sMemory_GetNumPoints(false) - (sMemory_GetNumPoints(false) == 281 ? 1 : 0));
     float xShift = 1 + (sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, (int)gDSet->length1channel, TPOS) - sTime_TShiftInPoints((PeackDetMode)gDSet->peakDet)) * scale;
 
-    painter.FillRegionC((int)xShift - 1, 3, 6, 6, COLOR_BACK);
-    painter.FillRegionC((int)xShift, 4, 4, 4, COLOR_FILL);
+    painter.FillRegion((int)xShift - 1, 3, 6, 6, COLOR_BACK);
+    painter.FillRegion((int)xShift, 4, 4, 4, COLOR_FILL);
     painter.SetColor(COLOR_BACK);
     if(xShift < leftX - 2)
     {
@@ -1111,7 +1111,7 @@ void Display::WriteCursors()
                 int width = 65;
                 int x = grid.Right() - width;
                 painter.DrawRectangleC(x, GRID_TOP, width, 12, COLOR_FILL);
-                painter.FillRegionC(x + 1, GRID_TOP + 1, width - 2, 10, COLOR_BACK);
+                painter.FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, COLOR_BACK);
                 painter.DrawTextC(x + 1, GRID_TOP + 2, "1/dT=", colorText);
                 char buffer[20];
                 painter.DrawText(x + 25, GRID_TOP + 2, su.Freq2String(1.0f / delta, false, buffer));
@@ -1336,7 +1336,7 @@ void Display::WriteValueTrigLevel()
         int x = (grid.Width() - width) / 2 + grid.Left();
         int y = grid.BottomMessages() - 20;
         painter.DrawRectangleC(x, y, width, 10, COLOR_FILL);
-        painter.FillRegionC(x + 1, y + 1, width - 2, 8, COLOR_BACK);
+        painter.FillRegion(x + 1, y + 1, width - 2, 8, COLOR_BACK);
         painter.DrawTextC(x + 2, y + 1, buffer, COLOR_FILL);
     }
 }
@@ -1665,7 +1665,7 @@ void Display::DrawCursorTrigLevel()
         scale = (float)height / (shiftFullMax - shiftFullMin);
         int shiftFull = TRIG_LEVEL_SOURCE + (TRIGSOURCE_IS_EXT ? 0 : SET_RSHIFT(chan));
         int yFull = (int)(GRID_TOP + DELTA + height - scale * (shiftFull - RShiftMin - TrigLevMin) - 4);
-        painter.FillRegionC(left + 2, yFull + 1, 4, 6, ColorTrig());
+        painter.FillRegion(left + 2, yFull + 1, 4, 6, ColorTrig());
         painter.SetFont(TypeFont_5);
         painter.DrawCharC(left + 3, yFull - 5 + dY, simbols[TRIGSOURCE], COLOR_BACK);
         painter.SetFont(TypeFont_8);
@@ -1727,7 +1727,7 @@ void Display::DrawCursorRShift(Channel chan)
 
     if((!MenuIsMinimize() || !MenuIsShown()) && gBF.drawRShiftMarkers == 1)
     {
-        painter.FillRegionC(4, yFull - 3, 4, 6, ColorChannel(chan));
+        painter.FillRegion(4, yFull - 3, 4, 6, ColorChannel(chan));
         painter.DrawCharC(5, yFull - 9 + dY, chan == A ? '1' : '2', COLOR_BACK);
     }
     painter.DrawCharC((int)(x - 7), (int)(y - 9 + dY), chan == A ? '1' : '2', COLOR_BACK);
@@ -1885,13 +1885,13 @@ void Display::DrawMeasures()
             Measure meas = Measure_Type(str, elem);
             if(meas != Measure_None)
             {
-                painter.FillRegionC(x, y, dX, dY, COLOR_BACK);
+                painter.FillRegion(x, y, dX, dY, COLOR_BACK);
                 painter.DrawRectangleC(x, y, dX, dY, COLOR_FILL);
                 gBF.topMeasures = math.MinFrom2Int(gBF.topMeasures, y);
             }
             if(active)
             {
-                painter.FillRegionC(x + 2, y + 2, dX - 4, dY - 4, COLOR_FILL);
+                painter.FillRegion(x + 2, y + 2, dX - 4, dY - 4, COLOR_FILL);
             }
             if(meas != Measure_None)
             {
@@ -1899,7 +1899,7 @@ void Display::DrawMeasures()
                 painter.DrawTextC(x + 4, y + 2, Measure_Name(str, elem), color);
                 if(meas == MEAS_MARKED)
                 {
-                    painter.FillRegionC(x + 1, y + 1, dX - 2, 9, active ? COLOR_BACK : COLOR_FILL);
+                    painter.FillRegion(x + 1, y + 1, dX - 2, 9, active ? COLOR_BACK : COLOR_FILL);
                     painter.DrawTextC(x + 4, y + 2, Measure_Name(str, elem), active ? COLOR_FILL : COLOR_BACK);
                 }
                 if(SOURCE_MEASURE_IS_A)
@@ -1966,7 +1966,7 @@ void WriteTextVoltage(Channel chan, int x, int y)
         Color colorDraw = inverse ? COLOR_WHITE : color;
         if(inverse)
         {
-            painter.FillRegionC(x, y, widthField, heightField, color);
+            painter.FillRegion(x, y, widthField, heightField, color);
         }
 
         char buffer[100] = {0};
@@ -2197,7 +2197,7 @@ void Display::DrawTimeForFrame(uint timeTicks)
     }
 
     painter.DrawRectangleC(grid.Left(), grid.FullBottom() - 10, 84, 10, COLOR_FILL);
-    painter.FillRegionC(grid.Left() + 1, grid.FullBottom() - 9, 82, 8, COLOR_BACK);
+    painter.FillRegion(grid.Left() + 1, grid.FullBottom() - 9, 82, 8, COLOR_BACK);
     painter.DrawTextC(grid.Left() + 2, grid.FullBottom() - 9, buffer, COLOR_FILL);
 
     char message[20] = {0};
@@ -2292,7 +2292,7 @@ void Display::RemoveAddDrawFunction()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Clear()
 {
-    painter.FillRegionC(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, COLOR_BACK);
+    painter.FillRegion(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, COLOR_BACK);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2482,7 +2482,7 @@ void Display::DrawConsole()
     for(int numString = firstString; numString <= lastString; numString++)
     {
         int width = Font_GetLengthText(strings[numString]);
-        painter.FillRegionC(grid.Left() + 1, GRID_TOP + 1 + count * (height + 1) + delta, width, height + 1, COLOR_BACK);
+        painter.FillRegion(grid.Left() + 1, GRID_TOP + 1 + count * (height + 1) + delta, width, height + 1, COLOR_BACK);
         int y = GRID_TOP + 5 + count * (height + 1) - 4;
         if(Font_GetSize() == 5)
         {
@@ -2590,7 +2590,7 @@ void DrawStringInRectangle(int x, int y, char const *text)
     int height = 8;
     painter.DrawRectangleC(grid.Left(), y, width + 4, height + 4, COLOR_FILL);
     painter.DrawRectangleC(grid.Left() + 1, y + 1, width + 2, height + 2, COLOR_BACK);
-    painter.FillRegionC(grid.Left() + 2, y + 2, width, height, COLOR_FLASH_10);
+    painter.FillRegion(grid.Left() + 2, y + 2, width, height, COLOR_FLASH_10);
     painter.DrawTextC(grid.Left() + 3, y + 2, text, COLOR_FLASH_01);
 }
 

@@ -52,7 +52,7 @@ static void DrawPageDescription()
 void HelpContent_Draw()
 {
     uint startTime = gTimeMS;
-    painter.FillRegionC(grid.Right(), 0, 319 - grid.Right(), 20, COLOR_BACK);
+    painter.FillRegion(grid.Right(), 0, 319 - grid.Right(), 20, COLOR_BACK);
     painter.FillRegion(grid.Right(), 219, 319 - grid.Right(), 21);
     painter.FillRegion(1, 1, WIDTH, 237);
     painter.DrawRectangleC(0, 0, WIDTH + 2, 239, COLOR_FILL);

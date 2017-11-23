@@ -901,7 +901,7 @@ static void DrawMeasures(void)
                 char buffer[SIZE_BUFFER];
 
                 painter.DrawText(x + 4, y + 2, measures.Name(str, elem), color);
-                if(measure == MARKED_MEAS)
+                if(measure == MEAS_MARKED)
                 {
                     painter.FillRegion(x + 1, y + 1, dX - 2, 9, active ? gColorBack : gColorFill);
                     painter.DrawText(x + 4, y + 2, measures.Name(str, elem), active ? gColorFill : gColorBack);
@@ -1951,7 +1951,7 @@ static void DrawCursorRShift(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int CalculateCountV(void)
 {
-    if(SHOW_MEASURES && MEAS_COMPRESS_GRID)
+    if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
         if(NUM_MEASURES_IS_1_5)
         {
@@ -1973,7 +1973,7 @@ static int CalculateCountV(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int CalculateCountH(void)
 {
-    if(MEAS_COMPRESS_GRID)
+    if(MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
         if(NUM_MEASURES_IS_6_1)
         {

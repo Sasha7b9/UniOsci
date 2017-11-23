@@ -992,25 +992,6 @@ Range FPGA::FindRange(Channel chan)
 Range FPGA::AccurateFindRange(Channel chan)
 {
     return FindRange(chan);
-#define NUM_MEASURES 1
-    /*                          // WARN Это было сделано, чтобы улучшить нахождение растяжки за счёт многократного нахождение
-                                   Однако, после изменения процедуры FindRangе, надобность в этом, вроде бы, отпала
-    Range range;
-    while (true)
-    {
-        int numMeasures = 0;
-        range = FindRange(chan);
-        do
-        {
-            numMeasures++;
-        } while (numMeasures < NUM_MEASURES && range == FindRange(chan));
-        if (numMeasures == NUM_MEASURES)
-        {
-            return range;
-        }
-    }
-    return Range_2mV;
-    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1199,7 +1180,7 @@ void FPGA::WriteToAnalog(TypeWriteAnalog type, uint data)
     {
         LOG_WRITE("range 0 = %s", str);
     }
-    else if (type == TypeWriteAnalog_Range1 && IS_SHOW_REG_RANGE_B)
+    else if (type == TypeWriteAnalog_RangeB && IS_SHOW_REG_RANGE_B)
     {
         LOG_WRITE("range 1 = %s", str);
     }
@@ -1207,11 +1188,11 @@ void FPGA::WriteToAnalog(TypeWriteAnalog type, uint data)
     {
         LOG_WRITE("парам. синхр. = %s", str);
     }
-    else if (type == TypeWriteAnalog_ChanParam0 && IS_SHOW_REG_PARAM_A)
+    else if (type == TypeWriteAnalog_ChanParamA && IS_SHOW_REG_PARAM_A)
     {
         LOG_WRITE("парам. кан. 1 = %s", str);
     }
-    else if (type == TypeWriteAnalog_ChanParam1 && IS_SHOW_REG_PARAM_B)
+    else if (type == TypeWriteAnalog_ChanParamB && IS_SHOW_REG_PARAM_B)
     {
         LOG_WRITE("парам. кан. 2 = %s", str);
     }

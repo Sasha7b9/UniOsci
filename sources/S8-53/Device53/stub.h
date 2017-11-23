@@ -1,7 +1,5 @@
 #pragma once
 #include "Hardware/Timer.h"
-#include "FlashDrive/FlashDrive.h"
-
 
 void Timer_SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
 
@@ -22,3 +20,5 @@ void Timer_SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
 #define FUNC_MODE_DRAW_IS_ENABLED           true
 #define PageDisplay_Init()
 #define COLOR_SCHEME_IS_WHITE_LETTERS       true
+#define SHOW_STRING_NAVI_TEMP               false
+#define PageService_InitGlobalColors()

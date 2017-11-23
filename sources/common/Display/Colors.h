@@ -26,7 +26,7 @@ public:
     static const uint8 NUMBER               = 16;
     static const uint8 FLASH_10             = 17;
     static const uint8 FLASH_01             = 18;
-    static const uint8 INVERSE              = 19;   
+    static const uint8 INVERSE              = 19;
 
     Color(uint8 val) : value(val) { };
 
@@ -83,6 +83,11 @@ extern Color gColorFill;
 extern Color gColorBack;
 extern Color gColorGrid;
 extern Color gColorChan[4];
+
+#define COLOR_FILL      gColorFill
+#define COLOR_BACK      gColorBack
+#define COLOR_GRID      gColorGrid
+#define COLOR_CHAN(ch)  gColorChan[ch]
 
 #define MAKE_COLOR(r, g, b) ((uint16)(((b) & 0x1f) + (((g) & 0x3f) << 5) + (((r) & 0x1f) << 11)))
 #define R_FROM_COLOR(color) (((uint16)(color) >> 11) & (uint16)0x1f)

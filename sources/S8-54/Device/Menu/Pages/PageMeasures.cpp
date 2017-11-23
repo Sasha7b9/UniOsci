@@ -153,7 +153,7 @@ static bool IsActive_Mode(void)
 DEF_CHOICE_2
 (
     cMode, pMeasures,
-    set.meas_ModeViewSignals, IsActive_Mode, FuncChangedChoice, FuncDraw,
+    MODE_VIEW_SIGNALS, IsActive_Mode, FuncChangedChoice, FuncDraw,
     "Вид", "View",
     "Уменьшать или нет зону вывода сигнала для исключения перекрытия его результами измерений",
     "Decrease or no zone output signal to avoid overlapping of its measurement results",

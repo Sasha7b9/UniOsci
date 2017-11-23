@@ -115,6 +115,8 @@ public:
 
     void DrawTextInRect(int x, int y, int width, char *text);
 
+    void DrawTextInRect(int x, int y, int width, int height, char *text);
+
     void DrawTextRelativelyRight(int xRight, int y, const char *text, Color color = Color::NUMBER);
 
     void Draw2SymbolsC(int x, int y, char symbol1, char symbol2, Color color1, Color color2);

@@ -4,7 +4,6 @@
 #include "Log.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
-#include "Display/WelcomeScreen.h" 
 #include "Ethernet/Ethernet.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
@@ -65,10 +64,7 @@ int main(void)
 
         ProcessingSignal();
 
-        if (!WelcomeScreen_Run())
-        {
-            display.Update();               // Рисуем экран.
-        }
+        display.Update();               // Рисуем экран.
 
         menu.UpdateInput();                 // Обновляем состояние меню
     }

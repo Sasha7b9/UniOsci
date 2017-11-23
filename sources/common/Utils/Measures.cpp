@@ -142,7 +142,7 @@ int Measures::NumRows(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Measures::GetDeltaGridLeft(void)
 {
-    if(SHOW_MEASURES && MEAS_COMPRESS_GRID)
+    if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
         if(NUM_MEASURES_IS_6_1)
         {
@@ -160,7 +160,7 @@ int Measures::GetDeltaGridLeft(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Measures::GetDeltaGridBottom(void)
 {
-    if(SHOW_MEASURES && MEAS_COMPRESS_GRID)
+    if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
         if(NUM_MEASURES_IS_1_5)
         {
@@ -182,13 +182,13 @@ int Measures::GetDeltaGridBottom(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Measures::ShortPressOnSmallButonMarker(void)
 {
-    if(MEASURE(posActive) == MARKED_MEAS)
+    if(MEASURE(posActive) == MEAS_MARKED)
     {
-        MARKED_MEAS = Meas_None;
+        MEAS_MARKED = Meas_None;
     }
     else
     {
-        MARKED_MEAS = MEASURE(posActive);
+        MEAS_MARKED = MEASURE(posActive);
     }
 }
 
