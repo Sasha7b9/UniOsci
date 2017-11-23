@@ -24,52 +24,10 @@
  */
 
 extern const Page pCursors;
+extern const Page mspSet;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Choice mcShow;                             /// КУРСОРЫ - Показывать
-
-extern const Choice mcTrackingT1U1;                     ///< КУРСОРЫ - Курсоры T1,U1
-
-extern const Choice mcTrackingT2U2;                     ///< КУРСОРЫ - Курсоры T2,U2
-
-extern const Choice mcShowFreq;                         ///< КУРОСРЫ - 1/dT
-
-extern const Page mspSet;                               ///< КУРСОРЫ - УСТАНОВИТЬ
-static void OnRotate_RegSet_Set(int angle);             ///< Вращение ручки УСТАНОВКА на странице КУРСОРЫ-УСТАНОВИТЬ
-extern const SButton sbSetExit;                     ///< КУРСОРЫ - УСТАНОВИТЬ - Выход
-static void PressSB_Cursors_Exit();
-extern const SButton sbSetSource;                   ///< КУРСОРЫ - УСТАНОВИТЬ - Источник
-static void PressSB_Cursors_Source();
-static void DrawSB_Cursors_Source(int x, int y);
-static void DrawSB_Cursors_SourceA(int x, int y);
-static void DrawSB_Cursors_SourceB(int x, int y);
-extern const SButton sbSetU;                        ///< КУРСОРЫ - УСТАНОВИТЬ - Курсоры U . Выбор курсора напряжения - курсор 1, курсор 2, оба курсора или отключены.
-static void PressSB_Cursors_U();
-static void DrawSB_Cursors_U(int x, int y);
-static void DrawSB_Cursors_U_Disable(int x, int y);
-static void DrawSB_Cursors_U_Upper(int x, int y);
-static void DrawSB_Cursors_U_Lower(int x, int y);
-static void DrawSB_Cursors_U_Both_Enable(int x, int y);
-static void DrawSB_Cursors_U_Both_Disable(int x, int y);
-extern const SButton sbSetT;                        ///< КУРСОРЫ - УСТАНОВИТЬ - Курсоры T . Выбор курсора времени - курсор 1, курсор 2, оба курсора или отключены.
-static void PressSB_Cursors_T();
-static void DrawSB_Cursors_T(int x, int y);
-static void DrawSB_Cursors_T_Disable(int x, int y);
-static void DrawSB_Cursors_T_Both_Disable(int x, int y);
-static void DrawSB_Cursors_T_Left(int x, int y);
-static void DrawSB_Cursors_T_Right(int x, int y);
-static void DrawSB_Cursors_T_Both_Enable(int x, int y);
-extern const SButton sbSet100;                      ///< КУРСОРЫ - УСТАНОВИТЬ - 100% . Установка 100 процентов в текущие места курсоров.
-static void DrawSB_Cursors_100(int x, int y);
-static void PressSB_Cursors_100();
-extern const SButton sbSetPointsPercents;           ///< КУРСОРЫ - УСТАНОВИТЬ - Перемещение . Переключение шага перемещения курсоров - по пикселям или по процентам.
-static void PressSB_Cursors_PointsPercents();
-static void DrawSB_Cursors_PointsPercents(int x, int y);
-static void DrawSB_Cursors_PointsPercents_Percents(int x, int y);
-static void DrawSB_Cursors_PointsPercents_Points(int x, int y);
-
-
 static void MoveCursUonPercentsOrPoints(int delta);
 static void MoveCursTonPercentsOrPoints(int delta);
 static void SetShiftCursPosU(Channel chan, int numCur, float delta);    ///< Изменить значение позиции курсора напряжения на delta точек
@@ -111,8 +69,8 @@ void IncCursCntrlT(Channel chan)
 void Cursors_Update()
 {
     Channel source = CURS_SOURCE;
-    CursLookMode lookMode0 = CURS_LOOKMODE_0;
-    CursLookMode lookMode1 = CURS_LOOKMODE_1;
+    CursLookMode lookMode0 = CURS_LOOKMODE_A;
+    CursLookMode lookMode1 = CURS_LOOKMODE_B;
 
     float posT0 = 0.0f, posT1 = 0.0f;
 
@@ -167,143 +125,248 @@ void SetCursPosT(Channel chan, int numCur, float pos)
     }
 }
 
-
-extern const Page mainPage;
-
-// КУРСОРЫ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsCursors =
-{
-    (void*)&mcShow,             // КУРСОРЫ - Показывать
-    (void*)&mcTrackingT1U1,     // КУРСОРЫ - Курсоры T1,U1
-    (void*)&mcTrackingT2U2,     // КУРСОРЫ - Курсоры T2,U2
-    (void*)&mcShowFreq,         // КУРОСРЫ - 1/dT
-    (void*)&mspSet              // КУРСОРЫ - УСТАНОВИТЬ
-};
-
-const Page pCursors                ///< КУРСОРЫ
+//------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Выход ---
+DEF_SMALL_BUTTON
 (
-    &mainPage, 0,
-    "КУРСОРЫ", "CURSORS",
-    "Курсорные измерения.",
-    "Cursor measurements.",
-    Page_Cursors, &itemsCursors
+    sbSetExit,
+    "Выход", "Exit",
+    "Кнопка для выхода в предыдущее меню",
+    "Button to return to the previous menu",
+    mspSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
+);
+
+//---------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Источник ---
+static void PressSB_Cursors_Source(void)
+{
+    Channel source = CURS_SOURCE_A ? B : A;
+    SetCursSource(source);
+}
+
+static void DrawSB_Cursors_SourceA(int x, int y)
+{
+    painter.DrawText(x + 7, y + 5, "1");
+}
+
+static void DrawSB_Cursors_SourceB(int x, int y)
+{
+    painter.DrawText(x + 7, y + 5, "2");
+}
+
+static void DrawSB_Cursors_Source(int x, int y)
+{
+    CURS_SOURCE_A ? DrawSB_Cursors_SourceA(x, y) : DrawSB_Cursors_SourceB(x, y);
+}
+
+DEF_SMALL_BUTTON_HINTS_2
+(
+    sbSetSource,
+    "Источник", "Source",
+    "Выбор канала для курсорных измерений",
+    "Channel choice for measurements",
+    mspSet, FuncActive, PressSB_Cursors_Source, DrawSB_Cursors_Source,
+    hintsChannel,
+    DrawSB_Cursors_SourceA, "канал 1", "channel 1",
+    DrawSB_Cursors_SourceB, "канал 2", "channel 2"
+);
+
+//--------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Курсоры U ---
+static void PressSB_Cursors_U(void)
+{
+    if (CURS_ACTIVE_IS_U || CURS_CNTRL_U_IS_DISABLE(CURS_SOURCE))
+    {
+        IncCursCntrlU(CURS_SOURCE);
+    }
+    CURS_ACTIVE = CursActive_U;
+}
+
+static void DrawSB_Cursors_U_Disable(int x, int y)
+{
+    painter.DrawText(x + 7, y + 5, "U");
+}
+
+static void DrawSB_Cursors_U_Upper(int x, int y)
+{
+    DrawMenuCursVoltage(x + 7, y + 5, true, false);
+}
+
+static void DrawSB_Cursors_U_Lower(int x, int y)
+{
+    DrawMenuCursVoltage(x + 7, y + 5, false, true);
+}
+
+static void DrawSB_Cursors_U_Both_Enable(int x, int y)
+{
+    DrawMenuCursVoltage(x + 7, y + 5, true, true);
+}
+
+static void DrawSB_Cursors_U_Both_Disable(int x, int y)
+{
+    DrawMenuCursVoltage(x + 7, y + 5, false, false);
+}
+
+static void DrawSB_Cursors_U(int x, int y)
+{
+    CursCntrl cursCntrl = CURsU_CNTRL;
+    if (cursCntrl == CursCntrl_Disable)
+    {
+        DrawSB_Cursors_U_Disable(x, y);
+    }
+    else
+    {
+        if (!CURS_ACTIVE_IS_U)
+        {
+            DrawSB_Cursors_U_Both_Disable(x, y);
+        }
+        else
+        {
+            Channel source = CURS_SOURCE;
+            bool condTop = false, condDown = false;
+            CalculateConditions((int16)sCursors_GetCursPosU(source, 0), (int16)sCursors_GetCursPosU(source, 1), cursCntrl, &condTop, &condDown);
+            if (condTop && condDown)
+            {
+                DrawSB_Cursors_U_Both_Enable(x, y);
+            }
+            else if (condTop)
+            {
+                DrawSB_Cursors_U_Upper(x, y);
+            }
+            else
+            {
+                DrawSB_Cursors_U_Lower(x, y);
+            }
+        }
+    }
+}
+
+DEF_SMALL_BUTTON_HINTS_5
+(
+    sbSetU,
+    "Курсоры U", "Cursors U",
+    "Выбор курсоров напряжения для индикации и управления",
+    "Choice of cursors of voltage for indication and management",
+    mspSet, FuncActive, PressSB_Cursors_U, DrawSB_Cursors_U,
+    hintsSetU,
+    DrawSB_Cursors_U_Disable,       "курсоры напряжения выключены",
+                                    "cursors of tension are switched off",
+    DrawSB_Cursors_U_Both_Disable,  "курсоры напряжения включены",
+                                    "cursors of tension are switched on",
+    DrawSB_Cursors_U_Upper,         "курсоры напряжения включены, управление верхним курсором",
+                                    "cursors of tension are switched on, control of the top cursor",
+    DrawSB_Cursors_U_Lower,         "курсоры напряжения включены, управление нижним курсором",
+                                    "cursors of tension are switched on, control of the lower cursor",
+    DrawSB_Cursors_U_Both_Enable,   "курсоры напряжения включены, управление обоими курсорами",
+                                    "cursors of tension are switched on, control of both cursors"
 );
 
 
-// КУРСОРЫ - Показывать ------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcShow =
-{
-    Item_Choice, &pCursors, 0,
-    {
-        "Показывать", "Shown",
-        "Включает/отключает курсоры.",
-        "Enable/disable cursors."
-    },
-    {
-        {"Нет", "No"},
-        {"Да",  "Yes"}
-    },
-    (int8*)&CURS_SHOW
-};
 
-
-// КУРСОРЫ - Курсоры T1,U1 ---------------------------------------------------------------------------------------------------------------------------
-static const Choice mcTrackingT1U1 =
-{
-    Item_Choice, &pCursors, 0,
-    {
-        "Слежение \x8e, \x9e",  "Tracking \x8e, \x9e"
-        ,
-        "Задаёт режим слежения за первым курсором времени и напряжения:\n"
-        "1. \"Откл\" - курсор времени и курсор напряжения устанавливаются вручную.\n"
-        "2. \"Напряжение\" - при ручном изменении положения курсора времени курсор напряжения автоматически отслеживают изменения сигнала.\n"
-        "3. \"Время\" - при ручном изменении положения курсора напряжения курсор времени автоматически отслеживают изменения сигнала.\n"
-        "4. \"Напряж и время\" - действует как один из предыдущих режимов, в зависимости от того, на какой курсор производилось последнее воздействие."
-        ,
-        "Sets the mode tracking for second cursor:\n"                   // WARN Перевод
-        "1. \"Disable\" - all cursors are set manually.\n"
-        "2. \"Voltage\" - when manually changing the position of the cursor time cursors voltage automatically track changes in the signal.\n"
-        "3. \"Time\" - when manually changing the position of the cursor voltage cursors time automatically track changes in the signal.\n"
-        "4. \"Volt and time\" - acts as one of the previous modes, depending on which was carried out last effect cursors."
-    },
-    {
-        {DISABLE_RU,        DISABLE_EN},
-        {"Напряжение",      "Voltage"},
-        {"Время",           "Time"},
-        {"Напряж и время",  "Volt and time"}
-    },
-    (int8*)&CURS_LOOKMODE_0
-};
-
-
-// КУРСОРЫ - Курсоры T2,U2 ---------------------------------------------------------------------------------------------------------------------------
-static const Choice mcTrackingT2U2 =
-{
-    Item_Choice, &pCursors, 0,
-    {
-        "Слежение \x8f, \x9f", "Tracking \x8f, \x9f"
-        ,
-        "Задаёт режим слежения за вторым курсором времени и напряжения:\n"
-        "1. \"Откл\" - курсор времени и курсор напряжения устанавливаются вручную.\n"
-        "2. \"Напряжение\" - при ручном изменении положения курсора времени курсор напряжения автоматически отслеживают изменения сигнала.\n"
-        "3. \"Время\" - при ручном изменении положения курсора напряжения курсор времени автоматически отслеживают изменения сигнала.\n"
-        "4. \"Напряж и время\" - действует как один из предыдущих режимов, в зависимости от того, на какой курсор производилось последнее воздействие."
-        ,
-        "Sets the mode tracking cursors channel 2:\n"
-        "1. \"Disable\" - all cursors are set manually.\n"
-        "2. \"Voltage\" - when manually changing the position of the cursor time cursors voltage automatically track changes in the signal.\n"
-        "3. \"Time\" - when manually changing the position of the cursor voltage cursors time automatically track changes in the signal.\n"
-        "4. \"Volt and time\" - acts as one of the previous modes, depending on which was carried out last effect cursors."
-    },
-    {
-        {DISABLE_RU,        DISABLE_EN},
-        {"Напряжение",      "Voltage"},
-        {"Время",           "Time"},
-        {"Напряж. и время", "Volt. and time"}
-    },
-    (int8*)&CURS_LOOKMODE_1
-};
-
-
-// КУРОСРЫ - 1/dT ------------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcShowFreq =
-{
-    Item_Choice, &pCursors, 0,
-    {
-        "1/dT", "1/dT"
-        ,
-        "Если выбрано \"Вкл\", в правом верхнем углу выводится величина, обратная расстоянию между курсорами времени - частота сигнала, один период "
-        "которого равен расстоянию между временными курсорами."
-        ,
-        "If you select \"Enable\" in the upper right corner displays the inverse of the distance between cursors time - frequency signal, a period "
-        "equal to the distance between the time cursors."
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&CURSORS_SHOW_FREQ
-};
-
-
-// КУРСОРЫ - УСТАНОВИТЬ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsSet =
-{
-    (void*)&sbSetExit,              // КУРСОРЫ - УСТАНОВИТЬ - Выход
-    (void*)&sbSetSource,            // КУРСОРЫ - УСТАНОВИТЬ - Источник
-    (void*)&sbSetU,                 // КУРСОРЫ - УСТАНОВИТЬ - Курсоры U
-    (void*)&sbSetT,                 // КУРСОРЫ - УСТАНОВИТЬ - Курсоры T
-    (void*)&sbSet100,               // КУРСОРЫ - УСТАНОВИТЬ - 100%
-    (void*)&sbSetPointsPercents     // КУРСОРЫ - УСТАНОВИТЬ - Перемещение
-};
-
-static const Page mspSet
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КУРСОРЫ - УСТАНОВИТЬ ///
+DEF_PAGE_SB
 (
-    &pCursors, 0,
+    mspSet, static,
+    PageSB_Cursors_Set, &pCursors, FuncActive,
+    FuncPress, EmptyPressPage, OnRotate_RegSet_Set,
     "УСТАНОВИТЬ", "SET",
     "Переход в режим курсорных измерений",
     "Switch to cursor measures",
-    Page_SB_Curs, &itemsSet, EmptyFuncVV, EmptyFuncVV, OnRotate_RegSet_Set
+    &sbSetExit,          // КУРСОРЫ - УСТАНОВИТЬ - Выход
+    &sbSetSource,        // КУРСОРЫ - УСТАНОВИТЬ - Источник
+    &sbSetU,             // КУРСОРЫ - УСТАНОВИТЬ - Курсоры U
+    &sbSetT,             // КУРСОРЫ - УСТАНОВИТЬ - Курсоры T
+    &sbSet100,           // КУРСОРЫ - УСТАНОВИТЬ - 100%
+    &sbSetPointsPercents // КУРСОРЫ - УСТАНОВИТЬ - Перемещение
+);
+
+//--------------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Показывать ---
+DEF_CHOICE_2
+(
+    mcShow, pCursors,
+    CURS_SHOW, FuncActive, FuncChangedChoice, FuncDraw,
+    "Показывать", "Shown",
+    "Включает/отключает курсоры.",
+    "Enable/disable cursors.",
+    "Нет", "No",
+    "Да",  "Yes"
+);
+
+//------------------------------------------------------------------------------------------------------------------------ КУРСОРЫ - Курсоры T1,U1 ---
+DEF_CHOICE_4
+(
+    mcTrackingT1U1, pCursors,
+    CURS_LOOKMODE_A, FuncActive, FuncChangedChoice, FuncDraw,
+    "Слежение \x8e, \x9e", "Tracking \x8e, \x9e"
+    ,
+    "Задаёт режим слежения за первым курсором времени и напряжения:\n"
+    "1. \"Откл\" - курсор времени и курсор напряжения устанавливаются вручную.\n"
+    "2. \"Напряжение\" - при ручном изменении положения курсора времени курсор напряжения автоматически отслеживают изменения сигнала.\n"
+    "3. \"Время\" - при ручном изменении положения курсора напряжения курсор времени автоматически отслеживают изменения сигнала.\n"
+    "4. \"Напряж и время\" - действует как один из предыдущих режимов, в зависимости от того, на какой курсор производилось последнее воздействие."
+    ,
+    "Sets the mode tracking for second cursor:\n"                   // WARN Перевод
+    "1. \"Disable\" - all cursors are set manually.\n"
+    "2. \"Voltage\" - when manually changing the position of the cursor time cursors voltage automatically track changes in the signal.\n"
+    "3. \"Time\" - when manually changing the position of the cursor voltage cursors time automatically track changes in the signal.\n"
+    "4. \"Volt and time\" - acts as one of the previous modes, depending on which was carried out last effect cursors.",
+    DISABLE_RU,       DISABLE_EN,
+    "Напряжение",     "Voltage",
+    "Время",          "Time",
+    "Напряж и время", "Volt and time"
+);
+
+//------------------------------------------------------------------------------------------------------------------------ КУРСОРЫ - Курсоры T2,U2 ---
+DEF_CHOICE_4
+(
+    mcTrackingT2U2, pCursors,
+    CURS_LOOKMODE_B, FuncActive, FuncChangedChoice, FuncDraw,
+    "Слежение \x8f, \x9f", "Tracking \x8f, \x9f",
+    "Задаёт режим слежения за вторым курсором времени и напряжения:\n"
+    "1. \"Откл\" - курсор времени и курсор напряжения устанавливаются вручную.\n"
+    "2. \"Напряжение\" - при ручном изменении положения курсора времени курсор напряжения автоматически отслеживают изменения сигнала.\n"
+    "3. \"Время\" - при ручном изменении положения курсора напряжения курсор времени автоматически отслеживают изменения сигнала.\n"
+    "4. \"Напряж и время\" - действует как один из предыдущих режимов, в зависимости от того, на какой курсор производилось последнее воздействие."
+    ,
+    "Sets the mode tracking cursors channel 2:\n"
+    "1. \"Disable\" - all cursors are set manually.\n"
+    "2. \"Voltage\" - when manually changing the position of the cursor time cursors voltage automatically track changes in the signal.\n"
+    "3. \"Time\" - when manually changing the position of the cursor voltage cursors time automatically track changes in the signal.\n"
+    "4. \"Volt and time\" - acts as one of the previous modes, depending on which was carried out last effect cursors.",
+    DISABLE_RU,        DISABLE_EN,
+    "Напряжение",      "Voltage",
+    "Время",           "Time",
+    "Напряж. и время", "Volt. and time"
+);
+
+//--------------------------------------------------------------------------------------------------------------------------------- КУРОСРЫ - 1/dT ---
+DEF_CHOICE_2
+(
+    mcShowFreq, pCursors,
+    CURSORS_SHOW_FREQ, FuncActive, FuncChangedChoice, FuncDraw,
+    "1/dT", "1/dT"
+    ,
+    "Если выбрано \"Вкл\", в правом верхнем углу выводится величина, обратная расстоянию между курсорами времени - частота сигнала, один период "
+    "которого равен расстоянию между временными курсорами."
+    ,
+    "If you select \"Enable\" in the upper right corner displays the inverse of the distance between cursors time - frequency signal, a period "
+    "equal to the distance between the time cursors.",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КУРСОРЫ ///
+extern const Page mainPage;
+
+DEF_PAGE_5
+(
+    pCursors, ,
+    Page_Cursors, &mainPage, FuncActive, EmptyPressPage,
+    "КУРСОРЫ", "CURSORS",
+    "Курсорные измерения.",
+    "Cursor measurements.",
+    mcShow,             // КУРСОРЫ - Показывать
+    mcTrackingT1U1,     // КУРСОРЫ - Курсоры T1,U1
+    mcTrackingT2U2,     // КУРСОРЫ - Курсоры T2,U2
+    mcShowFreq,         // КУРОСРЫ - 1/dT
+    mspSet              // КУРСОРЫ - УСТАНОВИТЬ
 );
 
 static void OnRotate_RegSet_Set(int angle)
@@ -389,165 +452,6 @@ static void SetShiftCursPosT(Channel chan, int numCur, float delta)
         CURS_POS_T(chan, numCur) = LimitationRet(CURS_POS_T(chan, numCur) + delta, 0.0f, MAX_POS_T);
     }
 }
-
-
-// КУРСОРЫ - УСТАНОВИТЬ - Выход ----------------------------------------------------------------------------------------------------------------------
-static const SButton sbSetExit
-(
-    &mspSet,
-    COMMON_BEGIN_SB_EXIT,
-    PressSB_Cursors_Exit,
-    DrawSB_Exit
-);
-
-static void PressSB_Cursors_Exit(void)
-{
-    display.RemoveAddDrawFunction();
-}
-
-
-// КУРСОРЫ - УСТАНОВИТЬ - Источник ----------------------------------------------------------------------------------------------------------------------
-static const arrayHints hintsSetSource =
-{
-    { DrawSB_Cursors_SourceA, "канал 1", "channel 1" }, { DrawSB_Cursors_SourceB, "канал 2", "channel 2" }
-};
-
-static const SButton sbSetSource
-(
-    &mspSet, 0,
-    "Источник", "Source",
-    "Выбор канала для курсорных измерений",
-    "Channel choice for measurements",
-    PressSB_Cursors_Source,
-    DrawSB_Cursors_Source,
-    &hintsSetSource
-);
-
-static void PressSB_Cursors_Source(void)
-{
-    Channel source = CURS_SOURCE_A ? B : A;
-    SetCursSource(source);
-}
-
-static void DrawSB_Cursors_Source(int x, int y)
-{
-    CURS_SOURCE_A ? DrawSB_Cursors_SourceA(x, y) : DrawSB_Cursors_SourceB(x, y);
-}
-
-static void DrawSB_Cursors_SourceA(int x, int y)
-{
-    painter.DrawText(x + 7, y + 5, "1");
-}
-
-static void DrawSB_Cursors_SourceB(int x, int y)
-{
-    painter.DrawText(x + 7, y + 5, "2");
-}
-
-
-// КУРСОРЫ - УСТАНОВИТЬ - Курсоры U ------------------------------------------------------------------------------------------------------------------
-static const arrayHints hintsSetU =
-{
-    { DrawSB_Cursors_U_Disable,     "курсоры напряжения выключены",
-                                    "cursors of tension are switched off" },
-    { DrawSB_Cursors_U_Both_Disable,"курсоры напряжения включены",
-                                    "cursors of tension are switched on" },
-    { DrawSB_Cursors_U_Upper,       "курсоры напряжения включены, управление верхним курсором",
-                                    "cursors of tension are switched on, control of the top cursor" },
-    { DrawSB_Cursors_U_Lower,       "курсоры напряжения включены, управление нижним курсором",
-                                    "cursors of tension are switched on, control of the lower cursor" },
-    { DrawSB_Cursors_U_Both_Enable, "курсоры напряжения включены, управление обоими курсорами",
-                                    "cursors of tension are switched on, control of both cursors" }
-};
-
-static const SButton sbSetU
-(
-    &mspSet, 0,
-    "Курсоры U", "Cursors U",
-    "Выбор курсоров напряжения для индикации и управления",
-    "Choice of cursors of voltage for indication and management",
-    PressSB_Cursors_U,
-    DrawSB_Cursors_U,
-    &hintsSetU
-);
-
-static void PressSB_Cursors_U(void)
-{
-    if (CURS_ACTIVE_IS_U || CURS_CNTRL_U_IS_DISABLE(CURS_SOURCE))
-    {
-        IncCursCntrlU(CURS_SOURCE);
-    }
-    CURS_ACTIVE = CursActive_U;
-}
-
-static void DrawSB_Cursors_U(int x, int y)
-{
-    CursCntrl cursCntrl = CURsU_CNTRL;
-    if (cursCntrl == CursCntrl_Disable)
-    {
-       DrawSB_Cursors_U_Disable(x, y);
-    }
-    else
-    {
-        if (!CURS_ACTIVE_IS_U)
-        {
-            DrawSB_Cursors_U_Both_Disable(x, y);
-        }
-        else
-        {
-            Channel source = CURS_SOURCE;
-            bool condTop = false, condDown = false;
-            CalculateConditions((int16)sCursors_GetCursPosU(source, 0), (int16)sCursors_GetCursPosU(source, 1), cursCntrl, &condTop, &condDown);
-            if (condTop && condDown)
-            {
-                DrawSB_Cursors_U_Both_Enable(x, y);
-            }
-            else if (condTop)
-            {
-                DrawSB_Cursors_U_Upper(x, y);
-            }
-            else
-            {
-                DrawSB_Cursors_U_Lower(x, y);
-            }
-        }
-        /*
-        if (set.cursors.lookMode[0] == CursLookMode_Voltage || set.cursors.lookMode[0] == CursLookMode_Both ||
-            set.cursors.lookMode[1] == CursLookMode_Voltage || set.cursors.lookMode[1] == CursLookMode_Both)
-        {
-            painter.SetFont(TypeFont_5);
-            painter.DrawChar(x + 10, y, 'c');
-            painter.SetFont(TypeFont_8);
-        }
-        */
-    }
-}
-
-static void DrawSB_Cursors_U_Disable(int x, int y)
-{
-    painter.DrawText(x + 7, y + 5, "U");
-}
-
-static void DrawSB_Cursors_U_Upper(int x, int y)
-{
-    DrawMenuCursVoltage(x + 7, y + 5, true, false);
-}
-
-static void DrawSB_Cursors_U_Lower(int x, int y)
-{
-    DrawMenuCursVoltage(x + 7, y + 5, false, true);
-}
-
-static void DrawSB_Cursors_U_Both_Enable(int x, int y)
-{
-    DrawMenuCursVoltage(x + 7, y + 5, true, true);
-}
-
-static void DrawSB_Cursors_U_Both_Disable(int x, int y)
-{
-    DrawMenuCursVoltage(x + 7, y + 5, false, false);
-}
-
 
 // КУРСОРЫ - УСТАНОВИТЬ - Курсоры T ------------------------------------------------------------------------------------------------------------------
 static const arrayHints hintsSetT =

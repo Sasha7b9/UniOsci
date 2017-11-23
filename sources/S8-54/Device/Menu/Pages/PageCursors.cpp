@@ -69,13 +69,6 @@ static void IncCursCntrlT(Channel ch);                                  ///< Выб
 static void SetCursPosU(Channel ch, int numCur, float pos);             ///< Установить позицию курсора напряжения.
 //static void SetCursPosT(Channel ch, int numCur, float pos);             ///< Установить значение курсора по времени.
 
-/// Рассчитывает условия отрисовки УГО малых кнопок управления выбором курсорами.
-static void CalculateConditions(int16 pos0, int16 pos1, CursCntrl cursCntrl, bool *cond0, bool *cond1);
-static void DrawMenuCursTime(int x, int y, bool left, bool right);
-static void CalculateXY(int *x0, int *x1, int *y0, int *y1);
-static int CalculateXforCurs(int x, bool left);
-static int CalculateYforCurs(int y, bool top);
-static void DrawMenuCursVoltage(int x, int y, bool top, bool bottom);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КУРСОРЫ ///
 DEF_PAGE_5(pCursors, ,
@@ -335,22 +328,6 @@ static void Draw_Set_U_enableBoth(int x, int y)
     DrawMenuCursVoltage(x + 7, y + 5, true, true);
 }
 
-static void DrawMenuCursVoltage(int x, int y, bool top, bool bottom)
-{
-    x -= 65;
-    y -= 21;
-    int x0 = x, x1 = x, y0 = y, y1 = y;
-    CalculateXY(&x0, &x1, &y0, &y1);
-    for(int i = 0; i < (top ? 3 : 1); i++)
-    {
-        painter.DrawHLine(y0 + i, x0, x1);
-    }
-    for(int i = 0; i < (bottom ? 3 : 1); i++)
-    {
-        painter.DrawHLine(y1 - i, x0, x1);
-    }
-}
-
 // КУРСОРЫ - УСТАНОВИТЬ - Курсоры Т ----------------------------------------------------------------------------------------------------------------
 DEF_SMALL_BUTTON_HINTS_5
 (
@@ -432,40 +409,6 @@ static void Draw_Set_T_enableRight(int x, int y)
 static void Draw_Set_T_enableBoth(int x, int y)
 {
     DrawMenuCursTime(x, y, true, true);
-}
-
-static void DrawMenuCursTime(int x, int y, bool left, bool right)
-{
-    x -= 58;
-    y -= 16;
-    int x0 = x, x1 = x, y0 = y, y1 = y;
-    CalculateXY(&x0, &x1, &y0, &y1);
-    for(int i = 0; i < (left ? 3 : 1); i++)
-    {
-        painter.DrawVLine(x0 + i, y0, y1);
-    }
-    for(int i = 0; i < (right ? 3 : 1); i++)
-    {
-        painter.DrawVLine(x1 - i, y0, y1);
-    }
-}
-
-static void CalculateXY(int *x0, int *x1, int *y0, int *y1)
-{
-    *x0 = CalculateXforCurs(*x0, true);
-    *x1 = CalculateXforCurs(*x1, false);
-    *y0 = CalculateYforCurs(*y0, true);
-    *y1 = CalculateYforCurs(*y1, false);
-}
-
-static int CalculateXforCurs(int x, bool left)
-{
-    return left ? x + MI_WIDTH - 20 : x + MI_WIDTH - 5;
-}
-
-static int CalculateYforCurs(int y, bool top)
-{
-    return top ? y + MI_HEIGHT / 2 + 4 : y + MI_HEIGHT - 2;
 }
 
 // КУРСОРЫ - УСТАНОВИТЬ - 100% ---------------------------------------------------------------------------------------------------------------------

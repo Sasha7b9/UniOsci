@@ -47,8 +47,8 @@
 #define CURS_ACTIVE_IS_U            (CURS_ACTIVE == CursActive_U)
 
 #define CURS_LOOKMODE(num)          (set.cursors.lookMode[num])                 ///< SettingsCursors.lookMode
-#define CURS_LOOKMODE_0             (CURS_LOOKMODE(0))
-#define CURS_LOOKMODE_1             (CURS_LOOKMODE(1))
+#define CURS_LOOKMODE_A             (CURS_LOOKMODE(A))
+#define CURS_LOOKMODE_B             (CURS_LOOKMODE(B))
 
 #define CURS_SHOW                   (set.cursors.showCursors)                   ///< SettingsCursors.showCursors
 
