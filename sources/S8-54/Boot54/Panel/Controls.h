@@ -8,7 +8,7 @@ typedef enum
     B_Empty     = 0x00,     // кнопка не нажата
     B_Channel1  = 0x01,     // КАНАЛ 1
     B_Service   = 0x02,     // СЕРВИС
-    B_Channel2  = 0x03,     // КАНАЛ 2
+    B_ChannelB  = 0x03,     // КАНАЛ 2
     B_Display   = 0x04,     // ДИСПЛЕЙ
     B_Time      = 0x05,     // РАЗВ
     B_Memory    = 0x06,     // ПАМЯТЬ

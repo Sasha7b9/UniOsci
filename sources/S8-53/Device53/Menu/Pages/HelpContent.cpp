@@ -51,7 +51,7 @@ static void DrawPageDescription()
 
 void HelpContent_Draw()
 {
-    uint startTime = gTimerMS;
+    uint startTime = gTimeMS;
     painter.FillRegionC(grid.Right(), 0, 319 - grid.Right(), 20, COLOR_BACK);
     painter.FillRegion(grid.Right(), 219, 319 - grid.Right(), 21);
     painter.FillRegion(1, 1, WIDTH, 237);
@@ -78,7 +78,7 @@ void HelpContent_Draw()
     {
         DrawPageDescription();
     }
-    painter.DrawFormatText(2, 230, COLOR_FILL, "%d", gTimerMS - startTime);
+    painter.DrawFormatText(2, 230, COLOR_FILL, "%d", gTimeMS - startTime);
 }
 
 static int NumParagraphs(const PageHelp *page)

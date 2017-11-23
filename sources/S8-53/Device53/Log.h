@@ -1,6 +1,8 @@
 #pragma once   
 #include "defines.h"
 
+#define ASSERT_RET(cond, ...)
+
 #ifdef WIN32
 
 void LOG_WRITE(char *);

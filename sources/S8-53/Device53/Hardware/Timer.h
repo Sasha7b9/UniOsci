@@ -46,7 +46,7 @@ uint Timer_LogPointUS(char *name);
 
 uint Timer_LogPointMS(char *name);
 
-#define gTimerMS HAL_GetTick()
+#define gTimeMS HAL_GetTick()
 
 /**
   * gTimerTics - количество тиков, прошедших с момента последнего вызова функции Timer_StartMultiMeasurement().

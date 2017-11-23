@@ -13,7 +13,7 @@ typedef enum
     B_Empty     = 0x00,
     B_Channel1  = 0x01,     ///< ÊÀÍÀË 1
     B_Service   = 0x02,     ///< ÑÅÐÂÈÑ
-    B_Channel2  = 0x03,     ///< ÊÀÍÀË 2
+    B_ChannelB  = 0x03,     ///< ÊÀÍÀË 2
     B_Display   = 0x04,     ///< ÄÈÑÏËÅÉ
     B_Time      = 0x05,     ///< ÐÀÇÂ
     B_Memory    = 0x06,     ///< ÏÀÌßÒÜ

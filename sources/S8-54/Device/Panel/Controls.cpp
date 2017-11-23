@@ -8,7 +8,7 @@ static pString namesButtons[] =
     "B_Empty",
     "B_Channel1",
     "B_Service",
-    "B_Channel2",
+    "B_ChannelB",
     "B_Display",
     "B_Time",
     "B_Memory",

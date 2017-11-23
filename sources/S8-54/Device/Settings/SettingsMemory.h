@@ -37,8 +37,8 @@
 #define FPGA_POINTS_32k         (FPGA_ENUM_POINTS == FNP_32k)
 
 #define MODE_BTN_MEMORY         (set.mem_ModeBtnMemory)
-#define MODE_BTN_MEMORY_MENU    (MODE_BTN_MEMORY == ModeBtnMemory_Menu)
-#define MODE_BTN_MEMORY_SAVE    (MODE_BTN_MEMORY == ModeBtnMemory_Save)
+#define MODE_BTN_MEMORY_IS_MENU (MODE_BTN_MEMORY == ModeBtnMemory_Menu)
+#define MODE_BTN_MEMORY_IS_SAVE (MODE_BTN_MEMORY == ModeBtnMemory_Save)
 
 #define MODE_SAVE               (set.mem_ModeSaveSignal)
 #define MODE_SAVE_BMP           (MODE_SAVE == ModeSaveSignal_BMP)

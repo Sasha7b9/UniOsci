@@ -227,7 +227,7 @@ void FuncAttScreen(void)
     if(first)
     {
         first = false;
-        startTime = gTimerMS;
+        startTime = gTimeMS;
     }
     int16 y = 10;
     display.Clear();
@@ -305,7 +305,7 @@ void FuncAttScreen(void)
     }
     */
     char buffer[100];
-    sprintf(buffer, "%.1f", (gTimerMS - startTime) / 1000.0f);
+    sprintf(buffer, "%.1f", (gTimeMS - startTime) / 1000.0f);
     painter.DrawTextC(0, 0, buffer, COLOR_BLACK);
 
     painter.EndScene();
@@ -350,7 +350,7 @@ void DrawParametersChannel(Channel chan, int eX, int eY, bool inProgress)
 float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *delta)
 {
     uint *startTime = (chan == A) ? &startTimeChan0 : &startTimeChan1;
-    *startTime = gTimerMS;
+    *startTime = gTimeMS;
     
     ProgressBar *bar = (chan == A) ? &bar0 : &bar1;
     bar->passedTime = 0;
@@ -389,7 +389,7 @@ float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *del
             }
         }
         
-        bar->passedTime = (float)(gTimerMS - *startTime);
+        bar->passedTime = (float)(gTimeMS - *startTime);
         bar->fullTime = bar->passedTime * (float)numCicles / (cicle + 1);
     }
 
@@ -428,28 +428,28 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
     int sum = 0;
     int numPoints = 0;
 
-    int time = gTimerMS;
+    int time = gTimeMS;
 
-    while(gTimerMS - time < 50) {};
+    while(gTimeMS - time < 50) {};
 
     for(int i = 0; i < numMeasures; i++)
     {
-        uint startTime = gTimerMS;
+        uint startTime = gTimeMS;
         const uint timeWait = 100;
 
         FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimerMS - startTime < timeWait)) {}; 
-        if(gTimerMS - startTime > timeWait)                 // Если прошло слишком много времени - 
+        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimeMS - startTime < timeWait)) {}; 
+        if(gTimeMS - startTime > timeWait)                 // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;                       // выход с ошибкой.
         }
 
         fpga.SwitchingTrig();
 
-        startTime = gTimerMS;
+        startTime = gTimeMS;
 
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimerMS - startTime < timeWait)) {};
-        if(gTimerMS - startTime > timeWait)                 // Если прошло слишком много времени - 
+        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimeMS - startTime < timeWait)) {};
+        if(gTimeMS - startTime > timeWait)                 // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;                       // выход с ошибкой.
         }
@@ -495,24 +495,24 @@ float CalculateKoeffCalibration(Channel chan)
 
     for(int i = 0; i < numMeasures; i++)
     {
-        uint startTime = gTimerMS;
+        uint startTime = gTimeMS;
         const uint timeWait = 1000;
 
-        while(gTimerMS - startTime < 20) {}
-        startTime = gTimerMS;
+        while(gTimeMS - startTime < 20) {}
+        startTime = gTimeMS;
 
         FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimerMS - startTime > timeWait)) {};
-        if(gTimerMS - startTime > timeWait)
+        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimeMS - startTime > timeWait)) {};
+        if(gTimeMS - startTime > timeWait)
         {
             return ERROR_VALUE_FLOAT;
         }
 
         fpga.SwitchingTrig();
-        startTime = gTimerMS;
+        startTime = gTimeMS;
 
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimerMS - startTime > timeWait)) {};
-        if(gTimerMS - startTime > timeWait)
+        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimeMS - startTime > timeWait)) {};
+        if(gTimeMS - startTime > timeWait)
         {
             return ERROR_VALUE_FLOAT;
         }

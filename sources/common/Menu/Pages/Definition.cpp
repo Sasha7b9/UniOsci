@@ -44,7 +44,7 @@ const void *PageForButton(PanelButton button)
         0,                  // B_Empty
         (void *)&pChanA,    // B_Channel1
         (void *)&pService,  // B_Service
-        (void *)&pChanB,    // B_Channel2
+        (void *)&pChanB,    // B_ChannelB
         (void *)&pDisplay,  // B_Display
         (void *)&pTime,     // B_Time
         (void *)&pMemory,   // B_Memory

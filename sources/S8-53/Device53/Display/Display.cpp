@@ -2142,7 +2142,7 @@ void Display::DrawLowPart()
     }
 
     // Ethernet
-    if ((gBF.ethIsConnected == 1 || gBF.cableEthIsConnected == 1) && gTimerMS > 2000)
+    if ((gBF.ethIsConnected == 1 || gBF.cableEthIsConnected == 1) && gTimeMS > 2000)
     {
         painter.Draw4SymbolsInRectC(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? COLOR_FILL : COLOR_FLASH_01);
     }
@@ -2182,16 +2182,16 @@ void Display::DrawTimeForFrame(uint timeTicks)
     static float numMS = 0.0f;
     if(first)
     {
-        timeMSstartCalculation = gTimerMS;
+        timeMSstartCalculation = gTimeMS;
         first = false;
     }
     numMS += timeTicks / 120000.0f;
     numFrames++;
     
-    if((gTimerMS - timeMSstartCalculation) >= 500)
+    if((gTimeMS - timeMSstartCalculation) >= 500)
     {
         sprintf(buffer, "%.1fms/%d", numMS / numFrames, numFrames * 2);
-        timeMSstartCalculation = gTimerMS;
+        timeMSstartCalculation = gTimeMS;
         numMS = 0.0f;
         numFrames = 0;
     }
@@ -2508,12 +2508,12 @@ void Display::ShowWarn(const char *message)
         if (warnings[i] == 0 && !alreadyStored)
         {
             warnings[i] = message;
-            timeWarnings[i] = gTimerMS;
+            timeWarnings[i] = gTimeMS;
             alreadyStored = true;
         }
         else if (warnings[i] == message)
         {
-            timeWarnings[i] = gTimerMS;
+            timeWarnings[i] = gTimeMS;
             return;
         }
     }
@@ -2522,7 +2522,7 @@ void Display::ShowWarn(const char *message)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnTimerShowWarning()
 {
-    uint time = gTimerMS;
+    uint time = gTimeMS;
     for (int i = 0; i < NUM_WARNINGS; i++)
     {
         if ((int)(time - timeWarnings[i]) > TIME_MESSAGES * 1000)

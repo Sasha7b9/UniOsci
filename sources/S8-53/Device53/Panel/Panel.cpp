@@ -138,10 +138,10 @@ PanelButton ButtonIsRelease(uint16 command)
     PanelButton button = B_Empty;
     if(command < B_NumButtons && command > B_Empty)
     {
-        if(gTimerMS - timePrevReleaseButton > 100)
+        if(gTimeMS - timePrevReleaseButton > 100)
         {
             button = (PanelButton)command;
-            timePrevReleaseButton = gTimerMS;
+            timePrevReleaseButton = gTimeMS;
         }
     }
     return button;
@@ -152,10 +152,10 @@ PanelButton ButtonIsPress(uint16 command)
     PanelButton button = B_Empty;
     if (((command & 0x7f) < B_NumButtons) && ((command & 0x7f) > B_Empty))
     {
-        if(gTimerMS - timePrevPressButton > 100)
+        if(gTimeMS - timePrevPressButton > 100)
         {
             button = (PanelButton)(command & 0x7f);
-            timePrevPressButton = gTimerMS;
+            timePrevPressButton = gTimeMS;
         }
     }
     return button;
@@ -296,13 +296,13 @@ void Panel::EnableLEDTrig(bool enable)
     {
         panel.TransmitData(LED_TRIG_DISABLE);
         display.EnableTrigLabel(false);
-        timeEnable = gTimerMS;
+        timeEnable = gTimeMS;
         first = false;
     }
 
     if(enable)
     {
-        timeEnable = gTimerMS;
+        timeEnable = gTimeMS;
     }
 
     if(enable != fired)
@@ -313,7 +313,7 @@ void Panel::EnableLEDTrig(bool enable)
             display.EnableTrigLabel(true);
             fired = true;
         }
-        else if(gTimerMS - timeEnable > 100)
+        else if(gTimeMS - timeEnable > 100)
         {
             panel.TransmitData(LED_TRIG_DISABLE);
             display.EnableTrigLabel(false);

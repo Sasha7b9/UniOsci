@@ -100,7 +100,7 @@ void F5Long()
 //****************************************************************************************************************
 int CalculateCount(int *prevTime)
 {
-    uint time = gTimerMS;
+    uint time = gTimeMS;
     uint delta = time - *prevTime;
     *prevTime = time;
 
@@ -124,14 +124,14 @@ bool CanChangeTShift(int16 tShift)
     static uint time = 0;
     if (tShift == 0)
     {
-        time = gTimerMS;
+        time = gTimeMS;
         return true;
     }
     else if (time == 0)
     {
         return true;
     }
-    else if (gTimerMS - time > MIN_TIME)
+    else if (gTimeMS - time > MIN_TIME)
     {
         time = 0;
         return true;
@@ -144,14 +144,14 @@ bool CanChangeRShiftOrTrigLev(TrigSource channel, int16 rShift)
     static uint time[3] = {0, 0, 0};
     if (rShift == RShiftZero)
     {
-        time[channel] = gTimerMS;
+        time[channel] = gTimeMS;
         return true;
     }
     else if (time[channel] == 0)
     {
         return true;
     }
-    else if (gTimerMS - time[channel] > MIN_TIME)
+    else if (gTimeMS - time[channel] > MIN_TIME)
     {
         time[channel] = 0;
         return true;

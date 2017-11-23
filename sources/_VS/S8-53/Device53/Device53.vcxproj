@@ -562,8 +562,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\S8-53\Device53\check.bat" />
-    <None Include="..\..\..\S8-53\Device53\Device53.sct" />
     <None Include="..\..\..\S8-53\Device53\Display\font\font5.inc" />
     <None Include="..\..\..\S8-53\Device53\Display\font\font5display.inc" />
     <None Include="..\..\..\S8-53\Device53\Display\font\font8.inc" />
@@ -578,10 +576,6 @@
     </None>
     <None Include="..\..\..\S8-53\Device53\main2.s" />
     <None Include="..\..\..\_libs\forVS\algorithm" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\S8-53\Device53\err.txt" />
-    <Text Include="..\..\..\S8-53\Device53\includes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

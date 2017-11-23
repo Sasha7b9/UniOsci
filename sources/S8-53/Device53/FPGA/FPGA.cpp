@@ -92,7 +92,7 @@ void FPGA::Start(void)
     }
     FSMC_Write(WR_START, 1);
     FillDataPointer(&ds);
-    timeStart = gTimerMS;
+    timeStart = gTimeMS;
     stateWork = StateWorkFPGA_Wait;
     gBF.FPGAcritiacalSituation = 0;
 }
@@ -116,7 +116,7 @@ bool FPGA::ProcessingData(void)
         uint8 flag = ReadFlag();
         if (gBF.FPGAcritiacalSituation == 1)
         {
-            if (gTimerMS - timeStart > 500)
+            if (gTimeMS - timeStart > 500)
             {
                 SwitchingTrig();
                 gBF.FPGAtrigAutoFind = 1;
@@ -156,7 +156,7 @@ bool FPGA::ProcessingData(void)
                 {
                     gBF.FPGAcritiacalSituation = 1;
                 }
-                timeStart = gTimerMS;
+                timeStart = gTimeMS;
             }
         }
         panel.EnableLEDTrig(_GET_BIT(flag, BIT_TRIG) ? true : false);
@@ -452,9 +452,9 @@ void FPGA::DataRead(bool necessaryShift, bool saveToStorage)
 
     static uint prevTime = 0;
 
-    if (saveToStorage || (gTimerMS - prevTime > 500))
+    if (saveToStorage || (gTimeMS - prevTime > 500))
     {
-        prevTime = gTimerMS;
+        prevTime = gTimeMS;
         if (!sTime_RandomizeModeEnabled())
         {
             InverseDataIsNecessary(A, dataRel0);
@@ -787,13 +787,13 @@ static float CalculateFreqFromCounterFreq(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static float CalculateFreqFromCounterPeriod(void)
 {
-    uint timeStart = gTimerMS;
-    while (gTimerMS - timeStart < 1000 && _GET_BIT(FSMC_Read(RD_FL), BIT_PERIOD_READY) == 0) {};
+    uint timeStart = gTimeMS;
+    while (gTimeMS - timeStart < 1000 && _GET_BIT(FSMC_Read(RD_FL), BIT_PERIOD_READY) == 0) {};
     ReadRegPeriod();
-    timeStart = gTimerMS;
-    while (gTimerMS - timeStart < 1000 && _GET_BIT(FSMC_Read(RD_FL), BIT_PERIOD_READY) == 0) {};
+    timeStart = gTimeMS;
+    while (gTimeMS - timeStart < 1000 && _GET_BIT(FSMC_Read(RD_FL), BIT_PERIOD_READY) == 0) {};
     BitSet32 period = ReadRegPeriod();
-    if (period.word > 0 && (gTimerMS - timeStart < 1000))
+    if (period.word > 0 && (gTimeMS - timeStart < 1000))
     {
         return PeriodCounterToValue(&period);
     }

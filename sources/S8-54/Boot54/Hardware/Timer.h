@@ -33,7 +33,7 @@ uint    Timer_LogPointMS(char *name);
 void PersonalTimer_Start(TypePersonalTimer type, uint timeMS, bool repeat, pFuncVV func);
 void PersonalTimer_Stop(TypePersonalTimer type);
 
-//extern uint gTimerMS;
+//extern uint gTimeMS;
 
 /**
   * gTimerTics - количество тиков, прошедших с момента последнего вызова функции Timer_StartMultiMeasurement(). Не более (1 << 32)
@@ -44,4 +44,4 @@ void PersonalTimer_Stop(TypePersonalTimer type);
 #define TICS_IN_US(x) ((x) / 90)
 
 // Время, прошедшее с момента инициализации таймера, в миллисекундах
-#define gTimerMS (TIM5->CNT / 10)                    
+#define gTimeMS (TIM5->CNT / 10)                    

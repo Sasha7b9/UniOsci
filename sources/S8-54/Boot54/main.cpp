@@ -61,11 +61,11 @@ int main(void)
 
     Timer_Enable(kTemp, 10, Display_Update);
 
-    uint timeStart = gTimerMS;
+    uint timeStart = gTimeMS;
 
     FDrive_Init();
 
-    while (gTimerMS - timeStart < TIME_WAIT && !FDrive_Update())
+    while (gTimeMS - timeStart < TIME_WAIT && !FDrive_Update())
     {
     }
 

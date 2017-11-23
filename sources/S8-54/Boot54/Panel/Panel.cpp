@@ -34,10 +34,10 @@ static PanelButton ButtonIsPress(uint16 command)
 
     if (command < (B_NumButtons | 0x80) && command > (B_Empty | 0x80))
     {
-        if(gTimerMS - timePrevPressButton > 100)
+        if(gTimeMS - timePrevPressButton > 100)
         {
             button = (PanelButton)(command & 0x7f);
-            timePrevPressButton = gTimerMS;
+            timePrevPressButton = gTimeMS;
         }
     }
 
@@ -73,8 +73,8 @@ void Panel_TransmitData(uint16 data)
     {
         if (data == 0x04)
         {
-            uint time = gTimerMS;
-            while (gTimerMS - time < 200) {};
+            uint time = gTimeMS;
+            while (gTimeMS - time < 200) {};
         }
         dataTransmitted[lastPos++] = data;
     }

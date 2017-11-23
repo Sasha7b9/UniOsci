@@ -67,7 +67,7 @@ static const StructButton funcButton[B_NumButtons] =
     {0, 0},
     {EFB,           Long_ChannelA}, ///< B_Channel1
     {EFB,           EmptyFuncVV},   ///< B_Service
-    {EFB,           Long_ChannelB}, ///< B_Channel2
+    {EFB,           Long_ChannelB}, ///< B_ChannelB
     {EFB,           EmptyFuncVV},   ///< B_Display
     {EFB,           Long_Time},     ///< B_Time
     {EFB,           EmptyFuncVV},   ///< B_Memory

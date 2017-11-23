@@ -93,7 +93,7 @@ void Menu::ShortPressureButton(PanelButton button)
 {
     if (!HINT_MODE_ENABLE)
     {
-        if (button == B_Memory && FDRIVE_IS_CONNECTED && MODE_BTN_MEMORY_SAVE)
+        if (button == B_Memory && FDRIVE_IS_CONNECTED && MODE_BTN_MEMORY_IS_SAVE)
         {
             NEED_SAVE_TO_FLASHDRIVE = 1;
         }
@@ -203,7 +203,7 @@ static void ProcessButtonForHint(PanelButton button)
             "1. КАНАЛ1 button opens the settings menu of the channel 1.\n"
             "2. Pressing and holding the button КАНАЛ1 for 0.5c for the offset of the vertical channel 1 0V.";
     }
-    else if (button == B_Channel2)
+    else if (button == B_ChannelB)
     {
         gStringForHint = LANG_RU ?
             "1. Кнопка КАНАЛ2 открывает меню настроек канала 2.\n"
@@ -377,7 +377,7 @@ static void ProcessingShortPressureButton(void)
 {
     if(shortPressureButton != B_Empty)
     {
-        if (shortPressureButton == B_Memory && MODE_BTN_MEMORY_SAVE && FDRIVE_IS_CONNECTED)
+        if (shortPressureButton == B_Memory && MODE_BTN_MEMORY_IS_SAVE && FDRIVE_IS_CONNECTED)
         {
             EXIT_FROM_SETNAME_TO = (uint)(MENU_IS_SHOWN ? RETURN_TO_MAIN_MENU : RETURN_TO_DISABLE_MENU);
             Memory_SaveSignalToFlashDrive();
@@ -431,7 +431,7 @@ static void ProcessingShortPressureButton(void)
                     OnChanged_ChanA_Input(true);
                     break;
                 }
-                if(button == B_Channel2 && name == Page_ChannelB && MENU_IS_SHOWN)
+                if(button == B_ChannelB && name == Page_ChannelB && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
                     OnChanged_ChanB_Input(true);
@@ -476,7 +476,7 @@ void ProcessingLongPressureButton(void)
         {
             FPGA_SetRShift(A, RShiftZero);
         }
-        else if(button == B_Channel2)
+        else if(button == B_ChannelB)
         {
             FPGA_SetRShift(B, RShiftZero);
         }

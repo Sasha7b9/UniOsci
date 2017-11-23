@@ -75,8 +75,8 @@ void Timer_PauseOnTicks(uint numTicks)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer_PauseOnTime(uint timeMS)
 {
-    uint time = gTimerMS;
-    while(gTimerMS - time < timeMS) {};
+    uint time = gTimeMS;
+    while(gTimeMS - time < timeMS) {};
 }
 
 
@@ -125,7 +125,7 @@ void Timer_Enable(TypeTimer type, int timeInMS, void(*eF)(void))
 {
     f[type] = eF;
     reactionTimeMS[type] = (uint)timeInMS;
-    timePrevExecuteMS[type] = (int)gTimerMS;
+    timePrevExecuteMS[type] = (int)gTimeMS;
     isRun[type] = true;
 }
 
@@ -161,7 +161,7 @@ bool Timer_IsRun(TypeTimer type)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Timer_Update(void)
 {
-    uint curTimeMS = gTimerMS;
+    uint curTimeMS = gTimeMS;
 
     for(int num = 0; num < TypeTimerSize; num++)
     {

@@ -3,7 +3,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static volatile uint gTimerMS = 0;
+static volatile uint gTimeMS = 0;
 static void (*f[TypeTimerSize])() = {0};
 static int reactionTimeMS[TypeTimerSize] = {0};
 static int currentTimeMS[TypeTimerSize] = {0};
@@ -23,8 +23,8 @@ void Timer_PauseOnTicks(uint numTicks)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer_PauseOnTime(uint timeMS)
 {
-    uint time = gTimerMS;
-    while(gTimerMS - time < timeMS) {};
+    uint time = gTimeMS;
+    while(gTimeMS - time < timeMS) {};
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ bool Timer_IsRun(TypeTimer type)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer_Update1ms()
 {
-    gTimerMS++;
+    gTimeMS++;
     for(int num = 0; num < TypeTimerSize; num++)
     {
         if(isRun[num])
@@ -113,7 +113,7 @@ void Timer_Update1ms()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer_Update10ms()
 {
-    gTimerMS += 10;
+    gTimeMS += 10;
     for(int num = 0; num < TypeTimerSize; num++)
     {
         if(isRun[num])

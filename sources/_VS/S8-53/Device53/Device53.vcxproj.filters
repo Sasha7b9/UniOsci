@@ -877,12 +877,6 @@
     <None Include="..\..\..\_libs\forVS\algorithm">
       <Filter>forVS</Filter>
     </None>
-    <None Include="..\..\..\S8-53\Device53\check.bat">
-      <Filter>src</Filter>
-    </None>
-    <None Include="..\..\..\S8-53\Device53\Device53.sct">
-      <Filter>src</Filter>
-    </None>
     <None Include="..\..\..\S8-53\Device53\main2.s">
       <Filter>src</Filter>
     </None>
@@ -913,13 +907,5 @@
     <None Include="..\..\..\S8-53\Device53\Hardware\DisplayHardware.inc">
       <Filter>Hardware</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\S8-53\Device53\err.txt">
-      <Filter>src</Filter>
-    </Text>
-    <Text Include="..\..\..\S8-53\Device53\includes.txt">
-      <Filter>src</Filter>
-    </Text>
   </ItemGroup>
 </Project>
