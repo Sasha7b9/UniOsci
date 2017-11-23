@@ -19,28 +19,6 @@ extern const Page pChanA;
 extern const Page pChanB;
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Choice mcInputA;                   ///< ÊÀÍÀË 1 - Âõîä
-void OnChanged_InputA(bool active);
-extern const Choice mcCoupleA;                  ///< ÊÀÍÀË 1 - Ñâÿçü
-void OnChanged_CoupleA(bool active);
-extern const Choice mcFiltrA;                   ///< ÊÀÍÀË 1 - Ôèëüòð
-void OnChanged_FiltrA(bool active);
-extern const Choice mcInverseA;                 ///< ÊÀÍÀË 1 - Èíâåðñèÿ
-static void OnChanged_InverseA(bool active);
-extern const Choice mcMultiplierA;              ///< ÊÀÍÀË 1 - Ìíîæèòåëü
-
-extern const Choice mcInputB;                   ///< ÊÀÍÀË 2 - Âõîä
-void OnChanged_InputB(bool active);
-extern const Choice mcCoupleB;                  ///< ÊÀÍÀË 2 - Ñâÿçü
-void OnChanged_CoupleB(bool active);
-extern const Choice mcFiltrB;                   ///< ÊÀÍÀË 2 - Ôèëüòð
-void OnChanged_FiltrB(bool active);
-extern const Choice mcInverseB;                 ///< ÊÀÍÀË 2 - Èíâåðñèÿ
-static void OnChanged_InverseB(bool active);
-extern const Choice mcMultiplierB;              ///< ÊÀÍÀË 2 - Ìíîæèòåëü
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const char chanInputRu[] =   "1. \"Âêë\" - âûâîäèòü ñèãíàë íà ýêðàí.\n"
                                     "2. \"Îòêë\" - íå âûâîäèòü ñèãíàë íà ýêðàí.";
@@ -65,261 +43,200 @@ extern const char chanInverseEn[] = "When \"Enable\" signal on the screen will b
 extern const char chanMultiplierRu[] = "Îñëàáëåíèå ñèãíàëà:\n\"x1\" - ñèãíàë íå îñëàáëÿåòñÿ.\n\"x10\" - ñèãíàë îñëàáëÿåòñÿ â 10 ðàç";
 extern const char chanMultiplierEn[] = "Attenuation: \n\"x1\" - the signal is not attenuated.\n\"x10\" - the signal is attenuated by 10 times";
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Page mainPage;
-
-
-// ÊÀÍÀË 1 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsChanA =
-{
-    (void*)&mcInputA,       // ÊÀÍÀË 1 - Âõîä
-    (void*)&mcCoupleA,      // ÊÀÍÀË 1 - Ñâÿçü
-    (void*)&mcFiltrA,       // ÊÀÍÀË 1 - Ôèëüòð
-    (void*)&mcInverseA,     // ÊÀÍÀË 1 - Èíâåðñèÿ
-    (void*)&mcMultiplierA   // ÊÀÍÀË 1 - Ìíîæèòåëü
-};
-
-const Page pChanA           ///< ÊÀÍÀË 1
-(
-    &mainPage, 0,
-    "ÊÀÍÀË 1", "CHANNEL 1",
-    "Ñîäåðæèò íàñòðîéêè êàíàëà 1.",
-    "Contains settings of the channel 1.",
-    Page_ChannelA, &itemsChanA
-);
-
-
-// ÊÀÍÀË 1 - Âõîä ------------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcInputA =
-{
-    Item_Choice, &pChanA, 0,
-    {
-        "Âõîä", "Input",
-        chanInputRu,
-        chanInputEn
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&SET_ENABLED_A, OnChanged_InputA
-};
-
+//--------------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 1 - Âõîä ---
 void OnChanged_InputA(bool active)
 {
     panel.EnableLEDChannelA(sChannel_Enabled(A));
 }
 
+DEF_CHOICE_2
+(
+    mcInputA, pChanA,
+    SET_ENABLED_A, FuncActive, OnChanged_InputA, FuncDraw,
+    "Âõîä", "Input",
+    chanInputRu,
+    chanInputEn,
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU, ENABLE_EN
+);
 
-// ÊÀÍÀË 1 - Ñâÿçü -----------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcCoupleA =
-{
-    Item_Choice, &pChanA, 0,
-    {
-        "Ñâÿçü",   "Couple",
-        chanCoupleRu,
-        chanCoupleEn
-    },
-    {
-        {"Ïîñò",    "AC"},
-        {"Ïåðåì",   "DC"},
-        {"Çåìëÿ",   "Ground"}
-    },
-    (int8*)&SET_COUPLE_A, OnChanged_CoupleA
-};
-
+//-------------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 1 - Ñâÿçü ---
 void OnChanged_CoupleA(bool active)
 {
     fpga.SetModeCouple(A, SET_COUPLE_A);
 }
 
+DEF_CHOICE_3
+(
+    mcCoupleA, pChanA,
+    SET_COUPLE_A, FuncActive, OnChanged_CoupleA, FuncDraw,
+    "Ñâÿçü", "Couple",
+    chanCoupleRu,
+    chanCoupleEn,
+    "Ïîñò",  "AC",
+    "Ïåðåì", "DC",
+    "Çåìëÿ", "Ground"
+);
 
-// ÊÀÍÀË 1 - Ôèëüòð ----------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcFiltrA =
-{
-    Item_Choice, &pChanA, 0,
-    {
-        "Ôèëüòð", "Filtr",
-        chanFiltrRu,
-        chanFiltrEn
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&FILTR_A, OnChanged_FiltrA
-};
-
+//------------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 1 - Ôèëüòð ---
 void OnChanged_FiltrA(bool active)
 {
     fpga.EnableChannelFiltr(A, FILTR_A);
 }
 
+DEF_CHOICE_2
+(
+    mcFiltrA, pChanA,
+    FILTR_A, FuncActive, OnChanged_FiltrA, FuncDraw,
+    "Ôèëüòð", "Filtr",
+    chanFiltrRu,
+    chanFiltrEn,
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
 
-// ÊÀÍÀË 1 - Èíâåðñèÿ --------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcInverseA =
-{
-    Item_Choice, &pChanA, 0,
-    {
-        "Èíâåðñèÿ",    "Inverse",
-        chanInverseRu,
-        chanInverseEn
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&SET_INVERSE_A, OnChanged_InverseA
-};
-
+//----------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 1 - Èíâåðñèÿ ---
 static void OnChanged_InverseA(bool active)
 {
     fpga.SetRShift(A, SET_RSHIFT_A);
 }
 
-
-// ÊÀÍÀË 1 - Ìíîæèòåëü -------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcMultiplierA =
-{
-    Item_Choice, &pChanA, 0,
-    {
-        "Ìíîæèòåëü", "Divider",
-        chanMultiplierRu,
-        chanMultiplierEn
-    },
-    {
-        {"õ1",  "x1"},
-        {"x10", "x10"}
-    },
-    (int8*)&SET_DIVIDER(A)
-};
-
-
-
-// ÊÀÍÀË 2 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsChanB =
-{
-    (void*)&mcInputB,       // ÊÀÍÀË 2 - Âõîä
-    (void*)&mcCoupleB,      // ÊÀÍÀË 2 - Ñâÿçü
-    (void*)&mcFiltrB,       // ÊÀÍÀË 2 - Ôèëüòð
-    (void*)&mcInverseB,     // ÊÀÍÀË 2 - Èíâåðñèÿ
-    (void*)&mcMultiplierB   // ÊÀÍÀË 2 - Ìíîæèòåëü
-};
-
-const Page pChanB
+DEF_CHOICE_2
 (
-    &mainPage, 0,
-    "ÊÀÍÀË 2", "CHANNEL 2",
-    "Ñîäåðæèò íàñòðîéêè êàíàëà 2.",
-    "Contains settings of the channel 2.",
-    Page_ChannelB, &itemsChanB
+    mcInverseA, pChanA,
+    SET_INVERSE_A, FuncActive, OnChanged_InverseA, FuncDraw,
+    "Èíâåðñèÿ", "Inverse",
+    chanInverseRu,
+    chanInverseEn,
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
 );
 
+//---------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 1 - Ìíîæèòåëü ---
+DEF_CHOICE_2
+(
+    mcMultiplierA, pChanA,
+    SET_DIVIDER(A), FuncActive, FuncChangedChoice, FuncDraw,
+    "Ìíîæèòåëü", "Divider",
+    chanMultiplierRu,
+    chanMultiplierEn,
+    "õ1",  "x1",
+    "x10", "x10"
+);
 
-// ÊÀÍÀË 2 - Âõîä ------------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcInputB =  ///< ÊÀÍÀË 2
-{
-    Item_Choice, &pChanB, 0,
-    {
-        "Âõîä", "Input",
-        chanInputRu,
-        chanInputEn
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&SET_ENABLED_B, OnChanged_InputB
-};
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÊÀÍÀË 1 ///
+extern const Page mainPage;
 
+DEF_PAGE_5
+(
+    pChanA, ,
+    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage,
+    "ÊÀÍÀË 1", "CHANNEL 1",
+    "Ñîäåðæèò íàñòðîéêè êàíàëà 1.",
+    "Contains settings of the channel 1.",
+    mcInputA,       // ÊÀÍÀË 1 - Âõîä
+    mcCoupleA,      // ÊÀÍÀË 1 - Ñâÿçü
+    mcFiltrA,       // ÊÀÍÀË 1 - Ôèëüòð
+    mcInverseA,     // ÊÀÍÀË 1 - Èíâåðñèÿ
+    mcMultiplierA   // ÊÀÍÀË 1 - Ìíîæèòåëü
+);
+
+//--------------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 2 - Âõîä ---
 void OnChanged_InputB(bool active)
 {
     panel.EnableLEDChannelB(sChannel_Enabled(B));
 }
 
+DEF_CHOICE_2
+(
+    mcInputB, pChanB,
+    SET_ENABLED_B, FuncActive, OnChanged_InputB, FuncDraw,
+    "Âõîä", "Input",
+    chanInputRu,
+    chanInputEn,
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
 
-// ÊÀÍÀË 2 - Ñâÿçü -----------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcCoupleB =
-{
-    Item_Choice, &pChanB, 0,
-    {
-        "Ñâÿçü", "Couple",
-        chanCoupleRu,
-        chanCoupleEn
-    },
-    {
-        {"Ïîñò",    "AC"},
-        {"Ïåðåì",   "DC"},
-        {"Çåìëÿ",   "Ground"}
-    },
-    (int8*)&SET_COUPLE_B, OnChanged_CoupleB
-};
-
+//-------------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 2 - Ñâÿçü ---
 void OnChanged_CoupleB(bool active)
 {
     fpga.SetModeCouple(B, SET_COUPLE_B);
 }
 
-// ÊÀÍÀË 2 - Ôèëüòð ----------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcFiltrB =
-{
-    Item_Choice, &pChanB, 0,
-    {
-        "Ôèëüòð", "Filtr",
-        chanFiltrRu,
-        chanFiltrEn
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&FILTR_B, OnChanged_FiltrB
-};
+DEF_CHOICE_3
+(
+    mcCoupleB, pChanB,
+    SET_COUPLE_B, FuncActive, OnChanged_CoupleB, FuncDraw,
+    "Ñâÿçü", "Couple",
+    chanCoupleRu,
+    chanCoupleEn,
+    "Ïîñò",  "AC",
+    "Ïåðåì", "DC",
+    "Çåìëÿ", "Ground"
+);
 
+//------------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 2 - Ôèëüòð ---
 void OnChanged_FiltrB(bool active)
 {
     fpga.EnableChannelFiltr(B, FILTR_B);
 }
 
+DEF_CHOICE_2
+(
+    mcFiltrB, pChanB,
+    FILTR_B, FuncActive, OnChanged_FiltrB, FuncDraw,
+    "Ôèëüòð", "Filtr",
+    chanFiltrRu,
+    chanFiltrEn,
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
 
-// ÊÀÍÀË 2 - Èíâåðñèÿ --------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcInverseB =
-{
-    Item_Choice, &pChanB, 0,
-    {
-        "Èíâåðñèÿ", "Inverse",
-        chanInverseRu,
-        chanInverseEn
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&SET_INVERSE_B, OnChanged_InverseB
-};
-
+//----------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 2 - Èíâåðñèÿ ---
 static void OnChanged_InverseB(bool active)
 {
     fpga.SetRShift(B, SET_RSHIFT_B);
 }
 
+DEF_CHOICE_2
+(
+    mcInverseB, pChanB,
+    SET_INVERSE_B, FuncActive, OnChanged_InverseB, FuncDraw,
+    "Èíâåðñèÿ", "Inverse",
+    chanInverseRu,
+    chanInverseEn,
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
 
-// ÊÀÍÀË 2 - Ìíîæèòåëü -------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcMultiplierB =
-{
-    Item_Choice, &pChanB, 0,
-    {
-        "Ìíîæèòåëü", "Divider",
-        chanMultiplierRu,
-        chanMultiplierEn
-    },
-    {
-        {"õ1",  "x1"},
-        {"x10", "x10"}
-    },
-    (int8*)&SET_DIVIDER(B)
-};
+//---------------------------------------------------------------------------------------------------------------------------- ÊÀÍÀË 2 - Ìíîæèòåëü ---
+DEF_CHOICE_2
+(
+    mcMultiplierB, pChanB,
+    SET_DIVIDER(B), FuncActive, FuncChangedChoice, FuncDraw,
+    "Ìíîæèòåëü", "Divider",
+    chanMultiplierRu,
+    chanMultiplierEn,
+    "õ1",  "x1",
+    "x10", "x10"
+);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÊÀÍÀË 2 ///
+DEF_PAGE_5
+(
+    pChanB, ,
+    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage,
+    "ÊÀÍÀË 2", "CHANNEL 2",
+    "Ñîäåðæèò íàñòðîéêè êàíàëà 2.",
+    "Contains settings of the channel 2.",
+    mcInputB,       // ÊÀÍÀË 2 - Âõîä
+    mcCoupleB,      // ÊÀÍÀË 2 - Ñâÿçü
+    mcFiltrB,       // ÊÀÍÀË 2 - Ôèëüòð
+    mcInverseB,     // ÊÀÍÀË 2 - Èíâåðñèÿ
+    mcMultiplierB   // ÊÀÍÀË 2 - Ìíîæèòåëü
+);
 
 
 /** @}  @}

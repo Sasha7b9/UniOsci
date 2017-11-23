@@ -213,8 +213,6 @@ DEF_PAGE_7(pChanB, ,
     bChanB_Balance      // КАНАЛ 2 - Балансировать
 );
 
-const Page * pointerPageChanB = &pChanB;
-
 //--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Вход ---
 static bool IsActive_ChanB_Input(void)
 {

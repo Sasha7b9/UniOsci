@@ -1,4 +1,5 @@
 #pragma once
+#include "Utils/CommonFunctions.h"
 #define FuncDraw            EmptyFuncVII
 #define EmptyDrawPage       EmptyFuncVV
 #define FuncActive          EmptyFuncBV
