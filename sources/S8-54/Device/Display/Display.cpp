@@ -906,11 +906,11 @@ static void DrawMeasures(void)
                     painter.FillRegion(x + 1, y + 1, dX - 2, 9, active ? gColorBack : gColorFill);
                     painter.DrawText(x + 4, y + 2, measures.Name(str, elem), active ? gColorFill : gColorBack);
                 }
-                if(SOURCE_MEASURE_A && SET_ENABLED_A)
+                if(SOURCE_MEASURE_IS_A && SET_ENABLED_A)
                 {
                     painter.DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, A, buffer, SIZE_BUFFER), gColorChan[A]);
                 }
-                else if(SOURCE_MEASURE_B && SET_ENABLED_B)
+                else if(SOURCE_MEASURE_IS_B && SET_ENABLED_B)
                 {
                     painter.DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, B, buffer, SIZE_BUFFER), gColorChan[B]);
                 }
@@ -1955,15 +1955,15 @@ static int CalculateCountV(void)
     {
         if(NUM_MEASURES_IS_1_5)
         {
-            return SOURCE_MEASURE_A_B ? 55 : 59;
+            return SOURCE_MEASURE_IS_A_B ? 55 : 59;
         }
         if(NUM_MEASURES_IS_2_5)
         {
-            return SOURCE_MEASURE_A_B ? 69 : 51;
+            return SOURCE_MEASURE_IS_A_B ? 69 : 51;
         }
         if(NUM_MEASURES_IS_3_5)
         {
-            return SOURCE_MEASURE_A_B ? 54 : 68;
+            return SOURCE_MEASURE_IS_A_B ? 54 : 68;
         }
     }
 

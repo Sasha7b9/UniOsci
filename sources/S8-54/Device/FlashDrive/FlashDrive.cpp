@@ -4,6 +4,7 @@
 #include "Display/Display.h"
 #include "Hardware/RTC.h"
 #include "Hardware/Timer.h"
+#include "Menu/Menu.h"
 #include "Menu/FileManager.h"
 #include "Utils/Dictionary.h"
 #include "usbh_diskio.h"
@@ -24,9 +25,6 @@ USBH_HandleTypeDef hUSB_Host;
 static FATFS USBDISKFatFs;
 static char USBDISKPath[4];
 static bool gFlashDriveIsConnected = false;
-
-
-extern void ChangeStateFlashDrive(void);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +52,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
             {
                 gFlashDriveIsConnected = true;
                 FM_Init();
-                ChangeStateFlashDrive();
+                menu.ChangeStateFlashDrive();
             }
             */
             break;
@@ -68,7 +66,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
         case HOST_USER_DISCONNECTION:
             gFlashDriveIsConnected = false;
-            ChangeStateFlashDrive();
+            menu.ChangeStateFlashDrive();
             break;
 
         default:
@@ -81,7 +79,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 void FDrive_Mount(void)
 {
     FM_Init();
-    ChangeStateFlashDrive();
+    menu.ChangeStateFlashDrive();
     if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 0) != FR_OK)
     {
         LOG_ERROR_TRACE("Не могу примонтировать диск");
@@ -129,7 +127,7 @@ void FDrive_Update(void)
         {
             gFlashDriveIsConnected = true;
             FM_Init();
-            ChangeStateFlashDrive();
+            menu.ChangeStateFlashDrive();
         }
         while (gTimeMS - timeStart < 3000)
         {

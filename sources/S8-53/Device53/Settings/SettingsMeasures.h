@@ -18,10 +18,10 @@
 #define NUM_MEASURES_IS_6_1             (NUM_MEASURES == MN_6_1)
 #define NUM_MEASURES_IS_6_2             (NUM_MEASURES == MN_6_2)
 
-#define MEAS_SOURCE                     (set.measures.source)                           ///< SettingsMeasures.source
-#define MEAS_SOURCE_IS_A                (MEAS_SOURCE == A)
-#define MEAS_SOURCE_IS_B                (MEAS_SOURCE == B)
-#define MEAS_SOURCE_IS_A_B              (MEAS_SOURCE == A_B)
+#define SOURCE_MEASURE                  (set.measures.source)                           ///< SettingsMeasures.source
+#define SOURCE_MEASURE_IS_A             (SOURCE_MEASURE == A)
+#define SOURCE_MEASURE_IS_B             (SOURCE_MEASURE == B)
+#define SOURCE_MEASURE_IS_A_B           (SOURCE_MEASURE == A_B)
 
 #define MODE_VIEW_SIGNALS               (set.measures.modeViewSignals)                 ///< SettingsMeasures.modeViewSignals
 #define MODE_VIEW_SIGNALS_IS_COMPRESS   (MODE_VIEW_SIGNALS == ModeViewSignals_Compress)

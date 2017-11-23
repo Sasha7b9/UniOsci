@@ -13,6 +13,7 @@
 #include "Panel/Panel.h"
 #include "Utils/Math.h"
 #include "Utils/CommonFunctions.h"
+#include "stub.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -840,7 +841,7 @@ pFuncVpV FuncForLongPressureOnItem(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ChangeStateFlashDrive(void)
+void Menu::ChangeStateFlashDrive()
 {
     if(!FDRIVE_IS_CONNECTED)
     {
@@ -849,7 +850,7 @@ void ChangeStateFlashDrive(void)
             ((Page *)OpenedItem())->ShortPressOnItem(0);
         }
     }
-    else if(FLASH_AUTO_CONNECT)
+    else if(FLASH_AUTOCONNECT)
     {
         OnPress_Drive_Manager();
     }
@@ -940,7 +941,7 @@ void SwitchSetLED(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::Show(bool show)
 {
-    set.menu_IsShown = show;
+    MENU_IS_SHOWN = show;
     if (show)
     {
         Menu::TemporaryEnableStrNavi();

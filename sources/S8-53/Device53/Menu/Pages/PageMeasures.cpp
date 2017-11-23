@@ -191,7 +191,7 @@ const Choice mcMeasuresChannels =
         {"2",       "2"},
         {"1 и 2",   "1 and 2"}
     },
-    (int8*)&MEAS_SOURCE
+    (int8*)&SOURCE_MEASURE
 };
 
 // ИЗМЕРЕНИЯ -> Показывать

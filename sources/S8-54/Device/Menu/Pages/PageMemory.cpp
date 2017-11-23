@@ -905,7 +905,7 @@ DEF_CHOICE_2
 DEF_CHOICE_2
 (
     cDrive_Autoconnect, ppDrive,
-    FLASH_AUTO_CONNECT, FuncActive, FuncChangedChoice, FuncDraw,
+    FLASH_AUTOCONNECT, FuncActive, FuncChangedChoice, FuncDraw,
     "јвтоподкл.", "AutoConnect",
     "Eсли \"¬кл\", при подключении внешнего накопител€ происходит автоматический переход на страницу ѕјћя“№ - ¬нешн «”",
     "If \"Enable\", when you connect an external drive is automatically transferred to the page MEMORY - Ext.Storage",

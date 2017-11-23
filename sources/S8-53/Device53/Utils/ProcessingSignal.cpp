@@ -151,11 +151,11 @@ void Processing_CalculateMeasures()
                     markerVert[A][0] = markerVert[A][1] = markerVert[B][0] = markerVert[B][1] = ERROR_VALUE_INT;
                     markerHor[A][0] = markerHor[A][1] = markerHor[B][0] = markerHor[B][1] = ERROR_VALUE_INT;
                 }
-                if(MEAS_SOURCE_IS_A || MEAS_SOURCE_IS_A_B)
+                if(SOURCE_MEASURE_IS_A || SOURCE_MEASURE_IS_A_B)
                 {
                     values[meas].value[A] = func(A);
                 }
-                if(MEAS_SOURCE_IS_B || MEAS_SOURCE_IS_A_B)
+                if(SOURCE_MEASURE_IS_B || SOURCE_MEASURE_IS_A_B)
                 {
                     values[meas].value[B] = func(B);
                 }

@@ -155,11 +155,11 @@ void Processing::CalculateMeasures(void)
                     markerTime[A][0] = markerTime[A][1] = markerTime[B][0] = markerTime[B][1] = ERROR_VALUE_INT;
                     markerVoltage[A][0] = markerVoltage[A][1] = markerVoltage[B][0] = markerVoltage[B][1] = ERROR_VALUE_INT;
                 }
-                if((SOURCE_MEASURE_A || SOURCE_MEASURE_A_B) && SET_ENABLED_A)
+                if((SOURCE_MEASURE_IS_A || SOURCE_MEASURE_IS_A_B) && SET_ENABLED_A)
                 {
                     values[measure].value[A] = func(A);
                 }
-                if((SOURCE_MEASURE_B || SOURCE_MEASURE_A_B) && SET_ENABLED_B)
+                if((SOURCE_MEASURE_IS_B || SOURCE_MEASURE_IS_A_B) && SET_ENABLED_B)
                 {
                     values[measure].value[B] = func(B);
                 }

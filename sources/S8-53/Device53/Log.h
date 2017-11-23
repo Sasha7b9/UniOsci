@@ -2,6 +2,7 @@
 #include "defines.h"
 
 #define ASSERT_RET(cond, ...)
+#define LOG_ERROR_TRACE(cond, ...)
 
 #ifdef WIN32
 

@@ -27,6 +27,7 @@ extern DAC_HandleTypeDef handleDAC;
 #define HINT_MODE_ENABLE    (gBF.showHelpHints)
 #define NEED_FINISH_DRAW    (gBF.needFinishDraw)
 #define FDRIVE_IS_CONNECTED (gBF.flashDriveIsConnected)
+#define SHOW_DEBUG_MENU     (gBF.showDebugMenu)
 
 
 typedef struct
@@ -105,6 +106,7 @@ extern BitField gBF;
 #define RETURN_TO_INT_MEM       2
 #define RETURN_TO_DISABLE_MENU  3
 #define NEED_SAVE_TO_FLASHDRIVE (gMemory.needForSaveToFlashDrive)
+#define EXIT_FROM_SETNAME_TO    (gMemory.exitFromModeSetNameTo)
 
 
 typedef struct 

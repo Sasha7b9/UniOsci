@@ -1171,7 +1171,7 @@ static const Page mspSetMask
 );
 
 // ПАМЯТЬ - ВНЕШН ЗУ - Каталог ///////////////////////////////////////////////////////////////////////////////
-void OnPressMemoryExtFileManager()
+void OnPress_Drive_Manager()
 {
     menu.OpenPageAndSetItCurrent(Page_SB_FileManager);
     display.SetDrawMode(DrawMode_Hand, FM_Draw);
@@ -1215,7 +1215,7 @@ static const Page mspFileManager
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
     "Provides access to the file system of the connected drive",
-    Page_SB_FileManager, &itemsFileManager, OnPressMemoryExtFileManager, EmptyFuncVV, FM_RotateRegSet
+    Page_SB_FileManager, &itemsFileManager, OnPress_Drive_Manager, EmptyFuncVV, FM_RotateRegSet
 );
 
 // ПАМЯТЬ - ВНЕШН ЗУ /////////////////////////////////////////////////////////////////

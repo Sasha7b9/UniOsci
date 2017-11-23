@@ -13,7 +13,7 @@
 #define FILE_NAME_MASK          (set.mem_FileNameMask)
 #define FILE_NAME               (set.mem_FileName)
 #define INDEX_SYMBOL            (set.mem_IndexCurSymbolNameMask)
-#define FLASH_AUTO_CONNECT      (set.mem_FlashAutoConnect)
+#define FLASH_AUTOCONNECT       (set.mem_FlashAutoConnect)
 
 #define FILE_NAMING_MODE        (set.mem_FileNamingMode)
 #define FILE_NAMING_MODE_MASK   (FILE_NAMING_MODE == FileNamingMode_Mask)

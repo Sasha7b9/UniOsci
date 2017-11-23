@@ -19,6 +19,8 @@ class Menu
 public:
     /// Инициализация
     void Init(void);
+
+    void ChangeStateFlashDrive();
     /// Функция должна вызываться в главном цикле.
     void UpdateInput(void);
     /// Функция обработки короткого нажатия кнопки (менее 0.5 сек.).

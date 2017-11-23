@@ -5,5 +5,5 @@
 
 
 void    ChangeC_Memory_NumPoints(bool active);
-void    OnPressMemoryExtFileManager();
+void    OnPress_Drive_Manager();
 void    Memory_SaveSignalToFlashDrive();

@@ -808,6 +808,16 @@
               <FileType>5</FileType>
               <FilePath>..\common\commonDefines.h</FilePath>
             </File>
+            <File>
+              <FileName>stub.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\stub.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stub.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device53\stub.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

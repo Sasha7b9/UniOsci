@@ -54,6 +54,3 @@ uint Timer_LogPointMS(char *name);
   * Количество тиков, прошедших с момента последнего вызова функции Timer_StartMultiMeasurement(). Не более (1 << 32).
 ***/
 #define gTimerTics (TIM2->CNT)
-
-
-#define Timer_SetAndEnable(x, y, z)

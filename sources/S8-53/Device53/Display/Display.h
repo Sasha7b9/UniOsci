@@ -60,6 +60,8 @@ public:
 
     void OnRShiftMarkersAutoHide();
 
+    void ShowWarning(Warning warn);
+
 private:
 
     void ShowWarn(const char *message);

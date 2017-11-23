@@ -546,6 +546,9 @@
     <ClCompile Include="..\..\..\common\Utils\Measures.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\stub.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -868,6 +871,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\Measures.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\stub.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

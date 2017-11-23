@@ -1414,15 +1414,15 @@ static int CalculateCountV(void)
     {
         if (NUM_MEASURES_IS_1_5)
         {
-            return MEAS_SOURCE_IS_A_B ? 42 : 44;
+            return SOURCE_MEASURE_IS_A_B ? 42 : 44;
         }
         if (NUM_MEASURES_IS_2_5)
         {
-            return MEAS_SOURCE_IS_A_B ? 69 : 39;
+            return SOURCE_MEASURE_IS_A_B ? 69 : 39;
         }
         if (NUM_MEASURES_IS_3_5)
         {
-            return MEAS_SOURCE_IS_A_B ? 54 : 68;
+            return SOURCE_MEASURE_IS_A_B ? 54 : 68;
         }
     }
 
@@ -1902,11 +1902,11 @@ void Display::DrawMeasures()
                     painter.FillRegionC(x + 1, y + 1, dX - 2, 9, active ? COLOR_BACK : COLOR_FILL);
                     painter.DrawTextC(x + 4, y + 2, Measure_Name(str, elem), active ? COLOR_FILL : COLOR_BACK);
                 }
-                if(MEAS_SOURCE_IS_A)
+                if(SOURCE_MEASURE_IS_A)
                 {
                     painter.DrawTextC(x + 2, y + 11, Processing_GetStringMeasure(meas, A, buffer), ColorChannel(A));
                 }
-                else if(MEAS_SOURCE_IS_B)
+                else if(SOURCE_MEASURE_IS_B)
                 {
                     painter.DrawTextC(x + 2, y + 11, Processing_GetStringMeasure(meas, B, buffer), ColorChannel(B));
                 }
@@ -2613,4 +2613,10 @@ void Display::DrawWarnings()
 void Display::RunAfterDraw(pFuncVV func)
 {
     funcAfterDraw = func;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Display::ShowWarning(Warning warn)
+{
+    LOG_ERROR("Заглушка");
 }

@@ -213,6 +213,7 @@
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTime.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\stub.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Tables.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.h" />
