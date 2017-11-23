@@ -86,7 +86,7 @@ const Page pChanA           ///< КАНАЛ 1
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
     "Contains settings of the channel 1.",
-    Page_Channel0, &itemsChanA
+    Page_ChannelA, &itemsChanA
 );
 
 
@@ -108,7 +108,7 @@ static const Choice mcInputA =
 
 void OnChanged_InputA(bool active)
 {
-    panel.EnableLEDChannel0(sChannel_Enabled(A));
+    panel.EnableLEDChannelA(sChannel_Enabled(A));
 }
 
 
@@ -213,7 +213,7 @@ const Page pChanB
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
     "Contains settings of the channel 2.",
-    Page_Channel1, &itemsChanB
+    Page_ChannelB, &itemsChanB
 );
 
 
@@ -235,7 +235,7 @@ static const Choice mcInputB =  ///< КАНАЛ 2
 
 void OnChanged_InputB(bool active)
 {
-    panel.EnableLEDChannel1(sChannel_Enabled(B));
+    panel.EnableLEDChannelB(sChannel_Enabled(B));
 }
 
 

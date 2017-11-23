@@ -165,7 +165,7 @@ void OnChanged_Points(bool active)
     // Блокируем включение 32к длины записи, если включен второй канал
     if (FPGA_POINTS_32k && SET_ENABLED_B)
     {
-        display.ShowWarning(DisableChannel2);
+        display.ShowWarning(DisableChannelB);
         FPGA_ENUM_POINTS = FNP_16k;
     }
 

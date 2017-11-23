@@ -5,9 +5,9 @@
 enum PanelButton
 {
     B_Empty     = 0,        // кнопка не нажата
-    B_Channel0  = 1,        // КАНАЛ 1
+    B_ChannelA  = 1,        // КАНАЛ 1
     B_Service   = 2,        // СЕРВИС
-    B_Channel1  = 3,        // КАНАЛ 2
+    B_ChannelB  = 3,        // КАНАЛ 2
     B_Display   = 4,        // ДИСПЛЕЙ
     B_Time      = 5,        // РАЗВ
     B_Memory    = 6,        // ПАМЯТЬ
@@ -32,7 +32,7 @@ PanelButton& operator++(PanelButton &button);
 typedef enum
 {
     R_Empty     = 0,    // регулятор не вращался
-    R_Range0    = 20,   // ВОЛЬТ/ДЕЛ кан. 1
+    R_RangeA    = 20,   // ВОЛЬТ/ДЕЛ кан. 1
     R_RShift0   = 21,   
     R_Range1    = 22,   // ВОЛЬТ/ДЕЛ кан. 2
     R_RShift1   = 23,
@@ -51,7 +51,7 @@ typedef enum
 } RegulatorDirection;
 
 
-#define NUM_REGULATORS (R_Set - R_Range0 + 1)
+#define NUM_REGULATORS (R_Set - R_RangeA + 1)
 
 
 const char* NameButton(PanelButton button);

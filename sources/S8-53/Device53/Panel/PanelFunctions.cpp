@@ -24,14 +24,14 @@ void HelpLong(void)
     gItemHint = 0;
 }
 
-void Channel0Long(void)
+void ChannelALong(void)
 {
-    menu.LongPressureButton(B_Channel0);
+    menu.LongPressureButton(B_ChannelA);
 }
 
-void Channel1Long(void)
+void ChannelBLong(void)
 {
-    menu.LongPressureButton(B_Channel1);
+    menu.LongPressureButton(B_ChannelB);
 }
 
 void TimeLong(void)
@@ -327,25 +327,25 @@ void TShiftRight()
     XShift(1);
 }
 
-void Range0Left()
+void RangeALeft()
 {
     sound.RegulatorSwitchRotate();
     fpga.RangeIncrease(A);
 }
 
-void Range0Right()
+void RangeARight()
 {
     sound.RegulatorSwitchRotate();
     fpga.RangeDecrease(A);
 }
 
-void Range1Left()
+void RangeBLeft()
 {
     sound.RegulatorSwitchRotate();
     fpga.RangeIncrease(B);
 }
 
-void Range1Right()
+void RangeBRight()
 {
     sound.RegulatorSwitchRotate();
     fpga.RangeDecrease(B);

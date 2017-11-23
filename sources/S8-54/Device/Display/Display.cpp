@@ -70,7 +70,7 @@ static const StructWarning warns[Warning_Count] =
                                                                                       {"I can not mount a usb flash drive. Make sure to her FAT32"}}},
     {WrongModePeackDet, true,           {{"Чтобы изменить длину памяти, отключите пиковый детектор"},
                                                                                  {"To change the length of the memory, turn off the peak detector"}}},
-    {DisableChannel2, true,             {{"Сначала выключите канал 2"},                                           {"First, turn off the channel 2"}}},
+    {DisableChannelB, true,             {{"Сначала выключите канал 2"},                                           {"First, turn off the channel 2"}}},
     {TooLongMemory, true,               {{"Второй канал рабоатает при длине памяти 16к и менее"},
                                                                                      {"The second channel runs at a length of memory 16k and less"}}},
     {NoPeakDet32k, true,                {{"Пиковый детектор не работает при длине памяти 32к"},

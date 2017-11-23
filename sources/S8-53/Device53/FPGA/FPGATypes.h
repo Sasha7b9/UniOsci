@@ -127,11 +127,11 @@
 typedef enum
 {
     TypeWriteAnalog_All,
-    TypeWriteAnalog_Range0,
-    TypeWriteAnalog_Range1,
+    TypeWriteAnalog_RangeA,
+    TypeWriteAnalog_RangeB,
     TypeWriteAnalog_TrigParam,
-    TypeWriteAnalog_ChanParam0,
-    TypeWriteAnalog_ChanParam1
+    TypeWriteAnalog_ChanParamA,
+    TypeWriteAnalog_ChanParamB
 } TypeWriteAnalog;
 
 typedef enum

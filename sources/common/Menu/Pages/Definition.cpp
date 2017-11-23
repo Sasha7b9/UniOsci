@@ -42,7 +42,7 @@ const void *PageForButton(PanelButton button)
     static const void *pages[] =
     {  
         0,                  // B_Empty
-        (void *)&pChanA,    // B_Channel1
+        (void *)&pChanA,    // B_ChannelA
         (void *)&pService,  // B_Service
         (void *)&pChanB,    // B_ChannelB
         (void *)&pDisplay,  // B_Display

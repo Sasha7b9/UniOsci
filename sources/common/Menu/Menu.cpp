@@ -194,7 +194,7 @@ static void ProcessButtonForHint(PanelButton button)
             :
             "ПУСК/СTOП button starts and stops the process of gathering information.";
     }
-    else if (button == B_Channel1)
+    else if (button == B_ChannelA)
     {
         gStringForHint = LANG_RU ?
             "1. Кнопка КАНАЛ1 открывает меню настроек канала 1.\n"
@@ -425,7 +425,7 @@ static void ProcessingShortPressureButton(void)
             else                                                        // Если меню не показано.
             {
                 NamePage name = ((const Page *)OpenedItem())->GetNamePage();
-                if(button == B_Channel1 && name == Page_ChannelA && MENU_IS_SHOWN)
+                if(button == B_ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
                     OnChanged_ChanA_Input(true);
@@ -472,7 +472,7 @@ void ProcessingLongPressureButton(void)
         {
             FPGA_SetTrigLev(TRIGSOURCE, TrigLevZero);
         }
-        else if(button == B_Channel1)
+        else if(button == B_ChannelA)
         {
             FPGA_SetRShift(A, RShiftZero);
         }

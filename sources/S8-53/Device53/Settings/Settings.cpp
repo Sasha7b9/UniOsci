@@ -291,8 +291,8 @@ void Settings_Load(bool _default)
 
     fpga.LoadSettings();
     fpga.SetNumSignalsInSec(sDisplay_NumSignalsInS());
-    panel.EnableLEDChannel0(sChannel_Enabled(A));
-    panel.EnableLEDChannel1(sChannel_Enabled(B));
+    panel.EnableLEDChannelA(sChannel_Enabled(A));
+    panel.EnableLEDChannelB(sChannel_Enabled(B));
     fpga.SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
     menu.SetAutoHide(true);
     display.ChangedRShiftMarkers();

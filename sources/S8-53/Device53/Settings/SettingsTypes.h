@@ -124,8 +124,8 @@ typedef enum
 
 typedef enum
 {
-    ScaleMath_Channel0,     // Масштаб берётся из канала 1
-    ScaleMath_Channel1,     // Масштаб берётся из канала 2
+    ScaleMath_ChannelA,     // Масштаб берётся из канала 1
+    ScaleMath_ChannelB,     // Масштаб берётся из канала 2
     ScaleMath_Hand          // Масштаб задаётся вручную.
 } ScaleMath;
 

@@ -65,7 +65,7 @@ typedef struct
 static const StructButton funcButton[B_NumButtons] =
 {
     {0, 0},
-    {EFB,           Long_ChannelA}, ///< B_Channel1
+    {EFB,           Long_ChannelA}, ///< B_ChannelA
     {EFB,           EmptyFuncVV},   ///< B_Service
     {EFB,           Long_ChannelB}, ///< B_ChannelB
     {EFB,           EmptyFuncVV},   ///< B_Display
@@ -97,18 +97,18 @@ typedef struct
 static const StructReg funculatorReg[] =
 {
     {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0},
-    {FuncRangeA,    EFB,                EmptyFuncVV},   ///< R_Range1
-    {FuncRShiftA,   FuncBtnRegChannelA, EmptyFuncVV},   ///< R_RShift1
-    {FuncRangeB,    EFB,                EmptyFuncVV},   ///< R_Range2
-    {FuncRShiftB,   FuncBtnRegChannelB, EmptyFuncVV},   ///< R_RShift2
+    {FuncRangeA,    EFB,                EmptyFuncVV},   ///< R_RangeA
+    {FuncRShiftA,   FuncBtnRegChannelA, EmptyFuncVV},   ///< R_RShiftA
+    {FuncRangeB,    EFB,                EmptyFuncVV},   ///< R_RangeB
+    {FuncRShiftB,   FuncBtnRegChannelB, EmptyFuncVV},   ///< R_RShiftB
     {FuncTBase,     EFB,                EmptyFuncVV},   ///< R_TBase
     {FuncTShift,    FuncBtnRegTime,     EmptyFuncVV},   ///< R_TShift
     {FuncTrigLev,   FuncBtnRegTrig,     EmptyFuncVV},   ///< R_TrigLev
     {FuncRegSet,    FuncBtnRegSet,      EmptyFuncVV},   ///< R_Set
-    {FuncRangeA,    EFB,                EmptyFuncVV},   ///< R_Range1
-    {FuncRShiftA,   FuncBtnRegChannelA, EmptyFuncVV},   ///< R_RShift1
-    {FuncRangeB,    EFB,                EmptyFuncVV},   ///< R_Range2
-    {FuncRShiftB,   FuncBtnRegChannelB, EmptyFuncVV},   ///< R_RShift2
+    {FuncRangeA,    EFB,                EmptyFuncVV},   ///< R_RangeA
+    {FuncRShiftA,   FuncBtnRegChannelA, EmptyFuncVV},   ///< R_RShiftA
+    {FuncRangeB,    EFB,                EmptyFuncVV},   ///< R_RangeB
+    {FuncRShiftB,   FuncBtnRegChannelB, EmptyFuncVV},   ///< R_RShiftB
     {FuncTBase,     EFB,                EmptyFuncVV},   ///< R_TBase
     {FuncTShift,    FuncBtnRegTime,     EmptyFuncVV},   ///< R_TShift
     {FuncTrigLev,   FuncBtnRegTrig,     EmptyFuncVV},   ///< R_TrigLev

@@ -40,9 +40,9 @@ static uint timePrevReleaseButton = 0;
 static void(*funcOnKeyDown[B_NumButtons])(void)    =
 {    
     0,
-    EmptyFuncVV,    // B_Channel0
+    EmptyFuncVV,    // B_ChannelA
     EmptyFuncVV,    // B_Service
-    EmptyFuncVV,    // B_Channel1
+    EmptyFuncVV,    // B_ChannelB
     EmptyFuncVV,    // B_Display
     EmptyFuncVV,    // B_Time
     EmptyFuncVV,    // B_Memory                                         
@@ -63,9 +63,9 @@ static void(*funcOnKeyDown[B_NumButtons])(void)    =
 static void (*funcOnKeyUp[B_NumButtons])(void)    =
 {
     0,
-    EmptyFuncVV,    // B_Channel0
+    EmptyFuncVV,    // B_ChannelA
     EmptyFuncVV,    // B_Service
-    EmptyFuncVV,    // B_Channel1
+    EmptyFuncVV,    // B_ChannelB
     EmptyFuncVV,    // B_Display
     EmptyFuncVV,    // B_Time
     EmptyFuncVV,    // B_Memory
@@ -86,9 +86,9 @@ static void (*funcOnKeyUp[B_NumButtons])(void)    =
 static void (*funcOnLongPressure[B_NumButtons])(void)    =
 {
     0,
-    Channel0Long,   // B_Channel0
+    ChannelALong,   // B_ChannelA
     EmptyFuncVV,    // B_Service
-    Channel1Long,   // B_Channel1
+    ChannelBLong,   // B_ChannelB
     EmptyFuncVV,    // B_Display
     TimeLong,       // B_Time
     EmptyFuncVV,    // B_Memory
@@ -109,10 +109,10 @@ static void (*funcOnLongPressure[B_NumButtons])(void)    =
 static void (*funculatorLeft[R_Set + 1])(void)    =
 {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    Range0Left,     // R_Range0
-    RShift0Left,    // R_RShift0
-    Range1Left,     // R_Range1
-    RShift1Left,    // R_RShift1
+    RangeALeft,     // R_RangeA
+    RShiftALeft,    // R_RShiftA
+    RangeBLeft,     // R_RangeB
+    RShiftBLeft,    // R_RShiftB
     TBaseLeft,      // R_TBase
     TShiftLeft,     // R_TShift
     TrigLevLeft,    // R_TrigLev
@@ -121,10 +121,10 @@ static void (*funculatorLeft[R_Set + 1])(void)    =
 static void (*funculatorRight[R_Set + 1])(void) =
 {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    Range0Right,    // R_Range0
-    RShift0Right,   // R_RShift0
-    Range1Right,    // R_Range1
-    RShift1Right,   // R_RShift1
+    RangeARight,    // R_RangeA
+    RShiftARight,   // R_RShiftA
+    RangeBRight,    // R_RangeB
+    RShiftBRight,   // R_RShiftB
     TBaseRight,     // R_TBase
     TShiftRight,    // R_TShift
     TrigLevRight,   // R_TrigLev
@@ -277,14 +277,14 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
     return true;
 }
 
-void Panel::EnableLEDChannel0(bool enable)
+void Panel::EnableLEDChannelA(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHAN0_ENABLE : LED_CHAN0_DISABLE);
+    panel.TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
 }
 
-void Panel::EnableLEDChannel1(bool enable)
+void Panel::EnableLEDChannelB(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHAN1_ENABLE : LED_CHAN1_DISABLE);
+    panel.TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
 }
 
 void Panel::EnableLEDTrig(bool enable)

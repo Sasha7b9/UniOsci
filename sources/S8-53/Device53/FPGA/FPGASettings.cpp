@@ -119,13 +119,13 @@ void FPGA::SetAttribChannelsAndTrig(TypeWriteAnalog type)
     uint data = 0;
 
     /*
-    b0...b7 - Channel1
-    b8...b15 - Channel2
+    b0...b7 - ChannelA
+    b8...b15 - ChannelB
     b16...b23 - Trig
     Передаваться биты должны начиная с b0
     */
 
-    // Range0, Range1
+    // RangeA, RangeB
     data |= masksRange[SET_RANGE_A];
     data |= (masksRange[SET_RANGE_B] << 8);
 
@@ -187,7 +187,7 @@ void FPGA::SetRange(Channel chan, Range range)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadRange(Channel chan)
 {
-    SetAttribChannelsAndTrig(TypeWriteAnalog_Range0);
+    SetAttribChannelsAndTrig(TypeWriteAnalog_RangeA);
     LoadRShift(chan);
     if (chan == (Channel)TRIGSOURCE)
     {

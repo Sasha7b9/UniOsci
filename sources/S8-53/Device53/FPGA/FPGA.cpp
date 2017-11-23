@@ -1195,7 +1195,7 @@ void FPGA::WriteToAnalog(TypeWriteAnalog type, uint data)
 
     char buffer[19];
     char *str = Bin2String16(data, buffer);
-    if (type == TypeWriteAnalog_Range0 && IS_SHOW_REG_RANGE_A)
+    if (type == TypeWriteAnalog_RangeA && IS_SHOW_REG_RANGE_A)
     {
         LOG_WRITE("range 0 = %s", str);
     }

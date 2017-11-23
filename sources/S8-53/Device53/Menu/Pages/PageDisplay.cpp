@@ -484,8 +484,8 @@ static const arrayItems itemsSettings_Colors =
     (void*)&mgcSettings_Colors_ChannelA,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
     (void*)&mgcSettings_Colors_ChannelB,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
     (void*)&mgcSettings_Colors_Grid,        // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
-    //(void*)&mgcColorChannel0alt,          // TODO Это для дополнительного цвета первого канала - для накопления, например.
-    //(void*)&mgcColorChannel1alt,          // TODO Это для доп. цвета второго канала - для накопления, например.    
+    //(void*)&mgcColorChannelAalt,          // TODO Это для дополнительного цвета первого канала - для накопления, например.
+    //(void*)&mgcColorChannelBalt,          // TODO Это для доп. цвета второго канала - для накопления, например.    
 };
 
 static const Page mspSettings_Colors

@@ -389,8 +389,8 @@ DEF_PAGE_5(     pppSettings_Colors, static,
     gcSettings_Colors_ChannelB, // дхяокеи - мюярпнийх - жберю - йЮМЮК 2
     gcSettings_Colors_Grid,     // дхяокеи - мюярпнийх - жберю - яЕРЙЮ
     cSettings_Colors_Background // дхяокеи - мюярпнийх - жберю - тНМ
-    //&mgcColorChannel0alt,
-    //&mgcColorChannel1alt,
+    //&mgcColorChannelAalt,
+    //&mgcColorChannelBalt,
     //&mgcColorMenu1,
     //&mgcColorMenu2,
     //&mgcColorMenu3
