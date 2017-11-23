@@ -5,7 +5,7 @@
 static const char * const namesButtons[] = 
 {
     "B_Empty",
-    "B_Channel1",
+    "B_ChannelA",
     "B_Service",
     "B_ChannelB",
     "B_Display",
@@ -38,18 +38,18 @@ static const char * const nameReg[] =
 {
     "None", "None", "None", "None", "None", "None", "None", "None", "None", "None",
     "None", "None", "None", "None", "None", "None", "None", "None", "None", "None",
-    "R_Range1",         // 0x14
-    "R_RShift1",
-    "R_Range2",
-    "R_RShift2",
+    "R_RangeA",         // 0x14
+    "R_RShiftA",
+    "R_RangeB",
+    "R_RShiftB",
     "R_TBase",
     "R_TShift",
     "R_TrigLev",
     "R_Set",
     "R_Range1_BTN",
-    "R_RShift1_BTN",
-    "R_Range2_BTN",
-    "R_RShift2_BTN",
+    "R_RShiftA_BTN",
+    "R_RangeB_BTN",
+    "R_RShiftB_BTN",
     "R_TBase_BTN",
     "R_TShift_BTN",
     "R_TrigLev_BTN",
