@@ -214,7 +214,7 @@ void ChangeRShift(int *prevTime, void(*f)(Channel, uint16), Channel ch, int relS
 
     if (CanChangeRShiftOrTrigLev((TrigSource)ch, (uint16)rShift))
     {
-        Sound_RegulatorShiftRotate();
+        sound.RegulatorShiftRotate();
         f(ch, (uint16)rShift);
     }
 }
@@ -237,7 +237,7 @@ void ChangeTrigLev(int *prevTime, void(*f)(TrigSource, uint16), TrigSource trigS
 
     if (CanChangeRShiftOrTrigLev(trigSource, (uint16)trigLev))
     {
-        Sound_RegulatorShiftRotate();
+        sound.RegulatorShiftRotate();
         f(trigSource, (uint16)trigLev);
     }
 }
@@ -270,7 +270,7 @@ void ChangeTShift(int *prevTime, void(*f)(int), int16 relStep)
     }
     if (CanChangeTShift(tShift))
     {
-        Sound_RegulatorShiftRotate();
+        sound.RegulatorShiftRotate();
         f(tShift);
     }
 }
@@ -338,7 +338,7 @@ static void FuncTShift(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncTBase(int delta)
 {
-    Sound_RegulatorSwitchRotate();
+    sound.RegulatorSwitchRotate();
 
     delta == 1 ? FPGA_TBaseDecrease() : FPGA_TBaseIncrease();
 }
@@ -346,7 +346,7 @@ void FuncTBase(int delta)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void ChangeRange(Channel ch, int delta)    // delta == -1 - уменьшаем. delta == 1 - увеличиваем
 {
-    Sound_RegulatorSwitchRotate();
+    sound.RegulatorSwitchRotate();
     if (delta > 0)
     {
         FPGA_RangeIncrease(ch);

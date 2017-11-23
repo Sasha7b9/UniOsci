@@ -25,7 +25,7 @@
 #define SCPI_SEND(...)                                  \
     if(gBF.connectToHost == 1)                          \
     {                                                   \
-        VCP_SendFormatStringAsynch(__VA_ARGS__);        \
+        vcp.SendFormatStringAsynch(__VA_ARGS__);        \
     }                                                   \
     if (gBF.ethIsConnected == 1)                        \
     {                                                   \

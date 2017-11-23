@@ -180,7 +180,7 @@ static void OnRegSet_Set(int angle)
     {
         MoveCursTonPercentsOrPoints(angle);
     }
-    Sound_RegulatorShiftRotate();
+    sound.RegulatorShiftRotate();
 }
 
 DEF_PAGE_SB(ppSet, static,

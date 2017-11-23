@@ -99,12 +99,12 @@ void Page::ChangeSubPage(int delta) const
 {
     if (delta > 0 && MenuCurrentSubPage(name) < NumSubPages() - 1)
     {
-        Sound_RegulatorSwitchRotate();
+        sound.RegulatorSwitchRotate();
         SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) + 1);
     }
     else if (delta < 0 && MenuCurrentSubPage(name) > 0)
     {
-        Sound_RegulatorSwitchRotate();
+        sound.RegulatorSwitchRotate();
         SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) - 1);
     }
 }

@@ -12,11 +12,13 @@
 #include <stdio.h>
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 USBD_HandleTypeDef handleUSBD;
 PCD_HandleTypeDef handlePCD;
 
 
-void VCP_Init()
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void VCP::Init()
 {
     USBD_Init(&handleUSBD, &VCP_Desc, 0);
     USBD_RegisterClass(&handleUSBD, &USBD_CDC);
@@ -30,7 +32,7 @@ static bool PrevSendingComplete(void)
     return pCDC->TxState == 0;
 }
 
-void VCP_SendDataAsinch(uint8 *buffer, int size)
+void VCP::SendDataAsinch(uint8 *buffer, int size)
 {
     const int SIZE_BUFFER = 64;
     static uint8 trBuf[SIZE_BUFFER];
@@ -47,7 +49,7 @@ static const int SIZE_BUFFER_VCP = 256;     // WARN если поставить размер буфера
 static uint8 buffSend[SIZE_BUFFER_VCP];
 static int sizeBuffer = 0;
 
-void VCP_Flush()
+void VCP::Flush()
 {
     if (sizeBuffer)
     {
@@ -60,7 +62,7 @@ void VCP_Flush()
     sizeBuffer = 0;
 }
 
-void VCP_SendDataSynch(const uint8 *buffer, int size)
+void VCP::SendDataSynch(const uint8 *buffer, int size)
 {
     if (gBF.connectToHost == 0)
     {
@@ -97,17 +99,17 @@ void SendData(const uint8 *buffer, int size)
 
 }
 
-void VCP_SendStringAsinch(char *data)
+void VCP::SendStringAsinch(char *data)
 {
-    VCP_SendDataAsinch((uint8*)data, strlen(data));
+    SendDataAsinch((uint8*)data, strlen(data));
 }
 
-void VCP_SendStringSynch(char *data)
+void VCP::SendStringSynch(char *data)
 {
-    VCP_SendDataSynch((uint8*)data, strlen(data));
+    SendDataSynch((uint8*)data, strlen(data));
 }
 
-void VCP_SendFormatStringAsynch(char *format, ...)
+void VCP::SendFormatStringAsynch(char *format, ...)
 {
     static const int SIZE_BUFFER = 200;
     static char buffer[SIZE_BUFFER];
@@ -116,10 +118,10 @@ void VCP_SendFormatStringAsynch(char *format, ...)
     vsprintf(buffer, format, args);
     va_end(args);
     strcat(buffer, "\n");
-    VCP_SendDataAsinch((uint8*)buffer, strlen(buffer));
+    SendDataAsinch((uint8*)buffer, strlen(buffer));
 }
 
-void VCP_SendFormatStringSynch(char *format, ...) {
+void VCP::SendFormatStringSynch(char *format, ...) {
     static const int SIZE_BUFFER = 200;
     char buffer[SIZE_BUFFER];
     va_list args;
@@ -127,12 +129,12 @@ void VCP_SendFormatStringSynch(char *format, ...) {
     vsprintf(buffer, format, args);
     va_end(args);
     strcat(buffer, "\n");
-    VCP_SendDataSynch((uint8*)buffer, strlen(buffer));
+    SendDataSynch((uint8*)buffer, strlen(buffer));
 }
 
-void VCP_SendByte(uint8 byte)
+void VCP::SendByte(uint8 byte)
 {
-    VCP_SendDataSynch(&byte, 1);
+    SendDataSynch(&byte, 1);
 }
 
 #ifdef __cplusplus

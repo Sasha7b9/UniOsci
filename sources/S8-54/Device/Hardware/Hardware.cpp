@@ -79,7 +79,7 @@ void Hardware_Init(void)
 
     Timer_Init();
 
-    Sound_Init();
+    sound.Init();
     
     panel.Init();
 

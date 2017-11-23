@@ -1412,15 +1412,15 @@ static int CalculateCountV(void)
 {
     if (MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
-        if (MEAS_NUM_IS_1_5)
+        if (NUM_MEASURES_IS_1_5)
         {
             return MEAS_SOURCE_IS_A_B ? 42 : 44;
         }
-        if (MEAS_NUM_IS_2_5)
+        if (NUM_MEASURES_IS_2_5)
         {
             return MEAS_SOURCE_IS_A_B ? 69 : 39;
         }
-        if (MEAS_NUM_IS_3_5)
+        if (NUM_MEASURES_IS_3_5)
         {
             return MEAS_SOURCE_IS_A_B ? 54 : 68;
         }
@@ -1435,11 +1435,11 @@ static int CalculateCountH(void)
 {
     if (MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
-        if (MEAS_NUM_IS_6_1)
+        if (NUM_MEASURES_IS_6_1)
         {
             return 73;
         }
-        if (MEAS_NUM_IS_6_2)
+        if (NUM_MEASURES_IS_6_2)
         {
             return 83;
         }

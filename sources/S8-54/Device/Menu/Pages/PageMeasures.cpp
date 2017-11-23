@@ -235,7 +235,7 @@ static void OnRegSet_Tune(int angle)
     if (pageChoiceIsActive)
     {
         posOnPageChoice += (int8)Sign(currentAngle);
-        Sound_RegulatorSwitchRotate();
+        sound.RegulatorSwitchRotate();
         if (posOnPageChoice < 0)
         {
             posOnPageChoice = Meas_NumMeasures - 1;
@@ -272,7 +272,7 @@ static void OnRegSet_Tune(int angle)
             }
         }
         measures.SetActive(row, col);
-        Sound_RegulatorSwitchRotate();
+        sound.RegulatorSwitchRotate();
     }
     currentAngle = 0;
 }

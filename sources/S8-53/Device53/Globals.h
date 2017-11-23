@@ -23,6 +23,8 @@ extern DAC_HandleTypeDef handleDAC;
 
 
 #define SETTINGS_IS_LOADED  (gBF.settingsLoaded)
+#define TOP_MEASURES        (gBF.topMeasures)
+#define HINT_MODE_ENABLE    (gBF.showHelpHints)
 
 
 typedef struct

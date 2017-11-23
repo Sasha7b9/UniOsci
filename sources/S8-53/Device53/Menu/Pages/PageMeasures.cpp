@@ -174,7 +174,7 @@ const Choice mcMeasuresNumber =
         {"6x1", "6x1"},
         {"6x2", "6x2"}
     },
-    (int8*)&MEAS_NUM
+    (int8*)&NUM_MEASURES
 };
 
 /// ИЗМЕРЕНИЯ -> Каналы

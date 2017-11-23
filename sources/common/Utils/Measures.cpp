@@ -115,7 +115,7 @@ Meas Measures::Type(int row, int col)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Measures::GetTopTable(void)
 {
-    if(NUM_MEASURES_6_1 || NUM_MEASURES_6_2)
+    if(NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2)
     {
         return GRID_BOTTOM - GetDY() * 6;
     }
@@ -144,11 +144,11 @@ int Measures::GetDeltaGridLeft(void)
 {
     if(SHOW_MEASURES && MEAS_COMPRESS_GRID)
     {
-        if(NUM_MEASURES_6_1)
+        if(NUM_MEASURES_IS_6_1)
         {
             return GetDX();
         }
-        else if(NUM_MEASURES_6_2)
+        else if(NUM_MEASURES_IS_6_2)
         {
             return GetDX() * 2;
         }
@@ -162,15 +162,15 @@ int Measures::GetDeltaGridBottom(void)
 {
     if(SHOW_MEASURES && MEAS_COMPRESS_GRID)
     {
-        if(NUM_MEASURES_1_5)
+        if(NUM_MEASURES_IS_1_5)
         {
             return GetDY();
         }
-        else if(NUM_MEASURES_2_5)
+        else if(NUM_MEASURES_IS_2_5)
         {
             return GetDY() * 2;
         }
-        else if(NUM_MEASURES_3_5)
+        else if(NUM_MEASURES_IS_3_5)
         {
             return GetDY() * 3;
         }
@@ -200,12 +200,12 @@ void Measures::DrawPageChoice(void)
     {
         return;
     }
-    int x = (NUM_MEASURES_6_1 || NUM_MEASURES_6_2) ? (grid.Right() - 3 * GRID_WIDTH / 5) : grid.Left();
+    int x = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? (grid.Right() - 3 * GRID_WIDTH / 5) : grid.Left();
     int y = GRID_TOP;
     int dX = GRID_WIDTH / 5;
     int dY = 22;
-    int maxRow = (NUM_MEASURES_6_1 || NUM_MEASURES_6_2) ? 8 : 5;
-    int maxCol = (NUM_MEASURES_6_1 || NUM_MEASURES_6_2) ? 3 : 5;
+    int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
+    int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;
     Meas meas = Meas_None;
     painter.SetFont(TypeFont_UGO);
     for(int row = 0; row < maxRow; row++)

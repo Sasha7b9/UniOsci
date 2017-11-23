@@ -455,11 +455,11 @@ void Display::ShowWarning(Warning warning)
     }
     if(warns[warning].good)
     {
-        Sound_WarnBeepGood();
+        sound.WarnBeepGood();
     }
     else
     {
-        Sound_WarnBeepBad();
+        sound.WarnBeepBad();
     }
 }
 
@@ -1953,15 +1953,15 @@ static int CalculateCountV(void)
 {
     if(SHOW_MEASURES && MEAS_COMPRESS_GRID)
     {
-        if(NUM_MEASURES_1_5)
+        if(NUM_MEASURES_IS_1_5)
         {
             return SOURCE_MEASURE_A_B ? 55 : 59;
         }
-        if(NUM_MEASURES_2_5)
+        if(NUM_MEASURES_IS_2_5)
         {
             return SOURCE_MEASURE_A_B ? 69 : 51;
         }
-        if(NUM_MEASURES_3_5)
+        if(NUM_MEASURES_IS_3_5)
         {
             return SOURCE_MEASURE_A_B ? 54 : 68;
         }
@@ -1975,11 +1975,11 @@ static int CalculateCountH(void)
 {
     if(MEAS_COMPRESS_GRID)
     {
-        if(NUM_MEASURES_6_1)
+        if(NUM_MEASURES_IS_6_1)
         {
             return 73;
         }
-        if(NUM_MEASURES_6_2)
+        if(NUM_MEASURES_IS_6_2)
         {
             return 83;
         }

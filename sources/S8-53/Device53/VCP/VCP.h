@@ -1,10 +1,18 @@
 #pragma once
 
 
-void VCP_Init();
-void VCP_SendDataSynch(const uint8 *data, int size);
-void VCP_SendStringSynch(char *data);                   ///< Передаётся строка без завершающего нуля.
-void VCP_SendFormatStringAsynch(char *format, ...);     ///< Эта строка передаётся с завершающими символами \r\n.
-void VCP_SendFormatStringSynch(char *format, ...);      ///< Эта строка передаётся с завершающими символами \r\n.
-void VCP_SendByte(uint8 data);
-void VCP_Flush();
+class VCP
+{
+public:
+    void Init();
+    void SendDataAsinch(uint8 *buffer, int size);
+    void SendDataSynch(const uint8 *data, int size);
+    void SendStringSynch(char *data);                   ///< Передаётся строка без завершающего нуля.
+    void SendFormatStringAsynch(char *format, ...);     ///< Эта строка передаётся с завершающими символами \r\n.
+    void SendFormatStringSynch(char *format, ...);      ///< Эта строка передаётся с завершающими символами \r\n.
+    void SendByte(uint8 data);
+    void Flush();
+    void SendStringAsinch(char *data);
+};
+
+extern VCP vcp;

@@ -374,13 +374,13 @@ void Panel::Update(void)
         }
         else if (regPress)
         {
-            Sound_ButtonPress();
+            sound.ButtonPress();
             funculatorReg[regPress].press(1);
             regPress = R_Empty;
         }
         else if (regRelease)
         {
-            Sound_ButtonRelease();
+            sound.ButtonRelease();
             funculatorReg[regRelease].press(-1);
             regRelease = R_Empty;
         }

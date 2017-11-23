@@ -10,6 +10,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Sound sound;
+
 #define POINTS_IN_PERIOD_SOUND 10
 static uint8 points[POINTS_IN_PERIOD_SOUND] = {0};
 static float frequency = 0.0f;
@@ -22,7 +24,7 @@ static bool isBeep = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Sound_Init(void)
+void Sound::Init(void)
 {
     DAC_ChannelConfTypeDef config =
     {
@@ -191,7 +193,7 @@ static void Sound_Beep(const TypeWave newTypeWave, const float newFreq, const fl
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_ButtonPress(void)
+void Sound::ButtonPress(void)
 {
     Sound_Beep(TypeWave_Sine, 2000.0f, 0.75f, 50);
     buttonIsPressed = true;
@@ -199,7 +201,7 @@ void Sound_ButtonPress(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_ButtonRelease(void)
+void Sound::ButtonRelease(void)
 {
     if (buttonIsPressed)
     {
@@ -210,7 +212,7 @@ void Sound_ButtonRelease(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_GovernorChangedValue(void)
+void Sound::GovernorChangedValue(void)
 {
     Sound_Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
     buttonIsPressed = false;
@@ -218,7 +220,7 @@ void Sound_GovernorChangedValue(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_RegulatorShiftRotate(void)
+void Sound::RegulatorShiftRotate(void)
 {
     Sound_Beep(TypeWave_Sine, 1.0f, 0.2f, 3);
     buttonIsPressed = false;
@@ -226,7 +228,7 @@ void Sound_RegulatorShiftRotate(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_RegulatorSwitchRotate(void)
+void Sound::RegulatorSwitchRotate(void)
 {
     Sound_Beep(TypeWave_Sine, 500.0f, 0.5f, 75);
     buttonIsPressed = false;
@@ -234,7 +236,7 @@ void Sound_RegulatorSwitchRotate(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_WarnBeepBad(void)
+void Sound::WarnBeepBad(void)
 {
     Sound_Beep(TypeWave_Meandr, 500.0f, 1.0f, 500);
     soundWarnIsBeep = true;
@@ -243,7 +245,7 @@ void Sound_WarnBeepBad(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_WarnBeepGood(void)
+void Sound::WarnBeepGood(void)
 {
     Sound_Beep(TypeWave_Triangle, 1000.0f, 1.0f, 500);
     buttonIsPressed = false;
@@ -251,7 +253,7 @@ void Sound_WarnBeepGood(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_WaitCompletion(void)
+void Sound::WaitCompletion(void)
 {
     while (isBeep)
     {

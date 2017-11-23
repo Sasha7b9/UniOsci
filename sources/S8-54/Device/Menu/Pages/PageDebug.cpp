@@ -1266,7 +1266,7 @@ static void OnRegSet_SerialNumber(int angle)
     {
         p(&s->year, 2016, 2050);
     }
-    Sound_GovernorChangedValue();
+    sound.GovernorChangedValue();
 }
 
 //-------------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - С/Н - Выход ---

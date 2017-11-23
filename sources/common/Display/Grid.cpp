@@ -129,7 +129,7 @@ void Grid::CoordTrigLevel(int *left, int *top, int width)
     }
     else
     {
-        *left = NUM_MEASURES_6_1 ? 100 : 130;
+        *left = NUM_MEASURES_IS_6_1 ? 100 : 130;
         *top = grid.FullBottom() - 32;
     }
 }

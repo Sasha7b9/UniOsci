@@ -20,23 +20,30 @@ typedef enum
 } TypeWave;
 
 
-void Sound_Init(void);
-/// Звук нажатия на кнопку.
-void Sound_ButtonPress(void);
-/// Функция вызовет звук отпускаемой кнопки только если перед этим проигрывался звук нажатия кнопки.
-void Sound_ButtonRelease(void);
+class Sound
+{
+public:
+    void Init(void);
+    /// Звук нажатия на кнопку.
+    void ButtonPress(void);
+    /// Функция вызовет звук отпускаемой кнопки только если перед этим проигрывался звук нажатия кнопки.
+    void ButtonRelease(void);
 
-void Sound_GovernorChangedValue(void);
+    void GovernorChangedValue(void);
+    
+    void RegulatorShiftRotate(void);
 
-void Sound_RegulatorShiftRotate(void);
+    void RegulatorSwitchRotate(void);
 
-void Sound_RegulatorSwitchRotate(void);
+    void WarnBeepBad(void);
 
-void Sound_WarnBeepBad(void);
+    void WarnBeepGood(void);
+    /// Эту функцию надо вызывать перед записью/стиранием ППЗУ. Звук конфликтует с ППЗУ.
+    void WaitCompletion(void);
+};
 
-void Sound_WarnBeepGood(void);
-/// Эту функцию надо вызывать перед записью/стиранием ППЗУ. Звук конфликтует с ППЗУ.
-void Sound_WaitCompletion(void);
+
+extern Sound sound;
 
 /** @}  @}
  */

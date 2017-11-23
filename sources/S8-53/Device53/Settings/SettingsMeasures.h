@@ -10,13 +10,13 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define MEAS_NUM                        (set.measures.number)                           ///< SettingsMeasuers.number
-#define MEAS_NUM_IS_1                   (MEAS_NUM == MN_1)
-#define MEAS_NUM_IS_1_5                 (MEAS_NUM == MN_1_5)
-#define MEAS_NUM_IS_2_5                 (MEAS_NUM == MN_2_5)
-#define MEAS_NUM_IS_3_5                 (MEAS_NUM == MN_3_5)
-#define MEAS_NUM_IS_6_1                 (MEAS_NUM == MN_6_1)
-#define MEAS_NUM_IS_6_2                 (MEAS_NUM == MN_6_2)
+#define NUM_MEASURES                    (set.measures.number)                           ///< SettingsMeasuers.number
+#define NUM_MEASURES_IS_1               (NUM_MEASURES == MN_1)
+#define NUM_MEASURES_IS_1_5             (NUM_MEASURES == MN_1_5)
+#define NUM_MEASURES_IS_2_5             (NUM_MEASURES == MN_2_5)
+#define NUM_MEASURES_IS_3_5             (NUM_MEASURES == MN_3_5)
+#define NUM_MEASURES_IS_6_1             (NUM_MEASURES == MN_6_1)
+#define NUM_MEASURES_IS_6_2             (NUM_MEASURES == MN_6_2)
 
 #define MEAS_SOURCE                     (set.measures.source)                           ///< SettingsMeasures.source
 #define MEAS_SOURCE_IS_A                (MEAS_SOURCE == A)
