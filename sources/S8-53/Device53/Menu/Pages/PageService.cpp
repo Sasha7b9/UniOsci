@@ -268,12 +268,12 @@ static const Page pppMath_Function
 
 static bool IsActive_Math_Function(void)
 {
-    return !ENABLED_FFT;
+    return !FFT_ENABLED;
 }
 
 static void OnPress_Math_Function(void)
 {
-    if (ENABLED_FFT)
+    if (FFT_ENABLED)
     {
         display.ShowWarningBad(ImpossibleEnableMathFunction);
     }
@@ -281,7 +281,7 @@ static void OnPress_Math_Function(void)
 
 static void OnRegSet_Math_Function(int delta)
 {
-    if (DISABLED_DRAW_MATH)
+    if (FUNC_MODE_DRAW_IS_DISABLED)
     {
         return;
     }
@@ -382,13 +382,13 @@ static const SButton sbMath_Function_ModeDraw
 
 static void OnPress_Math_Function_ModeDraw(void)
 {
-    if (ENABLED_FFT)
+    if (FFT_ENABLED)
     {
         display.ShowWarningBad(ImpossibleEnableMathFunction);
     }
     else
     {
-        CircleIncrease<int8>((int8 *)&MODE_DRAW_MATH, 0, 2);
+        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
     }
 }
 
@@ -400,7 +400,7 @@ static void Draw_Math_Function_ModeDraw(int x, int y)
         Draw_Math_Function_ModeDraw_Separate,
         Draw_Math_Function_ModeDraw_Together
     };
-    funcs[MODE_DRAW_MATH](x, y);
+    funcs[FUNC_MODE_DRAW](x, y);
 }
 
 static void Draw_Math_Function_ModeDraw_Disable(int x, int y)
@@ -567,7 +567,7 @@ static const Page pppMath_FFT
 
 static bool IsActive_Math_FFT(void)
 {
-    return DISABLED_DRAW_MATH;
+    return FUNC_MODE_DRAW_IS_DISABLED;
 }
 
 static void OnPress_Math_FFT(void)
@@ -591,7 +591,7 @@ static const Choice cMath_FFT_Enable =
         {DISABLE_RU,    DISABLE_EN},
         {ENABLE_RU,     ENABLE_EN}
     },
-    (int8*)&ENABLED_FFT
+    (int8*)&FFT_ENABLED
 };
 
 // —≈–¬»— - Ã¿“≈Ã¿“» ¿ - —œ≈ “– - ÿÍ‡Î‡ --------------------------------------------------------------------------------------------------------------
@@ -667,7 +667,7 @@ static const Page ppppMath_FFT_Cursors
 
 static bool IsActive_Math_FFT_Cursors(void)
 {
-    return ENABLED_FFT;
+    return FFT_ENABLED;
 }
 
 static void OnRegSet_Math_FFT_Cursors(int angle)

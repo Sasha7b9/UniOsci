@@ -15,8 +15,8 @@
 #define START_MODE_IS_SINGLE    (START_MODE == StartMode_Single)        ///< \c true, если однократный режим запуска.
 #define START_MODE_IS_AUTO      (START_MODE == StartMode_Auto)          ///< \c true, если автоматический режим запуска.
 
-#define TRIG_SOURCE             (set.trig.source)                       ///< SettingsTrig.source
-#define TRIG_SOURCE_IS_EXT      (TRIG_SOURCE == TrigSource_Ext)         ///< \c true, если внешний источник синхронизации.
+#define TRIGSOURCE              (set.trig.source)                       ///< SettingsTrig.source
+#define TRIGSOURCE_IS_EXT       (TRIGSOURCE == TrigSource_Ext)         ///< \c true, если внешний источник синхронизации.
 
 #define TRIG_POLARITY           (set.trig.polarity)                     ///< SettingsTrig.polarity
 #define TRIG_POLARITY_IS_FRONT  (TRIG_POLARITY == TrigPolarity_Front)   ///< \c true, если синхронизация по фронту.
@@ -25,7 +25,7 @@
 #define TRIG_INPUT_IS_AC        (TRIG_INPUT == TrigInput_AC)            ///< \c true, если закрытый вход синхронизации.
 
 #define TRIG_LEVEL(source)      (set.trig.levelRel[source])             ///< SettingsTrig.levelRel
-#define TRIG_LEVEL_SOURCE       (TRIG_LEVEL(TRIG_SOURCE))               /// set.trig.levelRel[set.trig.source]
+#define TRIG_LEVEL_SOURCE       (TRIG_LEVEL(TRIGSOURCE))               /// set.trig.levelRel[set.trig.source]
 #define TRIG_LEVEL_A            (TRIG_LEVEL(A))                         ///< set.trig.levelRel[A]
 #define TRIG_LEVEL_B            (TRIG_LEVEL(B))                         ///< set.trig.levelRel[B]
 

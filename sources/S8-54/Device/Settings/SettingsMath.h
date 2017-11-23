@@ -20,7 +20,7 @@
 #define WINDOW_FFT_IS_HANN          (WINDOW_FFT == WindowFFT_Hann)
 #define MAX_DB_FFT                  (set.math_FFTmaxDB)
 #define FFT_ENABLED                 (set.math_EnableFFT)
-#define MATH_ENABLED                (FUNC_ENABLED || FFT_ENABLED)
+#define MATH_ENABLED                (FUNC_MODE_DRAW_IS_ENABLED || FFT_ENABLED)
 
 #define SCALE_FFT                   (set.math_ScaleFFT)
 #define SCALE_FFT_IS_LOG            (SCALE_FFT == ScaleFFT_Log)
@@ -31,9 +31,9 @@
 #define MATH_FUNC_IS_SUM            (MATH_FUNC == Function_Sum)
 
 #define FUNC_MODE_DRAW              (set.math_ModeDraw)
-#define FUNC_ENABLED                (FUNC_MODE_DRAW != ModeDrawMath_Disable)
-#define FUNC_MODE_DRAW_SEPARATE     (FUNC_MODE_DRAW == ModeDrawMath_Separate)
-#define FUNC_MODE_DRAW_TOGETHER     (FUNC_MODE_DRAW == ModeDrawMath_Together)
+#define FUNC_MODE_DRAW_IS_ENABLED   (FUNC_MODE_DRAW != FuncModeDraw_Disable)
+#define FUNC_MODE_DRAW_IS_SEPARATE  (FUNC_MODE_DRAW == FuncModeDraw_Separate)
+#define FUNC_MODE_DRAW_IS_TOGETHER  (FUNC_MODE_DRAW == FuncModeDraw_Together)
 
 #define FFT_POS_CURSOR(num)         (set.math_PosCur[num])
 #define FFT_POS_CURSOR_0            (FFT_POS_CURSOR(0))

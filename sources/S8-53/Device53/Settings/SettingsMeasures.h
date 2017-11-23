@@ -84,7 +84,7 @@ typedef struct
     MeasuresNumber  number;             ///< Сколько измерений выводить.
     Channel         source;             ///< Для каких каналов выводить измерения.
     ModeViewSignals modeViewSignals;    ///< Сжимать ли сигналы при выводе измерений.
-    Measure         measures[15];       ///< Выбранные для индикации измерения.
+    Meas            measures[15];       ///< Выбранные для индикации измерения.
     bool            show;               ///< Показывать ли измерения.
     MeasuresField   field;              ///< Задаёт область, из которой берутся значения для расчёта измерений.
     int16           posCurU[2];         ///< Позиции курсоров, которые задают область, из которой берутся значения для расчёта измерений при field == MeasuresField_Hand.
@@ -92,7 +92,7 @@ typedef struct
     CursCntrl       cntrlU;             ///< Активные курсоры напряжения.
     CursCntrl       cntrlT;             ///< Активные курсоры времени.
     CursActive      cursActive;         ///< Какие курсоры активны - по времени или напряжению.
-    Measure         markedMeasure;      ///< Измерение, на которое нужно выводить маркеры.
+    Meas            markedMeasure;      ///< Измерение, на которое нужно выводить маркеры.
 } SettingsMeasures;
 
 

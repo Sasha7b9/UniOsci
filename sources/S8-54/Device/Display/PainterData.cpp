@@ -97,7 +97,7 @@ void PainterData::DrawData(void)
     interruptDrawing = false;
 
     // Нормальный режим
-    if (MODE_WORK_DIR)                              // Установленный режим - непосредственный
+    if (MODE_WORK_IS_DIR)                              // Установленный режим - непосредственный
     {
         if (ALWAYS_SHOW_ROM_SIGNAL)                 // Если нужно показывать сигнал из ППЗУ
         {
@@ -106,7 +106,7 @@ void PainterData::DrawData(void)
         DrawData_ModeDir();
     }
     // ПАМЯТЬ - ПОСЛЕДНИЕ
-    else if (MODE_WORK_RAM)
+    else if (MODE_WORK_IS_RAM)
     {
         DrawData_ModeRAM();
         DrawMemoryWindow();
@@ -501,7 +501,7 @@ static void DrawLimitLabel(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawMath(void)
 {
-    if (!FUNC_ENABLED || dS.GetData_RAM(A, 0) == 0 || dS.GetData_RAM(B, 0) == 0)
+    if (!FUNC_MODE_DRAW_IS_ENABLED || dS.GetData_RAM(A, 0) == 0 || dS.GetData_RAM(B, 0) == 0)
     {
         return;
     }
@@ -524,7 +524,7 @@ void PainterData::DrawMath(void)
 
     static const int WIDTH = 71;
     static const int HEIGHT = 10;
-    int delta = (SHOW_STRING_NAVI_ALL && FUNC_MODE_DRAW_TOGETHER) ? 10 : 0;
+    int delta = (SHOW_STRING_NAVI_ALL && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
     painter.DrawRectangle(grid.Left(), grid.MathTop() + delta, WIDTH, HEIGHT, gColorFill);
     painter.FillRegion(grid.Left() + 1, grid.MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, gColorBack);
     Divider divider = set.math_Divider;
@@ -566,7 +566,7 @@ static void DrawChannel_Math(uint8 *dataIn)
         dataIn = data;
     }
 
-    if (!FUNC_ENABLED)
+    if (!FUNC_MODE_DRAW_IS_ENABLED)
     {
         return;
     }

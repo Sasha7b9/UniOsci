@@ -15,9 +15,9 @@
 #define ENUM_POINTS_IS_1024         (ENUM_POINTS == FNP_1024)
 
 #define MODE_WORK                   (set.memory.modeWork)                           ///< SettingsMemory.modeWork
-#define MODE_WORK_IS_DIRECT         (MODE_WORK == ModeWork_Direct)
-#define MODE_WORK_IS_LATEST         (MODE_WORK == ModeWork_Latest)
-#define MODE_WORK_IS_MEMINT         (MODE_WORK == ModeWork_MemInt)
+#define MODE_WORK_IS_DIR            (MODE_WORK == ModeWork_Dir)
+#define MODE_WORK_IS_RAM            (MODE_WORK == ModeWork_RAM)
+#define MODE_WORK_IS_ROM            (MODE_WORK == ModeWork_ROM)
 
 #define FILE_NAMING_MODE            (set.memory.fileNamingMode)                     ///< SettingsMemory.fileNamingMode
 #define FILE_NAMING_MODE_IS_MASK    (FILE_NAMING_MODE == FileNamingMode_Mask)
@@ -47,9 +47,9 @@
 /// Режим работы.
 typedef enum
 {
-    ModeWork_Direct,        ///< Основной режим.
-    ModeWork_Latest,        ///< В этом режиме можно просмотреть последние сохранённые измерения.
-    ModeWork_MemInt,        ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
+    ModeWork_Dir,        ///< Основной режим.
+    ModeWork_RAM,        ///< В этом режиме можно просмотреть последние сохранённые измерения.
+    ModeWork_ROM,        ///< В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые.
 } ModeWork;
 
 

@@ -282,7 +282,7 @@ static void LoadTrigLev(void)
 
     trigLev = TrigLevMax + TrigLevMin - trigLev;
 
-    if ((TRIG_INPUT_LPF || TRIG_INPUT_FULL) && !TRIGSOURCE_EXT)
+    if ((TRIG_INPUT_LPF || TRIG_INPUT_FULL) && !TRIGSOURCE_IS_EXT)
     {
         int delta = (int)(CalculateDeltaRShift((Channel)TRIGSOURCE) * divR[SET_RANGE(TRIGSOURCE)]);
         trigLev = (uint)((int)trigLev + delta);
@@ -790,7 +790,7 @@ void FPGA_SetTrigSource(TrigSource trigSource)
 {
     TRIGSOURCE = trigSource;
     PrepareAndWriteDataToAnalogSPI(CS2);
-    if (!TRIGSOURCE_EXT)
+    if (!TRIGSOURCE_IS_EXT)
     {
         FPGA_SetTrigLev(TRIGSOURCE, SET_TRIGLEV(TRIGSOURCE));
     }

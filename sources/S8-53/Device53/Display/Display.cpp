@@ -165,7 +165,7 @@ static bool ChannelNeedForDraw(const uint8 *data, Channel chan, const DataSettin
         return false;
     }
 
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         if (!sChannel_Enabled(chan))
         {
@@ -418,7 +418,7 @@ void DrawDataChannel(uint8 *data, Channel chan, DataSettings *ds, int minY, int 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawMath()
 {
-    if (DISABLED_DRAW_MATH || dataStorage.GetData(A, 0) == 0 || dataStorage.GetData(B, 0) == 0)
+    if (FUNC_MODE_DRAW_IS_DISABLED || dataStorage.GetData(A, 0) == 0 || dataStorage.GetData(B, 0) == 0)
     {
         return;
     }
@@ -443,7 +443,7 @@ void Display::DrawMath()
 
     static const int WIDTH = 71;
     static const int HEIGHT = 10;
-    int delta = (SHOW_STRING_NAVIGATION && MODE_DRAW_MATH_IS_TOGETHER) ? 10 : 0;
+    int delta = (SHOW_STRING_NAVIGATION && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
     painter.DrawRectangleC(grid.Left(), grid.MathTop() + delta, WIDTH, HEIGHT, COLOR_FILL);
     painter.FillRegionC(grid.Left() + 1, grid.MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, COLOR_BACK);
     Divider multiplier = MATH_MULTIPLIER;
@@ -533,14 +533,14 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawSpectrum()
 {
-    if (!ENABLED_FFT)
+    if (!FFT_ENABLED)
     {
         return;
     }
 
     painter.DrawVLineC(grid.Right(), grid.ChannelBottom() + 1, grid.MathBottom() - 1, COLOR_BACK);
 
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         int numPoints = sMemory_GetNumPoints(false);
         if (numPoints < 512)
@@ -740,7 +740,7 @@ bool DrawData()
     if (dataStorage.AllDatas())
     {
 
-        if (MODE_WORK_IS_MEMINT)
+        if (MODE_WORK_IS_ROM)
         {
             if (!MODE_SHOW_MEMINT_IS_DIRECT)
             {
@@ -751,7 +751,7 @@ bool DrawData()
                 DrawDataNormal();
             }
         }
-        else if (MODE_WORK_IS_LATEST)
+        else if (MODE_WORK_IS_RAM)
         {
             DrawDataInModeWorkLatest();
         }
@@ -787,9 +787,9 @@ void Display::DrawTime(int x, int y)
     
     painter.SetColor(COLOR_FILL);
     
-    if (MODE_WORK_IS_MEMINT || MODE_WORK_IS_LATEST)
+    if (MODE_WORK_IS_ROM || MODE_WORK_IS_RAM)
     {
-        DataSettings *ds = MODE_WORK_IS_MEMINT ? gDSmemInt : gDSmemLast;
+        DataSettings *ds = MODE_WORK_IS_ROM ? gDSmemInt : gDSmemLast;
 
         if (ds != 0)
         {
@@ -948,7 +948,7 @@ void DrawMemoryWindow(void)
     uint8 *dat1 = gData1memInt;
     DataSettings *ds = gDSmemInt;
     
-    if(MODE_WORK_IS_DIRECT || MODE_WORK_IS_LATEST)
+    if(MODE_WORK_IS_DIR || MODE_WORK_IS_RAM)
     {
         dat0 = gData0;
         dat1 = gData1;
@@ -1055,7 +1055,7 @@ void Display::WriteCursors()
 {
     char buffer[20];
     int startX = 43;
-    if(MODE_WORK_IS_DIRECT)
+    if(MODE_WORK_IS_DIR)
     {
         startX += 29;
     }
@@ -1129,7 +1129,7 @@ void Display::DrawHiRightPart()
     static const int xses[3] = {280, 271, 251};
     int x = xses[MODE_WORK];
 
-    if (!MODE_WORK_IS_LATEST)
+    if (!MODE_WORK_IS_RAM)
     {
         painter.DrawVLineC(x, 1, GRID_TOP - 2, COLOR_FILL);
 
@@ -1150,7 +1150,7 @@ void Display::DrawHiRightPart()
         {"ВНТР",    "INT"}
     };
 
-    if(!MODE_WORK_IS_DIRECT)
+    if(!MODE_WORK_IS_DIR)
     {
         x += 18;
         painter.DrawVLineC(x, 1, GRID_TOP - 2, COLOR_FILL);
@@ -1163,7 +1163,7 @@ void Display::DrawHiRightPart()
         x -= 9;
     }
 
-    if (!MODE_WORK_IS_LATEST)
+    if (!MODE_WORK_IS_RAM)
     {
 
         x += 27;
@@ -1195,7 +1195,7 @@ void Display::DrawHiRightPart()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawCursorsRShift()
 {
-    if (!DISABLED_DRAW_MATH)
+    if (!FUNC_MODE_DRAW_IS_DISABLED)
     {
         DrawCursorRShift(Math);
     }
@@ -1318,10 +1318,10 @@ void Display::Update()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::WriteValueTrigLevel()
 {
-    if (gBF.showLevelTrigLev == 1 && MODE_WORK_IS_DIRECT)
+    if (gBF.showLevelTrigLev == 1 && MODE_WORK_IS_DIR)
     {
-        float trigLev = RSHIFT_2_ABS(TRIG_LEVEL_SOURCE, SET_RANGE(TRIG_SOURCE));     // WARN Здесь для внешней синхронизации неправильно рассчитывается уровень.
-        TrigSource trigSource = TRIG_SOURCE;
+        float trigLev = RSHIFT_2_ABS(TRIG_LEVEL_SOURCE, SET_RANGE(TRIGSOURCE));     // WARN Здесь для внешней синхронизации неправильно рассчитывается уровень.
+        TrigSource trigSource = TRIGSOURCE;
         if (TRIG_INPUT_IS_AC && trigSource <= TrigSource_ChannelB)
         {
             int16 rShift = SET_RSHIFT(trigSource);
@@ -1390,11 +1390,11 @@ void Display::DrawFullGrid()
     if (sDisplay_IsSeparate())
     {
         DrawGrid(grid.Left(), GRID_TOP, grid.Width(), grid.FullHeight() / 2);
-        if (ENABLED_FFT)
+        if (FFT_ENABLED)
         {
             DrawGridSpectrum();
         }
-        if (!DISABLED_DRAW_MATH)
+        if (!FUNC_MODE_DRAW_IS_DISABLED)
         {
             DrawGrid(grid.Left(), GRID_TOP + grid.FullHeight() / 2, grid.Width(), grid.FullHeight() / 2);
         }
@@ -1612,7 +1612,7 @@ void Display::DrawCursorsWindow()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawCursorTrigLevel()
 {
-    TrigSource chan = TRIG_SOURCE;
+    TrigSource chan = TRIGSOURCE;
     if (chan == TrigSource_Ext)
     {
         return;
@@ -1652,7 +1652,7 @@ void Display::DrawCursorTrigLevel()
     const char simbols[3] = {'1', '2', 'В'};
     int dY = 0;
     
-    painter.DrawCharC(x + 5, y - 9 + dY, simbols[TRIG_SOURCE], COLOR_BACK);
+    painter.DrawCharC(x + 5, y - 9 + dY, simbols[TRIGSOURCE], COLOR_BACK);
     painter.SetFont(TypeFont_8);
 
     if (gBF.drawRShiftMarkers == 1 && !MenuIsMinimize())
@@ -1663,11 +1663,11 @@ void Display::DrawCursorTrigLevel()
         int shiftFullMin = RShiftMin + TrigLevMin;
         int shiftFullMax = RShiftMax + TrigLevMax;
         scale = (float)height / (shiftFullMax - shiftFullMin);
-        int shiftFull = TRIG_LEVEL_SOURCE + (TRIG_SOURCE_IS_EXT ? 0 : SET_RSHIFT(chan));
+        int shiftFull = TRIG_LEVEL_SOURCE + (TRIGSOURCE_IS_EXT ? 0 : SET_RSHIFT(chan));
         int yFull = (int)(GRID_TOP + DELTA + height - scale * (shiftFull - RShiftMin - TrigLevMin) - 4);
         painter.FillRegionC(left + 2, yFull + 1, 4, 6, ColorTrig());
         painter.SetFont(TypeFont_5);
-        painter.DrawCharC(left + 3, yFull - 5 + dY, simbols[TRIG_SOURCE], COLOR_BACK);
+        painter.DrawCharC(left + 3, yFull - 5 + dY, simbols[TRIGSOURCE], COLOR_BACK);
         painter.SetFont(TypeFont_8);
     }
 }
@@ -1716,7 +1716,7 @@ void Display::DrawCursorRShift(Channel chan)
     else
     {
         painter.DrawCharC(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, ColorChannel(chan));
-        if(((chan == A) ? (gBF.showLevelRShift0 == 1) : (gBF.showLevelRShift1 == 1)) && MODE_WORK_IS_DIRECT)
+        if(((chan == A) ? (gBF.showLevelRShift0 == 1) : (gBF.showLevelRShift1 == 1)) && MODE_WORK_IS_DIR)
         {
             painter.DrawDashedHLine(y, grid.Left(), grid.Right(), 7, 3, 0);
         }
@@ -1944,9 +1944,9 @@ void WriteTextVoltage(Channel chan, int x, int y)
     uint rShift = SET_RSHIFT(chan);
     bool enable = SET_ENABLED(chan);
 
-    if (!MODE_WORK_IS_DIRECT)
+    if (!MODE_WORK_IS_DIR)
     {
-        DataSettings *ds = MODE_WORK_IS_DIRECT ? gDSet : gDSmemInt;
+        DataSettings *ds = MODE_WORK_IS_DIR ? gDSet : gDSmemInt;
         if (ds != 0)
         {
             inverse = (chan == A) ? ds->inverseCh0 : ds->inverseCh1;
@@ -2022,9 +2022,9 @@ void Display::DrawLowPart()
     TBase tBase = SET_TBASE;
     int16 tShift = TSHIFT;
 
-    if (!MODE_WORK_IS_DIRECT)
+    if (!MODE_WORK_IS_DIR)
     {
-        DataSettings *ds = MODE_WORK_IS_LATEST ? gDSmemLast : gDSmemInt;
+        DataSettings *ds = MODE_WORK_IS_RAM ? gDSmemLast : gDSmemInt;
         if (ds != 0)
         {
             tBase = ds->tBase;
@@ -2042,9 +2042,9 @@ void Display::DrawLowPart()
 
     buffer[0] = 0;
     const char *source[3] = {"1", "2", "\x82"};
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
-        sprintf(buffer, "с\xa5\x10%s", source[TRIG_SOURCE]);
+        sprintf(buffer, "с\xa5\x10%s", source[TRIGSOURCE]);
     }
 
     painter.DrawTextC(x, y1, buffer, ColorTrig());
@@ -2069,7 +2069,7 @@ void Display::DrawLowPart()
         "\xb3\xb4",
         "\xb1\xb2"
     };
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         sprintf(buffer, "\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[TRIG_INPUT], polar[TRIG_POLARITY]);
         painter.DrawText(x + 18, y1, buffer);
@@ -2084,7 +2084,7 @@ void Display::DrawLowPart()
         '\xa0',
         '\xb0'
     };
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         sprintf(buffer, "\xa5\x10%c", mode[START_MODE]);
         painter.DrawText(x + 63, y1, buffer);
@@ -2101,7 +2101,7 @@ void Display::DrawLowPart()
     int y2 = y1 + 6;
     painter.SetFont(TypeFont_5);
     
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         WriteStringAndNumber("накопл", x, y0, NUM_ACCUM);
         WriteStringAndNumber("усредн", x, y1, NUM_AVE);
@@ -2113,7 +2113,7 @@ void Display::DrawLowPart()
 
     painter.SetFont(TypeFont_8);
 
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         char mesFreq[20] = "\x7c=";
         char buffer[20];
@@ -2160,7 +2160,7 @@ void Display::DrawLowPart()
        painter.DrawChar(x + 46, GRID_BOTTOM + 11, '\x13');
     }
 
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         painter.SetFont(TypeFont_5);
         WriteStringAndNumber("СГЛАЖ.:", x + 57, GRID_BOTTOM + 10, sDisplay_NumPointSmoothing());

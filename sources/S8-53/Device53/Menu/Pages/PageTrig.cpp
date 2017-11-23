@@ -100,12 +100,12 @@ static const Choice mcSource =
         {"Канал 2", "Channel 2"},
         {"Внешний", "External"}
     },
-    (int8*)&TRIG_SOURCE, OnChanged_Source
+    (int8*)&TRIGSOURCE, OnChanged_Source
 };
 
 static void OnChanged_Source(bool active)
 {
-    fpga.SetTrigSource(TRIG_SOURCE);
+    fpga.SetTrigSource(TRIGSOURCE);
 }
 
 

@@ -532,10 +532,10 @@ typedef enum
 
 typedef enum
 {
-    ModeDrawMath_Disable,
-    ModeDrawMath_Separate,
-    ModeDrawMath_Together
-} ModeDrawMath;
+    FuncModeDraw_Disable,
+    FuncModeDraw_Separate,
+    FuncModeDraw_Together
+} FuncModeDraw;
 
 typedef enum
 {

@@ -46,7 +46,7 @@ int sDisplay_TimeMenuAutoHide()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool sDisplay_IsSeparate()
 {
-    return (!DISABLED_DRAW_MATH && MODE_DRAW_MATH_IS_SEPARATE) || ENABLED_FFT;
+    return (!FUNC_MODE_DRAW_IS_DISABLED && FUNC_MODE_DRAW_IS_SEPARATE) || FFT_ENABLED;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

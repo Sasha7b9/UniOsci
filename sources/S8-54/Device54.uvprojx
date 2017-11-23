@@ -53,7 +53,7 @@
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
-          <DebugInformation>0</DebugInformation>
+          <DebugInformation>1</DebugInformation>
           <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\lst\Device\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
@@ -1727,16 +1727,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Measures.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Utils\Measures.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Measures.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Utils\Measures.h</FilePath>
-            </File>
-            <File>
               <FileName>ProcessingSignal.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device\Utils\ProcessingSignal.cpp</FilePath>
@@ -1785,6 +1775,16 @@
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Map.h</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Measures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Measures.h</FilePath>
             </File>
           </Files>
         </Group>

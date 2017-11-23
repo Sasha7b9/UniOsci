@@ -934,7 +934,7 @@ static void OnPressStartStopInP2P(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA_OnPressStartStop(void)
 {
-    if (!MODE_WORK_DIR || CONSOLE_IN_PAUSE)           // Если находимся не в режиме непосредственного считывания сигнала
+    if (!MODE_WORK_IS_DIR || CONSOLE_IN_PAUSE)           // Если находимся не в режиме непосредственного считывания сигнала
     {
         return;
     }
@@ -1009,7 +1009,7 @@ void FPGA_TemporaryPause(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA_FindAndSetTrigLevel(void)
 {
-    if (dS.NumElementsInStorage() == 0 || TRIGSOURCE_EXT)
+    if (dS.NumElementsInStorage() == 0 || TRIGSOURCE_IS_EXT)
     {
         return;
     }
@@ -1020,7 +1020,7 @@ void FPGA_FindAndSetTrigLevel(void)
 
     dS.GetDataFromEnd_RAM(0, &ds_, &dataA, &dataB);
 
-    const uint16 *data = TRIGSOURCE_A ? dataA : dataB;
+    const uint16 *data = TRIGSOURCE_IS_A ? dataA : dataB;
 
     int lastPoint = NUM_BYTES(ds_) - 1;
 

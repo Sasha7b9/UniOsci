@@ -306,32 +306,8 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Grid.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Painter.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Display\font\Font.cpp">
       <Filter>Display\fonts</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Math3D.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterMem.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterText.cpp">
-      <Filter>Display</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.cpp">
-      <Filter>Display</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.cpp">
       <Filter>Ethernet</Filter>
@@ -437,9 +413,6 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp">
       <Filter>Settings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Measures.cpp">
-      <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp">
       <Filter>Utils</Filter>
@@ -548,6 +521,30 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp">
       <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterMem.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\Colors.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\DisplayPrimitives.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\Grid.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\Painter.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Display\PainterText.cpp">
+      <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Measures.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -668,36 +665,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayTypes.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Grid.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Math3D.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Painter.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterC.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterMem.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Symbols.h">
-      <Filter>Display</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.h">
-      <Filter>Display</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Display\font\Font.h">
       <Filter>Display\fonts</Filter>
     </ClInclude>
@@ -794,9 +761,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTypes.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Measures.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -871,6 +835,39 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageDisplay.h">
+      <Filter>Menu\Pages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterMem.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Display\Symbols.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Colors.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\DisplayTypes.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Grid.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Painter.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Display\Symbols.h">
+      <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Measures.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

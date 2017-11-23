@@ -12,6 +12,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define COLOR(x)                    (set.display.colors[x])
+
 #define TIME_SHOW_LEVELS            (set.display.timeShowLevels)                ///< SettingsDisplay.timeShowLevels
 
 #define SHIFT_IN_MEMORY             (set.display.shiftInMemory)                 ///< SettingsDisplay.shiftInMemory

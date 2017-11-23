@@ -61,7 +61,7 @@ int sChannel_MultiplierRel2Abs(Divider multiplier)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool sChannel_Enabled(Channel chan)
 {
-    if (chan == Math && !DISABLED_DRAW_MATH)
+    if (chan == Math && !FUNC_MODE_DRAW_IS_DISABLED)
     {
         return true;
     }

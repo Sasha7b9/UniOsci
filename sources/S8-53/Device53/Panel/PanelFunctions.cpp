@@ -53,7 +53,7 @@ void TrigLong(void)
 
 void StartDown()                        // B_Start
 {
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         menu.PressButton(B_Start);
     }
@@ -282,13 +282,13 @@ static void SetTrigLev(TrigSource ch, int16 trigLev)
 void TrigLevLeft()
 {
     static int prevTime = 0;
-    ChangeTrigLev(&prevTime, SetTrigLev, TRIG_SOURCE, -STEP_RSHIFT);
+    ChangeTrigLev(&prevTime, SetTrigLev, TRIGSOURCE, -STEP_RSHIFT);
 }
 
 void TrigLevRight()
 {
     static int prevTime = 0;
-    ChangeTrigLev(&prevTime, SetTrigLev, TRIG_SOURCE, +STEP_RSHIFT);
+    ChangeTrigLev(&prevTime, SetTrigLev, TRIGSOURCE, +STEP_RSHIFT);
 }
 
 static void ShiftScreen(int shift)

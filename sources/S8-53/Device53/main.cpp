@@ -85,7 +85,7 @@ void ProcessingSignal()
     int last = 0;
     sDisplay_PointsOnDisplay(&first, &last);
 
-    if (MODE_WORK_IS_DIRECT)
+    if (MODE_WORK_IS_DIR)
     {
         dataStorage.GetDataFromEnd(0, &gDSet, &gData0, &gData1);
         if (sDisplay_NumAverage() != 1 || sTime_RandomizeModeEnabled())
@@ -94,14 +94,14 @@ void ProcessingSignal()
             gData1 = dataStorage.GetAverageData(B);
         }
     }
-    else if (MODE_WORK_IS_LATEST)
+    else if (MODE_WORK_IS_RAM)
     {
         data0 = &gData0memLast;
         data1 = &gData1memLast;
         ds = &gDSmemLast;
         dataStorage.GetDataFromEnd(gMemory.currentNumLatestSignal, &gDSmemLast, &gData0memLast, &gData1memLast);
     }
-    else if (MODE_WORK_IS_MEMINT)
+    else if (MODE_WORK_IS_ROM)
     {
         data0 = &gData0memInt;
         data1 = &gData1memInt;
@@ -109,7 +109,7 @@ void ProcessingSignal()
         FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     }
 
-    if (MODE_WORK_IS_MEMINT)
+    if (MODE_WORK_IS_ROM)
     { 
         if (!MODE_SHOW_MEMINT_IS_SAVED)
         {

@@ -512,7 +512,7 @@ static void DrawFullGrid(void)
         {
             DrawGridSpectrum();
         }
-        if(FUNC_ENABLED)
+        if(FUNC_MODE_DRAW_IS_ENABLED)
         {
             DrawGrid(grid.Left(), GRID_TOP + grid.FullHeight() / 2, grid.Width(), grid.FullHeight() / 2);
         }
@@ -534,7 +534,7 @@ static void DrawSpectrum(void)
 
     painter.DrawVLine(grid.Right(), grid.ChannelBottom() + 1, grid.MathBottom() - 1, gColorBack);
 
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         int numPoints = NUM_BYTES_DS;
 
@@ -648,7 +648,7 @@ static void DrawLowPart(void)
 
     buffer[0] = 0;
     pString source[3] ={"1", "2", "\x82"};
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         snprintf(buffer, 100, "с\xa5\x10%s", source[TRIGSOURCE]);
     }
@@ -675,7 +675,7 @@ static void DrawLowPart(void)
         "\xb3\xb4",
         "\xb1\xb2"
     };
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         snprintf(buffer, SIZE, "\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[TRIG_INPUT], polar[TRIG_POLARITY]);
         painter.DrawText(x + 18, y1, buffer);
@@ -690,7 +690,7 @@ static void DrawLowPart(void)
         '\xa0',
         '\xb0'
     };
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         snprintf(buffer, 100, "\xa5\x10%c", mode[START_MODE]);
         painter.DrawText(x + 63, y1, buffer);
@@ -707,7 +707,7 @@ static void DrawLowPart(void)
     int y2 = y1 + 6;
     painter.SetFont(TypeFont_5);
 
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         WriteStringAndNumber(LANG_RU ? "накопл" : "accum", (int16)x, (int16)y0, NUM_ACCUM);
         WriteStringAndNumber(LANG_RU ? "усредн" : "ave", (int16)x, (int16)y1, NUM_AVE);
@@ -719,7 +719,7 @@ static void DrawLowPart(void)
 
     painter.SetFont(TypeFont_8);
 
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         char mesFreq[20] = "\x7c=";
         float freq = FreqMeter_GetFreq();
@@ -765,7 +765,7 @@ static void DrawLowPart(void)
         painter.DrawChar(x + 46, GRID_BOTTOM + 11, '\x13');
     }
 
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         painter.SetFont(TypeFont_5);
         WriteStringAndNumber("СГЛАЖ.:", (int16)(x + 57), (int16)(GRID_BOTTOM + 10), (int)ENUM_SMOOTHING + 1);
@@ -785,17 +785,17 @@ static void DrawCursorsWindow(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawCursorTrigLevel(void)
 {
-    if(TRIGSOURCE_EXT)
+    if(TRIGSOURCE_IS_EXT)
     {
         return;
     }
     TrigSource ch = TRIGSOURCE;
-    int trigLev = SET_TRIGLEV(ch) + (TRIGSOURCE_EXT ? 0 : SET_RSHIFT(ch) - RShiftZero);
+    int trigLev = SET_TRIGLEV(ch) + (TRIGSOURCE_IS_EXT ? 0 : SET_RSHIFT(ch) - RShiftZero);
     float scale = 1.0f / ((TrigLevMax - TrigLevMin) / 2.4f / grid.ChannelHeight());
     int y0 = (GRID_TOP + grid.ChannelBottom()) / 2 + (int)(scale * (TrigLevZero - TrigLevMin));
     int y = y0 - (int)(scale * (trigLev - TrigLevMin));
 
-    if(!TRIGSOURCE_EXT)
+    if(!TRIGSOURCE_IS_EXT)
     {
         y = (y - grid.ChannelCenterHeight()) + grid.ChannelCenterHeight();
     }
@@ -836,7 +836,7 @@ static void DrawCursorTrigLevel(void)
         int shiftFullMin = RShiftMin + TrigLevMin;
         int shiftFullMax = RShiftMax + TrigLevMax;
         scale = (float)height / (shiftFullMax - shiftFullMin);
-        int shiftFull = SET_TRIGLEV(TRIGSOURCE) + (TRIGSOURCE_EXT ? 0 : SET_RSHIFT(ch));
+        int shiftFull = SET_TRIGLEV(TRIGSOURCE) + (TRIGSOURCE_IS_EXT ? 0 : SET_RSHIFT(ch));
         int yFull = GRID_TOP + DELTA + height - (int)(scale * (shiftFull - RShiftMin - TrigLevMin) + 4);
         painter.FillRegion(left + 2, yFull + 1, 4, 6, Color::Trig());
         painter.SetFont(TypeFont_5);
@@ -1081,11 +1081,11 @@ void Display::DrawConsole(void)
 // Вывести значение уровян синхронизации
 static void WriteValueTrigLevel(void)
 {
-    if(showLevelTrigLev && MODE_WORK_DIR)
+    if(showLevelTrigLev && MODE_WORK_IS_DIR)
     {
         TrigSource trigSource = TRIGSOURCE;
-        float trigLev = RSHIFT_2_ABS(SET_TRIGLEV(trigSource), TRIGSOURCE_EXT ? Range_500mV : SET_RANGE(trigSource));
-        if(TRIG_INPUT_AC && !TRIGSOURCE_EXT)
+        float trigLev = RSHIFT_2_ABS(SET_TRIGLEV(trigSource), TRIGSOURCE_IS_EXT ? Range_500mV : SET_RANGE(trigSource));
+        if(TRIG_INPUT_AC && !TRIGSOURCE_IS_EXT)
         {
             uint16 rShift = SET_RSHIFT(trigSource);
             float rShiftAbs = RSHIFT_2_ABS(rShift, SET_RANGE(trigSource));
@@ -1438,7 +1438,7 @@ static void WriteCursors(void)
 {
     char buffer[20];
     int startX = 43;
-    if(MODE_WORK_DIR)
+    if(MODE_WORK_IS_DIR)
     {
         startX += 29;
     }
@@ -1524,7 +1524,7 @@ static void DrawHiRightPart(void)
     static const int xses[3] ={280, 271, 251};
     int x = xses[MODE_WORK];
 
-    if(!MODE_WORK_RAM)
+    if(!MODE_WORK_IS_RAM)
     {
         painter.DrawVLine(x, 1, GRID_TOP - 2, gColorFill);
 
@@ -1545,7 +1545,7 @@ static void DrawHiRightPart(void)
         {"ВНТР", "INT"}
     };
 
-    if(!MODE_WORK_DIR)
+    if(!MODE_WORK_IS_DIR)
     {
         x += 18;
         painter.DrawVLine(x, 1, GRID_TOP - 2, gColorFill);
@@ -1558,7 +1558,7 @@ static void DrawHiRightPart(void)
         x -= 9;
     }
 
-    if(!MODE_WORK_RAM)
+    if(!MODE_WORK_IS_RAM)
     {
         x += 27;
         painter.DrawVLine(x, 1, GRID_TOP - 2, gColorFill);
@@ -1646,7 +1646,7 @@ static void DrawTime(int x, int y)
 
     painter.SetColor(gColorFill);
 
-    if(MODE_WORK_ROM || MODE_WORK_RAM)
+    if(MODE_WORK_IS_ROM || MODE_WORK_IS_RAM)
     {
         if(DS)
         {
@@ -1706,7 +1706,7 @@ static void DrawScaleLine(int x, bool forTrigLev)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawCursorsRShift(void)
 {
-    if(FUNC_ENABLED)
+    if(FUNC_MODE_DRAW_IS_ENABLED)
     {
         DrawCursorRShift(MathCh);
     }
@@ -1930,7 +1930,7 @@ static void DrawCursorRShift(Channel ch)
     else
     {
         painter.DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, gColorChan[ch]);
-        if(((ch == A) ? showLevelRShiftA : showLevelRShiftB) && MODE_WORK_DIR)
+        if(((ch == A) ? showLevelRShiftA : showLevelRShiftB) && MODE_WORK_IS_DIR)
         {
             painter.DrawDashedHLine(y, grid.Left(), grid.Right(), 7, 3, 0);
         }

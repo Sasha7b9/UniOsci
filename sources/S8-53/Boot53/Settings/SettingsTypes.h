@@ -347,9 +347,9 @@ typedef enum
 // Режим работы.
 typedef enum
 {
-    ModeWork_Direct,        // Основной режим.
-    ModeWork_Latest,        // В этом режиме можно просмотреть последние сохранённые измерения
-    ModeWork_MemInt,        // В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые
+    ModeWork_Dir,        // Основной режим.
+    ModeWork_RAM,        // В этом режиме можно просмотреть последние сохранённые измерения
+    ModeWork_ROM,        // В этом режиме можно сохранять во flash-памяти измерения просматривать ранее сохранённые
 } ModeWork;
 
 // Что показывать в режиме Внутр ЗУ - считанный или записанный сигнал
@@ -458,10 +458,10 @@ typedef enum
 
 typedef enum
 {
-    ModeDrawMath_Disable,
-    ModeDrawMath_Separate,
-    ModeDrawMath_Together
-} ModeDrawMath;
+    FuncModeDraw_Disable,
+    FuncModeDraw_Separate,
+    FuncModeDraw_Together
+} FuncModeDraw;
 
 typedef enum
 {

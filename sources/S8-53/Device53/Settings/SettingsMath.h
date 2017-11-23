@@ -36,12 +36,12 @@
 #define FFT_POS_CURSOR_0            (FFT_POS_CURSOR(0))
 #define FFT_POS_CURSOR_1            (FFT_POS_CURSOR(1))
 
-#define ENABLED_FFT                 (set.math.enableFFT)                ///< SettingsMath.enableFFT
+#define FFT_ENABLED                 (set.math.enableFFT)                ///< SettingsMath.enableFFT
 
-#define MODE_DRAW_MATH              (set.math.modeDraw)                 ///< SettingsMath.modeDraw
-#define DISABLED_DRAW_MATH          (MODE_DRAW_MATH == ModeDrawMath_Disable)
-#define MODE_DRAW_MATH_IS_TOGETHER  (MODE_DRAW_MATH == ModeDrawMath_Together)
-#define MODE_DRAW_MATH_IS_SEPARATE  (MODE_DRAW_MATH == ModeDrawMath_Separate)
+#define FUNC_MODE_DRAW              (set.math.modeDraw)                 ///< SettingsMath.modeDraw
+#define FUNC_MODE_DRAW_IS_DISABLED  (FUNC_MODE_DRAW == FuncModeDraw_Disable)
+#define FUNC_MODE_DRAW_IS_TOGETHER  (FUNC_MODE_DRAW == FuncModeDraw_Together)
+#define FUNC_MODE_DRAW_IS_SEPARATE  (FUNC_MODE_DRAW == FuncModeDraw_Separate)
 
 #define MATH_MODE_REG_SET           (set.math.modeRegSet)               ///< SettingsMath.modeRegSet
 #define MATH_MODE_REG_SET_IS_RSHIFT (MATH_MODE_REG_SET == ModeRegSet_RShift)
@@ -94,10 +94,10 @@ typedef enum
 /// Где отрисовывать математический сигнал.
 typedef enum
 {
-    ModeDrawMath_Disable,   ///< Отображение математического сигнала выключено.
-    ModeDrawMath_Separate,  ///< Математический сигнал отображается на отдельном экране.
-    ModeDrawMath_Together   ///< Математический сигнал отображается поверх текущего сигнала.
-} ModeDrawMath;
+    FuncModeDraw_Disable,   ///< Отображение математического сигнала выключено.
+    FuncModeDraw_Separate,  ///< Математический сигнал отображается на отдельном экране.
+    FuncModeDraw_Together   ///< Математический сигнал отображается поверх текущего сигнала.
+} FuncModeDraw;
 
 /// Чем управляет ручка УСТАНОВКА, когда включена математическая функция.
 typedef enum
@@ -121,7 +121,7 @@ typedef struct
     int8            koeff1mul;
     int8            koeff2mul;
     bool            enableFFT;      ///< \c true, если включён спектр.
-    ModeDrawMath    modeDraw;       ///< Раздельный или общий дисплей в режиме математической функции.
+    FuncModeDraw    modeDraw;       ///< Раздельный или общий дисплей в режиме математической функции.
     ModeRegSet      modeRegSet;     ///< Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
     Range           range;          ///< Масштаб по напряжению математического сигнала.
     Divider      multiplier;     ///< Множитель масштаба математического сигнала.

@@ -399,9 +399,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\SelfRecorder\SelfRecorder.h">
       <Filter>SelfRecorder</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\Measures.h">
-      <Filter>Utils</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -497,6 +494,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Display\PainterMem.h">
       <Filter>Display</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Utils\Measures.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -842,9 +842,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\Settings.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\Measures.cpp">
-      <Filter>Utils</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -946,6 +943,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp">
       <Filter>Display</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Utils\Measures.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

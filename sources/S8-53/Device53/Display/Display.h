@@ -1,7 +1,7 @@
 #pragma once
-#include "DisplayTypes.h"
+#include "Display/DisplayTypes.h"
 #include "Settings/SettingsTypes.h"
-#include "Painter.h"
+#include "Display/Painter.h"
 #include "Tables.h"
 
 

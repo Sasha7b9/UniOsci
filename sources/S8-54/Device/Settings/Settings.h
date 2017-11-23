@@ -25,6 +25,7 @@
 #define ETH_ENABLED         (set.eth_enable)
 #define ETH_PORT            (set.eth_port)
 
+#define MENU_IS_SHOWN       (set.menu_IsShown)
 
 #define SIZE_NONRESET_SETTINGS 200
 
@@ -150,7 +151,7 @@ typedef struct
     int8            math_koeff1mul;
     int8            math_koeff2mul;
     bool            math_EnableFFT;
-    ModeDrawMath    math_ModeDraw;              ///< Раздельный или общий дисплей в режиме математической функции.
+    FuncModeDraw    math_ModeDraw;              ///< Раздельный или общий дисплей в режиме математической функции.
     ModeRegSet      math_ModeRegSet;            ///< Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
     Range           math_Range;
     Divider         math_Divider;

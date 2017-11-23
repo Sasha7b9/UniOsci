@@ -151,7 +151,7 @@ void FPGA::SetAttribChannelsAndTrig(TypeWriteAnalog type)
 
     // Параметры синхронизации
     static const uint maskSource[3] = {0x000000, 0x800000, 0x400000};
-    data |= maskSource[TRIG_SOURCE];
+    data |= maskSource[TRIGSOURCE];
 
     static const uint maskInput[4] = {0x000000, 0x030000, 0x020000, 0x010000};
     data |= maskInput[TRIG_INPUT];
@@ -189,7 +189,7 @@ void FPGA::LoadRange(Channel chan)
 {
     SetAttribChannelsAndTrig(TypeWriteAnalog_Range0);
     LoadRShift(chan);
-    if (chan == (Channel)TRIG_SOURCE)
+    if (chan == (Channel)TRIGSOURCE)
     {
         LoadTrigLev();
     }
@@ -496,11 +496,11 @@ bool FPGA::RangeDecrease(Channel chan)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetTrigSource(TrigSource trigSource)
 {
-    TRIG_SOURCE = trigSource;
+    TRIGSOURCE = trigSource;
     SetAttribChannelsAndTrig(TypeWriteAnalog_TrigParam);
-    if (!TRIG_SOURCE_IS_EXT)
+    if (!TRIGSOURCE_IS_EXT)
     {
-        SetTrigLev(TRIG_SOURCE, TRIG_LEVEL_SOURCE);
+        SetTrigLev(TRIGSOURCE, TRIG_LEVEL_SOURCE);
     }
 }
 

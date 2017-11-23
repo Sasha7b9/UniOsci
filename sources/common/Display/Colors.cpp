@@ -19,7 +19,7 @@ Color Color::Cursors(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::Trig()
 {
-    if (TRIGSOURCE_EXT)
+    if (TRIGSOURCE_IS_EXT)
     {
         return gColorFill;
     }

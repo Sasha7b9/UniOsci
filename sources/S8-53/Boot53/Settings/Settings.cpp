@@ -83,7 +83,7 @@ static const Settings defaultSettings =
     // memory
     {
         FNP_1024,
-        ModeWork_Direct,
+        ModeWork_Dir,
         FileNamingMode_Mask,
         "Signal_\x07\x03",      // \x07 - означает, что здесь должен быть очередной номер, \x03 - минимум на три знакоместа
         "Signal01",
@@ -110,7 +110,7 @@ static const Settings defaultSettings =
         1,
         1,
         false,
-        ModeDrawMath_Disable,       // modeDrawMath
+        FuncModeDraw_Disable,       // modeDrawMath
         ModeRegSet_Range,           // modeRegSet
         Range_50mV,
         Multiplier_1,

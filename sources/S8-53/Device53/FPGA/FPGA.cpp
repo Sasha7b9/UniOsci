@@ -1150,8 +1150,8 @@ void FPGA::FillDataPointer(DataSettings *dp)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::FindAndSetTrigLevel(void)
 {
-    TrigSource trigSource = TRIG_SOURCE;
-    if (dataStorage.AllDatas() == 0 || TRIG_SOURCE_IS_EXT)
+    TrigSource trigSource = TRIGSOURCE;
+    if (dataStorage.AllDatas() == 0 || TRIGSOURCE_IS_EXT)
     {
         return;
     }

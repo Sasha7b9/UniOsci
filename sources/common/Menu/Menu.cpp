@@ -589,7 +589,7 @@ void ProcessingPressButton(void)
             itemUnderKey = ItemUnderButton(pressButton);
         }
     }
-    if (pressButton == B_Start && !MODE_WORK_RAM)
+    if (pressButton == B_Start && !MODE_WORK_IS_RAM)
     {
         FPGA_OnPressStartStop();
     }
@@ -891,7 +891,7 @@ static bool NeedForFireSetLED(void)
             name == PageSB_Memory_Last          || 
             name == PageSB_Memory_Internal      ||
             IsRegSetActiveOnCursors()           ||
-            (name == PageSB_Service_Function && FUNC_ENABLED)
+            (name == PageSB_Service_Function && FUNC_MODE_DRAW_IS_ENABLED)
         )
     {
         return true;

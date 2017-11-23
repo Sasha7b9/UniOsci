@@ -42,6 +42,8 @@ typedef struct
 /// ¬озвращает позицию активного пункта на странице namePage
 #define MENU_POS_ACT_ITEM(namePage) (set.menu.posActItem[namePage])
 
+#define MENU_IS_SHOWN               (set.menu.isShown)
+
 #define MAC_ADDR0       (set.eth.mac0)
 #define MAC_ADDR1       (set.eth.mac1)
 #define MAC_ADDR2       (set.eth.mac2)

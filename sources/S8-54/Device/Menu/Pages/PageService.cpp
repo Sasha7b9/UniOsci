@@ -401,7 +401,7 @@ static void Draw_Recorder_Cursor(int x, int y)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// —≈–¬»— - —œ≈ “– ///
 static bool IsActive_FFT(void)
 {
-    return !FUNC_ENABLED;
+    return !FUNC_MODE_DRAW_IS_ENABLED;
 }
 
 static void OnPress_FFT(void)
@@ -564,7 +564,7 @@ static void OnPress_Function(void)
 
 static void OnRegSet_Function(int delta)
 {
-    if (!FUNC_ENABLED)
+    if (!FUNC_MODE_DRAW_IS_ENABLED)
     {
         return;
     }

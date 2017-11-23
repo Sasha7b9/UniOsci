@@ -812,9 +812,9 @@ void FPGA::LoadTrigSourceInput()
         {BIN_U8(00000011), BIN_U8(00000101)}  // อื
     };
     
-    WritePin(A1S, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 2));
-    WritePin(A0S, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 1));
-    WritePin(LFS, _GET_BIT(datas[TRIG_INPUT][TRIG_SOURCE], 0));
+    WritePin(A1S, _GET_BIT(datas[TRIG_INPUT][TRIGSOURCE], 2));
+    WritePin(A0S, _GET_BIT(datas[TRIG_INPUT][TRIGSOURCE], 1));
+    WritePin(LFS, _GET_BIT(datas[TRIG_INPUT][TRIGSOURCE], 0));
 }
 
 #ifdef __cplusplus

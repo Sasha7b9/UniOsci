@@ -24,7 +24,7 @@ static void OnChanged_Source()
     fpga.LoadTrigSource();
 }
 
-static const Choice cSource("Источник", "Source", itemsSource, &TRIG_SOURCE, 2, OnChanged_Source);
+static const Choice cSource("Источник", "Source", itemsSource, &TRIGSOURCE, 2, OnChanged_Source);
 
 //------------------------------------------------------------------------------------------------------------------------------ СИНХР - Полярность --
 static const char *itemsPolarity[] = { "Фронт", "Rising",

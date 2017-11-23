@@ -148,7 +148,7 @@ static const Settings defaultSettings =
     1,                      // koeff1mul
     1,                      // koeff2mul
     false,                  // EnableFFT
-    ModeDrawMath_Disable,   // ModeDraw
+    FuncModeDraw_Disable,   // ModeDraw
     ModeRegSet_Range,       // ModeRegSet
     Range_50mV,             // Range
     Divider_1,              // Divider

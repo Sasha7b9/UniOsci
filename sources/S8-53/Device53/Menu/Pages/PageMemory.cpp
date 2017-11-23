@@ -228,7 +228,7 @@ const SButton sbMemLastNext
 void PressSB_MemLast_IntEnter()
 {
     menu.OpenPageAndSetItCurrent(Page_SB_MemInt);
-    MODE_WORK = ModeWork_MemInt;
+    MODE_WORK = ModeWork_ROM;
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     gMemory.exitFromIntToLast = 1;
 }
@@ -779,7 +779,7 @@ void PressSB_MemInt_Exit()
     if (gMemory.exitFromIntToLast == 1)
     {
         menu.OpenPageAndSetItCurrent(Page_SB_MemLatest);
-        MODE_WORK = ModeWork_Latest;
+        MODE_WORK = ModeWork_RAM;
         gMemory.exitFromIntToLast = 0;
     }
     else
@@ -1091,7 +1091,7 @@ void Memory_SaveSignalToFlashDrive()
 
 static void PressSB_MemLast_Exit()
 {
-    MODE_WORK = ModeWork_Direct;
+    MODE_WORK = ModeWork_Dir;
     if (gMemory.runningFPGAbeforeSmallButtons == 1)
     {
         fpga.Start();
@@ -1106,7 +1106,7 @@ void OnPressMemoryLatest()
     gMemory.currentNumLatestSignal = 0;
     gMemory.runningFPGAbeforeSmallButtons = fpga.IsRunning() ? 1 : 0;
     fpga.Stop(false);
-    MODE_WORK = ModeWork_Latest;
+    MODE_WORK = ModeWork_RAM;
 }
 
 static const SButton sbExitMemLast
@@ -1244,7 +1244,7 @@ static const Page mspMemoryExt
 void OnPressMemoryInt()
 {
     menu.OpenPageAndSetItCurrent(Page_SB_MemInt);
-    MODE_WORK = ModeWork_MemInt;
+    MODE_WORK = ModeWork_ROM;
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
 }
 

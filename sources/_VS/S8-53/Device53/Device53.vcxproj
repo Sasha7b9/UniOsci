@@ -122,6 +122,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\common\commonDefines.cpp" />
+    <ClCompile Include="..\..\..\common\Display\Colors.cpp" />
+    <ClCompile Include="..\..\..\common\Display\DisplayPrimitives.cpp" />
+    <ClCompile Include="..\..\..\common\Display\Grid.cpp" />
+    <ClCompile Include="..\..\..\common\Display\Painter.cpp" />
+    <ClCompile Include="..\..\..\common\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
@@ -134,16 +139,11 @@
     <ClCompile Include="..\..\..\common\Utils\CommonFunctions.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Map.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
+    <ClCompile Include="..\..\..\common\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\font\Font.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Grid.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Math3D.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterMem.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterText.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp" />
@@ -203,7 +203,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\channelSCPI.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.cpp" />
@@ -447,6 +446,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\common\commonDefines.h" />
+    <ClInclude Include="..\..\..\common\Display\Colors.h" />
+    <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h" />
+    <ClInclude Include="..\..\..\common\Display\DisplayTypes.h" />
+    <ClInclude Include="..\..\..\common\Display\Grid.h" />
+    <ClInclude Include="..\..\..\common\Display\Painter.h" />
+    <ClInclude Include="..\..\..\common\Display\Symbols.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\Menu\Menu.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
@@ -459,19 +464,13 @@
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\common\Utils\Map.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
+    <ClInclude Include="..\..\..\common\Utils\Measures.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\defines.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Display.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayPrimitives.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\DisplayTypes.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\font\Font.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Grid.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Math3D.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\Painter.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterC.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\PainterMem.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Symbols.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Display\WelcomeScreen.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h" />
@@ -502,6 +501,7 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageDisplay.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageHelp.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Panel\Controls.h" />
@@ -519,7 +519,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTrig.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Settings\SettingsTypes.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Tables.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Utils\Measures.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Utils\ProcessingSignal.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\commonSCPI.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\VCP\SCPI\controlSCPI.h" />

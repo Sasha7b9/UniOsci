@@ -100,7 +100,7 @@ static const Settings defaultSettings =
     // memory
     {
         FNP_1k,
-        ModeWork_Direct,
+        ModeWork_Dir,
         FileNamingMode_Mask,
         "Signal_\x07\x03",      // \x07 - означает, что здесь должен быть очередной номер, \x03 - минимум на три знакоместа
         "Signal01",

@@ -20,9 +20,9 @@
 #define FILE_NAMING_MODE_MANUAL (FILE_NAMING_MODE == FileNamingMode_Manually)
 
 #define MODE_WORK               (set.mem_ModeWork)
-#define MODE_WORK_DIR           (MODE_WORK == ModeWork_Dir)
-#define MODE_WORK_RAM           (MODE_WORK == ModeWork_RAM)
-#define MODE_WORK_ROM           (MODE_WORK == ModeWork_ROM)
+#define MODE_WORK_IS_DIR        (MODE_WORK == ModeWork_Dir)
+#define MODE_WORK_IS_RAM        (MODE_WORK == ModeWork_RAM)
+#define MODE_WORK_IS_ROM        (MODE_WORK == ModeWork_ROM)
 
 
 #define SHOW_IN_INT             (set.mem_ModeShowIntMem)

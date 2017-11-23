@@ -33,7 +33,7 @@
 #define THICKNESS_SIGNAL_IS_3           (THICKNESS_SIGNAL == Thickness_3)
 
 #define TRIG_MODE                       (set.trig_mode)
-#define TRIG_SOURCE                     (set.trig_source)
+#define TRIGSOURCE                     (set.trig_source)
 #define TRIG_POLARITY                   (set.trig_polarity)
 #define TRIG_POLARITY_IS_RISING         (TRIG_POLARITY == Polarity_Rising)
 #define TRIG_INPUT                      (set.trig_input)

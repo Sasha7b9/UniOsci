@@ -169,7 +169,7 @@ void Process_OFFSET(uint8 *buffer)
     if (SCPI_FirstIsInt(buffer, &intVal, -240, 240))
     {
         int trigLev = RShiftZero + 2 * intVal;
-        fpga.SetTrigLev(TRIG_SOURCE, trigLev);
+        fpga.SetTrigLev(TRIGSOURCE, trigLev);
         return;
     }
 

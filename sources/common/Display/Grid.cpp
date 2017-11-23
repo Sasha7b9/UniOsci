@@ -91,7 +91,7 @@ int Grid::MathTop(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::MathHeight(void)
 {
-    if (FFT_ENABLED || FUNC_MODE_DRAW_SEPARATE)
+    if (FFT_ENABLED || FUNC_MODE_DRAW_IS_SEPARATE)
     {
         return grid.FullHeight() / 2;
     }
@@ -108,7 +108,7 @@ int Grid::MathBottom(void)
 int Grid::BottomMessages(void)
 {
     int retValue = grid.FullBottom();
-    if (MODE_WORK_ROM)
+    if (MODE_WORK_IS_ROM)
     {
         retValue -= 12;
     }

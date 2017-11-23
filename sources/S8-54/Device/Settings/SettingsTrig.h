@@ -19,9 +19,9 @@
 #define TRIG_MODE_FIND_AUTO (TRIG_MODE_FIND == TrigModeFind_Auto)
 
 #define TRIGSOURCE          (set.trig_Source)
-#define TRIGSOURCE_A        (TRIGSOURCE == TrigSource_A)
-#define TRIGSOURCE_B        (TRIGSOURCE == TrigSource_B)
-#define TRIGSOURCE_EXT      (TRIGSOURCE == TrigSource_Ext)
+#define TRIGSOURCE_IS_A     (TRIGSOURCE == TrigSource_A)
+#define TRIGSOURCE_IS_B     (TRIGSOURCE == TrigSource_B)
+#define TRIGSOURCE_IS_EXT   (TRIGSOURCE == TrigSource_Ext)
 
 #define START_MODE          (set.trig_StartMode)
 #define START_MODE_AUTO     (START_MODE == StartMode_Auto)
