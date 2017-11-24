@@ -123,20 +123,6 @@ DEF_CHOICE_4
     "ФВЧ", "HPF"
 );
 
-// СИНХР - Удержание ---------------------------------------------------------------------------------------------------------------------------------
-/*
-static const Governor gTimeDelay =
-{
-    Item_Governor, &pTrig, 0,
-    {
-        "Удержание, мс", "Holdoff, ms",
-        "Устанавливает минимальное время между запусками.",
-        "Sets the minimum time between starts."
-    },
-    (int16 *)&TRIG_TIME_DELAY, 45, 10000
-};
-*/
-
 //-------------------------------------------------------------------------------------------------------------------------- СИНХР - ПОИСК - Режим ---
 static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "Auto" };
 
@@ -187,27 +173,26 @@ DEF_BUTTON
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СИНХР - ПОИСК ///
-DEF_PAGE_2(ppSearch, static,
-           Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage,
-           "ПОИСК", "SEARCH",
-           "Управление автоматическим поиском уровня синхронизации.",
-           "Office of the automatic search the trigger level.",
-           cSearch_Mode,      // СИНХР - ПОИСК - Режим
-           bSearch_Search     // СИНХР - ПОИСК - Найти
+DEF_PAGE_2(ppSearch, 
+    static,
+    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage,
+    "ПОИСК", "SEARCH",
+    "Управление автоматическим поиском уровня синхронизации.",
+    "Office of the automatic search the trigger level.",
+    cSearch_Mode,   // СИНХР - ПОИСК - Режим
+    bSearch_Search  // СИНХР - ПОИСК - Найти
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СИНХР ///
-DEF_PAGE_5(pTrig, ,
-           Page_Trig, &mainPage, FuncActive, EmptyPressPage,
-           "СИНХР", "TRIG",
-           "Содержит настройки синхронизации.",
-           "Contains synchronization settings.",
-           cMode,      // СИНХР - Режим
-           cSource,    // СИНХР - Источник
-           cPolarity,  // СИНХР - Полярность
-           cInput,     // СИНХР - Вход
-           ppSearch    // СИНХР - ПОИСК
-                       //  gTimeDelay  // СИНХР - Удержание
+DEF_PAGE_5(pTrig, 
+    ,
+    Page_Trig, &mainPage, FuncActive, EmptyPressPage,
+    "СИНХР", "TRIG",
+    "Содержит настройки синхронизации.",
+    "Contains synchronization settings.",
+    cMode,      // СИНХР - Режим
+    cSource,    // СИНХР - Источник
+    cPolarity,  // СИНХР - Полярность
+    cInput,     // СИНХР - Вход
+    ppSearch    // СИНХР - ПОИСК
 );
-
-const Page * pointerPageTrig = &pTrig;
