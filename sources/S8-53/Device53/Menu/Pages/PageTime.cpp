@@ -19,41 +19,7 @@
 
 
 extern const Page pTime;
-
-
-extern const Choice mcSample;           // РАЗВЕРТКА - Выборка
-static bool  IsActive_Sample();
-extern const Choice mcPeakDet;          // РАЗВЕРТКА - Пик дет
-static bool  IsActive_PeakDet();
-void        OnChanged_PeakDet(bool active);
-extern const Choice mcTPos;             // РАЗВЕРТКА - To
-void        OnChanged_TPos(bool active);
-extern const Choice mcSelfRecorder;     // РАЗВЕРТКА - Самописец
-static bool  IsActive_SelfRecorder();
-extern const Choice mcDivRole;          // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
-
-
 extern const Page mainPage;
-
-
-// РАЗВЕРТКА //////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsTime =
-{
-    (void*)&mcSample,       // РАЗВЕРТКА - Выборка
-    (void*)&mcPeakDet,      // РАЗВЕРТКА - Пик дет
-    (void*)&mcTPos,         // РАЗВЕРТКА - To
-    (void*)&mcSelfRecorder, // РАЗВЕРТКА - Самописец
-    (void*)&mcDivRole       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ    
-};
-
-const Page pTime            ///< РАЗВЕРТКА
-(
-    &mainPage, 0,
-    "РАЗВЕРТКА", "SCAN",
-    "Содержит настройки развёртки.",
-    "Contains scan settings.",
-    Page_Time, &itemsTime
-);
 
 // РАЗВЕРТКА - Выборка -------------------------------------------------------------------------------------------------------------------------------
 static const Choice mcSample =
@@ -62,11 +28,11 @@ static const Choice mcSample =
     {
         "Выборка", "Sampling"
         ,
-        "\"Реальная\" - \n"
-        "\"Эквивалентная\" -"
-        ,
-        "\"Real\" - \n"
-        "\"Equals\" - "
+    "\"Реальная\" - \n"
+    "\"Эквивалентная\" -"
+    ,
+    "\"Real\" - \n"
+    "\"Equals\" - "
     },
     {
         {"Реальное время",  "Real"},
@@ -79,6 +45,28 @@ static bool IsActive_Sample(void)
 {
     return sTime_RandomizeModeEnabled();
 }
+
+DEF_CHOICE_2
+(
+    mcSample,
+    pTime,
+    SAMPLE_TYPE, IsActive_Sample, FuncChangedChoice, FuncDraw,
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
+    ,
+    Page_Time, &mainPage, FuncActive, EmptyPressPage,
+    "РАЗВЕРТКА", "SCAN",
+    "Содержит настройки развёртки.",
+    "Contains scan settings.",
+    mcSample,       // РАЗВЕРТКА - Выборка
+    mcPeakDet,      // РАЗВЕРТКА - Пик дет
+    mcTPos,         // РАЗВЕРТКА - To
+    mcSelfRecorder, // РАЗВЕРТКА - Самописец
+    mcDivRole       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ    
+);
+
 
 // РАЗВЕРТКА - Пик дет -------------------------------------------------------------------------------------------------------------------------------
 static const Choice mcPeakDet =
