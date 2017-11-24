@@ -106,6 +106,10 @@ s const Page name = {Item_Page, false, namePage, 15, keeper, funcActive, {titleR
 #define DEF_SMALL_BUTTON(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw)                                   \
 static const SButton name = { Item_SmallButton, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, funcPress, funcDraw, 0, 0}
 
+#define DEF_SMALL_BUTTON_EXIT(name, keeper, funcActive, funcPress, funcDraw)                                                                \
+static const SButton name = { Item_SmallButton, &keeper, funcActive, {"Выход", "Exit", "Кнопка для выхода в предыдущее меню",               \
+    "Button to return to the previous menu"}, funcPress, funcDraw, 0, 0}
+
 #define DEF_SMALL_BUTTON_HINTS_2(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw,                           \
     nameHints, FuncDrawHint1, hintRu1, hintEn1, FuncDrawHint2, hintRu2, hintEn2)                                                            \
 static const StructHelpSmallButton nameHints[] = {{ FuncDrawHint1, hintRu1, hintEn1 }, { FuncDrawHint2, hintRu2, hintEn2 }};                \

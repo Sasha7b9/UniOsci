@@ -363,7 +363,8 @@ DEF_CHOICE_2
 );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ДИСПЛЕЙ - НАСТРОЙКИ ///
-DEF_PAGE_7(     ppDisplaySettings, static,
+DEF_PAGE_7(         ppDisplaySettings,
+    static,
     Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage,
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
@@ -497,7 +498,8 @@ DEF_GOVERNOR
     "Яркость", "Brightness",
     "Установка яркости свечения дисплея",
     "Setting the brightness of the display",
-    ppDisplaySettings, BRIGHTNESS_DISPLAY, 0, 100, FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
+    ppDisplaySettings, BRIGHTNESS_DISPLAY, 0, 100,
+    FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Уровни ---
@@ -507,7 +509,8 @@ DEF_GOVERNOR
     "Уровни", "Levels",
     "Задаёт время, в течение которого после поворота ручки сещения напряжения на экране остаётся вспомогательная метка уровня смещения",
     "Defines the time during which, after turning the handle visits to the voltage on the screen remains auxiliary label offset level",
-    ppDisplaySettings, TIME_SHOW_LEVELS, 0, 125, FuncActive, FuncChanged, FuncBeforeDraw
+    ppDisplaySettings, TIME_SHOW_LEVELS, 0, 125,
+    FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Время ---
@@ -517,7 +520,8 @@ DEF_GOVERNOR
     "Время", "Time",
     "Установка времени, в течение которого сообщения будут находиться на экране",
     "Set the time during which the message will be on the screen",
-    ppDisplaySettings, TIME_MESSAGES, 1, 99, FuncActive, FuncChanged, FuncBeforeDraw
+    ppDisplaySettings, TIME_MESSAGES, 1, 99,
+    FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню ---

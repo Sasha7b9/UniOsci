@@ -66,7 +66,8 @@ static const char chanDividerRu[] = "Ослабление сигнала:\n\"Выкл\" - сигнал не о
 static const char chanDividerEn[] = "Attenuation: \n\"Off\" - the signal is not attenuated.\n\"x10\" - the signal is attenuated by 10 times";
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КАНАЛ 1 ///
-DEF_PAGE_7(pChanA, ,
+DEF_PAGE_7(         pChanA,
+    ,
     Page_ChannelA, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
@@ -199,7 +200,8 @@ DEF_BUTTON
 )
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КАНАЛ 2 ///
-DEF_PAGE_7(pChanB, ,
+DEF_PAGE_7(         pChanB,
+    ,
     Page_ChannelB, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",

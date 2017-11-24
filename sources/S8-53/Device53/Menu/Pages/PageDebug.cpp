@@ -37,11 +37,15 @@ extern const Page mainPage;
 extern const Page mpConsole_Registers;
 extern const Page pDebug;
 extern const Page mpConsole;
+extern const Page mpADC;
+extern const Page mpADC_Balance;
+extern const Page mpADC_Stretch;
+extern const Page mpADC_AltRShift;
+extern const Page mpRandomizer;
+extern const Page ppSerialNumber;
 
-//-------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_ShowAll, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_ShowAll, mpConsole_Registers,                          //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
     IS_SHOW_REGISTERS_ALL, FuncActive, FuncChangedChoice, FuncDraw,
     "Показывать все", "Show all",
     "Показывать все значения, засылаемые в регистры",
@@ -50,15 +54,14 @@ DEF_CHOICE_2
     "Да",  "Yes"
 );
 
-//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Console_Registers(void)
 {
     return !IS_SHOW_REGISTERS_ALL;
 }
 
-DEF_CHOICE_2
-(
-    mcConsole_Registers_RD_FL, mpConsole_Registers,
+DEF_CHOICE_2(       mcConsole_Registers_RD_FL,                                                          //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL ---
+    mpConsole_Registers,
     set.debug.showRegisters.flag, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "RD_FL", "RD_FL",
     "",
@@ -67,10 +70,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//-------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_RShiftA, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_RShiftA,                                                     //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к ---
+    mpConsole_Registers,
     set.debug.showRegisters.rShiftA, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "U см. 1к", "U shift 1ch",
     "",
@@ -79,10 +81,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//-------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_RShiftB, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_RShiftB,                                                     //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к ---
+    mpConsole_Registers,
     set.debug.showRegisters.rShiftB, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "U см. 2к", "U shift 2ch",
     "",
@@ -91,10 +92,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//-------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр. ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_TrigLev, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_TrigLev,                                                     //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр. ---
+    mpConsole_Registers,
     set.debug.showRegisters.trigLev, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "U синхр.", "U trig.",
     "",
@@ -103,10 +103,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//----------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1 ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_RangeA, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_RangeA,                                                   //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1 ---
+    mpConsole_Registers,
     set.debug.showRegisters.range[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "ВОЛЬТ/ДЕЛ 1", "Range 1",
     "",
@@ -115,10 +114,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//----------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2 ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_RangeB, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_RangeB,                                                   //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2 ---
+    mpConsole_Registers,
     set.debug.showRegisters.range[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "ВОЛЬТ/ДЕЛ 2", "Range 2",
     "",
@@ -127,10 +125,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//--------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр. ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_TrigParam, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_TrigParam,                                              //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр. ---
+    mpConsole_Registers,
     set.debug.showRegisters.trigParam, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Парам. синхр.", "Trig param",
     "",
@@ -192,7 +189,7 @@ DEF_CHOICE_2
 DEF_PAGE_12
 (
     mpConsole_Registers, static,
-    Page_Debug_Console_Registers, &mpConsole, FuncActive, EmptyPressPage,
+    Page_DebugShowRegisters,  &mpConsole, FuncActive, EmptyPressPage,
     "РЕГИСТРЫ", "REGISTERS",
     "",
     "",
@@ -210,68 +207,9 @@ DEF_PAGE_12
     mcConsole_Registers_tShift      // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см.
 )
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - БАЛАНС ///
-static const arrayItems itemsADC_Balance =
-{
-    (void*)&mcADC_Balance_Mode,     // ОТЛАДКА - АЦП - БАЛАНС - Режим
-    (void*)&mgADC_Balance_ShiftA,   // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
-    (void*)&mgADC_Balance_ShiftB    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
-};
-
-static const Page mpADC_Balance
-(
-    &mpADC, 0,
-    "БАЛАНС", "BALANCE",
-    "",
-    "",
-    Page_DebugADCbalance, &itemsADC_Balance
-);
-
-DEF_PAGE_3
-(
-
-);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП ///
-DEF_PAGE_3
-(
-    mpADC, static,
-    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage,
-    "АЦП", "ADC",
-    "",
-    "",
-    mpADC_Balance,  // ОТЛАДКА - АЦП - БАЛАНС
-    mpADC_Stretch,  // ОТЛАДКА - АЦП - РАСТЯЖКА
-    mpADC_AltRShift // ОТЛАДКА - АЦП - ДОП СМЕЩ
-);
-
-// ОТЛАДКА - АЦП - БАЛАНС - Режим --------------------------------------------------------------------------------------------------------------------
-static const Choice mcADC_Balance_Mode =
-{
-    Item_Choice, &mpADC_Balance, 0,
-    {
-        "Режим", "Mode",
-        "",
-        ""
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {"Реальный",    "Real"},
-        {"Ручной",      "Manual"}
-    },
-    (int8*)&BALANCE_ADC_TYPE, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode
-};
-
+//----------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - БАЛАНС - Режим ---
 static int16 shiftADCA;
 static int16 shiftADCB;
-
-static void OnChanged_ADC_Balance_Mode(bool active)
-{
-    Draw_ADC_Balance_Mode(0, 0);
-
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)shiftADCA, false);
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
-}
 
 static void Draw_ADC_Balance_Mode(int x, int y)
 {
@@ -285,16 +223,27 @@ static void Draw_ADC_Balance_Mode(int x, int y)
     shiftADCB = shift[1][BALANCE_ADC_TYPE];
 }
 
-// ОТЛАДКА - АЦП - БАЛАНС - Смещение 1 ---------------------------------------------------------------------------------------------------------------
-static const Governor mgADC_Balance_ShiftA
+static void OnChanged_ADC_Balance_Mode(bool active)
+{
+    Draw_ADC_Balance_Mode(0, 0);
+
+    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)shiftADCA, false);
+    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
+}
+
+DEF_CHOICE_3
 (
-    &mpADC_Balance, IsActive_ADC_Balance_Shift,
-    "Смещение 1", "Offset 1",
+    mcADC_Balance_Mode, mpADC_Balance,
+    BALANCE_ADC_TYPE, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode,
+    "Режим", "Mode",
     "",
     "",
-    &shiftADCA, -125, 125, OnChanged_ADC_Balance_ShiftA
+    DISABLE_RU, DISABLE_EN,
+    "Реальный", "Real",
+    "Ручной",   "Manual"
 );
 
+//------------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - БАЛАНС - Смещение 1 ---
 static void OnChanged_ADC_Balance_ShiftA(void)
 {
     BALANCE_ADC_A = shiftADCA;
@@ -306,92 +255,83 @@ static bool IsActive_ADC_Balance_Shift(void)
     return BALANCE_ADC_TYPE_IS_HAND;
 }
 
-// ОТЛАДКА - АЦП - БАЛАНС - Смещение 2----------------------------------------------------------------------------------------------------------------
-static const Governor mgADC_Balance_ShiftB
+DEF_GOVERNOR
 (
-    &mpADC_Balance, IsActive_ADC_Balance_Shift,
-    "Смещение 2", "Offset 2",
+    mgADC_Balance_ShiftA,
+    "Смещение 1", "Offset 1",
     "",
     "",
-    &shiftADCB, -125, 125, OnChanged_ADC_Balance_ShiftB
+    mpADC_Balance, shiftADCA, -125, 125, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
 );
 
+//------------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - БАЛАНС - Смещение 2 ---
 static void OnChanged_ADC_Balance_ShiftB(void)
 {
     BALANCE_ADC_B = shiftADCB;
     fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
 }
 
-
-// ОТЛАДКА - АЦП - РАСТЯЖКА //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsADC_Stretch =
-{
-    (void*)&mcADC_Stretch_Mode,     // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
-    (void*)&mgADC_Stretch_ADC_A,    // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к
-    (void*)&mgADC_Stretch_ADC_B     // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к    
-};
-
-static const Page mpADC_Stretch
+DEF_GOVERNOR
 (
-    &mpADC, 0,
-    "РАСТЯЖКА", "STRETCH",
+    mgADC_Balance_ShiftB,
+    "Смещение 2", "Offset 2",
     "",
     "",
-    Page_DebugADCstretch, &itemsADC_Stretch
+    mpADC_Balance, shiftADCB, -125, 125, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
 );
 
-// ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ------------------------------------------------------------------------------------------------------------------
-static const Choice mcADC_Stretch_Mode =
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - БАЛАНС ///
+DEF_PAGE_3
+(
+    mpADC_Balance, static,
+    Page_DebugADCbalance, &mpADC, FuncActive, EmptyPressPage,
+    "БАЛАНС", "BALANCE",
+    "",
+    "",
+    mcADC_Balance_Mode,     // ОТЛАДКА - АЦП - БАЛАНС - Режим
+    mgADC_Balance_ShiftA,   // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
+    mgADC_Balance_ShiftB    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
+);
+
+//--------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ---
+void LoadStretchADC(Channel chan)
 {
-    Item_Choice, &mpADC_Stretch, 0,
+    if (DEBUG_STRETCH_ADC_TYPE_IS_DISABLED)
     {
-        "Режим", "Mode",
-        "",
-        ""
-    },
+        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, 0x80, true);
+    }
+    else if (DEBUG_STRETCH_ADC_TYPE_IS_HAND)
     {
-        {DISABLE_RU,    DISABLE_EN},
-        {"Реальный",    "Real"},
-        {"Ручной",      "Manual"}
-    },
-    (int8*)&DEBUG_STRETCH_ADC_TYPE, OnChanged_ADC_Stretch_Mode
-};
+        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)DEBUG_STRETCH_ADC(chan), true);
+    }
+    else if (DEBUG_STRETCH_ADC_TYPE_IS_SETTINGS)
+    {
+        fpga.LoadKoeffCalibration(chan);
+    }
+}
 
 static void OnChanged_ADC_Stretch_Mode(bool active)
 {
-    if(active)
+    if (active)
     {
         LoadStretchADC(A);
         LoadStretchADC(B);
     }
 }
 
-void LoadStretchADC(Channel chan)
-{
-    if(DEBUG_STRETCH_ADC_TYPE_IS_DISABLED)
-    {
-        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, 0x80, true);
-    }
-    else if(DEBUG_STRETCH_ADC_TYPE_IS_HAND)
-    {
-        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)DEBUG_STRETCH_ADC(chan), true);
-    }
-    else if(DEBUG_STRETCH_ADC_TYPE_IS_SETTINGS)
-    {
-        fpga.LoadKoeffCalibration(chan);
-    }
-}
-
-// ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к --------------------------------------------------------------------------------------------------------------
-static const Governor mgADC_Stretch_ADC_A
+DEF_CHOICE_3
 (
-    &mpADC_Stretch, IsActive_ADC_Stretch_ADC, 
-    "Коэфф. 1к", "Koeff. 1ch",
+    mcADC_Stretch_Mode, mpADC_Stretch,
+    DEBUG_STRETCH_ADC_TYPE, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw,
+    "Режим", "Mode",
     "",
     "",
-    &DEBUG_STRETCH_ADC_A, 0, 255, OnChanged_ADC_Stretch_ADC_A
+    DISABLE_RU, DISABLE_EN,
+    "Реальный", "Real",
+    "Ручной",   "Manual"
 );
 
+//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к ---
 static bool IsActive_ADC_Stretch_ADC(void)
 {
     return DEBUG_STRETCH_ADC_TYPE_IS_HAND;
@@ -402,59 +342,52 @@ static void OnChanged_ADC_Stretch_ADC_A(void)
     fpga.WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
 }
 
-
-// ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к --------------------------------------------------------------------------------------------------------------
-static const Governor mgADC_Stretch_ADC_B
+DEF_GOVERNOR
 (
-    &mpADC_Stretch, IsActive_ADC_Stretch_ADC,
-    "Коэфф. 2к", "Koeff. 2ch",
+    mgADC_Stretch_ADC_A,
+    "Коэфф. 1к", "Koeff. 1ch",
     "",
     "",
-    &DEBUG_STRETCH_ADC_B, 0, 255, OnChanged_ADC_Stretch_ADC_B
-);
+    mpADC_Stretch, DEBUG_STRETCH_ADC_A, 0, 255, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_A, FuncBeforeDraw
+)
 
+//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к ---
 static void OnChanged_ADC_Stretch_ADC_B(void)
 {
     fpga.WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
 }
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsADC_AltRShift =
-{
-    (void*)&mbADC_AltRShift_Reset,          // ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс
-    (void*)&mbADC_AltRShift_2mV_DC_A,       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост
-    (void*)&mbADC_AltRShift_2mV_DC_B,       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 2мВ пост
-    (void*)&mbADC_AltRShift_5mV_DC_A,       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 5мВ пост
-    (void*)&mbADC_AltRShift_5mV_DC_B,       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
-    (void*)&mbADC_AltRShift_10mV_DC_A,      // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
-    (void*)&mbADC_AltRShift_10mV_DC_B       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост    
-};
-
-static const Page mpADC_AltRShift
+DEF_GOVERNOR
 (
-    &mpADC, 0,
-    "ДОП СМЕЩ", "ADD RSHFIT",
+    mgADC_Stretch_ADC_B,
+    "Коэфф. 2к", "Koeff. 2ch",
     "",
     "",
-    Page_DebugADCrShift, &itemsADC_AltRShift
+    mpADC_Stretch, DEBUG_STRETCH_ADC_B, 0, 255, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_B, FuncBeforeDraw
 );
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс ------------------------------------------------------------------------------------------------------------------
-static const Button mbADC_AltRShift_Reset
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - РАСТЯЖКА ///
+DEF_PAGE_3
 (
-    &mpADC_AltRShift, 0,
-    "Сброс", "Reset",
-    "", "",
-    OnPress_ADC_AltRShift_Reset
+    mpADC_Stretch, static,
+    Page_DebugADCstretch, &mpADC, FuncActive, EmptyPressPage,
+    "РАСТЯЖКА", "STRETCH",
+    "",
+    "",
+    mcADC_Stretch_Mode,  // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
+    mgADC_Stretch_ADC_A, // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к
+    mgADC_Stretch_ADC_B  // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к
 );
 
+//--------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс ---
 static void OnPress_ADC_AltRShift_Reset(void)
 {
-    for(int chan = 0; chan < 2; chan++)
+    for (int chan = 0; chan < 2; chan++)
     {
-        for(int mode = 0; mode < 2; mode++)
+        for (int mode = 0; mode < 2; mode++)
         {
-            for(int range = 0; range < RangeSize; range++)
+            for (int range = 0; range < RangeSize; range++)
             {
                 set.chan[chan].rShiftAdd[range][mode] = 0;
             }
@@ -464,167 +397,178 @@ static void OnPress_ADC_AltRShift_Reset(void)
     fpga.SetRShift(B, SET_RSHIFT_B);
 }
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост ---------------------------------------------------------------------------------------------------------
-static const Governor mbADC_AltRShift_2mV_DC_A
-(
-    &mpADC_AltRShift, 0,
-    "См 1к 2мВ пост", "Shift 1ch 2mV DC",
-    "",
-    "",
-    &set.chan[A].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100, OnChanged_ADC_AltRShift_A
+DEF_BUTTON(         mbADC_AltRShift_Reset,
+    "Сброс", "Reset",
+    "", "",
+    mpADC_AltRShift, FuncActive, OnPress_ADC_AltRShift_Reset, FuncDraw
 );
 
+//------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост ---
 static void OnChanged_ADC_AltRShift_A(void)
 {
     fpga.SetRShift(A, SET_RSHIFT_A);
 }
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 2мВ пост ---------------------------------------------------------------------------------------------------------
-static const Governor mbADC_AltRShift_2mV_DC_B
-(
-    &mpADC_AltRShift, 0,
-    "См 2к 2мВ пост", "Shift 2ch 2mV DC",
+DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,
+    "См 1к 2мВ пост", "Shift 1ch 2mV DC",
     "",
     "",
-    &set.chan[B].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100, OnChanged_ADC_AltRShift_B
+    mpADC_AltRShift, set.chan[A].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100,
+    FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_AltRShift_B(void)
 {
     fpga.SetRShift(B, SET_RSHIFT_B);
 }
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 5мВ пост ---------------------------------------------------------------------------------------------------------
-static const Governor mbADC_AltRShift_5mV_DC_A
-(
-    &mpADC_AltRShift, 0,
+DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_B,                                                      //--- ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 2мВ пост ---
+    "См 2к 2мВ пост", "Shift 2ch 2mV DC",
+    "",
+    "",
+    mpADC_AltRShift, set.chan[B].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100,
+    FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       mbADC_AltRShift_5mV_DC_A,                                                      //--- ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 5мВ пост ---
     "См 1к 5мВ пост", "Shift 1ch 5mV DC",
     "",
     "",
-    &set.chan[A].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100, OnChanged_ADC_AltRShift_A
+    mpADC_AltRShift, set.chan[A].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100,
+    FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
 );
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост ---------------------------------------------------------------------------------------------------------
-static const Governor mbADC_AltRShift_5mV_DC_B
-(
-    &mpADC_AltRShift, 0,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       mbADC_AltRShift_5mV_DC_B,                                                         // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост ---
     "См 2к 5мВ пост", "Shift 2ch 5mV DC",
     "",
     "",
-    &set.chan[B].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100, OnChanged_ADC_AltRShift_B
+    mpADC_AltRShift, set.chan[B].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100,
+    FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
 );
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост --------------------------------------------------------------------------------------------------------
-static const Governor mbADC_AltRShift_10mV_DC_A
-(
-    &mpADC_AltRShift, 0,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       mbADC_AltRShift_10mV_DC_A,                                                       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост ---
     "См 1к 10мВ пост", "Shift 1ch 10mV DC",
     "",
     "",
-    &set.chan[A].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100, OnChanged_ADC_AltRShift_A
+    mpADC_AltRShift, set.chan[A].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100,
+    FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
 );
 
-// ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост --------------------------------------------------------------------------------------------------------
-static const Governor mbADC_AltRShift_10mV_DC_B
-(
-    &mpADC_AltRShift, 0,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       mbADC_AltRShift_10mV_DC_B,                                                       // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост ---
     "См 2к 10мВ пост", "Shift 2ch 10mV DC",
     "",
     "",
-    &set.chan[B].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100, OnChanged_ADC_AltRShift_B
+    mpADC_AltRShift, set.chan[B].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100,
+    FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
 );
 
 
-// ОТЛАДКА - РАНД-ТОР ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsRandomizer =
-{
-    (void*)&mgRandomizer_SamplesForGates,   // ОТЛАДКА - РАНД-ТОР - Выб-к/ворота
-    (void*)&mgRandomizer_AltTShift0,        // ОТЛАДКА - РАНД-ТОР - tShift доп.
-    (void*)&mgRandomizer_Average            // ОТЛАДКА - РАНД-ТОР - Усредн.
-};
-
-static const Page mpRandomizer
-(
-    &pDebug, 0,
-    "РАНД-ТОР", "RANDOMIZER",
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_7(         mpADC_AltRShift,                                                                                  /// ОТЛАДКА - АЦП - ДОП СМЕЩ ///
+    static,
+    Page_DebugADCaltShift, &mpADC, FuncActive, EmptyPressPage,
+    "ДОП СМЕЩ", "ADD RSHFIT",
     "",
     "",
-    Page_DebugRandomizer, &itemsRandomizer
+    mbADC_AltRShift_Reset,     // ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс
+    mbADC_AltRShift_2mV_DC_A,  // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост
+    mbADC_AltRShift_2mV_DC_B,  // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 2мВ пост
+    mbADC_AltRShift_5mV_DC_A,  // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 5мВ пост
+    mbADC_AltRShift_5mV_DC_B,  // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
+    mbADC_AltRShift_10mV_DC_A, // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
+    mbADC_AltRShift_10mV_DC_B  // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост
 );
 
-// ОТЛАДКА - РАНД-ТОР - Выб-к/ворота -----------------------------------------------------------------------------------------------------------------
-static const Governor mgRandomizer_SamplesForGates
-(
-    &mpRandomizer, 0,
-    "Выб-к/ворота", "Samples/gates",
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         mpADC,                                                                                                        // ОТЛАДКА - АЦП ///
+    static,
+    Page_DebugADC, &pDebug, FuncActive, EmptyPressPage,
+    "АЦП", "ADC",
     "",
     "",
-    &NUM_MEAS_FOR_GATES, 1, 2500, OnChanged_Randomizer_SamplesForGates
+    mpADC_Balance,  // ОТЛАДКА - АЦП - БАЛАНС
+    mpADC_Stretch,  // ОТЛАДКА - АЦП - РАСТЯЖКА
+    mpADC_AltRShift // ОТЛАДКА - АЦП - ДОП СМЕЩ
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Randomizer_SamplesForGates(void)
 {
     fpga.SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
 }
 
-// ОТЛАДКА - РАНД-ТОР - tShift доп. ------------------------------------------------------------------------------------------------------------------
-static const Governor mgRandomizer_AltTShift0
-(
-    &mpRandomizer, 0,
-    "tShift доп.", "tShift alt.",
+DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                                                             // ОТЛАДКА - РАНД-ТОР - Выб-к/ворота ---
+    "Выб-к/ворота", "Samples/gates",
     "",
     "",
-    &ADD_SHIFT_T0, 0, 510, OnChanged_Randomizer_AltTShift0
+    mpRandomizer, NUM_MEAS_FOR_GATES, 1, 2500,
+    FuncActive, OnChanged_Randomizer_SamplesForGates, FuncBeforeDraw
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Randomizer_AltTShift0(void)
 {
     fpga.SetDeltaTShift(ADD_SHIFT_T0);
 }
 
-// ОТЛАДКА - РАНД-ТОР - Усредн. ----------------------------------------------------------------------------------------------------------------------
-static const Governor mgRandomizer_Average
-(
-    &mpRandomizer, 0,
+DEF_GOVERNOR(       mgRandomizer_AltTShift0,                                                                   // ОТЛАДКА - РАНД-ТОР - tShift доп. ---
+    "tShift доп.", "tShift alt.",
+    "",
+    "",
+    mpRandomizer, ADD_SHIFT_T0, 0, 510,
+    FuncActive, OnChanged_Randomizer_AltTShift0, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       mgRandomizer_Average,                                                                          // ОТЛАДКА - РАНД-ТОР - Усредн. ---
     "Усредн.", "Average",
     "",
     "",
-    &NUM_AVE_FOR_RAND, 1, 32
+    mpRandomizer, NUM_AVE_FOR_RAND, 1, 32,
+    FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 
-// ОТЛАДКА - Размер настроек  ------------------------------------------------------------------------------------------------------------------------
-static const Choice mcSizeSettings =
-{
-    Item_Choice, &pDebug, 0,
-    {
-        "Размер настроек", "Size settings",
-        "Вывод размера структуры Settings",
-        "Show size of struct Settings"
-    },
-    {
-        {"Размер", "Size"},
-        {"Размер", "Size"}
-    },
-    0, 0, OnDraw_SizeSettings
-};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         mpRandomizer,                                                                                            // ОТЛАДКА - РАНД-ТОР ///
+    static,
+    Page_DebugRandomizer, &pDebug, FuncActive, EmptyPressPage,
+    "РАНД-ТОР", "RANDOMIZER",
+    "",
+    "",
+    mgRandomizer_SamplesForGates, // ОТЛАДКА - РАНД-ТОР - Выб-к/ворота
+    mgRandomizer_AltTShift0,      // ОТЛАДКА - РАНД-ТОР - tShift доп.
+    mgRandomizer_Average          // ОТЛАДКА - РАНД-ТОР - Усредн.
+);
 
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnDraw_SizeSettings(int x, int y)
 {
     painter.DrawFormatText(x + 5, y + 21, Color::BLACK, "Размер %d", sizeof(Settings));
 }
 
+static int8 temp = 0;
 
-// ОТЛАДКА - Сохр. прошивку --------------------------------------------------------------------------------------------------------------------------
-static const Button mbSaveFirmware
-(
-    &pDebug, IsActive_SaveFirmware,
-    "Сохр. прошивку", "Save firmware",
-    "Сохранение прошивки - секторов 5, 6, 7 общим объёмом 3 х 128 кБ, где хранится программа",
-    "Saving firmware - sectors 5, 6, 7 with a total size of 3 x 128 kB, where the program is stored",
-    OnPress_SaveFirmware
+DEF_CHOICE_2(       mcSizeSettings, pDebug,                                                                          // ОТЛАДКА - Размер настроек  ---
+    temp, FuncActive, FuncChangedChoice, OnDraw_SizeSettings,
+    "Размер настроек", "Size settings",
+    "Вывод размера структуры Settings",
+    "Show size of struct Settings",
+    "Размер", "Size",
+    "Размер", "Size"
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_SaveFirmware(void)
 {
     return gBF.flashDriveIsConnected;
@@ -651,6 +595,26 @@ static void OnPress_SaveFirmware(void)
 
     display.ShowWarningGood(FirmwareSaved);
 }
+
+DEF_BUTTON(         mbSaveFirmware,                                                                                    // ОТЛАДКА - Сохр. прошивку ---
+    "Сохр. прошивку", "Save firmware",
+    "Сохранение прошивки - секторов 5, 6, 7 общим объёмом 3 х 128 кБ, где хранится программа",
+    "Saving firmware - sectors 5, 6, 7 with a total size of 3 x 128 kB, where the program is stored",
+    pDebug, IsActive_SaveFirmware, OnPress_SaveFirmware, FuncDraw
+);
+
+// ОТЛАДКА - С/Н - Выход -----------------------------------------------------------------------------------------------------------------------------
+static void OnPress_SerialNumber_Exit(void)
+{
+    display.RemoveAddDrawFunction();
+    FREE_EXTRAMEM();
+}
+
+DEF_SMALL_BUTTON_EXIT
+(
+    bSerialNumber_Exit, ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
+);
+
 
 
 // ОТЛАДКА - С/Н /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -758,21 +722,6 @@ static void OnRegSet_SerialNumber(int angle)
         p(&s->year, 2014, 2050);
     }
     sound.GovernorChangedValue();
-}
-
-// ОТЛАДКА - С/Н - Выход -----------------------------------------------------------------------------------------------------------------------------
-static const SButton bSerialNumber_Exit
-(
-    &ppSerialNumber,
-    COMMON_BEGIN_SB_EXIT,
-    OnPress_SerialNumber_Exit,
-    DrawSB_Exit
-);
-
-static void OnPress_SerialNumber_Exit(void)
-{
-    display.RemoveAddDrawFunction();
-    FREE_EXTRAMEM();
 }
 
 // ОТЛАДКА - С/Н - Вставить --------------------------------------------------------------------------------------------------------------------------

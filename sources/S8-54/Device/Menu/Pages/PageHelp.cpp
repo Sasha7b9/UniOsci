@@ -89,10 +89,7 @@ DEF_SMALL_BUTTON
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_SMALL_BUTTON
-(
-    sbExitHelp,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  sbExitHelp,
     pHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
 );
 

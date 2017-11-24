@@ -126,13 +126,9 @@ void SetCursPosT(Channel chan, int numCur, float pos)
 }
 
 //------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Выход ---
-DEF_SMALL_BUTTON
+DEF_SMALL_BUTTON_EXIT
 (
-    sbSetExit,
-    "Выход", "Exit",
-    "Кнопка для выхода в предыдущее меню",
-    "Button to return to the previous menu",
-    mspSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
+    sbSetExit, mspSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
 //---------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Источник ---

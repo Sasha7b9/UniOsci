@@ -267,7 +267,7 @@ DEF_PAGE_SB(    ppLast, static,
     &bLast_SaveToDrive // ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить
 );
 
-//--------------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ПОСЛЕДНИЕ - Выход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Exit(void)
 {
     MODE_WORK = ModeWork_Dir;
@@ -279,10 +279,7 @@ static void OnPress_Last_Exit(void)
     OnPressSB_Exit();
 }
 
-DEF_SMALL_BUTTON
-(
-    bLast_Exit,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                                                               //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Выход ---
     ppLast, FuncActive, OnPress_Last_Exit, DrawSB_Exit
 );
 
@@ -526,7 +523,7 @@ DEF_PAGE_SB(    ppInternal, static,
     &bInternal_SaveToDrive      // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
 );
 
-// ПАМЯТЬ - ВНУТР ЗУ - Выход -------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncForInternalExit(void)
 {
     ppLast.SetCurrentSB();
@@ -553,12 +550,7 @@ static void OnPress_Internal_Exit(void)
     }
 }
 
-DEF_SMALL_BUTTON
-(
-    bInternal_Exit,
-    "Выход", "Exit",
-    "Кнопка для выхода в предыдущее меню",
-    "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  bInternal_Exit,                                                                            //--- ПАМЯТЬ - ВНУТР ЗУ - Выход ---
     ppInternal, FuncActive, OnPress_Internal_Exit, DrawSB_Exit
 );
 
@@ -947,19 +939,14 @@ DEF_PAGE_SB(    pppDrive_Manager, static,
     &bDrive_Manager_LevelDown   // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
 );
 
-//------------------------------------------------------------------------------------------------------------ ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Manager_Exit(void)
 {
     display.SetDrawMode(DrawMode_Auto, 0);
     OnPressSB_Exit();
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Manager_Exit,
-    "Выход", "Exit",
-    "Кнопка для выхода в предыдущее меню",
-    "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  bDrive_Manager_Exit,                                                             //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выход ---
     pppDrive_Manager, FuncActive, OnPress_Drive_Manager_Exit, DrawSB_Exit
 );
 
@@ -1143,11 +1130,8 @@ DEF_PAGE_SB(    pppDrive_Mask, static,
     &bDrive_Mask_Insert     // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
 );
 
-//-------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Выход ---
-DEF_SMALL_BUTTON
-(
-    bDrive_Mask_Exit,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  bDrive_Mask_Exit,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Выход ---
     pppDrive_Mask, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 

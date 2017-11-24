@@ -502,11 +502,8 @@ DEF_PAGE_SB(    pppFFT_Cursors, static,
     0
 );
 
-//-------------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - КУРСОРЫ - Выход ---
-DEF_SMALL_BUTTON
-(
-    bFFT_Cursors_Exit,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  bFFT_Cursors_Exit,                                                                 //--- СЕРВИС - СПЕКТР - КУРСОРЫ - Выход ---
     pppFFT_Cursors, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
@@ -646,13 +643,8 @@ DEF_PAGE_SB(    ppFunction, static,
     &bFunction_RangeB
 );
 
-//----------------------------------------------------------------------------------------------------------------------- СЕРВИС - ФУНКЦИЯ - Выход ---
-DEF_SMALL_BUTTON
-(
-    bFunction_Exit,
-    "Выход", "Exit",
-    "Кнопка для выхода в предыдущее меню",
-    "Button to return to the previous menu",
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  bFunction_Exit,                                                                             //--- СЕРВИС - ФУНКЦИЯ - Выход ---
     ppFunction, FuncActive, FuncPress, DrawSB_Exit
 );
 
@@ -1057,16 +1049,13 @@ DEF_PAGE_SB(    ppInformation, static,
     0
 );
 
-//-------------------------------------------------------------------------------------------------------------------- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Information_Exit(void)
 {
     display.SetDrawMode(DrawMode_Auto, 0);
 }
 
-DEF_SMALL_BUTTON
-(
-    bInformation_Exit,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  bInformation_Exit,                                                                       //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
     ppInformation, FuncActive, OnPress_Information_Exit, DrawSB_Exit
 );
 

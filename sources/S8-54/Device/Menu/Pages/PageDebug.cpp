@@ -489,7 +489,9 @@ DEF_GOVERNOR
 static const Choice emptyChoice = {Item_Choice};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - РАСТЯЖКА ///
-DEF_PAGE_15(    pppADC_Stretch, static,
+DEF_PAGE_15
+(
+    pppADC_Stretch, static,
     Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
     "РАСТЯЖКА", "STRETCH",
     "Устанавливает режим и величину растяжки (для ручного режима)",
@@ -657,7 +659,8 @@ DEF_GOVERNOR
 );
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - ДОП СМЕЩ ///
-DEF_PAGE_7(     pppADC_Shift, static,
+DEF_PAGE_7(         pppADC_Shift,
+    static,
     Page_Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage,
     "ДОП СМЕЩ", "ADD RSHFIT",
     "",
@@ -685,7 +688,8 @@ static void OnPress_ADC_Shift_Reset(void)
     FPGA_SetRShift(B, SET_RSHIFT_B);
 }
 
-DEF_BUTTON(
+DEF_BUTTON
+(
     bADC_Shift_Reset,
     "Сброс", "Reset",
     "",
@@ -844,7 +848,8 @@ DEF_GOVERNOR
     "Выб-к/ворота", "Samples/gates",
     "",
     "",
-    ppRand, NUM_MEASURES_FOR_GATES, 1, 2500, FuncActive, OnChanged_Rand_NumMeasures, FuncBeforeDraw
+    ppRand, NUM_MEASURES_FOR_GATES, 1, 2500,
+    FuncActive, OnChanged_Rand_NumMeasures, FuncBeforeDraw
 );
 
 //------------------------------------------------------------------------------------------------------ ОТЛАДКА - РАНД-ТОР - Компенсация задержки ---
@@ -951,16 +956,13 @@ DEF_PAGE_SB(    ppSettings, static,
     0
 );
 
-//-------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - НАСТРОЙКИ - Выход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Settings_Exit(void)
 {
     display.SetDrawMode(DrawMode_Auto, 0);
 }
 
-DEF_SMALL_BUTTON
-(
-    bSettings_Exit,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                                                          //--- ОТЛАДКА - НАСТРОЙКИ - Выход ---
     ppSettings, FuncActive, OnPress_Settings_Exit, DrawSB_Exit
 );
 
@@ -1277,17 +1279,14 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
-//-------------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - С/Н - Выход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SerialNumber_Exit(void)
 {
     OnPressSB_Exit();
     FREE_EXTRAMEM();
 }
 
-DEF_SMALL_BUTTON
-(
-    bSerialNumber_Exit,
-    "Выход", "Exit", "Кнопка для выхода в предыдущее меню", "Button to return to the previous menu",
+DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                                                            //--- ОТЛАДКА - С/Н - Выход ---
     ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
 );
 
