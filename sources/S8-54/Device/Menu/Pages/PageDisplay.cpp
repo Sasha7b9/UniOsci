@@ -65,15 +65,15 @@ DEF_PAGE_9(     pDisplay, ,
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
     "Contains settings of display of the display.",
-    cViewMode,      // ДИСПЛЕЙ - Отображение
-    ppAccum,        // ДИСПЛЕЙ - НАКОПЛЕНИЕ
-    ppAverage,      // ДИСПЛЕЙ - УСРЕДНЕНИЕ
-    cMinMax,        // ДИСПЛЕЙ - Мин Макс
-    cSmoothing,     // ДИСПЛЕЙ - Сглаживание
-    cRefreshFPS,    // ДИСПЛЕЙ - Частота обновл
-    ppGrid,         // ДИСПЛЕЙ - СЕТКА
-    cScaleYtype,    // ДИСПЛЕЙ - Смещение
-    ppDisplaySettings      // ДИСПЛЕЙ - НАСТРОЙКИ
+    cViewMode,        // ДИСПЛЕЙ - Отображение
+    ppAccum,          // ДИСПЛЕЙ - НАКОПЛЕНИЕ
+    ppAverage,        // ДИСПЛЕЙ - УСРЕДНЕНИЕ
+    cMinMax,          // ДИСПЛЕЙ - Мин Макс
+    cSmoothing,       // ДИСПЛЕЙ - Сглаживание
+    cRefreshFPS,      // ДИСПЛЕЙ - Частота обновл
+    ppGrid,           // ДИСПЛЕЙ - СЕТКА
+    cScaleYtype,      // ДИСПЛЕЙ - Смещение
+    ppDisplaySettings // ДИСПЛЕЙ - НАСТРОЙКИ
 );
 
 //-------------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - Отображение ---
@@ -533,8 +533,8 @@ DEF_CHOICE_3
     "При выборе \nПоказывать\n слева вверху экрана выводится полный путь до текущей страницы меню", /// \todo Исправить перевод
     "When choosing \nDisplay\n at the top left of the screen displays the full path to the current page menu",
     "Временно", "Temporary",    /// \todo Исправить перевод
-    "Всегда", "All",
-    "Никогда", "None"
+    "Всегда",   "All",
+    "Никогда",  "None"
 );
 
 //------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ---
@@ -557,9 +557,9 @@ DEF_CHOICE_3
     "\"Show\" - additional markers are shown always,\n"
     "\"Auto\" - additional markers are displayed for 5 seconds after turning the handle channel offset voltage or trigger level",    
     
-    "Скрывать", "Hide",
+    "Скрывать",   "Hide",
     "Показывать", "Show",
-    "Авто", "Auto"
+    "Авто",       "Auto"
 );
 
 //----------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать ---

@@ -433,7 +433,7 @@ static void OnRotate_RegSet_Set(int angle)
 DEF_PAGE_SB
 (
     mspSet, static,
-    PageSB_Cursors_Set, &pCursors, FuncActive,
+    Page_SB_Curs, &pCursors, FuncActive,
     FuncPress, EmptyPressPage, OnRotate_RegSet_Set,
     "УСТАНОВИТЬ", "SET",
     "Переход в режим курсорных измерений",

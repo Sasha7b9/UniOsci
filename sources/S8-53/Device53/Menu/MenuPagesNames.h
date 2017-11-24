@@ -21,8 +21,8 @@ typedef enum
     Page_DebugInformation,      // Œ“À¿ƒ ¿ - »Õ‘Œ–Ã¿÷»ﬂ
     Page_DebugSound,            // Œ“À¿ƒ ¿ - «¬” 
     Page_DebugAltera,           // Œ“À¿ƒ ¿ - ¿À‹“≈–¿
-    Page_Channel0,              //  ¿Õ¿À 1
-    Page_Channel1,              //  ¿Õ¿À 2
+    Page_ChannelA,              //  ¿Õ¿À 1
+    Page_ChannelB,              //  ¿Õ¿À 2
     Page_Cursors,               //  ”–—Œ–€
     Page_Trig,                  // —»Õ’–.
     Page_Memory,                // œ¿Ãﬂ“‹
