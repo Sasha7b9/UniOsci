@@ -17,3 +17,8 @@ void Menu::OpenPageAndSetItCurrent(NamePage namePage)
 {
 
 }
+
+void Measure_RotateRegSet(int)
+{
+
+}

@@ -1,8 +1,8 @@
+#include "PageMemory.h"
 #include "Settings/SettingsTypes.h"
 #include "Utils/Measures.h"
 #include "Utils/Math.h"
-#include "PageMemory.h"
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "Menu/MenuItems.h"
 #include "Utils/CommonFunctions.h"
 #include "Settings/SettingsTypes.h"
@@ -10,6 +10,7 @@
 #include "Display/Colors.h"
 #include "defines.h"
 #include "Display/Painter.h"
+#include "stub.h"
 
 
 /** @addtogroup Menu
@@ -19,9 +20,8 @@
  */
 
 extern const Page pMeasures;
-
 extern const Page mainPage;
-
+extern const Page mspMeasTune;
 
 static CursCntrl    GetMeasuresCursCntrlActive();           // Каким курсором из активной пары сейчас происходит управление.
 
@@ -35,7 +35,7 @@ void DrawSB_MeasTune_Settings(int x, int y)
 
 void PressSB_MeasTune_Settings()
 {
-    Measure_ShorPressOnSmallButtonSettings();
+    Measures_ShorPressOnSmallButtonSettings();
 }
 
 void DrawSB_MeasTune_Markers(int x, int y)
@@ -85,152 +85,117 @@ void RotateRegMeasureSetField(int angle)
     }
 }
 
-extern const Page mspMeasTune;
 
-const SButton sbMeasTuneSettings        // Настройка измерений.
-(
-    &mspMeasTune, 0,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON(   sbMeasTuneSettings,                                                                    //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Настройка ---
     "Настройка", "Setup",
     "Позволяет выбрать необходимые измерения",
     "Allows to choose necessary measurements",
-    PressSB_MeasTune_Settings,
-    DrawSB_MeasTune_Settings
+    mspMeasTune, FuncActive, PressSB_MeasTune_Settings, DrawSB_MeasTune_Settings
 );
 
-const SButton sbMeasTuneMarkers        // Включение/отключение маркера для режима измерений.
-(
-    &mspMeasTune, 0,
+DEF_SMALL_BUTTON(   sbMeasTuneMarkers,                                                                        //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Маркер ---
     "Маркер", "Marker",
     "Позволяет установить маркеры для визуального контроля измерений",
     "Allows to establish markers for visual control of measurements",
-    PressSB_MeasTune_Markers,
-    DrawSB_MeasTune_Markers
+    mspMeasTune, FuncActive, PressSB_MeasTune_Markers, DrawSB_MeasTune_Markers
 );
 
-bool IsActiveChoiceMeasuresNumber()
+static bool IsActiveChoiceMeasuresChannels()
 {
     return SHOW_MEASURES;
 }
 
-bool IsActiveChoiceMeasuresChannels()
+static bool IsActivePageMeasuresFields()
 {
     return SHOW_MEASURES;
 }
 
-bool IsActivePageMeasuresFields()
+static bool IsActiveChoiceMeasuresSignal()
 {
     return SHOW_MEASURES;
 }
 
-bool IsActiveChoiceMeasuresSignal()
+static bool IsActiveButtonMeasuresTune()
 {
     return SHOW_MEASURES;
 }
 
-bool IsActiveButtonMeasuresTune()
-{
-    return SHOW_MEASURES;
-}
-
-bool IsActiveButtonMeasuresFieldSet()
+static bool IsActiveButtonMeasuresFieldSet()
 {
     return MEAS_FIELD_IS_HAND;
 }
 
-// ИЗМЕРЕНИЯ
-extern const Page pMeasures;
-
-// ИЗМЕРЕНИЯ -> Количество
-const Choice mcMeasuresNumber =
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static bool IsActiveChoiceMeasuresNumber()
 {
-    Item_Choice, &pMeasures, IsActiveChoiceMeasuresNumber,
-    {
-        "Количество", "Number"
-        ,
-        "Устанавливает максимальное количество выводимых измерений:\n"
-        "\"1\" - одно измерение\n"
-        "\"2\" - два измерения\n"
-        "\"1х5\" - 1 строка с пятью измерениями\n"
-        "\"2х5\" - 2 строки с пятью измерениями в каждой\n"
-        "\"3х5\" - 3 строки с пятью измерениями в каждой\n"
-        "\"6x1\" - 6 строк по одному измерению в каждой\n"
-        "\"6х2\" - 6 строк по два измерения в каждой"
-        ,
-        "Sets the maximum number of output measurements:\n"
-        "\"1\" - one measurement\n"
-        "\"2\" - two measurements\n"
-        "\"1x5\" - 1 line with the five dimensions\n"
-        "\"2x5\" - two rows with five measurements in each\n"
-        "\"3x5\" - 3 lines with five measurements in each"
-        "\"6x1\" - 6 lines, one in each dimension\n"
-        "\"6x2\" - 6 lines of two dimensions in each\n"
-    },
-    {                          
-        {"1",   "1"},
-        {"2",   "2"},
-        {"1x5", "1x5"},
-        {"2x5", "2x5"},
-        {"3x5", "3x5"},
-        {"6x1", "6x1"},
-        {"6x2", "6x2"}
-    },
-    (int8*)&NUM_MEASURES
-};
+    return SHOW_MEASURES;
+}
 
-/// ИЗМЕРЕНИЯ -> Каналы
-const Choice mcMeasuresChannels =
-{
-    Item_Choice, &pMeasures, IsActiveChoiceMeasuresChannels,
-    {
-        "Каналы", "Channels",
-        "По каким каналам выводить измерения",
-        "Which channels to output measurement"
-    },
-    {   
-        {"1",       "1"},
-        {"2",       "2"},
-        {"1 и 2",   "1 and 2"}
-    },
-    (int8*)&SOURCE_MEASURE
-};
+DEF_CHOICE_7(       mcMeasuresNumber,                                                                                 //--- ИЗМЕРЕНИЯ - Количество ---
+    pMeasures,
+    NUM_MEASURES, IsActiveChoiceMeasuresNumber, FuncChangedChoice, FuncDraw,
+    "Количество", "Number"
+    ,
+    "Устанавливает максимальное количество выводимых измерений:\n"
+    "\"1\" - одно измерение\n"
+    "\"2\" - два измерения\n"
+    "\"1х5\" - 1 строка с пятью измерениями\n"
+    "\"2х5\" - 2 строки с пятью измерениями в каждой\n"
+    "\"3х5\" - 3 строки с пятью измерениями в каждой\n"
+    "\"6x1\" - 6 строк по одному измерению в каждой\n"
+    "\"6х2\" - 6 строк по два измерения в каждой"
+    ,
+    "Sets the maximum number of output measurements:\n"
+    "\"1\" - one measurement\n"
+    "\"2\" - two measurements\n"
+    "\"1x5\" - 1 line with the five dimensions\n"
+    "\"2x5\" - two rows with five measurements in each\n"
+    "\"3x5\" - 3 lines with five measurements in each"
+    "\"6x1\" - 6 lines, one in each dimension\n"
+    "\"6x2\" - 6 lines of two dimensions in each\n"
+    ,
+    "1",   "1",
+    "2",   "2",
+    "1x5", "1x5",
+    "2x5", "2x5",
+    "3x5", "3x5",
+    "6x1", "6x1",
+    "6x2", "6x2"
+)
 
-// ИЗМЕРЕНИЯ -> Показывать
-const Choice mcMeasuresIsShow =
-{
-    Item_Choice, &pMeasures, 0,
-    {
-        "Показывать", "Show",
-        "Выводить или не выводить измерения на экран",
-        "Output or output measurements on screen"
-    },
-    {   
-        {"Нет", "No"},
-        {"Да",  "Yes"}
-    },
-    (int8*)&SHOW_MEASURES
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_3(   mcMeasuresChannels,                                                                                       //--- ИЗМЕРЕНИЯ - Каналы ---
+    pMeasures,
+    SOURCE_MEASURE, IsActiveChoiceMeasuresNumber, FuncChangedChoice, FuncDraw,
+    "Каналы", "Channels",
+    "По каким каналам выводить измерения",
+    "Which channels to output measurement",
+    "1",     "1",
+    "2",     "2",
+    "1 и 2", "1 and 2"
+);
 
-// ИЗМЕРЕНИЯ -> Вид
-const Choice mcMeasuresSignal =
-{
-    Item_Choice, &pMeasures, IsActiveChoiceMeasuresSignal,
-    {
-        "Вид", "View",
-        "Уменьшать или нет зону вывода сигнала для исключения перекрытия его результами измерений",
-        "Decrease or no zone output signal to avoid overlapping of its measurement results"
-    },
-    {   
-        {"Как есть",    "As is"},
-        {"Уменьшать",   "Reduce"}
-    },
-    (int8*)&MODE_VIEW_SIGNALS
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcMeasuresIsShow,                                                                                 //--- ИЗМЕРЕНИЯ - Показывать ---
+    pMeasures, SHOW_MEASURES, FuncActive, FuncChangedChoice, FuncDraw,
+    "Показывать", "Show",
+    "Выводить или не выводить измерения на экран",
+    "Output or output measurements on screen",
+    "Нет", "No",
+    "Да",  "Yes"
+);
 
-
-
-/**********************************************************************************************************************************************************/
-// ИЗМЕРЕНИЯ -> ЗОНА
-extern const Page mspMeasuresField;
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcMeasuresSignal,                                                                                        //--- ИЗМЕРЕНИЯ - Вид ---
+    pMeasures,
+    MODE_VIEW_SIGNALS, IsActiveChoiceMeasuresSignal, FuncChangedChoice, FuncDraw,
+    "Вид", "View",
+    "Уменьшать или нет зону вывода сигнала для исключения перекрытия его результами измерений",
+    "Decrease or no zone output signal to avoid overlapping of its measurement results",
+    "Как есть",  "As is",
+    "Уменьшать", "Reduce"
+);
 
 /*
 // ИЗМЕРЕНИЯ -> ЗОНА -> Область
@@ -265,54 +230,44 @@ static void PressSB_MeasTune_Exit()
     display.RemoveAddDrawFunction();
 }
 
-static const SButton sbExitMeasTune
-(
-    &mspMeasTune,
-    COMMON_BEGIN_SB_EXIT,
-    PressSB_MeasTune_Exit,
-    DrawSB_Exit
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  sbExitMeasTune,                                                                        //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Выход ---
+    mspMeasTune, FuncActive, PressSB_MeasTune_Exit, DrawSB_Exit
 );
 
-// ИЗМЕРЕНИЯ - Настроить ///////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsMeasTune =
-{
-    (void*)&sbExitMeasTune,
-    (void*)0,
-    (void*)0,
-    (void*)0,
-    (void*)&sbMeasTuneMarkers,
-    (void*)&sbMeasTuneSettings
-};
 
-static const Page mspMeasTune
+// ИЗМЕРЕНИЯ - Настроить ///////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_SB
 (
-    &pMeasures, IsActiveButtonMeasuresTune,
+    mspMeasTune,
+    static,
+    Page_SB_MeasTuneMeas, &pMeasures, IsActiveButtonMeasuresTune,
+    EmptyPressPage, EmptyDrawPage, Measure_RotateRegSet,
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",
-    PageSB_Measures_Tune, &itemsMeasTune, EmptyFuncVV, EmptyFuncVV, Measure_RotateRegSet
+    &sbExitMeasTune,
+    0,
+    0,
+    0,
+    &sbMeasTuneMarkers,
+    &sbMeasTuneSettings
 );
 
 
-// ИЗМЕРЕНИЯ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsMeasures =
-{
-    (void*)&mcMeasuresIsShow,
-    (void*)&mcMeasuresNumber,
-    (void*)&mcMeasuresChannels,
-    (void*)&mcMeasuresSignal,
-    (void*)&mspMeasTune    
-};
-
-const Page pMeasures            ///< ИЗМЕРЕНИЯ
-(
-    &mainPage, 0,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pMeasures,                                                                                                        // ИЗМЕРЕНИЯ ///
+    ,
+    Page_Measures, &mainPage, FuncActive, EmptyPressPage,
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",
     "Automatic measurements",
-    Page_Measures, &itemsMeasures
+    mcMeasuresIsShow,
+    mcMeasuresNumber,
+    mcMeasuresChannels,
+    mcMeasuresSignal,
+    mspMeasTune
 );
-
 
 /** @}  @}
  */
