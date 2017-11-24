@@ -1,6 +1,7 @@
 #pragma once
 #include "defines.h"
 #include "Panel/Controls.h"
+#include "Menu/MenuPagesNames.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +54,9 @@ public:
     void RunAfterUpdate(pFuncVV func);
     /// Нарисовать меню
     void Draw();
+
+    /// \todo STUB
+    void OpenPageAndSetItCurrent(NamePage namePage);
 };
 
 

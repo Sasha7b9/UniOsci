@@ -12,3 +12,8 @@ void Painter::DrawTextInRect(int x, int y, int width, int height, char *text)
 {
     DrawTextInRect(x, y, width, text);
 }
+
+void Menu::OpenPageAndSetItCurrent(NamePage namePage)
+{
+
+}

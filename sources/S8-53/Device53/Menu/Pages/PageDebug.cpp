@@ -136,10 +136,9 @@ DEF_CHOICE_2(       mcConsole_Registers_TrigParam,                              
     ENABLE_RU,  ENABLE_EN
 );
 
-//--------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 1 ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_ChanParamA, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_ChanParamA,                                             //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 1 ---
+    mpConsole_Registers,
     set.debug.showRegisters.chanParam[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Парам. кан. 1",  "Chan 1 param",
     "",
@@ -148,10 +147,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//--------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_ChanParamB, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_ChanParamB,                                             //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
+    mpConsole_Registers,
     set.debug.showRegisters.chanParam[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Парам. кан. 2", "Chan 2 param",
     "",
@@ -160,10 +158,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_TBase, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_TBase,                                                      //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ ---
+    mpConsole_Registers,
     set.debug.showRegisters.tBase, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "ВРЕМЯ/ДЕЛ", "TBase",
     "",
@@ -172,10 +169,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см. ---
-DEF_CHOICE_2
-(
-    mcConsole_Registers_tShift, mpConsole_Registers,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_Registers_tShift,                                                         //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см. ---
+    mpConsole_Registers,
     set.debug.showRegisters.tShift, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Т см.", "tShift",
     "",
@@ -185,10 +181,9 @@ DEF_CHOICE_2
 );
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ ///
-DEF_PAGE_12
-(
-    mpConsole_Registers, static,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_12(        mpConsole_Registers,                                                                           // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ ///
+    static,
     Page_DebugShowRegisters,  &mpConsole, FuncActive, EmptyPressPage,
     "РЕГИСТРЫ", "REGISTERS",
     "",
@@ -207,7 +202,7 @@ DEF_PAGE_12
     mcConsole_Registers_tShift      // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см.
 )
 
-//----------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - БАЛАНС - Режим ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 shiftADCA;
 static int16 shiftADCB;
 
@@ -231,9 +226,8 @@ static void OnChanged_ADC_Balance_Mode(bool active)
     fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
 }
 
-DEF_CHOICE_3
-(
-    mcADC_Balance_Mode, mpADC_Balance,
+DEF_CHOICE_3(       mcADC_Balance_Mode,                                                                       //--- ОТЛАДКА - АЦП - БАЛАНС - Режим ---
+    mpADC_Balance,
     BALANCE_ADC_TYPE, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode,
     "Режим", "Mode",
     "",
@@ -243,7 +237,7 @@ DEF_CHOICE_3
     "Ручной",   "Manual"
 );
 
-//------------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - БАЛАНС - Смещение 1 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Balance_ShiftA(void)
 {
     BALANCE_ADC_A = shiftADCA;
@@ -255,35 +249,30 @@ static bool IsActive_ADC_Balance_Shift(void)
     return BALANCE_ADC_TYPE_IS_HAND;
 }
 
-DEF_GOVERNOR
-(
-    mgADC_Balance_ShiftA,
+DEF_GOVERNOR(       mgADC_Balance_ShiftA,                                                                //--- ОТЛАДКА - АЦП - БАЛАНС - Смещение 1 ---
     "Смещение 1", "Offset 1",
     "",
     "",
     mpADC_Balance, shiftADCA, -125, 125, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - БАЛАНС - Смещение 2 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Balance_ShiftB(void)
 {
     BALANCE_ADC_B = shiftADCB;
     fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
 }
 
-DEF_GOVERNOR
-(
-    mgADC_Balance_ShiftB,
+DEF_GOVERNOR(       mgADC_Balance_ShiftB,                                                                //--- ОТЛАДКА - АЦП - БАЛАНС - Смещение 2 ---
     "Смещение 2", "Offset 2",
     "",
     "",
     mpADC_Balance, shiftADCB, -125, 125, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
 );
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - БАЛАНС ///
-DEF_PAGE_3
-(
-    mpADC_Balance, static,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         mpADC_Balance,                                                                                       // ОТЛАДКА - АЦП - БАЛАНС ///
+    static,
     Page_DebugADCbalance, &mpADC, FuncActive, EmptyPressPage,
     "БАЛАНС", "BALANCE",
     "",
@@ -293,7 +282,7 @@ DEF_PAGE_3
     mgADC_Balance_ShiftB    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
 );
 
-//--------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void LoadStretchADC(Channel chan)
 {
     if (DEBUG_STRETCH_ADC_TYPE_IS_DISABLED)
@@ -319,9 +308,8 @@ static void OnChanged_ADC_Stretch_Mode(bool active)
     }
 }
 
-DEF_CHOICE_3
-(
-    mcADC_Stretch_Mode, mpADC_Stretch,
+DEF_CHOICE_3(       mcADC_Stretch_Mode,                                                                     //--- ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ---
+    mpADC_Stretch,
     DEBUG_STRETCH_ADC_TYPE, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw,
     "Режим", "Mode",
     "",
@@ -331,7 +319,7 @@ DEF_CHOICE_3
     "Ручной",   "Manual"
 );
 
-//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_ADC_Stretch_ADC(void)
 {
     return DEBUG_STRETCH_ADC_TYPE_IS_HAND;
@@ -342,24 +330,20 @@ static void OnChanged_ADC_Stretch_ADC_A(void)
     fpga.WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
 }
 
-DEF_GOVERNOR
-(
-    mgADC_Stretch_ADC_A,
+DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                                                //--- ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к ---
     "Коэфф. 1к", "Koeff. 1ch",
     "",
     "",
     mpADC_Stretch, DEBUG_STRETCH_ADC_A, 0, 255, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_A, FuncBeforeDraw
 )
 
-//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Stretch_ADC_B(void)
 {
     fpga.WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
 }
 
-DEF_GOVERNOR
-(
-    mgADC_Stretch_ADC_B,
+DEF_GOVERNOR(       mgADC_Stretch_ADC_B,                                                                //--- ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к ---
     "Коэфф. 2к", "Koeff. 2ch",
     "",
     "",
@@ -367,10 +351,9 @@ DEF_GOVERNOR
 );
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - АЦП - РАСТЯЖКА ///
-DEF_PAGE_3
-(
-    mpADC_Stretch, static,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         mpADC_Stretch,                                                                                     // ОТЛАДКА - АЦП - РАСТЯЖКА ///
+    static,
     Page_DebugADCstretch, &mpADC, FuncActive, EmptyPressPage,
     "РАСТЯЖКА", "STRETCH",
     "",
@@ -380,7 +363,7 @@ DEF_PAGE_3
     mgADC_Stretch_ADC_B  // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к
 );
 
-//--------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_ADC_AltRShift_Reset(void)
 {
     for (int chan = 0; chan < 2; chan++)
@@ -397,19 +380,19 @@ static void OnPress_ADC_AltRShift_Reset(void)
     fpga.SetRShift(B, SET_RSHIFT_B);
 }
 
-DEF_BUTTON(         mbADC_AltRShift_Reset,
+DEF_BUTTON(         mbADC_AltRShift_Reset,                                                                  //--- ОТЛАДКА - АЦП - ДОП СМЕЩ - Сброс ---
     "Сброс", "Reset",
     "", "",
     mpADC_AltRShift, FuncActive, OnPress_ADC_AltRShift_Reset, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_AltRShift_A(void)
 {
     fpga.SetRShift(A, SET_RSHIFT_A);
 }
 
-DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,
+DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                                      //--- ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 2мВ пост ---
     "См 1к 2мВ пост", "Shift 1ch 2mV DC",
     "",
     "",
@@ -603,50 +586,71 @@ DEF_BUTTON(         mbSaveFirmware,                                             
     pDebug, IsActive_SaveFirmware, OnPress_SaveFirmware, FuncDraw
 );
 
-// ОТЛАДКА - С/Н - Выход -----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SerialNumber_Exit(void)
 {
     display.RemoveAddDrawFunction();
     FREE_EXTRAMEM();
 }
 
-DEF_SMALL_BUTTON_EXIT
-(
-    bSerialNumber_Exit, ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
+DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                                                            //--- ОТЛАДКА - С/Н - Выход ---
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
 );
 
-
-
-// ОТЛАДКА - С/Н /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsSerialNumber =
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_SerialNumber_Change(void)
 {
-    (void*)&bSerialNumber_Exit,     // ОТЛАДКА - С/Н - Выход
-    (void*)&bSerialNumber_Change,   // ОТЛАДКА - С/Н - Перейти
-    (void*)0,
-    (void*)0,
-    (void*)0,
-    (void*)&bSerialNumber_Save      // ОТЛАДКА - С/Н - Сохранить    
-};
-
-static const Page ppSerialNumber
-(
-    &pDebug, 0,
-    "С/Н", "S/N",
-    "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
-    "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
-    Page_SB_SerialNumber, &itemsSerialNumber, OnPress_SerialNumber, 0, OnRegSet_SerialNumber
-);
-
-static void OnPress_SerialNumber(void)
-{
-    menu.OpenPageAndSetItCurrent(Page_SB_SerialNumber);
-    display.SetAddDrawFunction(Draw_EnterSerialNumber);
-    MALLOC_EXTRAMEM(StructForSN, s);
-    s->number = 01;
-    s->year = 2017;
-    s->curDigt = 0;
+    ACCESS_EXTRAMEM(StructForSN, s);
+    ++s->curDigt;
+    s->curDigt %= 2;
+    painter.ResetFlash();
 }
 
+static void Draw_SerialNumber_Change(int x, int y)
+{
+    painter.SetFont(TypeFont_UGO2);
+    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
+    painter.SetFont(TypeFont_8);
+}
+
+DEF_SMALL_BUTTON(   bSerialNumber_Change,                                                                           //--- ОТЛАДКА - С/Н - Вставить ---
+    "Вставить", "Insert",
+    "Вставляет выбраный символ",
+    "Inserts the chosen symbol",
+    ppSerialNumber,  FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_SerialNumber_Save(void)
+{
+    ACCESS_EXTRAMEM(StructForSN, s);
+
+    char stringSN[20];
+
+    snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
+
+    if (!OTP_SaveSerialNumber(stringSN))
+    {
+        display.ShowWarningBad(FullyCompletedOTP);
+    }
+}
+
+static void Draw_SerialNumber_Save(int x, int y)
+{
+    painter.SetFont(TypeFont_UGO2);
+    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
+    painter.SetFont(TypeFont_8);
+}
+
+DEF_SMALL_BUTTON(   bSerialNumber_Save,                                                                               // ОТЛАДКА - С/Н - Сохранить ---
+    "Сохранить", "Save",
+    "Записывает серийный номер в OTP",
+    "Records the serial number in OTP",
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
+);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void Draw_EnterSerialNumber(void)
 {
     int x0 = grid.Left() + 40;
@@ -671,8 +675,8 @@ static void Draw_EnterSerialNumber(void)
 
     if (selNumber)
     {
-        colorText = COLOR_FLASH_01;
-        colorBackground = COLOR_FLASH_10;
+        colorText = Color::FLASH_01;
+        colorBackground = Color::FLASH_10;
     }
 
     int y = y0 + 50;
@@ -680,8 +684,8 @@ static void Draw_EnterSerialNumber(void)
     painter.SetColor(colorText);
     int x = painter.DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
 
-    colorText = COLOR_FLASH_01;
-    colorBackground = COLOR_FLASH_10;
+    colorText = Color::FLASH_01;
+    colorBackground = Color::FLASH_10;
 
     if (selNumber)
     {
@@ -698,15 +702,27 @@ static void Draw_EnterSerialNumber(void)
 
     int allShots = OTP_GetSerialNumber(buffer);
 
-    painter.DrawFormatText(x0 + deltaX, y0 + 130, COLOR_FILL, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
+    painter.SetColor(COLOR_FILL);
 
-    painter.DrawFormatText(x0 + deltaX, y0 + 100, COLOR_FILL, "Осталось места для %d попыток", allShots);
+    painter.DrawFormatText(x0 + deltaX, y0 + 130, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
+
+    painter.DrawFormatText(x0 + deltaX, y0 + 100, "Осталось места для %d попыток", allShots);
+}
+
+static void OnPress_SerialNumber()
+{
+    menu.OpenPageAndSetItCurrent(Page_SB_SerialNumber);
+    display.SetAddDrawFunction(Draw_EnterSerialNumber);
+    MALLOC_EXTRAMEM(StructForSN, s);
+    s->number = 01;
+    s->year = 2017;
+    s->curDigt = 0;
 }
 
 static void OnRegSet_SerialNumber(int angle)
 {
     typedef int(*pFunc)(int*, int, int);
-    
+
     typedef void (Math::*pFuncRIII)(int&, int, int);
 
     pFuncVpIII p = angle > 0 ? CircleIncrease<int> : CircleDecrease<int>;
@@ -724,68 +740,26 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
-// ОТЛАДКА - С/Н - Вставить --------------------------------------------------------------------------------------------------------------------------
-static const SButton bSerialNumber_Change
-(
-    &ppSerialNumber, 0,
-    "Вставить", "Insert",
-    "Вставляет выбраный символ",
-    "Inserts the chosen symbol",
-    OnPress_SerialNumber_Change,
-    Draw_SerialNumber_Change
+DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
+    static,
+    Page_SB_SerialNumber, &pDebug, FuncActive,
+    OnPress_SerialNumber, EmptyDrawPage, OnRegSet_SerialNumber,
+    "С/Н", "S/N",
+    "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
+    "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
+    &bSerialNumber_Exit,     // ОТЛАДКА - С/Н - Выход
+    &bSerialNumber_Change,   // ОТЛАДКА - С/Н - Перейти
+    0,
+    0,
+    0,
+    &bSerialNumber_Save      // ОТЛАДКА - С/Н - Сохранить
 );
 
-static void OnPress_SerialNumber_Change(void)
-{
-    ACCESS_EXTRAMEM(StructForSN, s);
-    ++s->curDigt;
-    s->curDigt %= 2;
-    painter.ResetFlash();
-}
 
-static void Draw_SerialNumber_Change(int x, int y)
-{
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
-    painter.SetFont(TypeFont_8);
-}
 
-// ОТЛАДКА - С/Н - Сохранить -------------------------------------------------------------------------------------------------------------------------
-static const SButton bSerialNumber_Save
-(
-    &ppSerialNumber, 0,
-    "Сохранить", "Save",
-    "Записывает серийный номер в OTP",
-    "Records the serial number in OTP",
-    OnPress_SerialNumber_Save,
-    Draw_SerialNumber_Save
-);
-
-static void OnPress_SerialNumber_Save(void)
-{
-    ACCESS_EXTRAMEM(StructForSN, s);
-
-    char stringSN[20];
-
-    snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
-
-    if (!OTP_SaveSerialNumber(stringSN))
-    {
-        display.ShowWarningBad(FullyCompletedOTP);
-    }
-}
-
-static void Draw_SerialNumber_Save(int x, int y)
-{
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    painter.SetFont(TypeFont_8);
-}
-
-//--------------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - Статистика ---
-DEF_CHOICE_2
-(
-    mcStats, pDebug,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcStats,                                                                                            //--- ОТЛАДКА - Статистика ---
+    pDebug,
     SHOW_STATS, FuncActive, FuncChangedChoice, FuncDraw,
     "Статистика", "Statistics"
     ,
@@ -797,21 +771,30 @@ DEF_CHOICE_2
     "Показывать", "Show"
 );
 
-//---------------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - Число строк ---
-DEF_GOVERNOR
-(
-    mgConsole_NumStrings,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       mgConsole_NumStrings,                                                                    //--- ОТЛАДКА - КОНСОЛЬ - Число строк ---
     "Число строк", "Number strings",
     "",
     "",
     mpConsole, NUM_STRINGS, 0, 33, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - КОНСОЛЬ ///
-DEF_PAGE_3
-(
-    mpConsole, static,
-    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcConsole_SizeFont,                                                                       // ОТЛАДКА - КОНСОЛЬ - Размер шрифта ---
+    mpConsole,
+    SIZE_FONT_CONSOLE, FuncActive, FuncChangedChoice, FuncDraw,
+    "Размер шрифта", "Size font",
+    "",
+    "",
+    "5", "5",
+    "8", "8"
+);
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         mpConsole,                                                                                                // ОТЛАДКА - КОНСОЛЬ ///
+    static,
+    Page_DebugConsole, &pDebug, FuncActive, EmptyPressPage,
     "КОНСОЛЬ", "CONSOLE",
     "",
     "",
@@ -822,27 +805,9 @@ DEF_PAGE_3
 
 
 
-// ОТЛАДКА - КОНСОЛЬ - Размер шрифта -----------------------------------------------------------------------------------------------------------------
-static const Choice mcConsole_SizeFont =
-{
-    Item_Choice, &mpConsole, 0,
-    {
-        "Размер шрифта", "Size font",
-        "",
-        ""
-    },
-    {
-        "5",    "5",
-        "8",    "8"
-    },
-    (int8*)&SIZE_FONT_CONSOLE
-};
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА ///
-DEF_PAGE_6
-(
-    pDebug, ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_6(         pDebug,                                                                                                             // ОТЛАДКА ///
+    ,
     Page_Debug, &mainPage, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
     "",
