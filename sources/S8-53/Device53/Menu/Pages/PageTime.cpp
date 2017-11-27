@@ -21,70 +21,25 @@
 extern const Page pTime;
 extern const Page mainPage;
 
-// РАЗВЕРТКА - Выборка -------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcSample =
-{
-    Item_Choice, &pTime, IsActive_Sample,
-    {
-        "Выборка", "Sampling"
-        ,
-    "\"Реальная\" - \n"
-    "\"Эквивалентная\" -"
-    ,
-    "\"Real\" - \n"
-    "\"Equals\" - "
-    },
-    {
-        {"Реальное время",  "Real"},
-        {"Эквивалентная",   "Equals"}
-    },
-    (int8*)&SAMPLE_TYPE
-};
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Sample(void)
 {
     return sTime_RandomizeModeEnabled();
 }
 
-DEF_CHOICE_2
-(
-    mcSample,
+DEF_CHOICE_2(       mcSample,                                                                                            //--- РАЗВЕРТКА - Выборка ---
     pTime,
     SAMPLE_TYPE, IsActive_Sample, FuncChangedChoice, FuncDraw,
+    "Выборка", "Sampling",
+    "\"Реальная\" - \n"
+    "\"Эквивалентная\" -",
+    "\"Real\" - \n"
+    "\"Equals\" - ",
+    "Реальное время", "Real",
+    "Эквивалентная",  "Equals"
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
-    ,
-    Page_Time, &mainPage, FuncActive, EmptyPressPage,
-    "РАЗВЕРТКА", "SCAN",
-    "Содержит настройки развёртки.",
-    "Contains scan settings.",
-    mcSample,       // РАЗВЕРТКА - Выборка
-    mcPeakDet,      // РАЗВЕРТКА - Пик дет
-    mcTPos,         // РАЗВЕРТКА - To
-    mcSelfRecorder, // РАЗВЕРТКА - Самописец
-    mcDivRole       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ    
-);
-
-
-// РАЗВЕРТКА - Пик дет -------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcPeakDet =
-{
-    Item_Choice, &pTime, IsActive_PeakDet,
-    {
-        "Пик дет", "Pic deat",
-        "Включает/выключает пиковый детектор.",
-        "Turns on/off peak detector."
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-        /* , {"Среднее",   "Average"} */
-    },
-    (int8*)&SET_PEAKDET, OnChanged_PeakDet
-};
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_PeakDet(void)
 {
     return (SET_TBASE >= MIN_TBASE_PEC_DEAT);
@@ -133,71 +88,81 @@ void OnChanged_PeakDet(bool active)
     }
 }
 
-// РАЗВЕРТКА - To ------------------------------------------------------------------------------------------------------------------------------------
-static const Choice mcTPos =
-{
-    Item_Choice, &pTime, 0,
-    {
-        "\x7b", "\x7b",
-        "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.",
-        "Sets the anchor point nuleovgo time offset to the screen - the left edge, center, right edge."
-    },
-    {
-        {"Лево",    "Left"},
-        {"Центр",   "Center"},
-        {"Право",   "Right"}
-    },
-    (int8*)&TPOS, OnChanged_TPos
-};
+DEF_CHOICE_2(       mcPeakDet,                                                                                           //--- РАЗВЕРТКА - Пик дет ---
+    pTime,
+    SET_PEAKDET, IsActive_PeakDet, OnChanged_PeakDet, FuncDraw,
+    "Пик дет", "Pic deat",
+    "Включает/выключает пиковый детектор.",
+    "Turns on/off peak detector.",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN
+);
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_TPos(bool active)
 {
     ChangeC_Memory_NumPoints(active);
     fpga.SetTShift(TSHIFT);
 }
 
-// РАЗВЕРТКА - Самописец -----------------------------------------------------------------------------------------------------------------------------
-static const Choice mcSelfRecorder =
-{
-    Item_Choice, &pTime, IsActive_SelfRecorder,
-    {
-        "Самописец", "Self-Recorder",
-        "Включает/выключает режим самописца. Этот режим доступен на развёртках 20мс/дел и более медленных.",
-        "Turn on/off the recorder. This mode is available for scanning 20ms/div and slower."
-    },
-    {
-        {DISABLE_RU,    DISABLE_EN},
-        {ENABLE_RU,     ENABLE_EN}
-    },
-    (int8*)&SELFRECORDER
-};
+DEF_CHOICE_3(       mcTPos,                                                                                                   //--- РАЗВЕРТКА - To ---
+    pTime,
+    TPOS, FuncActive, OnChanged_TPos, FuncDraw,
+    "\x7b", "\x7b",
+    "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.",
+    "Sets the anchor point nuleovgo time offset to the screen - the left edge, center, right edge.",
+    "Лево",  "Left",
+    "Центр", "Center",
+    "Право", "Right"
+);
 
+
+// РАЗВЕРТКА - Самописец -----------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_SelfRecorder(void)
 {
     return SET_TBASE >= MIN_TBASE_P2P;
 }
 
+DEF_CHOICE_2(       mcSelfRecorder,
+    pTime,
+    SELFRECORDER, IsActive_SelfRecorder, FuncChangedChoice, FuncDraw,
+    "Самописец", "Self-Recorder",
+    "Включает/выключает режим самописца. Этот режим доступен на развёртках 20мс/дел и более медленных.",
+    "Turn on/off the recorder. This mode is available for scanning 20ms/div and slower.",
+    ENABLE_RU,  ENABLE_EN,
+    DISABLE_RU, DISABLE_EN
+);
+
 // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ --------------------------------------------------------------------------------------------------------------------------
-static const Choice mcDivRole =
-{
-    Item_Choice, &pTime, 0,
-    {
-        "Ф-ция ВР/ДЕЛ", "Func Time/DIV"
-        ,
-        "Задаёт функцию для ручки ВРЕМЯ/ДЕЛ: в режиме сбора информации (ПУСК/СТОП в положении ПУСК):\n"
-        "1. \"Время\" - изменение смещения по времени.\n"
-        "2. \"Память\" - перемещение по памяти."
-        ,
-        "Sets the function to handle TIME/DIV: mode of collecting information (START/STOP to start position):\n"
-        "1. \"Time\" - change the time shift.\n"
-        "2. \"Memory\" - moving from memory."
-    },
-    {
-        {"Время",   "Time"},
-        {"Память",  "Memory"}
-    },
-    (int8*)&TIME_DIV_XPOS
-};
+DEF_CHOICE_2(       mcDivRole,
+    pTime,
+    TIME_DIV_XPOS, FuncActive, FuncChangedChoice, FuncDraw,
+    "Ф-ция ВР/ДЕЛ", "Func Time/DIV"
+    ,
+    "Задаёт функцию для ручки ВРЕМЯ/ДЕЛ: в режиме сбора информации (ПУСК/СТОП в положении ПУСК):\n"
+    "1. \"Время\" - изменение смещения по времени.\n"
+    "2. \"Память\" - перемещение по памяти."
+    ,
+    "Sets the function to handle TIME/DIV: mode of collecting information (START/STOP to start position):\n"
+    "1. \"Time\" - change the time shift.\n"
+    "2. \"Memory\" - moving from memory.",
+    "Время",  "Time",
+    "Память", "Memory"
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
+    ,
+    Page_Time, &mainPage, FuncActive, EmptyPressPage,
+    "РАЗВЕРТКА", "SCAN",
+    "Содержит настройки развёртки.",
+    "Contains scan settings.",
+    mcSample,       // РАЗВЕРТКА - Выборка
+    mcPeakDet,      // РАЗВЕРТКА - Пик дет
+    mcTPos,         // РАЗВЕРТКА - To
+    mcSelfRecorder, // РАЗВЕРТКА - Самописец
+    mcDivRole       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ    
+);
 
 
 /** @}  @}

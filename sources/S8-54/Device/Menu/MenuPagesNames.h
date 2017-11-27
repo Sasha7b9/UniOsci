@@ -25,33 +25,32 @@ typedef enum
     PageSB_Memory_Drive_Mask,       ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
     PageSB_Memory_SetName,          ///< \brief Ïîÿâëÿåòñÿ ïåðåä ñîõðàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïðè ñîîòâåòñòâóþùåé îïöèè 
                                     ///< ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
-                                    Page_Measures,                  ///< ÈÇÌÅÐÅÍÈß
-                                    PageSB_Measures_Tune,           ///< ÈÇÌÅÐÅÍÈß - ÍÀÑÒÐÎÈÒÜ
-                                    Page_Service,                   ///< ÑÅÐÂÈÑ
-                                    Page_Service_Calibrator,        ///< ÑÅÐÂÈÑ - ÊÀËÈÁÐÀÒÎÐ
-                                    Page_Service_Ethernet,          ///< ÑÅÐÂÈÑ - ETHERNET
-                                    Page_Service_FreqMeter,         ///< ÑÅÐÂÈÑ - ×ÀÑÒÎÒÎÌÅÐ
-                                    Page_Service_Sound,             ///< ÑÅÐÂÈÑ - ÇÂÓÊ
-                                    Page_Service_RTC,               ///< ÑÅÐÂÈÑ - ÂÐÅÌß
-                                    Page_Service_FFT,               ///< ÑÅÐÂÈÑ - ÑÏÅÊÒÐ
-                                    PageSB_Service_FFT_Cursors,     ///< ÑÅÐÂÈÑ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ
-                                    PageSB_Service_Function,        ///< ÑÅÐÂÈÑ - ÔÓÍÊÖÈß
-                                    PageSB_Service_Information,     ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß
-                                    PageSB_Service_Recorder,        ///< ÑÅÐÂÈÑ - ÐÅÃÈÑÒÐÀÒÎÐ
-                                    PageSB_Help,                    ///< ÏÎÌÎÙÜ
-                                    Page_Debug,                     ///< ÎÒËÀÄÊÀ
-                                    Page_Debug_Console,             ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-                                    Page_Debug_Console_Registers,   ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
-                                    Page_Debug_ADC,                 ///< ÎÒËÀÄÊÀ - ÀÖÏ
-                                    Page_Debug_ADC_Balance,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-                                    Page_Debug_ADC_Stretch,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
-                                    Page_Debug_ADC_Shift,           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-                                    Page_Debug_ADC_AltShift,        ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ ÏÀÌ
-                                    Page_Debug_Rand,                ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
-                                    Page_Debug_Channels,            ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
-                                    PageSB_Debug_Settings,          ///< ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
-                                    PageSB_Debug_SerialNumber,      ///< ÎÒËÀÄÊÀ - Ñ/Í
-                                    Page_NumPages,
-                                    Page_NoPage
+    Page_Measures,                  ///< ÈÇÌÅÐÅÍÈß
+    PageSB_Measures_Tune,           ///< ÈÇÌÅÐÅÍÈß - ÍÀÑÒÐÎÈÒÜ
+    Page_Service,                   ///< ÑÅÐÂÈÑ
+    Page_Service_Calibrator,        ///< ÑÅÐÂÈÑ - ÊÀËÈÁÐÀÒÎÐ
+    Page_Service_Ethernet,          ///< ÑÅÐÂÈÑ - ETHERNET
+    Page_Service_FreqMeter,         ///< ÑÅÐÂÈÑ - ×ÀÑÒÎÒÎÌÅÐ
+    Page_Service_Sound,             ///< ÑÅÐÂÈÑ - ÇÂÓÊ
+    Page_Service_RTC,               ///< ÑÅÐÂÈÑ - ÂÐÅÌß
+    Page_Service_FFT,               ///< ÑÅÐÂÈÑ - ÑÏÅÊÒÐ
+    PageSB_Service_FFT_Cursors,     ///< ÑÅÐÂÈÑ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ
+    PageSB_Service_Function,        ///< ÑÅÐÂÈÑ - ÔÓÍÊÖÈß
+    PageSB_Service_Information,     ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß
+    PageSB_Service_Recorder,        ///< ÑÅÐÂÈÑ - ÐÅÃÈÑÒÐÀÒÎÐ
+    PageSB_Help,                    ///< ÏÎÌÎÙÜ
+    Page_Debug,                     ///< ÎÒËÀÄÊÀ
+    Page_Debug_Console,             ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
+    Page_Debug_Console_Registers,   ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
+    Page_Debug_ADC,                 ///< ÎÒËÀÄÊÀ - ÀÖÏ
+    Page_Debug_ADC_Balance,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
+    Page_Debug_ADC_Stretch,         ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
+    Page_Debug_ADC_Shift,           ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
+    Page_Debug_ADC_AltShift,        ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ ÏÀÌ
+    Page_Debug_Rand,                ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
+    Page_Debug_Channels,            ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
+    PageSB_Debug_Settings,          ///< ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
+    PageSB_Debug_SerialNumber,      ///< ÎÒËÀÄÊÀ - Ñ/Í
+    Page_NumPages,
+    Page_NoPage
 } NamePage;
-
