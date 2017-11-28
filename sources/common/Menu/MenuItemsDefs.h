@@ -68,6 +68,14 @@ static const void * const  items##name[] = {                                    
 s const Page name = {Item_Page, false, namePage, 9, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
     items##name, funcPress, EmptyDrawPage, FuncRegSetPage};
 
+#define DEF_PAGE_10(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+    item1, item2, item3, item4, item5, item6, item7, item8, item9, item10)                                                                      \
+static const void * const  items##name[] = {                                                                                                    \
+    (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
+    (void *)&item8, (void *)&item9, (void *)&item10};                                                                                           \
+s const Page name = {Item_Page, false, namePage, 10, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+    items##name, funcPress, EmptyDrawPage, FuncRegSetPage};
+
 #define DEF_PAGE_11(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11)                                                              \
 static const void * const  items##name[] = {                                                                                                    \
