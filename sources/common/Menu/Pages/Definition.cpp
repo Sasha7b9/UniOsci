@@ -20,7 +20,7 @@ extern const Page mainPage;
 
 /// лемч
 DEF_PAGE_11(mainPage,,
-    Page_Main, 0, FuncActive, EmptyPressPage,
+    Page_MainPage, 0, FuncActive, EmptyPressPage,
     "лемч", "MENU",
     "", "",
     pDisplay,   // дхяокеи

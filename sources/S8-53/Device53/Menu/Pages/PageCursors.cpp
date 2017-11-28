@@ -131,7 +131,7 @@ DEF_SMALL_BUTTON_EXIT
     sbSetExit, mspSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
-//---------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Источник ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void PressSB_Cursors_Source(void)
 {
     Channel source = CURS_SOURCE_A ? B : A;
@@ -153,19 +153,16 @@ static void DrawSB_Cursors_Source(int x, int y)
     CURS_SOURCE_A ? DrawSB_Cursors_SourceA(x, y) : DrawSB_Cursors_SourceB(x, y);
 }
 
-DEF_SMALL_BUTTON_HINTS_2
-(
-    sbSetSource,
+DEF_SMALL_BUTTON_HINTS_2(   sbSetSource,                                                                     //--- КУРСОРЫ - УСТАНОВИТЬ - Источник ---
     "Источник", "Source",
     "Выбор канала для курсорных измерений",
     "Channel choice for measurements",
     mspSet, FuncActive, PressSB_Cursors_Source, DrawSB_Cursors_Source,
-    hintsChannel,
     DrawSB_Cursors_SourceA, "канал 1", "channel 1",
     DrawSB_Cursors_SourceB, "канал 2", "channel 2"
 );
 
-//--------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Курсоры U ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void PressSB_Cursors_U(void)
 {
     if (CURS_ACTIVE_IS_U || CURS_CNTRL_U_IS_DISABLE(CURS_SOURCE))
@@ -234,14 +231,11 @@ static void DrawSB_Cursors_U(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON_HINTS_5
-(
-    sbSetU,
+DEF_SMALL_BUTTON_HINTS_5(   sbSetU,                                                                         //--- КУРСОРЫ - УСТАНОВИТЬ - Курсоры U ---
     "Курсоры U", "Cursors U",
     "Выбор курсоров напряжения для индикации и управления",
     "Choice of cursors of voltage for indication and management",
     mspSet, FuncActive, PressSB_Cursors_U, DrawSB_Cursors_U,
-    hintsSetU,
     DrawSB_Cursors_U_Disable,       "курсоры напряжения выключены",
                                     "cursors of tension are switched off",
     DrawSB_Cursors_U_Both_Disable,  "курсоры напряжения включены",
@@ -254,7 +248,7 @@ DEF_SMALL_BUTTON_HINTS_5
                                     "cursors of tension are switched on, control of both cursors"
 );
 
-//--------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Курсоры T ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void PressSB_Cursors_T(void)
 {
     if (CURS_ACTIVE_IS_T || CURS_CNTRL_T_IS_DISABLE(CURS_SOURCE))
@@ -323,14 +317,11 @@ static void DrawSB_Cursors_T(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON_HINTS_5
-(
-    sbSetT,
+DEF_SMALL_BUTTON_HINTS_5(   sbSetT,                                                                         //--- КУРСОРЫ - УСТАНОВИТЬ - Курсоры T ---
     "Курсоры T", "Cursors T",
     "Выбор курсоров времени для индикации и управления",
     "Choice of cursors of time for indication and management",
     mspSet, FuncActive, PressSB_Cursors_T,  DrawSB_Cursors_T,
-    hintsSetT,
     DrawSB_Cursors_T_Disable,       "курсоры времени выключены",
                                     "cursors of time are switched off",
     DrawSB_Cursors_T_Both_Disable,  "курсоры времени включены",
@@ -371,7 +362,7 @@ DEF_SMALL_BUTTON
     mspSet, FuncActive, PressSB_Cursors_100, DrawSB_Cursors_100
 );
 
-//------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Перемещение ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void PressSB_Cursors_PointsPercents(void)
 {
     CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
@@ -401,14 +392,11 @@ static void DrawSB_Cursors_PointsPercents(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON_HINTS_2
-(
-    sbSetPointsPercents,
+DEF_SMALL_BUTTON_HINTS_2(   sbSetPointsPercents,                                                          //--- КУРСОРЫ - УСТАНОВИТЬ - Перемещение ---
     "Перемещение", "Movement",
     "Выбор шага перемещения курсоров - проценты или точки",
     "Choice of a step of movement of cursors - percent or points",
     mspSet, FuncActive, PressSB_Cursors_PointsPercents, DrawSB_Cursors_PointsPercents,
-    hintsSetPointsPercents,
     DrawSB_Cursors_PointsPercents_Percents, "шаг перемещения курсоров кратен одному проценту",
                                             "the step of movement of cursors is multiple to one percent",
     DrawSB_Cursors_PointsPercents_Points,   "шаг перемещения курсора кратен одному пикселю",
