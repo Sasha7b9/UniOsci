@@ -944,7 +944,7 @@ DEF_GOVERNOR
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - НАСТРОЙКИ ///
 DEF_PAGE_SB(    ppSettings, static,
     PageSB_Debug_Settings, &pDebug, FuncActive,
-    OnPress_Settings, EmptyDrawPage, FuncRegSetPage,
+    OnPress_Settings, FuncDrawPage, FuncRegSetPage,
     "НАСТРОЙКИ", "SETTINGS",
     "Показать информацию о настройках",
     "Show settings information",
@@ -1182,8 +1182,8 @@ static void OnPress_EraseData(void)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ОТЛАДКА - С/Н ///
 DEF_PAGE_SB(    ppSerialNumber, static,
-    PageSB_Debug_SerialNumber, &pDebug, FuncActive,
-    OnPress_SerialNumber, EmptyDrawPage, OnRegSet_SerialNumber,
+    PageSB_Debug_SerialNumber, &pDebug,
+    FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber,
     "С/Н", "S/N",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",

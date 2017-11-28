@@ -922,8 +922,8 @@ void OnPress_Drive_Manager(void)
 }
 
 DEF_PAGE_SB(    pppDrive_Manager, static,
-    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager,
-    OnPress_Drive_Manager, EmptyDrawPage, FM_RotateRegSet,
+    PageSB_Memory_Drive_Manager, &ppDrive,
+    IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet,
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
     "Provides access to the file system of the connected drive",
@@ -1114,7 +1114,7 @@ static void OnRegSet_Drive_Mask(int angle)
 
 DEF_PAGE_SB(    pppDrive_Mask, static,
     PageSB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask,
-    OnPress_Drive_Mask, EmptyDrawPage, OnRegSet_Drive_Mask,
+    OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask,
     "МАСКА", "MASK",
     "Режим ввода маски для автоматического именования файлов",
     "Input mode mask for automatic file naming",
@@ -1266,7 +1266,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 
 DEF_PAGE_SB(    pSetName, static,
     PageSB_Memory_SetName, 0, FuncActive,
-    EmptyPressPage, EmptyDrawPage, OnRegSet_SetName,
+    EmptyPressPage, FuncDrawPage, OnRegSet_SetName,
     "", "",
     "",
     "",

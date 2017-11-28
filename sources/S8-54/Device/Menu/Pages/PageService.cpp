@@ -490,7 +490,7 @@ static void OnRegSet_FFT_Cursors(int angle)
 
 DEF_PAGE_SB(    pppFFT_Cursors, static,
     PageSB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors,
-    EmptyPressPage, EmptyDrawPage, OnRegSet_FFT_Cursors,
+    EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors,
     "КУРСОРЫ", "CURSORS",
     "Включает курсоры для измерения параметров спектра",
     "Includes cursors to measure the parameters of the spectrum",
@@ -631,7 +631,7 @@ static void OnRegSet_Function(int delta)
 
 DEF_PAGE_SB(    ppFunction, static,
     PageSB_Service_Function, &pService, IsActive_Function,
-    OnPress_Function, EmptyDrawPage, OnRegSet_Function,
+    OnPress_Function, FuncDrawPage, OnRegSet_Function,
     "ФУНКЦИЯ", "FUNCTION",
     "Установка и выбор математической функции - сложения или умножения",
     "Installation and selection of mathematical functions - addition or multiplication",
@@ -1032,7 +1032,7 @@ static void Information_Draw(void)
 
 DEF_PAGE_SB(    ppInformation, static,
     PageSB_Service_Information, &pService, FuncActive,
-    OnPress_Information, EmptyDrawPage, FuncRegSetPage,
+    OnPress_Information, FuncDrawPage, FuncRegSetPage,
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Показывает информацию о приборе",
     "Displays information about the device",

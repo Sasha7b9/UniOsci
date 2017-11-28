@@ -242,7 +242,7 @@ DEF_PAGE_SB
     mspMeasTune,
     static,
     Page_SB_MeasTuneMeas, &pMeasures, IsActiveButtonMeasuresTune,
-    EmptyPressPage, EmptyDrawPage, Measure_RotateRegSet,
+    EmptyPressPage, FuncDrawPage, Measure_RotateRegSet,
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",

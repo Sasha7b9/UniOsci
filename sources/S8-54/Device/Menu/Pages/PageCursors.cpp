@@ -178,7 +178,7 @@ static void OnRegSet_Set(int angle)
 
 DEF_PAGE_SB(ppSet, static,
     PageSB_Cursors_Set, &pCursors, FuncActive,
-    FuncPress, EmptyDrawPage, OnRegSet_Set,
+    FuncPress, FuncDrawPage, OnRegSet_Set,
     "УСТАНОВИТЬ", "SET",
     "Переход в режим курсорных измерений",
     "Switch to cursor measures",

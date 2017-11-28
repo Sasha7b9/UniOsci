@@ -262,7 +262,7 @@ static void OnRegSet_Tune(int angle)
 
 DEF_PAGE_SB(    ppTune, static,                                                                                           // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
     PageSB_Measures_Tune, &pMeasures, IsActive_Tune,
-    EmptyPressPage, EmptyDrawPage, OnRegSet_Tune,
+    EmptyPressPage, FuncDrawPage, OnRegSet_Tune,
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",

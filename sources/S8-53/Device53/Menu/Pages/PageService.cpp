@@ -464,7 +464,7 @@ static void OnRegSet_Math_FFT_Cursors(int angle)
 
 DEF_PAGE_SB(    ppppMath_FFT_Cursors, static,                                                            // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ ///
     Page_SB_MathCursorsFFT, &pppMath_FFT, 
-    IsActive_Math_FFT_Cursors, EmptyPressPage, EmptyDrawPage, OnRegSet_Math_FFT_Cursors,
+    IsActive_Math_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_Math_FFT_Cursors,
     "КУРСОРЫ", "CURSORS",
     "Включает курсоры для измерения параметров спектра",
     "Includes cursors to measure the parameters of the spectrum",
@@ -727,7 +727,7 @@ static void OnPress_Information(void)
 }
 
 DEF_PAGE_SB(        ppInformation, static,                                                                                  // СЕРВИС - ИНФОРМАЦИЯ ///
-    Page_SB_Information, &pService, FuncActive, OnPress_Information, EmptyDrawPage, FuncRegSetPage,
+    Page_SB_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage,
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Выводит на экран идентификационные данные осциллографа",
     "Displays identification data of the oscilloscope",
