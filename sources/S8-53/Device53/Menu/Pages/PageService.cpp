@@ -18,117 +18,26 @@
  *  @{
  */
 
-extern const Page pService;
-
-
-extern const Button       bResetSettings;               ///< СЕРВИС - Сброс настроек
-static void        OnPress_ResetSettings();
-static void FuncDraw();
-static void OnTimerDraw();
-extern const Button       bAutoSearch;                  ///< СЕРВИС - Поиск сигнала
-static void        OnPress_AutoSearch();
-extern const Page        ppCalibrator;                  ///< СЕРВИС - КАЛИБРАТОР
-extern const Choice       cCalibrator_Mode;             ///< СЕРВИС - КАЛИБРАТОР - Калибратор
-static void      OnChanged_Calibrator_Mode(bool active);
-extern const Button       cCalibrator_Calibrate;        ///< СЕРВИС - КАЛИБРАТОР - Калибровать
-static void        OnPress_Calibrator_Calibrate();
-extern const Page        ppMath;                        ///< СЕРВИС - МАТЕМАТИКА
-extern const Page       pppMath_Function;               ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ
-static bool       IsActive_Math_Function();
-static void        OnPress_Math_Function();
-static void       OnRegSet_Math_Function(int delta);
-extern const SButton sbMath_Function_Exit;          ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Выход
-extern const SButton sbMath_Function_ModeDraw;      ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Экран
-static void        OnPress_Math_Function_ModeDraw();
-static void           Draw_Math_Function_ModeDraw(int x, int y);
-static void           Draw_Math_Function_ModeDraw_Disable(int x, int y);
-static void           Draw_Math_Function_ModeDraw_Separate(int x, int y);
-static void           Draw_Math_Function_ModeDraw_Together(int x, int y);
-extern const SButton sbMath_Function_Type;          ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Вид
-static void        OnPress_Math_Function_Type();
-static void           Draw_Math_Function_Type(int x, int y);
-static void           Draw_Math_Function_Type_Sum(int x, int y);
-static void           Draw_Math_Function_Type_Mul(int x, int y);
-extern const SButton sbMath_Function_ModeRegSet;    ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Режим ручки УСТАНОВКА
-static void        OnPress_Math_Function_ModeRegSet();
-static void           Draw_Math_Function_ModeRegSet(int x, int y);
-static void           Draw_Math_Function_ModeRegSet_Range(int x, int y);
-static void           Draw_Math_Function_ModeRegSet_RShift(int x, int y);
-extern const SButton sbMath_Function_RangeA;        ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 1-го канала
-static void        OnPress_Math_Function_RangeA();
-static void           Draw_Math_Function_RangeA(int x, int y);
-extern const SButton sbMath_Function_RangeB;        ///< СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 2-го канала
-static void        OnPress_Math_Function_RangeB();
-static void           Draw_Math_Function_RangeB(int x, int y);
-extern const Page       pppMath_FFT;                    ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР
-static void        OnPress_Math_FFT();
-static bool       IsActive_Math_FFT();
-extern const Choice       cMath_FFT_Enable;             ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - Отображение
-extern const Choice       cMath_FFT_Scale;              ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - Шкала
-extern const Choice       cMath_FFT_Source;             ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - Источник
-extern const Choice       cMath_FFT_Window;             ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - Окно
-extern const Page      ppppMath_FFT_Cursors;            ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ
-static bool       IsActive_Math_FFT_Cursors();
-static void       OnRegSet_Math_FFT_Cursors(int angle);
-extern const SButton  cMath_FFT_Cursors_Exit;        ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ - Выход
-static void        OnPress_Math_FFT_Cursors_Exit();
-extern const SButton  cMath_FFT_Cursors_Source;      ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ - Источник
-static void        OnPress_Math_FFT_Cursors_Source();
-static void           Draw_Math_FFT_Cursors_Source(int x, int y);
-extern const Choice       cMath_FFT_Limit;              ///< СЕРВИС - МАТЕМАТИКА - СПЕКТР - Диапазон
-static bool       IsActive_Math_FFT_Limit();
-extern const Page        ppEthernet;                    ///< СЕРВИС - ETHERNET
-extern const Choice       cEthernet_Enable;             ///< СЕРВИС - ETHERNET - Ethernet
-static void      OnChanged_Ethernet_Enable(bool active);
-extern const IPaddress   ipEthernet_IP;                 ///< СЕРВИС - ETHERNET - IP адрес
-extern const IPaddress   ipEthernet_Mask;               ///< СЕРВИС - ETHERNET - Маска подсети
-extern const IPaddress   ipEthernet_Gateway;            ///< СЕРВИС - ETHERNET - Шлюз
-extern const MACaddress macEthernet_MAC;                ///< СЕРВИС - ETHERNET - Физ адрес
-extern const Choice       cSound;                       ///< СЕРВИС - Звук
-extern const Choice       cLang;                        ///< СЕРВИС - Язык
-extern const Time         tTime;                        ///< СЕРВИС - Время
-extern const Choice       cModeLongPressButtonTrig;     ///< СЕРВИС - Реж длит СИНХР
-extern const Page        ppInformation;                 ///< СЕРВИС - ИНФОРМАЦИЯ
-static void        OnPress_Information();
-static void Information_Draw();
-extern const SButton sbInformation_Exit;             ///< СЕРВИС - ИНФОРМАЦИЯ - Выход
-static void        OnPress_Information_Exit();
-
 extern const Page mainPage;
+extern const Page pService;
+extern const Page ppCalibrator;
+extern const Page pppMath_Function;
 
-// СЕРВИС ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsService =
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void FuncDraw(void)
 {
-    (void*)&bResetSettings,             // СЕРВИС - Сброс настроек
-    (void*)&bAutoSearch,                // СЕРВИС - Поиск сигнала
-    (void*)&ppCalibrator,               // СЕРВИС - КАЛИБРАТОР
-    (void*)&ppMath,                     // СЕРВИС - МАТЕМАТИКА
-    (void*)&ppEthernet,                 // СЕРВИС - ETHERNET
-    (void*)&cSound,                     // СЕРВИС - Звук
-    (void*)&cLang,                      // СЕРВИС - Язык
-    (void*)&tTime,                      // СЕРВИС - Время
-    (void*)&cModeLongPressButtonTrig,   // СЕРВИС - Реж длит СИНХР
-    (void*)&ppInformation               // СЕРВИС - ИНФОРМАЦИЯ
-};
+    painter.BeginScene(COLOR_BACK);
 
-const Page pService                     ///< СЕРВИС
-(
-    &mainPage, 0,
-    "СЕРВИС", "SERVICE",
-    "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
-    "Additional settings, calibration, signal search, mathematical functions",
-    Page_Service, &itemsService
-);
+    painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
+                                         "Нажмите любую другую кнопку, если сброс не нужен.", COLOR_FILL);
 
-// СЕРВИС - Сброс настроек ---------------------------------------------------------------------------------------------------------------------------
-static const Button bResetSettings
-(
-    &pService, 0,
-    "Сброс настроек", "Reset settings",
-    "Сброс настроек на настройки по умолчанию",
-    "Reset to default settings",
-    OnPress_ResetSettings
-);
+    painter.EndScene();
+}
+
+static void OnTimerDraw(void)
+{
+    display.Update();
+}
 
 static void OnPress_ResetSettings(void)
 {
@@ -146,105 +55,191 @@ static void OnPress_ResetSettings(void)
     panel.Enable();
 }
 
-static void FuncDraw(void)
-{
-    painter.BeginScene(COLOR_BACK);
-
-    painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
-                                         "Нажмите любую другую кнопку, если сброс не нужен.", COLOR_FILL);
-
-    painter.EndScene();
-}
-
-static void OnTimerDraw(void)
-{
-    display.Update();
-}
-
-
-// СЕРВИС - Поиск сигнала ----------------------------------------------------------------------------------------------------------------------------
-static const Button bAutoSearch
-(
-    &pService, 0,
-    "Поиск сигнала", "Find signal",
-    "Устанавливает оптимальные установки осциллографа для сигнала в канале 1",
-    "Sets optimal settings for the oscilloscope signal on channel 1",
-    OnPress_AutoSearch
+DEF_BUTTON(         bResetSettings,                                                                                  //--- СЕРВИС - Сброс настроек ---
+    "Сброс настроек", "Reset settings",
+    "Сброс настроек на настройки по умолчанию",
+    "Reset to default settings",
+    pService, FuncActive, OnPress_ResetSettings, FuncDraw
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_AutoSearch(void)
 {
     fpga.StartAutoFind();
 };
 
-// СЕРВИС - КАЛИБРАТОР ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsCalibrator =
-{
-    (void*)&cCalibrator_Mode,       // СЕРВИС - КАЛИБРАТОР - Калибратор
-    (void*)&cCalibrator_Calibrate   // СЕРВИС - КАЛИБРАТОР - Калибровать
-};
-
-static const Page ppCalibrator
-(
-    &pService, 0,
-    "КАЛИБРАТОР", "CALIBRATOR",
-    "Управлением калибратором и калибровка осциллографа",
-    "Control of the calibrator and calibration of an oscillograph",
-    Page_ServiceCalibrator, &itemsCalibrator
+DEF_BUTTON(         bAutoSearch,                                                                                      //--- СЕРВИС - Поиск сигнала ---
+    "Поиск сигнала", "Find signal",
+    "Устанавливает оптимальные установки осциллографа для сигнала в канале 1",
+    "Sets optimal settings for the oscilloscope signal on channel 1",
+    pService, FuncActive, OnPress_AutoSearch, FuncDraw
 );
 
-// СЕРВИС - КАЛИБРАТОР - Калибратор ------------------------------------------------------------------------------------------------------------------
-static const Choice cCalibrator_Mode =
-{
-    Item_Choice, &ppCalibrator, 0,
-    {
-        "Калибратор",  "Calibrator",
-        "Режим работы калибратора",
-        "Mode of operation of the calibrator"
-    },
-    {
-        {"Перем",   "DC"},
-        {"Пост",    "AC"},
-        {"0В",      "OV"}
-    },
-    (int8*)&CALIBRATOR, OnChanged_Calibrator_Mode
-};
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Calibrator_Mode(bool active)
 {
     fpga.SetCalibratorMode(CALIBRATOR);
 }
 
-// СЕРВИС - КАЛИБРАТОР - Калибровать -----------------------------------------------------------------------------------------------------------------
-static const Button cCalibrator_Calibrate
-(
-    &ppCalibrator, 0,
-    "Калибровать", "Calibrate",
-    "Запуск процедуры калибровки",
-    "Running the calibration procedure",
-    OnPress_Calibrator_Calibrate
+DEF_CHOICE_3(       cCalibrator_Mode,                                                                       //--- СЕРВИС - КАЛИБРАТОР - Калибратор ---
+    ppCalibrator, CALIBRATOR, FuncActive, OnChanged_Calibrator_Mode, FuncDraw,
+    "Калибратор", "Calibrator",
+    "Режим работы калибратора",
+    "Mode of operation of the calibrator",
+    "Перем", "DC",
+    "Пост",  "AC",
+    "0В",    "OV"
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Calibrator_Calibrate(void)
 {
     gStateFPGA.needCalibration = true;
 }
 
-// СЕРВИС - МАТЕМАТИКА ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const arrayItems itemsMath =
-{
-    (void*)&pppMath_Function,     // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ
-    (void*)&pppMath_FFT           // СЕРВИС - МАТЕМАТИКА - СПЕКТР
-};
-
-static const Page ppMath
-(
-    &pService, 0,
-    "МАТЕМАТИКА", "MATH",
-    "Математические функции и БПФ",
-    "Mathematical functions and FFT",
-    Page_Math, &itemsMath
+DEF_BUTTON(         cCalibrator_Calibrate,                                                                 //--- СЕРВИС - КАЛИБРАТОР - Калибровать ---
+    "Калибровать", "Calibrate",
+    "Запуск процедуры калибровки",
+    "Running the calibration procedure",
+    ppCalibrator, FuncActive, OnPress_Calibrator_Calibrate, FuncDraw
 );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
+    static, Page_ServiceCalibrator, &pService, FuncActive, EmptyPressPage,
+    "КАЛИБРАТОР", "CALIBRATOR",
+    "Управлением калибратором и калибровка осциллографа",
+    "Control of the calibrator and calibration of an oscillograph",
+    cCalibrator_Mode,     // СЕРВИС - КАЛИБРАТОР - Калибратор
+    cCalibrator_Calibrate // СЕРВИС - КАЛИБРАТОР - Калибровать
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  sbMath_Function_Exit,                                                          //--- СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Выход ---
+    pppMath_Function, FuncActive, FuncPress, DrawSB_Exit
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void Draw_Math_Function_ModeDraw_Disable(int x, int y)
+{
+    painter.DrawText(x + 2 + (set.common.lang == English ? 2 : 0), y + 5, set.common.lang == Russian ? "Вык" : "Dis");
+}
+
+static void Draw_Math_Function_ModeDraw_Separate(int x, int y)
+{
+    painter.DrawRectangle(x + 3, y + 5, 13, 9);
+    painter.DrawHLine(y + 9, x + 3, x + 16);
+    painter.DrawHLine(y + 10, x + 3, x + 16);
+}
+
+static void Draw_Math_Function_ModeDraw_Together(int x, int y)
+{
+    painter.DrawRectangle(x + 3, y + 5, 13, 9);
+}
+
+static void OnPress_Math_Function_ModeDraw(void)
+{
+    if (FFT_ENABLED)
+    {
+        display.ShowWarningBad(ImpossibleEnableMathFunction);
+    }
+    else
+    {
+        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
+    }
+}
+
+static void Draw_Math_Function_ModeDraw(int x, int y)
+{
+    static const pFuncVII funcs[3] =
+    {
+        Draw_Math_Function_ModeDraw_Disable,
+        Draw_Math_Function_ModeDraw_Separate,
+        Draw_Math_Function_ModeDraw_Together
+    };
+    funcs[FUNC_MODE_DRAW](x, y);
+}
+
+DEF_SMALL_BUTTON_HINTS_3(   sbMath_Function_ModeDraw,                                                  //--- СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Экран ---
+    "Экран", "Display",
+    "Выбирает режим отображения математического сигнала",
+    "Chooses the mode of display of a mathematical signal",
+    pppMath_Function, FuncActive, OnPress_Math_Function_ModeDraw, Draw_Math_Function_ModeDraw,
+    hintsMath_Function_ModeDraw,
+    Draw_Math_Function_ModeDraw_Disable,   "Вывод математической функции отключён",
+                                           "The conclusion of mathematical function is disconnected",
+    Draw_Math_Function_ModeDraw_Separate,  "Сигналы и математическая функция выводятся в разных окнах",
+                                           "Signals and mathematical function are removed in different windows",
+    Draw_Math_Function_ModeDraw_Together,  "Сигналы и математическая функция выводятся в одном окне",
+                                           "Signals and mathematical function are removed in one window"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void Draw_Math_Function_Type_Sum(int x, int y)
+{
+    painter.DrawHLine(y + 9, x + 4, x + 14);
+    painter.DrawVLine(x + 9, y + 4, y + 14);
+}
+
+static void Draw_Math_Function_Type_Mul(int x, int y)
+{
+    painter.SetFont(TypeFont_UGO2);
+    painter.Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
+    painter.SetFont(TypeFont_8);
+}
+
+static void OnPress_Math_Function_Type(void)
+{
+    CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
+}
+
+static void Draw_Math_Function_Type(int x, int y)
+{
+    const pFuncVII funcs[2] = {Draw_Math_Function_Type_Sum, Draw_Math_Function_Type_Mul};
+    funcs[MATH_FUNC](x, y);
+}
+
+DEF_SMALL_BUTTON_HINTS_2(   sbMath_Function_Type,                                                        //--- СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Вид ---
+    "Вид", "Type",
+    "Выбор математической функции",
+    "Choice of mathematical function",
+    pppMath_Function, FuncActive, OnPress_Math_Function_Type, Draw_Math_Function_Type,
+    hintsMath_Function_Type,
+    Draw_Math_Function_Type_Sum, "Сложение",  "Addition",
+    Draw_Math_Function_Type_Mul, "Умножение", "Multiplication"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_HINTS_2(   sbMath_Function_ModeRegSet,                                //--- СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Режим ручки УСТАНОВКА ---
+    "Режим ручки УСТАНОВКА", "Mode regulator SET",
+    "Выбор режима ручки УСТАНОВКА - управление масштабом или смещением",
+    "Choice mode regulcator УСТАНОВКА - management of scale or shift",
+    pppMath_Function, FuncActive, OnPress_Math_Function_ModeRegSet, Draw_Math_Function_ModeRegSet,
+    
+    Draw_Math_Function_ModeRegSet_Range,  "Управление масштабом", "Management of scale",
+    Draw_Math_Function_ModeRegSet_RShift, "Управление смещением", "Management of shift"
+);
+
+static void OnPress_Math_Function_ModeRegSet(void)
+{
+    CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
+}
+
+static void Draw_Math_Function_ModeRegSet(int x, int y)
+{
+    const pFuncVII funcs[2] = {Draw_Math_Function_ModeRegSet_Range, Draw_Math_Function_ModeRegSet_RShift};
+    funcs[MATH_MODE_REG_SET](x, y);
+}
+
+static void Draw_Math_Function_ModeRegSet_Range(int x, int y)
+{
+    painter.DrawChar(x + 7, y + 5, set.common.lang == Russian ? 'M' : 'S');
+}
+
+static void Draw_Math_Function_ModeRegSet_RShift(int x, int y)
+{
+    painter.DrawText(x + 5 - (set.common.lang == English ? 3 : 0), y + 5, set.common.lang == Russian ? "См" : "Shif");
+}
 
 // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static const arrayItems itemsMath_Function =
@@ -349,157 +344,48 @@ static void OnRegSet_Math_Function(int delta)
     }
 }
 
-// СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Выход -------------------------------------------------------------------------------------------------------------
-static const SButton sbMath_Function_Exit
-(
-    &pppMath_Function,
-    COMMON_BEGIN_SB_EXIT,
-    EmptyFuncVV,
-    DrawSB_Exit
-);
-
-// СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Экран -------------------------------------------------------------------------------------------------------------
-static const arrayHints hintsMath_Function_ModeDraw =
+// СЕРВИС - МАТЕМАТИКА ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static const arrayItems itemsMath =
 {
-    {Draw_Math_Function_ModeDraw_Disable,  "Вывод математической функции отключён",
-                                            "The conclusion of mathematical function is disconnected"},
-    {Draw_Math_Function_ModeDraw_Separate, "Сигналы и математическая функция выводятся в разных окнах",
-                                            "Signals and mathematical function are removed in different windows"},
-    {Draw_Math_Function_ModeDraw_Together, "Сигналы и математическая функция выводятся в одном окне",
-                                            "Signals and mathematical function are removed in one window"}
+    (void*)&pppMath_Function,     // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ
+    (void*)&pppMath_FFT           // СЕРВИС - МАТЕМАТИКА - СПЕКТР
 };
 
-static const SButton sbMath_Function_ModeDraw
+static const Page ppMath
 (
-    &pppMath_Function, 0,
-    "Экран", "Display",
-    "Выбирает режим отображения математического сигнала",
-    "Chooses the mode of display of a mathematical signal",
-    OnPress_Math_Function_ModeDraw,
-    Draw_Math_Function_ModeDraw,
-    &hintsMath_Function_ModeDraw
+    &pService, 0,
+    "МАТЕМАТИКА", "MATH",
+    "Математические функции и БПФ",
+    "Mathematical functions and FFT",
+    Page_Math, &itemsMath
 );
 
-static void OnPress_Math_Function_ModeDraw(void)
-{
-    if (FFT_ENABLED)
-    {
-        display.ShowWarningBad(ImpossibleEnableMathFunction);
-    }
-    else
-    {
-        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
-    }
-}
 
-static void Draw_Math_Function_ModeDraw(int x, int y)
+// СЕРВИС ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static const arrayItems itemsService =
 {
-    static const pFuncVII funcs[3] =
-    {
-        Draw_Math_Function_ModeDraw_Disable,
-        Draw_Math_Function_ModeDraw_Separate,
-        Draw_Math_Function_ModeDraw_Together
-    };
-    funcs[FUNC_MODE_DRAW](x, y);
-}
-
-static void Draw_Math_Function_ModeDraw_Disable(int x, int y)
-{
-    painter.DrawText(x + 2 + (set.common.lang == English ? 2 : 0), y + 5, set.common.lang == Russian ? "Вык" : "Dis");
-}
-
-static void Draw_Math_Function_ModeDraw_Separate(int x, int y)
-{
-    painter.DrawRectangle(x + 3, y + 5, 13, 9);
-    painter.DrawHLine(y + 9, x + 3, x + 16);
-    painter.DrawHLine(y + 10, x + 3, x + 16);
-}
-
-static void Draw_Math_Function_ModeDraw_Together(int x, int y)
-{
-    painter.DrawRectangle(x + 3, y + 5, 13, 9);
-}
-
-// СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Вид ---------------------------------------------------------------------------------------------------------------
-static const arrayHints hintsMath_Function_Type =
-{
-    { Draw_Math_Function_Type_Sum,      "Сложение",     "Addition"       },
-    { Draw_Math_Function_Type_Mul,      "Умножение",    "Multiplication" }
+    (void*)&bResetSettings,             // СЕРВИС - Сброс настроек
+    (void*)&bAutoSearch,                // СЕРВИС - Поиск сигнала
+    (void*)&ppCalibrator,               // СЕРВИС - КАЛИБРАТОР
+    (void*)&ppMath,                     // СЕРВИС - МАТЕМАТИКА
+    (void*)&ppEthernet,                 // СЕРВИС - ETHERNET
+    (void*)&cSound,                     // СЕРВИС - Звук
+    (void*)&cLang,                      // СЕРВИС - Язык
+    (void*)&tTime,                      // СЕРВИС - Время
+    (void*)&cModeLongPressButtonTrig,   // СЕРВИС - Реж длит СИНХР
+    (void*)&ppInformation               // СЕРВИС - ИНФОРМАЦИЯ
 };
 
-static const SButton sbMath_Function_Type
+const Page pService                     ///< СЕРВИС
 (
-    &pppMath_Function, 0,
-    "Вид", "Type",
-    "Выбор математической функции",
-    "Choice of mathematical function",
-    OnPress_Math_Function_Type,
-    Draw_Math_Function_Type,
-    &hintsMath_Function_Type
+    &mainPage, 0,
+    "СЕРВИС", "SERVICE",
+    "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
+    "Additional settings, calibration, signal search, mathematical functions",
+    Page_Service, &itemsService
 );
 
-static void OnPress_Math_Function_Type(void)
-{
-    CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
-}
 
-static void Draw_Math_Function_Type(int x, int y)
-{
-    const pFuncVII funcs[2] = {Draw_Math_Function_Type_Sum, Draw_Math_Function_Type_Mul};
-    funcs[MATH_FUNC](x, y);
-}
-
-static void Draw_Math_Function_Type_Sum(int x, int y)
-{
-    painter.DrawHLine(y + 9, x + 4, x + 14);
-    painter.DrawVLine(x + 9, y + 4, y + 14);
-}
-
-static void Draw_Math_Function_Type_Mul(int x, int y)
-{
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
-    painter.SetFont(TypeFont_8);
-}
-
-// СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Режим ручки УСТАНОВКА ---------------------------------------------------------------------------------------------
-static const arrayHints hintsMath_Function_ModeRegSet =
-{
-    {Draw_Math_Function_ModeRegSet_Range,  "Управление масштабом", "Management of scale"},
-    {Draw_Math_Function_ModeRegSet_RShift, "Управление смещением", "Management of shift"}
-};
-
-static const SButton sbMath_Function_ModeRegSet
-(
-    &pppMath_Function, 0,
-    "Режим ручки УСТАНОВКА", "Mode regulator SET",
-    "Выбор режима ручки УСТАНОВКА - управление масштабом или смещением",
-    "Choice mode regulcator УСТАНОВКА - management of scale or shift",
-    OnPress_Math_Function_ModeRegSet,
-    Draw_Math_Function_ModeRegSet,
-    &hintsMath_Function_ModeRegSet
-);
-
-static void OnPress_Math_Function_ModeRegSet(void)
-{
-    CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
-}
-
-static void Draw_Math_Function_ModeRegSet(int x, int y)
-{
-    const pFuncVII funcs[2] = {Draw_Math_Function_ModeRegSet_Range, Draw_Math_Function_ModeRegSet_RShift};
-    funcs[MATH_MODE_REG_SET](x, y);
-}
-
-static void Draw_Math_Function_ModeRegSet_Range(int x, int y)
-{
-    painter.DrawChar(x + 7, y + 5, set.common.lang == Russian ? 'M' : 'S');
-}
-
-static void Draw_Math_Function_ModeRegSet_RShift(int x, int y)
-{
-    painter.DrawText(x + 5 - (set.common.lang == English ? 3 : 0), y + 5, set.common.lang == Russian ? "См" : "Shif");
-}
 
 // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 1-го канала -----------------------------------------------------------------------------------------------
 static const SButton sbMath_Function_RangeA

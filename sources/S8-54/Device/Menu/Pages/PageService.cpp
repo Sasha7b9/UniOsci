@@ -648,7 +648,7 @@ DEF_SMALL_BUTTON_EXIT(  bFunction_Exit,                                         
     ppFunction, FuncActive, FuncPress, DrawSB_Exit
 );
 
-//----------------------------------------------------------------------------------------------------------------------- СЕРВИС - ФУНКЦИЯ - Экран ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Function_Screen(void)
 {
     if (FFT_ENABLED)
@@ -689,14 +689,11 @@ static void Draw_Function_Screen_Together(int x, int y)
     painter.DrawRectangle(x + 3, y + 5, 13, 9);
 }
 
-DEF_SMALL_BUTTON_HINTS_3
-(
-    bFunction_Screen,
+DEF_SMALL_BUTTON_HINTS_3(   bFunction_Screen,                                                                       //--- СЕРВИС - ФУНКЦИЯ - Экран ---
     "Экран", "Display",
     "Выбирает режим отображения математического сигнала",
     "Chooses the mode of display of a mathematical signal",
     ppFunction, FuncActive, OnPress_Function_Screen, Draw_Function_Screen,
-    hintsScreen,
     Draw_Function_Screen_Disable,   "Вывод математической функции отключён",     
                                     "The conclusion of mathematical function is disconnected",
     Draw_Function_Screen_Separate,  "Сигналы и математическая функция выводятся в разных окнах",
@@ -736,7 +733,6 @@ DEF_SMALL_BUTTON_HINTS_2
     "Выбор математической функции",
     "Choice of mathematical function",
     ppFunction, FuncActive, OnPress_Function_Type, Draw_Function_Type,
-    hintsType,
     Draw_Function_Type_Sum, "Сложение",     "Addition",
     Draw_Function_Type_Mul, "Умножение",    "Multiplication"
 );
@@ -770,7 +766,6 @@ DEF_SMALL_BUTTON_HINTS_2
     "Выбор режима ручки УСТАНОВКА - управление масштабом или смещением",
     "Choice mode regulcator УСТАНОВКА - management of scale or shift",
     ppFunction, FuncActive, OnPress_Function_ModeRegSet, Draw_Function_ModeRegSet,
-    hintsModeRegSet,
     Draw_Function_ModeRegSet_Range,  "Управление масштабом", "Management of scale",
     Draw_Function_ModeRegSet_RShift, "Управление смещением", "Management of shift"
 );

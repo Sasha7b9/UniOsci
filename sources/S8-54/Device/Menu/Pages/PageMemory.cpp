@@ -593,14 +593,13 @@ DEF_SMALL_BUTTON_HINTS_2
     "Позволяет всегда показывать выбранный сохранённый сигнал поверх текущего",
     "Allows to show always the chosen kept signal over the current",
     ppInternal, FuncActive, OnPress_Internal_ShowAlways, Draw_Internal_ShowAlways,
-    hintsShowAlways,
     Draw_Internal_ShowAlways_Yes,   "показывать выбранный сигнал из внутренней памяти поверх текущего",
                                     "to show the chosen signal from internal memory over the current",
     Draw_Internal_ShowAlways_No,    "сигнал из внутренней памяти виден только в режиме работы с внутренним запоминающим устройством",
                                     "the signal from internal memory is visible only in an operating mode with an internal memory"
 );
 
-//---------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНУТР ЗУ - Вид сигнала ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_ModeShow(void)
 {
     CircleIncrease<int8>((int8 *)&SHOW_IN_INT, 0, 2);
@@ -637,14 +636,11 @@ static void Draw_Internal_ModeShow_Saved(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON_HINTS_3
-(
-    bInternal_ModeShow,
+DEF_SMALL_BUTTON_HINTS_3(   bInternal_ModeShow,                                                              //--- ПАМЯТЬ - ВНУТР ЗУ - Вид сигнала ---
     "Вид сигнала", "Type of a signal",
     "Показывать записанный или текущий сигнал в режиме ВНУТР ЗУ",
     "Show recorded or current signal in mode Internal Memory",
     ppInternal, FuncActive, OnPress_Internal_ModeShow, Draw_Internal_ModeShow,
-    hintsModeShow,
     Draw_Internal_ModeShow_Direct,  "на дисплее текущий сигнал",        "on the display current signal",    
     Draw_Internal_ModeShow_Saved,   "на дисплее сохранённый сигнал",    "on the display the kept signal",
     Draw_Internal_ModeShow_Both,    "на дисплее оба сигнала",           "on the display both signals"

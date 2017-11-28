@@ -203,7 +203,6 @@ DEF_SMALL_BUTTON_HINTS_2
     "Выбор канала для курсорных измерений",
     "Channel choice for measurements",
     ppSet, FuncActive, OnPress_Set_Channel, Draw_Set_Channel,
-    hintsChannel,
     Draw_Set_ChannelA, "канал 1", "channel 1",
     Draw_Set_ChannelB, "канал 2", "channel 2"
 );
@@ -229,16 +228,14 @@ static void Draw_Set_ChannelB(int x, int y)
 {
     painter.DrawText(x + 7, y + 5, "2");
 }
-//--------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Курсоры U ---
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 // Выбор курсора напряжения - курсор 1, курсор 2, оба курсора или отключены.
-DEF_SMALL_BUTTON_HINTS_5
-(
-    bSet_U,
+DEF_SMALL_BUTTON_HINTS_5(   bSet_U,                                                                         //--- КУРСОРЫ - УСТАНОВИТЬ - Курсоры U ---
     "Курсоры U", "Cursors U",
     "Выбор курсоров напряжения для индикации и управления",
     "Choice of cursors of voltage for indication and management",    
     ppSet, FuncActive, OnPress_Set_U, Draw_Set_U,
-    hintsSetU,
     Draw_Set_U_disable,     "курсоры напряжения выключены", "cursors of tension are switched off",
     Draw_Set_U_disableBoth, "курсоры напряжения включены", "cursors of tension are switched on",
     Draw_Set_U_enableUpper, "курсоры напряжения включены, управление верхним курсором",
@@ -323,15 +320,12 @@ static void Draw_Set_U_enableBoth(int x, int y)
     DrawMenuCursVoltage(x + 7, y + 5, true, true);
 }
 
-// КУРСОРЫ - УСТАНОВИТЬ - Курсоры Т ----------------------------------------------------------------------------------------------------------------
-DEF_SMALL_BUTTON_HINTS_5
-(
-    bSet_T,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_HINTS_5(   bSet_T,                                                                         //--- КУРСОРЫ - УСТАНОВИТЬ - Курсоры Т ---
     "Курсоры T", "Cursors T",
     "Выбор курсоров времени для индикации и управления",
     "Choice of cursors of time for indication and management",
     ppSet, FuncActive, OnPress_Set_T, Draw_Set_T,
-    hintsSetT,
     Draw_Set_T_disable,     "курсоры времени выключены",                             "cursors of time are switched off",
     Draw_Set_T_disableBoth, "курсоры времени включены",                              "cursors of time are switched on",
     Draw_Set_T_enableLeft,  "курсоры времени включены, управление левым курсором",   "cursors of time are switched on, control of the left cursor",
@@ -437,7 +431,6 @@ DEF_SMALL_BUTTON_HINTS_2
     "Выбор шага перемещения курсоров - проценты или точки",
     "Choice of a step of movement of cursors - percent or points",
     ppSet, FuncActive, OnPress_Set_Movement, Draw_Set_Movement,
-    hintsMovement,
     Draw_Set_Movement_Percents, "шаг перемещения курсоров кратен одному проценту", "the step of movement of cursors is multiple to one percent",
     Draw_Set_Movement_Points,   "шаг перемещения курсора кратен одному пикселю",   "the step of movement of the cursor is multiple to one pixel"
 );
