@@ -22,3 +22,13 @@ void Measure_RotateRegSet(int)
 {
 
 }
+
+Page* Menu::PagePointerFromName(NamePage namePage)
+{
+    return 0;
+}
+
+void Menu::ShortPressOnPageItem(Page *, int)
+{
+
+}

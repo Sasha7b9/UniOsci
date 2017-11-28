@@ -57,6 +57,10 @@ public:
 
     /// \todo STUB
     void OpenPageAndSetItCurrent(NamePage namePage);
+
+    Page *PagePointerFromName(NamePage namePage);
+
+    void ShortPressOnPageItem(Page *, int);
 };
 
 
