@@ -111,7 +111,7 @@ DEF_BUTTON(         cCalibrator_Calibrate,                                      
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
-    static, Page_ServiceCalibrator, &pService, FuncActive, EmptyPressPage,
+    Page_ServiceCalibrator, &pService, FuncActive, EmptyPressPage,
     "КАЛИБРАТОР", "CALIBRATOR",
     "Управлением калибратором и калибровка осциллографа",
     "Control of the calibrator and calibration of an oscillograph",
@@ -520,7 +520,7 @@ DEF_PAGE_6( pppMath_FFT, static,                                                
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppMath, static,                                                                                         // СЕРВИС - МАТЕМАТИКА ///
+DEF_PAGE_2(         ppMath,                                                                                                 // СЕРВИС - МАТЕМАТИКА ///
     Page_Math, &pService, FuncActive, FuncPress,
     "МАТЕМАТИКА", "MATH",
     "Математические функции и БПФ",

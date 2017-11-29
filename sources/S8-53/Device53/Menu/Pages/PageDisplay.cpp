@@ -154,7 +154,6 @@ static bool IsActive_Averaging(void)
 }
 
 DEF_PAGE_2(         mspAveraging,                                                                                          // ДИСПЛЕЙ - УСРЕДНЕНИЕ ///
-    static,
     Page_DisplayAverage, &pDisplay, IsActive_Averaging, EmptyPressPage,
     "УСРЕДНЕНИЕ", "AVERAGE",
     "Настройки режима усреднения по последним измерениям.",
@@ -264,7 +263,7 @@ DEF_GOVERNOR(       mgGrid_Brightness,                                          
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         mspGrid,                                                                                                    // ДИСПЛЕЙ - СЕТКА ///
-    static, Page_DisplayGrid, &pDisplay, FuncActive, EmptyPressPage,
+    Page_DisplayGrid, &pDisplay, FuncActive, EmptyPressPage,
     "СЕТКА", "GRID",
     "Содержит настройки отображения координатной сетки.",
     "Contains settings of display of a coordinate grid.",
