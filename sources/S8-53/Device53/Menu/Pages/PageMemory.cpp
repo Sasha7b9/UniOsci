@@ -500,7 +500,7 @@ static void DrawMemoryWave(int num, bool exist)
     int x = grid.Left() + 2 + num * 12;
     int y = grid.FullBottom() - 10;
     int width = 12;
-    painter.FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? Color::FLASH_10 : COLOR_BACK);
+    painter.FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? Color::FLASH_10 : Color::Back());
     painter.DrawRectangle(x, y, width, 10, Color::Fill());
     painter.SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : Color::Fill());
     if (exist)
@@ -818,7 +818,7 @@ void DrawSetName()
     int height = 80;
 
     painter.DrawRectangle(x0, y0, width, height, Color::Fill());
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
+    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int index = 0;
     int position = 0;
@@ -894,7 +894,7 @@ void DrawSetMask()
     int height = 160;
 
     painter.DrawRectangle(x0, y0, width, height, Color::Fill());
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
+    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int index = 0;
     int position = 0;
@@ -1006,7 +1006,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
 
     int width = 40;
     int height = 10;
-    painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, COLOR_BACK);
+    painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, Color::Back());
     painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, Color::Fill());
     painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");

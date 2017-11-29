@@ -49,7 +49,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
     if (hightlight)
     {
         painter.FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
-        color = COLOR_BACK;
+        color = Color::Back();
     }
 
     if (length <= WIDTH_COL)
@@ -66,7 +66,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawHat(int x, int y, char *string, int num1, int num2)
 {
-    painter.FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, COLOR_BACK);
+    painter.FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::Back());
     painter.SetColor(Color::Fill());
     painter.DrawFormatText(x + 60, y, string, num1, num2);
     painter.DrawHLine(y + 10, x + 2, x + 140);
@@ -154,10 +154,10 @@ void FM_Draw(void)
 
     if (gBF.needRedrawFileManager == 1)
     {
-        painter.BeginScene(COLOR_BACK);
+        painter.BeginScene(Color::Back());
         menu.Draw();
         painter.DrawRectangle(0, 0, width, 239, Color::Fill());
-        painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, COLOR_BACK);
+        painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, Color::Back());
         flashDrive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
         painter.DrawVLine(left2col, top + 16, 239, Color::Fill());

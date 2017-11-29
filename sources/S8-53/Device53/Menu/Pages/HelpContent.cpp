@@ -31,7 +31,7 @@ static void DrawPageContent()
         const char *title = TITLE(page);
         if(currentParagraph == numPage)
         {
-            painter.DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, COLOR_BACK, 2, Color::Fill());
+            painter.DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, Color::Back(), 2, Color::Fill());
         }
         else
         {
@@ -52,7 +52,7 @@ static void DrawPageDescription()
 void HelpContent_Draw()
 {
     uint startTime = gTimeMS;
-    painter.FillRegion(grid.Right(), 0, 319 - grid.Right(), 20, COLOR_BACK);
+    painter.FillRegion(grid.Right(), 0, 319 - grid.Right(), 20, Color::Back());
     painter.FillRegion(grid.Right(), 219, 319 - grid.Right(), 21);
     painter.FillRegion(1, 1, WIDTH, 237);
     painter.DrawRectangle(0, 0, WIDTH + 2, 239, Color::Fill());

@@ -659,7 +659,7 @@ static void Draw_EnterSerialNumber(void)
     int height = 160;
 
     painter.DrawRectangle(x0, y0, width, height, Color::Fill());
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
+    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int deltaX = 10;
 
@@ -671,7 +671,7 @@ static void Draw_EnterSerialNumber(void)
     snprintf(buffer, 19, "%02d", s->number);
 
     Color colorText = Color::Fill();
-    Color colorBackground = COLOR_BACK;
+    Color colorBackground = Color::Back();
 
     if (selNumber)
     {
@@ -690,7 +690,7 @@ static void Draw_EnterSerialNumber(void)
     if (selNumber)
     {
         colorText = Color::Fill();
-        colorBackground = COLOR_BACK;
+        colorBackground = Color::Back();
     }
 
     snprintf(buffer, 19, "%04d", s->year);

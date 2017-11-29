@@ -31,7 +31,7 @@ extern const Page ppInformation;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncDraw(void)
 {
-    painter.BeginScene(COLOR_BACK);
+    painter.BeginScene(Color::Back());
 
     painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
                                          "Нажмите любую другую кнопку, если сброс не нужен.", Color::Fill());

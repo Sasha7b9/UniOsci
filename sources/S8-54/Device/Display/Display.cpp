@@ -182,7 +182,7 @@ void Display::Init(void)
     PainterMem_FillRect(0, 0, 99, 99, ColorChannel(A));
     PainterMem_DrawRectangle(10, 10, 10, 30, Color::Fill());
     PainterMem_DrawHLine(90, 10, 90, ColorChannel(B));
-    PainterMem_DrawVLine(90, 10, 90, COLOR_BACK);
+    PainterMem_DrawVLine(90, 10, 90, Color::Back());
     PainterMem_DrawRectangle(0, 0, 99, 99, Color::Fill());
     */
 
