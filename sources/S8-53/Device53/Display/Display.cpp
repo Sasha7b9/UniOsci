@@ -913,12 +913,12 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     }
 	if(width < 256)
     {
-		painter.DrawVLineArray(x, width, points, ColorChannel(chan));
+		painter.DrawVLineArray(x, width, points, COLOR_CHAN(chan));
 	}
     else
     {
-		painter.DrawVLineArray(x, 255, points, ColorChannel(chan));
-		painter.DrawVLineArray(x + 255, width - 255, points + 255 * 2, ColorChannel(chan));
+		painter.DrawVLineArray(x, 255, points, COLOR_CHAN(chan));
+		painter.DrawVLineArray(x + 255, width - 255, points + 255 * 2, COLOR_CHAN(chan));
 	}
 }
 

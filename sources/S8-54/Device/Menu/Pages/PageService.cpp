@@ -476,7 +476,7 @@ DEF_CHOICE_4
     "’‡ÌÌ‡",        "Hann"        
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// —≈–¬»— - —œ≈ “– -  ”–—Œ–€ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsActive_FFT_Cursors(void)
 {
     return FFT_ENABLED;
@@ -488,7 +488,7 @@ static void OnRegSet_FFT_Cursors(int angle)
     sound.RegulatorShiftRotate();
 }
 
-DEF_PAGE_SB(    pppFFT_Cursors, static,
+DEF_PAGE_SB(        pppFFT_Cursors,                                                                                   // —≈–¬»— - —œ≈ “– -  ”–—Œ–€ ///
     PageSB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors,
     EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors,
     " ”–—Œ–€", "CURSORS",
@@ -545,7 +545,7 @@ DEF_CHOICE_3
     "-80‰¡", "-80dB"
 );
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// —≈–¬»— - ‘”Õ ÷»ﬂ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsActive_Function(void)
 {
     return !FFT_ENABLED;
@@ -629,7 +629,7 @@ static void OnRegSet_Function(int delta)
     }
 }
 
-DEF_PAGE_SB(    ppFunction, static,
+DEF_PAGE_SB(        ppFunction,                                                                                                // —≈–¬»— - ‘”Õ ÷»ﬂ ///
     PageSB_Service_Function, &pService, IsActive_Function,
     OnPress_Function, FuncDrawPage, OnRegSet_Function,
     "‘”Õ ÷»ﬂ", "FUNCTION",
@@ -987,7 +987,7 @@ DEF_CHOICE_2
     "¿Ì„ÎËÈÒÍËÈ",   "English"
 );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// —≈–¬»— - »Õ‘Œ–Ã¿÷»ﬂ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnPress_Information(void)
 {
     display.SetDrawMode(DrawMode_Auto, Information_Draw);
@@ -1030,7 +1030,7 @@ static void Information_Draw(void)
     painter.EndScene();
 }
 
-DEF_PAGE_SB(    ppInformation, static,
+DEF_PAGE_SB(        ppInformation,                                                                                          // —≈–¬»— - »Õ‘Œ–Ã¿÷»ﬂ ///
     PageSB_Service_Information, &pService, FuncActive,
     OnPress_Information, FuncDrawPage, FuncRegSetPage,
     "»Õ‘Œ–Ã¿÷»ﬂ", "INFORMATION",

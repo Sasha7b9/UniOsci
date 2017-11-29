@@ -215,7 +215,8 @@ DEF_CHOICE_6
     //,namesLengthMemory[6], namesLengthMemory[6],
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ ---
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnPress_Last(void)
 {
     NUM_RAM_SIGNAL = 0;
@@ -253,7 +254,7 @@ static void OnRegSet_Last(int angle)
     }
 }
 
-DEF_PAGE_SB(    ppLast, static,
+DEF_PAGE_SB(        ppLast,                                                                                                  // œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ ///
     PageSB_Memory_Last, &pMemory, FuncActive,
     OnPress_Last, OnDraw_Last, OnRegSet_Last,
     "œŒ—À≈ƒÕ»≈", "LATEST",
@@ -452,7 +453,7 @@ static void DrawSetName(void)
 
 
 
-//------------------------------------------------------------------------------------------------------------------------------ œ¿Ãﬂ“‹ - ¬Õ”“– «” ---
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnPress_Internal(void)
 {
     MODE_WORK = ModeWork_ROM;
@@ -506,7 +507,7 @@ static void OnRegSet_Internal(int delta)
     painter.ResetFlash();
 }
 
-DEF_PAGE_SB(    ppInternal, static,
+DEF_PAGE_SB(        ppInternal,                                                                                               // œ¿Ãﬂ“‹ - ¬Õ”“– «” ///
     PageSB_Memory_Internal, &pMemory, FuncActive,
     OnPress_Internal, OnDraw_Internal, OnRegSet_Internal,
     "¬Õ”“– «”", "INT STORAGE",
@@ -901,7 +902,7 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsActive_Drive_Manager(void)
 {
     return FDRIVE_IS_CONNECTED;
@@ -921,7 +922,7 @@ void OnPress_Drive_Manager(void)
     }
 }
 
-DEF_PAGE_SB(    pppDrive_Manager, static,
+DEF_PAGE_SB(        pppDrive_Manager,                                                                               // œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ ///
     PageSB_Memory_Drive_Manager, &ppDrive,
     IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet,
     " ¿“¿ÀŒ√", "DIRECTORY",
@@ -997,7 +998,7 @@ DEF_SMALL_BUTTON
     pppDrive_Manager, FuncActive, PressSB_FM_LevelDown, Draw_Drive_Manager_LevelDown
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// œ‡ÏˇÚ¸ - ¬Õ≈ÿÕ «” - Ã¿— ¿ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsActive_Drive_Mask(void)
 {
     return FILE_NAMING_MODE_MASK;
@@ -1112,7 +1113,7 @@ static void OnRegSet_Drive_Mask(int angle)
     OnMemExtSetMaskNameRegSet(angle, sizeof(symbolsAlphaBet) / 4);
 }
 
-DEF_PAGE_SB(    pppDrive_Mask, static,
+DEF_PAGE_SB(        pppDrive_Mask,                                                                                    // œ‡ÏˇÚ¸ - ¬Õ≈ÿÕ «” - Ã¿— ¿ ///
     PageSB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask,
     OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask,
     "Ã¿— ¿", "MASK",
@@ -1239,7 +1240,7 @@ DEF_SMALL_BUTTON
     pppDrive_Mask, FuncActive, OnPress_Drive_Mask_Insert, Draw_Drive_Mask_Insert
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////// —Ú‡ÌËˆ‡ ‚˚Á˚‚‡ÂÚÒˇ ‰Îˇ ‚‚Ó‰‡ ËÏÂÌË Ù‡ÈÎ‡ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnRegSet_SetName(int angle)
 {
     OnMemExtSetMaskNameRegSet(angle, sizeof(symbolsAlphaBet) / 4 - 7);
@@ -1264,7 +1265,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 
 }
 
-DEF_PAGE_SB(    pSetName, static,
+DEF_PAGE_SB(        pSetName,                                                                         // —Ú‡ÌËˆ‡ ‚˚Á˚‚‡ÂÚÒˇ ‰Îˇ ‚‚Ó‰‡ ËÏÂÌË Ù‡ÈÎ‡ ///
     PageSB_Memory_SetName, 0, FuncActive,
     EmptyPressPage, FuncDrawPage, OnRegSet_SetName,
     "", "",

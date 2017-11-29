@@ -740,8 +740,7 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
-DEF_PAGE_SB(        ppSerialNumber,                                                                                               // Œ“À¿ƒ ¿ - —/Õ ///
-    static,
+DEF_PAGE_SB(        ppSerialNumber, static,                                                                                       // Œ“À¿ƒ ¿ - —/Õ ///
     Page_SB_SerialNumber, &pDebug, FuncActive,
     OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber,
     "—/Õ", "S/N",

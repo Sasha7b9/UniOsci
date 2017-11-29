@@ -941,8 +941,8 @@ DEF_GOVERNOR
     pDebug, post, 0, 15000, FuncActive, OnChanged_Post, FuncBeforeDraw
 );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Œ“À¿ƒ ¿ - Õ¿—“–Œ… » ///
-DEF_PAGE_SB(    ppSettings, static,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_SB(        ppSettings,                                                                                             // Œ“À¿ƒ ¿ - Õ¿—“–Œ… » ///
     PageSB_Debug_Settings, &pDebug, FuncActive,
     OnPress_Settings, FuncDrawPage, FuncRegSetPage,
     "Õ¿—“–Œ… »", "SETTINGS",
@@ -1180,8 +1180,8 @@ static void OnPress_EraseData(void)
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Œ“À¿ƒ ¿ - —/Õ ///
-DEF_PAGE_SB(    ppSerialNumber, static,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_SB(        ppSerialNumber,                                                                                               // Œ“À¿ƒ ¿ - —/Õ ///
     PageSB_Debug_SerialNumber, &pDebug,
     FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber,
     "—/Õ", "S/N",

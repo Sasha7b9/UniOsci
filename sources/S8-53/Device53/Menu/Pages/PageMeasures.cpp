@@ -237,10 +237,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMeasTune,                                         
 
 
 // »«Ã≈–≈Õ»ﬂ - Õ‡ÒÚÓËÚ¸ ///////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_SB
-(
-    mspMeasTune,
-    static,
+DEF_PAGE_SB(    mspMeasTune,    static,
     Page_SB_MeasTuneMeas, &pMeasures, IsActiveButtonMeasuresTune,
     EmptyPressPage, FuncDrawPage, Measure_RotateRegSet,
     "Õ¿—“–Œ»“‹", "CONFIGURE",

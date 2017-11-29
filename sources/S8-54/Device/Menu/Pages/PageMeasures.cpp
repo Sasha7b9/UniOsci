@@ -260,7 +260,7 @@ static void OnRegSet_Tune(int angle)
     currentAngle = 0;
 }
 
-DEF_PAGE_SB(    ppTune, static,                                                                                           // »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ ///
+DEF_PAGE_SB(        ppTune,                                                                                               // »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ ///
     PageSB_Measures_Tune, &pMeasures, IsActive_Tune,
     EmptyPressPage, FuncDrawPage, OnRegSet_Tune,
     "Õ¿—“–Œ»“‹", "CONFIGURE",

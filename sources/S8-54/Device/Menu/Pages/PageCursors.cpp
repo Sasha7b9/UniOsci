@@ -162,7 +162,7 @@ DEF_CHOICE_2
     ENABLE_RU,     ENABLE_EN
 );
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// йспянпш - сярюмнбхрэ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnRegSet_Set(int angle)
 {
     if (CURS_ACTIVE_U)
@@ -176,7 +176,7 @@ static void OnRegSet_Set(int angle)
     sound.RegulatorShiftRotate();
 }
 
-DEF_PAGE_SB(ppSet, static,
+DEF_PAGE_SB(        ppSet,                                                                                                 // йспянпш - сярюмнбхрэ ///
     PageSB_Cursors_Set, &pCursors, FuncActive,
     FuncPress, FuncDrawPage, OnRegSet_Set,
     "сярюмнбхрэ", "SET",
