@@ -72,7 +72,7 @@ static void SetCursPosU(Channel ch, int numCur, float pos);             ///< Óñò
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÊÓÐÑÎÐÛ ///
-DEF_PAGE_5(pCursors, ,
+DEF_PAGE_5(         pCursors,
     Page_Cursors, &mainPage, FuncActive, EmptyPressPage,
     "ÊÓÐÑÎÐÛ", "CURSORS",
     "Êóðñîðíûå èçìåðåíèÿ.",

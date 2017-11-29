@@ -380,7 +380,7 @@ DEF_PAGE_7(         ppDisplaySettings,
 
 //-------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ---
 /// \todo Добавить дополнительные цвета 1-го и 2-го каналов
-DEF_PAGE_5(     pppSettings_Colors, static,
+DEF_PAGE_5(         pppSettings_Colors,
     Page_Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage,
     "ЦВЕТА", "COLORS",
     "Выбор цветов дисплея",

@@ -15,6 +15,7 @@
  *  @{
  */
 
+extern const Page mainPage;
 extern const Page pChanA;
 extern const Page pChanB;
 
@@ -43,33 +44,30 @@ extern const char chanInverseEn[] = "When \"Enable\" signal on the screen will b
 extern const char chanMultiplierRu[] = "Ослабление сигнала:\n\"x1\" - сигнал не ослабляется.\n\"x10\" - сигнал ослабляется в 10 раз";
 extern const char chanMultiplierEn[] = "Attenuation: \n\"x1\" - the signal is not attenuated.\n\"x10\" - the signal is attenuated by 10 times";
 
-//--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Вход ---
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_InputA(bool active)
 {
     panel.EnableLEDChannelA(sChannel_Enabled(A));
 }
 
-DEF_CHOICE_2
-(
-    mcInputA, pChanA,
-    SET_ENABLED_A, FuncActive, OnChanged_InputA, FuncDraw,
+DEF_CHOICE_2(       mcInputA,                                                                                                 //--- КАНАЛ 1 - Вход ---
+    pChanA, SET_ENABLED_A, FuncActive, OnChanged_InputA, FuncDraw,
     "Вход", "Input",
     chanInputRu,
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN
 );
 
-//-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Связь ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_CoupleA(bool active)
 {
     fpga.SetModeCouple(A, SET_COUPLE_A);
 }
 
-DEF_CHOICE_3
-(
-    mcCoupleA, pChanA,
-    SET_COUPLE_A, FuncActive, OnChanged_CoupleA, FuncDraw,
+DEF_CHOICE_3(       mcCoupleA,                                                                                               //--- КАНАЛ 1 - Связь ---
+    pChanA, SET_COUPLE_A, FuncActive, OnChanged_CoupleA, FuncDraw,
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
@@ -78,16 +76,14 @@ DEF_CHOICE_3
     "Земля", "Ground"
 );
 
-//------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Фильтр ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_FiltrA(bool active)
 {
     fpga.EnableChannelFiltr(A, FILTR_A);
 }
 
-DEF_CHOICE_2
-(
-    mcFiltrA, pChanA,
-    FILTR_A, FuncActive, OnChanged_FiltrA, FuncDraw,
+DEF_CHOICE_2(       mcFiltrA,                                                                                               //--- КАНАЛ 1 - Фильтр ---
+    pChanA, FILTR_A, FuncActive, OnChanged_FiltrA, FuncDraw,
     "Фильтр", "Filtr",
     chanFiltrRu,
     chanFiltrEn,
@@ -95,16 +91,14 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Инверсия ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_InverseA(bool active)
 {
     fpga.SetRShift(A, SET_RSHIFT_A);
 }
 
-DEF_CHOICE_2
-(
-    mcInverseA, pChanA,
-    SET_INVERSE_A, FuncActive, OnChanged_InverseA, FuncDraw,
+DEF_CHOICE_2(       mcInverseA,                                                                                           //--- КАНАЛ 1 - Инверсия ---
+    pChanA, SET_INVERSE_A, FuncActive, OnChanged_InverseA, FuncDraw,
     "Инверсия", "Inverse",
     chanInverseRu,
     chanInverseEn,
@@ -112,11 +106,9 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-//---------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Множитель ---
-DEF_CHOICE_2
-(
-    mcMultiplierA, pChanA,
-    SET_DIVIDER(A), FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcMultiplierA,                                                                                       //--- КАНАЛ 1 - Множитель ---
+    pChanA, SET_DIVIDER(A), FuncActive, FuncChangedChoice, FuncDraw,
     "Множитель", "Divider",
     chanMultiplierRu,
     chanMultiplierEn,
@@ -124,21 +116,17 @@ DEF_CHOICE_2
     "x10", "x10"
 );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КАНАЛ 1 ///
-extern const Page mainPage;
-
-DEF_PAGE_5
-(
-    pChanA, ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pChanA,                                                                                                             // КАНАЛ 1 ///
     Page_ChannelA, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
     "Contains settings of the channel 1.",
-    mcInputA,       // КАНАЛ 1 - Вход
-    mcCoupleA,      // КАНАЛ 1 - Связь
-    mcFiltrA,       // КАНАЛ 1 - Фильтр
-    mcInverseA,     // КАНАЛ 1 - Инверсия
-    mcMultiplierA   // КАНАЛ 1 - Множитель
+    mcInputA,     // КАНАЛ 1 - Вход
+    mcCoupleA,    // КАНАЛ 1 - Связь
+    mcFiltrA,     // КАНАЛ 1 - Фильтр
+    mcInverseA,   // КАНАЛ 1 - Инверсия
+    mcMultiplierA // КАНАЛ 1 - Множитель
 );
 
 //--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Вход ---
@@ -223,10 +211,8 @@ DEF_CHOICE_2
 );
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КАНАЛ 2 ///
-DEF_PAGE_5
-(
-    pChanB, ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pChanB,                                                                                                             // КАНАЛ 2 ///
     Page_ChannelB, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",

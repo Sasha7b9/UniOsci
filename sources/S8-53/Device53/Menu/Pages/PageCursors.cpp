@@ -23,6 +23,7 @@
  *  @{
  */
 
+extern const Page mainPage;
 extern const Page pCursors;
 extern const Page mspSet;
 
@@ -507,12 +508,8 @@ DEF_CHOICE_2
     ENABLE_RU,  ENABLE_EN
 );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÊÓÐÑÎÐÛ ///
-extern const Page mainPage;
-
-DEF_PAGE_5
-(
-    pCursors, ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pCursors,                                                                                                           // ÊÓÐÑÎÐÛ ///
     Page_Cursors, &mainPage, FuncActive, EmptyPressPage,
     "ÊÓÐÑÎÐÛ", "CURSORS",
     "Êóðñîðíûå èçìåðåíèÿ.",

@@ -813,7 +813,7 @@ DEF_SMALL_BUTTON
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СЕРВИС - ETHERNET ///
-DEF_PAGE_5(     ppEthernet, static,
+DEF_PAGE_5(         ppEthernet,
     Page_Service_Ethernet, &pService, FuncActive, EmptyPressPage,
     "ETHERNET", "ETHERNET",
     "Настройки ethernet",

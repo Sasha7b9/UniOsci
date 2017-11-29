@@ -88,6 +88,11 @@ DEF_SMALL_BUTTON
     pHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
 );
 
+void PressSB_Help_Exit()
+{
+
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_SMALL_BUTTON_EXIT(  sbExitHelp,
     pHelp, FuncActive, PressSB_Help_Exit, DrawSB_Help_ParagraphNext

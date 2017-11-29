@@ -158,9 +158,7 @@ DEF_PAGE_13
 const Page * pointerPageDebug = &pDebug;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// нркюдйю - йнмянкэ ///
-DEF_PAGE_5
-(
-    ppConsole, static,
+DEF_PAGE_5(         ppConsole, 
     Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage,
     "йнмянкэ", "CONSOLE",
     "",

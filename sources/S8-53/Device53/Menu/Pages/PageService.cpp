@@ -601,7 +601,7 @@ static const MACaddress macEthernet_MAC =                                       
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         ppEthernet, static,                                                                                       // ÑÅÐÂÈÑ - ETHERNET ///
+DEF_PAGE_5(         ppEthernet,                                                                                               // ÑÅÐÂÈÑ - ETHERNET ///
     Page_ServiceEthernet, &pService, FuncActive, FuncPress,
     "ETHERNET", "ETHERNET",
     "Íàñòðîéêè ethernet",

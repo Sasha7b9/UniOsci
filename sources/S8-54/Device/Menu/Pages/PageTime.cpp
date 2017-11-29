@@ -20,7 +20,7 @@ extern const  Choice cShiftXtype;           ///< ÐÀÇÂÅÐÒÊÀ - Ñìåùåíèå
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÐÀÇÂÅÐÒÊÀ ///
 extern const Page mainPage;
 
-DEF_PAGE_5(     pTime, ,
+DEF_PAGE_5(         pTime,
     Page_Time, &mainPage, FuncActive, EmptyPressPage,
     "ÐÀÇÂÅÐÒÊÀ", "SCAN",
     "Ñîäåðæèò íàñòðîéêè ðàçâ¸ðòêè.",

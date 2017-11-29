@@ -18,8 +18,8 @@ extern const Page pDebug;
 extern const Page mainPage;
 
 
-/// лемч
-DEF_PAGE_11(mainPage,,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_11_GLOBAL(    mainPage,                                                                                                           // лемч ///
     Page_Main, 0, FuncActive, EmptyPressPage,
     "лемч", "MENU",
     "", "",
