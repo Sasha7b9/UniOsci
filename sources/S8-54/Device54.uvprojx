@@ -1026,6 +1026,16 @@
               <FileType>8</FileType>
               <FilePath>..\common\commonDefines.cpp</FilePath>
             </File>
+            <File>
+              <FileName>stub54.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\stub54.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stub.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\stub.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

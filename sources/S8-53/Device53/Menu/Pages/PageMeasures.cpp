@@ -236,9 +236,9 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMeasTune,                                         
 );
 
 
-// ИЗМЕРЕНИЯ - Настроить ///////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_SB(    mspMeasTune,    static,
-    Page_SB_MeasTuneMeas, &pMeasures, IsActiveButtonMeasuresTune,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_SB(        mspMeasTune,                                                                                          // ИЗМЕРЕНИЯ - Настроить ///
+    PageSB_Measures_Tune, &pMeasures, IsActiveButtonMeasuresTune,
     EmptyPressPage, FuncDrawPage, Measure_RotateRegSet,
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",

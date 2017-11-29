@@ -214,3 +214,5 @@ void ColorType::ComponentChange(int delta)
 
     SetBrightness();
 }
+
+

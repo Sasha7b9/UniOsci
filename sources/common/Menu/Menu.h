@@ -62,6 +62,12 @@ public:
     Page *PagePointerFromName(NamePage namePage);
 
     void ShortPressOnPageItem(Page *, int);
+
+    void *OpenedItem();
+
+    TypeItem TypeOpenedItem();
+
+    NamePage GetNamePage(const Page *);
 };
 
 

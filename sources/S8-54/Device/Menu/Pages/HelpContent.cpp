@@ -64,7 +64,7 @@ void HelpContent_Draw(void)
     uint16 *addr1 = (uint16 *)(0x08000000 + (rand() % 65535));
     uint8 *addr2 = (uint8 *)(0x08000000 + (rand() % 65535));
 
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     for (int i = 0; i < 10000; i++)
     {
         painter.SetPoint((*addr1) % WIDTH, Math_LimitationInt(*addr2, 0, 239));

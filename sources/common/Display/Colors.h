@@ -4,6 +4,15 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class Color;
+
+extern Color gColorFill;
+extern Color gColorBack;
+extern Color gColorGrid;
+extern Color gColorChan[4];
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color
 {
 public:
@@ -38,6 +47,10 @@ public:
     static Color BorderMenu(bool shade);    ///< Цвет окантовки меню
     static Color LightShadingText();        ///< Светлый цвет в тени.
     static Color Contrast(Color color);     ///< Возвращает цвет, контрастный к color. Может быть белым или чёрным.
+    inline static Color Fill() { return gColorFill; };
+    inline static Color Back() { return gColorBack; };
+    inline static Color Grid() { return gColorGrid; };
+    inline static Color Chan(Channel ch) { return gColorChan[ch]; }
     
     uint8 value;
 };
@@ -78,16 +91,6 @@ private:
 #ifdef WIN32
 #pragma warning(pop)
 #endif
-
-extern Color gColorFill;
-extern Color gColorBack;
-extern Color gColorGrid;
-extern Color gColorChan[4];
-
-#define COLOR_FILL      gColorFill
-#define COLOR_BACK      gColorBack
-#define COLOR_GRID      gColorGrid
-#define COLOR_CHAN(ch)  gColorChan[ch]
 
 #define MAKE_COLOR(r, g, b) ((uint16)(((b) & 0x1f) + (((g) & 0x3f) << 5) + (((r) & 0x1f) << 11)))
 #define R_FROM_COLOR(color) (((uint16)(color) >> 11) & (uint16)0x1f)

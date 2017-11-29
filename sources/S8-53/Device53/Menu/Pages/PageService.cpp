@@ -34,7 +34,7 @@ static void FuncDraw(void)
     painter.BeginScene(COLOR_BACK);
 
     painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
-                                         "Нажмите любую другую кнопку, если сброс не нужен.", COLOR_FILL);
+                                         "Нажмите любую другую кнопку, если сброс не нужен.", Color::Fill());
 
     painter.EndScene();
 }
@@ -365,8 +365,8 @@ static void OnRegSet_Math_Function(int delta)
     }
 }
 
-DEF_PAGE_SB(    pppMath_Function, static,                                                                         // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ ///
-    Page_SB_MathFunction, &ppMath, IsActive_Math_Function, OnPress_Math_Function, EmptyFuncVV, OnRegSet_Math_Function,
+DEF_PAGE_SB(        pppMath_Function,                                                                             // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ ///
+    PageSB_Service_Function, &ppMath, IsActive_Math_Function, OnPress_Math_Function, EmptyFuncVV, OnRegSet_Math_Function,
     "ФУНКЦИЯ", "FUNCTION",
     "Установка и выбор математической функции - сложения или умножения",
     "Installation and selection of mathematical functions - addition or multiplication",
@@ -462,8 +462,8 @@ static void OnRegSet_Math_FFT_Cursors(int angle)
     sound.RegulatorShiftRotate();
 }
 
-DEF_PAGE_SB(    ppppMath_FFT_Cursors, static,                                                            // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ ///
-    Page_SB_MathCursorsFFT, &pppMath_FFT, 
+DEF_PAGE_SB(        ppppMath_FFT_Cursors,                                                                // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ ///
+    PageSB_Service_FFT_Cursors, &pppMath_FFT, 
     IsActive_Math_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_Math_FFT_Cursors,
     "КУРСОРЫ", "CURSORS",
     "Включает курсоры для измерения параметров спектра",
@@ -694,7 +694,7 @@ static void Information_Draw(void)
     int x = 100;
     int dY = 20;
     int y = 20;
-    painter.DrawRectangle(0, 0, 319, 239, COLOR_FILL);
+    painter.DrawRectangle(0, 0, 319, 239, Color::Fill());
     y += dY;
     painter.DrawText(x, y, lang == Russian ? "ИНФОРМАЦИЯ" : "INFORMATION");
     y += dY;
@@ -708,7 +708,7 @@ static void Information_Draw(void)
     painter.DrawText(x, y, buffer);
     y += dY;
 
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     painter.DrawFormatText(x, y, "CRC32 : %X", Hardware_CalculateCRC32());
 
     dY = -10;
@@ -726,7 +726,7 @@ static void OnPress_Information(void)
     display.SetDrawMode(DrawMode_Hand, Information_Draw);
 }
 
-DEF_PAGE_SB(        ppInformation, static,                                                                                  // СЕРВИС - ИНФОРМАЦИЯ ///
+DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
     Page_SB_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage,
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Выводит на экран идентификационные данные осциллографа",

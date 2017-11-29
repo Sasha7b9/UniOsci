@@ -404,7 +404,7 @@ DEF_SMALL_BUTTON_HINTS_2(   sbSetPointsPercents,                                
 );
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  ”–—Œ–€ - ”—“¿ÕŒ¬»“‹ ///
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnRotate_RegSet_Set(int angle)
 {
     if (CURS_ACTIVE_IS_U)
@@ -418,7 +418,7 @@ static void OnRotate_RegSet_Set(int angle)
     sound.RegulatorShiftRotate();
 }
 
-DEF_PAGE_SB(        mspSet, static,
+DEF_PAGE_SB(        mspSet,                                                                                                //  ”–—Œ–€ - ”—“¿ÕŒ¬»“‹ ///
     Page_SB_Curs, &pCursors, FuncActive,
     FuncPress, EmptyPressPage, OnRotate_RegSet_Set,
     "”—“¿ÕŒ¬»“‹", "SET",

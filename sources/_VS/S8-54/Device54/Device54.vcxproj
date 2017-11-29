@@ -444,6 +444,7 @@
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsDisplay.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsMemory.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\stub54.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\channelSCPI.cpp" />

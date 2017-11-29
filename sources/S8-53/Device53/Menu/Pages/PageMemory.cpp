@@ -172,7 +172,7 @@ DEF_SMALL_BUTTON(   sbMemLastNext,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PressSB_MemLast_IntEnter()
 {
-    menu.OpenPageAndSetItCurrent(Page_SB_MemInt);
+    menu.OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     MODE_WORK = ModeWork_ROM;
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     gMemory.exitFromIntToLast = 1;
@@ -501,8 +501,8 @@ static void DrawMemoryWave(int num, bool exist)
     int y = grid.FullBottom() - 10;
     int width = 12;
     painter.FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? Color::FLASH_10 : COLOR_BACK);
-    painter.DrawRectangle(x, y, width, 10, COLOR_FILL);
-    painter.SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : COLOR_FILL);
+    painter.DrawRectangle(x, y, width, 10, Color::Fill());
+    painter.SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : Color::Fill());
     if (exist)
     {
         painter.DrawText(x + 2, y + 1, su.Int2String(num + 1, false, 2, buffer));
@@ -694,11 +694,11 @@ static void PressSB_SetName_Exit()
     }
     else if (gMemory.exitFromModeSetNameTo == RETURN_TO_LAST_MEM)
     {
-        menu.OpenPageAndSetItCurrent(Page_SB_MemLatest);
+        menu.OpenPageAndSetItCurrent(PageSB_Memory_Last);
     }
     else if (gMemory.exitFromModeSetNameTo == RETURN_TO_INT_MEM)
     {
-        menu.OpenPageAndSetItCurrent(Page_SB_MemInt);
+        menu.OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     }
     gMemory.exitFromModeSetNameTo = RETURN_TO_DISABLE_MENU;
 }
@@ -716,7 +716,7 @@ void PressSB_MemInt_Exit()
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     if (gMemory.exitFromIntToLast == 1)
     {
-        menu.OpenPageAndSetItCurrent(Page_SB_MemLatest);
+        menu.OpenPageAndSetItCurrent(PageSB_Memory_Last PageSB_Memory_Last);
         MODE_WORK = ModeWork_RAM;
         gMemory.exitFromIntToLast = 0;
     }
@@ -817,7 +817,7 @@ void DrawSetName()
     int width = grid.Width() - 80;
     int height = 80;
 
-    painter.DrawRectangle(x0, y0, width, height, COLOR_FILL);
+    painter.DrawRectangle(x0, y0, width, height, Color::Fill());
     painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int index = 0;
@@ -852,7 +852,7 @@ void DrawSetName()
         position++;
     }
 
-    int x = painter.DrawText(x0 + deltaX, y0 + 65, FILE_NAME, COLOR_FILL);
+    int x = painter.DrawText(x0 + deltaX, y0 + 65, FILE_NAME, Color::Fill());
     painter.FillRegion(x, y0 + 65, 5, 8, Color::FLASH_10);
 }
 
@@ -860,7 +860,7 @@ static void DrawFileMask(int x, int y)
 {
     char *ch = FILE_NAME_MASK;
 
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     while (*ch != '\0')
     {
         if (*ch >= 32)
@@ -893,7 +893,7 @@ void DrawSetMask()
     int width = grid.Width() - 80;
     int height = 160;
 
-    painter.DrawRectangle(x0, y0, width, height, COLOR_FILL);
+    painter.DrawRectangle(x0, y0, width, height, Color::Fill());
     painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int index = 0;
@@ -948,7 +948,7 @@ void DrawSetMask()
     };
 
     deltaY--;
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     for(int i = 0; i < sizeof(strings) / 4; i++)
     {
         painter.DrawText(x0 + deltaX, y0 + 100 + deltaY * i, strings[i]);
@@ -1007,14 +1007,14 @@ static void FuncDrawingAdditionSPageMemoryLast()
     int width = 40;
     int height = 10;
     painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, COLOR_BACK);
-    painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, COLOR_FILL);
+    painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, Color::Fill());
     painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
     painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, su.Int2String(dataStorage.AllDatas(), false, 3, buffer));
 }
 
 DEF_PAGE_SB(        mspMemLast, static,
-    Page_SB_MemLatest, &pMemory, FuncActive, OnPressMemoryLatest, FuncDrawingAdditionSPageMemoryLast, RotateSB_MemLast,
+    PageSB_Memory_Last, &pMemory, FuncActive, OnPressMemoryLatest, FuncDrawingAdditionSPageMemoryLast, RotateSB_MemLast,
     "ПОСЛЕДНИЕ", "LATEST",
     "Переход в режим работы с последними полученными сигналами",
     "Transition to an operating mode with the last received signals",

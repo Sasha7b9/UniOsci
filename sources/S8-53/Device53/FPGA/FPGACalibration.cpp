@@ -245,7 +245,7 @@ void FuncAttScreen(void)
 
                 painter.DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :");
                 painter.DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :");
-                painter.SetColor(COLOR_FILL);
+                painter.SetColor(Color::Fill());
                 for (int i = 0; i < RangeSize; i++)
                 {
                     painter.DrawFormatText(95 + i * 16 + dX, 55 + dY, "%d", set.chan[A].rShiftAdd[i][0]);
@@ -315,7 +315,7 @@ void FuncAttScreen(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void DrawParametersChannel(Channel chan, int eX, int eY, bool inProgress)
 {
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     if(inProgress)
     {
         painter.DrawText(eX, eY + 4, chan == 0 ? "КАНАЛ 1" : "КАНАЛ 2");

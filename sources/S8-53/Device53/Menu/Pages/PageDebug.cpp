@@ -658,7 +658,7 @@ static void Draw_EnterSerialNumber(void)
     int width = grid.Width() - 80;
     int height = 160;
 
-    painter.DrawRectangle(x0, y0, width, height, COLOR_FILL);
+    painter.DrawRectangle(x0, y0, width, height, Color::Fill());
     painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, COLOR_BACK);
 
     int deltaX = 10;
@@ -670,7 +670,7 @@ static void Draw_EnterSerialNumber(void)
     char buffer[20];
     snprintf(buffer, 19, "%02d", s->number);
 
-    Color colorText = COLOR_FILL;
+    Color colorText = Color::Fill();
     Color colorBackground = COLOR_BACK;
 
     if (selNumber)
@@ -689,7 +689,7 @@ static void Draw_EnterSerialNumber(void)
 
     if (selNumber)
     {
-        colorText = COLOR_FILL;
+        colorText = Color::Fill();
         colorBackground = COLOR_BACK;
     }
 
@@ -702,7 +702,7 @@ static void Draw_EnterSerialNumber(void)
 
     int allShots = OTP_GetSerialNumber(buffer);
 
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
 
     painter.DrawFormatText(x0 + deltaX, y0 + 130, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
 
@@ -711,7 +711,7 @@ static void Draw_EnterSerialNumber(void)
 
 static void OnPress_SerialNumber()
 {
-    menu.OpenPageAndSetItCurrent(Page_SB_SerialNumber);
+    menu.OpenPageAndSetItCurrent(PageSB_Debug_SerialNumber);
     display.SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);
     s->number = 01;
@@ -740,8 +740,8 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
-DEF_PAGE_SB(        ppSerialNumber, static,                                                                                       // ОТЛАДКА - С/Н ///
-    Page_SB_SerialNumber, &pDebug, FuncActive,
+DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
+    PageSB_Debug_SerialNumber, &pDebug, FuncActive,
     OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber,
     "С/Н", "S/N",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",

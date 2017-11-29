@@ -31,11 +31,11 @@ static void DrawPageContent()
         const char *title = TITLE(page);
         if(currentParagraph == numPage)
         {
-            painter.DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, COLOR_BACK, 2, COLOR_FILL);
+            painter.DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, COLOR_BACK, 2, Color::Fill());
         }
         else
         {
-            painter.DrawStringInCenterRect(0, y, WIDTH, 10, title, COLOR_FILL);
+            painter.DrawStringInCenterRect(0, y, WIDTH, 10, title, Color::Fill());
         }
         y += 16;
         numPage++;
@@ -55,13 +55,13 @@ void HelpContent_Draw()
     painter.FillRegion(grid.Right(), 0, 319 - grid.Right(), 20, COLOR_BACK);
     painter.FillRegion(grid.Right(), 219, 319 - grid.Right(), 21);
     painter.FillRegion(1, 1, WIDTH, 237);
-    painter.DrawRectangle(0, 0, WIDTH + 2, 239, COLOR_FILL);
+    painter.DrawRectangle(0, 0, WIDTH + 2, 239, Color::Fill());
 
     /*
     uint16 *addr1 = (uint16*)(0x08000000 + (rand() % 65535));
     uint8 *addr2 = (uint8*)(0x08000000 + (rand() % 65535));
 
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     for (int i = 0; i < 10000; i++)
     {
         painter.SetPoint((*addr1) % WIDTH, Math_LimitationInt(*addr2, 0, 239));
@@ -78,7 +78,7 @@ void HelpContent_Draw()
     {
         DrawPageDescription();
     }
-    painter.SetColor(COLOR_FILL);
+    painter.SetColor(Color::Fill());
     painter.DrawFormatText(2, 230, "%d", gTimeMS - startTime);
 }
 
