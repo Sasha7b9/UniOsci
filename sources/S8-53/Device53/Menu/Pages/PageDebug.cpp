@@ -272,7 +272,6 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftB,                                       
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpADC_Balance,                                                                                       // Œ“À¿ƒ ¿ - ¿÷œ - ¡¿À¿Õ— ///
-    static,
     Page_DebugADCbalance, &mpADC, FuncActive, EmptyPressPage,
     "¡¿À¿Õ—", "BALANCE",
     "",
@@ -353,7 +352,6 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_B,                                        
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpADC_Stretch,                                                                                     // Œ“À¿ƒ ¿ - ¿÷œ - –¿—“ﬂ∆ ¿ ///
-    static,
     Page_DebugADCstretch, &mpADC, FuncActive, EmptyPressPage,
     "–¿—“ﬂ∆ ¿", "STRETCH",
     "",
@@ -470,7 +468,6 @@ DEF_PAGE_7(         mpADC_AltRShift,                                            
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpADC,                                                                                                        // Œ“À¿ƒ ¿ - ¿÷œ ///
-    static,
     Page_DebugADC, &pDebug, FuncActive, EmptyPressPage,
     "¿÷œ", "ADC",
     "",
@@ -520,7 +517,6 @@ DEF_GOVERNOR(       mgRandomizer_Average,                                       
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpRandomizer,                                                                                            // Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– ///
-    static,
     Page_DebugRandomizer, &pDebug, FuncActive, EmptyPressPage,
     "–¿Õƒ-“Œ–", "RANDOMIZER",
     "",
@@ -792,7 +788,6 @@ DEF_CHOICE_2(       mcConsole_SizeFont,                                         
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpConsole,                                                                                                // Œ“À¿ƒ ¿ -  ŒÕ—ŒÀ‹ ///
-    static,
     Page_DebugConsole, &pDebug, FuncActive, EmptyPressPage,
     " ŒÕ—ŒÀ‹", "CONSOLE",
     "",

@@ -102,7 +102,6 @@ static bool IsActive_Accumulation(void)
 }
 
 DEF_PAGE_3(         mspAccumulation,                                                                                       // ДИСПЛЕЙ - НАКОПЛЕНИЕ ///
-    static,
     Page_DisplayAccumulation, &pDisplay, IsActive_Accumulation, EmptyPressPage,
     "НАКОПЛЕНИЕ", "ACCUMULATION",
     "Настройки режима отображения последних сигналов на экране.",

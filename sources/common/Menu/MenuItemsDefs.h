@@ -23,9 +23,9 @@ static const void * const  items##name[] = {(void *)&item1, (void *)&item2};    
 const Page name = {Item_Page, false, namePage, 2, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_3(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN, item1, item2, item3)                     \
+#define DEF_PAGE_3(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN, item1, item2, item3)                        \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (void *)&item3};                                                    \
-s const Page name = {Item_Page, false, namePage, 3, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 3, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 #define DEF_PAGE_4(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
