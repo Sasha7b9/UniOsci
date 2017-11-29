@@ -19,8 +19,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Menu menu;
 
-extern void OnChanged_ChanA_Input(bool active);
-extern void OnChanged_ChanB_Input(bool active);
+extern void OnChanged_InputA(bool active);
+extern void OnChanged_InputB(bool active);
 extern void Long_Help(void);
 extern const Page * const pointerPageHelp;
 
@@ -429,13 +429,13 @@ static void ProcessingShortPressureButton(void)
                 if(button == B_ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
-                    OnChanged_ChanA_Input(true);
+                    OnChanged_InputB(true);
                     break;
                 }
                 if(button == B_ChannelB && name == Page_ChannelB && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
-                    OnChanged_ChanB_Input(true);
+                    OnChanged_InputB(true);
                     break;
                 }
 

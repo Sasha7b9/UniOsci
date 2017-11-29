@@ -47,7 +47,7 @@ typedef enum
     Page_SB_MemExtSetMask,          ///< Îòêðûòà ñòðàíèöà ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
     Page_SB_MemExtSetName,          ///< Ïîÿâëÿåòñÿ ïåðåä ñîõðàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïðè ñîîòâåòñòâóþùåé îïöèè ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
     PageSB_Memory_Drive_Manager,    ///< Îòêðûòà ñòðàíèöà ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÊÀTAËÎÃ
-    Page_SB_Help,                   ///< Îòêðûòà ñòðàíèöà HELP
+    PageSB_Help,                    ///< Îòêðûòà ñòðàíèöà HELP
     PageSB_Service_FFT_Cursors,     ///< Îòêðûòà ñòðàíèöà ÑÅÐÂÈÑ - Ìàòåìàòèêà - Êóðñîðû
     PageSB_Service_Function,        ///< ÑÅÐÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß
     Page_SB_Information,            ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß

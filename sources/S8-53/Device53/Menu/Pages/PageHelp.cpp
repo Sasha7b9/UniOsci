@@ -1,6 +1,6 @@
 #include "Globals.h"
 #include "Menu/MenuItems.h"
-#include "Definition.h"
+#include "Menu/Pages/Definition.h"
 #include "HelpContent.h"
 #include "Utils/CommonFunctions.h"
 
@@ -11,6 +11,7 @@
  *  @{
  */
 
+extern const Page mpHelp;
 
 void DrawSB_Help_ParagraphEnter(int x, int y)
 {
@@ -45,46 +46,34 @@ void OnHelpRegSet(int angle)
 
 }
 
-extern const Page mpHelp;
-
-const SButton sbHelpParagraphEnter
-(
-    &mpHelp, HelpContent_EnterParagraphIsActive,
+DEF_SMALL_BUTTON(   sbHelpParagraphEnter,                                                                                      // ПОМОЩЬ - Открыть ///
     "Открыть", "Open",
     "Открывает раздел справки",
     "Opens the section of the reference",
-    HelpContent_EnterParagraph,
-    DrawSB_Help_ParagraphEnter
+    mpHelp, HelpContent_EnterParagraphIsActive, HelpContent_EnterParagraph, DrawSB_Help_ParagraphEnter
 );
 
-const SButton sbHelpParagraphLeave
-(
-    &mpHelp, HelpContent_LeaveParagraphIsActive,
+DEF_SMALL_BUTTON(   sbHelpParagraphLeave,                                                                                      // ПОМОЩЬ - Закрыть ///
     "Закрыть", "Close",
     "Закрывает раздел справки",
     "Closes the section of the reference",
-    HelpContent_LeaveParagraph,
-    DrawSB_Help_ParagraphLeave
+    mpHelp, HelpContent_LeaveParagraphIsActive, HelpContent_LeaveParagraph, DrawSB_Help_ParagraphLeave
 );
 
-const SButton sbHelpParagraphPrev
-(
-    &mpHelp, 0,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON(   sbHelpParagraphPrev,                                                                             // ПОМОЩЬ - Предыдущий раздел ///
     "Предыдущий раздел", "Previous section",
     "Выбрать предыдущий раздел справки",
     "To choose the previous section of the reference",
-    HelpContent_PrevParagraph,
-    DrawSB_Help_ParagraphPrev
+    mpHelp, FuncActive, HelpContent_PrevParagraph,  DrawSB_Help_ParagraphPrev
 );
 
-const SButton sbHelpParagraphNext
-(
-    &mpHelp, 0,
-    "", "",
-    "",
-    "",
-    HelpContent_NextParagraph,
-    DrawSB_Help_ParagraphNext
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON(   sbHelpParagraphNext,                                                                              // ПОМОЩЬ - Следующий раздел ///
+    "Следующий раздел", "Next section",
+    "Выбрать следующий раздел справки",
+    "To choose the next section of the reference",
+    mpHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
 );
 
 static void PressSB_Help_Exit()
@@ -92,31 +81,26 @@ static void PressSB_Help_Exit()
     display.RemoveAddDrawFunction();
 }
 
-const SButton sbExitHelp
-(
-    &mpHelp,
-    COMMON_BEGIN_SB_EXIT,
-    PressSB_Help_Exit,
-    DrawSB_Exit
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  sbExitHelp,                                                                                              // ПОМОЩЬ - Выход ///
+    mpHelp, FuncActive, PressSB_Help_Exit, DrawSB_Exit
 );
 
-static const arrayItems itemsHelp =
-{
-    (void*)&sbExitHelp,
-    (void*)&sbHelpParagraphEnter,
-    (void*)&sbHelpParagraphLeave,
-    (void*)0,
-    (void*)&sbHelpParagraphPrev,
-    (void*)&sbHelpParagraphNext    
-};
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const Page * pointerPageHelp = &mpHelp;
 
-static const Page mpHelp            ///< ПОМОЩЬ
-(
-    &mainPage, 0,
+DEF_PAGE_SB_GLOBAL( mpHelp,                                                                                                             // ПОМОЩШЬ ///
+    PageSB_Help, &mainPage, 
+    FuncActive,  FuncPress, HelpContent_Draw, OnHelpRegSet,
     "ПОМОЩЬ", "HELP",
     "Открыть разделы помощи",
     "To open sections of the help",
-    Page_SB_Help, &itemsHelp, EmptyFuncVV, HelpContent_Draw, OnHelpRegSet
+    &sbExitHelp,
+    &sbHelpParagraphEnter,
+    &sbHelpParagraphLeave,
+    0,
+    &sbHelpParagraphPrev,
+    &sbHelpParagraphNext
 );
 
 

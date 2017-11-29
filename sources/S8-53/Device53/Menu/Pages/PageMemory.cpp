@@ -1013,7 +1013,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
     painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, su.Int2String(dataStorage.AllDatas(), false, 3, buffer));
 }
 
-DEF_PAGE_SB(        mspMemLast, static,
+DEF_PAGE_SB(        mspMemLast,                                                                                              // ПАМЯТЬ - ПОСЛЕДНИЕ ///
     PageSB_Memory_Last, &pMemory, FuncActive, OnPressMemoryLatest, FuncDrawingAdditionSPageMemoryLast, RotateSB_MemLast,
     "ПОСЛЕДНИЕ", "LATEST",
     "Переход в режим работы с последними полученными сигналами",
@@ -1038,7 +1038,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitSetMask,                                          
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_SB(        mspSetMask, static,                                                                               // Память - ВНЕШН ЗУ - МАСКА ///
+DEF_PAGE_SB(        mspSetMask,                                                                                       // Память - ВНЕШН ЗУ - МАСКА ///
     Page_SB_MemExtSetMask, &mspMemoryExt, IsActiveMemoryExtSetMask, OnPressMemoryExtMask, FuncDrawPage, OnMemExtSetMaskRegSet,
     "МАСКА", "MASK",
     "Режим ввода маски для автоматического именования файлов",
@@ -1066,9 +1066,9 @@ DEF_SMALL_BUTTON(   sbExitFileManager,                                          
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_Drive_Manager()
+void OnPress_Drive_Manager()
 {
-    menu.OpenPageAndSetItCurrent(Page_SB_FileManager);
+    menu.OpenPageAndSetItCurrent(PageSB_Memory_Drive_Manager);
     display.SetDrawMode(DrawMode_Hand, FM_Draw);
     gBF.needRedrawFileManager = 1;
 }
@@ -1078,8 +1078,8 @@ static bool FuncOfActiveExtMemFolder()
     return gBF.flashDriveIsConnected == 1;
 }
 
-DEF_PAGE_SB(        mspFileManager, ,
-    Page_SB_FileManager, &mspMemoryExt, FuncOfActiveExtMemFolder, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet,
+DEF_PAGE_SB(        mspFileManager,                                                                                            // ПАМЯТЬ - КАТАЛОГ ///
+    PageSB_Memory_Drive_Manager, &mspMemoryExt, FuncOfActiveExtMemFolder, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet,
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
     "Provides access to the file system of the connected drive",
@@ -1113,7 +1113,7 @@ static void OnPressMemoryInt()
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
 }
 
-DEF_PAGE_SB(        mspMemInt, static,                                                                                        // ПАМЯТЬ - ВНУТР ЗУ ///
+DEF_PAGE_SB(        mspMemInt,                                                                                                // ПАМЯТЬ - ВНУТР ЗУ ///
     PageSB_Memory_Internal, &pMemory, FuncActive, OnPressMemoryInt, FuncAdditionDrawingSPageMemoryInt, FuncOnRegSetMemInt,
     "ВНУТР ЗУ", "INT STORAGE",
     "Переход в режим работы с внутренней памятью",
@@ -1134,7 +1134,7 @@ static void OnMemExtSetNameRegSet(int angle)
 }
 
 // Страница вызывается при выбранном ручном режиме задания имени файла перед сохранением на флешку
-DEF_PAGE_SB(        mpSetName, static,                                                                                                // ИМЯ ФАЙЛА ///
+DEF_PAGE_SB(        mpSetName,                                                                                                        // ИМЯ ФАЙЛА ///
     Page_SB_MemExtSetName, 0, FuncActive, FuncPress, FuncDrawPage, OnMemExtSetNameRegSet,
     "", "", "", "",
     &sbExitSetName,

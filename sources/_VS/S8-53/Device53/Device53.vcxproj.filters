@@ -549,6 +549,9 @@
     <ClCompile Include="..\..\..\S8-53\Device53\stub.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsService.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">

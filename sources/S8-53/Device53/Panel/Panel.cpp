@@ -97,7 +97,7 @@ static void (*funcOnLongPressure[B_NumButtons])(void)    =
     EmptyFuncVV,    // B_Cursors
     EmptyFuncVV,    // B_Measures
     EmptyFuncVV,    // B_Power
-    HelpLong,       // B_Help
+    Long_Help,       // B_Help
     MenuLong,       // B_Menu
     F1Long,         // B_F1
     F2Long,         // B_F2

@@ -82,15 +82,15 @@ DEF_SMALL_BUTTON
 DEF_SMALL_BUTTON
 (
     sbHelpParagraphNext,
-    "", 
-    "",
-    "", "",
+    "Следующий раздел", "Next section",
+    "Выбрать следующий раздел справки",
+    "To choose the next section of the reference",
     pHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_SMALL_BUTTON_EXIT(  sbExitHelp,
-    pHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
+    pHelp, FuncActive, PressSB_Help_Exit, DrawSB_Help_ParagraphNext
 );
 
 const Page * pointerPageHelp = &pHelp;

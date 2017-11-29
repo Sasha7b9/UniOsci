@@ -1921,7 +1921,7 @@ void Display::DrawMeasures()
 
     if(menu.GetNameOpenedPage() == PageSB_Measures_Tune)
     {
-        Measure_DrawPageChoice();
+        measures.DrawPageChoice();
     }
 }
 
@@ -1935,7 +1935,7 @@ void WriteTextVoltage(Channel chan, int x, int y)
         "\x91",
         "\x90"
     };
-    Color color = ColorChannel(chan);
+    Color color = Color::Chan(chan);
 
     bool inverse = SET_INVERSE(chan);
     ModeCouple modeCouple = SET_COUPLE(chan);
@@ -1963,7 +1963,7 @@ void WriteTextVoltage(Channel chan, int x, int y)
         const int widthField = 91;
         const int heightField = 8;
 
-        Color colorDraw = inverse ? COLOR_WHITE : color;
+        Color colorDraw = inverse ? Color::WHITE : color;
         if(inverse)
         {
             painter.FillRegion(x, y, widthField, heightField, color);
@@ -2007,8 +2007,8 @@ void Display::DrawLowPart()
     int y1 = SCREEN_HEIGHT - 10;
     int x = -1;
 
-    painter.DrawHLine(grid.ChannelBottom(), 1, grid.Left() - Measure_GetDeltaGridLeft() - 2, Color::Fill());
-    painter.DrawHLine(grid.FullBottom(), 1, grid.Left() - Measure_GetDeltaGridLeft() - 2);
+    painter.DrawHLine(grid.ChannelBottom(), 1, grid.Left() - measures.GetDeltaGridLeft() - 2, Color::Fill());
+    painter.DrawHLine(grid.FullBottom(), 1, grid.Left() - measures.GetDeltaGridLeft() - 2);
 
     WriteTextVoltage(A, x + 2, y0);
 
@@ -2047,7 +2047,7 @@ void Display::DrawLowPart()
         sprintf(buffer, "ñ\xa5\x10%s", source[TRIGSOURCE]);
     }
 
-    painter.DrawText(x, y1, buffer, ColorTrig());
+    painter.DrawText(x, y1, buffer, Color::Trig());
 
     buffer[0] = 0;
     static const char *couple[] =
@@ -2144,12 +2144,12 @@ void Display::DrawLowPart()
     // Ethernet
     if ((gBF.ethIsConnected == 1 || gBF.cableEthIsConnected == 1) && gTimeMS > 2000)
     {
-        painter.Draw4SymbolsInRectC(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::Fill() : Color::FLASH_01);
+        painter.Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::Fill() : Color::FLASH_01);
     }
 
     if (gBF.connectToHost == 1 || gBF.cableVCPisConnected == 1)
     {
-        painter.Draw4SymbolsInRectC(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::Fill() : Color::FLASH_01);
+        painter.Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::Fill() : Color::FLASH_01);
     }
     
     painter.SetColor(Color::Fill());

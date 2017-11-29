@@ -370,7 +370,7 @@ const SButton* GetSmallButton(PanelButton button)
     if(MenuIsMinimize() && button >= B_Menu && button <= B_F5)
     {
         Page *page = (Page *)menu.OpenedItem();
-        SButton *sb = (SButton *)(*page->items)[button - B_Menu];
+        SButton *sb = (SButton *)page->items[button - B_Menu];
         return sb;
     }
     return NULL;

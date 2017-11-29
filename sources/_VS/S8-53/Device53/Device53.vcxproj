@@ -182,7 +182,7 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageDebug.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageDisplay.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageHelp.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageMeasures.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageMemory.cpp" />
@@ -201,6 +201,7 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsDisplay.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsMeasures.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsMemory.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsService.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Settings\SettingsTime.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\stub.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Tables.cpp" />

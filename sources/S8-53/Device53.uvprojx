@@ -89,7 +89,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -979,46 +979,6 @@
               <FilePath>.\Device53\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayPrimitives.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\DisplayPrimitives.h</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayTypes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\DisplayTypes.h</FilePath>
-            </File>
-            <File>
-              <FileName>Grid.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\Grid.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Grid.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\Grid.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math3D.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\Math3D.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\Painter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\Painter.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\PainterC.h</FilePath>
-            </File>
-            <File>
               <FileName>PainterMem.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Display\PainterMem.h</FilePath>
@@ -1029,34 +989,9 @@
               <FilePath>.\Device53\Display\Symbols.h</FilePath>
             </File>
             <File>
-              <FileName>WelcomeScreen.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Display\WelcomeScreen.h</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayPrimitives.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\DisplayPrimitives.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math3D.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\Math3D.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PainterMem.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Display\PainterMem.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PainterText.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\PainterText.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>WelcomeScreen.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Display\WelcomeScreen.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
@@ -1067,6 +1002,41 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>Grid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Grid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Grid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Grid.h</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Painter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Painter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Painter.h</FilePath>
+            </File>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\DisplayPrimitives.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DisplayPrimitives.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\DisplayPrimitives.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1427,56 +1397,6 @@
               <FileName>PageHelp.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Menu\Pages\PageHelp.cpp</FilePath>
-              <FileOption>
-                <CommonProperty>
-                  <UseCPPCompiler>2</UseCPPCompiler>
-                  <RVCTCodeConst>0</RVCTCodeConst>
-                  <RVCTZI>0</RVCTZI>
-                  <RVCTOtherData>0</RVCTOtherData>
-                  <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
-                  <AlwaysBuild>0</AlwaysBuild>
-                  <GenerateAssemblyFile>2</GenerateAssemblyFile>
-                  <AssembleAssemblyFile>2</AssembleAssemblyFile>
-                  <PublicsOnly>2</PublicsOnly>
-                  <StopOnExitCode>11</StopOnExitCode>
-                  <CustomArgument></CustomArgument>
-                  <IncludeLibraryModules></IncludeLibraryModules>
-                  <ComprImg>1</ComprImg>
-                </CommonProperty>
-                <FileArmAds>
-                  <Cads>
-                    <interw>2</interw>
-                    <Optim>0</Optim>
-                    <oTime>2</oTime>
-                    <SplitLS>2</SplitLS>
-                    <OneElfS>2</OneElfS>
-                    <Strict>2</Strict>
-                    <EnumInt>2</EnumInt>
-                    <PlainCh>2</PlainCh>
-                    <Ropi>2</Ropi>
-                    <Rwpi>2</Rwpi>
-                    <wLevel>0</wLevel>
-                    <uThumb>2</uThumb>
-                    <uSurpInc>2</uSurpInc>
-                    <uC99>2</uC99>
-                    <useXO>2</useXO>
-                    <v6Lang>0</v6Lang>
-                    <v6LangP>0</v6LangP>
-                    <vShortEn>2</vShortEn>
-                    <vShortWch>2</vShortWch>
-                    <v6Lto>2</v6Lto>
-                    <v6WtE>2</v6WtE>
-                    <v6Rtti>2</v6Rtti>
-                    <VariousControls>
-                      <MiscControls></MiscControls>
-                      <Define></Define>
-                      <Undefine></Undefine>
-                      <IncludePath></IncludePath>
-                    </VariousControls>
-                  </Cads>
-                </FileArmAds>
-              </FileOption>
             </File>
             <File>
               <FileName>PageMeasures.cpp</FileName>
@@ -1719,19 +1639,9 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Measures.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Utils\Measures.h</FilePath>
-            </File>
-            <File>
               <FileName>ProcessingSignal.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Utils\ProcessingSignal.h</FilePath>
-            </File>
-            <File>
-              <FileName>Measures.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Utils\Measures.cpp</FilePath>
             </File>
             <File>
               <FileName>ProcessingSignal.cpp</FileName>
@@ -1787,6 +1697,16 @@
               <FileName>Map.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Map.h</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Measures.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Measures.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Measures.h</FilePath>
             </File>
           </Files>
         </Group>
