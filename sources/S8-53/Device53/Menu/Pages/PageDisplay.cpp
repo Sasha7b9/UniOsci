@@ -240,7 +240,7 @@ DEF_CHOICE_4(       mcGrid_Type,                                                
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, COLOR_GRID};
+ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Grid()};
 
 void OnChanged_Grid_Brightness(void)
 {

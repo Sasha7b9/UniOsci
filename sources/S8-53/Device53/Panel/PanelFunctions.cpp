@@ -250,25 +250,25 @@ static void SetRShift(Channel ch, int16 rShift)
     fpga.SetRShift(ch, rShift);
 }
 
-void RShift0Left()
+void RShiftALeft()
 {
     static int prevTime = 0;
     ChangeRShift(&prevTime, SetRShift, A, -STEP_RSHIFT);
 }
 
-void RShift0Right()
+void RShiftARight()
 {
     static int prevTime = 0;
     ChangeRShift(&prevTime, SetRShift, A, +STEP_RSHIFT);
 }
 
-void RShift1Left()
+void RShiftBLeft()
 {
     static int prevTime = 0;
     ChangeRShift(&prevTime, SetRShift, B, -STEP_RSHIFT);
 }
 
-void RShift1Right()
+void RShiftBRight()
 {
     static int prevTime = 0;
     ChangeRShift(&prevTime, SetRShift, B, +STEP_RSHIFT);

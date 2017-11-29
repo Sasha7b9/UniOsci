@@ -490,7 +490,7 @@ static void WriteParametersFFT(Channel chan, float freq0, float density0, float 
     {
         y += dY * 3 + 4;
     }
-    painter.SetColor(COLOR_CHAN(chan));
+    painter.SetColor(Color::Chan(chan));
     painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : su.Float2String(density0, false, 7, buffer));
     y += dY;
     painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : su.Float2String(density1, false, 7, buffer));
@@ -517,7 +517,7 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
 
     mathFPGA.PointsRel2Voltage(data, numPoints, gDSet->range[channel], channel == A ? gDSet->rShiftCh0 : gDSet->rShiftCh1, dataR);
     mathFPGA.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
-    DrawSpectrumChannel(spectrum, COLOR_CHAN(channel));
+    DrawSpectrumChannel(spectrum, Color::Chan(channel));
     if (!MenuIsShown() || MenuIsMinimize())
     {
         Color color = Color::Fill();
@@ -913,12 +913,12 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     }
 	if(width < 256)
     {
-		painter.DrawVLineArray(x, width, points, COLOR_CHAN(chan));
+		painter.DrawVLineArray(x, width, points, Color::Chan(chan));
 	}
     else
     {
-		painter.DrawVLineArray(x, 255, points, COLOR_CHAN(chan));
-		painter.DrawVLineArray(x + 255, width - 255, points + 255 * 2, COLOR_CHAN(chan));
+		painter.DrawVLineArray(x, 255, points, Color::Chan(chan));
+		painter.DrawVLineArray(x + 255, width - 255, points + 255 * 2, Color::Chan(chan));
 	}
 }
 
@@ -1067,7 +1067,7 @@ void Display::WriteCursors()
         painter.DrawVLine(x, 1, GRID_TOP - 2, Color::Fill());
         x += 3;
         Channel source = CURS_SOURCE;
-        Color colorText = COLOR_CHAN(source);
+        Color colorText = Color::Chan(source);
         if(!CURS_CNTRL_U_IS_DISABLE(source))
         {
             painter.DrawText(x, y1, "1:", colorText);
@@ -1701,21 +1701,21 @@ void Display::DrawCursorRShift(Channel chan)
 
     if(y > grid.ChannelBottom())
     {
-        painter.DrawChar(x - 7, grid.ChannelBottom() - 11, SYMBOL_RSHIFT_LOWER, COLOR_CHAN(chan));
+        painter.DrawChar(x - 7, grid.ChannelBottom() - 11, SYMBOL_RSHIFT_LOWER, Color::Chan(chan));
         painter.SetPoint(x - 5, grid.ChannelBottom() - 2);
         y = grid.ChannelBottom() - 7;
         x++;
     }
     else if(y < GRID_TOP)
     {
-        painter.DrawChar(x - 7, GRID_TOP + 2, SYMBOL_RSHIFT_ABOVE, COLOR_CHAN(chan));
+        painter.DrawChar(x - 7, GRID_TOP + 2, SYMBOL_RSHIFT_ABOVE, Color::Chan(chan));
         painter.SetPoint(x - 5, GRID_TOP + 2);
         y = GRID_TOP + 7;
         x++;
     }
     else
     {
-        painter.DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, COLOR_CHAN(chan));
+        painter.DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, Color::Chan(chan));
         if(((chan == A) ? (gBF.showLevelRShift0 == 1) : (gBF.showLevelRShift1 == 1)) && MODE_WORK_IS_DIR)
         {
             painter.DrawDashedHLine(y, grid.Left(), grid.Right(), 7, 3, 0);
@@ -1727,7 +1727,7 @@ void Display::DrawCursorRShift(Channel chan)
 
     if((!MenuIsMinimize() || !MenuIsShown()) && gBF.drawRShiftMarkers == 1)
     {
-        painter.FillRegion(4, yFull - 3, 4, 6, COLOR_CHAN(chan));
+        painter.FillRegion(4, yFull - 3, 4, 6, Color::Chan(chan));
         painter.DrawChar(5, yFull - 9 + dY, chan == A ? '1' : '2', Color::Back());
     }
     painter.DrawChar((int)(x - 7), (int)(y - 9 + dY), chan == A ? '1' : '2', Color::Back());
@@ -1761,12 +1761,12 @@ void Display::DrawCursorTShift()
     else if(shiftTShift < firstPoint)
     {
         painter.Draw2SymbolsC(gridLeft + 1, GRID_TOP, SYMBOL_TSHIFT_LEFT_1, SYMBOL_TSHIFT_LEFT_2, Color::Back(), Color::Fill());
-        painter.DrawLineC(grid.Left() + 9, GRID_TOP + 1, grid.Left() + 9, GRID_TOP + 7, Color::Back());
+        painter.DrawLine(grid.Left() + 9, GRID_TOP + 1, grid.Left() + 9, GRID_TOP + 7, Color::Back());
     }
     else if(shiftTShift > lastPoint)
     {
         painter.Draw2SymbolsC(grid.Right() - 8, GRID_TOP, SYMBOL_TSHIFT_RIGHT_1, SYMBOL_TSHIFT_RIGHT_2, Color::Back(), Color::Fill());
-        painter.DrawLineC(grid.Right() - 9, GRID_TOP + 1, grid.Right() - 9, GRID_TOP + 7, Color::Back());
+        painter.DrawLine(grid.Right() - 9, GRID_TOP + 1, grid.Right() - 9, GRID_TOP + 7, Color::Back());
     }
 }
 
