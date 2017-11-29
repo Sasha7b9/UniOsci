@@ -1808,7 +1808,7 @@ void Display::DrawVerticalCursor(int x, int yTearing)
 void Display::DrawCursors()
 {
     Channel source = CURS_SOURCE;
-    painter.SetColor(ColorCursors(source));
+    painter.SetColor(Color::Cursors(source));
     if (sCursors_NecessaryDrawCursors())
     {
         bool bothCursors = !CURS_CNTRL_T_IS_DISABLE(source) && !CURS_CNTRL_U_IS_DISABLE(source);  // Признак того, что включены и вертикальные и 
@@ -1866,13 +1866,13 @@ void Display::DrawMeasures()
         painter.DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::Fill());
     }
 
-    int x0 = grid.Left() - Measure_GetDeltaGridLeft();
-    int dX = Measure_GetDX();
-    int dY = Measure_GetDY();
-    int y0 = Measure_GetTopTable();
+    int x0 = grid.Left() - measures.GetDeltaGridLeft();
+    int dX = measures.GetDX();
+    int dY = measures.GetDY();
+    int y0 = measures.GetTopTable();
 
-    int numRows = Measure_NumRows();
-    int numCols = Measure_NumCols();
+    int numRows = measures.NumRows();
+    int numCols = measures.NumCols();
 
     for(int str = 0; str < numRows; str++)
     {
@@ -1880,10 +1880,10 @@ void Display::DrawMeasures()
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = Measure_IsActive(str, elem) && menu.GetNameOpenedPage() == PageSB_Measures_Tune;
+            bool active = measures.IsActive(str, elem) && menu.GetNameOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? Color::Back() : Color::Fill();
-            Measure meas = Measure_Type(str, elem);
-            if(meas != Measure_None)
+            Meas meas = measures.Type(str, elem);
+            if(meas != Meas_None)
             {
                 painter.FillRegion(x, y, dX, dY, Color::Back());
                 painter.DrawRectangle(x, y, dX, dY, Color::Fill());
@@ -1893,27 +1893,27 @@ void Display::DrawMeasures()
             {
                 painter.FillRegion(x + 2, y + 2, dX - 4, dY - 4, Color::Fill());
             }
-            if(meas != Measure_None)
+            if(meas != Meas_None)
             {
                 char buffer[20];
-                painter.DrawText(x + 4, y + 2, Measure_Name(str, elem), color);
+                painter.DrawText(x + 4, y + 2, measures.Name(str, elem), color);
                 if(meas == MEAS_MARKED)
                 {
                     painter.FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::Back() : Color::Fill());
-                    painter.DrawText(x + 4, y + 2, Measure_Name(str, elem), active ? Color::Fill() : Color::Back());
+                    painter.DrawText(x + 4, y + 2, measures.Name(str, elem), active ? Color::Fill() : Color::Back());
                 }
                 if(SOURCE_MEASURE_IS_A)
                 {
-                    painter.DrawText(x + 2, y + 11, Processing_GetStringMeasure(meas, A, buffer), ColorChannel(A));
+                    painter.DrawText(x + 2, y + 11, Processing_GetStringMeasure(meas, A, buffer), Color::Chan(A));
                 }
                 else if(SOURCE_MEASURE_IS_B)
                 {
-                    painter.DrawText(x + 2, y + 11, Processing_GetStringMeasure(meas, B, buffer), ColorChannel(B));
+                    painter.DrawText(x + 2, y + 11, Processing_GetStringMeasure(meas, B, buffer), Color::Chan(B));
                 }
                 else
                 {
-                    painter.DrawText(x + 2, y + 11, Processing_GetStringMeasure(meas, A, buffer), ColorChannel(A));
-                    painter.DrawText(x + 2, y + 20, Processing_GetStringMeasure(meas, B, buffer), ColorChannel(B));
+                    painter.DrawText(x + 2, y + 11, Processing_GetStringMeasure(meas, A, buffer), Color::Chan(A));
+                    painter.DrawText(x + 2, y + 20, Processing_GetStringMeasure(meas, B, buffer), Color::Chan(B));
                 }
             }
         }

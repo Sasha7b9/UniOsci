@@ -12,3 +12,9 @@ TypeItem Menu::TypeOpenedItem()
 {
     return Item_None;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+NamePage Menu::GetNameOpenedPage()
+{
+    return Page_NoPage;
+}

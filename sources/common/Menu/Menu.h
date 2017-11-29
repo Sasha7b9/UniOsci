@@ -56,6 +56,8 @@ public:
     /// Нарисовать меню
     void Draw();
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
     void OpenPageAndSetItCurrent(NamePage namePage);
 
@@ -68,6 +70,8 @@ public:
     TypeItem TypeOpenedItem();
 
     NamePage GetNamePage(const Page *);
+
+    NamePage GetNameOpenedPage();
 };
 
 

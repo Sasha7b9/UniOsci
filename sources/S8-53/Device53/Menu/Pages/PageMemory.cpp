@@ -716,13 +716,13 @@ void PressSB_MemInt_Exit()
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     if (gMemory.exitFromIntToLast == 1)
     {
-        menu.OpenPageAndSetItCurrent(PageSB_Memory_Last PageSB_Memory_Last);
+        menu.OpenPageAndSetItCurrent(PageSB_Memory_Last);
         MODE_WORK = ModeWork_RAM;
         gMemory.exitFromIntToLast = 0;
     }
     else
     {
-        menu.ShortPressOnPageItem(menu.PagePointerFromName(Page_SB_MemInt), 0);
+        menu.ShortPressOnPageItem(menu.PagePointerFromName(PageSB_Memory_Internal), 0);
     }
 }
 
@@ -1108,13 +1108,13 @@ DEF_PAGE_6(         mspMemoryExt, static,                                       
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnPressMemoryInt()
 {
-    menu.OpenPageAndSetItCurrent(Page_SB_MemInt);
+    menu.OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     MODE_WORK = ModeWork_ROM;
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
 }
 
 DEF_PAGE_SB(        mspMemInt, static,                                                                                        // ѕјћя“№ - ¬Ќ”“– «” ///
-    Page_SB_MemInt, &pMemory, FuncActive, OnPressMemoryInt, FuncAdditionDrawingSPageMemoryInt, FuncOnRegSetMemInt,
+    PageSB_Memory_Internal, &pMemory, FuncActive, OnPressMemoryInt, FuncAdditionDrawingSPageMemoryInt, FuncOnRegSetMemInt,
     "¬Ќ”“– «”", "INT STORAGE",
     "ѕереход в режим работы с внутренней пам€тью",
     "Transition to an operating mode with internal memory",

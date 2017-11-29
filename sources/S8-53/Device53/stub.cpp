@@ -1,12 +1,15 @@
 #include "stub.h"
 #include "Log.h"
+#include "Menu/Menu.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 void Timer_SetAndStartOnce(TypeTimer type, uint dTms, pFuncVV func)
 {
     LOG_ERROR("заглушка %s", __FUNCTION__);
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawTextInRect(int x, int y, int width, int height, char *text)
@@ -54,4 +57,10 @@ TypeItem Menu::TypeOpenedItem()
 NamePage Menu::GetNamePage(const Page *)
 {
     return Page_SB_Curs;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+NamePage Menu::GetNameOpenedPage()
+{
+    return Page_NoPage;
 }
