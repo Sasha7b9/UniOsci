@@ -2144,12 +2144,12 @@ void Display::DrawLowPart()
     // Ethernet
     if ((gBF.ethIsConnected == 1 || gBF.cableEthIsConnected == 1) && gTimeMS > 2000)
     {
-        painter.Draw4SymbolsInRectC(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::Fill() : COLOR_FLASH_01);
+        painter.Draw4SymbolsInRectC(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::Fill() : Color::FLASH_01);
     }
 
     if (gBF.connectToHost == 1 || gBF.cableVCPisConnected == 1)
     {
-        painter.Draw4SymbolsInRectC(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::Fill() : COLOR_FLASH_01);
+        painter.Draw4SymbolsInRectC(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::Fill() : Color::FLASH_01);
     }
     
     painter.SetColor(Color::Fill());
@@ -2590,8 +2590,8 @@ void DrawStringInRectangle(int x, int y, char const *text)
     int height = 8;
     painter.DrawRectangle(grid.Left(), y, width + 4, height + 4, Color::Fill());
     painter.DrawRectangle(grid.Left() + 1, y + 1, width + 2, height + 2, Color::Back());
-    painter.FillRegion(grid.Left() + 2, y + 2, width, height, COLOR_FLASH_10);
-    painter.DrawText(grid.Left() + 3, y + 2, text, COLOR_FLASH_01);
+    painter.FillRegion(grid.Left() + 2, y + 2, width, height, Color::FLASH_10);
+    painter.DrawText(grid.Left() + 3, y + 2, text, Color::FLASH_01);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
