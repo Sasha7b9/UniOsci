@@ -100,7 +100,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitHelp,
 
 const Page * pointerPageHelp = &pHelp;
 
-DEF_PAGE_SB_GLOBAL( pHelp,                                                                                                               // онлныэ ///
+DEF_PAGE_SB(        pHelp,                                                                                                               // онлныэ ///
     PageSB_Help, &mainPage, FuncActive,
     FuncPress, HelpContent_Draw, OnHelpRegSet,
     "онлныэ", "HELP",
