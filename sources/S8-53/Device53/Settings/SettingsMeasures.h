@@ -27,7 +27,7 @@
 #define MODE_VIEW_SIGNALS_IS_COMPRESS   (MODE_VIEW_SIGNALS == ModeViewSignals_Compress)
 
 #define MEAS_MARKED                     (set.measures.markedMeasure)                    ///< SettingsMeasures.markedMeasure
-#define MEAS_MARKED_IS_NONE             (MEAS_MARKED == Measure_None)
+#define MEAS_MARKED_IS_NONE             (MEAS_MARKED == Meas_None)
 
 #define MEASURE(num)                    (set.measures.measures[num])                    ///< SettingsMeasures.measure
 #define MEASURE_IS_MARKED(num)          (MEASURE(num) == MEAS_MARKED)

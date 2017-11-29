@@ -73,9 +73,9 @@ static int firstPoint = 0;
 static int lastPoint = 0;
 static int numPoints = 0;
 
-static const MeasureCalculate measures[Measure_NumMeasures] =
+static const MeasureCalculate sMeas[Meas_NumMeasures] =
 {
-    {0, 0},
+    {"", 0, 0, false},
     {"CalculateVoltageMax",         CalculateVoltageMax,           &StringUtils::Voltage2String, true},
     {"CalculateVoltageMin",         CalculateVoltageMin,           &StringUtils::Voltage2String, true},
     {"CalculateVoltagePic",         CalculateVoltagePic,           &StringUtils::Voltage2String, false},
@@ -100,7 +100,7 @@ static const MeasureCalculate measures[Measure_NumMeasures] =
     {"CalculatePhazaMinus",         CalculatePhazaMinus,           &StringUtils::Phase2String, false}
 };
 
-static MeasureValue values[Measure_NumMeasures] = {{0.0f, 0.0f}};
+static MeasureValue values[Meas_NumMeasures] = {{0.0f, 0.0f}};
 
 static int markerHor[NumChannels][2] = {{ERROR_VALUE_INT}, {ERROR_VALUE_INT}};
 static int markerVert[NumChannels][2] = {{ERROR_VALUE_INT}, {ERROR_VALUE_INT}};
@@ -134,16 +134,16 @@ void Processing_CalculateMeasures()
     periodAccurateIsCalculating[0] = periodAccurateIsCalculating[1] = false;
     picIsCalculating[0] = picIsCalculating[1] = false;
 
-    for(int str = 0; str < Measure_NumRows(); str++)
+    for(int str = 0; str < measures.NumRows(); str++)
     {
-        for(int elem = 0; elem < Measure_NumCols(); elem++)
+        for(int elem = 0; elem < measures.NumCols(); elem++)
         {
-            Measure meas = Measure_Type(str, elem);
-            if (meas == Measure_TimeNarastaniya)
+            Meas meas = measures.Type(str, elem);
+            if (meas == Meas_TimeNarastaniya)
             {
                 meas = meas;
             }
-            pFuncFCh func = measures[meas].FuncCalculate;
+            pFuncFCh func = sMeas[meas].FuncCalculate;
             if(func)
             {
                 if(meas == MEAS_MARKED || MEAS_MARKED_IS_NONE)
@@ -169,7 +169,7 @@ float CalculateVoltageMax(Channel chan)
     float max = CalculateMaxRel(chan);
     
     EXIT_IF_ERROR_FLOAT(max);
-    if(MEAS_MARKED == Measure_VoltageMax)
+    if(MEAS_MARKED == Meas_VoltageMax)
     {
         markerHor[chan][0] = (int)max;                           // Здесь не округляем, потому что max может быть только целым
     }
@@ -181,7 +181,7 @@ float CalculateVoltageMin(Channel chan)
 {
     float min = CalculateMinRel(chan);
     EXIT_IF_ERROR_FLOAT(min);
-    if(MEAS_MARKED == Measure_VoltageMin)
+    if(MEAS_MARKED == Meas_VoltageMin)
     {
         markerHor[chan][0] = (int)min;                           // Здесь не округляем, потому что min может быть только целым
     }
@@ -196,7 +196,7 @@ float CalculateVoltagePic(Channel chan)
 
     EXIT_IF_ERRORS_FLOAT(min, max);
 
-    if(MEAS_MARKED == Measure_VoltagePic)
+    if(MEAS_MARKED == Meas_VoltagePic)
     {
         markerHor[chan][0] = (int)CalculateMaxRel(chan);
         markerHor[chan][1] = (int)CalculateMinRel(chan);
@@ -208,7 +208,7 @@ float CalculateVoltageMinSteady(Channel chan)
 {
     float min = CalculateMinSteadyRel(chan);
     EXIT_IF_ERROR_FLOAT(min);
-    if(MEAS_MARKED == Measure_VoltageMinSteady)
+    if(MEAS_MARKED == Meas_VoltageMinSteady)
     {
         markerHor[chan][0] = (int)ROUND(min);
     }
@@ -222,7 +222,7 @@ float CalculateVoltageMaxSteady(Channel chan)
 
     EXIT_IF_ERROR_FLOAT(max);
 
-    if(MEAS_MARKED == Measure_VoltageMaxSteady)
+    if(MEAS_MARKED == Meas_VoltageMaxSteady)
     {
         markerHor[chan][0] = (int)max;
     }
@@ -240,7 +240,7 @@ float CalculateVoltageVybrosPlus(Channel chan)
 
     EXIT_IF_ERRORS_FLOAT(max, maxSteady);
 
-    if (MEAS_MARKED == Measure_VoltageVybrosPlus)
+    if (MEAS_MARKED == Meas_VoltageVybrosPlus)
     {
         markerHor[chan][0] = (int)max;
         markerHor[chan][1] = (int)maxSteady;
@@ -256,7 +256,7 @@ float CalculateVoltageVybrosMinus(Channel chan)
     float minSteady = CalculateMinSteadyRel(chan);
     EXIT_IF_ERRORS_FLOAT(min, minSteady);
 
-    if (MEAS_MARKED == Measure_VoltageVybrosMinus)
+    if (MEAS_MARKED == Meas_VoltageVybrosMinus)
     {
         markerHor[chan][0] = (int)min;
         markerHor[chan][1] = (int)minSteady;
@@ -273,7 +273,7 @@ float CalculateVoltageAmpl(Channel chan)
 
     EXIT_IF_ERRORS_FLOAT(min, max);
 
-    if(MEAS_MARKED == Measure_VoltageAmpl)
+    if(MEAS_MARKED == Meas_VoltageAmpl)
     {
         markerHor[chan][0] = (int)CalculateMaxSteadyRel(chan);
         markerHor[chan][1] = (int)CalculateMinSteadyRel(chan);
@@ -296,7 +296,7 @@ float CalculateVoltageAverage(Channel chan)
 
     uint8 aveRel = (uint8)((float)sum / period);
 
-    if(MEAS_MARKED == Measure_VoltageAverage)
+    if(MEAS_MARKED == Meas_VoltageAverage)
     {
         markerHor[chan][0] = aveRel;
     }
@@ -318,7 +318,7 @@ float CalculateVoltageRMS(Channel chan)
         rms +=  volts * volts;
     }
 
-    if(MEAS_MARKED == Measure_VoltageRMS)
+    if(MEAS_MARKED == Meas_VoltageRMS)
     {
         markerHor[chan][0] = mathFPGA.Voltage2Point(sqrtf(rms / period), dataSet->range[chan], rShift);
     }
@@ -558,7 +558,7 @@ float CalculateTimeNarastaniya(Channel chan)                    // WARN Здесь, в
 
     float retValue = TSHIFT_2_ABS((secondIntersection - firstIntersection) / 2.0f, dataSet->tBase);
 
-    if (MEAS_MARKED == Measure_TimeNarastaniya)
+    if (MEAS_MARKED == Meas_TimeNarastaniya)
     {
         markerHor[chan][0] = (int)max09;
         markerHor[chan][1] = (int)min01;
@@ -594,7 +594,7 @@ float CalculateTimeSpada(Channel chan)                          // WARN Аналогич
 
     float retValue = TSHIFT_2_ABS((secondIntersection - firstIntersection) / 2.0f, dataSet->tBase);
 
-    if (MEAS_MARKED == Measure_TimeSpada)
+    if (MEAS_MARKED == Meas_TimeSpada)
     {
         markerHor[chan][0] = (int)max09;
         markerHor[chan][1] = (int)min01;
@@ -1134,7 +1134,7 @@ void Processing_InterpolationSinX_X(uint8 data[FPGA_MAX_POINTS], TBase tBase)
     }
 }
 
-char* Processing_GetStringMeasure(Measure measure, Channel chan, char buffer[20])
+char* Processing_GetStringMeasure(Meas measure, Channel chan, char buffer[20])
 {
     if (!SET_ENABLED(chan))
     {
@@ -1149,12 +1149,12 @@ char* Processing_GetStringMeasure(Measure measure, Channel chan, char buffer[20]
     else if((chan == A && dataSet->enableCh0 == 0) || (chan == B && dataSet->enableCh1 == 0))
     {
     }
-    else if(measures[measure].FuncCalculate)
+    else if(sMeas[measure].FuncCalculate)
     {
         char bufferForFunc[20];
-        pFuncPCFBPC func = measures[measure].FuncConvertate;
+        pFuncPCFBPC func = sMeas[measure].FuncConvertate;
         float value = values[measure].value[chan];
-        char *text = (su.*func)(value, measures[measure].showSign, bufferForFunc);
+        char *text = (su.*func)(value, sMeas[measure].showSign, bufferForFunc);
         strcat(buffer, text);
     }
     else
