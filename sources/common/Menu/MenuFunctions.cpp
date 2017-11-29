@@ -7,10 +7,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void *RetLastOpened(Page *_page, TypeItem *_type);
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 TypeItem TypeMenuItem(const void *address) 
 {
     return address ? (*((TypeItem*)address)) : Item_None;
@@ -48,32 +44,6 @@ void    SetCurrentItem(const void *item, bool active)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-TypeItem TypeOpenedItem(void)
-{
-    return TypeMenuItem(OpenedItem());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void *OpenedItem(void)
-{
-    TypeItem type = Item_None;
-    return RetLastOpened((Page *)&mainPage, &type);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void *CurrentItem(void)
-{
-    TypeItem type = Item_None;
-    void *lastOpened = RetLastOpened((Page *)&mainPage, &type);
-    int8 pos = ((const Page *)lastOpened)->PosCurrentItem();
-    if(type == Item_Page && pos != 0x7f)
-    {
-        return ((const Page *)lastOpened)->Item(pos);
-    }
-    return lastOpened;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int HeightOpenedItem(void *item) 
 {
     TypeItem type = TypeMenuItem(item);
@@ -105,50 +75,6 @@ bool IsFunctionalButton(PanelButton button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void *RetLastOpened(Page *page, TypeItem *type)
-{
-    if(CurrentItemIsOpened(page->GetNamePage()))
-    {
-        int8 posActItem = page->PosCurrentItem();
-        void *item = page->Item(posActItem);
-        TypeItem typeLocal = TypeMenuItem(page->Item(posActItem));
-        if(typeLocal == Item_Page)
-        {
-            return RetLastOpened((Page *)item, type);
-        }
-        else
-        {
-            return item;
-        }
-    }
-    *type = Item_Page;
-    return page;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void CloseOpenedItem(void)
-{
-    void *item = OpenedItem();
-    if(TypeOpenedItem() == Item_Page)
-    {
-        if (IsPageSB(item))
-        {
-            CallFuncOnPressButton(((Page *)item)->SmallButonFromPage(0));
-        }
-        NamePage name = Keeper(item)->name;
-        SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
-        if(item == &mainPage)
-        {
-            menu.Show(false);
-        }
-    }
-    else
-    {
-        OpenItem(item, false);
-    } 
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OpenItem(const void *item, bool open)
 {
     if(item)
@@ -175,14 +101,6 @@ Page *Keeper(const void *item)
 {
     const Page *page = ((Page *)(item))->keeper;
     return (Page *)page;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-NamePage GetNameOpenedPage(void)
-{
-    return ((const Page *)OpenedItem())->GetNamePage();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -234,38 +152,6 @@ bool ChangeOpenedItem(void *item, int delta)
     }
     
     return true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ChangeItem(void *item, int delta)
-{
-    TypeItem type = TypeMenuItem(item);
-    if (type == Item_Choice || type == Item_ChoiceReg)
-    {
-        ((Choice *)item)->StartChange(delta);
-    }
-    else if (type == Item_Governor)
-    {
-        Governor *governor = (Governor*)item;
-        if (OpenedItem() != governor)
-        {
-            governor->StartChange(delta);
-        }
-        else
-        {
-            governor->ChangeValue(delta);
-        }
-    }
-    else if (type == Item_GovernorColor)
-    {
-        ((GovernorColor *)item)->ChangeValue(delta);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-Page *PagePointerFromName(NamePage)
-{
-    return 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

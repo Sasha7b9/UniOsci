@@ -237,7 +237,7 @@ void Governor::ChangeValue(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Governor::NextPosition()
 {
-    if (OpenedItem() == this)
+    if (menu.OpenedItem() == this)
     {
         CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
     }

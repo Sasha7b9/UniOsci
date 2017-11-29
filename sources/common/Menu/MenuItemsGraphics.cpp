@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
 #include "Menu/MenuFunctions.h"
 #include "Settings/Settings.h"
@@ -156,7 +157,7 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
     }
 
     x = painter.DrawText(x + 4, y + 21, "\x80", colorTextDown);
-    if (OpenedItem() != this)
+    if (menu.OpenedItem() != this)
     {
         int delta = (int)Step();
         if (delta == 0)
@@ -275,7 +276,7 @@ void IPaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     snprintf(buffer, SIZE, "%03d.%03d.%03d.%03d", *ip0, *ip1, *ip2, *ip3);
 
-    if (OpenedItem() != this)
+    if (menu.OpenedItem() != this)
     {
         painter.DrawText(x + 4, y + 21, buffer, colorTextDown);
     }
@@ -356,7 +357,7 @@ void MACaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     snprintf(buffer, SIZE, "%02X.%02X.%02X.%02X.%02X.%02X", *mac0, *mac1, *mac2, *mac3, *mac4, *mac5);
 
-    if (OpenedItem() != this)
+    if (menu.OpenedItem() != this)
     {
 
         painter.DrawText(x + 4, y + 21, buffer, colorTextDown);
@@ -806,7 +807,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
     
     TypeItem type = TypeMenuItem(item);
 
-    if(CurrentItem() == item)
+    if(menu.CurrentItem() == item)
     {
         char symbol = 0;
 
@@ -821,7 +822,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
         else if (type == Item_Time)
         {
             Time *time = (Time*)item;
-            if ((OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))
+            if ((menu.OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))
             {
                 int8 values[7] =
                 {

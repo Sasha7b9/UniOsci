@@ -55,23 +55,31 @@ public:
     void RunAfterUpdate(pFuncVV func);
     /// Нарисовать меню
     void Draw();
+    /// Возвращает адрес открытого элемента меню
+    void *OpenedItem(void);
+    /// Возвращает тип открытого элемента меню
+    TypeItem TypeOpenedItem(void);
 
+    NamePage GetNameOpenedPage(void);
+
+    Page *PagePointerFromName(NamePage namePage);
+    /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
+    void *CurrentItem(void);
+    /// Закрыть открытый элемент меню
+    void CloseOpenedItem(void);
+    /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
+    void ChangeItem(void *item, int delta);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
     void OpenPageAndSetItCurrent(NamePage namePage);
 
-    Page *PagePointerFromName(NamePage namePage);
-
     void ShortPressOnPageItem(Page *, int);
-
-    void *OpenedItem();
-
-    TypeItem TypeOpenedItem();
 
     NamePage GetNamePage(const Page *);
 
-    NamePage GetNameOpenedPage();
+private:
+    void *RetLastOpened(Page *_page, TypeItem *_type);
 };
 
 

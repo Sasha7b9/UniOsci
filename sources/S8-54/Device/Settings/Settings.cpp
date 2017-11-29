@@ -320,7 +320,7 @@ void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool MenuIsMinimize(void)
 {
-    return IsPageSB(OpenedItem());
+    return IsPageSB(menu.OpenedItem());
 }
 
 
@@ -341,7 +341,7 @@ void SetMenuPageDebugActive(bool active)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CurrentPageSBregSet(int angle)
 {
-    Page *page = (Page *)OpenedItem();
+    Page *page = (Page *)menu.OpenedItem();
     if (page->funcRegSetSB)
     {
         page->funcRegSetSB(angle);
@@ -354,7 +354,7 @@ const SButton* GetSmallButton(PanelButton button)
 {
     if(MenuIsMinimize() && button >= B_Menu && button <= B_F5)
     {
-        Page *page = (Page *)OpenedItem();
+        Page *page = (Page *)menu.OpenedItem();
         SButton *sb = (SButton *)page->items[button - B_Menu];
         return sb;
     }

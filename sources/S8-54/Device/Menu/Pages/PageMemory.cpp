@@ -1285,7 +1285,7 @@ static void OnPress_SetName_Exit(void)
     OnPressSB_Exit();
     if (EXIT_FROM_SETNAME_TO == RETURN_TO_DISABLE_MENU)
     {
-        PagePointerFromName(PageSB_Memory_SetName)->ShortPressOnItem(0);
+        menu.PagePointerFromName(PageSB_Memory_SetName)->ShortPressOnItem(0);
     }
     else if (EXIT_FROM_SETNAME_TO == RETURN_TO_LAST_MEM)
     {

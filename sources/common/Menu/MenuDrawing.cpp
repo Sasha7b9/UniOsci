@@ -111,7 +111,8 @@ void DrawTitlePage(Page *page, int layer, int yTop)
     }
     
     painter.DrawVLine(x, yTop, yTop + HeightOpenedItem(page), Color::BorderMenu(false));
-    bool condDrawRSet = page->NumSubPages() > 1 && TypeMenuItem(CurrentItem()) != Item_ChoiceReg && TypeMenuItem(CurrentItem()) != Item_Governor && TypeOpenedItem() == Item_Page;
+    bool condDrawRSet = page->NumSubPages() > 1 && TypeMenuItem(menu.CurrentItem()) != Item_ChoiceReg && 
+        TypeMenuItem(menu.CurrentItem()) != Item_Governor && menu.TypeOpenedItem() == Item_Page;
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
     x = painter.DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, TitleItem(page), colorText);
@@ -333,7 +334,7 @@ int CalculateX(int layer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsShade(void *item)
 {
-    return CurrentItemIsOpened(Keeper(item)->GetNamePage()) && (item != OpenedItem());
+    return CurrentItemIsOpened(Keeper(item)->GetNamePage()) && (item != menu.OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

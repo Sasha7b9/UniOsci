@@ -16,12 +16,6 @@
 bool ItemIsAcitve(const void *item);
 /// Возвращает тип элемента меню по адресу address
 TypeItem TypeMenuItem(const void *address);
-/// Возвращает тип открытого элемента меню
-TypeItem TypeOpenedItem(void);
-/// Возвращает адрес открытого элемента меню
-void *OpenedItem(void);
-/// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
-void *CurrentItem(void);
 /// Возвращает true, если текущий элемент страницы с именем namePage открыт
 bool CurrentItemIsOpened(NamePage namePage);
 /// Сделать/разделать текущим пункт страницы
@@ -31,25 +25,17 @@ void SetCurrentItem(const void *item,               ///< адрес элемента, активно
 /// Возвращает адрес элемента, которому принадлежит элемент по адресу item
 Page *Keeper(const void *item);
 
-NamePage GetNameOpenedPage(void);
-
 bool ChangeOpenedItem(void *item, int delta);
-/// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
-void ChangeItem(void *item, int delta);
 /// Возвращает высоту в пикселях открытого элемента Choice или NamePage по адресу item
 int HeightOpenedItem(void *item);
 /// Возвращает название элемента по адресу item, как оно выглядит на дисплее прибора
 const char *TitleItem(void *item);
 /// Возвращает true, если button - функциональная клавиша [1..5]
 bool IsFunctionalButton(PanelButton button);
-/// Закрыть открытый элемент меню
-void CloseOpenedItem(void);
 /// Открыть/закрыть элемент меню по адрему item
 void OpenItem(const void *item, bool open);
 /// Возвращает true, если элемент меню по адрему item открыт
 bool ItemIsOpened(const void *item);
-
-Page *PagePointerFromName(NamePage namePage);
 
 bool IsPageSB(const void *item);
 

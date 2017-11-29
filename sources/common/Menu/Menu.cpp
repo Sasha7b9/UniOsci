@@ -404,11 +404,11 @@ static void ProcessingShortPressureButton(void)
                 }
                 else
                 {
-                    if (TypeOpenedItem() == Item_Page)
+                    if (menu.TypeOpenedItem() == Item_Page)
                     {
                         menu.TemporaryEnableStrNavi();
                     }
-                    CloseOpenedItem();
+                    menu.CloseOpenedItem();
                 }
             }
             else if (MENU_IS_SHOWN && IsFunctionalButton(button))       // Если меню показано и нажата функциональная клавиша
@@ -425,7 +425,7 @@ static void ProcessingShortPressureButton(void)
             }
             else                                                        // Если меню не показано.
             {
-                NamePage name = ((const Page *)OpenedItem())->GetNamePage();
+                NamePage name = ((const Page *)menu.OpenedItem())->GetNamePage();
                 if(button == B_ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
@@ -483,14 +483,14 @@ void ProcessingLongPressureButton(void)
         }
         else if(button == B_Menu)
         {
-            if (IsPageSB(OpenedItem()))
+            if (IsPageSB(menu.OpenedItem()))
             {
-                CloseOpenedItem();
+                menu.CloseOpenedItem();
             }
             else
             {
                 menu.Show(!MENU_IS_SHOWN);
-                if (TypeOpenedItem() != Item_Page)
+                if (menu.TypeOpenedItem() != Item_Page)
                 {
                     menu.TemporaryEnableStrNavi();
                 }
@@ -500,7 +500,7 @@ void ProcessingLongPressureButton(void)
         {
             void *item = ItemUnderButton(button);
             FuncForLongPressureOnItem(item)(item);
-            if (TypeOpenedItem() != Item_Page)
+            if (menu.TypeOpenedItem() != Item_Page)
             {
                 menu.TemporaryEnableStrNavi();
             }
@@ -518,7 +518,7 @@ void ProcessingRegulatorPress(void)
         if (pressRegulator == R_Set)
         {
             menu.Show(!MENU_IS_SHOWN);
-            if (TypeOpenedItem() != Item_Page)
+            if (menu.TypeOpenedItem() != Item_Page)
             {
                 menu.TemporaryEnableStrNavi();
             }
@@ -536,23 +536,23 @@ void ProcessingRegulatorSetRotate(void)
         return;
     }
 
-    if (MENU_IS_SHOWN || TypeOpenedItem() != Item_Page)
+    if (MENU_IS_SHOWN || menu.TypeOpenedItem() != Item_Page)
     {
-        void *item = CurrentItem();
+        void *item = menu.CurrentItem();
         TypeItem type = TypeMenuItem(item);
         static const int step = 2;
-        if (TypeOpenedItem() == Item_Page && (type == Item_ChoiceReg || type == Item_Governor || type == Item_IP || type == Item_MAC))
+        if (menu.TypeOpenedItem() == Item_Page && (type == Item_ChoiceReg || type == Item_Governor || type == Item_IP || type == Item_MAC))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
-                ChangeItem(item, angleRegSet);
+                menu.ChangeItem(item, angleRegSet);
                 angleRegSet = 0;
             }
             return;
         }
         else
         {
-            item = OpenedItem();
+            item = menu.OpenedItem();
             type = TypeMenuItem(item);
             if (MenuIsMinimize())
             {
@@ -568,7 +568,7 @@ void ProcessingRegulatorSetRotate(void)
             }
             else if (type == Item_GovernorColor)
             {
-                ChangeItem(item, angleRegSet);
+                menu.ChangeItem(item, angleRegSet);
             }
             else if (type == Item_Time)
             {
@@ -646,7 +646,7 @@ void ShortPress_Choice(void *choice_)
     }
     else if (!ItemIsOpened(choice))
     {
-        SetCurrentItem(choice, CurrentItem() != choice);
+        SetCurrentItem(choice, menu.CurrentItem() != choice);
         choice->StartChange(1);
     }
     else
@@ -664,9 +664,9 @@ void ShortPress_ChoiceReg(void *choice_)
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     } 
-    else if(OpenedItem() != choice) 
+    else if(menu.OpenedItem() != choice) 
     {
-        SetCurrentItem(choice, CurrentItem() != choice);
+        SetCurrentItem(choice, menu.CurrentItem() != choice);
     }
 }
 
@@ -690,7 +690,7 @@ void ShortPress_Button(void *button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncOnLongPressItem(void *item)
 {
-    if (CurrentItem() != item)
+    if (menu.CurrentItem() != item)
     {
         SetCurrentItem(item, true);
     }
@@ -700,7 +700,7 @@ void FuncOnLongPressItem(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncOnLongPressItemTime(void *time)
 {
-    if (CurrentItem() != time)
+    if (menu.CurrentItem() != time)
     {
         SetCurrentItem(time, true);
     }
@@ -735,20 +735,20 @@ void ShortPress_Governor(void *governor)
     {
         return;
     }
-    if(OpenedItem() == gov)
+    if(menu.OpenedItem() == gov)
     {
         gov->NextPosition();
     }
     else
     {
-        SetCurrentItem(gov, CurrentItem() != gov);
+        SetCurrentItem(gov, menu.CurrentItem() != gov);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_IP(void *item)
 {
-    if (OpenedItem() == item)
+    if (menu.OpenedItem() == item)
     {
         ((IPaddress*)item)->NextPosition();
     }
@@ -757,7 +757,7 @@ void ShortPress_IP(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_MAC(void *item)
 {
-    if (OpenedItem() == item)
+    if (menu.OpenedItem() == item)
     {
         CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
@@ -771,7 +771,7 @@ void ShortPress_GovernorColor(void *governorColor)
         return;
     }
     GovernorColor *governor = (GovernorColor*)governorColor;
-    if(OpenedItem() == governor)
+    if(menu.OpenedItem() == governor)
     {
         CircleIncrease<int8>(&(governor->ct->currentField), 0, 3);
     }
@@ -880,11 +880,11 @@ static bool NeedForFireSetLED(void)
 {
     if (!MENU_IS_SHOWN)
     {
-        TypeItem type = TypeOpenedItem();
+        TypeItem type = menu.TypeOpenedItem();
         return (type == Item_ChoiceReg) || (type == Item_Choice) || (type == Item_Governor);
     }
 
-    NamePage name = GetNameOpenedPage();
+    NamePage name = menu.GetNameOpenedPage();
     if (
             name == PageSB_Debug_SerialNumber   ||
             name == PageSB_Service_FFT_Cursors  || 
@@ -898,7 +898,7 @@ static bool NeedForFireSetLED(void)
         return true;
     }
     
-    TypeItem type = TypeMenuItem(CurrentItem());
+    TypeItem type = TypeMenuItem(menu.CurrentItem());
     if (type == Item_Governor    ||
         type == Item_ChoiceReg   ||
         type == Item_GovernorColor)
@@ -906,9 +906,9 @@ static bool NeedForFireSetLED(void)
         return true;
     }
 
-    type = TypeOpenedItem();
+    type = menu.TypeOpenedItem();
     if (type == Item_Choice       ||
-        (type == Item_Page && ((const Page *)OpenedItem())->NumSubPages() > 1)
+        (type == Item_Page && ((const Page *)menu.OpenedItem())->NumSubPages() > 1)
         )
     {
         return true;
@@ -959,4 +959,112 @@ void Menu::Init(void)
 void Menu::RunAfterUpdate(pFuncVV func)
 {
     funcAterUpdate = func;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void *Menu::OpenedItem(void)
+{
+    TypeItem type = Item_None;
+    return RetLastOpened((Page *)&mainPage, &type);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+TypeItem Menu::TypeOpenedItem(void)
+{
+    return TypeMenuItem(OpenedItem());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+NamePage Menu::GetNameOpenedPage(void)
+{
+    return ((const Page *)OpenedItem())->GetNamePage();
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void *Menu::RetLastOpened(Page *page, TypeItem *type)
+{
+    if (CurrentItemIsOpened(page->GetNamePage()))
+    {
+        int8 posActItem = page->PosCurrentItem();
+        void *item = page->Item(posActItem);
+        TypeItem typeLocal = TypeMenuItem(page->Item(posActItem));
+        if (typeLocal == Item_Page)
+        {
+            return RetLastOpened((Page *)item, type);
+        }
+        else
+        {
+            return item;
+        }
+    }
+    *type = Item_Page;
+    return page;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void *Menu::CurrentItem(void)
+{
+    TypeItem type = Item_None;
+    void *lastOpened = RetLastOpened((Page *)&mainPage, &type);
+    int8 pos = ((const Page *)lastOpened)->PosCurrentItem();
+    if (type == Item_Page && pos != 0x7f)
+    {
+        return ((const Page *)lastOpened)->Item(pos);
+    }
+    return lastOpened;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::CloseOpenedItem(void)
+{
+    void *item = OpenedItem();
+    if (TypeOpenedItem() == Item_Page)
+    {
+        if (IsPageSB(item))
+        {
+            CallFuncOnPressButton(((Page *)item)->SmallButonFromPage(0));
+        }
+        NamePage name = Keeper(item)->name;
+        SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
+        if (item == &mainPage)
+        {
+            menu.Show(false);
+        }
+    }
+    else
+    {
+        OpenItem(item, false);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Menu::ChangeItem(void *item, int delta)
+{
+    TypeItem type = TypeMenuItem(item);
+    if (type == Item_Choice || type == Item_ChoiceReg)
+    {
+        ((Choice *)item)->StartChange(delta);
+    }
+    else if (type == Item_Governor)
+    {
+        Governor *governor = (Governor*)item;
+        if (OpenedItem() != governor)
+        {
+            governor->StartChange(delta);
+        }
+        else
+        {
+            governor->ChangeValue(delta);
+        }
+    }
+    else if (type == Item_GovernorColor)
+    {
+        ((GovernorColor *)item)->ChangeValue(delta);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+Page *Menu::PagePointerFromName(NamePage)
+{
+    return 0;
 }

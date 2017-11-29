@@ -10,6 +10,7 @@
 #include "Log.h"
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
+#include "Menu/Menu.h"
 #include "Menu/MenuFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/CommonFunctions.h"
@@ -613,6 +614,6 @@ static void MoveCursTonPercentsOrPoints(int delta)
 
 bool IsRegSetActiveOnCursors(void)
 {
-    return ((GetNameOpenedPage() == PageSB_Cursors_Set) &&
+    return ((menu.GetNameOpenedPage() == PageSB_Cursors_Set) &&
         ((CURS_ACTIVE_U && CURsU_ENABLED) || (CURS_ACTIVE_T && CURsT_ENABLED)));
 }
