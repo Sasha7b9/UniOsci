@@ -82,7 +82,7 @@ DEF_PAGE_7(         pChanA,
 );
 
 //---------------------------------------------------------------------------------------------------------------------------------  ¿Õ¿À 1 - ¬ıÓ‰ ---
-void OnChanged_ChanA_Input(bool)
+void OnChanged_InputA(bool)
 {
     panel.EnableLEDChannel(A, SET_ENABLED_A);
 }
@@ -90,7 +90,7 @@ void OnChanged_ChanA_Input(bool)
 DEF_CHOICE_2
 (
     cChanA_Input, pChanA,
-    SET_ENABLED_A, FuncActive, OnChanged_ChanA_Input, FuncDraw,
+    SET_ENABLED_A, FuncActive, OnChanged_InputA, FuncDraw,
     "¬ıÓ‰", "Input",
     chanInputRu,
     chanInputEn,
@@ -221,7 +221,7 @@ static bool IsActive_ChanB_Input(void)
     return !FPGA_POINTS_32k;
 }
 
-void OnChanged_ChanB_Input(bool active)
+void OnChanged_InputB(bool active)
 {
     if (!active)
     {
@@ -239,7 +239,7 @@ void OnChanged_ChanB_Input(bool active)
 DEF_CHOICE_2
 (
     cChanB_Input, pChanB,
-    SET_ENABLED_B, IsActive_ChanB_Input, OnChanged_ChanB_Input, FuncDraw,
+    SET_ENABLED_B, IsActive_ChanB_Input, OnChanged_InputB, FuncDraw,
     "¬ıÓ‰", "Input",
     chanInputRu,
     chanInputEn,
