@@ -147,7 +147,7 @@ DEF_PAGE_4(     pMemory,                                                        
 
 const Page * pointerPageMemory = &pMemory;
 
-//--------------------------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - Точки ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Points(void)
 {
     return SET_PEAKDET_DIS;
@@ -197,10 +197,7 @@ void OnChanged_Points(bool active)
 
 pString namesLengthMemory[] = {"512", "1k", "2k", "4k", "8k", "16k", "32k"};
 
-DEF_CHOICE_6
-(
-    cPoints, pMemory,
-    FPGA_ENUM_POINTS, IsActive_Points, OnChanged_Points, FuncDraw,
+DEF_CHOICE_6(   cPoints,                                                                                                      //--- ПАМЯТЬ - Точки ---
     "Длина памяти", "Mem length",
     "Выбор количества отсчётов для сохраняемых сигналов. "
     "При увеличении количества отсчётов уменьшается количество сохранённых в памяти сигналов.",
@@ -211,8 +208,9 @@ DEF_CHOICE_6
     namesLengthMemory[2], namesLengthMemory[2],
     namesLengthMemory[3], namesLengthMemory[3],
     namesLengthMemory[4], namesLengthMemory[4],
-    namesLengthMemory[5], namesLengthMemory[5]
+    namesLengthMemory[5], namesLengthMemory[5],
     //,namesLengthMemory[6], namesLengthMemory[6],
+    FPGA_ENUM_POINTS, pMemory, IsActive_Points, OnChanged_Points, FuncDraw
 );
 
 

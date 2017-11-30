@@ -178,11 +178,11 @@ static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nam
 static const Choice name = {Item_Choice, 5, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_6(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5, nameRu6, nameEn6)     \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,  \
-    nameRu5, nameEn5, nameRu6, nameEn6};                                                                            \
-static const Choice name = {Item_Choice, 6, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_6(name, titleRU, titleEN, hintRU, hintEN,nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,      \
+    nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, cell, keeper, funcActive, funcChanged, funcDraw)                               \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                         \
+    nameRu5, nameEn5, nameRu6, nameEn6};                                                                                        \
+static const Choice name = {Item_Choice, 6, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,             \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_7(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \

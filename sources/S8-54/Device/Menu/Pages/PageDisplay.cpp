@@ -544,16 +544,13 @@ DEF_CHOICE_3(       cSettings_AltMarkers,                                       
     ALT_MARKERS, ppDisplaySettings, FuncActive, OnChanged_Settings_AltMarkers, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_AutoHide(bool autoHide)
 {
     menu.SetAutoHide(autoHide);
 }
 
-DEF_CHOICE_6
-(
-    cSettings_AutoHide, ppDisplaySettings,
-    MENU_AUTO_HIDE, FuncActive, OnChanged_Settings_AutoHide, FuncDraw,
+DEF_CHOICE_6(       cSettings_AutoHide,                                                                       //--- ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать ---
     "Скрывать", "Hide",
     "Установка после последнего нажатия кнопки или поворота ручки, по истечении которого меню автоматически убирается с экрана",
     "Installation after the last keystroke or turning the handle, after which the menu will automatically disappear",
@@ -562,7 +559,8 @@ DEF_CHOICE_6
     "Через 10 сек", "Through 10 s",
     "Через 15 сек", "Through 15 s",
     "Через 30 сек", "Through 30 s",
-    "Через 60 сек", "Through 60 s"
+    "Через 60 сек", "Through 60 s",
+    MENU_AUTO_HIDE, ppDisplaySettings, FuncActive, OnChanged_Settings_AutoHide, FuncDraw
 );
 
 /*
