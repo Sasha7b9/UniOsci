@@ -211,7 +211,6 @@ void OnChanged_RefreshFPS(bool active)
     fpga.SetNumSignalsInSec(sDisplay_NumSignalsInS());
 }
 
-
 DEF_CHOICE_5(       mcRefreshFPS,                                                                                      // ДИСПЛЕЙ - Частота обновл ---
     pDisplay, ENUM_SIGNALS_IN_SEC, FuncActive, OnChanged_RefreshFPS, FuncDraw,
     "Частота обновл", "Refresh rate",
@@ -226,14 +225,14 @@ DEF_CHOICE_5(       mcRefreshFPS,                                               
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_4(       mcGrid_Type,                                                                                          // ДИСПЛЕЙ - СЕТКА - Тип ---
-    mspGrid, TYPE_GRID, FuncActive, FuncChangedChoice, FuncDraw,
     "Тип", "Type",
     "Выбор типа сетки.",
     "Choice like grid.",
     "Тип 1", "Type 1",
     "Тип 2", "Type 2",
     "Тип 3", "Type 3",
-    "Тип 4", "Type 4"
+    "Тип 4", "Type 4",
+    TYPE_GRID, mspGrid, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

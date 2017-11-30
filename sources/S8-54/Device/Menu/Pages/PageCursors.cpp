@@ -96,11 +96,8 @@ DEF_CHOICE_2(       cShow,                                                      
     CURS_SHOW, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Слежение канал 1 ---
-DEF_CHOICE_4
-(
-    cLookModeChanA, pCursors,
-    CURS_LOOK_MODE(A), FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_4(       cLookModeChanA,                                                                               //--- КУРСОРЫ - Слежение канал 1 ---
     "Слежение \x8e, \x9e", "Tracking \x8e, \x9e"
     ,
     "Задаёт режим слежения за первым курсором времени и напряжения:\n"
@@ -116,17 +113,15 @@ DEF_CHOICE_4
     "3. \"Time\" - when manually changing the position of the cursor voltage cursors time automatically track changes in the signal.\n"
     "4. \"Volt and time\" - acts as one of the previous modes, depending on which was carried out last effect cursors."
     ,
-    DISABLE_RU,        DISABLE_EN,
-    "Напряжение",      "Voltage",
-    "Время",           "Time",
-    "Напряж и время",  "Volt and time"
+    DISABLE_RU,       DISABLE_EN,
+    "Напряжение",     "Voltage",
+    "Время",          "Time",
+    "Напряж и время", "Volt and time",
+    CURS_LOOK_MODE(A), pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Слежение канал 2 ---
-DEF_CHOICE_4
-(
-    cLookModeChanB, pCursors,
-    CURS_LOOK_MODE(B), FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_4(       cLookModeChanB,                                                                               //--- КУРСОРЫ - Слежение канал 2 ---
     "Слежение \x8f, \x9f", "Tracking \x8f, \x9f"
     ,
     "Задаёт режим слежения за вторым курсором времени и напряжения:\n"
@@ -144,7 +139,8 @@ DEF_CHOICE_4
     DISABLE_RU,        DISABLE_EN,
     "Напряжение",      "Voltage",
     "Время",           "Time",
-    "Напряж. и время", "Volt. and time"
+    "Напряж. и время", "Volt. and time",
+    CURS_LOOK_MODE(B), pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

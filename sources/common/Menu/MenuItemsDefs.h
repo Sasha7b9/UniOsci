@@ -40,8 +40,8 @@ static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (voi
 const Page name = {Item_Page, false, namePage, 5, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_6(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                             \
-    item1, item2, item3, item4, item5, item6)                                                                                                   \
+#define DEF_PAGE_6(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
+    item1, item2, item3, item4, item5, item6, namePage, keeper, funcActive, funcPress)                                                          \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6};    \
 const Page name = {Item_Page, false, namePage, 6, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
@@ -75,6 +75,16 @@ static const void * const  items##name[] = {                                    
     (void *)&item8, (void *)&item9, (void *)&item10};                                                                                           \
 const Page name = {Item_Page, false, namePage, 10, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+
+/*
+#define DEF_PAGE_11(name, titleRU, titleEN, hintRU, hintEN,                                                                                     \
+    item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, namePage, keeper, funcActive, funcPress)                     \
+static const void * const  items##name[] = {                                                                                                    \
+    (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
+    (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11};                                                                          \
+const Page name = {Item_Page, false, namePage, 11, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
+    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
+    */
 
 #define DEF_PAGE_11_GLOBAL(name, titleRU, titleEN, hintRU, hintEN,                                                                              \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, namePage, keeper, funcActive, funcPress)                     \
@@ -155,10 +165,10 @@ static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nam
 static const Choice name = {Item_Choice, 3, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_4(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4)                                         \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4}; \
-static const Choice name = {Item_Choice, 4, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_4(name, titleRU, titleEN, hintRU, hintEN,                                                                    \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, cell, keeper, funcActive, funcChanged, funcDraw)    \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4};                        \
+static const Choice name = {Item_Choice, 4, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,             \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_5(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \

@@ -1093,7 +1093,6 @@ DEF_PAGE_SB(        mspFileManager,                                             
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_6(         mspMemoryExt,                                                                                             // ПАМЯТЬ - ВНЕШН ЗУ ///
-    Page_MemoryExt, &pMemory, FuncActive, FuncPress, 
     "ВНЕШН ЗУ", "EXT STORAGE",
     "Работа с внешним запоминающим устройством.",
     "Work with external storage device.",
@@ -1102,7 +1101,8 @@ DEF_PAGE_6(         mspMemoryExt,                                               
     mspSetMask,
     mcMemoryExtModeSave,
     mcMemoryExtModeBtnMemory,
-    mcMemoryExtAutoConnectFlash
+    mcMemoryExtAutoConnectFlash,
+    Page_MemoryExt, &pMemory, FuncActive, FuncPress
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

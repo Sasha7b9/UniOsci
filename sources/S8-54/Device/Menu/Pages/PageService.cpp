@@ -13,144 +13,27 @@
 #include "Utils/Math.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern void Func_Start(int key);          // 1 - нажатие, 1 - отпускание
+extern const Page pService;
+extern const Page ppCalibrator;
+extern const Page ppFFT;
+extern const Page pppFFT_Cursors;
+extern const Page ppFunction;
+extern const Page ppEthernet;
+extern const Page ppSound;
+extern const Page ppRTC;
+extern const Page ppInformation;
 
-extern const         Page pService;
-extern const       Button bResetSettings;                           ///< СЕРВИС - Сброс настроек
-        void       OnPress_ResetSettings(void);
-static void           Draw_ResetSettings(void);
-extern const       Button bAutoSearch;                              ///< СЕРВИС - Поиск сигнала
-static void        OnPress_AutoSearch(void);
-extern const        Page ppCalibrator;                              ///< СЕРВИС - КАЛИБРАТОР
-extern const       Choice cCalibrator_Calibrator;                   ///< СЕРВИС - КАЛИБРАТОР - Калибратор
-static void      OnChanged_Calibrator_Calibrator(bool active);
-extern const       Button bCalibrator_Calibrate;                    ///< СЕРВИС - КАЛИБРАТОР - Калибровать
-static bool       IsActive_Calibrator_Calibrate(void);
-static void        OnPress_Calibrator_Calibrate(void);
-#ifdef OLD_RECORDER
-extern const       Choice cRecorder;
-static void      OnChanged_Recorder(bool active);
-#else
-static const       Page ppRecorder;                                 ///< СЕРВИС - РЕГИСТРАТОР
-static const     SButton bRecorder_Exit;                            ///< СЕРВИС - РЕГИСТРАТОР - Выход
-static const     SButton bRecorder_SaveTo;                          ///< СЕРВИС - РЕГИСТРАТОР - Сохранять в...
-static bool      IsActive_Recorder_SaveTo(void);
-static void       OnPress_Recorder_SaveTo(void);
-static void          Draw_Recorder_SaveTo(int, int);
-static void          Draw_Recorder_SaveTo_RAM(int, int);
-static void          Draw_Recorder_SaveTo_EXT(int, int);
-static const     SButton bRecorder_Choice;                          ///< СЕРВИС - РЕГИСТРАТОР - Выбор
-static void       OnPress_Recorder_Choice(void);
-static void          Draw_Recorder_Choice(int x, int y);
-static const     SButton bRecorder_Cursor;                          ///< СЕРВИС - РЕГИСТРАТОР - Курсор
-static void       OnPress_Recorder_Cursor(void);
-static void          Draw_Recorder_Cursor(int x, int y);
-#endif
-extern const        Page ppFFT;                                     ///< СЕРВИС - СПЕКТР
-static bool       IsActive_FFT(void);
-static void        OnPress_FFT(void);
-extern const       Choice cFFT_View;                                ///< СЕРВИС - СПЕКТР - Отображение
-extern const       Choice cFFT_Scale;                               ///< СЕРВИС - СПЕКТР - Шкала
-extern const       Choice cFFT_Source;                              ///< СЕРВИС - СПЕКТР - Источник
-extern const       Choice cFFT_Window;                              ///< СЕРВИС - СПЕКТР - Окно
-extern const       Page pppFFT_Cursors;                             ///< СЕРВИС - СПЕКТР - КУРСОРЫ
-static bool       IsActive_FFT_Cursors(void);
-static void       OnRegSet_FFT_Cursors(int angle);
-extern const      SButton bFFT_Cursors_Exit;                        ///< СЕРВИС - СПЕКТР - КУРСОРЫ - Выход
-extern const      SButton bFFT_Cursors_Source;                      ///< СЕРВИС - СПЕКТР - КУРСОРЫ - Источник
-static void        OnPress_FFT_Cursors_Source(void);
-static void           Draw_FFT_Cursors_Source(int x, int y);
-extern const       Choice cFFT_Range;                               ///< СЕРВИС - СПЕКТР - Диапазон
-static bool       IsActive_FFT_Range(void);
-extern const        Page ppFunction;                                ///< СЕРВИС - ФУНКЦИЯ
-static bool       IsActive_Function(void);
-static void        OnPress_Function(void);
-static void       OnRegSet_Function(int delta);
-extern const      SButton bFunction_Exit;                           ///< СЕРВИС - ФУНКЦИЯ - Выход
-extern const      SButton bFunction_Screen;                         ///< СЕРВИС - ФУНКЦИЯ - Экран
-static void        OnPress_Function_Screen(void);
-static void           Draw_Function_Screen(int x, int y);
-static void           Draw_Function_Screen_Disable(int x, int y);
-static void           Draw_Function_Screen_Separate(int x, int y);
-static void           Draw_Function_Screen_Together(int x, int y);
-extern const      SButton bFunction_Type;                           ///< СЕРВИС - ФУНКЦИЯ - Вид
-static void        OnPress_Function_Type(void);
-static void           Draw_Function_Type(int x, int y);
-static void           Draw_Function_Type_Sum(int x, int y);
-static void           Draw_Function_Type_Mul(int x, int y);
-extern const      SButton bFunction_ModeRegSet;                     ///< СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА
-static void        OnPress_Function_ModeRegSet(void);
-static void           Draw_Function_ModeRegSet(int x, int y);
-static void           Draw_Function_ModeRegSet_Range(int x, int y);
-static void           Draw_Function_ModeRegSet_RShift(int x, int y);
-extern const      SButton bFunction_RangeA;                         ///< СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала
-static void        OnPress_Function_RangeA(void);
-static void           Draw_Function_RangeA(int x, int y);
-extern const      SButton bFunction_RangeB;                         ///< СЕРВИС - ФУНКЦИЯ - Масштаб 2-го канала
-static void        OnPress_Function_RangeB(void);
-static void           Draw_Function_RangeB(int x, int y);
-extern const        Page ppEthernet;                                ///< СЕРВИС - ETHERNET
-extern const      Choice cEthernet_Ethernet;                        ///< СЕРВИС - ETHERNET - Ethernet
-static void     OnChanged_Ethernet_Settings(bool active);
-extern const  IPaddress ipEthernet_IP;                              ///< СЕРВИС - ETHERNET - IP адрес
-extern const  IPaddress ipEthernet_NetMask;                         ///< СЕРВИС - ETHERNET - Маска подсети
-extern const  IPaddress ipEthernet_Gateway;                         ///< СЕРВИС - ETHERNET - Шлюз
-extern const MACaddress ipEthernet_MAC;                             ///< СЕРВИС - ETHERNET - MAC адрес
-extern const       Page ppSound;                                    ///< СЕРВИС - ЗВУК
-extern const      Choice cSound_Enable;                             ///< СЕРВИС - ЗВУК - Звук
-extern const    Governor gSound_Volume;                             ///< СЕРВИС - ЗВУК - Громкость
-extern const       Page ppRTC;                                     ///< СЕРВИС - ВРЕМЯ
-extern const        Time tRTC_Time;                                ///< СЕРВИС - ВРЕМЯ - Время
-extern const    Governor tRTC_Correction;                          ///< СЕРВИС - ВРЕМЯ - Коррекция
-static void     OnChanged_Time_Correction(void);
-extern const      Choice cLanguage;                                 ///< СЕРВИС - ЯЗЫК
-extern const       Page ppInformation;                              ///< СЕРВИС - ИНФОРМАЦИЯ
-static void       OnPress_Information(void);
-static void   Information_Draw(void);
-extern const     SButton bInformation_Exit;                         ///< СЕРВИС - ИНФОРМАЦИЯ - Выход
-static void       OnPress_Information_Exit(void);
 
-// СЕРВИС ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-static const void * const itemspService[] =
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void Draw_ResetSettings(void)
 {
-        (void *)&bResetSettings,    // СЕРВИС - Сброс настроек
-        (void *)&bAutoSearch,       // СЕРВИС - Поиск сигнала
-        (void *)&ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
-#ifdef OLD_RECORDER
-        (void *)&cRecorder,         // СЕРВИС - Регистратор
-#else
-        (void *)&ppRecorder,        // СЕРВИС - РЕГИСТРАТОР
-#endif
-        (void *)&ppFFT,             // СЕРВИС - СПЕКТР
-        (void *)&ppFunction,        // СЕРВИС - ФУНКЦИЯ
-        (void *)&ppEthernet,        // СЕРВИС - ETHERNET
-        (void *)&ppSound,           // СЕРВИС - ЗВУК
-        (void *)&ppRTC,             // СЕРВИС - ВРЕМЯ
-        (void *)&cLanguage,         // СЕРВИС - Язык
-        (void *)&ppInformation      // СЕРВИС - ИНФОРМАЦИЯ
-};
+    painter.BeginScene(gColorBack);
 
-const Page pService =
-{
-    Item_Page, false, Page_Service, 11, &mainPage, 0,
-    {
-        "СЕРВИС", "SERVICE",
-        "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
-        "Additional settings, calibration, signal search, mathematical functions"
-    },
-    itemspService,
-    EmptyPressPage
-};
+    painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
+                                         "Нажмите любую другую кнопку, если сброс не нужен.", gColorFill);
 
-// СЕРВИС - Сброс настроек ---------------------------------------------------------------------------------------------------------------------------
-DEF_BUTTON(
-    bResetSettings,
-    "Сброс настроек", "Reset settings",
-    "Сброс настроек на настройки по умолчанию",
-    "Reset to default settings",
-    pService, EmptyFuncBV, OnPress_ResetSettings, EmptyFuncVII);
+    painter.EndScene();
+}
 
 void OnPress_ResetSettings(void)
 {
@@ -167,38 +50,25 @@ void OnPress_ResetSettings(void)
     //Func_Start(1);
 }
 
-static void Draw_ResetSettings(void)
-{
-    painter.BeginScene(gColorBack);
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_BUTTON(         bResetSettings,                                                                                  //--- СЕРВИС - Сброс настроек ---
+    "Сброс настроек", "Reset settings",
+    "Сброс настроек на настройки по умолчанию",
+    "Reset to default settings",
+    pService, EmptyFuncBV, OnPress_ResetSettings, EmptyFuncVII
+);
 
-    painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
-                                                         "Нажмите любую другую кнопку, если сброс не нужен.", gColorFill);
-
-    painter.EndScene();
-}
-
-// СЕРВИС - Поиск сигнала ----------------------------------------------------------------------------------------------------------------------------
-DEF_BUTTON(
-    bAutoSearch,
-    "Поиск сигнала", "Find signal",
-    "Устанавливает оптимальные установки осциллографа для сигнала в канале 1",
-    "Sets optimal settings for the oscilloscope signal on channel 1",
-    pService, FuncActive, OnPress_AutoSearch, FuncDraw);
-
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_AutoSearch(void)
 {
     FPGA_NEED_AUTO_FIND = 1;
 };
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
-    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage,
-    "КАЛИБРАТОР", "CALIBRATOR",
-    "Управлением калибратором и калибровка осциллографа",
-    "Control of the calibrator and calibration of an oscillograph",
-    cCalibrator_Calibrator, // СЕРВИС - КАЛИБРАТОР - Калибратор
-    bCalibrator_Calibrate   // СЕРВИС - КАЛИБРАТОР - Калибровать
+DEF_BUTTON(         bAutoSearch,                                                                                      //--- СЕРВИС - Поиск сигнала ---
+    "Поиск сигнала", "Find signal",
+    "Устанавливает оптимальные установки осциллографа для сигнала в канале 1",
+    "Sets optimal settings for the oscilloscope signal on channel 1",
+    pService, FuncActive, OnPress_AutoSearch, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -208,16 +78,16 @@ static void OnChanged_Calibrator_Calibrator(bool)
 }
 
 DEF_CHOICE_3(       cCalibrator_Calibrator,                                                                 //--- СЕРВИС - КАЛИБРАТОР - Калибратор ---
-    "Калибратор",   "Calibrator",
+    "Калибратор", "Calibrator",
     "Режим работы калибратора",
     "Mode of operation of the calibrator",
     "Перем", "DC",
-    "+4V",   "+4V",
-    "0V",    "0V",
+    "+4V", "+4V",
+    "0V", "0V",
     CALIBRATOR_MODE, ppCalibrator, FuncActive, OnChanged_Calibrator_Calibrator, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------- СЕРВИС - КАЛИБРАТОР - Калибровать ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Calibrator_Calibrate(void)
 {
     return !(SET_CALIBR_MODE_A == CalibrationMode_Disable && CALIBR_MODE_B == CalibrationMode_Disable);
@@ -228,13 +98,21 @@ static void OnPress_Calibrator_Calibrate(void)
     gStateFPGA.needCalibration = true;
 }
 
-DEF_BUTTON
-(
-    bCalibrator_Calibrate,
+DEF_BUTTON(         bCalibrator_Calibrate,                                                                 //--- СЕРВИС - КАЛИБРАТОР - Калибровать ---
     "Калибровать", "Calibrate",
     "Запуск процедуры калибровки",
     "Running the calibration procedure",
     ppCalibrator, IsActive_Calibrator_Calibrate, OnPress_Calibrator_Calibrate, FuncDraw
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
+    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage,
+    "КАЛИБРАТОР", "CALIBRATOR",
+    "Управлением калибратором и калибровка осциллографа",
+    "Control of the calibrator and calibration of an oscillograph",
+    cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
+    bCalibrator_Calibrate       // СЕРВИС - КАЛИБРАТОР - Калибровать
 );
 
 #ifdef OLD_RECORDER
@@ -393,34 +271,6 @@ static void Draw_Recorder_Cursor(int x, int y)
 
 #endif
 
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СЕРВИС - СПЕКТР ///
-static bool IsActive_FFT(void)
-{
-    return !FUNC_MODE_DRAW_IS_ENABLED;
-}
-
-static void OnPress_FFT(void)
-{
-    if (!IsActive_FFT())
-    {
-        display.ShowWarning(ImpossibleEnableFFT);
-    }
-}
-
-DEF_PAGE_6(         ppFFT, 
-    Page_Service_FFT, &pService, IsActive_FFT, OnPress_FFT,
-    "СПЕКТР", "SPECTRUM",
-    "Отображение спектра входного сигнала",
-    "Mapping the input signal spectrum",
-    cFFT_View,         // СЕРВИС - СПЕКТР - Отображение
-    cFFT_Scale,        // СЕРВИС - СПЕКТР - Шкала
-    cFFT_Source,       // СЕРВИС - СПЕКТР - Источник
-    cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
-    pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
-    cFFT_Range         // СЕРВИС - СПЕКТР - Диапазон
-);
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cFFT_View,                                                                                 //--- СЕРВИС - СПЕКТР - Отображение ---
     "Отображение", "Display",
@@ -433,7 +283,7 @@ DEF_CHOICE_2(       cFFT_View,                                                  
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cFFT_Scale,                                                                                      //--- СЕРВИС - СПЕКТР - Шкала ---
-    "Шкала",        "Scale",
+    "Шкала", "Scale",
     "Задаёт масштаб вывода спектра - линейный или логарифмический",
     "Sets the scale of the output spectrum - linear or logarithmic",
     "Логарифм", "Log",
@@ -443,7 +293,7 @@ DEF_CHOICE_2(       cFFT_Scale,                                                 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(       cFFT_Source,                                                                                  //--- СЕРВИС - СПЕКТР - Источник ---
-    "Источник",     "Source",
+    "Источник", "Source",
     "Выбор источника для расчёта спектра",
     "Selecting the source for the calculation of the spectrum",
     "Канал 1",     "Channel 1",
@@ -452,18 +302,39 @@ DEF_CHOICE_3(       cFFT_Source,                                                
     SOURCE_FFT, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - Окно ---
-DEF_CHOICE_4
-(
-    cFFT_Window, ppFFT,
-    WINDOW_FFT, FuncActive, FuncChangedChoice, FuncDraw,
-    "Окно",         "Window",
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_4(       cFFT_Window,                                                                                      //--- СЕРВИС - СПЕКТР - Окно ---
+    "Окно", "Window",
     "Задаёт окно для расчёта спектра",
     "Sets the window to calculate the spectrum",
-    "Прямоугольн",  "Rectangle",
-    "Хэмминга",     "Hamming",
-    "Блэкмена",     "Blackman",
-    "Ханна",        "Hann"        
+    "Прямоугольн", "Rectangle",
+    "Хэмминга", "Hamming",
+    "Блэкмена", "Blackman",
+    "Ханна",    "Hann",
+    WINDOW_FFT, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  bFFT_Cursors_Exit,                                                                 //--- СЕРВИС - СПЕКТР - КУРСОРЫ - Выход ---
+    pppFFT_Cursors, FuncActive, OnPressSB_Exit, DrawSB_Exit
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_FFT_Cursors_Source(void)
+{
+    MATH_CURRENT_CUR = (uint8)((MATH_CURRENT_CUR + 1) % 2);
+}
+
+static void Draw_FFT_Cursors_Source(int x, int y)
+{
+    painter.DrawText(x + 7, y + 5, MATH_CURRENT_CUR_IS_0 ? "1" : "2");
+}
+
+DEF_SMALL_BUTTON(   bFFT_Cursors_Source,                                                                //--- СЕРВИС - СПЕКТР - КУРСОРЫ - Источник ---
+    "Источник", "Source",
+    "Выбор источника для расчёта спектра",
+    "Source choice for calculation of a range",
+    pppFFT_Cursors, FuncActive, OnPress_FFT_Cursors_Source, Draw_FFT_Cursors_Source
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -492,31 +363,6 @@ DEF_PAGE_SB(        pppFFT_Cursors,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_SMALL_BUTTON_EXIT(  bFFT_Cursors_Exit,                                                                 //--- СЕРВИС - СПЕКТР - КУРСОРЫ - Выход ---
-    pppFFT_Cursors, FuncActive, OnPressSB_Exit, DrawSB_Exit
-);
-
-//----------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - КУРСОРЫ - Источник ---
-static void OnPress_FFT_Cursors_Source(void)
-{
-    MATH_CURRENT_CUR = (uint8)((MATH_CURRENT_CUR + 1) % 2);
-}
-
-static void Draw_FFT_Cursors_Source(int x, int y)
-{
-    painter.DrawText(x + 7, y + 5, MATH_CURRENT_CUR_IS_0 ? "1" : "2");
-}
-
-DEF_SMALL_BUTTON
-(
-    bFFT_Cursors_Source,
-     "Источник", "Source",
-     "Выбор источника для расчёта спектра",
-     "Source choice for calculation of a range",
-    pppFFT_Cursors, FuncActive, OnPress_FFT_Cursors_Source, Draw_FFT_Cursors_Source
-);
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_FFT_Range(void)
 {
     return SCALE_FFT_IS_LOG;
@@ -530,6 +376,195 @@ DEF_CHOICE_3(       cFFT_Range,                                                 
     "-60дБ", "-60dB",
     "-80дБ", "-80dB",
     MAX_DB_FFT, ppFFT, IsActive_FFT_Range, FuncChangedChoice, FuncDraw
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static bool IsActive_FFT(void)
+{
+    return !FUNC_MODE_DRAW_IS_ENABLED;
+}
+
+static void OnPress_FFT(void)
+{
+    if (!IsActive_FFT())
+    {
+        display.ShowWarning(ImpossibleEnableFFT);
+    }
+}
+
+DEF_PAGE_6(         ppFFT,                                                                                                      // СЕРВИС - СПЕКТР ///
+    "СПЕКТР", "SPECTRUM",
+    "Отображение спектра входного сигнала",
+    "Mapping the input signal spectrum",
+    cFFT_View,         // СЕРВИС - СПЕКТР - Отображение
+    cFFT_Scale,        // СЕРВИС - СПЕКТР - Шкала
+    cFFT_Source,       // СЕРВИС - СПЕКТР - Источник
+    cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
+    pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
+    cFFT_Range,        // СЕРВИС - СПЕКТР - Диапазон
+    Page_Service_FFT, &pService, IsActive_FFT, OnPress_FFT
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  bFunction_Exit,                                                                             //--- СЕРВИС - ФУНКЦИЯ - Выход ---
+    ppFunction, FuncActive, FuncPress, DrawSB_Exit
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_Function_Screen(void)
+{
+    if (FFT_ENABLED)
+    {
+        display.ShowWarning(ImpossibleEnableMathFunction);
+    }
+    else
+    {
+        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
+    }
+}
+
+static void Draw_Function_Screen_Disable(int x, int y)
+{
+    painter.DrawText(x + 2 + (LANG_EN ? 2 : 0), y + 5, DICT(DDis));
+}
+
+static void Draw_Function_Screen_Separate(int x, int y)
+{
+    painter.DrawRectangle(x + 3, y + 5, 13, 9);
+    painter.DrawHLine(y + 9, x + 3, x + 16);
+    painter.DrawHLine(y + 10, x + 3, x + 16);
+}
+
+static void Draw_Function_Screen_Together(int x, int y)
+{
+    painter.DrawRectangle(x + 3, y + 5, 13, 9);
+}
+
+static void Draw_Function_Screen(int x, int y)
+{
+    const pFuncVII funcs[3] =
+    {
+        Draw_Function_Screen_Disable,
+        Draw_Function_Screen_Separate,
+        Draw_Function_Screen_Together
+    };
+    funcs[FUNC_MODE_DRAW](x, y);
+}
+
+DEF_SMALL_BUTTON_HINTS_3(   bFunction_Screen,                                                                       //--- СЕРВИС - ФУНКЦИЯ - Экран ---
+    "Экран", "Display",
+    "Выбирает режим отображения математического сигнала",
+    "Chooses the mode of display of a mathematical signal",
+    ppFunction, FuncActive, OnPress_Function_Screen, Draw_Function_Screen,
+    Draw_Function_Screen_Disable,   "Вывод математической функции отключён",
+                                    "The conclusion of mathematical function is disconnected",
+    Draw_Function_Screen_Separate,  "Сигналы и математическая функция выводятся в разных окнах",
+                                    "Signals and mathematical function are removed in different windows",
+    Draw_Function_Screen_Together,  "Сигналы и математическая функция выводятся в одном окне",
+                                    "Signals and mathematical function are removed in one window"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_Function_Type(void)
+{
+    CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
+}
+
+static void Draw_Function_Type_Sum(int x, int y)
+{
+    painter.DrawHLine(y + 9, x + 4, x + 14);
+    painter.DrawVLine(x + 9, y + 4, y + 14);
+}
+
+static void Draw_Function_Type_Mul(int x, int y)
+{
+    painter.SetFont(TypeFont_UGO2);
+    painter.Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
+    painter.SetFont(TypeFont_8);
+}
+
+static void Draw_Function_Type(int x, int y)
+{
+    const pFuncVII funcs[2] = {Draw_Function_Type_Sum, Draw_Function_Type_Mul};
+    funcs[MATH_FUNC](x, y);
+}
+
+DEF_SMALL_BUTTON_HINTS_2(   bFunction_Type,                                                                           //--- СЕРВИС - ФУНКЦИЯ - Вид ---
+    "Вид", "Type",
+    "Выбор математической функции",
+    "Choice of mathematical function",
+    ppFunction, FuncActive, OnPress_Function_Type, Draw_Function_Type,
+    Draw_Function_Type_Sum, "Сложение", "Addition",
+    Draw_Function_Type_Mul, "Умножение", "Multiplication"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_Function_ModeRegSet(void)
+{
+    CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
+}
+
+static void Draw_Function_ModeRegSet_Range(int x, int y)
+{
+    painter.DrawChar(x + 7, y + 5, LANG_RU ? 'M' : 'S');
+}
+
+static void Draw_Function_ModeRegSet_RShift(int x, int y)
+{
+    painter.DrawText(x + 5 - (LANG_EN ? 3 : 0), y + 5, DICT(DShift));
+}
+
+static void Draw_Function_ModeRegSet(int x, int y)
+{
+    static const pFuncVII funcs[2] = {Draw_Function_ModeRegSet_Range, Draw_Function_ModeRegSet_RShift};
+    funcs[MATH_MODE_REG_SET](x, y);
+}
+
+DEF_SMALL_BUTTON_HINTS_2(   bFunction_ModeRegSet,                                                   //--- СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА ---
+    "Режим ручки УСТАНОВКА", "Mode regulator SET",
+    "Выбор режима ручки УСТАНОВКА - управление масштабом или смещением",
+    "Choice mode regulcator УСТАНОВКА - management of scale or shift",
+    ppFunction, FuncActive, OnPress_Function_ModeRegSet, Draw_Function_ModeRegSet,
+    Draw_Function_ModeRegSet_Range,  "Управление масштабом", "Management of scale",
+    Draw_Function_ModeRegSet_RShift, "Управление смещением", "Management of shift"
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_Function_RangeA(void)
+{
+    SET_RANGE_MATH = SET_RANGE_A;
+    MATH_DIVIDER = SET_DIVIDER_A;
+}
+
+static void Draw_Function_RangeA(int x, int y)
+{
+    painter.DrawChar(x + 8, y + 5, '1');
+}
+
+DEF_SMALL_BUTTON(   bFunction_RangeA,                                                                 //--- СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала ---
+    "Масштаб 1-го канала", "Scale of the 1st channel",
+    "Использует масштаб первого канала для отображения результата",
+    "Takes scale for a mathematical signal from the first channel",
+    ppFunction, FuncActive, OnPress_Function_RangeA, Draw_Function_RangeA
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_Function_RangeB(void)
+{
+    SET_RANGE_MATH = SET_RANGE_B;
+    MATH_DIVIDER = SET_DIVIDER_B;
+}
+
+static void Draw_Function_RangeB(int x, int y)
+{
+    painter.DrawChar(x + 8, y + 5, '2');
+}
+
+DEF_SMALL_BUTTON(   bFunction_RangeB,                                                                 //--- СЕРВИС - ФУНКЦИЯ - Масштаб 2-го канала ---
+    "Масштаб 2-го канала", "Scale of the 2nd channel",
+    "Использует масштаб второго канала для отображения результата",
+    "Takes scale for a mathematical signal from the second channel",
+    ppFunction, FuncActive, OnPress_Function_RangeB, Draw_Function_RangeB
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -630,173 +665,74 @@ DEF_PAGE_SB(        ppFunction,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_SMALL_BUTTON_EXIT(  bFunction_Exit,                                                                             //--- СЕРВИС - ФУНКЦИЯ - Выход ---
-    ppFunction, FuncActive, FuncPress, DrawSB_Exit
+static void OnChanged_Ethernet_Settings(bool)
+{
+    display.ShowWarning(NeedRebootDevice);
+}
+
+DEF_CHOICE_2(       cEthernet_Ethernet,                                                                         //--- СЕРВИС - ETHERNET - Ethernet ---
+    "Ethernet", "Ethernet",
+    "Чтобы задействовать ethernet, выберите \"Включено\" и выключите прибор.\n"
+    "Чтобы отключить ethernet, выберите \"Отключено\" и выключите прибор.",
+    "To involve ethernet, choose \"Included\" and switch off the device.\n"
+    "To disconnect ethernet, choose \"Disconnected\" and switch off the device.",
+    "Включено",  "Included",
+    "Отключено", "Disconnected",
+    ETH_ENABLED, ppEthernet, FuncActive, OnChanged_Ethernet_Settings, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Function_Screen(void)
+//------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - IP адрес ---
+static const IPaddress ipEthernet_IP =
 {
-    if (FFT_ENABLED)
+    Item_IP, &ppEthernet, 0,
     {
-        display.ShowWarning(ImpossibleEnableMathFunction);
-    }
-    else
+        "IP адрес", "IP-address",
+        "Установка IP адреса",
+        "Set of IP-address"
+    },
+    &IP_ADDR0, &IP_ADDR1, &IP_ADDR2, &IP_ADDR3,
+    OnChanged_Ethernet_Settings,
+    &ETH_PORT
+};
+
+//-------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Маска подсети ---
+static const IPaddress ipEthernet_NetMask =
+{
+    Item_IP, &ppEthernet, 0,
     {
-        CircleIncrease<int8>((int8 *)&FUNC_MODE_DRAW, 0, 2);
-    }
-}
+        "Маска подсети", "Network mask",
+        "Установка маски подсети",
+        "Set of network mask"
+    },
+    &NETMASK_ADDR0, &NETMASK_ADDR1, &NETMASK_ADDR2, &NETMASK_ADDR3,
+    OnChanged_Ethernet_Settings
+};
 
-static void Draw_Function_Screen(int x, int y)
+//----------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Шлюз ---
+static const IPaddress ipEthernet_Gateway =
 {
-    const pFuncVII funcs[3] =
+    Item_IP, &ppEthernet, 0,
     {
-        Draw_Function_Screen_Disable,
-        Draw_Function_Screen_Separate,
-        Draw_Function_Screen_Together
-    };
-    funcs[FUNC_MODE_DRAW](x, y);
-}
+        "Шлюз", "Gateway",
+        "Установка адреса основного шлюза",
+        "Set of gateway address"
+    },
+    &GW_ADDR0, &GW_ADDR1, &GW_ADDR2, &GW_ADDR3,
+    OnChanged_Ethernet_Settings
+};
 
-static void Draw_Function_Screen_Disable(int x, int y)
+//------------------------------------------------------------------------------------------------------------------ СЕРВИС - ETHERNET - MAC адрес ---
+static const MACaddress ipEthernet_MAC =
 {
-    painter.DrawText(x + 2 + (LANG_EN ? 2 : 0), y + 5, DICT(DDis));
-}
-
-static void Draw_Function_Screen_Separate(int x, int y)
-{
-    painter.DrawRectangle(x + 3, y + 5, 13, 9);
-    painter.DrawHLine(y + 9, x + 3, x + 16);
-    painter.DrawHLine(y + 10, x + 3, x + 16);
-}
-
-static void Draw_Function_Screen_Together(int x, int y)
-{
-    painter.DrawRectangle(x + 3, y + 5, 13, 9);
-}
-
-DEF_SMALL_BUTTON_HINTS_3(   bFunction_Screen,                                                                       //--- СЕРВИС - ФУНКЦИЯ - Экран ---
-    "Экран", "Display",
-    "Выбирает режим отображения математического сигнала",
-    "Chooses the mode of display of a mathematical signal",
-    ppFunction, FuncActive, OnPress_Function_Screen, Draw_Function_Screen,
-    Draw_Function_Screen_Disable,   "Вывод математической функции отключён",     
-                                    "The conclusion of mathematical function is disconnected",
-    Draw_Function_Screen_Separate,  "Сигналы и математическая функция выводятся в разных окнах",
-                                    "Signals and mathematical function are removed in different windows",
-    Draw_Function_Screen_Together,  "Сигналы и математическая функция выводятся в одном окне",
-                                    "Signals and mathematical function are removed in one window"
-);
-
-//------------------------------------------------------------------------------------------------------------------------- СЕРВИС - ФУНКЦИЯ - Вид ---
-static void OnPress_Function_Type(void)
-{
-    CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
-}
-
-static void Draw_Function_Type(int x, int y)
-{
-    const pFuncVII funcs[2] = {Draw_Function_Type_Sum, Draw_Function_Type_Mul};
-    funcs[MATH_FUNC](x, y);
-}
-
-static void Draw_Function_Type_Sum(int x, int y)
-{
-    painter.DrawHLine(y + 9, x + 4, x + 14);
-    painter.DrawVLine(x + 9, y + 4, y + 14);
-}
-
-static void Draw_Function_Type_Mul(int x, int y)
-{
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
-    painter.SetFont(TypeFont_8);
-}
-DEF_SMALL_BUTTON_HINTS_2
-(
-    bFunction_Type,
-    "Вид", "Type",
-    "Выбор математической функции",
-    "Choice of mathematical function",
-    ppFunction, FuncActive, OnPress_Function_Type, Draw_Function_Type,
-    Draw_Function_Type_Sum, "Сложение",     "Addition",
-    Draw_Function_Type_Mul, "Умножение",    "Multiplication"
-);
-
-//------------------------------------------------------------------------------------------------------- СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА ---
-static void OnPress_Function_ModeRegSet(void)
-{
-    CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
-}
-
-static void Draw_Function_ModeRegSet(int x, int y)
-{
-    static const pFuncVII funcs[2] = {Draw_Function_ModeRegSet_Range, Draw_Function_ModeRegSet_RShift};
-    funcs[MATH_MODE_REG_SET](x, y);
-}
-
-static void Draw_Function_ModeRegSet_Range(int x, int y)
-{
-    painter.DrawChar(x + 7, y + 5, LANG_RU ? 'M' : 'S');
-}
-
-static void Draw_Function_ModeRegSet_RShift(int x, int y)
-{
-    painter.DrawText(x + 5 - (LANG_EN ? 3 : 0), y + 5, DICT(DShift));
-}
-
-DEF_SMALL_BUTTON_HINTS_2
-(
-    bFunction_ModeRegSet,
-    "Режим ручки УСТАНОВКА", "Mode regulator SET",
-    "Выбор режима ручки УСТАНОВКА - управление масштабом или смещением",
-    "Choice mode regulcator УСТАНОВКА - management of scale or shift",
-    ppFunction, FuncActive, OnPress_Function_ModeRegSet, Draw_Function_ModeRegSet,
-    Draw_Function_ModeRegSet_Range,  "Управление масштабом", "Management of scale",
-    Draw_Function_ModeRegSet_RShift, "Управление смещением", "Management of shift"
-);
-
-//--------------------------------------------------------------------------------------------------------- СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала ---
-static void OnPress_Function_RangeA(void)
-{
-    SET_RANGE_MATH = SET_RANGE_A;
-    MATH_DIVIDER = SET_DIVIDER_A;
-}
-
-static void Draw_Function_RangeA(int x, int y)
-{
-    painter.DrawChar(x + 8, y + 5, '1');
-}
-
-DEF_SMALL_BUTTON
-(
-    bFunction_RangeA,
-    "Масштаб 1-го канала", "Scale of the 1st channel",
-    "Использует масштаб первого канала для отображения результата",
-    "Takes scale for a mathematical signal from the first channel",
-    ppFunction, FuncActive, OnPress_Function_RangeA, Draw_Function_RangeA
-);
-
-//--------------------------------------------------------------------------------------------------------- СЕРВИС - ФУНКЦИЯ - Масштаб 2-го канала ---
-static void OnPress_Function_RangeB(void)
-{
-    SET_RANGE_MATH = SET_RANGE_B;
-    MATH_DIVIDER = SET_DIVIDER_B;
-}
-
-static void Draw_Function_RangeB(int x, int y)
-{
-    painter.DrawChar(x + 8, y + 5, '2');
-}
-
-DEF_SMALL_BUTTON
-(
-    bFunction_RangeB,
-    "Масштаб 2-го канала", "Scale of the 2nd channel",
-    "Использует масштаб второго канала для отображения результата",
-    "Takes scale for a mathematical signal from the second channel",
-    ppFunction, FuncActive, OnPress_Function_RangeB, Draw_Function_RangeB
-);
+    Item_MAC, &ppEthernet, 0,
+    {
+        "MAC адрес", "MAC-address",
+        "Установка физического адреса",
+        "Set of MAC-address"
+    },
+    &set.eth_mac0, &set.eth_mac1, &set.eth_mac2, &set.eth_mac3, &set.eth_mac4, &set.eth_mac5,
+    OnChanged_Ethernet_Settings
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///
@@ -812,74 +748,22 @@ DEF_PAGE_5(         ppEthernet,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Ethernet_Settings(bool)
-{
-    display.ShowWarning(NeedRebootDevice);
-}
-
-DEF_CHOICE_2(       cEthernet_Ethernet,                                                                         //--- СЕРВИС - ETHERNET - Ethernet ---
-    "Ethernet",    "Ethernet",
-    "Чтобы задействовать ethernet, выберите \"Включено\" и выключите прибор.\n"
-    "Чтобы отключить ethernet, выберите \"Отключено\" и выключите прибор.",
-    "To involve ethernet, choose \"Included\" and switch off the device.\n"
-    "To disconnect ethernet, choose \"Disconnected\" and switch off the device.",
-    "Включено",  "Included",
-    "Отключено", "Disconnected",
-    ETH_ENABLED, ppEthernet, FuncActive, OnChanged_Ethernet_Settings, FuncDraw
+DEF_CHOICE_2(       cSound_Enable,                                                                                      //--- СЕРВИС - ЗВУК - Звук ---
+    "Звук", "Sound",
+    "Включение/выключение звука",
+    "Inclusion/switching off of a sound",
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU, ENABLE_EN,
+    SOUND_ENABLED, ppSound, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-// СЕРВИС - ETHERNET - IP адрес ----------------------------------------------------------------------------------------------------------------------
-static const IPaddress ipEthernet_IP =
-{
-    Item_IP, &ppEthernet, 0,
-    {
-        "IP адрес", "IP-address",
-        "Установка IP адреса",
-        "Set of IP-address"
-    },
-    &IP_ADDR0, &IP_ADDR1, &IP_ADDR2, &IP_ADDR3,
-    OnChanged_Ethernet_Settings,
-    &ETH_PORT
-};
-
-// СЕРВИС - ETHERNET - Маска подсети -----------------------------------------------------------------------------------------------------------------
-static const IPaddress ipEthernet_NetMask =
-{
-    Item_IP, &ppEthernet, 0,
-    {
-        "Маска подсети", "Network mask",
-        "Установка маски подсети",
-        "Set of network mask"
-    },
-    &NETMASK_ADDR0, &NETMASK_ADDR1, &NETMASK_ADDR2, &NETMASK_ADDR3,
-    OnChanged_Ethernet_Settings
-};
-
-// СЕРВИС - ETHERNET - Шлюз --------------------------------------------------------------------------------------------------------------------------
-static const IPaddress ipEthernet_Gateway =
-{
-    Item_IP, &ppEthernet, 0,
-    {
-        "Шлюз", "Gateway",
-        "Установка адреса основного шлюза",
-        "Set of gateway address"
-    },
-    &GW_ADDR0, &GW_ADDR1, &GW_ADDR2, &GW_ADDR3,
-    OnChanged_Ethernet_Settings
-};
-
-// СЕРВИС - ETHERNET - MAC адрес ---------------------------------------------------------------------------------------------------------------------
-static const MACaddress ipEthernet_MAC =
-{
-    Item_MAC, &ppEthernet, 0,
-    {
-        "MAC адрес", "MAC-address",
-        "Установка физического адреса",
-        "Set of MAC-address"
-    },
-    &set.eth_mac0, &set.eth_mac1, &set.eth_mac2, &set.eth_mac3, &set.eth_mac4, &set.eth_mac5,
-    OnChanged_Ethernet_Settings
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gSound_Volume,                                                                                 //--- СЕРВИС - ЗВУК - Громкость ---
+    "Громкость", "Volume",
+    "Установка громкости звука",
+    "Set the volume",
+    ppSound, SOUND_VOLUME, 0, 100, FuncActive, FuncChanged, FuncBeforeDraw
+);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppSound,                                                                                                      // СЕРВИС - ЗВУК ///
@@ -892,23 +776,39 @@ DEF_PAGE_2(         ppSound,                                                    
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cSound_Enable,                                                                                      //--- СЕРВИС - ЗВУК - Звук ---
-    "Звук", "Sound",
-    "Включение/выключение звука",
-    "Inclusion/switching off of a sound",
-    DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN,
-    SOUND_ENABLED, ppSound, FuncActive, FuncChangedChoice, FuncDraw
+static int8 dServicetime = 0;
+static int8 hours = 0, minutes = 0, secondes = 0, year = 0, month = 0, day = 0;
+DEF_TIME(                                                                                                             //--- СЕРВИС - ВРЕМЯ - Время ---
+    tRTC_Time,
+    "Время", "Time",
+    "Установка текущего времени.\nПорядок работы:\n"
+    "Нажать на элемент меню \"Время\". Откроется меню установки текущего времени. Короткими нажатиями кнопки на цифровой клавиатуре, соответсвующей "
+    "элементу управления \"Время\", выделить часы, минуты, секунды, год, месяц, или число. Выделенный элемент обозначается мигающей областью. "
+    "Вращением ручки УСТАНОВКА установить необходимое значение. Затем выделить пункт \"Сохранить\", нажать и удреживать более 0.5 сек кнопку на "
+    "панели управления. Меню установки текущего временя закроется с сохранением нового текущего времени. Нажатие длительное удержание кнопки на "
+    "любом другом элементе приведёт к закрытию меню установки текущего вре    мени без сохранения нового текущего времени"
+    ,
+    "Setting the current time. \nPoryadok work:\n"
+    "Click on the menu item \"Time\".The menu set the current time.By briefly pressing the button on the numeric keypad of conformity "
+    "Control \"Time\", highlight the hours, minutes, seconds, year, month, or a number.The selected item is indicated by a flashing area. "
+    "Turn the setting knob to set the desired value. Then highlight \"Save\", press and udrezhivat more than 0.5 seconds, the button on the panel "
+    "Control. Menu Setting the current time will be closed to the conservation of the new current time. Pressing a button on the prolonged retention "
+    "of any other element will lead to the closure of the current time setting menu without saving the new current time"
+    ,
+    ppRTC, FuncActive, dServicetime, hours, minutes, secondes, month, day, year
 );
 
-//---------------------------------------------------------------------------------------------------------------------- СЕРВИС - ЗВУК - Громкость ---
-DEF_GOVERNOR
-(
-    gSound_Volume,
-    "Громкость", "Volume",
-    "Установка громкости звука",
-    "Set the volume",
-    ppSound, SOUND_VOLUME, 0, 100, FuncActive, FuncChanged, FuncBeforeDraw
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_Time_Correction(void)
+{
+    RTC_SetCorrection((int8)NRST_CORRECTION_TIME);
+}
+
+DEF_GOVERNOR(       tRTC_Correction,                                                                              //--- СЕРВИС - ВРЕМЯ - Коррекция ---
+    "Коррекция", "Correction",
+    "Установка корректирующего коэффициента для компенсации хода времени",
+    "Setting correction factor to compensate for time travel",
+    ppRTC, NRST_CORRECTION_TIME, -63, 63, FuncActive, OnChanged_Time_Correction, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -919,42 +819,6 @@ DEF_PAGE_2(         ppRTC,                                                      
     "Set and setup time",
     tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
     tRTC_Correction     // CЕРВИС - ВРЕМЯ - Коррекция
-);
-
-//------------------------------------------------------------------------------------------------------------------------- СЕРВИС - ВРЕМЯ - Время ---
-static int8 dServicetime = 0;
-static int8 hours = 0, minutes = 0, secondes = 0, year = 0, month = 0, day = 0;
-DEF_TIME(
-    tRTC_Time,
-    "Время", "Time",
-    "Установка текущего времени.\nПорядок работы:\n"
-    "Нажать на элемент меню \"Время\". Откроется меню установки текущего времени. Короткими нажатиями кнопки на цифровой клавиатуре, соответсвующей "
-    "элементу управления \"Время\", выделить часы, минуты, секунды, год, месяц, или число. Выделенный элемент обозначается мигающей областью. "
-    "Вращением ручки УСТАНОВКА установить необходимое значение. Затем выделить пункт \"Сохранить\", нажать и удреживать более 0.5 сек кнопку на панели "
-    "управления. Меню установки текущего временя закроется с сохранением нового текущего времени. Нажатие длительное удержание кнопки на любом другом элементе "
-    "приведёт к закрытию меню установки текущего вре    мени без сохранения нового текущего времени"
-    ,
-    "Setting the current time. \nPoryadok work:\n"
-    "Click on the menu item \"Time\".The menu set the current time.By briefly pressing the button on the numeric keypad of conformity "
-    "Control \"Time\", highlight the hours, minutes, seconds, year, month, or a number.The selected item is indicated by a flashing area. "
-    "Turn the setting knob to set the desired value. Then highlight \"Save\", press and udrezhivat more than 0.5 seconds, the button on the panel "
-    "Control. Menu Setting the current time will be closed to the conservation of the new current time. Pressing a button on the prolonged retention of any other element "
-    "will lead to the closure of the current time setting menu without saving the new current time",
-    ppRTC, FuncActive, dServicetime, hours, minutes, secondes, month, day, year);
-
-//--------------------------------------------------------------------------------------------------------------------- СЕРВИС - ВРЕМЯ - Коррекция ---
-static void OnChanged_Time_Correction(void)
-{
-    RTC_SetCorrection((int8)NRST_CORRECTION_TIME);
-}
-
-DEF_GOVERNOR
-(
-    tRTC_Correction,
-    "Коррекция", "Correction",
-    "Установка корректирующего коэффициента для компенсации хода времени",
-    "Setting correction factor to compensate for time travel",
-    ppRTC, NRST_CORRECTION_TIME, -63, 63, FuncActive, OnChanged_Time_Correction, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -968,11 +832,6 @@ DEF_CHOICE_2(       cLanguage,                                                  
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_Information(void)
-{
-    display.SetDrawMode(DrawMode_Auto, Information_Draw);
-}
-
 static void Information_Draw(void)
 {
     painter.BeginScene(gColorBack);
@@ -983,7 +842,7 @@ static void Information_Draw(void)
     y += dY;
     painter.DrawText(x, y, DICT(DInformation));
     y += dY;
-    
+
     char buffer[100];
 
     sprintf(buffer, "%s : %s", DICT(DModel), LANG_RU ? MODEL_RU : MODEL_EN);
@@ -1010,6 +869,21 @@ static void Information_Draw(void)
     painter.EndScene();
 }
 
+static void OnPress_Information(void)
+{
+    display.SetDrawMode(DrawMode_Auto, Information_Draw);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_Information_Exit(void)
+{
+    display.SetDrawMode(DrawMode_Auto, 0);
+}
+
+DEF_SMALL_BUTTON_EXIT(  bInformation_Exit,                                                                       //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
+    ppInformation, FuncActive, OnPress_Information_Exit, DrawSB_Exit
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Показывает информацию о приборе",
@@ -1023,24 +897,46 @@ DEF_PAGE_SB(        ppInformation,                                              
     PageSB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 );
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Information_Exit(void)
-{
-    display.SetDrawMode(DrawMode_Auto, 0);
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-DEF_SMALL_BUTTON_EXIT(  bInformation_Exit,                                                                       //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
-    ppInformation, FuncActive, OnPress_Information_Exit, DrawSB_Exit
+
+#ifdef OLD_RECORDER
+DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
+                   "СЕРВИС", "SERVICE",
+                   "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
+                   "Additional settings, calibration, signal search, mathematical functions",
+                   bResetSettings,    // СЕРВИС - Сброс настроек
+                   bAutoSearch,       // СЕРВИС - Поиск сигнала
+                   ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
+                   cRecorder,         // СЕРВИС - Регистратор
+                   ppFFT,             // СЕРВИС - СПЕКТР
+                   ppFunction,        // СЕРВИС - ФУНКЦИЯ
+                   ppEthernet,        // СЕРВИС - ETHERNET
+                   ppSound,           // СЕРВИС - ЗВУК
+                   ppRTC,             // СЕРВИС - ВРЕМЯ
+                   cLanguage,         // СЕРВИС - Язык
+                   ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
+                   Page_Service, &mainPage, FuncActive, FuncPress
 );
-
-
-
-
-
-
-
-
-
+#else
+DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
+                   "СЕРВИС", "SERVICE",
+                   "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
+                   "Additional settings, calibration, signal search, mathematical functions",
+                   bResetSettings,    // СЕРВИС - Сброс настроек
+                   bAutoSearch,       // СЕРВИС - Поиск сигнала
+                   ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
+                   ppRecorder,        // СЕРВИС - РЕГИСТРАТОР
+                   ppFFT,             // СЕРВИС - СПЕКТР
+                   ppFunction,        // СЕРВИС - ФУНКЦИЯ
+                   ppEthernet,        // СЕРВИС - ETHERNET
+                   ppSound,           // СЕРВИС - ЗВУК
+                   ppRTC,             // СЕРВИС - ВРЕМЯ
+                   cLanguage,         // СЕРВИС - Язык
+                   ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
+                   Page_Service, &mainPage, FuncActive, FuncPress
+);
+#endif
 
 
 

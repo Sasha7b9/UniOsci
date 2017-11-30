@@ -47,15 +47,14 @@ DEF_CHOICE_3(       cFreqMeter_TimeF,                                           
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_4(       cFreqMeter_FreqClc,                                                               //--- ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Метки времени ---
-    ppFreqMeter,
-    FREQ_METER_FREQ_CLC, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw,
     "Метки времени", "Timestamps",
     "Выбор частоты следования счётных импульсов",
     "Choice of frequency of following of calculating impulses",
     "100кГц", "10MHz",
-    "1МГц", "200MHz",
-    "10МГц", "10MHz",
-    "100МГц", "100MHz"
+    "1МГц",   "200MHz",
+    "10МГц",  "10MHz",
+    "100МГц", "100MHz",
+    FREQ_METER_FREQ_CLC, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -283,7 +282,6 @@ DEF_PAGE_4(         ppFreqMeter,                                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_6(         pMeasures,                                                                                                        // ИЗМЕРЕНИЯ ///
-    Page_Measures, &mainPage, FuncActive, EmptyPressPage,
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",
     "Automatic measurements",
@@ -292,7 +290,8 @@ DEF_PAGE_6(         pMeasures,                                                  
     cNumber,       // ИЗМЕРЕНИЯ - Количество
     cChannels,     // ИЗМЕРЕНИЯ - Каналы
     ppTune,        // ИЗМЕРЕНИЯ - НАСТРОИТЬ
-    cMode          // ИЗМЕРЕНИЯ - Вид
+    cMode,         // ИЗМЕРЕНИЯ - Вид
+    Page_Measures, &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageMeasures = &pMeasures;

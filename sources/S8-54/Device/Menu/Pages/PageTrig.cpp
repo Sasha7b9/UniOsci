@@ -90,16 +90,13 @@ DEF_CHOICE_2(       cPolarity,                                                  
     TRIG_POLARITY, pTrig, FuncActive, OnChanged_Polarity, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------------------------- СИНХР - Вход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Input(bool)
 {
     FPGA_SetTrigInput(TRIG_INPUT);
 }
 
-DEF_CHOICE_4
-(
-    cInput, pTrig,
-    TRIG_INPUT, FuncActive, OnChanged_Input, FuncDraw,
+DEF_CHOICE_4(       cInput,                                                                                                     //--- СИНХР - Вход ---
     "Вход", "Input",
     "Выбор связи с источником синхронизации:\n"
     "1. \"ПС\" - полный сигнал.\n"
@@ -111,10 +108,11 @@ DEF_CHOICE_4
     "2. \"AS\" - a gated entrance.\n"
     "3. \"LPF\" - low-pass filter.\n"
     "4. \"HPF\" - high-pass filter frequency.",
-    "ПС", "Full",
-    "АС", "AC",
+    "ПС",  "Full",
+    "АС",  "AC",
     "ФНЧ", "LPF",
-    "ФВЧ", "HPF"
+    "ФВЧ", "HPF",
+    TRIG_INPUT, pTrig, FuncActive, OnChanged_Input, FuncDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------------------- СИНХР - ПОИСК - Режим ---

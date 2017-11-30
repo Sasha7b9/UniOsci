@@ -832,9 +832,8 @@ DEF_SMALL_BUTTON
     ppInternal, FuncActive, OnPress_Internal_SaveToDrive, Draw_Internal_SaveToDrive
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ПАМЯТЬ - ВНЕШН ЗУ ///
-DEF_PAGE_6(         ppDrive, 
-    Page_Memory_Drive, &pMemory, FuncActive, EmptyPressPage,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_6(         ppDrive,                                                                                                  // ПАМЯТЬ - ВНЕШН ЗУ ///
     "ВНЕШН ЗУ", "EXT STORAGE",
     "Работа с внешним запоминающим устройством.",
     "Work with external storage device.",
@@ -843,7 +842,8 @@ DEF_PAGE_6(         ppDrive,
     pppDrive_Mask,          // Память - ВНЕШН ЗУ - МАСКА
     cDrive_SaveAs,          // ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как
     cDrive_ModeBtnMemory,   // ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ
-    cDrive_Autoconnect      // ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение
+    cDrive_Autoconnect,     // ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение
+    Page_Memory_Drive, &pMemory, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

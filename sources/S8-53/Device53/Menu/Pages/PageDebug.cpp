@@ -783,16 +783,16 @@ DEF_PAGE_3(         mpConsole,                                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_6(         pDebug,                                                                                                             // ОТЛАДКА ///
-    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
     "",
     "",
-    mcStats,        // ОТЛАДКА - Статистика
-    mpConsole,      // ОТЛАДКА - КОНСОЛЬ
-    mpADC,          // ОТЛАДКА - АЦП
-    mpRandomizer,   // ОТЛАДКА - РАНД-ТОР
-    mcSizeSettings, // ОТЛАДКА - Размер настроек
-    mbSaveFirmware  // ОТЛАДКА - Сохр. прошивку
+    mcStats,            // ОТЛАДКА - Статистика
+    mpConsole,          // ОТЛАДКА - КОНСОЛЬ
+    mpADC,              // ОТЛАДКА - АЦП
+    mpRandomizer,       // ОТЛАДКА - РАНД-ТОР
+    mcSizeSettings,     // ОТЛАДКА - Размер настроек
+    mbSaveFirmware,     // ОТЛАДКА - Сохр. прошивку
+    Page_Debug, &mainPage, FuncActive, EmptyPressPage
 );
 
 /** @}  @}

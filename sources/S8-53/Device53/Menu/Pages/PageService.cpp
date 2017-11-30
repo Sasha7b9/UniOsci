@@ -411,14 +411,14 @@ DEF_CHOICE_3(       cMath_FFT_Source,                                           
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_4(       cMath_FFT_Window,                                                                    //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - Окно ---
-    pppMath_FFT, WINDOW_FFT, FuncActive, FuncChangedChoice, FuncDraw,
     "Окно", "Window",
     "Задаёт окно для расчёта спектра",
     "Sets the window to calculate the spectrum",
     "Прямоугольн", "Rectangle",
     "Хэмминга",    "Hamming",
     "Блэкмена",    "Blackman",
-    "Ханна",       "Hann"
+    "Ханна",       "Hann",
+    WINDOW_FFT, pppMath_FFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -506,16 +506,16 @@ static void OnPress_Math_FFT(void)
 }
 
 DEF_PAGE_6(         pppMath_FFT,                                                                                   // СЕРВИС - МАТЕМАТИКА - СПЕКТР ///
-    Page_MathFFT, &ppMath, IsActive_Math_FFT, OnPress_Math_FFT,
     "СПЕКТР", "SPECTRUM",
     "Отображение спектра входного сигнала",
     "Mapping the input signal spectrum",
-    cMath_FFT_Enable,     // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Отображение
-    cMath_FFT_Scale,      // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Шкала
-    cMath_FFT_Source,     // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Источник
-    cMath_FFT_Window,     // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Окно
-    ppppMath_FFT_Cursors, // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ
-    cMath_FFT_Limit       // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Диапазон
+    cMath_FFT_Enable,       // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Отображение
+    cMath_FFT_Scale,        // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Шкала
+    cMath_FFT_Source,       // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Источник
+    cMath_FFT_Window,       // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Окно
+    ppppMath_FFT_Cursors,   // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ
+    cMath_FFT_Limit,        // СЕРВИС - МАТЕМАТИКА - СПЕКТР - Диапазон
+    Page_MathFFT, &ppMath, IsActive_Math_FFT, OnPress_Math_FFT
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

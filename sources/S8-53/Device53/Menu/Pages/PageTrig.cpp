@@ -87,8 +87,6 @@ static void OnChanged_Input(bool active)
 }
 
 DEF_CHOICE_4(       mcInput,                                                                                                    //--- СИНХР - Вход ---
-    pTrig,
-    TRIG_INPUT, FuncActive, OnChanged_Input, FuncDraw,
     "Вход", "Input"
     ,
     "Выбор связи с источником синхронизации:\n"
@@ -106,7 +104,8 @@ DEF_CHOICE_4(       mcInput,                                                    
     "ПС",  "Full",
     "АС",  "AC",
     "ФНЧ", "LPF",
-    "ФВЧ", "HPF"
+    "ФВЧ", "HPF",
+    TRIG_INPUT, pTrig, FuncActive, OnChanged_Input, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

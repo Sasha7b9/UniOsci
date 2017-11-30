@@ -126,10 +126,9 @@ void SetCursPosT(Channel chan, int numCur, float pos)
     }
 }
 
-//------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - Выход ---
-DEF_SMALL_BUTTON_EXIT
-(
-    sbSetExit, mspSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_SMALL_BUTTON_EXIT(  sbSetExit,                                                                              //--- КУРСОРЫ - УСТАНОВИТЬ - Выход ---
+    mspSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -335,7 +334,7 @@ DEF_SMALL_BUTTON_HINTS_5(   sbSetT,                                             
                                     "cursors of time are switched on, control of both cursors"
 );
 
-//-------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - УСТАНОВИТЬ - 100% ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void SetCursPos100(Channel chan)
 {
     DELTA_U100(chan) = fabsf(CURS_POS_U0(chan) - CURS_POS_U1(chan));
@@ -354,9 +353,7 @@ static void DrawSB_Cursors_100(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    sbSet100,
+DEF_SMALL_BUTTON(   sbSet100,                                                                                    //--- КУРСОРЫ - УСТАНОВИТЬ - 100% ---
     "100%", "100%",
     "Используется для процентных измерений. Нажатие помечает расстояние между активными курсорами как 100%",
     "It is used for percentage measurements. Pressing marks distance between active cursors as 100%",
@@ -442,11 +439,8 @@ DEF_CHOICE_2(       mcShow,                                                     
     CURS_SHOW, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------------ КУРСОРЫ - Курсоры T1,U1 ---
-DEF_CHOICE_4
-(
-    mcTrackingT1U1, pCursors,
-    CURS_LOOKMODE_A, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_4(       mcTrackingT1U1,                                                                                  //--- КУРСОРЫ - Курсоры T1,U1 ---
     "Слежение \x8e, \x9e", "Tracking \x8e, \x9e"
     ,
     "Задаёт режим слежения за первым курсором времени и напряжения:\n"
@@ -463,14 +457,12 @@ DEF_CHOICE_4
     DISABLE_RU,       DISABLE_EN,
     "Напряжение",     "Voltage",
     "Время",          "Time",
-    "Напряж и время", "Volt and time"
+    "Напряж и время", "Volt and time",
+    CURS_LOOKMODE_A, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------------ КУРСОРЫ - Курсоры T2,U2 ---
-DEF_CHOICE_4
-(
-    mcTrackingT2U2, pCursors,
-    CURS_LOOKMODE_B, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_4(       mcTrackingT2U2,                                                                                  //--- КУРСОРЫ - Курсоры T2,U2 ---
     "Слежение \x8f, \x9f", "Tracking \x8f, \x9f",
     "Задаёт режим слежения за вторым курсором времени и напряжения:\n"
     "1. \"Откл\" - курсор времени и курсор напряжения устанавливаются вручную.\n"
@@ -486,7 +478,8 @@ DEF_CHOICE_4
     DISABLE_RU,        DISABLE_EN,
     "Напряжение",      "Voltage",
     "Время",           "Time",
-    "Напряж. и время", "Volt. and time"
+    "Напряж. и время", "Volt. and time",
+    CURS_LOOKMODE_B, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
