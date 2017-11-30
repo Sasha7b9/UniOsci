@@ -147,7 +147,6 @@ DEF_CHOICE_2(       mcDivRole,                                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
-    Page_Time, &mainPage, FuncActive, EmptyPressPage,
     "РАЗВЕРТКА", "SCAN",
     "Содержит настройки развёртки.",
     "Contains scan settings.",
@@ -155,7 +154,8 @@ DEF_PAGE_5(         pTime,                                                      
     mcPeakDet,      // РАЗВЕРТКА - Пик дет
     mcTPos,         // РАЗВЕРТКА - To
     mcSelfRecorder, // РАЗВЕРТКА - Самописец
-    mcDivRole       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ    
+    mcDivRole,      // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
+    Page_Time, &mainPage, FuncActive, EmptyPressPage
 );
 
 

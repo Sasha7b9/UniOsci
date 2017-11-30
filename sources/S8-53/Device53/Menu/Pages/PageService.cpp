@@ -601,15 +601,15 @@ static const MACaddress macEthernet_MAC =                                       
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///
-    Page_ServiceEthernet, &pService, FuncActive, FuncPress,
     "ETHERNET", "ETHERNET",
     "Настройки ethernet",
     "Settings of ethernet",
-    cEthernet_Enable,   // СЕРВИС - ETHERNET - Ethernet
-    ipEthernet_IP,      // СЕРВИС - ETHERNET - IP адрес
-    ipEthernet_Mask,    // СЕРВИС - ETHERNET - Маска подсети
-    ipEthernet_Gateway, // СЕРВИС - ETHERNET - Шлюз
-    macEthernet_MAC     // СЕРВИС - ETHERNET - Физ адрес
+    cEthernet_Enable,       // СЕРВИС - ETHERNET - Ethernet
+    ipEthernet_IP,          // СЕРВИС - ETHERNET - IP адрес
+    ipEthernet_Mask,        // СЕРВИС - ETHERNET - Маска подсети
+    ipEthernet_Gateway,     // СЕРВИС - ETHERNET - Шлюз
+    macEthernet_MAC,        // СЕРВИС - ETHERNET - Физ адрес
+    Page_ServiceEthernet, &pService, FuncActive, FuncPress
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

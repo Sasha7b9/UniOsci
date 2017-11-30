@@ -118,15 +118,15 @@ DEF_CHOICE_2(       mcMultiplierA,                                              
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         pChanA,                                                                                                             // КАНАЛ 1 ///
-    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
     "Contains settings of the channel 1.",
-    mcInputA,     // КАНАЛ 1 - Вход
-    mcCoupleA,    // КАНАЛ 1 - Связь
-    mcFiltrA,     // КАНАЛ 1 - Фильтр
-    mcInverseA,   // КАНАЛ 1 - Инверсия
-    mcMultiplierA // КАНАЛ 1 - Множитель
+    mcInputA,       // КАНАЛ 1 - Вход
+    mcCoupleA,      // КАНАЛ 1 - Связь
+    mcFiltrA,       // КАНАЛ 1 - Фильтр
+    mcInverseA,     // КАНАЛ 1 - Инверсия
+    mcMultiplierA,  // КАНАЛ 1 - Множитель
+    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -203,7 +203,6 @@ DEF_CHOICE_2(       mcMultiplierB,                                              
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         pChanB,                                                                                                             // КАНАЛ 2 ///
-    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
     "Contains settings of the channel 2.",
@@ -211,7 +210,8 @@ DEF_PAGE_5(         pChanB,                                                     
     mcCoupleB,      // КАНАЛ 2 - Связь
     mcFiltrB,       // КАНАЛ 2 - Фильтр
     mcInverseB,     // КАНАЛ 2 - Инверсия
-    mcMultiplierB   // КАНАЛ 2 - Множитель
+    mcMultiplierB,  // КАНАЛ 2 - Множитель
+    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage
 );
 
 

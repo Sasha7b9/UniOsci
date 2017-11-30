@@ -373,15 +373,14 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /// \todo Добавить дополнительные цвета 1-го и 2-го каналов
 DEF_PAGE_5(         pppSettings_Colors,                                                                          //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ---
-    Page_Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage,
     "ЦВЕТА", "COLORS",
     "Выбор цветов дисплея",
     "The choice of colors display",
-    cSettings_Colors_Scheme,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
-    gcSettings_Colors_ChannelA, // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
-    gcSettings_Colors_ChannelB, // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
-    gcSettings_Colors_Grid,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
-    cSettings_Colors_Background // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон
+    cSettings_Colors_Scheme,        // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
+    gcSettings_Colors_ChannelA,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
+    gcSettings_Colors_ChannelB,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
+    gcSettings_Colors_Grid,         // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
+    cSettings_Colors_Background,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон
     //&mgcColorChannelAalt,
     //&mgcColorChannelBalt,
     //&mgcColorMenu1,
@@ -390,6 +389,7 @@ DEF_PAGE_5(         pppSettings_Colors,                                         
     //&mgcColorMathem,
     //&mgcColorFFT,
     //&mcServDisplInverse
+    Page_Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

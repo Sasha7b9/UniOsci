@@ -160,15 +160,15 @@ DEF_PAGE_2(         mpAutoFind,                                                 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         pTrig,                                                                                                                // СИНХР ///
-    Page_Trig, &mainPage, FuncActive, EmptyPressPage,
     "СИНХР", "TRIG",
     "Содержит настройки синхронизации.",
     "Contains synchronization settings.",
-    mcMode,     // СИНХР - Режим
-    mcSource,   // СИНХР - Источник
-    mcPolarity, // СИНХР - Полярность
-    mcInput,    // СИНХР - Вход
-    mpAutoFind  // СИНХР - ПОИСК
+    mcMode,         // СИНХР - Режим
+    mcSource,       // СИНХР - Источник
+    mcPolarity,     // СИНХР - Полярность
+    mcInput,        // СИНХР - Вход
+    mpAutoFind,     // СИНХР - ПОИСК
+    Page_Trig, &mainPage, FuncActive, EmptyPressPage
 );
 
 

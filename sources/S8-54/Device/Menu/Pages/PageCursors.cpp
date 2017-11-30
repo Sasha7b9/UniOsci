@@ -71,17 +71,17 @@ static void SetCursPosU(Channel ch, int numCur, float pos);             ///< Óñò
 //static void SetCursPosT(Channel ch, int numCur, float pos);             ///< Óñòàíîâèòü çíà÷åíèå êóðñîðà ïî âðåìåíè.
 
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÊÓÐÑÎÐÛ ///
-DEF_PAGE_5(         pCursors,
-    Page_Cursors, &mainPage, FuncActive, EmptyPressPage,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pCursors,                                                                                                           // ÊÓÐÑÎÐÛ ///
     "ÊÓÐÑÎÐÛ", "CURSORS",
     "Êóðñîðíûå èçìåðåíèÿ.",
     "Cursor measurements.",
-    cShow,          // ÊÓÐÑÎÐÛ - Ïîêàçûâàòü
-    cLookModeChanA, // ÊÓÐÑÎÐÛ - Ñëåæåíèå êàíàë 1
-    cLookModeChanB, // ÊÓÐÑÎÐÛ - Ñëåæåíèå êàíàë 2
-    cShowFreq,      // ÊÓÐÎÑÐÛ - 1/dT
-    ppSet           // ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ
+    cShow,              // ÊÓÐÑÎÐÛ - Ïîêàçûâàòü
+    cLookModeChanA,     // ÊÓÐÑÎÐÛ - Ñëåæåíèå êàíàë 1
+    cLookModeChanB,     // ÊÓÐÑÎÐÛ - Ñëåæåíèå êàíàë 2
+    cShowFreq,          // ÊÓÐÎÑÐÛ - 1/dT
+    ppSet,              // ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ
+    Page_Cursors, &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageCursors = &pCursors;

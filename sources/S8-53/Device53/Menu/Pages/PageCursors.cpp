@@ -505,7 +505,6 @@ DEF_CHOICE_2(       mcShowFreq,                                                 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         pCursors,                                                                                                           // йспянпш ///
-    Page_Cursors, &mainPage, FuncActive, EmptyPressPage,
     "йспянпш", "CURSORS",
     "йСПЯНПМШЕ ХГЛЕПЕМХЪ.",
     "Cursor measurements.",
@@ -513,7 +512,8 @@ DEF_PAGE_5(         pCursors,                                                   
     mcTrackingT1U1,     // йспянпш - йСПЯНПШ T1,U1
     mcTrackingT2U2,     // йспянпш - йСПЯНПШ T2,U2
     mcShowFreq,         // йспняпш - 1/dT
-    mspSet              // йспянпш - сярюмнбхрэ
+    mspSet,             // йспянпш - сярюмнбхрэ
+    Page_Cursors, &mainPage, FuncActive, EmptyPressPage
 );
 
 static void MoveCursUonPercentsOrPoints(int delta)

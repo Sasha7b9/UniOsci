@@ -798,17 +798,17 @@ DEF_SMALL_BUTTON
     ppFunction, FuncActive, OnPress_Function_RangeB, Draw_Function_RangeB
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// СЕРВИС - ETHERNET ///
-DEF_PAGE_5(         ppEthernet,
-    Page_Service_Ethernet, &pService, FuncActive, EmptyPressPage,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///
     "ETHERNET", "ETHERNET",
     "Настройки ethernet",
     "Settings of ethernet",
-    cEthernet_Ethernet, // СЕРВИС - ETHERNET - Ethernet
-    ipEthernet_IP,      // СЕРВИС - ETHERNET - IP адрес
-    ipEthernet_NetMask, // СЕРВИС - ETHERNET - Маска подсети
-    ipEthernet_Gateway, // СЕРВИС - ETHERNET - Шлюз
-    ipEthernet_MAC      // СЕРВИС - ETHERNET - MAC адрес
+    cEthernet_Ethernet,     // СЕРВИС - ETHERNET - Ethernet
+    ipEthernet_IP,          // СЕРВИС - ETHERNET - IP адрес
+    ipEthernet_NetMask,     // СЕРВИС - ETHERNET - Маска подсети
+    ipEthernet_Gateway,     // СЕРВИС - ETHERNET - Шлюз
+    ipEthernet_MAC,         // СЕРВИС - ETHERNET - MAC адрес
+    Page_Service_Ethernet, &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

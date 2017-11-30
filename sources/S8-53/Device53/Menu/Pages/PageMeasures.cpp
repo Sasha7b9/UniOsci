@@ -251,7 +251,6 @@ DEF_PAGE_SB(        mspMeasTune,                                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         pMeasures,                                                                                                        // ИЗМЕРЕНИЯ ///
-    Page_Measures, &mainPage, FuncActive, EmptyPressPage,
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",
     "Automatic measurements",
@@ -259,7 +258,8 @@ DEF_PAGE_5(         pMeasures,                                                  
     mcMeasuresNumber,
     mcMeasuresChannels,
     mcMeasuresSignal,
-    mspMeasTune
+    mspMeasTune,
+    Page_Measures, &mainPage, FuncActive, EmptyPressPage
 );
 
 /** @}  @}

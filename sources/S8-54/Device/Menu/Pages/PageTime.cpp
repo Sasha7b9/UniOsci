@@ -6,6 +6,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extern const Page mainPage;
 extern const    Page pTime;
 extern const  Choice cSample;               ///< ÐÀÇÂÅÐÒÊÀ - Âûáîðêà
 static bool  IsActive_Sample(void);
@@ -17,19 +18,18 @@ extern const  Choice cTPos;                 ///< ÐÀÇÂÅÐÒÊÀ - Òî
 extern const  Choice cDivRole;              ///< ÐÀÇÂÅÐÒÊÀ - Ô-öèÿ ÂÐ/ÄÅË
 extern const  Choice cShiftXtype;           ///< ÐÀÇÂÅÐÒÊÀ - Ñìåùåíèå
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÐÀÇÂÅÐÒÊÀ ///
-extern const Page mainPage;
 
-DEF_PAGE_5(         pTime,
-    Page_Time, &mainPage, FuncActive, EmptyPressPage,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pTime,                                                                                                            // ÐÀÇÂÅÐÒÊÀ ///
     "ÐÀÇÂÅÐÒÊÀ", "SCAN",
     "Ñîäåðæèò íàñòðîéêè ðàçâ¸ðòêè.",
     "Contains scan settings.",
-    cSample,    // ÐÀÇÂÅÐÒÊÀ - Âûáîðêà
-    cPeakDet,   // ÐÀÇÂÅÐÒÊÀ - Ïèê äåò
-    cTPos,      // ÐÀÇÂÅÐÒÊÀ - Òî
-    cDivRole,   // ÐÀÇÂÅÐÒÊÀ - Ô-öèÿ ÂÐ/ÄÅË
-    cShiftXtype // ÐÀÇÂÅÐÒÊÀ - Ñìåùåíèå
+    cSample,        // ÐÀÇÂÅÐÒÊÀ - Âûáîðêà
+    cPeakDet,       // ÐÀÇÂÅÐÒÊÀ - Ïèê äåò
+    cTPos,          // ÐÀÇÂÅÐÒÊÀ - Òî
+    cDivRole,       // ÐÀÇÂÅÐÒÊÀ - Ô-öèÿ ÂÐ/ÄÅË
+    cShiftXtype,    // ÐÀÇÂÅÐÒÊÀ - Ñìåùåíèå
+    Page_Time, &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageTime = &pTime;
