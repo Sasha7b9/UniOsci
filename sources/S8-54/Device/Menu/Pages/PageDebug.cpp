@@ -932,17 +932,16 @@ DEF_GOVERNOR
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_SB(        ppSettings,                                                                                             // ОТЛАДКА - НАСТРОЙКИ ///
-    PageSB_Debug_Settings, &pDebug, FuncActive,
-    OnPress_Settings, FuncDrawPage, FuncRegSetPage,
     "НАСТРОЙКИ", "SETTINGS",
     "Показать информацию о настройках",
     "Show settings information",
-    &bSettings_Exit,    // ОТЛАДКА - НАСТРОЙКИ - Выход
+    &bSettings_Exit,            // ОТЛАДКА - НАСТРОЙКИ - Выход
     0,
     0,
     0,
     0,
-    0
+    0,
+    PageSB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1171,17 +1170,16 @@ static void OnPress_EraseData(void)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
-    PageSB_Debug_SerialNumber, &pDebug,
-    FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber,
     "С/Н", "S/N",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
-    &bSerialNumber_Exit,    // ОТЛАДКА - С/Н - Выход
-    &bSerialNumber_Change,  // ОТЛАДКА - С/Н - Перейти
+    &bSerialNumber_Exit,            // ОТЛАДКА - С/Н - Выход
+    &bSerialNumber_Change,          // ОТЛАДКА - С/Н - Перейти
     0,
     0,
     0,
-    &bSerialNumber_Save     // ОТЛАДКА - С/Н - Сохранить
+    &bSerialNumber_Save,            // ОТЛАДКА - С/Н - Сохранить
+    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
 );
 
 static void OnPress_SerialNumber(void)

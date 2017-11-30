@@ -101,8 +101,6 @@ DEF_SMALL_BUTTON_EXIT(  sbExitHelp,
 const Page * pointerPageHelp = &pHelp;
 
 DEF_PAGE_SB(        pHelp,                                                                                                               // ѕќћќў№ ///
-    PageSB_Help, &mainPage, FuncActive,
-    FuncPress, HelpContent_Draw, OnHelpRegSet,
     "ѕќћќў№", "HELP",
     "ќткрыть разделы помощи",
     "To open sections of the help",
@@ -111,5 +109,6 @@ DEF_PAGE_SB(        pHelp,                                                      
     &sbHelpParagraphLeave,
     0,
     &sbHelpParagraphPrev,
-    &sbHelpParagraphNext
+    &sbHelpParagraphNext,
+    PageSB_Help, &mainPage, FuncActive, FuncPress, HelpContent_Draw, OnHelpRegSet
 );

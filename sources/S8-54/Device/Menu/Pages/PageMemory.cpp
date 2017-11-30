@@ -255,17 +255,16 @@ static void OnRegSet_Last(int angle)
 }
 
 DEF_PAGE_SB(        ppLast,                                                                                                  // ПАМЯТЬ - ПОСЛЕДНИЕ ///
-    PageSB_Memory_Last, &pMemory, FuncActive,
-    OnPress_Last, OnDraw_Last, OnRegSet_Last,
     "ПОСЛЕДНИЕ", "LATEST",
     "Переход в режим работы с последними полученными сигналами",
     "Transition to an operating mode with the last received signals",
-    &bLast_Exit,       // ПАМЯТЬ - ПОСЛЕДНИЕ - Выход
+    &bLast_Exit,            // ПАМЯТЬ - ПОСЛЕДНИЕ - Выход
     0,                 
-    &bLast_Next,       // ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий
-    &bLast_Prev,       // ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий
-    &bLast_SaveToROM,  // ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ
-    &bLast_SaveToDrive // ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить
+    &bLast_Next,            // ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий
+    &bLast_Prev,            // ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий
+    &bLast_SaveToROM,       // ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ
+    &bLast_SaveToDrive,     // ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить
+    PageSB_Memory_Last, &pMemory, FuncActive, OnPress_Last, OnDraw_Last, OnRegSet_Last
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -508,8 +507,6 @@ static void OnRegSet_Internal(int delta)
 }
 
 DEF_PAGE_SB(        ppInternal,                                                                                               // ПАМЯТЬ - ВНУТР ЗУ ///
-    PageSB_Memory_Internal, &pMemory, FuncActive,
-    OnPress_Internal, OnDraw_Internal, OnRegSet_Internal,
     "ВНУТР ЗУ", "INT STORAGE",
     "Переход в режим работы с внутренней памятью",
     "Transition to an operating mode with internal memory",
@@ -518,10 +515,11 @@ DEF_PAGE_SB(        ppInternal,                                                 
     &bInternal_ModeShow,        // ПАМЯТЬ - ВНУТР ЗУ - Вид сигнала
     //0,
     //&bInternal_EraseAll,
-    //&bInternal_Scale,           // ПАМЯТЬ - ВНУТР ЗУ - Масштаб
+    //&bInternal_Scale,         // ПАМЯТЬ - ВНУТР ЗУ - Масштаб
     &bInternal_Delete,          // ПАМЯТЬ - ВНУТР ЗУ - Удалить
     &bInternal_SaveToMemory,    // ПАМЯТЬ - ВНУТР ЗУ - Сохранить
-    &bInternal_SaveToDrive      // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
+    &bInternal_SaveToDrive,     // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
+    PageSB_Memory_Internal, &pMemory, FuncActive, OnPress_Internal, OnDraw_Internal, OnRegSet_Internal
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -923,8 +921,6 @@ void OnPress_Drive_Manager(void)
 }
 
 DEF_PAGE_SB(        pppDrive_Manager,                                                                               // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ ///
-    PageSB_Memory_Drive_Manager, &ppDrive,
-    IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet,
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
     "Provides access to the file system of the connected drive",
@@ -933,7 +929,8 @@ DEF_PAGE_SB(        pppDrive_Manager,                                           
     0,
     0,
     &bDrive_Manager_LevelUp,    // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога
-    &bDrive_Manager_LevelDown   // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
+    &bDrive_Manager_LevelDown,  // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
+    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1114,8 +1111,6 @@ static void OnRegSet_Drive_Mask(int angle)
 }
 
 DEF_PAGE_SB(        pppDrive_Mask,                                                                                    // Память - ВНЕШН ЗУ - МАСКА ///
-    PageSB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask,
-    OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask,
     "МАСКА", "MASK",
     "Режим ввода маски для автоматического именования файлов",
     "Input mode mask for automatic file naming",
@@ -1124,7 +1119,8 @@ DEF_PAGE_SB(        pppDrive_Mask,                                              
     0,
     0,
     &bDrive_Mask_Backspace, // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace
-    &bDrive_Mask_Insert     // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
+    &bDrive_Mask_Insert,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
+    PageSB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask, OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1266,8 +1262,6 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 }
 
 DEF_PAGE_SB(        pSetName,                                                                         // Страница вызывается для ввода имени файла ///
-    PageSB_Memory_SetName, 0, FuncActive,
-    EmptyPressPage, FuncDrawPage, OnRegSet_SetName,
     "", "",
     "",
     "",
@@ -1276,7 +1270,8 @@ DEF_PAGE_SB(        pSetName,                                                   
     0,
     &bSetName_Backspace,    // ВВОД ИМЕНИ ФАЙЛА - Backspace
     &bSetName_Insert,       // ВВОД ИМЕНИ ФАЙЛА - Вставить
-    &bSetName_Save          // ВВОД ИМЕНИ ФАЙЛА - Сохранить
+    &bSetName_Save,         // ВВОД ИМЕНИ ФАЙЛА - Сохранить
+    PageSB_Memory_SetName, 0, FuncActive, EmptyPressPage, FuncDrawPage, OnRegSet_SetName
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -420,17 +420,16 @@ static void OnRotate_RegSet_Set(int angle)
 }
 
 DEF_PAGE_SB(        mspSet,                                                                                                // КУРСОРЫ - УСТАНОВИТЬ ///
-    Page_SB_Curs, &pCursors, FuncActive,
-    FuncPress, EmptyPressPage, OnRotate_RegSet_Set,
     "УСТАНОВИТЬ", "SET",
     "Переход в режим курсорных измерений",
     "Switch to cursor measures",
-    &sbSetExit,          // КУРСОРЫ - УСТАНОВИТЬ - Выход
-    &sbSetSource,        // КУРСОРЫ - УСТАНОВИТЬ - Источник
-    &sbSetU,             // КУРСОРЫ - УСТАНОВИТЬ - Курсоры U
-    &sbSetT,             // КУРСОРЫ - УСТАНОВИТЬ - Курсоры T
-    &sbSet100,           // КУРСОРЫ - УСТАНОВИТЬ - 100%
-    &sbSetPointsPercents // КУРСОРЫ - УСТАНОВИТЬ - Перемещение
+    &sbSetExit,                 // КУРСОРЫ - УСТАНОВИТЬ - Выход
+    &sbSetSource,               // КУРСОРЫ - УСТАНОВИТЬ - Источник
+    &sbSetU,                    // КУРСОРЫ - УСТАНОВИТЬ - Курсоры U
+    &sbSetT,                    // КУРСОРЫ - УСТАНОВИТЬ - Курсоры T
+    &sbSet100,                  // КУРСОРЫ - УСТАНОВИТЬ - 100%
+    &sbSetPointsPercents,       // КУРСОРЫ - УСТАНОВИТЬ - Перемещение
+    Page_SB_Curs, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRotate_RegSet_Set
 );
 
 //--------------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Показывать ---

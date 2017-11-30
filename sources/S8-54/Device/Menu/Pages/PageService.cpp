@@ -489,8 +489,6 @@ static void OnRegSet_FFT_Cursors(int angle)
 }
 
 DEF_PAGE_SB(        pppFFT_Cursors,                                                                                   // СЕРВИС - СПЕКТР - КУРСОРЫ ///
-    PageSB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors,
-    EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors,
     "КУРСОРЫ", "CURSORS",
     "Включает курсоры для измерения параметров спектра",
     "Includes cursors to measure the parameters of the spectrum",
@@ -499,7 +497,8 @@ DEF_PAGE_SB(        pppFFT_Cursors,                                             
     0,
     0,
     0,
-    0
+    0,
+    PageSB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -630,8 +629,6 @@ static void OnRegSet_Function(int delta)
 }
 
 DEF_PAGE_SB(        ppFunction,                                                                                                // СЕРВИС - ФУНКЦИЯ ///
-    PageSB_Service_Function, &pService, IsActive_Function,
-    OnPress_Function, FuncDrawPage, OnRegSet_Function,
     "ФУНКЦИЯ", "FUNCTION",
     "Установка и выбор математической функции - сложения или умножения",
     "Installation and selection of mathematical functions - addition or multiplication",
@@ -640,7 +637,8 @@ DEF_PAGE_SB(        ppFunction,                                                 
     &bFunction_Type,        // СЕРВИС - ФУНКЦИЯ - Вид
     &bFunction_ModeRegSet,  // СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА
     &bFunction_RangeA,      // СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала
-    &bFunction_RangeB
+    &bFunction_RangeB,
+    PageSB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1031,8 +1029,6 @@ static void Information_Draw(void)
 }
 
 DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
-    PageSB_Service_Information, &pService, FuncActive,
-    OnPress_Information, FuncDrawPage, FuncRegSetPage,
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Показывает информацию о приборе",
     "Displays information about the device",
@@ -1041,7 +1037,8 @@ DEF_PAGE_SB(        ppInformation,                                              
     0,
     0,
     0,
-    0
+    0,
+    PageSB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

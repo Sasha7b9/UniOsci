@@ -366,7 +366,6 @@ static void OnRegSet_Math_Function(int delta)
 }
 
 DEF_PAGE_SB(        pppMath_Function,                                                                             // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ ///
-    PageSB_Service_Function, &ppMath, IsActive_Math_Function, OnPress_Math_Function, EmptyFuncVV, OnRegSet_Math_Function,
     "ФУНКЦИЯ", "FUNCTION",
     "Установка и выбор математической функции - сложения или умножения",
     "Installation and selection of mathematical functions - addition or multiplication",
@@ -375,7 +374,8 @@ DEF_PAGE_SB(        pppMath_Function,                                           
     &sbMath_Function_Type,       // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Вид
     &sbMath_Function_ModeRegSet, // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Режим ручки УСТАНОВКА
     &sbMath_Function_RangeA,     // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 1-го канала
-    &sbMath_Function_RangeB      // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 2-го канала
+    &sbMath_Function_RangeB,     // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 2-го канала
+    PageSB_Service_Function, &ppMath, IsActive_Math_Function, OnPress_Math_Function, EmptyFuncVV, OnRegSet_Math_Function
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -463,8 +463,6 @@ static void OnRegSet_Math_FFT_Cursors(int angle)
 }
 
 DEF_PAGE_SB(        ppppMath_FFT_Cursors,                                                                // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ ///
-    PageSB_Service_FFT_Cursors, &pppMath_FFT, 
-    IsActive_Math_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_Math_FFT_Cursors,
     "КУРСОРЫ", "CURSORS",
     "Включает курсоры для измерения параметров спектра",
     "Includes cursors to measure the parameters of the spectrum",
@@ -473,7 +471,8 @@ DEF_PAGE_SB(        ppppMath_FFT_Cursors,                                       
     0,
     0,
     0,
-    0
+    0,
+    PageSB_Service_FFT_Cursors, &pppMath_FFT, IsActive_Math_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_Math_FFT_Cursors
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -727,7 +726,6 @@ static void OnPress_Information(void)
 }
 
 DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
-    Page_SB_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage,
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Выводит на экран идентификационные данные осциллографа",
     "Displays identification data of the oscilloscope",
@@ -736,7 +734,8 @@ DEF_PAGE_SB(        ppInformation,                                              
     0,
     0,
     0,
-    0
+    0,
+    Page_SB_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

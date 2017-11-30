@@ -238,8 +238,6 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMeasTune,                                         
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_SB(        mspMeasTune,                                                                                          // ИЗМЕРЕНИЯ - Настроить ///
-    PageSB_Measures_Tune, &pMeasures, IsActiveButtonMeasuresTune,
-    EmptyPressPage, FuncDrawPage, Measure_RotateRegSet,
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",
@@ -248,7 +246,8 @@ DEF_PAGE_SB(        mspMeasTune,                                                
     0,
     0,
     &sbMeasTuneMarkers,
-    &sbMeasTuneSettings
+    &sbMeasTuneSettings,
+    PageSB_Measures_Tune, &pMeasures, IsActiveButtonMeasuresTune, EmptyPressPage, FuncDrawPage, Measure_RotateRegSet
 );
 
 

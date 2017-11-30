@@ -1014,7 +1014,6 @@ static void FuncDrawingAdditionSPageMemoryLast()
 }
 
 DEF_PAGE_SB(        mspMemLast,                                                                                              // ПАМЯТЬ - ПОСЛЕДНИЕ ///
-    PageSB_Memory_Last, &pMemory, FuncActive, OnPressMemoryLatest, FuncDrawingAdditionSPageMemoryLast, RotateSB_MemLast,
     "ПОСЛЕДНИЕ", "LATEST",
     "Переход в режим работы с последними полученными сигналами",
     "Transition to an operating mode with the last received signals",
@@ -1023,7 +1022,8 @@ DEF_PAGE_SB(        mspMemLast,                                                 
     &sbMemLastNext,
     &sbMemLastPrev,
     &sbMemLastIntEnter,
-    &sbMemLastSaveToFlash
+    &sbMemLastSaveToFlash,
+    PageSB_Memory_Last, &pMemory, FuncActive, OnPressMemoryLatest, FuncDrawingAdditionSPageMemoryLast, RotateSB_MemLast
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1039,7 +1039,6 @@ DEF_SMALL_BUTTON_EXIT(  sbExitSetMask,                                          
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_SB(        mspSetMask,                                                                                       // Память - ВНЕШН ЗУ - МАСКА ///
-    Page_SB_MemExtSetMask, &mspMemoryExt, IsActiveMemoryExtSetMask, OnPressMemoryExtMask, FuncDrawPage, OnMemExtSetMaskRegSet,
     "МАСКА", "MASK",
     "Режим ввода маски для автоматического именования файлов",
     "Input mode mask for automatic file naming",
@@ -1048,7 +1047,8 @@ DEF_PAGE_SB(        mspSetMask,                                                 
     0,
     0,
     &sbSetMaskBackspace,
-    &sbSetMaskInsert
+    &sbSetMaskInsert,
+    Page_SB_MemExtSetMask, &mspMemoryExt, IsActiveMemoryExtSetMask, OnPressMemoryExtMask, FuncDrawPage, OnMemExtSetMaskRegSet
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1079,7 +1079,6 @@ static bool FuncOfActiveExtMemFolder()
 }
 
 DEF_PAGE_SB(        mspFileManager,                                                                                            // ПАМЯТЬ - КАТАЛОГ ///
-    PageSB_Memory_Drive_Manager, &mspMemoryExt, FuncOfActiveExtMemFolder, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet,
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
     "Provides access to the file system of the connected drive",
@@ -1088,7 +1087,8 @@ DEF_PAGE_SB(        mspFileManager,                                             
     0,
     0,
     &sbFileManagerLevelUp,
-    &sbFileManagerLevelDown
+    &sbFileManagerLevelDown,
+    PageSB_Memory_Drive_Manager, &mspMemoryExt, FuncOfActiveExtMemFolder, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1114,16 +1114,16 @@ static void OnPressMemoryInt()
 }
 
 DEF_PAGE_SB(        mspMemInt,                                                                                                // ПАМЯТЬ - ВНУТР ЗУ ///
-    PageSB_Memory_Internal, &pMemory, FuncActive, OnPressMemoryInt, FuncAdditionDrawingSPageMemoryInt, FuncOnRegSetMemInt,
     "ВНУТР ЗУ", "INT STORAGE",
     "Переход в режим работы с внутренней памятью",
     "Transition to an operating mode with internal memory",
-    (void*)&sbExitMemInt,
-    (void*)&sbMemIntShowSignalAlways,
-    (void*)&sbMemIntModeShow,
-    (void*)0,
-    (void*)&sbMemIntSave,
-    (void*)&sbMemIntSaveToFlash
+    &sbExitMemInt,
+    &sbMemIntShowSignalAlways,
+    &sbMemIntModeShow,
+    0,
+    &sbMemIntSave,
+    &sbMemIntSaveToFlash,
+    PageSB_Memory_Internal, &pMemory, FuncActive, OnPressMemoryInt, FuncAdditionDrawingSPageMemoryInt, FuncOnRegSetMemInt
 );
 
 
@@ -1135,14 +1135,14 @@ static void OnMemExtSetNameRegSet(int angle)
 
 // Страница вызывается при выбранном ручном режиме задания имени файла перед сохранением на флешку
 DEF_PAGE_SB(        mpSetName,                                                                                                        // ИМЯ ФАЙЛА ///
-    Page_SB_MemExtSetName, 0, FuncActive, FuncPress, FuncDrawPage, OnMemExtSetNameRegSet,
     "", "", "", "",
     &sbExitSetName,
     &sbSetNameDelete,
     0,
     &sbSetNameBackspace,
     &sbSetNameInsert,
-    &sbSetNameSave
+    &sbSetNameSave,
+    Page_SB_MemExtSetName, 0, FuncActive, FuncPress, FuncDrawPage, OnMemExtSetNameRegSet
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

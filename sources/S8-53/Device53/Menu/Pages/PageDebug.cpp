@@ -735,8 +735,6 @@ static void OnRegSet_SerialNumber(int angle)
 }
 
 DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
-    PageSB_Debug_SerialNumber, &pDebug, FuncActive,
-    OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber,
     "С/Н", "S/N",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
@@ -745,7 +743,8 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
     0,
     0,
     0,
-    &bSerialNumber_Save      // ОТЛАДКА - С/Н - Сохранить
+    &bSerialNumber_Save,     // ОТЛАДКА - С/Н - Сохранить
+    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
 );
 
 

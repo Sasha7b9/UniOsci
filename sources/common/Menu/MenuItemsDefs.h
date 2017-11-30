@@ -12,8 +12,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DEF_PAGE_SB(name, namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet, titleRU, titleEN, hintRU, hintEN,                      \
-    item0, item1, item2, item3, item4, item5)                                                                                                   \
+#define DEF_PAGE_SB(name, titleRU, titleEN, hintRU, hintEN, item0, item1, item2, item3, item4, item5,                                           \
+    namePage, keeper, funcActive, funcPress, funcDraw, funcRegSet)                                                                              \
 static const void * const  items##name[] = {(void *)item0, (void *)item1, (void *)item2, (void *)item3, (void *)item4, (void *)item5};          \
 const Page name = {Item_Page, true, namePage, 6, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                        \
     items##name, funcPress, funcDraw, funcRegSet};

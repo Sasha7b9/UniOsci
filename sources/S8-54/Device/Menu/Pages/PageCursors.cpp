@@ -178,17 +178,16 @@ static void OnRegSet_Set(int angle)
 }
 
 DEF_PAGE_SB(        ppSet,                                                                                                 // йспянпш - сярюмнбхрэ ///
-    PageSB_Cursors_Set, &pCursors, FuncActive,
-    FuncPress, FuncDrawPage, OnRegSet_Set,
     "сярюмнбхрэ", "SET",
     "оЕПЕУНД Б ПЕФХЛ ЙСПЯНПМШУ ХГЛЕПЕМХИ",
     "Switch to cursor measures",
-    &bSet_Exit,     // йспянпш - сярюмнбхрэ - бШУНД
-    &bSet_Channel,  // йспянпш - сярюмнбхрэ - йЮМЮК
-    &bSet_U,        // йспянпш - сярюмнбхрэ - йСПЯНПШ U
-    &bSet_T,        // йспянпш - сярюмнбхрэ - йСПЯНПШ р
-    &bSet_100,      // йспянпш - сярюмнбхрэ - 100%
-    &bSet_Movement  // йспянпш - сярюмнбхрэ - оЕПЕЛЕЫЕМХЕ
+    &bSet_Exit,             // йспянпш - сярюмнбхрэ - бШУНД
+    &bSet_Channel,          // йспянпш - сярюмнбхрэ - йЮМЮК
+    &bSet_U,                // йспянпш - сярюмнбхрэ - йСПЯНПШ U
+    &bSet_T,                // йспянпш - сярюмнбхрэ - йСПЯНПШ р
+    &bSet_100,              // йспянпш - сярюмнбхрэ - 100%
+    &bSet_Movement,         // йспянпш - сярюмнбхрэ - оЕПЕЛЕЫЕМХЕ
+    PageSB_Cursors_Set, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
