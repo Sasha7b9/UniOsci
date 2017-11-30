@@ -28,15 +28,14 @@ static bool IsActive_Sample(void)
 }
 
 DEF_CHOICE_2(       mcSample,                                                                                            //--- РАЗВЕРТКА - Выборка ---
-    pTime,
-    SAMPLE_TYPE, IsActive_Sample, FuncChangedChoice, FuncDraw,
     "Выборка", "Sampling",
     "\"Реальная\" - \n"
     "\"Эквивалентная\" -",
     "\"Real\" - \n"
     "\"Equals\" - ",
     "Реальное время", "Real",
-    "Эквивалентная",  "Equals"
+    "Эквивалентная",  "Equals",
+   SAMPLE_TYPE, pTime, IsActive_Sample, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -89,13 +88,12 @@ void OnChanged_PeakDet(bool active)
 }
 
 DEF_CHOICE_2(       mcPeakDet,                                                                                           //--- РАЗВЕРТКА - Пик дет ---
-    pTime,
-    SET_PEAKDET, IsActive_PeakDet, OnChanged_PeakDet, FuncDraw,
     "Пик дет", "Pic deat",
     "Включает/выключает пиковый детектор.",
     "Turns on/off peak detector.",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+   SET_PEAKDET, pTime, IsActive_PeakDet, OnChanged_PeakDet, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -124,19 +122,16 @@ static bool IsActive_SelfRecorder(void)
 }
 
 DEF_CHOICE_2(       mcSelfRecorder,
-    pTime,
-    SELFRECORDER, IsActive_SelfRecorder, FuncChangedChoice, FuncDraw,
     "Самописец", "Self-Recorder",
     "Включает/выключает режим самописца. Этот режим доступен на развёртках 20мс/дел и более медленных.",
     "Turn on/off the recorder. This mode is available for scanning 20ms/div and slower.",
     ENABLE_RU,  ENABLE_EN,
-    DISABLE_RU, DISABLE_EN
+    DISABLE_RU, DISABLE_EN,
+    SELFRECORDER, pTime, IsActive_SelfRecorder, FuncChangedChoice, FuncDraw
 );
 
-// РАЗВЕРТКА - Ф-ция ВР/ДЕЛ --------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       mcDivRole,
-    pTime,
-    TIME_DIV_XPOS, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcDivRole,                                                                                      //--- РАЗВЕРТКА - Ф-ция ВР/ДЕЛ ---
     "Ф-ция ВР/ДЕЛ", "Func Time/DIV"
     ,
     "Задаёт функцию для ручки ВРЕМЯ/ДЕЛ: в режиме сбора информации (ПУСК/СТОП в положении ПУСК):\n"
@@ -147,7 +142,8 @@ DEF_CHOICE_2(       mcDivRole,
     "1. \"Time\" - change the time shift.\n"
     "2. \"Memory\" - moving from memory.",
     "Время",  "Time",
-    "Память", "Memory"
+    "Память", "Memory",
+    TIME_DIV_XPOS, pTime, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

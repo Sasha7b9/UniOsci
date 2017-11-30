@@ -25,13 +25,13 @@ extern const Page mspSettings_Colors;
 extern const Page mspSettings;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       mcMapping, pDisplay,                                                                               //--- ДИСПЛЕЙ - Отображение ---
-    MODE_DRAW_SIGNAL, FuncActive, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       mcMapping,                                                                                         //--- ДИСПЛЕЙ - Отображение ---
     "Отображение", "View",
     "Задаёт режим отображения сигнала.",
     "Sets the display mode signal.",
     "Вектор", "Vector",
-    "Точки",  "Points"
+    "Точки",  "Points",
+    MODE_DRAW_SIGNAL, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -60,8 +60,6 @@ DEF_CHOICE_REG_9(   mcAccumulation_Number,                                      
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcAccumulation_Mode,                                                                           // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим ---
-    mspAccumulation,
-    MODE_ACCUM, FuncActive, FuncChangedChoice, FuncDraw,
     "Режим", "Mode"
     ,
     "1. \"Сбрасывать\" - после накопления заданного количества измерения происходит очистка дисплея. Этот режим удобен, когда памяти не хватает "
@@ -74,7 +72,8 @@ DEF_CHOICE_2(       mcAccumulation_Mode,                                        
     "2. \"Not to dump\" - the number of measurements is always output to the display set or smaller (in case of shortage of memory). Shortcoming "
     "is smaller speed and impossibility of accumulation of the set number of measurements at a lack of memory.",
     "Не сбрасывать", "Not to dump",
-    "Сбрасывать",    "Dump"
+    "Сбрасывать",    "Dump",
+    MODE_ACCUM, mspAccumulation, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -131,7 +130,6 @@ DEF_CHOICE_REG_10(  mcAveraging_Number,                                         
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcAveraging_Mode,                                                                              // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим ---
-    mspAveraging, MODE_AVE, FuncActive, FuncChangedChoice, FuncDraw,
     "Режим", "Mode"
     ,
     "1. \"Точно\" - точный режим усреднения, когда в расчёте участвуют только последние сигналы.\n"
@@ -142,7 +140,8 @@ DEF_CHOICE_2(       mcAveraging_Mode,                                           
     "2. \"Around\" - approximate mode of averaging. It makes sense to use when the number of measurements bigger is set, than can be located in "
     "memory.",
     "Точно",          "Accurately",
-    "Приблизительно", "Around"
+    "Приблизительно", "Around",
+    MODE_AVE, mspAveraging, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 
@@ -272,7 +271,6 @@ DEF_PAGE_2(         mspGrid,                                                    
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcTypeShift,                                                                                             // ДИСПЛЕЙ - Смещение ---
-    pDisplay, LINKING_RSHIFT, FuncActive, FuncChangedChoice, FuncDraw,
     "Смещение", "Offset"
     ,
     "Задаёт режим удержания смещения по вертикали\n1. \"Напряжение\" - сохраняется напряжение смещения.\n2. \"Деления\" - сохраняется положение "
@@ -281,19 +279,18 @@ DEF_CHOICE_2(       mcTypeShift,                                                
     "Sets the mode of retaining the vertical displacement\n1. \"Voltage\" - saved dressing bias.\n2. \"Divisions\" - retained the position of "
     "the offset on the screen.",
     "Напряжение", "Voltage",
-    "Деления",    "Divisions"
+    "Деления",    "Divisions",
+    LINKING_RSHIFT, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-// ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема ------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2
-(
-    mcSettings_Colors_Scheme, mspSettings_Colors,
-    COLOR_SCHEME, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcSettings_Colors_Scheme,                                                   //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема ---
     "Цветовая схема", "Color scheme",
     "Режим работы калибратора",
     "Mode of operation of the calibrator",
     "Схема 1", "Scheme 1",
-    "Схема 2", "Scheme 2"
+    "Схема 2", "Scheme 2",
+    COLOR_SCHEME, mspSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //---------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
@@ -363,8 +360,7 @@ DEF_GOVERNOR(       mgSettings_Levels,                                          
     "Уровни", "Levels",
     "Задаёт время, в течение которого после поворота ручки сещения напряжения на экране остаётся вспомогательная метка уровня смещения",
     "Defines the time during which, after turning the handle visits to the voltage on the screen remains auxiliary label offset level",
-    mspSettings, TIME_SHOW_LEVELS, 0, 125,
-    FuncActive, FuncChanged, FuncBeforeDraw
+    mspSettings, TIME_SHOW_LEVELS, 0, 125, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -372,18 +368,17 @@ DEF_GOVERNOR(       mgSettings_TimeMessages,                                    
     "Время", "Time",
     "Установка времени, в течение которого сообщения будут находиться на экране",
     "Set the time during which the message will be on the screen",
-    mspSettings, TIME_MESSAGES, 1, 99,
-    FuncActive, FuncChanged, FuncBeforeDraw
+    mspSettings, TIME_MESSAGES, 1, 99, FuncActive, FuncChanged, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcSettings_ShowStringNavigation,                                                          // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню ---
-    mspSettings, SHOW_STRING_NAVIGATION, FuncActive, FuncChangedChoice, FuncDraw,
     "Строка меню", "Path menu",
     "При выборе \nПоказывать\n слева вверху экрана выводится полный путь до текущей страницы меню",
     "When choosing \nDisplay\n at the top left of the screen displays the full path to the current page menu",
     "Скрывать",   "Hide",
-    "Показывать", "Show"
+    "Показывать", "Show",
+    SHOW_STRING_NAVIGATION, mspSettings, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ----------------------------------------------------------------------------------------------------------------

@@ -34,27 +34,24 @@ DEF_PAGE_5(         pTime,
 
 const Page * pointerPageTime = &pTime;
 
-//---------------------------------------------------------------------------------------------------------------------------- РАЗВЕРТКА - Выборка ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Sample(void)
 {
     return IN_RANDOM_MODE && !START_MODE_SINGLE;
 }
 
-DEF_CHOICE_2
-(
-    cSample, pTime,
-    SAMPLE_TYPE, IsActive_Sample, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       cSample,                                                                                             //--- РАЗВЕРТКА - Выборка ---
     "Выборка", "Sampling",
     "\"Реальная\" - \n"
     "\"Эквивалентная\" -",
     "\"Real\" - \n"
     "\"Equals\" - ",
-
     "Реальное время", "Real",
-    "Эквивалентная",  "Equals"
+    "Эквивалентная",  "Equals",
+    SAMPLE_TYPE, pTime, IsActive_Sample, FuncChangedChoice, FuncDraw
 );
 
-//---------------------------------------------------------------------------------------------------------------------------- РАЗВЕРТКА - Пик дет ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_PeakDet(void)
 {
     if (FPGA_POINTS_32k)                       // При 32к точек на канал мы не можем включать пиковый детектор
@@ -95,15 +92,13 @@ void OnChanged_PeakDet(bool active)
     }
 }
 
-DEF_CHOICE_2
-(
-    cPeakDet, pTime,
-    SET_PEAKDET, IsActive_PeakDet, OnChanged_PeakDet, FuncDraw,
+DEF_CHOICE_2(cPeakDet,                                                                                                   //--- РАЗВЕРТКА - Пик дет ---
     "Пик дет", "Pic deat",
     "Включает/выключает пиковый детектор.",
     "Turns on/off peak detector.",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_PEAKDET, pTime, IsActive_PeakDet, OnChanged_PeakDet, FuncDraw
 );
 
 //--------------------------------------------------------------------------------------------------------------------------------- РАЗВЕРТКА - То ---
@@ -125,11 +120,8 @@ DEF_CHOICE_3
     "Право", "Right"
 );
 
-//----------------------------------------------------------------------------------------------------------------------- РАЗВЕРТКА - Ф-ция ВР/ДЕЛ ---
-DEF_CHOICE_2
-(
-    cDivRole, pTime,
-    TIME_DIVXPOS, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cDivRole,                                                                                       //--- РАЗВЕРТКА - Ф-ция ВР/ДЕЛ ---
     "Ф-ция ВР/ДЕЛ", "Funct Time/DIV",
     "Задаёт функцию для ручки ВРЕМЯ/ДЕЛ: в режиме сбора информации (ПУСК/СТОП в положении ПУСК):\n"
     "1. \"Время\" - изменение смещения по времени.\n"
@@ -138,19 +130,18 @@ DEF_CHOICE_2
     "1. \"Time\" - change the time shift.\n"
     "2. \"Memory\" - moving from memory.",
     "Время",  "Time",
-    "Память", "Memory"
+    "Память", "Memory",
+    TIME_DIVXPOS, pTime, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------------- РАЗВЕРТКА - Смещение ---
-DEF_CHOICE_2
-(
-    cShiftXtype, pTime,
-    LINKING_TSHIFT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cShiftXtype,                                                                                        //--- РАЗВЕРТКА - Смещение ---
     "Смещение", "Offset",
     "Задаёт режим удержания смещения по горизонтали\n1. \"Время\" - сохраняется абсолютное смещение в секундах.\n2. \"Деления\" - сохраняется "
     "положение мещения на экране.",
     "Sets the mode of retaining the horizontal displacement\n1. \"Time\" - saved the asbolutic offset in seconds.\n2. \"Divisions\" - retained "
     "the position of the offset on the screen.",
     "Время",   "Time",
-    "Деления", "Divisions"
+    "Деления", "Divisions",
+    LINKING_TSHIFT, pTime, FuncActive, FuncChangedChoice, FuncDraw
 );

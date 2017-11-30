@@ -76,16 +76,14 @@ DEF_PAGE_9(     pDisplay,                                                       
     ppDisplaySettings // ДИСПЛЕЙ - НАСТРОЙКИ
 );
 
-//-------------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - Отображение ---
-DEF_CHOICE_2
-(
-    cViewMode, pDisplay,
-    MODE_DRAW_SIGNAL, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cViewMode,                                                                                         //--- ДИСПЛЕЙ - Отображение ---
     "Отображение", "View",
     "Задаёт режим отображения сигнала.",
     "Sets the display mode signal.",
     "Вектор",  "Vector",
-    "Точки",   "Points"
+    "Точки",   "Points",
+    MODE_DRAW_SIGNAL, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,11 +127,8 @@ DEF_CHOICE_REG_9
     "Бесконечность", "Infinity"
 );
 
-//------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим ---
-DEF_CHOICE_2
-(
-    cAccum_Mode, ppAccum,
-    MODE_ACCUM, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cAccum_Mode,                                                                                //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим ---
     "Режим", "Mode"
     ,
     "1. \"Сбрасывать\" - после накопления заданного количества измерения происходит очистка дисплея. Этот режим удобен, когда памяти не хватает "
@@ -144,9 +139,11 @@ DEF_CHOICE_2
     "1. \"Dump\" - after accumulation of the set number of measurement there is a cleaning of the display. This mode is convenient when memory "
     "isn't enough for preservation of the necessary number of measurements.\n"
     "2. \"Not to dump\" - the number of measurements is always output to the display set or smaller (in case of shortage of memory). Shortcoming "
-    "is smaller speed and impossibility of accumulation of the set number of measurements at a lack of memory.",    
-    "Не сбрасывать",   "Not to dump",
-    "Сбрасывать",      "Dump"
+    "is smaller speed and impossibility of accumulation of the set number of measurements at a lack of memory."
+    ,
+    "Не сбрасывать", "Not to dump",
+    "Сбрасывать",    "Dump",
+    MODE_ACCUM, ppAccum, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //---------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить ---
@@ -204,23 +201,21 @@ DEF_CHOICE_REG_10
     "512", "512"    
 );
 
-//------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим ---
-DEF_CHOICE_2
-(
-    cAverage_Mode, ppAverage,
-    MODE_AVERAGING, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cAverage_Mode,                                                                              //--- ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим ---
     "Режим", "Mode"
     ,
     "1. \"Точно\" - точный режим усреднения, когда в расчёте участвуют только последние сигналы.\n"
     "2. \"Приблизительно\" - приблизительный режим усреднения. Имеет смысл использовать, когда задано количество измерений большее, чем может "
-    "поместиться в памяти.",
-    
+    "поместиться в памяти."
+   ,
     "1. \"Accurately\" - the exact mode of averaging when only the last signals participate in calculation.\n"
     "2. \"Around\" - approximate mode of averaging. It makes sense to use when the number of measurements bigger is set, than can be located in "
-    "memory.",
-    
-    "Точно",           "Accurately",
-    "Приблизительно",  "Around"    
+    "memory."
+    ,
+    "Точно",          "Accurately",
+    "Приблизительно", "Around",
+    MODE_AVERAGING, ppAverage, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - Мин Макс ---
@@ -348,18 +343,16 @@ DEF_GOVERNOR
     ppGrid, BRIGHTNESS_GRID, 0, 100, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - Смещение ---
-DEF_CHOICE_2
-(
-    cScaleYtype, pDisplay,
-    LINKING_RSHIFT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cScaleYtype,                                                                                          //--- ДИСПЛЕЙ - Смещение ---
     "Смещение", "Оffset",
     "Задаёт режим удержания смещения по вертикали\n1. \"Напряжение\" - сохраняется наряжение смещения.\n2. \"Деления\" - сохраняется положение "
     "смещения на экране.",
     "Sets the mode of retaining the vertical displacement\n1. \"Voltage\" - saved dressing bias.\n2. \"Divisions\" - retained the position of "
     "the offset on the screen.",
     "Напряжение", "Voltage",
-    "Деления", "Divisions"
+    "Деления",    "Divisions",
+    LINKING_RSHIFT, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -401,12 +394,12 @@ DEF_PAGE_5(         pppSettings_Colors,                                         
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSettings_Colors_Scheme,                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема ---
-    pppSettings_Colors, set.serv_ColorScheme, FuncActive, FuncChangedChoice, FuncDraw,
     "Цветовая схема", "Color scheme",
     "Режим работы калибратора",
     "Mode of operation of the calibrator",
     "Схема 1", "Scheme 1",
-    "Схема 2", "Scheme 2"
+    "Схема 2", "Scheme 2",
+    set.serv_ColorScheme, pppSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 -------------------------------------------------------------------------------------------------------------
@@ -448,7 +441,7 @@ static const GovernorColor gcSettings_Colors_Grid =
     &colorTypeGrid
 };
 
-//-------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_Colors_Background(bool)
 {
     PageService_InitGlobalColors();
@@ -472,15 +465,13 @@ void PageService_InitGlobalColors(void)
     gColorChan[A_B] = gColorChan[MathCh] = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
 }
 
-DEF_CHOICE_2
-(
-    cSettings_Colors_Background, pppSettings_Colors,
-    BACKGROUND, FuncActive, OnChanged_Settings_Colors_Background, FuncDraw,
+DEF_CHOICE_2(       cSettings_Colors_Background,                                                           //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Фон ---
     "Фон", "Background",
     "Выбор цвета фона",
     "Choice of color of a background",
     "Чёрный", "Black",
-    "Белый", "White"
+    "Белый",  "White",
+    BACKGROUND, pppSettings_Colors, FuncActive, OnChanged_Settings_Colors_Background, FuncDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------ ДИСПЛЕЙ - НАСТРОЙКИ - Яркость ---

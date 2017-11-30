@@ -80,21 +80,19 @@ DEF_PAGE_7(         pChanA,                                                     
     bChanA_Balance     // КАНАЛ 1 - Балансировать
 );
 
-//--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Вход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_InputA(bool)
 {
     panel.EnableLEDChannel(A, SET_ENABLED_A);
 }
 
-DEF_CHOICE_2
-(
-    cChanA_Input, pChanA,
-    SET_ENABLED_A, FuncActive, OnChanged_InputA, FuncDraw,
+DEF_CHOICE_2(       cChanA_Input,                                                                                             //--- КАНАЛ 1 - Вход ---
     "Вход", "Input",
     chanInputRu,
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_ENABLED_A, pChanA, FuncActive, OnChanged_InputA, FuncDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Связь ---
@@ -116,24 +114,22 @@ DEF_CHOICE_3
 );
 
 
-//------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Полоса ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Bandwidth(bool)
 {
     FPGA_SetBandwidth(A);
 }
 
-DEF_CHOICE_2
-(
-    cChanA_Bandwidth, pChanA,
-    SET_BANDWIDTH_A, FuncActive, OnChanged_ChanA_Bandwidth, FuncDraw,
+DEF_CHOICE_2(       cChanA_Bandwidth,                                                                                       //--- КАНАЛ 1 - Полоса ---
     "Полоса", "Bandwidth",
     "Задаёт полосу пропускания канала", 
     "Sets the channel bandwidth",
     "Полная", "Full",
-    "20МГц", "20MHz"
+    "20МГц",  "20MHz",
+    SET_BANDWIDTH_A, pChanA, FuncActive, OnChanged_ChanA_Bandwidth, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------------ КАНАЛ 1 - Сопротивление ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Resistance(bool)
 {
     FPGA_SetResistance(A, SET_RESISTANCE_A);
@@ -143,44 +139,38 @@ static void OnChanged_ChanA_Resistance(bool)
     }
 }
 
-DEF_CHOICE_2
-(
-    cChanA_Resistance, pChanA,
-    SET_RESISTANCE_A, FuncActive, OnChanged_ChanA_Resistance, FuncDraw,
+DEF_CHOICE_2(       cChanA_Resistance,                                                                               //--- КАНАЛ 1 - Сопротивление ---
     "Вх сопр", "Resistance",
     "",
     "",
     "1 МОм", "1 Mohm",
-    "50 Ом", "50 Ohm"
+    "50 Ом", "50 Ohm",
+    SET_RESISTANCE_A, pChanA, FuncActive, OnChanged_ChanA_Resistance, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Инверсия ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Inverse(bool)
 {
     FPGA_SetRShift(A, SET_RSHIFT_A);
 }
 
-DEF_CHOICE_2
-(
-    cChanA_Inverse, pChanA,
-    SET_INVERSE_A, FuncActive, OnChanged_ChanA_Inverse, FuncDraw,
+DEF_CHOICE_2(   cChanA_Inverse,                                                                                           //--- КАНАЛ 1 - Инверсия ---
     "Инверсия", "Inverse",
     chanInverseRu,
     chanInverseEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_INVERSE_A, pChanA, FuncActive, OnChanged_ChanA_Inverse, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Делитель ---
-DEF_CHOICE_2
-(
-    cChanA_Divider, pChanA,
-    SET_DIVIDER_A, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(   cChanA_Divider,                                                                                           //--- КАНАЛ 1 - Делитель ---
     "Делитель", "Divider",
     chanDividerRu,
     chanDividerEn,
     "Выкл", "Off",
-    "1/10", "1/10"
+    "1/10", "1/10",
+    SET_DIVIDER_A, pChanA, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------------ КАНАЛ 1 - Балансировать ---
@@ -235,13 +225,12 @@ void OnChanged_InputB(bool active)
 }
 
 DEF_CHOICE_2(       cChanB_Input,                                                                                             //--- КАНАЛ 2 - Вход ---
-    pChanB,
-    SET_ENABLED_B, IsActive_ChanB_Input, OnChanged_InputB, FuncDraw,
     "Вход", "Input",
     chanInputRu,
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_ENABLED_B, pChanB, IsActive_ChanB_Input, OnChanged_InputB, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -267,12 +256,12 @@ static void OnChanged_ChanB_Bandwidth(bool)
 }
 
 DEF_CHOICE_2(       cChanB_Bandwidth,                                                                                       //--- КАНАЛ 2 - Полоса ---
-    pChanB, SET_BANDWIDTH_B, FuncActive, OnChanged_ChanB_Bandwidth, FuncDraw,
     "Полоса", "Bandwidth",
     "",
     "",
     "Полная", "Full", 
-    "20МГц", "20MHz"
+    "20МГц",  "20MHz",
+    SET_BANDWIDTH_B, pChanB, FuncActive, OnChanged_ChanB_Bandwidth, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -286,11 +275,11 @@ static void OnChanged_ChanB_Resistance(bool)
 }
 
 DEF_CHOICE_2(       cChanB_Resistance,                                                                               //--- КАНАЛ 2 - Сопротивление ---
-    pChanB, SET_RESISTANCE_B, FuncActive, OnChanged_ChanB_Resistance, FuncDraw,
     "Вх сопр", "Resistance",
     "", "",
     "1 МОм", "1 Mohm",
-    "50 Ом", "50 Ohm"
+    "50 Ом", "50 Ohm",
+    SET_RESISTANCE_B, pChanB, FuncActive, OnChanged_ChanB_Resistance, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -300,24 +289,22 @@ static void OnChanged_ChanB_Inverse(bool)
 }
 
 DEF_CHOICE_2(       cChanB_Inverse,                                                                                       //--- КАНАЛ 2 - Инверсия ---
-    pChanB, SET_INVERSE_B, FuncActive, OnChanged_ChanB_Inverse, FuncDraw,
     "Инверсия", "Inverse",
     chanInverseRu,
     chanInverseEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_INVERSE_B, pChanB, FuncActive, OnChanged_ChanB_Inverse, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Делитель ---
-DEF_CHOICE_2
-(
-    cChanB_Divider, pChanB,
-    SET_DIVIDER_B, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cChanB_Divider,                                                                                       //--- КАНАЛ 2 - Делитель ---
     "Делитель", "Divider",
     chanDividerRu,
     chanDividerEn,
     "Выкл", "Jff",
-    "1/10", "1/10"
+    "1/10", "1/10",
+    SET_DIVIDER_B, pChanB, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------------ КАНАЛ 2 - Балансировать ---

@@ -432,16 +432,14 @@ DEF_PAGE_SB(        mspSet,                                                     
     Page_SB_Curs, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRotate_RegSet_Set
 );
 
-//--------------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Показывать ---
-DEF_CHOICE_2
-(
-    mcShow, pCursors,
-    CURS_SHOW, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcShow,                                                                                             //--- КУРСОРЫ - Показывать ---
     "Показывать", "Shown",
     "Включает/отключает курсоры.",
     "Enable/disable cursors.",
     "Нет", "No",
-    "Да",  "Yes"
+    "Да",  "Yes",
+    CURS_SHOW, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------------ КУРСОРЫ - Курсоры T1,U1 ---
@@ -491,11 +489,8 @@ DEF_CHOICE_4
     "Напряж. и время", "Volt. and time"
 );
 
-//--------------------------------------------------------------------------------------------------------------------------------- КУРОСРЫ - 1/dT ---
-DEF_CHOICE_2
-(
-    mcShowFreq, pCursors,
-    CURSORS_SHOW_FREQ, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcShowFreq,                                                                                               //--- КУРОСРЫ - 1/dT ---
     "1/dT", "1/dT"
     ,
     "Если выбрано \"Вкл\", в правом верхнем углу выводится величина, обратная расстоянию между курсорами времени - частота сигнала, один период "
@@ -504,7 +499,8 @@ DEF_CHOICE_2
     "If you select \"Enable\" in the upper right corner displays the inverse of the distance between cursors time - frequency signal, a period "
     "equal to the distance between the time cursors.",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    CURSORS_SHOW_FREQ, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

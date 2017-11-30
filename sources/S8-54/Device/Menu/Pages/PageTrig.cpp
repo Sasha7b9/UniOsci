@@ -77,23 +77,21 @@ DEF_CHOICE_3
     "Внешний",  "External"
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- СИНХР - Полярность ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Polarity(bool)
 {
     FPGA_SetTrigPolarity(TRIG_POLARITY);
 }
 
-DEF_CHOICE_2
-(
-    cPolarity, pTrig,
-    TRIG_POLARITY, FuncActive, OnChanged_Polarity, FuncDraw,
+DEF_CHOICE_2(       cPolarity,                                                                                            //--- СИНХР - Полярность ---
     "Полярность", "Polarity",
     "1. \"Фронт\" - запуск происходит по фронту синхроимпульса.\n"
     "2. \"Срез\" - запуск происходит по срезу синхроимпульса.",
     "1. \"Front\" - start happens on the front of clock pulse.\n"
     "2. \"Back\" - start happens on a clock pulse cut.",
     "Фронт", "Front",
-    "Срез",  "Back"
+    "Срез",  "Back",
+    TRIG_POLARITY, pTrig, FuncActive, OnChanged_Polarity, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------- СИНХР - Вход ---

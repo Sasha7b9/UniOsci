@@ -380,22 +380,22 @@ DEF_PAGE_SB(        pppMath_Function,                                           
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cMath_FFT_Enable,                                                             //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - Отображение ---
-    pppMath_FFT, FFT_ENABLED, FuncActive, FuncChangedChoice, FuncDraw,
     "Отображение", "Display",
     "Включает и выключает отображение спектра",
     "Enables or disables the display of the spectrum",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    FFT_ENABLED, pppMath_FFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cMath_FFT_Scale,                                                                    //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - Шкала ---
-    pppMath_FFT, SCALE_FFT, FuncActive, FuncChangedChoice, FuncDraw,
     "Шкала", "Scale",
     "Задаёт масштаб вывода спектра - линейный или логарифмический",
     "Sets the scale of the output spectrum - linear or logarithmic",
     "Логарифм", "Log",
-    "Линейная", "Linear"
+    "Линейная", "Linear",
+    SCALE_FFT, pppMath_FFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -536,7 +536,6 @@ static void OnChanged_Ethernet_Enable(bool active)
 };
 
 DEF_CHOICE_2(       cEthernet_Enable,                                                                           //--- СЕРВИС - ETHERNET - Ethernet ---
-    ppEthernet, ETH_ENABLE, FuncActive, OnChanged_Ethernet_Enable, FuncDraw,
     "Ethernet", "Ethernet"
     ,
     "Чтобы задействовать ethernet, выберите \"Включено\" и выключите прибор.\n"
@@ -545,7 +544,8 @@ DEF_CHOICE_2(       cEthernet_Enable,                                           
     "To involve ethernet, choose \"Included\" and switch off the device.\n"
     "To disconnect ethernet, choose \"Disconnected\" and switch off the device.",
     "Включено",  "Included",
-    "Отключено", "Disconnected"
+    "Отключено", "Disconnected",
+    ETH_ENABLE, ppEthernet, FuncActive, OnChanged_Ethernet_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -614,24 +614,22 @@ DEF_PAGE_5(         ppEthernet,                                                 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSound,                                                                                                    //--- СЕРВИС - Звук ---
-    pService, SOUND_ENABLED,
-    FuncActive, FuncChangedChoice, FuncDraw,
     "Звук", "Sound",
     "Включение/выключение звука",
     "Inclusion/switching off of a sound",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SOUND_ENABLED, pService, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cLang,                                                                                                     //--- СЕРВИС - Язык ---
-    pService, LANG,
-    FuncActive, FuncChangedChoice, FuncDraw,
     "Язык", "Language",
     "Позволяет выбрать язык меню",
     "Allows you to select the menu language",
     "Русский",    "Russian",
-    "Английский", "English"
+    "Английский", "English",
+    LANG, pService, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 static int8 dServicetime = 0;
@@ -661,7 +659,6 @@ static const Time tTime =                                                       
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cModeLongPressButtonTrig,                                                                        //--- СЕРВИС - Реж длит СИНХР ---
-    pService, MODE_LONG_PRESS_TRIG, FuncActive, FuncChangedChoice, FuncDraw,
     "Реж длит СИНХР", "Mode long СИНХР"
     ,
     "Устанавливает действия для длительного нажатия кнопки СИНХР:\n\"Сброс уровня\" - установка уровня синхронизации в ноль,\n\"Автоуровень\" "
@@ -670,7 +667,8 @@ DEF_CHOICE_2(       cModeLongPressButtonTrig,                                   
     "Sets the action for long press CLOCK:\n\"Reset trig lvl\" - to set the trigger level to zero, \n\"Auto level\""
     "- Automatically detect and install the trigger level",
     "Сброс уровня", "Reset trig level",
-    "Автоуровень",  "Autolevel"
+    "Автоуровень",  "Autolevel",
+    MODE_LONG_PRESS_TRIG, pService, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

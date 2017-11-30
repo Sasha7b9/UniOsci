@@ -759,7 +759,6 @@ DEF_CHOICE_3(       mcMemoryNumPoints,                                          
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMemoryExtName,                                                                           //--- ПАМЯТЬ - ВНЕШН ЗУ - Имя файла ---
-    mspMemoryExt, FILE_NAMING_MODE, FuncActive, FuncChangedChoice, FuncDraw,
     "Имя файла", "File name"
     ,
     "Задаёт режим наименования файлов при сохранении на внешний накопитель:\n"
@@ -771,32 +770,32 @@ DEF_CHOICE_2(       mcMemoryExtName,                                            
     "\"Manual\" - each time the file name must be specified manually"
     ,
     "По маске", "Mask",
-    "Вручную",  "Manually"
+    "Вручную",  "Manually",
+   FILE_NAMING_MODE, mspMemoryExt, FuncActive, FuncChangedChoice, FuncDraw
 );
     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMemoryExtAutoConnectFlash,                                                         //--- ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение ---
-    mspMemoryExt, FLASH_AUTOCONNECT, FuncActive, FuncChangedChoice, FuncDraw,
     "Автоподкл.", "AutoConnect",
     "Eсли \"Вкл\", при подключении внешнего накопителя происходит автоматический переход на страницу ПАМЯТЬ - Внешн ЗУ",
     "If \"Enable\", when you connect an external drive is automatically transferred to the page MEMORY - Ext.Storage",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    FLASH_AUTOCONNECT, mspMemoryExt, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMemoryExtModeBtnMemory,                                                              //--- ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ ---
-    mspMemoryExt, MODE_BTN_MEMORY, FuncActive, FuncChangedChoice, FuncDraw,
     "Реж кн ПАМЯТЬ", "Mode btn MEMORY",
     "\"Meню\" - нажатие кнопки ПАМЯТЬ открывает страницу ПАМЯТЬ\n\"Сохранение\" - нажатие кнопки ПАМЯТЬ сохраняет файл на внешнее ЗУ",
     "\"Menu\" - pressing the ПАМЯТЬ button opens the MEMORY page\n\"Save\"- pressing the MEMORY button saves the file to an external memory",
     "Меню",       "Menu",
-    "Сохранение", "Save"
+    "Сохранение", "Save",
+    MODE_BTN_MEMORY, mspMemoryExt, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMemoryExtModeSave,                                                                   //--- ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как ---
-    mspMemoryExt, MODE_SAVE_SIGNAL, FuncActive, FuncChangedChoice, FuncDraw,
     "Сохранять как", "Save as"
     ,
     "Если выбран вариант \"Изображение\", сигнал будет сохранён в текущем каталоге в графическом файле с расширением BMP\n"
@@ -806,7 +805,8 @@ DEF_CHOICE_2(       mcMemoryExtModeSave,                                        
     "If you select \"Text\", the signal will be stored in the current directory as a text file with the extension TXT"
     ,
     "Изображение", "Image",
-    "Текст",       "Text"
+    "Текст",       "Text",
+    MODE_SAVE_SIGNAL, mspMemoryExt, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------   

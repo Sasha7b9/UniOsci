@@ -241,21 +241,19 @@ DEF_BUTTON
 
 #ifdef OLD_RECORDER
 
-//--------------------------------------------------------------------------------------------------------------------------- СЕРВИС - Регистратор ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Recorder(bool)
 {
     FPGA_EnableRecorderMode(RECORDER_MODE);
 }
 
-DEF_CHOICE_2
-(
-    cRecorder, pService,
-    RECORDER_MODE, FuncActive, OnChanged_Recorder, FuncDraw,
+DEF_CHOICE_2(       cRecorder,                                                                                          //--- СЕРВИС - Регистратор ---
     "Регистратор", "Recorder",
     "Включает/выключает режим регистратора. Этот режим доступен на развёртках 50 мс/дел и более медленных.",
     "Turn on/off recorder mode. This mode is available for scanning 20ms/div and slower.",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    RECORDER_MODE, pService, FuncActive, OnChanged_Recorder, FuncDraw
 );
 
 #else
@@ -425,28 +423,24 @@ DEF_PAGE_6(         ppFFT,
     cFFT_Range         // СЕРВИС - СПЕКТР - Диапазон
 );
 
-//------------------------------------------------------------------------------------------------------------------ СЕРВИС - СПЕКТР - Отображение ---
-DEF_CHOICE_2
-(
-    cFFT_View, ppFFT,
-    FFT_ENABLED, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cFFT_View,                                                                                 //--- СЕРВИС - СПЕКТР - Отображение ---
     "Отображение", "Display",
     "Включает и выключает отображение спектра",
     "Enables or disables the display of the spectrum",
-     DISABLE_RU,    DISABLE_EN,
-     ENABLE_RU,     ENABLE_EN
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN,
+    FFT_ENABLED, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------------ СЕРВИС - СПЕКТР - Шкала ---
-DEF_CHOICE_2
-(
-    cFFT_Scale, ppFFT,
-    SCALE_FFT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cFFT_Scale,                                                                                      //--- СЕРВИС - СПЕКТР - Шкала ---
     "Шкала",        "Scale",
     "Задаёт масштаб вывода спектра - линейный или логарифмический",
     "Sets the scale of the output spectrum - linear or logarithmic",
     "Логарифм", "Log",
-    "Линейная", "Linear"
+    "Линейная", "Linear",
+    SCALE_FFT, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //--------------------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - Источник ---
@@ -823,23 +817,21 @@ DEF_PAGE_5(         ppEthernet,
     ipEthernet_MAC      // СЕРВИС - ETHERNET - MAC адрес
 );
 
-//------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Ethernet ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Ethernet_Settings(bool)
 {
     display.ShowWarning(NeedRebootDevice);
 }
 
-DEF_CHOICE_2
-(
-    cEthernet_Ethernet, ppEthernet,
-    ETH_ENABLED, FuncActive, OnChanged_Ethernet_Settings, FuncDraw,
+DEF_CHOICE_2(       cEthernet_Ethernet,                                                                         //--- СЕРВИС - ETHERNET - Ethernet ---
     "Ethernet",    "Ethernet",
     "Чтобы задействовать ethernet, выберите \"Включено\" и выключите прибор.\n"
     "Чтобы отключить ethernet, выберите \"Отключено\" и выключите прибор.",
     "To involve ethernet, choose \"Included\" and switch off the device.\n"
     "To disconnect ethernet, choose \"Disconnected\" and switch off the device.",
-    "Включено",     "Included",
-    "Отключено",    "Disconnected"
+    "Включено",  "Included",
+    "Отключено", "Disconnected",
+    ETH_ENABLED, ppEthernet, FuncActive, OnChanged_Ethernet_Settings, FuncDraw
 );
 
 // СЕРВИС - ETHERNET - IP адрес ----------------------------------------------------------------------------------------------------------------------
@@ -905,16 +897,14 @@ DEF_PAGE_2(         ppSound,                                                    
     gSound_Volume   // СЕРВИС - ЗВУК - Громкость
 );
 
-//--------------------------------------------------------------------------------------------------------------------------- СЕРВИС - ЗВУК - Звук ---
-DEF_CHOICE_2
-(
-    cSound_Enable, ppSound,
-    SOUND_ENABLED, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cSound_Enable,                                                                                      //--- СЕРВИС - ЗВУК - Звук ---
     "Звук", "Sound",
     "Включение/выключение звука",
     "Inclusion/switching off of a sound",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SOUND_ENABLED, ppSound, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //---------------------------------------------------------------------------------------------------------------------- СЕРВИС - ЗВУК - Громкость ---
@@ -973,16 +963,14 @@ DEF_GOVERNOR
     ppRTC, NRST_CORRECTION_TIME, -63, 63, FuncActive, OnChanged_Time_Correction, FuncBeforeDraw
 );
 
-//---------------------------------------------------------------------------------------------------------------------------------- СЕРВИС - Язык ---
-DEF_CHOICE_2
-(
-    cLanguage, pService,
-    LANG, FuncActive, FuncChangedChoice, FuncDraw,
-    "Language",     "Язык",
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cLanguage,                                                                                                 //--- СЕРВИС - Язык ---
+    "Language", "Язык",
     "Позволяет выбрать язык меню",
     "Allows you to select the menu language",
-    "Русский",      "Russian",
-    "Английский",   "English"
+    "Русский",    "Russian",
+    "Английский", "English",
+    LANG, pService, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -144,9 +144,8 @@ static const Governor name = {Item_Governor, &keeper, funcActive, {titleRU, titl
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DEF_CHOICE_2(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2)                                                                             \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2};                                     \
+#define DEF_CHOICE_2(name, titleRU, titleEN, hintRU, hintEN, nameRu1, nameEn1, nameRu2, nameEn2, cell, keeper, funcActive, funcChanged, funcDraw)   \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2};                                                \
 static const Choice name = {Item_Choice, 2, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
     hints##name, funcChanged, funcDraw};
 

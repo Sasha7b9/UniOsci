@@ -846,11 +846,8 @@ DEF_PAGE_6(         ppDrive,
     cDrive_Autoconnect      // ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение
 );
 
-//------------------------------------------------------------------------------------------------------------------ ПАМЯТЬ - ВНЕШН ЗУ - Имя файла ---
-DEF_CHOICE_2
-(
-    cDrive_Name, ppDrive,
-    FILE_NAMING_MODE, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cDrive_Name,                                                                               //--- ПАМЯТЬ - ВНЕШН ЗУ - Имя файла ---
     "Имя файла", "File name",
     "Задаёт режим наименования файлов при сохранении на внешний накопитель:\n"
     "\"По маске\" - файлы именуются автоматически по заранее введённой маске (след. пункт меню),\n"
@@ -859,45 +856,40 @@ DEF_CHOICE_2
     "\"By mask\" - files are named automatically advance to the entered mask(seq.Menu),\n"
     "\"Manual\" - each time the file name must be specified manually",
     "По маске", "Mask",
-    "Вручную",  "Manually"
+    "Вручную",  "Manually",
+    FILE_NAMING_MODE, ppDrive, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как ---
-DEF_CHOICE_2
-(
-    cDrive_SaveAs, ppDrive,
-    MODE_SAVE, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cDrive_SaveAs,                                                                         //--- ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как ---
     "Сохранять как", "Save as",
     "Если выбран вариант \"Изображение\", сигнал будет сохранён в текущем каталоге в графическом файле с расширением BMP\n"
     "Если выбран вариант \"Текст\", сигнал будет сохранён в текущем каталоге в текстовом виде в файле с раширением TXT",
     "If you select \"Image\", the signal will be stored in the current directory in graphic file with the extension BMP\n"
     "If you select \"Text\", the signal will be stored in the current directory as a text file with the extension TXT",
     "Изображение", "Image",
-    "Текст",       "Text"
+    "Текст",       "Text",
+    MODE_SAVE, ppDrive, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ ---
-DEF_CHOICE_2
-(
-    cDrive_ModeBtnMemory, ppDrive,
-    MODE_BTN_MEMORY, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cDrive_ModeBtnMemory,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ ---
     "Реж кн ПАМЯТЬ", "Mode btn MEMORY",
     "",
     "",
     "Меню",       "Menu",
-    "Сохранение", "Save"
+    "Сохранение", "Save",
+    MODE_BTN_MEMORY, ppDrive, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------ ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение ---
-DEF_CHOICE_2
-(
-    cDrive_Autoconnect, ppDrive,
-    FLASH_AUTOCONNECT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cDrive_Autoconnect,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение ---
     "Автоподкл.", "AutoConnect",
     "Eсли \"Вкл\", при подключении внешнего накопителя происходит автоматический переход на страницу ПАМЯТЬ - Внешн ЗУ",
     "If \"Enable\", when you connect an external drive is automatically transferred to the page MEMORY - Ext.Storage",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    FLASH_AUTOCONNECT, ppDrive, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

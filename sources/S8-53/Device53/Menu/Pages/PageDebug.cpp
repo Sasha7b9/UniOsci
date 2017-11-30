@@ -45,13 +45,13 @@ extern const Page mpRandomizer;
 extern const Page ppSerialNumber;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       mcConsole_Registers_ShowAll, mpConsole_Registers,                          //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
-    IS_SHOW_REGISTERS_ALL, FuncActive, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       mcConsole_Registers_ShowAll,                                               //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
     "Показывать все", "Show all",
     "Показывать все значения, засылаемые в регистры",
     "To show all values transferred in registers",
     "Нет", "No",
-    "Да",  "Yes"
+    "Да",  "Yes",
+    IS_SHOW_REGISTERS_ALL, mpConsole_Registers, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -61,123 +61,112 @@ static bool IsActive_Console_Registers(void)
 }
 
 DEF_CHOICE_2(       mcConsole_Registers_RD_FL,                                                          //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL ---
-    mpConsole_Registers,
-    set.debug.showRegisters.flag, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "RD_FL", "RD_FL",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.flag, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_RShiftA,                                                     //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к ---
-    mpConsole_Registers,
-    set.debug.showRegisters.rShiftA, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "U см. 1к", "U shift 1ch",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.rShiftA, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_RShiftB,                                                     //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к ---
-    mpConsole_Registers,
-    set.debug.showRegisters.rShiftB, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "U см. 2к", "U shift 2ch",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.rShiftB, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_TrigLev,                                                     //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр. ---
-    mpConsole_Registers,
-    set.debug.showRegisters.trigLev, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "U синхр.", "U trig.",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.trigLev, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_RangeA,                                                   //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1 ---
-    mpConsole_Registers,
-    set.debug.showRegisters.range[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "ВОЛЬТ/ДЕЛ 1", "Range 1",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.range[A], mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_RangeB,                                                   //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2 ---
-    mpConsole_Registers,
-    set.debug.showRegisters.range[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "ВОЛЬТ/ДЕЛ 2", "Range 2",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.range[B], mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_TrigParam,                                              //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр. ---
-    mpConsole_Registers,
-    set.debug.showRegisters.trigParam, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Парам. синхр.", "Trig param",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.trigParam, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_ChanParamA,                                             //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 1 ---
-    mpConsole_Registers,
-    set.debug.showRegisters.chanParam[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Парам. кан. 1",  "Chan 1 param",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.chanParam[A], mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_ChanParamB,                                             //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
-    mpConsole_Registers,
-    set.debug.showRegisters.chanParam[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Парам. кан. 2", "Chan 2 param",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.chanParam[B], mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_TBase,                                                      //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ ---
-    mpConsole_Registers,
-    set.debug.showRegisters.tBase, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "ВРЕМЯ/ДЕЛ", "TBase",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.tBase, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_tShift,                                                         //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см. ---
-    mpConsole_Registers,
-    set.debug.showRegisters.tShift, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
     "Т см.", "tShift",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.debug.showRegisters.tShift, mpConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 
@@ -536,13 +525,13 @@ static void OnDraw_SizeSettings(int x, int y)
 
 static int8 temp = 0;
 
-DEF_CHOICE_2(       mcSizeSettings, pDebug,                                                                          // ОТЛАДКА - Размер настроек  ---
-    temp, FuncActive, FuncChangedChoice, OnDraw_SizeSettings,
+DEF_CHOICE_2(       mcSizeSettings,                                                                                  // ОТЛАДКА - Размер настроек  ---
     "Размер настроек", "Size settings",
     "Вывод размера структуры Settings",
     "Show size of struct Settings",
     "Размер", "Size",
-    "Размер", "Size"
+    "Размер", "Size",
+    temp, pDebug, FuncActive, FuncChangedChoice, OnDraw_SizeSettings
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -751,8 +740,6 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcStats,                                                                                            //--- ОТЛАДКА - Статистика ---
-    pDebug,
-    SHOW_STATS, FuncActive, FuncChangedChoice, FuncDraw,
     "Статистика", "Statistics"
     ,
     "Показывать/не показывать время/кадр, кадров в секунду, количество сигналов с последними настройками в памяти/количество сохраняемых в памяти "
@@ -760,7 +747,8 @@ DEF_CHOICE_2(       mcStats,                                                    
     ,
     "To show/not to show a time/shot, frames per second, quantity of signals with the last settings in memory/quantity of the signals kept in memory",
     "Не показывать", "Hide",
-    "Показывать", "Show"
+    "Показывать",    "Show",
+    SHOW_STATS, pDebug, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -772,14 +760,13 @@ DEF_GOVERNOR(       mgConsole_NumStrings,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       mcConsole_SizeFont,                                                                       // ОТЛАДКА - КОНСОЛЬ - Размер шрифта ---
-    mpConsole,
-    SIZE_FONT_CONSOLE, FuncActive, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       mcConsole_SizeFont,                                                                    //--- ОТЛАДКА - КОНСОЛЬ - Размер шрифта ---
     "Размер шрифта", "Size font",
     "",
     "",
     "5", "5",
-    "8", "8"
+    "8", "8",
+    SIZE_FONT_CONSOLE, mpConsole, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 

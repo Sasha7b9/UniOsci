@@ -178,23 +178,22 @@ DEF_CHOICE_3(   mcMeasuresChannels,                                             
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMeasuresIsShow,                                                                                 //--- ИЗМЕРЕНИЯ - Показывать ---
-    pMeasures, SHOW_MEASURES, FuncActive, FuncChangedChoice, FuncDraw,
     "Показывать", "Show",
     "Выводить или не выводить измерения на экран",
     "Output or output measurements on screen",
     "Нет", "No",
-    "Да",  "Yes"
+    "Да",  "Yes",
+    SHOW_MEASURES, pMeasures, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMeasuresSignal,                                                                                        //--- ИЗМЕРЕНИЯ - Вид ---
-    pMeasures,
-    MODE_VIEW_SIGNALS, IsActiveChoiceMeasuresSignal, FuncChangedChoice, FuncDraw,
     "Вид", "View",
     "Уменьшать или нет зону вывода сигнала для исключения перекрытия его результами измерений",
     "Decrease or no zone output signal to avoid overlapping of its measurement results",
     "Как есть",  "As is",
-    "Уменьшать", "Reduce"
+    "Уменьшать", "Reduce",
+    MODE_VIEW_SIGNALS, pMeasures, IsActiveChoiceMeasuresSignal, FuncChangedChoice, FuncDraw
 );
 
 /*

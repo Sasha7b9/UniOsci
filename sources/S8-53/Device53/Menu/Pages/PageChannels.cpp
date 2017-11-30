@@ -52,12 +52,12 @@ void OnChanged_InputA(bool active)
 }
 
 DEF_CHOICE_2(       mcInputA,                                                                                                 //--- КАНАЛ 1 - Вход ---
-    pChanA, SET_ENABLED_A, FuncActive, OnChanged_InputA, FuncDraw,
     "Вход", "Input",
     chanInputRu,
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_ENABLED_A, pChanA, FuncActive, OnChanged_InputA, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -83,12 +83,12 @@ void OnChanged_FiltrA(bool active)
 }
 
 DEF_CHOICE_2(       mcFiltrA,                                                                                               //--- КАНАЛ 1 - Фильтр ---
-    pChanA, FILTR_A, FuncActive, OnChanged_FiltrA, FuncDraw,
     "Фильтр", "Filtr",
     chanFiltrRu,
     chanFiltrEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    FILTR_A, pChanA, FuncActive, OnChanged_FiltrA, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -98,22 +98,22 @@ static void OnChanged_InverseA(bool active)
 }
 
 DEF_CHOICE_2(       mcInverseA,                                                                                           //--- КАНАЛ 1 - Инверсия ---
-    pChanA, SET_INVERSE_A, FuncActive, OnChanged_InverseA, FuncDraw,
     "Инверсия", "Inverse",
     chanInverseRu,
     chanInverseEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_INVERSE_A, pChanA, FuncActive, OnChanged_InverseA, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMultiplierA,                                                                                       //--- КАНАЛ 1 - Множитель ---
-    pChanA, SET_DIVIDER(A), FuncActive, FuncChangedChoice, FuncDraw,
     "Множитель", "Divider",
     chanMultiplierRu,
     chanMultiplierEn,
     "х1",  "x1",
-    "x10", "x10"
+    "x10", "x10",
+    SET_DIVIDER(A), pChanA, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,21 +129,19 @@ DEF_PAGE_5(         pChanA,                                                     
     mcMultiplierA // КАНАЛ 1 - Множитель
 );
 
-//--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Вход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_InputB(bool active)
 {
     panel.EnableLEDChannelB(sChannel_Enabled(B));
 }
 
-DEF_CHOICE_2
-(
-    mcInputB, pChanB,
-    SET_ENABLED_B, FuncActive, OnChanged_InputB, FuncDraw,
+DEF_CHOICE_2(       mcInputB,                                                                                                 //--- КАНАЛ 2 - Вход ---
     "Вход", "Input",
     chanInputRu,
     chanInputEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_ENABLED_B, pChanB, FuncActive, OnChanged_InputB, FuncDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Связь ---
@@ -164,50 +162,44 @@ DEF_CHOICE_3
     "Земля", "Ground"
 );
 
-//------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Фильтр ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_FiltrB(bool active)
 {
     fpga.EnableChannelFiltr(B, FILTR_B);
 }
 
-DEF_CHOICE_2
-(
-    mcFiltrB, pChanB,
-    FILTR_B, FuncActive, OnChanged_FiltrB, FuncDraw,
+DEF_CHOICE_2(       mcFiltrB,                                                                                               //--- КАНАЛ 2 - Фильтр ---
     "Фильтр", "Filtr",
     chanFiltrRu,
     chanFiltrEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    FILTR_B, pChanB, FuncActive, OnChanged_FiltrB, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Инверсия ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_InverseB(bool active)
 {
     fpga.SetRShift(B, SET_RSHIFT_B);
 }
 
-DEF_CHOICE_2
-(
-    mcInverseB, pChanB,
-    SET_INVERSE_B, FuncActive, OnChanged_InverseB, FuncDraw,
+DEF_CHOICE_2(       mcInverseB,                                                                                           //--- КАНАЛ 2 - Инверсия ---
     "Инверсия", "Inverse",
     chanInverseRu,
     chanInverseEn,
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    SET_INVERSE_B, pChanB, FuncActive, OnChanged_InverseB, FuncDraw
 );
 
-//---------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Множитель ---
-DEF_CHOICE_2
-(
-    mcMultiplierB, pChanB,
-    SET_DIVIDER(B), FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       mcMultiplierB,                                                                                       //--- КАНАЛ 2 - Множитель ---
     "Множитель", "Divider",
     chanMultiplierRu,
     chanMultiplierEn,
     "х1",  "x1",
-    "x10", "x10"
+    "x10", "x10",
+    SET_DIVIDER(B), pChanB, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 

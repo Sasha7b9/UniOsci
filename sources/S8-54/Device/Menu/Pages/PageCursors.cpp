@@ -86,16 +86,14 @@ DEF_PAGE_5(         pCursors,
 
 const Page * pointerPageCursors = &pCursors;
 
-//--------------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Показывать ---
-DEF_CHOICE_2
-(
-    cShow, pCursors,
-    CURS_SHOW, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cShow,                                                                                              //--- КУРСОРЫ - Показывать ---
     "Показывать", "Shown",
     "Включает/отключает курсоры.",
     "Enable/disable cursors.",
     "Нет", "No",
-    "Да",  "Yes"
+    "Да",  "Yes",
+    CURS_SHOW, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //--------------------------------------------------------------------------------------------------------------------- КУРСОРЫ - Слежение канал 1 ---
@@ -149,18 +147,16 @@ DEF_CHOICE_4
     "Напряж. и время", "Volt. and time"
 );
 
-//--------------------------------------------------------------------------------------------------------------------------------- КУРОСРЫ - 1/dT ---
-DEF_CHOICE_2
-(
-    cShowFreq, pCursors,
-    CURSORS_SHOW_FREQ, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cShowFreq,                                                                                                //--- КУРОСРЫ - 1/dT ---
     "1/dT", "1/dT",
     "Если выбрано \"Вкл\", в правом верхнем углу выводится величина, обратная расстоянию между курсорами времени - частота сигнала, один период "
     "которого равен расстоянию между временными курсорами.",
     "If you select \"Enable\" in the upper right corner displays the inverse of the distance between cursors time - frequency signal, a period "
     "equal to the distance between the time cursors.",
-    DISABLE_RU,    DISABLE_EN,
-    ENABLE_RU,     ENABLE_EN
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN,
+    CURSORS_SHOW_FREQ, pCursors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

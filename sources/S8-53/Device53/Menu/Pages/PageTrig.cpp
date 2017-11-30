@@ -68,8 +68,6 @@ static void OnChanged_Polarity(bool active)
 }
 
 DEF_CHOICE_2(       mcPolarity,                                                                                           //--- СИНХР - Полярность ---
-    pTrig,
-    TRIG_POLARITY, FuncActive, OnChanged_Polarity, FuncDraw,
     "Полярность", "Polarity"
     ,
     "1. \"Фронт\" - запуск происходит по фронту синхроимпульса.\n"
@@ -79,7 +77,8 @@ DEF_CHOICE_2(       mcPolarity,                                                 
     "2. \"Back\" - start happens on a clock pulse cut."
     ,
     "Фронт", "Front",
-    "Срез",  "Back"
+    "Срез",  "Back",
+   TRIG_POLARITY, pTrig, FuncActive, OnChanged_Polarity, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -113,8 +112,6 @@ DEF_CHOICE_4(       mcInput,                                                    
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcAutoFind_Mode,                                                                                   //--- СИНХР - ПОИСК - Режим ---
-    mpAutoFind,
-    TRIG_MODE_FIND, FuncActive, FuncChangedChoice, FuncDraw,
     "Режим", "Mode"
     ,
     "Выбор режима автоматического поиска синхронизации:\n"
@@ -128,7 +125,8 @@ DEF_CHOICE_2(       mcAutoFind_Mode,                                            
     "2. \"Auto\" - the search is automatically."
     ,
     "Ручной",         "Hand",
-    "Автоматический", "Auto"
+    "Автоматический", "Auto",
+    TRIG_MODE_FIND, mpAutoFind, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

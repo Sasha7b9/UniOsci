@@ -26,13 +26,12 @@ static void OnChanged_FreqMeter_Enable(bool)
 }
 
 DEF_CHOICE_2(       cFreqMeter_Enable,                                                                   //--- ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Частотомер ---
-    ppFreqMeter,
-    FREQ_METER_ENABLED, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw,
     "Частотомер", "Freq meter",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU, ENABLE_EN,
+    FREQ_METER_ENABLED, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,13 +72,13 @@ DEF_CHOICE_3(       cFreqMeter_NumPeriods,                                      
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cIsShow, pMeasures,                                                                               //--- ИЗМЕРЕНИЯ - Показывать ---
-    SHOW_MEASURES, FuncActive, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       cIsShow,                                                                                          //--- ИЗМЕРЕНИЯ - Показывать ---
     "Показывать", "Show",
     "Выводить или не выводить измерения на экран",
     "Output or output measurements on screen",
     "Нет", "No",
-    "Да", "Yes"
+    "Да",  "Yes",
+    SHOW_MEASURES, pMeasures, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -142,13 +141,13 @@ static bool IsActive_Mode(void)
     return SHOW_MEASURES;
 }
 
-DEF_CHOICE_2(       cMode, pMeasures ,                                                                                       //--- ИЗМЕРЕНИЯ - Вид ---
-    MODE_VIEW_SIGNALS, IsActive_Mode, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       cMode,                                                                                                   //--- ИЗМЕРЕНИЯ - Вид ---
     "Вид", "View",
     "Уменьшать или нет зону вывода сигнала для исключения перекрытия его результами измерений",
     "Decrease or no zone output signal to avoid overlapping of its measurement results",
-    "Как есть",    "As is",
-    "Уменьшать",   "Reduce"
+    "Как есть",  "As is",
+    "Уменьшать", "Reduce",
+    MODE_VIEW_SIGNALS, pMeasures, IsActive_Mode, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

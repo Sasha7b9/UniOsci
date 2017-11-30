@@ -178,28 +178,24 @@ DEF_GOVERNOR
     ppConsole, CONSOLE_NUM_STRINGS, 0, 33, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - Размер шрифта ---
-DEF_CHOICE_2
-(
-    cConsole_SizeFont, ppConsole,
-    set.dbg_SizeFont, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_SizeFont,                                                                     //--- ОТЛАДКА - КОНСОЛЬ - Размер шрифта ---
     "Размер шрифта", "Size font",
     "",
     "",
     "5", "5",
-    "8", "8"    
+    "8", "8",
+    set.dbg_SizeFont, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - Реж. останова ---
-DEF_CHOICE_2
-(
-    cConsole_ModeStop, ppConsole,
-    MODE_PAUSE_CONSOLE, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_ModeStop,                                                                     //--- ОТЛАДКА - КОНСОЛЬ - Реж. останова ---
     "Реж. останова", "Mode stop",
     "Предоставляет возможность приостановки вывода в консоль путём нажатия на кнопку ПУСК/СТОП",
     "It provides the ability to pause the output to the console by pressing the ПУСК/СТОП button",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    MODE_PAUSE_CONSOLE, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,153 +218,129 @@ DEF_PAGE_12(    pppConsole_Registers,                                           
     cConsole_Registers_TShift       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см.
 );
 
-//-------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_ShowAll, pppConsole_Registers,
-    DBG_SHOW_ALL, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(   cConsole_Registers_ShowAll,                                                    //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
     "Показывать все", "Show all",
     "Показывать все значения, засылаемые в регистры",
     "To show all values transferred in registers",
     "Нет", "No",
-    "Да",  "Yes"
+    "Да",  "Yes",
+    DBG_SHOW_ALL, pppConsole_Registers, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Console_Registers(void)
 {
     return DBG_SHOW_ALL;
 }
 
-DEF_CHOICE_2
-(
-    cConsole_Registers_RD_FL, pppConsole_Registers,
-    DBG_SHOW_FLAG, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_2(       cConsole_Registers_RD_FL,                                                           //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - RD_FL ---
     "RD_FL", "RD_FL",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    DBG_SHOW_FLAG, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_RShiftA, pppConsole_Registers,
-    set.dbg_ShowRShift[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_RShiftA,                                                      //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 1к ---
     "U см. 1к", "U shift 1ch",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_RShiftB, pppConsole_Registers,
-    set.dbg_ShowRShift[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_RShiftB,                                                      //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U см. 2к ---
     "U см. 2к", "U shift 2ch",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр. ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_TrigLev, pppConsole_Registers,
-    set.dbg_ShowTrigLev, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_TrigLev,                                                      //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - U синхр. ---
     "U синхр.", "U trig.",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowTrigLev, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1 ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_RangeA, pppConsole_Registers,
-    set.dbg_ShowRange[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_RangeA,                                                    //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 1 ---
     "ВОЛЬТ/ДЕЛ 1", "Range 1",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2 ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_RangeB, pppConsole_Registers,
-    set.dbg_ShowRange[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_RangeB,                                                    //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВОЛЬТ/ДЕЛ 2 ---
     "ВОЛЬТ/ДЕЛ 2", "Range 2",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр. ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_TrigParam, pppConsole_Registers,
-    set.dbg_ShowTrigParam, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_TrigParam,                                               //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. синхр. ---
     "Парам. синхр.", "Trig param",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowTrigParam, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_ChanParamA, pppConsole_Registers,
-    set.dbg_ShowChanParam[A], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_ChanParamA,                                              //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
     "Парам. кан. 1", "Chan 1 param",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_ChanParamB, pppConsole_Registers,
-    set.dbg_ShowChanParam[B], IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_ChanParamB,                                              //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Парам. кан. 2 ---
     "Парам. кан. 2", "Chan 2 param",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU, ENABLE_EN,
+    set.dbg_ShowChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_TBase, pppConsole_Registers,
-    set.dbg_ShowTBase, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_TBase,                                                       //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - ВРЕМЯ/ДЕЛ ---
     "ВРЕМЯ/ДЕЛ", "TBase",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowTBase, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//----------------------------------------------------------------------------------------------------------- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см. ---
-DEF_CHOICE_2
-(
-    cConsole_Registers_TShift, pppConsole_Registers,
-    set.dbg_ShowTShift, IsActive_Console_Registers, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cConsole_Registers_TShift,                                                          //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Т см. ---
     "Т см.", "tShift",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    set.dbg_ShowTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //------------------------------------------------------------------------------------------------------------ ОТЛАДКА - КОНСОЛЬ - Размер настроек ---
@@ -1042,75 +1014,66 @@ static void OnChanged_Post(void)
     LOG_WRITE("post %d %s", post, su.Hex16toString(gPost, buffer));
 }
 
-//---------------------------------------------------------------------------------------------------------------- ОТЛАДКА - РАНД-ТОР - Информация ---
-DEF_CHOICE_2
-(
-    cRand_ShowInfo, ppRand,
-    SHOW_RAND_INFO, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cRand_ShowInfo,                                                                          //--- ОТЛАДКА - РАНД-ТОР - Информация ---
     "Информация", "Information",
     "Показывать информацию о воротах рандомизатора",
     "To show information on randomizer gate",
     "Не показывать", "Hide",
-    "Показывать",    "Show"
+    "Показывать",    "Show",
+    SHOW_RAND_INFO, ppRand, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//---------------------------------------------------------------------------------------------------------------- ОТЛАДКА - РАНД-ТОР - Статистика ---
-DEF_CHOICE_2
-(
-    gRand_ShowStat, ppRand,
-    SHOW_RAND_STAT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       gRand_ShowStat,                                                                          //--- ОТЛАДКА - РАНД-ТОР - Статистика ---
     "Статистика", "Statistics",
     "Показывать график статистики",
     "Statistics show schedule",
     "Не показывать", "Hide",
-    "Показывать",    "Show"
+    "Показывать",    "Show",
+    SHOW_RAND_STAT, ppRand, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//---------------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - Режим ЭМС ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_EMS(bool)
 {
     FPGA_SetBandwidth(A);
     FPGA_SetBandwidth(B);
 }
 
-DEF_CHOICE_2
-(
-    cEMS, pDebug,
-    MODE_EMS, FuncActive, OnChanged_EMS, FuncDraw,
+DEF_CHOICE_2(       cEMS,                                                                                                //--- ОТЛАДКА - Режим ЭМС ---
     "Режим ЭМС", "EMS mode",
     "Принудительно включает фильтр 20МГц, сглаживание по 4-м точкам, усреднение по 8-ми точкам",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN
+    ENABLE_RU,  ENABLE_EN,
+    MODE_EMS, pDebug, FuncActive, OnChanged_EMS, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - Ориентация ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_DisplayOrientation(bool)
 {
     display.SetOrientation(DISPLAY_ORIENTATION);
 }
 
-DEF_CHOICE_2
-(
-    cDisplayOrientation, pDebug,
-    DISPLAY_ORIENTATION, FuncActive, OnChanged_DisplayOrientation, FuncDraw,
+DEF_CHOICE_2(       cDisplayOrientation,                                                                                //--- ОТЛАДКА - Ориентация ---
     "Ориентация", "DisplayOrientation",
     "Устанавливает ориентацию дисплея",
     "Sets display orientation",
     "Прямая",   "Direct",
-    "Обратная", "Back"
+    "Обратная", "Back",
+    DISPLAY_ORIENTATION, pDebug, FuncActive, OnChanged_DisplayOrientation, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------------- ОТЛАДКА - Статистика ---
-DEF_CHOICE_2
-(
-    cStats, pDebug,
-    SHOW_STAT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cStats,                                                                                             //--- ОТЛАДКА - Статистика ---
     "Статистика", "Statistics",
-    "Показывать/не показывать время/кадр, кадров в секунду, количество сигналов с последними настройками в памяти/количество сохраняемых в памяти сигналов",
+    "Показывать/не показывать время/кадр, кадров в секунду, количество сигналов с последними настройками в памяти/количество сохраняемых в памяти "
+    "сигналов",
     "To show/not to show a time/shot, frames per second, quantity of signals with the last settings in memory/quantity of the signals kept in memory",
     "Не показывать", "Hide",
-    "Показывать",    "Show"
+    "Показывать",    "Show",
+    SHOW_STAT, pDebug, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 // ОТЛАДКА - Сохр. прошивку --------------------------------------------------------------------------------------------------------------------------
