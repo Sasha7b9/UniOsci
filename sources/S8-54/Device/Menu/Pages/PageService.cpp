@@ -762,7 +762,7 @@ DEF_GOVERNOR(       gSound_Volume,                                              
     "Громкость", "Volume",
     "Установка громкости звука",
     "Set the volume",
-    ppSound, SOUND_VOLUME, 0, 100, FuncActive, FuncChanged, FuncBeforeDraw
+    SOUND_VOLUME, 0, 100, ppSound, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -808,7 +808,7 @@ DEF_GOVERNOR(       tRTC_Correction,                                            
     "Коррекция", "Correction",
     "Установка корректирующего коэффициента для компенсации хода времени",
     "Setting correction factor to compensate for time travel",
-    ppRTC, NRST_CORRECTION_TIME, -63, 63, FuncActive, OnChanged_Time_Correction, FuncBeforeDraw
+    NRST_CORRECTION_TIME, -63, 63, ppRTC, FuncActive, OnChanged_Time_Correction, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

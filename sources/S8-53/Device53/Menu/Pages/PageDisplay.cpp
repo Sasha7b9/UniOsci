@@ -253,8 +253,7 @@ DEF_GOVERNOR(       mgGrid_Brightness,                                          
     "яркость", "Brightness",
     "”станавливает €ркость сетки.",
     "Adjust the brightness of the grid.",
-    mspGrid, BRIGHTNESS_GRID, 0, 100,
-    FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
+    BRIGHTNESS_GRID, 0, 100, mspGrid, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
 );
 
 
@@ -350,8 +349,7 @@ DEF_GOVERNOR(       mgSettings_Brightness,                                      
     "яркость", "Brightness",
     "”становка €ркости свечени€ диспле€",
     "Setting the brightness of the display",
-    mspSettings, BRIGHTNESS, 0, 100,
-    FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
+    BRIGHTNESS, 0, 100, mspSettings, FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -359,7 +357,7 @@ DEF_GOVERNOR(       mgSettings_Levels,                                          
     "”ровни", "Levels",
     "«адаЄт врем€, в течение которого после поворота ручки сещени€ напр€жени€ на экране остаЄтс€ вспомогательна€ метка уровн€ смещени€",
     "Defines the time during which, after turning the handle visits to the voltage on the screen remains auxiliary label offset level",
-    mspSettings, TIME_SHOW_LEVELS, 0, 125, FuncActive, FuncChanged, FuncBeforeDraw
+    TIME_SHOW_LEVELS, 0, 125, mspSettings, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -367,7 +365,7 @@ DEF_GOVERNOR(       mgSettings_TimeMessages,                                    
     "¬рем€", "Time",
     "”становка времени, в течение которого сообщени€ будут находитьс€ на экране",
     "Set the time during which the message will be on the screen",
-    mspSettings, TIME_MESSAGES, 1, 99, FuncActive, FuncChanged, FuncBeforeDraw
+    TIME_MESSAGES, 1, 99, mspSettings, FuncActive, FuncChanged, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -16,112 +16,19 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern void LoadTShift(void);
-extern const      Page pDebug;
-extern const     Page ppConsole;                            ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-extern const  Governor gConsole_NumStrings;                 ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
-extern const    Choice cConsole_SizeFont;                   ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
-extern const    Choice cConsole_ModeStop;                   ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðåæ. îñòàíîâà
-extern const    Page pppConsole_Registers;                  ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
-extern const    Choice cConsole_Registers_ShowAll;          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå
-extern const    Choice cConsole_Registers_RD_FL;            ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL
-static bool    IsActive_Console_Registers(void);
-extern const    Choice cConsole_Registers_RShiftA;          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê
-extern const    Choice cConsole_Registers_RShiftB;          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê
-extern const    Choice cConsole_Registers_TrigLev;          ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð.
-extern const    Choice cConsole_Registers_RangeA;           ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1
-extern const    Choice cConsole_Registers_RangeB;           ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2
-extern const    Choice cConsole_Registers_TrigParam;        ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð.
-extern const    Choice cConsole_Registers_ChanParamA;       ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
-extern const    Choice cConsole_Registers_ChanParamB;       ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
-extern const    Choice cConsole_Registers_TBase;            ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË
-extern const    Choice cConsole_Registers_TShift;           ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì.
-extern const    Button bConsole_SizeSettings;               ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð íàñòðîåê
-static void        Draw_Console_SizeSettings(int x, int y); 
-extern const     Page ppADC;                                ///< ÎÒËÀÄÊÀ - ÀÖÏ
-extern const    Page pppADC_Balance;                        ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-extern const    Choice cADC_Balance_Mode;                   ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì
-static void   OnChanged_ADC_Balance_Mode(bool active);
-static void        Draw_ADC_Balance_Mode(int x, int y);
-extern const  Governor gADC_Balance_ShiftA;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1
-static bool    IsActive_ADC_Balance_ShiftAB(void);
-static void   OnChanged_ADC_Balance_ShiftA(void);
-extern const  Governor gADC_Balance_ShiftB;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2 
-static void   OnChanged_ADC_Balance_ShiftB(void);
-extern const    Page pppADC_Stretch;                        ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
-extern const    Choice cADC_Stretch_Mode;                   ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðåæèì
-       void   OnChanged_ADC_Stretch_Mode(bool active);
-extern const  Governor gADC_Stretch_A;                      ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 1ê
-static bool    IsActive_ADC_StretchAB(void);
-static void   OnChanged_ADC_Stretch_A(void);
-extern const  Governor gADC_Stretch_B;                      ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 2ê
-static void   OnChanged_ADC_Stretch_B(void);
-extern const  Governor gADC_Stretch_Ak20mV;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 1ê
-extern const  Governor gADC_Stretch_Ak50mV;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 1ê 
-extern const  Governor gADC_Stretch_Ak100mV;                ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 1ê
-extern const  Governor gADC_Stretch_Ak2V;                   ///< ÎÒËÀÄÊÀ - AÖÏ - ÐÀÑÒßÆÊÀ - 2Â 1ê
-extern const  Governor gADC_Stretch_Bk20mV;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 2ê
-extern const  Governor gADC_Stretch_Bk50mV;                 ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 2ê 
-extern const  Governor gADC_Stretch_Bk100mV;                ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 2ê
-extern const  Governor gADC_Stretch_Bk2V;                   ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 2ê
-extern const    Page pppADC_Shift;                          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-extern const    Button bADC_Shift_Reset;                    ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñáðîñ
-static void     OnPress_ADC_Shift_Reset(void);
-extern const  Governor gADC_Shift_A2mV;                     ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 2ìÂ ïîñò
-static void   OnChanged_ADC_Shift_A(void);
-extern const  Governor gADC_Shift_B2mV;                     ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 2ìÂ ïîñò
-static void   OnChanged_ADC_Shift_B(void);
-extern const  Governor gADC_Shift_A5mV;                     ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 5ìÂ ïîñò
-extern const  Governor gADC_Shift_B5mV;                     ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 5ìÂ ïîñò
-extern const  Governor gADC_Shift_A10mV;                    ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 10ìÂ ïîñò
-extern const  Governor gADC_Shift_B10mV;                    ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 10ìÂ ïîñò
-extern const     Page ppRand;                               ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
-extern const  Governor gRand_NumMeasures;                   ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Âûá-ê/âîðîòà
-static void   OnChanged_Rand_NumMeasures(void);
-extern const  Governor gRand_NumAverage;                    ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Óñðåäí.
-extern const  Governor gRand_NumSmooth;                     ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñãëàæèâàíèå
-extern const    Choice cRand_ShowInfo;                      ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Èíôîðìàöèÿ
-extern const    Choice gRand_ShowStat;                      ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñòàòèñòèêà
-extern const  Governor gRand_TimeCompensation;              ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Êîìïåíñàöèÿ çàäåðæêè
-static void   OnChanged_Rand_TimeCompensation(void);
-extern const  Governor gRand_AddTimeShift;                  ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñìåùåíèå
-static void   OnChanged_Rand_AddTimeShift(void);
-extern const  Governor gRand_Pretriggered;                  ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ïðåäçàïóñê
-static void   OnChanged_Rand_Pretriggered(void);
-extern const     Page ppChannels;                           ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
-extern const    Choice cChannels_BandwidthA;                ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 1
-static void   OnChanged_Channels_BandwidthA(bool active);
-extern const    Choice cChannels_BandwidthB;                ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 2
-static void   OnChanged_Channels_BandwidthB(bool active);
-extern const    Choice cStats;                              ///< ÎÒËÀÄÊÀ - Ñòàòèñòèêà
-extern const    Choice cDisplayOrientation;                 ///< ÎÒËÀÄÊÀ - Îðèåíòàöèÿ
-       void   OnChanged_DisplayOrientation(bool);
-extern const    Choice cEMS;                                ///< ÎÒËÀÄÊÀ - Ðåæèì ÝÌÑ
-static void   OnChanged_EMS(bool);
-extern const Governor mgPred;                               ///< ÎÒËÀÄÊÀ - Ïðåäçàïóñê
-static void   OnChanged_Pred(void);
-extern const Governor mgPost;                               ///< ÎÒËÀÄÊÀ - Ïîñëåçàïóñê
-static void   OnChanged_Post(void);
-extern const     Page ppSettings;                           ///< ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
-static void     OnPress_Settings(void);
-extern const   SButton bSettings_Exit;                      ///< ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ - Âûõîä
-static void     OnPress_Settings_Exit(void);
-extern const    Button bSaveFirmware;                       ///< ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó
-static bool    IsActive_SaveFirmware(void);
-static void     OnPress_SaveFirmware(void);
-extern const     Page ppSerialNumber;                       ///< ÎÒËÀÄÊÀ - Ñ/Í
-static void     OnPress_SerialNumber(void);
-static void        Draw_EnterSerialNumber(void);
-static void    OnRegSet_SerialNumber(int);
-extern const   SButton bSerialNumber_Exit;                  ///< ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä
-static void     OnPress_SerialNumber_Exit(void);
-extern const   SButton bSerialNumber_Change;                ///< ÎÒËÀÄÊÀ - Ñ/Í - Ïåðåéòè
-static void     OnPress_SerialNumber_Change(void);
-static void        Draw_SerialNumber_Change(int, int);
-extern const   SButton bSerialNumber_Save;                  ///< ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü
-static void     OnPress_SerialNumber_Save(void);
-static void        Draw_SerialNumber_Save(int, int);
-extern const    Button bEraseData;                          ///< ÎÒËÀÄÊÀ - Ñòåðåòü äàííûå
-static void     OnPress_EraseData(void);
+
+extern const Page mainPage;
+extern const Page pDebug;
+extern const Page ppConsole;
+extern const Page pppConsole_Registers;
+extern const Page ppADC;
+extern const Page pppADC_Balance;
+extern const Page pppADC_Stretch;
+extern const Page pppADC_Shift;
+extern const Page ppRand;
+extern const Page ppChannels;
+extern const Page ppSettings;
+extern const Page ppSerialNumber;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Â ýòîé ñòðóêòóðå áóäóò õðàíèòüñÿ äàííûå ñåðèéíîãî íîìåðà ïðè îòêðûòîé ñòðàíèöå ppSerialNumer
@@ -132,50 +39,12 @@ typedef struct
     int curDigt;    ///< Ñîîòâåòñòâåííî, íîìåðîì (0) èëè ãîäîì (1) óïðàâëÿåò ðó÷êà ÓÑÒÀÍÎÂÊÀ.
 } StructForSN;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_13(        pDebug,                                                                                                             // ÎÒËÀÄÊÀ ///
-    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
-    "ÎÒËÀÄÊÀ", "DEBUG",
-    "",
-    "",
-    ppConsole,              // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-    ppADC,                  // ÎÒËÀÄÊÀ - ÀÖÏ
-    ppRand,			        // ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
-    ppChannels,		        // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
-    cStats,			        // ÎÒËÀÄÊÀ - Ñòàòèñòèêà
-    cDisplayOrientation,    // ÎÒËÀÄÊÀ - Îðèåíòàöèÿ
-    cEMS,                   // ÎÒËÀÄÊÀ - Ðåæèì ÝÌÑ
-    mgPred,			        // ÎÒËÀÄÊÀ - Ïðåäçàïóñê
-    mgPost,			        // ÎÒËÀÄÊÀ - Ïîñëåçàïóñê
-    ppSettings,		        // ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
-    bSaveFirmware,          // ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó
-    ppSerialNumber,         // ÎÒËÀÄÊÀ - Ñ/Í
-    bEraseData              // ÎÒËÀÄÊÀ - Ñòåðåòü äàííûå
-);
-
-const Page * pointerPageDebug = &pDebug;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         ppConsole,                                                                                                // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ ///
-    "ÊÎÍÑÎËÜ", "CONSOLE",
-    "",
-    "",
-    gConsole_NumStrings,    // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê
-    cConsole_SizeFont,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
-    cConsole_ModeStop,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðåæ. îñòàíîâà
-    pppConsole_Registers,   // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
-    bConsole_SizeSettings,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð íàñòðîåê
-    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage
-);
-
-//---------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê ---
-DEF_GOVERNOR
-(
-    gConsole_NumStrings,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gConsole_NumStrings,                                                                     //--- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê ---
     "×èñëî ñòðîê", "Number strings",
     "",
     "",
-    ppConsole, CONSOLE_NUM_STRINGS, 0, 33, FuncActive, FuncChanged, FuncBeforeDraw
+    CONSOLE_NUM_STRINGS, 0, 33, ppConsole, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -198,33 +67,13 @@ DEF_CHOICE_2(       cConsole_ModeStop,                                          
     MODE_PAUSE_CONSOLE, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_12(    pppConsole_Registers,                                                                              // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ ///
-    Page_Debug_Console_Registers, &ppConsole, FuncActive, EmptyPressPage,
-    "ÐÅÃÈÑÒÐÛ", "REGISTERS",
-    "",
-    "",
-    cConsole_Registers_ShowAll,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå
-    cConsole_Registers_RD_FL,       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL
-    cConsole_Registers_RShiftA,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê
-    cConsole_Registers_RShiftB,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê
-    cConsole_Registers_TrigLev,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð
-    cConsole_Registers_RangeA,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1
-    cConsole_Registers_RangeB,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2
-    cConsole_Registers_TrigParam,   // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð.
-    cConsole_Registers_ChanParamA,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1
-    cConsole_Registers_ChanParamB,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
-    cConsole_Registers_TBase,       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË
-    cConsole_Registers_TShift       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì.
-);
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(   cConsole_Registers_ShowAll,                                                    //--- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå ---
     "Ïîêàçûâàòü âñå", "Show all",
     "Ïîêàçûâàòü âñå çíà÷åíèÿ, çàñûëàåìûå â ðåãèñòðû",
     "To show all values transferred in registers",
     "Íåò", "No",
-    "Äà",  "Yes",
+    "Äà", "Yes",
     DBG_SHOW_ALL, pppConsole_Registers, FuncActive, FuncChangedChoice, FuncDraw
 );
 
@@ -319,7 +168,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamB,                              
     "",
     "",
     DISABLE_RU, DISABLE_EN,
-    ENABLE_RU, ENABLE_EN,
+    ENABLE_RU,  ENABLE_EN,
     set.dbg_ShowChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
@@ -343,7 +192,27 @@ DEF_CHOICE_2(       cConsole_Registers_TShift,                                  
     set.dbg_ShowTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð íàñòðîåê ---
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_12(        pppConsole_Registers,                                                                          // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ ///
+    Page_Debug_Console_Registers, &ppConsole, FuncActive, EmptyPressPage,
+    "ÐÅÃÈÑÒÐÛ", "REGISTERS",
+    "",
+    "",
+    cConsole_Registers_ShowAll,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïîêàçûâàòü âñå
+    cConsole_Registers_RD_FL,       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - RD_FL
+    cConsole_Registers_RShiftA,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 1ê
+    cConsole_Registers_RShiftB,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñì. 2ê
+    cConsole_Registers_TrigLev,     // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - U ñèíõð
+    cConsole_Registers_RangeA,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 1
+    cConsole_Registers_RangeB,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÎËÜÒ/ÄÅË 2
+    cConsole_Registers_TrigParam,   // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. ñèíõð.
+    cConsole_Registers_ChanParamA,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 1
+    cConsole_Registers_ChanParamB,  // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ïàðàì. êàí. 2
+    cConsole_Registers_TBase,       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - ÂÐÅÌß/ÄÅË
+    cConsole_Registers_TShift       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ - Ò ñì.
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Console_SizeSettings(int x, int y)
 {
     char buffer[30];
@@ -351,9 +220,7 @@ static void Draw_Console_SizeSettings(int x, int y)
     painter.DrawText(x + 6, y + 13, buffer, gColorBack);
 }
 
-DEF_BUTTON
-(
-    bConsole_SizeSettings,
+DEF_BUTTON(     bConsole_SizeSettings,                                                                   //--- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð íàñòðîåê ---
     "", "",
     "Ïîêàçûâàåò òåêóùèé ðàçìåð ñòðóêòóðû äëÿ ñîõðàíåíèÿ íàñòðîåê",
     "Displays the current size of the structure to save settings",
@@ -361,33 +228,19 @@ DEF_BUTTON
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_3(         ppADC,                                                                                                        // ÎÒËÀÄÊÀ - ÀÖÏ ///
-    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage,
-    "ÀÖÏ", "ADC",
+DEF_PAGE_5(         ppConsole,                                                                                                // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ ///
+    "ÊÎÍÑÎËÜ", "CONSOLE",
     "",
     "",
-    pppADC_Balance, // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-    pppADC_Stretch, // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
-    pppADC_Shift    // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_3(         pppADC_Balance,                                                                                      // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ ///
-    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage,
-    "ÁÀËÀÍÑ", "BALANCE",
-    "",
-    "",
-    cADC_Balance_Mode,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì
-    gADC_Balance_ShiftA,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1
-    gADC_Balance_ShiftB     // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2
+    gConsole_NumStrings,        // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ×èñëî ñòðîê
+    cConsole_SizeFont,          // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð øðèôòà
+    cConsole_ModeStop,          // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðåæ. îñòàíîâà
+    pppConsole_Registers,       // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
+    bConsole_SizeSettings,      // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ðàçìåð íàñòðîåê
+    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Balance_Mode(bool)
-{
-    Draw_ADC_Balance_Mode(0, 0);
-}
-
 static int16 shiftADCA;
 static int16 shiftADCB;
 
@@ -403,6 +256,11 @@ static void Draw_ADC_Balance_Mode(int, int)
     shiftADCB = shift[B][NRST_BALANCE_ADC_TYPE];
 }
 
+static void OnChanged_ADC_Balance_Mode(bool)
+{
+    Draw_ADC_Balance_Mode(0, 0);
+}
+
 DEF_CHOICE_3(       cADC_Balance_Mode,                                                                        //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì ---
     "Ðåæèì", "Mode",
     "",
@@ -413,7 +271,7 @@ DEF_CHOICE_3(       cADC_Balance_Mode,                                          
     NRST_BALANCE_ADC_TYPE, pppADC_Balance, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode
 );
 
-//------------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_ADC_Balance_ShiftAB(void)
 {
     return NRST_BALANCE_ADC_TYPE_IS_HAND;
@@ -424,58 +282,40 @@ static void OnChanged_ADC_Balance_ShiftA(void)
     NRST_BALANCE_ADC_A = shiftADCA;
 }
 
-DEF_GOVERNOR
-(
-    gADC_Balance_ShiftA,
+DEF_GOVERNOR(       gADC_Balance_ShiftA,                                                                 //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1 ---
     "Ñìåùåíèå 1", "Offset 1",
     "",
     "",
-    pppADC_Balance, shiftADCA, -125, 125, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
+    shiftADCA, -125, 125, pppADC_Balance, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Balance_ShiftB(void)
 {
     NRST_BALANCE_ADC_B = shiftADCB;
 }
 
-DEF_GOVERNOR
-(
-    gADC_Balance_ShiftB,
+DEF_GOVERNOR(       gADC_Balance_ShiftB,                                                                 //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2 ---
     "Ñìåùåíèå 2", "Offset 2",
     "",
     "",
-    pppADC_Balance, shiftADCB, -125, 125, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
+    shiftADCB, -125, 125, pppADC_Balance, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
 );
 
-static const Choice emptyChoice = {Item_Choice};
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ ///
-DEF_PAGE_15(        pppADC_Stretch,
-    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
-    "ÐÀÑÒßÆÊÀ", "STRETCH",
-    "Óñòàíàâëèâàåò ðåæèì è âåëè÷èíó ðàñòÿæêè (äëÿ ðó÷íîãî ðåæèìà)",
-    "Sets mode and the value of stretching (manual mode)",
-    cADC_Stretch_Mode,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðåæèì
-    gADC_Stretch_A,         // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 1ê
-    gADC_Stretch_B,         // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 2ê
-    emptyChoice,
-    emptyChoice,
-    gADC_Stretch_Ak20mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 1ê
-    gADC_Stretch_Ak50mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 1ê 
-    gADC_Stretch_Ak100mV,   // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 1ê
-    gADC_Stretch_Ak2V,      // ÎÒËÀÄÊÀ - AÖÏ - ÐÀÑÒßÆÊÀ - 2Â 1ê
-    emptyChoice,
-    gADC_Stretch_Bk20mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 2ê
-    gADC_Stretch_Bk50mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 2ê 
-    gADC_Stretch_Bk100mV,   // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 2ê
-    gADC_Stretch_Bk2V,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 2ê
-    emptyChoice
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         pppADC_Balance,                                                                                      // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ ///
+    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage,
+    "ÁÀËÀÍÑ", "BALANCE",
+    "",
+    "",
+    cADC_Balance_Mode,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ðåæèì
+    gADC_Balance_ShiftA,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 1
+    gADC_Balance_ShiftB     // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 stretchA;
-static int16 stretchB;  
+static int16 stretchB;
 
 void OnChanged_ADC_Stretch_Mode(bool)
 {
@@ -501,7 +341,7 @@ DEF_CHOICE_3(       cADC_Stretch_Mode,                                          
     NRST_STRETCH_ADC_TYPE, pppADC_Stretch, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 1ê ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_ADC_StretchAB(void)
 {
     return NRST_STRETCH_ADC_TYPE_IS_HAND;
@@ -512,108 +352,192 @@ static void OnChanged_ADC_Stretch_A(void)
     NRST_STRETCH_ADC_A(NRST_STRETCH_ADC_TYPE) = stretchA;
 }
 
-DEF_GOVERNOR
-(
-    gADC_Stretch_A,
+DEF_GOVERNOR(       gADC_Stretch_A,                                                                   //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 1ê ---
     "Ðàñòÿæêà 1ê", "Stretch 1ch",
     "Çàäà¸ò ðó÷íóþ ðàñòÿæêó ïåðâîãî êàíàëà.\n1 åäèíèöà = 0.0001",
     "Sets the manual stretching of the first channel.\n1 = 0.0001",
-    pppADC_Stretch, stretchA, -10000, 10000, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_A, FuncBeforeDraw
+    stretchA, -10000, 10000, pppADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_A, FuncBeforeDraw
 );
 
-//--------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 2ê ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Stretch_B(void)
 {
     NRST_STRETCH_ADC_B(NRST_STRETCH_ADC_TYPE) = stretchB;
 }
 
-DEF_GOVERNOR
-(
-    gADC_Stretch_B,
+DEF_GOVERNOR(       gADC_Stretch_B,                                                                   //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 2ê ---
     "Ðàñòÿæêà 2ê", "Stretch 2ch",
     "Çàäà¸ò ðó÷íóþ ðàñòÿæêó âòîðîãî êàíàëà.\n1 åäèíèöà = 0.0001",
     "Sets the manual stretching of the second channel.\n1 = 0.0001",
-    pppADC_Stretch, stretchB, -10000, 10000, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_B, FuncBeforeDraw
+    stretchB, -10000, 10000, pppADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_B, FuncBeforeDraw
 );
 
-//---------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 1ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Ak20mV,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Ak20mV,                                                               //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 1ê ---
     "20ìÂ/1Â 1ê", "20mV/1V 1k",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_20mV_A, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_20mV_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 1ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Ak50mV,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Ak50mV,                                                                  //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 1ê ---
     "50ìÂ 1ê", "50mV 1k",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_50mV_A, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_50mV_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//--------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 1ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Ak100mV,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Ak100mV,                                                             //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 1ê ---
     "100ìÂ/5Â 1ê", "100mV/5V 1ch",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_100mV_A, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_100mV_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 1ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Ak2V,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Ak2V,                                                                      //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 1ê ---
     "2Â 1ê", "2V 1ch",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_2V_A, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_2V_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//---------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 2ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Bk20mV,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Bk20mV,                                                               //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 2ê ---
     "20ìÂ/1Â 2ê", "20mV/1V 2k",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_20mV_B, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_20mV_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//---------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Äîï ñìåù 50ìÂ 2ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Bk50mV,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Bk50mV,                                                         //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Äîï ñìåù 50ìÂ 2ê ---
     "50ìÂ 2ê", "50mV 2k",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_50mV_B, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_50mV_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//--------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 2ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Bk100mV,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Bk100mV,                                                             //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 2ê ---
     "100ìÂ/5Â 2ê", "100mV/5V 2k",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_100mV_B, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_100mV_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 2ê ---
-DEF_GOVERNOR
-(
-    gADC_Stretch_Bk2V,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Stretch_Bk2V,                                                                      //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 2ê ---
     "2Â 2ê", "2V 2ch",
     "",
     "",
-    pppADC_Stretch, NRST_ADD_STRETCH_2V_B, -10000, 10000, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_2V_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+static const Choice emptyChoice = {Item_Choice};
+
+DEF_PAGE_15(        pppADC_Stretch,                                                                                    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ ///
+    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
+    "ÐÀÑÒßÆÊÀ", "STRETCH",
+    "Óñòàíàâëèâàåò ðåæèì è âåëè÷èíó ðàñòÿæêè (äëÿ ðó÷íîãî ðåæèìà)",
+    "Sets mode and the value of stretching (manual mode)",
+    cADC_Stretch_Mode,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðåæèì
+    gADC_Stretch_A,         // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 1ê
+    gADC_Stretch_B,         // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - Ðàñòÿæêà 2ê
+    emptyChoice,
+    emptyChoice,
+    gADC_Stretch_Ak20mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 1ê
+    gADC_Stretch_Ak50mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 1ê 
+    gADC_Stretch_Ak100mV,   // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 1ê
+    gADC_Stretch_Ak2V,      // ÎÒËÀÄÊÀ - AÖÏ - ÐÀÑÒßÆÊÀ - 2Â 1ê
+    emptyChoice,
+    gADC_Stretch_Bk20mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 20ìÂ/1Â 2ê
+    gADC_Stretch_Bk50mV,    // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 50ìÂ 2ê 
+    gADC_Stretch_Bk100mV,   // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 100ìÂ/5Â 2ê
+    gADC_Stretch_Bk2V,      // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ - 2Â 2ê
+    emptyChoice
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_ADC_Shift_Reset(void)
+{
+    for (int ch = 0; ch < 2; ch++)
+    {
+        for (int range = 0; range < 3; range++)
+        {
+            RSHIFT_ADD_STABLE(ch, range) = 0;
+        }
+    }
+    FPGA_SetRShift(A, SET_RSHIFT_A);
+    FPGA_SetRShift(B, SET_RSHIFT_B);
+}
+
+DEF_BUTTON(         bADC_Shift_Reset,                                                                        //-- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñáðîñ ---
+    "Ñáðîñ", "Reset",
+    "",
+    "",
+    pppADC_Shift, FuncActive, OnPress_ADC_Shift_Reset, FuncDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_ADC_Shift_A(void)
+{
+    FPGA_SetRShift(A, SET_RSHIFT_A);
+}
+
+DEF_GOVERNOR(       gADC_Shift_A2mV,                                                               //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 2ìÂ ïîñò ---
+    "Ñì 1ê 2ìÂ ïîñò", "Shift 1ch 2mV DC",
+    "",
+    "",
+    RSHIFT_ADD_STABLE_A(Range_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_ADC_Shift_B(void)
+{
+    FPGA_SetRShift(B, SET_RSHIFT_B);
+}
+
+DEF_GOVERNOR(       gADC_Shift_B2mV,                                                               //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 2ìÂ ïîñò ---
+    "Ñì 2ê 2ìÂ ïîñò", "Shift 2ch 2mV DC",
+    "",
+    "",
+    RSHIFT_ADD_STABLE_B(Range_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Shift_A5mV,                                                               //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 5ìÂ ïîñò ---
+    "Ñì 1ê 5ìÂ ïîñò", "Shift 1ch 5mV DC",
+    "",
+    "",
+    RSHIFT_ADD_STABLE_A(Range_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Shift_B5mV,                                                               //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 5ìÂ ïîñò ---
+    "Ñì 2ê 5ìÂ ïîñò", "Shift 2ch 5mV DC",
+    "",
+    "",
+    RSHIFT_ADD_STABLE_B(Range_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Shift_A10mV,                                                             //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 10ìÂ ïîñò ---
+    "Ñì 1ê 10ìÂ ïîñò", "Shift 1ch 10mV DC",
+    "",
+    "",
+    RSHIFT_ADD_STABLE_A(Range_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gADC_Shift_B10mV,                                                             //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 10ìÂ ïîñò ---
+    "Ñì 2ê 10ìÂ ïîñò", "Shift 2ch 10mV DC",
+    "",
+    "",
+    RSHIFT_ADD_STABLE_B(Range_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -631,100 +555,108 @@ DEF_PAGE_7(         pppADC_Shift,                                               
     Page_Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage
 );
 
-// ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñáðîñ ------------------------------------------------------------------------------------------------------------------
-static void OnPress_ADC_Shift_Reset(void)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_3(         ppADC,                                                                                                        // ÎÒËÀÄÊÀ - ÀÖÏ ///
+    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage,
+    "ÀÖÏ", "ADC",
+    "",
+    "",
+    pppADC_Balance, // ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
+    pppADC_Stretch, // ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
+    pppADC_Shift    // ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gRand_NumAverage,                                                                           //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Óñðåäí. ---
+    "Óñðåäí.", "Average",
+    "",
+    "",
+    NRST_NUM_AVE_FOR_RAND, 1, 32, ppRand, FuncActive, FuncChanged, FuncBeforeDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gRand_NumSmooth,                                                                        //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñãëàæèâàíèå ---
+    "Ñãëàæèâàíèå", "Smoothing",
+    "",
+    "",
+    NRST_NUM_SMOOTH_FOR_RAND, 1, 10, ppRand, FuncActive, FuncChanged, FuncBeforeDraw
+);
+
+static void OnChanged_Rand_NumMeasures(void)
 {
-    for (int ch = 0; ch < 2; ch++)
-    {
-        for (int range = 0; range < 3; range++)
-        {
-            RSHIFT_ADD_STABLE(ch, range) = 0;
-        }
-    }
-    FPGA_SetRShift(A, SET_RSHIFT_A);
-    FPGA_SetRShift(B, SET_RSHIFT_B);
+    FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
 }
 
-DEF_BUTTON
-(
-    bADC_Shift_Reset,
-    "Ñáðîñ", "Reset",
+DEF_GOVERNOR(       gRand_NumMeasures,                                                                     //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Âûá-ê/âîðîòà ---
+    "Âûá-ê/âîðîòà", "Samples/gates",
     "",
-    "",    
-    pppADC_Shift, FuncActive, OnPress_ADC_Shift_Reset, FuncDraw);
+    "",
+    NUM_MEASURES_FOR_GATES, 1, 2500, ppRand, FuncActive, OnChanged_Rand_NumMeasures, FuncBeforeDraw
+);
 
-//------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 2ìÂ ïîñò ---
-static void OnChanged_ADC_Shift_A(void)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cRand_ShowInfo,                                                                          //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Èíôîðìàöèÿ ---
+    "Èíôîðìàöèÿ", "Information",
+    "Ïîêàçûâàòü èíôîðìàöèþ î âîðîòàõ ðàíäîìèçàòîðà",
+    "To show information on randomizer gate",
+    "Íå ïîêàçûâàòü", "Hide",
+    "Ïîêàçûâàòü", "Show",
+    SHOW_RAND_INFO, ppRand, FuncActive, FuncChangedChoice, FuncDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       gRand_ShowStat,                                                                          //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñòàòèñòèêà ---
+    "Ñòàòèñòèêà", "Statistics",
+    "Ïîêàçûâàòü ãðàôèê ñòàòèñòèêè",
+    "Statistics show schedule",
+    "Íå ïîêàçûâàòü", "Hide",
+    "Ïîêàçûâàòü", "Show",
+    SHOW_RAND_STAT, ppRand, FuncActive, FuncChangedChoice, FuncDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_Rand_TimeCompensation(void)
 {
-    FPGA_SetRShift(A, SET_RSHIFT_A);
+    FPGA_SetDeltaTShift(TIME_COMPENSATION);
 }
 
-DEF_GOVERNOR
-(
-    gADC_Shift_A2mV,
-    "Ñì 1ê 2ìÂ ïîñò", "Shift 1ch 2mV DC",
+DEF_GOVERNOR(   gRand_TimeCompensation,                                                            //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Êîìïåíñàöèÿ çàäåðæêè ---
+    "Êîìïåíñàöèÿ çàäåðæêè", "Compenstaion time",
+    "Ïîäñòðîéêà êîìïåíñàöèè çàäåðæêè ÀÖÏ 40 íñ",
     "",
-    "",
-    pppADC_Shift, RSHIFT_ADD_STABLE_A(Range_2mV), -100, 100, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    TIME_COMPENSATION, 0, 510, ppRand, FuncActive, OnChanged_Rand_TimeCompensation, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 2ìÂ ïîñò ---
-static void OnChanged_ADC_Shift_B(void)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_Rand_AddTimeShift(void)
 {
-    FPGA_SetRShift(B, SET_RSHIFT_B);
+    FPGA_SetTShift(SET_TSHIFT);
 }
 
-DEF_GOVERNOR
-(
-    gADC_Shift_B2mV,
-    "Ñì 2ê 2ìÂ ïîñò", "Shift 2ch 2mV DC",
+int16 addShift = 0;
+
+DEF_GOVERNOR(       gRand_AddTimeShift,                                                                        //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñìåùåíèå ---
+    "Äîï ñìåùåíèå", "Add shift",
+    "Äîáàâî÷íîå ñìùåíèå ïðè âðàùåíèè tShift",
     "",
-    "",
-    pppADC_Shift, RSHIFT_ADD_STABLE_B(Range_2mV), -100, 100, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    addShift, -100, 100, ppRand, FuncActive, OnChanged_Rand_AddTimeShift, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 5ìÂ ïîñò ---
-DEF_GOVERNOR
-(
-    gADC_Shift_A5mV,
-    "Ñì 1ê 5ìÂ ïîñò", "Shift 1ch 5mV DC",
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_Rand_Pretriggered(void)
+{
+    LoadTShift();
+}
+
+DEF_GOVERNOR(       gRand_Pretriggered,                                                                      //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ïðåäçàïóñê ---
+    "Ïðåäçàïóñê", "Pretiggered",
+    "Âåëè÷èíà ïðåäçàïóñêà, êîòîðàÿ ïèøåòñÿ â ðàíäîìèçàòîð",
     "",
-    "",
-    pppADC_Shift, RSHIFT_ADD_STABLE_A(Range_5mV), -100, 100, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    PRETRIGGERED, 0, 30000, ppRand, FuncActive, OnChanged_Rand_Pretriggered, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 5ìÂ ïîñò ---
-DEF_GOVERNOR
-(
-    gADC_Shift_B5mV,
-    "Ñì 2ê 5ìÂ ïîñò", "Shift 2ch 5mV DC",
-    "",
-    "",
-    pppADC_Shift, RSHIFT_ADD_STABLE_B(Range_5mV), -100, 100, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
-);
-
-//----------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 10ìÂ ïîñò ---
-DEF_GOVERNOR
-(
-    gADC_Shift_A10mV,
-    "Ñì 1ê 10ìÂ ïîñò", "Shift 1ch 10mV DC",
-    "",
-    "",
-    pppADC_Shift, RSHIFT_ADD_STABLE_A(Range_10mV), -100, 100, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
-);
-
-//----------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 10ìÂ ïîñò ---
-DEF_GOVERNOR
-(
-    gADC_Shift_B10mV,
-    "Ñì 2ê 10ìÂ ïîñò", "Shift 2ch 10mV DC",
-    "",
-    "",
-    pppADC_Shift, RSHIFT_ADD_STABLE_B(Range_10mV), -100, 100, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
-);
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ ///
-DEF_PAGE_8(         ppRand, 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_8(         ppRand,                                                                                                  // ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ ///
     Page_Debug_Rand, &pDebug, FuncActive, EmptyPressPage,
     "ÐÀÍÄ-ÒÎÐ", "RANDOMIZER",
     "",
@@ -739,26 +671,14 @@ DEF_PAGE_8(         ppRand,
     gRand_Pretriggered      // ÎÒËÀÄÊÀ - ÐAÍÄ-ÒÎÐ - Ïðåäçàïóñê
 );
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(     ppChannels,                                                                                                    // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ ///
-    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage,
-    "ÊÀÍÀËÛ", "CHANNELS",
-    "",
-    "",
-    cChannels_BandwidthA,   // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 1
-    cChannels_BandwidthB    // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 2
-);
-
-//-------------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÀÍËÀÛ - Ïîëîñà 1 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Channels_BandwidthA(bool)
 {
     FPGA_SetBandwidth(A);
 }
 
-DEF_CHOICE_7
-(
-    cChannels_BandwidthA, ppChannels,
-    BANDWIDTH_DEBUG(A), FuncActive, OnChanged_Channels_BandwidthA, FuncDraw,
+DEF_CHOICE_7(       cChannels_BandwidthA,                                                                        //--- ÎÒËÀÄÊÀ - ÊÀÍËÀÛ - Ïîëîñà 1 ---
+    ppChannels, BANDWIDTH_DEBUG(A), FuncActive, OnChanged_Channels_BandwidthA, FuncDraw,
     "Ïîëîñà 1", "Bandwidth 1",
     "Çäåñü ìîæíî âûáðàòü ïîëîñó, êîòîðàÿ áóäåò äåéñòâîâàòü â ÊÀÍÀË1-Ïîëîñà ïðè âûáîðå çíà÷åíèÿ Ïîëíàÿ",
     "Here you can select the bandwidth, which will operate in CHANNEL1-Bandwidth when set to Full",
@@ -771,16 +691,14 @@ DEF_CHOICE_7
     "750ÌÃö", "750MHz"
 );
 
-//-------------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÊÀÍËÀÛ - Ïîëîñà 2 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Channels_BandwidthB(bool)
 {
     FPGA_SetBandwidth(B);
 }
 
-DEF_CHOICE_7
-(
-    cChannels_BandwidthB, ppChannels,
-    BANDWIDTH_DEBUG(B), FuncActive, OnChanged_Channels_BandwidthB, FuncDraw,
+DEF_CHOICE_7(       cChannels_BandwidthB,                                                                        //--- ÎÒËÀÄÊÀ - ÊÀÍËÀÛ - Ïîëîñà 2 ---
+    ppChannels, BANDWIDTH_DEBUG(B), FuncActive, OnChanged_Channels_BandwidthB, FuncDraw,
     "Ïîëîñà 2", "Bandwidth 2",
     "Çäåñü ìîæíî âûáðàòü ïîëîñó, êîòîðàÿ áóäåò äåéñòâîâàòü â ÊÀÍÀË2-Ïîëîñà ïðè âûáîðå çíà÷åíèÿ Ïîëíàÿ",
     "Here you can select the bandwidth, which will operate in CHANNEL2-Bandwidth when set to Full",
@@ -793,123 +711,88 @@ DEF_CHOICE_7
     "750ÌÃö", "750MHz"
 );
 
-//-------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Âûá-ê/âîðîòà ---
-static void OnChanged_Rand_NumMeasures(void)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_2(         ppChannels,                                                                                                // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ ///
+    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage,
+    "ÊÀÍÀËÛ", "CHANNELS",
+    "",
+    "",
+    cChannels_BandwidthA,   // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 1
+    cChannels_BandwidthB    // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ - Ïîëîñà 2
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cStats,                                                                                             //--- ÎÒËÀÄÊÀ - Ñòàòèñòèêà ---
+    "Ñòàòèñòèêà", "Statistics",
+    "Ïîêàçûâàòü/íå ïîêàçûâàòü âðåìÿ/êàäð, êàäðîâ â ñåêóíäó, êîëè÷åñòâî ñèãíàëîâ ñ ïîñëåäíèìè íàñòðîéêàìè â ïàìÿòè/êîëè÷åñòâî ñîõðàíÿåìûõ â ïàìÿòè "
+    "ñèãíàëîâ",
+    "To show/not to show a time/shot, frames per second, quantity of signals with the last settings in memory/quantity of the signals kept in memory",
+    "Íå ïîêàçûâàòü", "Hide",
+    "Ïîêàçûâàòü",    "Show",
+    SHOW_STAT, pDebug, FuncActive, FuncChangedChoice, FuncDraw
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void OnChanged_DisplayOrientation(bool)
 {
-    FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
+    display.SetOrientation(DISPLAY_ORIENTATION);
 }
 
-DEF_GOVERNOR
-(
-    gRand_NumMeasures,
-    "Âûá-ê/âîðîòà", "Samples/gates",
-    "",
-    "",
-    ppRand, NUM_MEASURES_FOR_GATES, 1, 2500,
-    FuncActive, OnChanged_Rand_NumMeasures, FuncBeforeDraw
+DEF_CHOICE_2(       cDisplayOrientation,                                                                                //--- ÎÒËÀÄÊÀ - Îðèåíòàöèÿ ---
+    "Îðèåíòàöèÿ", "DisplayOrientation",
+    "Óñòàíàâëèâàåò îðèåíòàöèþ äèñïëåÿ",
+    "Sets display orientation",
+    "Ïðÿìàÿ",   "Direct",
+    "Îáðàòíàÿ", "Back",
+    DISPLAY_ORIENTATION, pDebug, FuncActive, OnChanged_DisplayOrientation, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Êîìïåíñàöèÿ çàäåðæêè ---
-static void OnChanged_Rand_TimeCompensation(void)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnChanged_EMS(bool)
 {
-    FPGA_SetDeltaTShift(TIME_COMPENSATION);
+    FPGA_SetBandwidth(A);
+    FPGA_SetBandwidth(B);
 }
 
-DEF_GOVERNOR
-(
-    gRand_TimeCompensation,
-    "Êîìïåíñàöèÿ çàäåðæêè", "Compenstaion time",
-    "Ïîäñòðîéêà êîìïåíñàöèè çàäåðæêè ÀÖÏ 40 íñ",
+DEF_CHOICE_2(       cEMS,                                                                                                //--- ÎÒËÀÄÊÀ - Ðåæèì ÝÌÑ ---
+    "Ðåæèì ÝÌÑ", "EMS mode",
+    "Ïðèíóäèòåëüíî âêëþ÷àåò ôèëüòð 20ÌÃö, ñãëàæèâàíèå ïî 4-ì òî÷êàì, óñðåäíåíèå ïî 8-ìè òî÷êàì",
     "",
-    ppRand, TIME_COMPENSATION, 0, 510, FuncActive, OnChanged_Rand_TimeCompensation, FuncBeforeDraw
+    DISABLE_RU, DISABLE_EN,
+    ENABLE_RU,  ENABLE_EN,
+    MODE_EMS, pDebug, FuncActive, OnChanged_EMS, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------ ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñìåùåíèå ---
-static void OnChanged_Rand_AddTimeShift(void)
-{
-    FPGA_SetTShift(SET_TSHIFT);
-}
-
-int16 addShift = 0;
-
-DEF_GOVERNOR
-(
-    gRand_AddTimeShift,
-    "Äîï ñìåùåíèå", "Add shift",
-    "Äîáàâî÷íîå ñìùåíèå ïðè âðàùåíèè tShift",
-    "",
-    ppRand, addShift, -100, 100, FuncActive, OnChanged_Rand_AddTimeShift, FuncBeforeDraw
-);
-
-//---------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ïðåäçàïóñê ---
-static void OnChanged_Rand_Pretriggered(void)
-{
-    LoadTShift();
-}
-
-DEF_GOVERNOR
-(
-    gRand_Pretriggered,
-    "Ïðåäçàïóñê", "Pretiggered",
-    "Âåëè÷èíà ïðåäçàïóñêà, êîòîðàÿ ïèøåòñÿ â ðàíäîìèçàòîð",
-    "",
-    ppRand, PRETRIGGERED, 0, 30000, FuncActive, OnChanged_Rand_Pretriggered, FuncBeforeDraw
-);
-
-//------------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Óñðåäí. ---
-DEF_GOVERNOR
-(
-    gRand_NumAverage,
-    "Óñðåäí.", "Average",
-    "",
-    "",
-    ppRand, NRST_NUM_AVE_FOR_RAND, 1, 32, FuncActive, FuncChanged, FuncBeforeDraw
-);
-
-//--------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñãëàæèâàíèå ---
-DEF_GOVERNOR
-(
-    gRand_NumSmooth,
-    "Ñãëàæèâàíèå", "Smoothing",
-    "",
-    "",
-    ppRand, NRST_NUM_SMOOTH_FOR_RAND, 1, 10, FuncActive, FuncChanged, FuncBeforeDraw
-);
-
-//--------------------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - Ïðåäçàïóñê ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 pred;
 
-DEF_GOVERNOR
-(
-    mgPred,
+static void OnChanged_Pred(void)
+{
+    gPred = ~pred;
+    static char buffer[30];
+    LOG_WRITE("pred %d %s", pred, su.Hex16toString((uint16)gPred, buffer));
+}
+
+DEF_GOVERNOR(       mgPred,                                                                                             //--- ÎÒËÀÄÊÀ - Ïðåäçàïóñê ---
     "Ïðåäçàïóñê", "",
     "", "",
-    pDebug, pred, 0, 15000, FuncActive, OnChanged_Pred, FuncBeforeDraw
+    pred, 0, 15000, pDebug, FuncActive, OnChanged_Pred, FuncBeforeDraw
 );
 
-// ÎÒËÀÄÊÀ - Ïîñëåçàïóñê -----------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 post;
 
-DEF_GOVERNOR
-(
-    mgPost,
+static void OnChanged_Post(void)
+{
+    gPost = (uint16)~post;
+    static char buffer[30];
+    LOG_WRITE("post %d %s", post, su.Hex16toString(gPost, buffer));
+}
+
+DEF_GOVERNOR(       mgPost,                                                                                            //--- ÎÒËÀÄÊÀ - Ïîñëåçàïóñê ---
     "Ïîñëåçàïóñê", "",
     "", "",
-    pDebug, post, 0, 15000, FuncActive, OnChanged_Post, FuncBeforeDraw
-);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_SB(        ppSettings,                                                                                             // ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ ///
-    "ÍÀÑÒÐÎÉÊÈ", "SETTINGS",
-    "Ïîêàçàòü èíôîðìàöèþ î íàñòðîéêàõ",
-    "Show settings information",
-    &bSettings_Exit,            // ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ - Âûõîä
-    0,
-    0,
-    0,
-    0,
-    0,
-    PageSB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
+    post, 0, 15000, pDebug, FuncActive, OnChanged_Post, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -922,6 +805,7 @@ DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                         
     ppSettings, FuncActive, OnPress_Settings_Exit, DrawSB_Exit
 );
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void DebugShowSetInfo_Draw(void)
 {
     painter.BeginScene(gColorBack);
@@ -965,7 +849,7 @@ static void DebugShowSetInfo_Draw(void)
     pString s[3] = {"âûêëþ÷åíî", "íàñòðîåíî àâòîìàòè÷åñêè", "çàäàíî âðó÷íóþ"};
     DRAW_FORMAT("balanceADCtype : %s", (NRST_BALANCE_ADC_TYPE < 3 ? s[NRST_BALANCE_ADC_TYPE] : "!!! íåïðàâèëüíîå çíà÷åíèå !!!"));
     DRAW_FORMAT("stretchADCtype : %s", (NRST_STRETCH_ADC_TYPE < 3 ? s[NRST_STRETCH_ADC_TYPE] : "!!! íåïðàâèëüíîå çíà÷åíèå !!!"));
-  
+
     x = painter.DrawText(x0, Y_AND_INCREASE, "stretchADC :") + 5;
 
     for (int ch = 0; ch < 2; ch++)
@@ -996,90 +880,20 @@ static void OnPress_Settings(void)
     display.SetDrawMode(DrawMode_Auto, DebugShowSetInfo_Draw);
 }
 
-static void OnChanged_Pred(void)
-{
-    gPred = ~pred;
-    static char buffer[30];
-    LOG_WRITE("pred %d %s", pred, su.Hex16toString((uint16)gPred, buffer));
-}
-
-static void OnChanged_Post(void)
-{
-    gPost = (uint16)~post;
-    static char buffer[30];
-    LOG_WRITE("post %d %s", post, su.Hex16toString(gPost, buffer));
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cRand_ShowInfo,                                                                          //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Èíôîðìàöèÿ ---
-    "Èíôîðìàöèÿ", "Information",
-    "Ïîêàçûâàòü èíôîðìàöèþ î âîðîòàõ ðàíäîìèçàòîðà",
-    "To show information on randomizer gate",
-    "Íå ïîêàçûâàòü", "Hide",
-    "Ïîêàçûâàòü",    "Show",
-    SHOW_RAND_INFO, ppRand, FuncActive, FuncChangedChoice, FuncDraw
+DEF_PAGE_SB(        ppSettings,                                                                                             // ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ ///
+    "ÍÀÑÒÐÎÉÊÈ", "SETTINGS",
+    "Ïîêàçàòü èíôîðìàöèþ î íàñòðîéêàõ",
+    "Show settings information",
+    &bSettings_Exit,            // ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ - Âûõîä
+    0,
+    0,
+    0,
+    0,
+    0,
+    PageSB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       gRand_ShowStat,                                                                          //--- ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ - Ñòàòèñòèêà ---
-    "Ñòàòèñòèêà", "Statistics",
-    "Ïîêàçûâàòü ãðàôèê ñòàòèñòèêè",
-    "Statistics show schedule",
-    "Íå ïîêàçûâàòü", "Hide",
-    "Ïîêàçûâàòü",    "Show",
-    SHOW_RAND_STAT, ppRand, FuncActive, FuncChangedChoice, FuncDraw
-);
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_EMS(bool)
-{
-    FPGA_SetBandwidth(A);
-    FPGA_SetBandwidth(B);
-}
-
-DEF_CHOICE_2(       cEMS,                                                                                                //--- ÎÒËÀÄÊÀ - Ðåæèì ÝÌÑ ---
-    "Ðåæèì ÝÌÑ", "EMS mode",
-    "Ïðèíóäèòåëüíî âêëþ÷àåò ôèëüòð 20ÌÃö, ñãëàæèâàíèå ïî 4-ì òî÷êàì, óñðåäíåíèå ïî 8-ìè òî÷êàì",
-    "",
-    DISABLE_RU, DISABLE_EN,
-    ENABLE_RU,  ENABLE_EN,
-    MODE_EMS, pDebug, FuncActive, OnChanged_EMS, FuncDraw
-);
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnChanged_DisplayOrientation(bool)
-{
-    display.SetOrientation(DISPLAY_ORIENTATION);
-}
-
-DEF_CHOICE_2(       cDisplayOrientation,                                                                                //--- ÎÒËÀÄÊÀ - Îðèåíòàöèÿ ---
-    "Îðèåíòàöèÿ", "DisplayOrientation",
-    "Óñòàíàâëèâàåò îðèåíòàöèþ äèñïëåÿ",
-    "Sets display orientation",
-    "Ïðÿìàÿ",   "Direct",
-    "Îáðàòíàÿ", "Back",
-    DISPLAY_ORIENTATION, pDebug, FuncActive, OnChanged_DisplayOrientation, FuncDraw
-);
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_CHOICE_2(       cStats,                                                                                             //--- ÎÒËÀÄÊÀ - Ñòàòèñòèêà ---
-    "Ñòàòèñòèêà", "Statistics",
-    "Ïîêàçûâàòü/íå ïîêàçûâàòü âðåìÿ/êàäð, êàäðîâ â ñåêóíäó, êîëè÷åñòâî ñèãíàëîâ ñ ïîñëåäíèìè íàñòðîéêàìè â ïàìÿòè/êîëè÷åñòâî ñîõðàíÿåìûõ â ïàìÿòè "
-    "ñèãíàëîâ",
-    "To show/not to show a time/shot, frames per second, quantity of signals with the last settings in memory/quantity of the signals kept in memory",
-    "Íå ïîêàçûâàòü", "Hide",
-    "Ïîêàçûâàòü",    "Show",
-    SHOW_STAT, pDebug, FuncActive, FuncChangedChoice, FuncDraw
-);
-
-// ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó --------------------------------------------------------------------------------------------------------------------------
-DEF_BUTTON(
-    bSaveFirmware,
-    "Ñîõð. ïðîøèâêó", "Save firmware",
-    "Ñîõðàíåíèå ïðîøèâêè - ñåêòîðîâ 5, 6, 7 îáùèì îáú¸ìîì 3 õ 128 êÁ, ãäå õðàíèòñÿ ïðîãðàììà",
-    "Saving firmware - sectors 5, 6, 7 with a total size of 3 x 128 kB, where the program is stored",
-    pDebug, IsActive_SaveFirmware, OnPress_SaveFirmware, FuncDraw);
-
 static bool IsActive_SaveFirmware(void)
 {
     return FDRIVE_IS_CONNECTED;
@@ -1111,45 +925,77 @@ static void OnPress_SaveFirmware(void)
     display.ShowWarning(FirmwareSaved);
 }
 
-// ÎÒËÀÄÊÀ - Ñòåðåòü äàííûå --------------------------------------------------------------------------------------------------------------------------
-DEF_BUTTON(
-    bEraseData,
-    "Ñòåðåòü äàííå", "Erase data",
-    "Ñòèðàåò ñîõðàí¸ííûå äàííûå èç ÏÏÇÓ",
-    "Erase all saved datas from EEPROM",
-    pDebug, FuncActive, OnPress_EraseData, FuncDraw);
-
-static void OnPress_EraseData(void)
-{
-    display.FuncOnWaitStart(DICT(DDeleteFromMemory), false);
-    FLASH_DeleteAllData();
-    display.FuncOnWaitStop();
-}
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ÎÒËÀÄÊÀ - Ñ/Í ///
-    "Ñ/Í", "S/N",
-    "Çàïèñü ñåðèéíîãî íîìåðà â OTP-ïàìÿòü. ÂÍÈÌÀÍÈÅ!!! ÎÒP-ïàìÿòü - ïàìÿòü ñ îäíîêðàòíîé çàïèñüþ.",
-    "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
-    &bSerialNumber_Exit,            // ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä
-    &bSerialNumber_Change,          // ÎÒËÀÄÊÀ - Ñ/Í - Ïåðåéòè
-    0,
-    0,
-    0,
-    &bSerialNumber_Save,            // ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü
-    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
+DEF_BUTTON(         bSaveFirmware,                                                                                  //--- ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó ---
+    "Ñîõð. ïðîøèâêó", "Save firmware",
+    "Ñîõðàíåíèå ïðîøèâêè - ñåêòîðîâ 5, 6, 7 îáùèì îáú¸ìîì 3 õ 128 êÁ, ãäå õðàíèòñÿ ïðîãðàììà",
+    "Saving firmware - sectors 5, 6, 7 with a total size of 3 x 128 kB, where the program is stored",
+    pDebug, IsActive_SaveFirmware, OnPress_SaveFirmware, FuncDraw
 );
 
-static void OnPress_SerialNumber(void)
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_SerialNumber_Exit(void)
 {
-    display.SetAddDrawFunction(Draw_EnterSerialNumber);
-    MALLOC_EXTRAMEM(StructForSN, s);
-    s->number = 01;
-    s->year = 2017;
-    s->curDigt = 0;
+    OnPressSB_Exit();
+    FREE_EXTRAMEM();
 }
 
+DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                                                            //--- ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä ---
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_SerialNumber_Change(void)
+{
+    ACCESS_EXTRAMEM(StructForSN, s);
+    ++s->curDigt;
+    s->curDigt %= 2;
+    painter.ResetFlash();
+}
+
+static void Draw_SerialNumber_Change(int x, int y)
+{
+    painter.SetFont(TypeFont_UGO2);
+    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
+    painter.SetFont(TypeFont_8);
+}
+
+DEF_SMALL_BUTTON(   bSerialNumber_Change,                                                                           //--- ÎÒËÀÄÊÀ - Ñ/Í - Âñòàâèòü ---
+    "Âñòàâèòü", "Insert",
+    "Âñòàâëÿåò âûáðàíûé ñèìâîë",
+    "Inserts the chosen symbol",
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void OnPress_SerialNumber_Save(void)
+{
+    ACCESS_EXTRAMEM(StructForSN, s);
+
+    char stringSN[20];
+
+    snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
+
+    if (!OTP_SaveSerialNumber(stringSN))
+    {
+        display.ShowWarning(FullyCompletedOTP);
+    }
+}
+
+static void Draw_SerialNumber_Save(int x, int y)
+{
+    painter.SetFont(TypeFont_UGO2);
+    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
+    painter.SetFont(TypeFont_8);
+}
+
+DEF_SMALL_BUTTON(   bSerialNumber_Save,                                                                            //--- ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü ---
+    "Ñîõðàíèòü", "Save",
+    "Çàïèñûâàåò ñåðèéíûé íîìåð â OTP",
+    "Records the serial number in OTP",
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
+);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void Draw_EnterSerialNumber(void)
 {
     int x0 = grid.Left() + 40;
@@ -1163,7 +1009,7 @@ static void Draw_EnterSerialNumber(void)
     int deltaX = 10;
 
     ACCESS_EXTRAMEM(StructForSN, s);
-    
+
     bool selNumber = s->curDigt == 0;
 
     char buffer[20];
@@ -1206,9 +1052,18 @@ static void Draw_EnterSerialNumber(void)
     painter.DrawFormText(x0 + deltaX, y0 + 100, gColorFill, "Îñòàëîñü ìåñòà äëÿ %d ïîïûòîê", allShots);
 }
 
+static void OnPress_SerialNumber(void)
+{
+    display.SetAddDrawFunction(Draw_EnterSerialNumber);
+    MALLOC_EXTRAMEM(StructForSN, s);
+    s->number = 01;
+    s->year = 2017;
+    s->curDigt = 0;
+}
+
 static void OnRegSet_SerialNumber(int angle)
 {
-    typedef int (*pFunc)(int *, int, int);
+    typedef int(*pFunc)(int *, int, int);
 
     pFuncVpIII p = (angle > 0) ? (CircleIncrease<int>) : (CircleDecrease<int>);
 
@@ -1225,73 +1080,61 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
+DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ÎÒËÀÄÊÀ - Ñ/Í ///
+    "Ñ/Í", "S/N",
+    "Çàïèñü ñåðèéíîãî íîìåðà â OTP-ïàìÿòü. ÂÍÈÌÀÍÈÅ!!! ÎÒP-ïàìÿòü - ïàìÿòü ñ îäíîêðàòíîé çàïèñüþ.",
+    "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
+    &bSerialNumber_Exit,            // ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä
+    &bSerialNumber_Change,          // ÎÒËÀÄÊÀ - Ñ/Í - Ïåðåéòè
+    0,
+    0,
+    0,
+    &bSerialNumber_Save,            // ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü
+    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
+);
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Exit(void)
+static void OnPress_EraseData(void)
 {
-    OnPressSB_Exit();
-    FREE_EXTRAMEM();
+    display.FuncOnWaitStart(DICT(DDeleteFromMemory), false);
+    FLASH_DeleteAllData();
+    display.FuncOnWaitStop();
 }
 
-DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                                                            //--- ÎÒËÀÄÊÀ - Ñ/Í - Âûõîä ---
-    ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
+DEF_BUTTON(         bEraseData,                                                                                     //--- ÎÒËÀÄÊÀ - Ñòåðåòü äàííûå ---
+    "Ñòåðåòü äàííå", "Erase data",
+    "Ñòèðàåò ñîõðàí¸ííûå äàííûå èç ÏÏÇÓ",
+    "Erase all saved datas from EEPROM",
+    pDebug, FuncActive, OnPress_EraseData, FuncDraw
 );
 
-
-//----------------------------------------------------------------------------------------------------------------------- ÎÒËÀÄÊÀ - Ñ/Í - Âñòàâèòü ---
-static void OnPress_SerialNumber_Change(void)
-{
-    ACCESS_EXTRAMEM(StructForSN, s);
-    ++s->curDigt;
-    s->curDigt %= 2;
-    painter.ResetFlash();
-}
-
-static void Draw_SerialNumber_Change(int x, int y)
-{
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
-    painter.SetFont(TypeFont_8);
-}
-
-DEF_SMALL_BUTTON
-(
-    bSerialNumber_Change,
-    "Âñòàâèòü", "Insert",
-    "Âñòàâëÿåò âûáðàíûé ñèìâîë",
-    "Inserts the chosen symbol",
-    ppSerialNumber, FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_13(        pDebug,                                                                                                             // ÎÒËÀÄÊÀ ///
+    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
+    "ÎÒËÀÄÊÀ", "DEBUG",
+    "",
+    "",
+    ppConsole,              // ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
+    ppADC,                  // ÎÒËÀÄÊÀ - ÀÖÏ
+    ppRand,			        // ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
+    ppChannels,		        // ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
+    cStats,			        // ÎÒËÀÄÊÀ - Ñòàòèñòèêà
+    cDisplayOrientation,    // ÎÒËÀÄÊÀ - Îðèåíòàöèÿ
+    cEMS,                   // ÎÒËÀÄÊÀ - Ðåæèì ÝÌÑ
+    mgPred,			        // ÎÒËÀÄÊÀ - Ïðåäçàïóñê
+    mgPost,			        // ÎÒËÀÄÊÀ - Ïîñëåçàïóñê
+    ppSettings,		        // ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
+    bSaveFirmware,          // ÎÒËÀÄÊÀ - Ñîõð. ïðîøèâêó
+    ppSerialNumber,         // ÎÒËÀÄÊÀ - Ñ/Í
+    bEraseData              // ÎÒËÀÄÊÀ - Ñòåðåòü äàííûå
 );
 
-// ÎÒËÀÄÊÀ - Ñ/Í - Ñîõðàíèòü -------------------------------------------------------------------------------------------------------------------------
-DEF_SMALL_BUTTON
-(
-    bSerialNumber_Save,
-    "Ñîõðàíèòü", "Save",
-    "Çàïèñûâàåò ñåðèéíûé íîìåð â OTP",
-    "Records the serial number in OTP",
-    ppSerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
-);
+const Page * pointerPageDebug = &pDebug;
 
-static void OnPress_SerialNumber_Save(void)
-{
-    ACCESS_EXTRAMEM(StructForSN, s);
 
-    char stringSN[20];
 
-    snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
 
-    if (!OTP_SaveSerialNumber(stringSN))
-    {
-        display.ShowWarning(FullyCompletedOTP);
-    }
-}
 
-static void Draw_SerialNumber_Save(int x, int y)
-{
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    painter.SetFont(TypeFont_8);
-}
 
 
 

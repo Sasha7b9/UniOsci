@@ -148,7 +148,7 @@ static const SButton name = { Item_SmallButton, &keeper, funcActive, {titleRU, t
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define DEF_GOVERNOR(name, titleRU, titleEN, hintRU, hintEN, keeper, cell, min, max, funcActive, funcChanged, funcBeforeDraw)                       \
+#define DEF_GOVERNOR(name, titleRU, titleEN, hintRU, hintEN, cell, min, max, keeper, funcActive, funcChanged, funcBeforeDraw)                       \
 static const Governor name = {Item_Governor, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, min, max, (int16 *)(&(cell)), funcChanged,    \
     funcBeforeDraw};
 

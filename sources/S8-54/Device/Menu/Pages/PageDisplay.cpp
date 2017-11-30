@@ -325,20 +325,17 @@ void OnChanged_Grid_Brightness(void)
     colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 100.0f);
 }
 
-
 static void BeforeDraw_Grid_Brightness(void)
 {
     colorTypeGrid.Init(false);
     BRIGHTNESS_GRID = (int16)(colorTypeGrid.brightness * 100.0f);
 }
 
-DEF_GOVERNOR
-(
-    gGrid_Brightness,
+DEF_GOVERNOR(       gGrid_Brightness,
     "Яркость", "Brightness",
     "Устанавливает яркость сетки.",
     "Adjust the brightness of the grid.",
-    ppGrid, BRIGHTNESS_GRID, 0, 100, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
+    BRIGHTNESS_GRID, 0, 100, ppGrid, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -472,42 +469,33 @@ DEF_CHOICE_2(       cSettings_Colors_Background,                                
     BACKGROUND, pppSettings_Colors, FuncActive, OnChanged_Settings_Colors_Background, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------ ДИСПЛЕЙ - НАСТРОЙКИ - Яркость ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_Brightness(void)
 {
     painter.SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
 }
 
-DEF_GOVERNOR
-(
-    gSettings_Brightness,
+DEF_GOVERNOR(       gSettings_Brightness,                                                                      //--- ДИСПЛЕЙ - НАСТРОЙКИ - Яркость ---
     "Яркость", "Brightness",
     "Установка яркости свечения дисплея",
     "Setting the brightness of the display",
-    ppDisplaySettings, BRIGHTNESS_DISPLAY, 0, 100,
-    FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
+    BRIGHTNESS_DISPLAY, 0, 100, ppDisplaySettings, FuncActive, OnChanged_Settings_Brightness, FuncBeforeDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Уровни ---
-DEF_GOVERNOR
-(
-    gSettings_Levels,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gSettings_Levels,                                                                           //--- ДИСПЛЕЙ - НАСТРОЙКИ - Уровни ---
     "Уровни", "Levels",
     "Задаёт время, в течение которого после поворота ручки сещения напряжения на экране остаётся вспомогательная метка уровня смещения",
     "Defines the time during which, after turning the handle visits to the voltage on the screen remains auxiliary label offset level",
-    ppDisplaySettings, TIME_SHOW_LEVELS, 0, 125,
-    FuncActive, FuncChanged, FuncBeforeDraw
+    TIME_SHOW_LEVELS, 0, 125, ppDisplaySettings, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Время ---
-DEF_GOVERNOR
-(
-    gSettings_Time,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR(       gSettings_Time,                                                                              //--- ДИСПЛЕЙ - НАСТРОЙКИ - Время ---
     "Время", "Time",
     "Установка времени, в течение которого сообщения будут находиться на экране",
     "Set the time during which the message will be on the screen",
-    ppDisplaySettings, TIME_MESSAGES, 1, 99,
-    FuncActive, FuncChanged, FuncBeforeDraw
+    TIME_MESSAGES, 1, 99, ppDisplaySettings, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

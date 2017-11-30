@@ -240,7 +240,7 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftA,                                       
     "Смещение 1", "Offset 1",
     "",
     "",
-    mpADC_Balance, shiftADCA, -125, 125, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
+    shiftADCA, -125, 125, mpADC_Balance, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -254,7 +254,7 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftB,                                       
     "Смещение 2", "Offset 2",
     "",
     "",
-    mpADC_Balance, shiftADCB, -125, 125, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
+    shiftADCB, -125, 125, mpADC_Balance, IsActive_ADC_Balance_Shift, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -319,7 +319,7 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                        
     "Коэфф. 1к", "Koeff. 1ch",
     "",
     "",
-    mpADC_Stretch, DEBUG_STRETCH_ADC_A, 0, 255, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_A, FuncBeforeDraw
+    DEBUG_STRETCH_ADC_A, 0, 255, mpADC_Stretch, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_A, FuncBeforeDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -332,7 +332,7 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_B,                                        
     "Коэфф. 2к", "Koeff. 2ch",
     "",
     "",
-    mpADC_Stretch, DEBUG_STRETCH_ADC_B, 0, 255, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_B, FuncBeforeDraw
+    DEBUG_STRETCH_ADC_B, 0, 255, mpADC_Stretch, IsActive_ADC_Stretch_ADC, OnChanged_ADC_Stretch_ADC_B, FuncBeforeDraw
 );
 
 
@@ -380,8 +380,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                   
     "См 1к 2мВ пост", "Shift 1ch 2mV DC",
     "",
     "",
-    mpADC_AltRShift, set.chan[A].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100,
-    FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
+    set.chan[A].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100, mpADC_AltRShift, FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -394,8 +393,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_B,                                   
     "См 2к 2мВ пост", "Shift 2ch 2mV DC",
     "",
     "",
-    mpADC_AltRShift, set.chan[B].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100,
-    FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
+    set.chan[B].rShiftAdd[Range_2mV][ModeCouple_DC], -100, 100, mpADC_AltRShift, FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -403,8 +401,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_5mV_DC_A,                                   
     "См 1к 5мВ пост", "Shift 1ch 5mV DC",
     "",
     "",
-    mpADC_AltRShift, set.chan[A].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100,
-    FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
+    set.chan[A].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100, mpADC_AltRShift, FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -412,8 +409,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_5mV_DC_B,                                   
     "См 2к 5мВ пост", "Shift 2ch 5mV DC",
     "",
     "",
-    mpADC_AltRShift, set.chan[B].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100,
-    FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
+    set.chan[B].rShiftAdd[Range_5mV][ModeCouple_DC], -100, 100, mpADC_AltRShift, FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -421,8 +417,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_10mV_DC_A,                                  
     "См 1к 10мВ пост", "Shift 1ch 10mV DC",
     "",
     "",
-    mpADC_AltRShift, set.chan[A].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100,
-    FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
+    set.chan[A].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100, mpADC_AltRShift,  FuncActive, OnChanged_ADC_AltRShift_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -430,8 +425,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_10mV_DC_B,                                  
     "См 2к 10мВ пост", "Shift 2ch 10mV DC",
     "",
     "",
-    mpADC_AltRShift, set.chan[B].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100,
-    FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
+    set.chan[B].rShiftAdd[Range_10mV][ModeCouple_DC], -100, 100, mpADC_AltRShift, FuncActive, OnChanged_ADC_AltRShift_B, FuncBeforeDraw
 );
 
 
@@ -472,8 +466,7 @@ DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                               
     "Выб-к/ворота", "Samples/gates",
     "",
     "",
-    mpRandomizer, NUM_MEAS_FOR_GATES, 1, 2500,
-    FuncActive, OnChanged_Randomizer_SamplesForGates, FuncBeforeDraw
+    NUM_MEAS_FOR_GATES, 1, 2500, mpRandomizer, FuncActive, OnChanged_Randomizer_SamplesForGates, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -486,8 +479,7 @@ DEF_GOVERNOR(       mgRandomizer_AltTShift0,                                    
     "tShift доп.", "tShift alt.",
     "",
     "",
-    mpRandomizer, ADD_SHIFT_T0, 0, 510,
-    FuncActive, OnChanged_Randomizer_AltTShift0, FuncBeforeDraw
+    ADD_SHIFT_T0, 0, 510, mpRandomizer, FuncActive, OnChanged_Randomizer_AltTShift0, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -495,8 +487,7 @@ DEF_GOVERNOR(       mgRandomizer_Average,                                       
     "Усредн.", "Average",
     "",
     "",
-    mpRandomizer, NUM_AVE_FOR_RAND, 1, 32,
-    FuncActive, FuncChanged, FuncBeforeDraw
+    NUM_AVE_FOR_RAND, 1, 32, mpRandomizer, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 
@@ -754,7 +745,7 @@ DEF_GOVERNOR(       mgConsole_NumStrings,                                       
     "Число строк", "Number strings",
     "",
     "",
-    mpConsole, NUM_STRINGS, 0, 33, FuncActive, FuncChanged, FuncBeforeDraw
+    NUM_STRINGS, 0, 33, mpConsole, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
