@@ -65,9 +65,8 @@ static const char chanInverseEn[] = "When \"Enable\" signal on the screen will b
 static const char chanDividerRu[] = "Ослабление сигнала:\n\"Выкл\" - сигнал не ослабляется.\n\"x10\" - сигнал ослабляется в 10 раз";
 static const char chanDividerEn[] = "Attenuation: \n\"Off\" - the signal is not attenuated.\n\"x10\" - the signal is attenuated by 10 times";
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КАНАЛ 1 ///
-DEF_PAGE_7(         pChanA,
-    ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_7(         pChanA,                                                                                                             // КАНАЛ 1 ///
     Page_ChannelA, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
@@ -199,9 +198,8 @@ DEF_BUTTON
     pChanA, EmptyFuncBV, OnPress_ChanA_Balance, EmptyFuncVII
 )
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// КАНАЛ 2 ///
-DEF_PAGE_7(         pChanB,
-    ,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_7(         pChanB,                                                                                                             // КАНАЛ 2 ///
     Page_ChannelB, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
@@ -215,7 +213,7 @@ DEF_PAGE_7(         pChanB,
     bChanB_Balance      // КАНАЛ 2 - Балансировать
 );
 
-//--------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Вход ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_ChanB_Input(void)
 {
     return !FPGA_POINTS_32k;
@@ -236,9 +234,8 @@ void OnChanged_InputB(bool active)
     panel.EnableLEDChannel(B, SET_ENABLED_B);
 }
 
-DEF_CHOICE_2
-(
-    cChanB_Input, pChanB,
+DEF_CHOICE_2(       cChanB_Input,                                                                                             //--- КАНАЛ 2 - Вход ---
+    pChanB,
     SET_ENABLED_B, IsActive_ChanB_Input, OnChanged_InputB, FuncDraw,
     "Вход", "Input",
     chanInputRu,
@@ -247,11 +244,9 @@ DEF_CHOICE_2
     ENABLE_RU, ENABLE_EN
 );
 
-//-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Связь ---
-DEF_CHOICE_3
-(
-    cChanB_Couple, pChanB,
-    SET_COUPLE_B, FuncActive, OnChanged_ChanB_Couple, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_3(       cChanB_Couple,                                                                                           //--- КАНАЛ 2 - Связь ---
+    pChanB, SET_COUPLE_B, FuncActive, OnChanged_ChanB_Couple, FuncDraw,
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
@@ -265,16 +260,14 @@ static void OnChanged_ChanB_Couple(bool)
     FPGA_SetModeCouple(B, SET_COUPLE_B);
 }
 
-//------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Полоса ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Bandwidth(bool)
 {
     FPGA_SetBandwidth(B);
 }
 
-DEF_CHOICE_2
-(
-    cChanB_Bandwidth, pChanB,
-    SET_BANDWIDTH_B, FuncActive, OnChanged_ChanB_Bandwidth, FuncDraw,
+DEF_CHOICE_2(       cChanB_Bandwidth,                                                                                       //--- КАНАЛ 2 - Полоса ---
+    pChanB, SET_BANDWIDTH_B, FuncActive, OnChanged_ChanB_Bandwidth, FuncDraw,
     "Полоса", "Bandwidth",
     "",
     "",
@@ -282,7 +275,7 @@ DEF_CHOICE_2
     "20МГц", "20MHz"
 );
 
-//------------------------------------------------------------------------------------------------------------------------ КАНАЛ 2 - Сопротивление ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Resistance(bool)
 {
     FPGA_SetResistance(B, SET_RESISTANCE_B);
@@ -292,26 +285,22 @@ static void OnChanged_ChanB_Resistance(bool)
     }
 }
 
-DEF_CHOICE_2
-(
-    cChanB_Resistance, pChanB,
-    SET_RESISTANCE_B, FuncActive, OnChanged_ChanB_Resistance, FuncDraw,
+DEF_CHOICE_2(       cChanB_Resistance,                                                                               //--- КАНАЛ 2 - Сопротивление ---
+    pChanB, SET_RESISTANCE_B, FuncActive, OnChanged_ChanB_Resistance, FuncDraw,
     "Вх сопр", "Resistance",
     "", "",
     "1 МОм", "1 Mohm",
     "50 Ом", "50 Ohm"
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Инверсия ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Inverse(bool)
 {
     FPGA_SetRShift(B, SET_RSHIFT_B);
 }
 
-DEF_CHOICE_2
-(
-    cChanB_Inverse, pChanB,
-    SET_INVERSE_B, FuncActive, OnChanged_ChanB_Inverse, FuncDraw,
+DEF_CHOICE_2(       cChanB_Inverse,                                                                                       //--- КАНАЛ 2 - Инверсия ---
+    pChanB, SET_INVERSE_B, FuncActive, OnChanged_ChanB_Inverse, FuncDraw,
     "Инверсия", "Inverse",
     chanInverseRu,
     chanInverseEn,

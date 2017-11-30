@@ -412,7 +412,7 @@ static void OnPress_FFT(void)
     }
 }
 
-DEF_PAGE_6( ppFFT, static,
+DEF_PAGE_6(         ppFFT, 
     Page_Service_FFT, &pService, IsActive_FFT, OnPress_FFT,
     "СПЕКТР", "SPECTRUM",
     "Отображение спектра входного сигнала",

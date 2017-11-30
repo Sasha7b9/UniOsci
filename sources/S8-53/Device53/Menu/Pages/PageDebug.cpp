@@ -183,7 +183,6 @@ DEF_CHOICE_2(       mcConsole_Registers_tShift,                                 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_12(        mpConsole_Registers,                                                                           // Œ“À¿ƒ ¿ -  ŒÕ—ŒÀ‹ - –≈√»—“–€ ///
-    static,
     Page_DebugShowRegisters,  &mpConsole, FuncActive, EmptyPressPage,
     "–≈√»—“–€", "REGISTERS",
     "",
@@ -450,8 +449,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_10mV_DC_B,                                  
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_7(         mpADC_AltRShift,                                                                                  /// Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ ///
-    static,
+DEF_PAGE_7(         mpADC_AltRShift,                                                                                   // Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ ///
     Page_DebugADCaltShift, &mpADC, FuncActive, EmptyPressPage,
     "ƒŒœ —Ã≈Ÿ", "ADD RSHFIT",
     "",
@@ -801,7 +799,6 @@ DEF_PAGE_3(         mpConsole,                                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_6(         pDebug,                                                                                                             // Œ“À¿ƒ ¿ ///
-    ,
     Page_Debug, &mainPage, FuncActive, EmptyPressPage,
     "Œ“À¿ƒ ¿", "DEBUG",
     "",

@@ -275,7 +275,7 @@ DEF_PAGE_SB(        ppTune,                                                     
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_4(     ppFreqMeter, static,                                                                                     // хглепемхъ - вюярнрнлеп ///
+DEF_PAGE_4(         ppFreqMeter,                                                                                         // хглепемхъ - вюярнрнлеп ///
     Page_Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage,
     "вюярнрнлеп", "FREQ METER",
     "",
@@ -287,7 +287,7 @@ DEF_PAGE_4(     ppFreqMeter, static,                                            
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_6(     pMeasures, ,                                                                                                          // хглепемхъ ///
+DEF_PAGE_6(         pMeasures,                                                                                                        // хглепемхъ ///
     Page_Measures, &mainPage, FuncActive, EmptyPressPage,
     "хглепемхъ", "MEASURES",
     "юБРНЛЮРХВЕЯЙХЕ ХГЛЕПЕМХЪ",

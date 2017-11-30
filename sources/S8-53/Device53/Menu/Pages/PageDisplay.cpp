@@ -334,7 +334,6 @@ static const GovernorColor mgcSettings_Colors_Grid =
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_4(         mspSettings_Colors,                                                                             // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ///
-    static,
     Page_ServiceDisplayColors, &mspSettings, FuncActive, EmptyPressPage,
     "ЦВЕТА", "COLORS",
     "Выбор цветов дисплея",
@@ -438,7 +437,6 @@ DEF_CHOICE_6
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         mspSettings,                                                                                            // ДИСПЛЕЙ - НАСТРОЙКИ ///
-    static,
     Page_ServiceDisplay, &pDisplay, FuncActive, EmptyPressPage,
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
@@ -455,7 +453,7 @@ DEF_PAGE_7(         mspSettings,                                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_9(         pDisplay,                                                                                                           // ДИСПЛЕЙ ///
-    , Page_Display, &mainPage, FuncActive, EmptyPressPage,
+    Page_Display, &mainPage, FuncActive, EmptyPressPage,
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
     "Contains settings of display of the display.",

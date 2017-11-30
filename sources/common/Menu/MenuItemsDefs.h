@@ -28,10 +28,10 @@ static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (voi
 const Page name = {Item_Page, false, namePage, 3, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_4(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
+#define DEF_PAGE_4(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
     item1, item2, item3, item4)                                                                                                                 \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4};                                    \
-s const Page name = {Item_Page, false, namePage, 4, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 4, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 #define DEF_PAGE_5(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                             \
@@ -40,49 +40,41 @@ static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (voi
 const Page name = {Item_Page, false, namePage, 5, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_6(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
+#define DEF_PAGE_6(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
     item1, item2, item3, item4, item5, item6)                                                                                                   \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6};    \
-s const Page name = {Item_Page, false, namePage, 6, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 6, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_7(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
+#define DEF_PAGE_7(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
     item1, item2, item3, item4, item5, item6, item7)                                                                                            \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7};                            \
-s const Page name = {Item_Page, false, namePage, 7, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 7, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_8(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
+#define DEF_PAGE_8(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
     item1, item2, item3, item4, item5, item6, item7, item8)                                                                                     \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7, (void *)&item8};            \
-s const Page name = {Item_Page, false, namePage, 8, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 8, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_9(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
+#define DEF_PAGE_9(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
     item1, item2, item3, item4, item5, item6, item7, item8, item9)                                                                              \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9};                                                                                                            \
-s const Page name = {Item_Page, false, namePage, 9, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 9, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_10(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_10(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10)                                                                      \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10};                                                                                           \
-s const Page name = {Item_Page, false, namePage, 10, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 10, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
-
-//#define DEF_PAGE_11(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                            \
-//    item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11)                                                              \
-//static const void * const  items##name[] = {                                                                                                    \
-//    (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
-//    (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11};                                                                          \
-//static const Page name = {Item_Page, false, namePage, 11, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                               \
-//    items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 #define DEF_PAGE_11_GLOBAL(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                     \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11)                                                              \
@@ -92,29 +84,29 @@ static const void * const  items##name[] = {                                    
 const Page name = {Item_Page, false, namePage, 11, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_12(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_12(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12)                                                      \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11, (void *)&item12};                                                         \
-s const Page name = {Item_Page, false, namePage, 12, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 12, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_13(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_13(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13)                                              \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11, (void *)&item12, (void *)&item13};                                        \
-s const Page name = {Item_Page, false, namePage, 13, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 13, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_15(name, s, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_15(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10,                                                                      \
     item11, item12, item13, item14, item15)                                                                                                     \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11, (void *)&item12, (void *)&item13, (void *)&item14, (void *)&item15};      \
-s const Page name = {Item_Page, false, namePage, 15, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 15, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 

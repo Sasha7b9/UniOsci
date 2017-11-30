@@ -506,7 +506,7 @@ static void OnPress_Math_FFT(void)
     }
 }
 
-DEF_PAGE_6( pppMath_FFT, static,                                                                                   // СЕРВИС - МАТЕМАТИКА - СПЕКТР ///
+DEF_PAGE_6(         pppMath_FFT,                                                                                   // СЕРВИС - МАТЕМАТИКА - СПЕКТР ///
     Page_MathFFT, &ppMath, IsActive_Math_FFT, OnPress_Math_FFT,
     "СПЕКТР", "SPECTRUM",
     "Отображение спектра входного сигнала",
@@ -740,7 +740,7 @@ DEF_PAGE_SB(        ppInformation,                                              
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_10(        pService, ,                                                                                                          // СЕРВИС ///
+DEF_PAGE_10(        pService,                                                                                                            // СЕРВИС ///
     Page_Service,&mainPage, FuncActive, FuncPress,
     "СЕРВИС", "SERVICE",
     "Дополнительные настройки, калибровка, поиск сигнала, математические функции",

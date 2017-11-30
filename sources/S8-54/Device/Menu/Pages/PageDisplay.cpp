@@ -52,7 +52,7 @@ static void        OnChanged_Settings_AltMarkers(bool active);
 extern const         Choice cSettings_AutoHide;                 ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - Ñêðûâàòü
 static void        OnChanged_Settings_AutoHide(bool active);
 
-// ÄÈÑÏËÅÉ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PageDisplay_Init(void)
 {
     OnChanged_Settings_Colors_Background(true);   // Çàíîñèì çíà÷åíèÿ â ãóâåðí¸ðû öâåòîâ
@@ -60,7 +60,7 @@ void PageDisplay_Init(void)
 
 extern const Page mainPage;
 
-DEF_PAGE_9(     pDisplay, ,
+DEF_PAGE_9(     pDisplay,                                                                                                               // ÄÈÑÏËÅÉ ///
     Page_Display, &mainPage, FuncActive, EmptyPressPage,
     "ÄÈÑÏËÅÉ", "DISPLAY",
     "Ñîäåðæèò íàñòðîéêè îòîáðàæåíèÿ äèñïëåÿ.",
@@ -362,9 +362,8 @@ DEF_CHOICE_2
     "Äåëåíèÿ", "Divisions"
 );
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ ///
-DEF_PAGE_7(         ppDisplaySettings,
-    static,
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_7(         ppDisplaySettings,                                                                                      // ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ ///
     Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage,
     "ÍÀÑÒÐÎÉÊÈ", "SETTINGS",
     "Äîïîëíèòåëüíûå íàñòðîéêè äèñïëåÿ",
@@ -378,9 +377,9 @@ DEF_PAGE_7(         ppDisplaySettings,
     cSettings_AutoHide          // ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - Ñêðûâàòü,
 );
 
-//-------------------------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 /// \todo Äîáàâèòü äîïîëíèòåëüíûå öâåòà 1-ãî è 2-ãî êàíàëîâ
-DEF_PAGE_5(         pppSettings_Colors,
+DEF_PAGE_5(         pppSettings_Colors,                                                                          //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ ---
     Page_Display_Settings_Colors, &ppDisplaySettings, FuncActive, EmptyPressPage,
     "ÖÂÅÒÀ", "COLORS",
     "Âûáîð öâåòîâ äèñïëåÿ",
@@ -400,11 +399,9 @@ DEF_PAGE_5(         pppSettings_Colors,
     //&mcServDisplInverse
 );
 
-//--------------------------------------------------------------------------------------------------- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Öâåòîâàÿ ñõåìà ---
-DEF_CHOICE_2
-(
-    cSettings_Colors_Scheme, pppSettings_Colors,
-    set.serv_ColorScheme, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_2(       cSettings_Colors_Scheme,                                                    //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Öâåòîâàÿ ñõåìà ---
+    pppSettings_Colors, set.serv_ColorScheme, FuncActive, FuncChangedChoice, FuncDraw,
     "Öâåòîâàÿ ñõåìà", "Color scheme",
     "Ðåæèì ðàáîòû êàëèáðàòîðà",
     "Mode of operation of the calibrator",
