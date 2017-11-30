@@ -426,7 +426,6 @@ DEF_CHOICE_6(       mcSettings_AutoHide,                                        
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         mspSettings,                                                                                            // ДИСПЛЕЙ - НАСТРОЙКИ ///
-    Page_ServiceDisplay, &pDisplay, FuncActive, EmptyPressPage,
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
     "Additional display settings",
@@ -436,7 +435,8 @@ DEF_PAGE_7(         mspSettings,                                                
     mgSettings_TimeMessages,         // ДИСПЛЕЙ - НАСТРОЙКИ - Время
     mcSettings_ShowStringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
     mcSettings_ShowAltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
-    mcSettings_AutoHide              // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
+    mcSettings_AutoHide,             // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать
+    Page_ServiceDisplay, &pDisplay, FuncActive, EmptyPressPage
 );
 
 

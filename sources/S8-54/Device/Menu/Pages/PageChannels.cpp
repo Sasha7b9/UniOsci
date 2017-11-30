@@ -142,7 +142,6 @@ DEF_BUTTON(         bChanA_Balance,                                             
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         pChanA,                                                                                                             // КАНАЛ 1 ///
-    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 1", "CHANNEL 1",
     "Содержит настройки канала 1.",
     "Contains settings of the channel 1.",
@@ -152,7 +151,8 @@ DEF_PAGE_7(         pChanA,                                                     
     cChanA_Resistance, // КАНАЛ 1 - Вх сопр
     cChanA_Inverse,    // КАНАЛ 1 - Инверсия
     cChanA_Divider,    // КАНАЛ 1 - Делитель
-    bChanA_Balance     // КАНАЛ 1 - Балансировать
+    bChanA_Balance,    // КАНАЛ 1 - Балансировать
+    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -274,7 +274,6 @@ DEF_BUTTON(         bChanB_Balance,                                             
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         pChanB,                                                                                                             // КАНАЛ 2 ///
-    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage,
     "КАНАЛ 2", "CHANNEL 2",
     "Содержит настройки канала 2.",
     "Contains settings of the channel 2.",
@@ -284,5 +283,6 @@ DEF_PAGE_7(         pChanB,                                                     
     cChanB_Resistance,  // КАНАЛ 2 - Сопротивление
     cChanB_Inverse,     // КАНАЛ 2 - Инверсия
     cChanB_Divider,     // КАНАЛ 2 - Делитель
-    bChanB_Balance      // КАНАЛ 2 - Балансировать
+    bChanB_Balance,     // КАНАЛ 2 - Балансировать
+    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage
 );

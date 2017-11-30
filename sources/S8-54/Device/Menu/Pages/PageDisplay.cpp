@@ -355,7 +355,6 @@ DEF_CHOICE_2(       cScaleYtype,                                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         ppDisplaySettings,                                                                                      // ДИСПЛЕЙ - НАСТРОЙКИ ///
-    Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage,
     "НАСТРОЙКИ", "SETTINGS",
     "Дополнительные настройки дисплея",
     "Additional display settings",
@@ -365,7 +364,8 @@ DEF_PAGE_7(         ppDisplaySettings,                                          
     gSettings_Time,             // ДИСПЛЕЙ - НАСТРОЙКИ - Время
     cSettings_StringNavigation, // ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню
     cSettings_AltMarkers,       // ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры
-    cSettings_AutoHide          // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать,
+    cSettings_AutoHide,         // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать,
+    Page_Display_Settings, &pDisplay, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

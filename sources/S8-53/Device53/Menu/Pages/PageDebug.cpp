@@ -437,17 +437,17 @@ DEF_GOVERNOR(       mbADC_AltRShift_10mV_DC_B,                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         mpADC_AltRShift,                                                                                   // нркюдйю - южо - дно ялеы ///
-    Page_DebugADCaltShift, &mpADC, FuncActive, EmptyPressPage,
     "дно ялеы", "ADD RSHFIT",
     "",
     "",
-    mbADC_AltRShift_Reset,     // нркюдйю - южо - дно ялеы - яАПНЯ
-    mbADC_AltRShift_2mV_DC_A,  // нркюдйю - южо - дно ялеы - яЛ 1Й 2Лб ОНЯР
-    mbADC_AltRShift_2mV_DC_B,  // нркюдйю - южо - дно ялеы - яЛ 2Й 2Лб ОНЯР
-    mbADC_AltRShift_5mV_DC_A,  // нркюдйю - южо - дно ялеы - яЛ 1Й 5Лб ОНЯР
-    mbADC_AltRShift_5mV_DC_B,  // нркюдйю - южо - дно ялеы - яЛ 2Й 5Лб ОНЯР
-    mbADC_AltRShift_10mV_DC_A, // нркюдйю - южо - дно ялеы - яЛ 1Й 10Лб ОНЯР
-    mbADC_AltRShift_10mV_DC_B  // нркюдйю - южо - дно ялеы - яЛ 2Й 10Лб ОНЯР
+    mbADC_AltRShift_Reset,      // нркюдйю - южо - дно ялеы - яАПНЯ
+    mbADC_AltRShift_2mV_DC_A,   // нркюдйю - южо - дно ялеы - яЛ 1Й 2Лб ОНЯР
+    mbADC_AltRShift_2mV_DC_B,   // нркюдйю - южо - дно ялеы - яЛ 2Й 2Лб ОНЯР
+    mbADC_AltRShift_5mV_DC_A,   // нркюдйю - южо - дно ялеы - яЛ 1Й 5Лб ОНЯР
+    mbADC_AltRShift_5mV_DC_B,   // нркюдйю - южо - дно ялеы - яЛ 2Й 5Лб ОНЯР
+    mbADC_AltRShift_10mV_DC_A,  // нркюдйю - южо - дно ялеы - яЛ 1Й 10Лб ОНЯР
+    mbADC_AltRShift_10mV_DC_B,  // нркюдйю - южо - дно ялеы - яЛ 2Й 10Лб ОНЯР
+    Page_DebugADCaltShift, &mpADC, FuncActive, EmptyPressPage
 );
 
 
