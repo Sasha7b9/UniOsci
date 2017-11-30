@@ -217,7 +217,7 @@ DEF_SMALL_BUTTON(   sbMemLastSaveToFlash,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DEF_SMALL_BUTTON(   sbSetNameSave,
+DEF_SMALL_BUTTON(   sbSetNameSave,                                                                                      //--- ИМЯ ФАЙЛА - Сохранить ---
     "Сохранить", "Save",
     "Сохранение на флеш под заданным именем",
     "Saving to flashdrive with the specified name",
