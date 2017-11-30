@@ -101,23 +101,21 @@ DEF_CHOICE_2(cPeakDet,                                                          
     SET_PEAKDET, pTime, IsActive_PeakDet, OnChanged_PeakDet, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------------------- РАЗВЕРТКА - То ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_TPos(bool active)
 {
     OnChanged_Points(active);
     FPGA_SetTShift(SET_TSHIFT);
 }
 
-DEF_CHOICE_3
-(
-    cTPos, pTime,
-    TPOS, FuncActive, OnChanged_TPos, FuncDraw,
+DEF_CHOICE_3(       cTPos,                                                                                                    //--- РАЗВЕРТКА - То ---
     "\x7b", "\x7b",
     "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.", 
     "Sets the anchor point nuleovgo time offset to the screen - the left edge, center, right edge.",
     "Лево",  "Left",
     "Центр", "Center",
-    "Право", "Right"
+    "Право", "Right",
+    TPOS, pTime, FuncActive, OnChanged_TPos, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

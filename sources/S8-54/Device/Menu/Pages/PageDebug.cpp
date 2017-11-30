@@ -382,7 +382,7 @@ DEF_PAGE_3(         pppADC_Balance,                                             
     gADC_Balance_ShiftB     // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
 );
 
-//----------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - БАЛАНС - Режим ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Balance_Mode(bool)
 {
     Draw_ADC_Balance_Mode(0, 0);
@@ -403,16 +403,14 @@ static void Draw_ADC_Balance_Mode(int, int)
     shiftADCB = shift[B][NRST_BALANCE_ADC_TYPE];
 }
 
-DEF_CHOICE_3
-(
-    cADC_Balance_Mode, pppADC_Balance,
-    NRST_BALANCE_ADC_TYPE, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode,
+DEF_CHOICE_3(       cADC_Balance_Mode,                                                                        //--- ОТЛАДКА - АЦП - БАЛАНС - Режим ---
     "Режим", "Mode",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
     "Реальный", "Real",
-    "Ручной",   "Manual"
+    "Ручной",   "Manual",
+    NRST_BALANCE_ADC_TYPE, pppADC_Balance, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode
 );
 
 //------------------------------------------------------------------------------------------------------------ ОТЛАДКА - АЦП - БАЛАНС - Смещение 1 ---
@@ -475,7 +473,7 @@ DEF_PAGE_15(        pppADC_Stretch,
     emptyChoice
 );
 
-//--------------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 stretchA;
 static int16 stretchB;  
 
@@ -493,16 +491,14 @@ void OnChanged_ADC_Stretch_Mode(bool)
     }
 }
 
-DEF_CHOICE_3
-(
-    cADC_Stretch_Mode, pppADC_Stretch,
-    NRST_STRETCH_ADC_TYPE, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw,
+DEF_CHOICE_3(       cADC_Stretch_Mode,                                                                      //--- ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ---
     "Режим", "Mode",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
     "Реальный", "Real",
-    "Ручной",   "Manual"
+    "Ручной",   "Manual",
+    NRST_STRETCH_ADC_TYPE, pppADC_Stretch, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw
 );
 
 //--------------------------------------------------------------------------------------------------------- ОТЛАДКА - АЦП - РАСТЯЖКА - Растяжка 1к ---

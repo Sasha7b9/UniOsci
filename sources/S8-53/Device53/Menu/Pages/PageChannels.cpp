@@ -67,13 +67,13 @@ void OnChanged_CoupleA(bool active)
 }
 
 DEF_CHOICE_3(       mcCoupleA,                                                                                               //--- КАНАЛ 1 - Связь ---
-    pChanA, SET_COUPLE_A, FuncActive, OnChanged_CoupleA, FuncDraw,
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
     "Пост",  "AC",
     "Перем", "DC",
-    "Земля", "Ground"
+    "Земля", "Ground",
+    SET_COUPLE_A, pChanA, FuncActive, OnChanged_CoupleA, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -144,22 +144,20 @@ DEF_CHOICE_2(       mcInputB,                                                   
     SET_ENABLED_B, pChanB, FuncActive, OnChanged_InputB, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 2 - Связь ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_CoupleB(bool active)
 {
     fpga.SetModeCouple(B, SET_COUPLE_B);
 }
 
-DEF_CHOICE_3
-(
-    mcCoupleB, pChanB,
-    SET_COUPLE_B, FuncActive, OnChanged_CoupleB, FuncDraw,
+DEF_CHOICE_3(       mcCoupleB,                                                                                               //--- КАНАЛ 2 - Связь ---
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
     "Пост",  "AC",
     "Перем", "DC",
-    "Земля", "Ground"
+    "Земля", "Ground",
+    SET_COUPLE_B, pChanB, FuncActive, OnChanged_CoupleB, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

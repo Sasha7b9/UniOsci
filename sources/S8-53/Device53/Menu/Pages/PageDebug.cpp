@@ -215,14 +215,13 @@ static void OnChanged_ADC_Balance_Mode(bool active)
 }
 
 DEF_CHOICE_3(       mcADC_Balance_Mode,                                                                       //--- ОТЛАДКА - АЦП - БАЛАНС - Режим ---
-    mpADC_Balance,
-    BALANCE_ADC_TYPE, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode,
     "Режим", "Mode",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
     "Реальный", "Real",
-    "Ручной",   "Manual"
+    "Ручной",   "Manual",
+    BALANCE_ADC_TYPE, mpADC_Balance, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -296,14 +295,13 @@ static void OnChanged_ADC_Stretch_Mode(bool active)
 }
 
 DEF_CHOICE_3(       mcADC_Stretch_Mode,                                                                     //--- ОТЛАДКА - АЦП - РАСТЯЖКА - Режим ---
-    mpADC_Stretch,
-    DEBUG_STRETCH_ADC_TYPE, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw,
     "Режим", "Mode",
     "",
     "",
     DISABLE_RU, DISABLE_EN,
     "Реальный", "Real",
-    "Ручной",   "Manual"
+    "Ручной",   "Manual",
+    DEBUG_STRETCH_ADC_TYPE, mpADC_Stretch, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

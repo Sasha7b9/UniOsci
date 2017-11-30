@@ -36,14 +36,13 @@ DEF_CHOICE_2(       cFreqMeter_Enable,                                          
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(       cFreqMeter_TimeF,                                                                 //--- ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Время счёта F ---
-    ppFreqMeter,
-    FREQ_METER_TIMECOUNTING, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw,
     "Время счёта F", "Time calc F",
     "Позволяет выбрать точность измерения частоты - чем больше время, тем больше точность и больше время измерения",
     "Allows to choose the accuracy of measurement of frequency - the more time, the accuracy more time of measurement is more",
     "100мс", "100ms",
-    "1с", "1s",
-    "10с", "10ms"
+    "1с",    "1s",
+    "10с",   "10ms",
+    FREQ_METER_TIMECOUNTING, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -61,14 +60,13 @@ DEF_CHOICE_4(       cFreqMeter_FreqClc,                                         
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(       cFreqMeter_NumPeriods,                                                          //--- ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов ---
-    ppFreqMeter,
-    FREQ_METER_NUM_PERIODS, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw,
     "Кол-во периодов", "Num periods",
     "Позволяет выбрать точность измерения периода - чем больше время, тем больше точность и больше время измерения",
     "Allows to choose the accuracy of measurement of period - the more time, the accuracy more time of measurement is more",
-    "1", "1",
-    "10", "10",
-    "100", "100"    
+    "1",   "1",
+    "10",  "10",
+    "100", "100",
+    FREQ_METER_NUM_PERIODS, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -125,14 +123,13 @@ static bool IsActive_Channels(void)
 }
 
 DEF_CHOICE_3(       cChannels,                                                                                            //--- ИЗМЕРЕНИЯ - Каналы ---
-    pMeasures,
-    SOURCE_MEASURE, IsActive_Channels, FuncChangedChoice, FuncDraw,
     "Каналы", "Channels",
     "По каким каналам выводить измерения",
     "Which channels to output measurement",
-    "1", "1",
-    "2", "2",
-    "1 и 2", "1 and 2"
+    "1",     "1",
+    "2",     "2",
+    "1 и 2", "1 and 2",
+    SOURCE_MEASURE, pMeasures, IsActive_Channels, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

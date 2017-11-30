@@ -13,7 +13,7 @@ extern const Page pTrig;
 extern const Page ppSearch;
 
 
-//---------------------------------------------------------------------------------------------------------------------------------- СИНХР - Режим ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_TrigMode(bool)
 {
     FPGA_Stop(false);
@@ -41,11 +41,8 @@ void OnChanged_TrigMode(bool)
     }
 }
 
-DEF_CHOICE_3
-(
-    cMode, pTrig,
-    START_MODE, FuncActive, OnChanged_TrigMode, FuncDraw,
-    "Режим",        "Mode",
+DEF_CHOICE_3(       cMode,                                                                                                     //--- СИНХР - Режим ---
+    "Режим", "Mode",
     "Задаёт режим запуска:\n"
     "1. \"Авто\" - запуск происходит автоматически.\n"
     "2. \"Ждущий\" - запуск происходит по уровню синхронизации.\n"
@@ -54,27 +51,26 @@ DEF_CHOICE_3
     "1. \"Auto\" - start automatically.\n"
     "2. \"Standby\" - the launch takes place at the level of synchronization.\n"
     "3. \"Single\" - the launch takes place on reaching the trigger levelonce. For the next measurement is necessary to press the START/STOP.",
-    "Авто ",        "Auto",
-    "Ждущий",       "Wait",
-    "Однократный",  "Single"
+    "Авто ",       "Auto",
+    "Ждущий",      "Wait",
+    "Однократный", "Single",
+    START_MODE, pTrig, FuncActive, OnChanged_TrigMode, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------------------- СИНХР - Источник ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Source(bool)
 {
     FPGA_SetTrigSource(TRIGSOURCE);
 }
 
-DEF_CHOICE_3
-(
-    cSource, pTrig,
-    TRIGSOURCE, FuncActive, OnChanged_Source, FuncDraw,
+DEF_CHOICE_3(       cSource,                                                                                                //--- СИНХР - Источник ---
     "Источник", "Source",
     "Выбор источника сигнала синхронизации.",
     "Synchronization signal source choice.",
-    "Канал 1",  "Channel 1",
-    "Канал 2",  "Channel 2",
-    "Внешний",  "External"
+    "Канал 1", "Channel 1",
+    "Канал 2", "Channel 2",
+    "Внешний", "External",
+    TRIGSOURCE, pTrig, FuncActive, OnChanged_Source, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

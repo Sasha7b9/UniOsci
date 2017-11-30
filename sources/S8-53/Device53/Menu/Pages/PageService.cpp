@@ -87,13 +87,13 @@ static void OnChanged_Calibrator_Mode(bool active)
 }
 
 DEF_CHOICE_3(       cCalibrator_Mode,                                                                       //--- СЕРВИС - КАЛИБРАТОР - Калибратор ---
-    ppCalibrator, CALIBRATOR, FuncActive, OnChanged_Calibrator_Mode, FuncDraw,
     "Калибратор", "Calibrator",
     "Режим работы калибратора",
     "Mode of operation of the calibrator",
     "Перем", "DC",
     "Пост",  "AC",
-    "0В",    "OV"
+    "0В",    "OV",
+    CALIBRATOR, ppCalibrator, FuncActive, OnChanged_Calibrator_Mode, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -400,13 +400,13 @@ DEF_CHOICE_2(       cMath_FFT_Scale,                                            
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(       cMath_FFT_Source,                                                                //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - Источник ---
-    pppMath_FFT, SOURCE_FFT, FuncActive, FuncChangedChoice, FuncDraw,
     "Источник", "Source",
     "Выбор источника для расчёта спектра",
     "Selecting the source for the calculation of the spectrum",
     "Канал 1",     "Channel 1",
     "Канал 2",     "Channel 2",
-    "Канал 1 + 2", "Channel 1 + 2"
+    "Канал 1 + 2", "Channel 1 + 2",
+    SOURCE_FFT, pppMath_FFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -482,13 +482,13 @@ static bool IsActive_Math_FFT_Limit(void)
 }
 
 DEF_CHOICE_3(       cMath_FFT_Limit,                                                                 //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - Диапазон ---
-    pppMath_FFT, MAX_DB_FFT, IsActive_Math_FFT_Limit, FuncChangedChoice, FuncDraw,
     "Диапазон", "Range",
     "Здесь можно задать предел наблюдения за мощностью спектра",
     "Here you can set the limit of monitoring the power spectrum",
     "-40дБ", "-40dB",
     "-60дБ", "-60dB",
-    "-80дБ", "-80dB"
+    "-80дБ", "-80dB",
+    MAX_DB_FFT, pppMath_FFT, IsActive_Math_FFT_Limit, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

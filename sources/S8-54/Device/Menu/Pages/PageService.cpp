@@ -201,22 +201,20 @@ DEF_PAGE_2(         ppCalibrator,                                               
     bCalibrator_Calibrate   // СЕРВИС - КАЛИБРАТОР - Калибровать
 );
 
-//--------------------------------------------------------------------------------------------------------------- СЕРВИС - КАЛИБРАТОР - Калибратор ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Calibrator_Calibrator(bool)
 {
     FPGA_SetCalibratorMode(CALIBRATOR_MODE);
 }
 
-DEF_CHOICE_3
-(
-    cCalibrator_Calibrator, ppCalibrator,
-    CALIBRATOR_MODE, FuncActive, OnChanged_Calibrator_Calibrator, FuncDraw,
+DEF_CHOICE_3(       cCalibrator_Calibrator,                                                                 //--- СЕРВИС - КАЛИБРАТОР - Калибратор ---
     "Калибратор",   "Calibrator",
     "Режим работы калибратора",
     "Mode of operation of the calibrator",
-    "Перем",    "DC",
-    "+4V",      "+4V",
-    "0V",       "0V"
+    "Перем", "DC",
+    "+4V",   "+4V",
+    "0V",    "0V",
+    CALIBRATOR_MODE, ppCalibrator, FuncActive, OnChanged_Calibrator_Calibrator, FuncDraw
 );
 
 //-------------------------------------------------------------------------------------------------------------- СЕРВИС - КАЛИБРАТОР - Калибровать ---
@@ -443,17 +441,15 @@ DEF_CHOICE_2(       cFFT_Scale,                                                 
     SCALE_FFT, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//--------------------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - Источник ---
-DEF_CHOICE_3
-(
-    cFFT_Source, ppFFT,
-    SOURCE_FFT, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_3(       cFFT_Source,                                                                                  //--- СЕРВИС - СПЕКТР - Источник ---
     "Источник",     "Source",
     "Выбор источника для расчёта спектра",
     "Selecting the source for the calculation of the spectrum",
-    "Канал 1",      "Channel 1",
-    "Канал 2",      "Channel 2",
-    "Канал 1 + 2",  "Channel 1 + 2"    
+    "Канал 1",     "Channel 1",
+    "Канал 2",     "Channel 2",
+    "Канал 1 + 2", "Channel 1 + 2",
+    SOURCE_FFT, ppFFT, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //------------------------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - Окно ---
@@ -520,22 +516,20 @@ DEF_SMALL_BUTTON
     pppFFT_Cursors, FuncActive, OnPress_FFT_Cursors_Source, Draw_FFT_Cursors_Source
 );
 
-//--------------------------------------------------------------------------------------------------------------------- СЕРВИС - СПЕКТР - Диапазон ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_FFT_Range(void)
 {
     return SCALE_FFT_IS_LOG;
 }
 
-DEF_CHOICE_3
-(
-    cFFT_Range, ppFFT,
-    MAX_DB_FFT, IsActive_FFT_Range, FuncChangedChoice, FuncDraw,
+DEF_CHOICE_3(       cFFT_Range,                                                                                   //--- СЕРВИС - СПЕКТР - Диапазон ---
     "Диапазон", "Range",
     "Здесь можно задать предел наблюдения за мощностью спектра",
     "Here you can set the limit of monitoring the power spectrum",
     "-40дБ", "-40dB",
     "-60дБ", "-60dB",
-    "-80дБ", "-80dB"
+    "-80дБ", "-80dB",
+    MAX_DB_FFT, ppFFT, IsActive_FFT_Range, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -166,14 +166,13 @@ DEF_CHOICE_7(       mcMeasuresNumber,                                           
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(   mcMeasuresChannels,                                                                                       //--- ИЗМЕРЕНИЯ - Каналы ---
-    pMeasures,
-    SOURCE_MEASURE, IsActiveChoiceMeasuresNumber, FuncChangedChoice, FuncDraw,
     "Каналы", "Channels",
     "По каким каналам выводить измерения",
     "Which channels to output measurement",
     "1",     "1",
     "2",     "2",
-    "1 и 2", "1 and 2"
+    "1 и 2", "1 and 2",
+    SOURCE_MEASURE, pMeasures, IsActiveChoiceMeasuresNumber, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

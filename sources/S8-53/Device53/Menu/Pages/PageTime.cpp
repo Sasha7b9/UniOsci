@@ -104,14 +104,13 @@ void OnChanged_TPos(bool active)
 }
 
 DEF_CHOICE_3(       mcTPos,                                                                                                   //--- РАЗВЕРТКА - To ---
-    pTime,
-    TPOS, FuncActive, OnChanged_TPos, FuncDraw,
     "\x7b", "\x7b",
     "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.",
     "Sets the anchor point nuleovgo time offset to the screen - the left edge, center, right edge.",
     "Лево",  "Left",
     "Центр", "Center",
-    "Право", "Right"
+    "Право", "Right",
+    TPOS, pTime, FuncActive, OnChanged_TPos, FuncDraw
 );
 
 

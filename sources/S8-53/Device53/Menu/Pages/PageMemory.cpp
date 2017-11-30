@@ -744,7 +744,6 @@ static bool FuncActiveMemoryNumPoinst(void)
 }
 
 DEF_CHOICE_3(       mcMemoryNumPoints,                                                                                        //--- ПАМЯТЬ - Точки ---
-    pMemory, ENUM_POINTS, FuncActiveMemoryNumPoinst, ChangeC_Memory_NumPoints, FuncDraw,
     "Точки", "Points"
     ,
     "Выбор количества отсчётов для сохраняемых сигналов. "
@@ -754,7 +753,8 @@ DEF_CHOICE_3(       mcMemoryNumPoints,                                          
     "At increase in number of counting the quantity of the signals kept in memory decreases.",
     "281",  "281",
     "512",  "512",
-    "1024", "1024"
+    "1024", "1024",
+    ENUM_POINTS, pMemory, FuncActiveMemoryNumPoinst, ChangeC_Memory_NumPoints, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

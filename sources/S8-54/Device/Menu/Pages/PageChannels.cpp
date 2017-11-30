@@ -95,22 +95,20 @@ DEF_CHOICE_2(       cChanA_Input,                                               
     SET_ENABLED_A, pChanA, FuncActive, OnChanged_InputA, FuncDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------------------------- КАНАЛ 1 - Связь ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Couple(bool)
 {
     FPGA_SetModeCouple(A, SET_COUPLE_A);
 }
 
-DEF_CHOICE_3
-(
-    cChanA_Couple, pChanA,
-    SET_COUPLE_A, FuncActive, OnChanged_ChanA_Couple, FuncDraw,
+DEF_CHOICE_3(       cChanA_Couple,                                                                                           //--- КАНАЛ 1 - Связь ---
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
     "Пост", "AC",
     "Перем", "DC",
-    "Земля", "Ground"
+    "Земля", "Ground",
+    SET_COUPLE_A, pChanA, FuncActive, OnChanged_ChanA_Couple, FuncDraw
 );
 
 
@@ -235,13 +233,13 @@ DEF_CHOICE_2(       cChanB_Input,                                               
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_3(       cChanB_Couple,                                                                                           //--- КАНАЛ 2 - Связь ---
-    pChanB, SET_COUPLE_B, FuncActive, OnChanged_ChanB_Couple, FuncDraw,
     "Связь", "Couple",
     chanCoupleRu,
     chanCoupleEn,
     "Пост", "AC",
     "Перем", "DC",
-    "Земля", "Ground"
+    "Земля", "Ground",
+    SET_COUPLE_B, pChanB, FuncActive, OnChanged_ChanB_Couple, FuncDraw
 );
 
 static void OnChanged_ChanB_Couple(bool)

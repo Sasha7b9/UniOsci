@@ -25,8 +25,7 @@ void OnPress_Mode(bool active)
     }
 }
 
-DEF_CHOICE_3(       mcMode, pTrig,                                                                                             //--- СИНХР - Режим ---
-    START_MODE, FuncActive, OnPress_Mode, FuncDraw,
+DEF_CHOICE_3(       mcMode,                                                                                                    //--- СИНХР - Режим ---
     "Режим", "Mode"
     ,
     "Задаёт режим запуска:\n"
@@ -41,7 +40,8 @@ DEF_CHOICE_3(       mcMode, pTrig,                                              
     ,
     "Авто ",       "Auto",
     "Ждущий",      "Wait",
-    "Однократный", "Single"
+    "Однократный", "Single",
+    START_MODE, pTrig, FuncActive, OnPress_Mode, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,14 +51,13 @@ static void OnChanged_Source(bool active)
 }
 
 DEF_CHOICE_3(       mcSource,                                                                                               //--- СИНХР - Источник ---
-    pTrig,
-    TRIGSOURCE, FuncActive, OnChanged_Source, FuncDraw,
     "Источник", "Source",
     "Выбор источника сигнала синхронизации.",
     "Synchronization signal source choice.",
     "Канал 1", "Channel 1",
     "Канал 2", "Channel 2",
-    "Внешний", "External"
+    "Внешний", "External",
+    TRIGSOURCE, pTrig, FuncActive, OnChanged_Source, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

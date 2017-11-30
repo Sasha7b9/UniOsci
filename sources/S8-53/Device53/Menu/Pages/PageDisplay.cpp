@@ -381,17 +381,13 @@ DEF_CHOICE_2(       mcSettings_ShowStringNavigation,                            
     SHOW_STRING_NAVIGATION, mspSettings, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-// ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ----------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_ShowAltMarkers(bool)
 {
     display.ChangedRShiftMarkers();
 }
 
-DEF_CHOICE_3
-(
-    mcSettings_ShowAltMarkers,
-    mspSettings,
-    ALT_MARKERS, FuncActive, OnChanged_Settings_ShowAltMarkers, FuncDraw,
+DEF_CHOICE_3(       mcSettings_ShowAltMarkers,                                                            //--- ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ---
     "Доп. маркеры", "Alt. markers"
     ,
     "Устанавливает режим отображения дополнительных маркеров уровней смещения и синхронизации:\n"
@@ -405,7 +401,8 @@ DEF_CHOICE_3
     "\"Auto\" - additional markers are displayed for 5 seconds after turning the handle channel offset voltage or trigger level",
     "Скрывать",   "Hide",
     "Показывать", "Show",
-    "Авто",       "Auto"
+    "Авто",       "Auto",
+    ALT_MARKERS, mspSettings, FuncActive, OnChanged_Settings_ShowAltMarkers, FuncDraw
 );
 
 // ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать --------------------------------------------------------------------------------------------------------------------

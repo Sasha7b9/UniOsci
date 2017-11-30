@@ -512,29 +512,24 @@ DEF_GOVERNOR
     FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-//-------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню ---
-DEF_CHOICE_3
-(
-    cSettings_StringNavigation, ppDisplaySettings,
-    SHOW_STRING_NAVI, FuncActive, FuncChangedChoice, FuncDraw,
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_CHOICE_3(       cSettings_StringNavigation,                                                            //--- ДИСПЛЕЙ - НАСТРОЙКИ - Строка меню ---
     "Строка меню", "Path menu",
     "При выборе \nПоказывать\n слева вверху экрана выводится полный путь до текущей страницы меню", /// \todo Исправить перевод
     "When choosing \nDisplay\n at the top left of the screen displays the full path to the current page menu",
     "Временно", "Temporary",    /// \todo Исправить перевод
     "Всегда",   "All",
-    "Никогда",  "None"
+    "Никогда",  "None",
+    SHOW_STRING_NAVI, ppDisplaySettings, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_AltMarkers(bool active)
 {
     display.ChangedRShiftMarkers(active);
 }
 
-DEF_CHOICE_3
-(
-    cSettings_AltMarkers, ppDisplaySettings,
-    ALT_MARKERS, FuncActive, OnChanged_Settings_AltMarkers, FuncDraw,
+DEF_CHOICE_3(       cSettings_AltMarkers,                                                                 //--- ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ---
     "Доп. маркеры", "Alt. markers",
     "Устанавливает режим отображения дополнительных маркеров уровней смещения и синхронизации:\n"
     "\"Скрывать\" - дополнительные маркеры не показываются,\n"
@@ -543,11 +538,12 @@ DEF_CHOICE_3
     "Sets the display mode of additional markers levels of displacement and synchronization:\n"
     "\"Hide\" - additional markers are not shown,\n"
     "\"Show\" - additional markers are shown always,\n"
-    "\"Auto\" - additional markers are displayed for 5 seconds after turning the handle channel offset voltage or trigger level",    
-    
+    "\"Auto\" - additional markers are displayed for 5 seconds after turning the handle channel offset voltage or trigger level"
+    ,
     "Скрывать",   "Hide",
     "Показывать", "Show",
-    "Авто",       "Auto"
+    "Авто",       "Auto",
+    ALT_MARKERS, ppDisplaySettings, FuncActive, OnChanged_Settings_AltMarkers, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - Скрывать ---
