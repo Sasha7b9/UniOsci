@@ -334,7 +334,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls>--cpp</MiscControls>
-              <Define>USE_HAL_DRIVER, STM32F207xx, __cplusplus</Define>
+              <Define>USE_HAL_DRIVER, STM32F207xx, __cplusplus, S8_53</Define>
               <Undefine></Undefine>
               <IncludePath>..\_libs\STM32Cube_F2\Drivers\CMSIS\Include;..\_libs\STM32Cube_F2\Drivers\CMSIS\Device\ST\STM32F2xx\Include;..\_libs\STM32Cube_F2\Drivers\STM32F2xx_HAL_Driver\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;..\_libs\STM32Cube_F2\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\src\include;..\_libs\STM32Cube_F2\Middlewares\Third_Party\LwIP\system;..\_libs\STM32Cube_F2\Middlewares\Third_Party\FatFs\src\drivers;.\Device53;.\Device53\libs;..\common</IncludePath>
             </VariousControls>

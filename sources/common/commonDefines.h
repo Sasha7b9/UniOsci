@@ -1,5 +1,4 @@
 #pragma once
-#include <limits.h>
 
 #if (!(defined S8_53) && !(defined S8_54) && !(defined S8_55) && !(defined KORNET))
 #error ("You must selelect device")

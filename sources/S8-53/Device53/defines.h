@@ -1,7 +1,5 @@
 #pragma once
 
-#define S8_53
-
 #include <stm32f2xx_hal.h>
 #include "commonDefines.h"
 #include "stub.h"

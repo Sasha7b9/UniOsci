@@ -1,8 +1,4 @@
-#include "defines.h"
-#include "Display/Colors.h"
-#include "Display/Font/Font.h"
 #include "Log.h"
-#include "Painter.h"
 #include "Ethernet/Ethernet.h"
 #include "Ethernet/TcpSocket.h"
 #include "FlashDrive/FlashDrive.h"
@@ -11,9 +7,7 @@
 #include "Menu/FileManager.h"
 #include "Settings/Settings.h"
 #include "VCP/VCP.h"
-#include "Utils/Debug.h"
 #include "Utils/Math.h"
-#include "stub.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

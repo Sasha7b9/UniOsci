@@ -1,7 +1,5 @@
 #pragma once
 
-#define S8_53
-
 #include "commonDefines.h"
 #include "globals.h"
 
