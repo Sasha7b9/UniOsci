@@ -1,14 +1,8 @@
-#include "defines.h"
 #include "Log.h"
 #include "Menu/FileManager.h"
 #include "Menu/Menu.h"
-#include <usbh_def.h>
 #include <ff_gen_drv.h>
 #include <usbh_diskio.h>
-#include <usbh_core.h>
-#include <usbh_msc.h>
-#include "ffconf.h"
-#include "Hardware/Hardware.h"
 #include "FlashDrive.h"
 
 

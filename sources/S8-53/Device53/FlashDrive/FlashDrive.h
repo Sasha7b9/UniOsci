@@ -1,5 +1,5 @@
 #pragma once
-#include "defines.h"
+//#include "defines.h"
 
 #ifdef _MS_VS
 #undef _WIN32
