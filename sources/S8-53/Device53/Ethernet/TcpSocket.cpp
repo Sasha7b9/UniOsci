@@ -1,8 +1,6 @@
-
-
+#include "defines.h"
 #include "TcpSocket.h"
 #include <lwip/tcp.h>
-#include <string.h>
 #include <stdarg.h>
 
 

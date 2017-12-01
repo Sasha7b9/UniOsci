@@ -1,16 +1,9 @@
-
-
 #include "defines.h"
-#include "Ethernet.h"
-#include "TcpSocket.h"
 #include "main.h"
-#include "Hardware/Timer.h"
 #include "ethernetif.h"
 #include "VCP/SCPI/SCPI.h"
 #include "Log.h"
 #include <lwip/init.h>
-#include <lwip/ip_addr.h>
-#include <lwip/netif.h>
 #include <lwip/timeouts.h>
 #include <netif/etharp.h>
 

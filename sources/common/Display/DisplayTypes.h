@@ -1,6 +1,4 @@
 ﻿#pragma once
-#include "defines.h"
-
 
 #define SCREEN_WIDTH            320
 #define SCREEN_WIDTH_IN_BYTES   (320 / 8)

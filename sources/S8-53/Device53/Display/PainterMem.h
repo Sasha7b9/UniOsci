@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../defines.h"
+#include "defines.h"
 
 /*
     Рисует в памяти 4-битным цветом

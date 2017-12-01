@@ -1,6 +1,4 @@
 #pragma once
-#include "Display/DisplayTypes.h"
-#include "Settings/SettingsTypes.h"
 #include "Display/Painter.h"
 #include "Tables.h"
 

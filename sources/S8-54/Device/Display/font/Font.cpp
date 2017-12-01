@@ -1,4 +1,3 @@
-#include "defines.h"
 #include "Display/DisplayTypes.h"
 #include "font.h"
 

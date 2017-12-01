@@ -1,5 +1,4 @@
 #pragma once
-#include "defines.h"
 #include "Settings/SettingsTypes.h"
 #include "Hardware/RTC.h"
 
