@@ -101,15 +101,19 @@ DEF_SMALL_BUTTON(   sbMeasTuneMarkers,                                          
     mspMeasTune, FuncActive, PressSB_MeasTune_Markers, DrawSB_MeasTune_Markers
 );
 
+/*
 static bool IsActiveChoiceMeasuresChannels()
 {
     return SHOW_MEASURES;
 }
+*/
 
+/*
 static bool IsActivePageMeasuresFields()
 {
     return SHOW_MEASURES;
 }
+*/
 
 static bool IsActiveChoiceMeasuresSignal()
 {
@@ -121,10 +125,12 @@ static bool IsActiveButtonMeasuresTune()
     return SHOW_MEASURES;
 }
 
+/*
 static bool IsActiveButtonMeasuresFieldSet()
 {
     return MEAS_FIELD_IS_HAND;
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActiveChoiceMeasuresNumber()

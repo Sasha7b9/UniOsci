@@ -18,7 +18,8 @@ typedef enum
     kStopSound,                 ///< Выключить звук
     kTemporaryPauseFPGA,        ///< Временная пауза для фиксации сигнала на экране после поворота ручек
     kTimerDrawHandFunction,     ///< Этот таймер могут использовать функции, использующие свою процедуру рисования
-    TypeTimerSize               ///< Общее количество таймеров.
+    TypeTimerSize,              ///< Общее количество таймеров.
+    kStrNaviAutoHide
 } TypeTimer;
 
 
@@ -27,8 +28,12 @@ void Timer_PauseOnTicks(uint numTicks);
 void Timer_Update1ms();
 /// Функция вызывается по прерыванию системного таймера для работы таймеров. Увеличивает внутреннее время таймеров на 10мс.
 void Timer_Update10ms();
-     
+    
 void Timer_Enable(TypeTimer type, int timeInMS, pFuncVV);
+
+#define Timer_SetAndStartOnce(x, y, z)  Timer_Enable(x, z, y)
+#define Timer_SetAndEnable(x, y, z)     Timer_Enable(x, z, y)
+
 /// Остановить таймер.
 void Timer_Disable(TypeTimer type);
 /// Приостановить таймер. Запустить снова можно функцией Timer_Continue().

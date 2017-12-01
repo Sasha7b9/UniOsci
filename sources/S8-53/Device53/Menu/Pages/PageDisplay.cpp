@@ -106,7 +106,7 @@ DEF_PAGE_3(         mspAccumulation,                                            
     mcAccumulation_Number, // ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ - Êîëè÷åñòâî
     mcAccumulation_Mode,   // ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ - Ğåæèì
     mcAccumulation_Clear,  // ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ - Î÷èñòèòü
-    Page_DisplayAccumulation, &pDisplay, IsActive_Accumulation, EmptyPressPage
+    Page_Display_Accum, &pDisplay, IsActive_Accumulation, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -156,7 +156,7 @@ DEF_PAGE_2(         mspAveraging,                                               
     "Settings of the mode of averaging on the last measurements.",
     mcAveraging_Number,     // ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ - Êîëè÷åñòâî
     mcAveraging_Mode,       // ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ - Ğåæèì
-   Page_DisplayAverage, &pDisplay, IsActive_Averaging, EmptyPressPage
+   Page_Display_Average, &pDisplay, IsActive_Averaging, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -263,7 +263,7 @@ DEF_PAGE_2(         mspGrid,                                                    
     "Contains settings of display of a coordinate grid.",
     mcGrid_Type,        // ÄÈÑÏËÅÉ - ÑÅÒÊÀ - Òèï
     mgGrid_Brightness,  // ÄÈÑÏËÅÉ - ÑÅÒÊÀ - ßğêîñòü
-    Page_DisplayGrid, &pDisplay, FuncActive, EmptyPressPage
+    Page_Display_Grid, &pDisplay, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -335,7 +335,7 @@ DEF_PAGE_4(         mspSettings_Colors,                                         
     mgcSettings_Colors_ChannelA, // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 1
     mgcSettings_Colors_ChannelB, // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 2
     mgcSettings_Colors_Grid,     // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - ÖÂÅÒÀ - Ñåòêà
-    Page_ServiceDisplayColors, &mspSettings, FuncActive, EmptyPressPage
+    Page_Service_Display_Colors, &mspSettings, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -433,7 +433,7 @@ DEF_PAGE_7(         mspSettings,                                                
     mcSettings_ShowStringNavigation, // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Ñòğîêà ìåíş
     mcSettings_ShowAltMarkers,       // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Äîï. ìàğêåğû
     mcSettings_AutoHide,             // ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Ñêğûâàòü
-    Page_ServiceDisplay, &pDisplay, FuncActive, EmptyPressPage
+    Page_Service_Display, &pDisplay, FuncActive, EmptyPressPage
 );
 
 

@@ -4,9 +4,9 @@
 typedef enum
 {
     Page_Display,                   ///< ÄÈÑÏÅÉ
-    Page_DisplayAccumulation,       ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
-    Page_DisplayAverage,            ///< ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ
-    Page_DisplayGrid,               ///< ÄÈÑÏËÅÉ - ÑÅÒÊÀ
+    Page_Display_Accum,             ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
+    Page_Display_Average,           ///< ÄÈÑÏËÅÉ - ÓÑĞÅÄÍÅÍÈÅ
+    Page_Display_Grid,              ///< ÄÈÑÏËÅÉ - ÑÅÒÊÀ
     Page_DisplayRefresh,            ///< ÄÈÑÏËÅÉ - ÎÁÍÎÂËÅÍÈÅ
     Page_Main,                      ///< Ãëàâíàÿ ñòğàíèöà ìåíş. Èç íå¸ ğàñòóò âñå îñòàëüíûå
     Page_Debug,                     ///< ÎÒËÀÄÊÀ
@@ -30,15 +30,15 @@ typedef enum
     Page_Measures,                  ///< ÈÇÌÅĞÅÍÈß
     Page_MeasuresField,             ///< ÈÇÌÅĞÅÍÈß - ÇÎÍÀ
     Page_Service,                   ///< ÑÅĞÂÈÑ
-    Page_ServiceDisplay,            ///< ÑÅĞÂÈÑ - ÄÈÑÏËÅÉ
-    Page_ServiceDisplayColors,      ///< ÑÅĞÂÈÑ - ÄÈÑÏËÅÉ - ÖÂÅÒÀ
+    Page_Service_Display,           ///< ÑÅĞÂÈÑ - ÄÈÑÏËÅÉ
+    Page_Service_Display_Colors,    ///< ÑÅĞÂÈÑ - ÄÈÑÏËÅÉ - ÖÂÅÒÀ
     Page_ServiceCalibrator,         ///< ÑÅĞÂÈÑ - ÊÀËÈÁĞÀÒÎĞ
     Page_ServiceEthernet,           ///< ÑÅĞÂÈÑ - ETHERNET
     Page_Help,                      ///< ÏÎÌÎÙÜ
     Page_Time,                      ///< ĞÀÇÂÅĞÒÊÀ
     Page_Math,                      ///< ÑÅĞÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ
     Page_MathFFT,
-    Page_TrigAuto,                  ///< ÑÈÍÕĞ - ÀÂÒ ÏÎÈÑÊ
+    Page_Trig_Search,               ///< ÑÈÍÕĞ - ÀÂÒ ÏÎÈÑÊ
     Page_SB_Curs,                   ///< Îòêğûòà ñòğàíèöà ÊÓĞÑÎĞÛ - Èçìåğåíèÿ
     PageSB_Measures_Tune,           ///< Îòêğûòà ñòğàíèöà ÈÇÌÅĞÅÍÈß - Íàñòğîèòü
     Page_SB_MeasTuneField,          ///< Îòêğûòà ñòğàíèöà ÈÇÌÅĞÅÍÈß - ÇÎÍÀ - Çàäàòü

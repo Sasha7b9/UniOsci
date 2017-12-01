@@ -153,7 +153,7 @@ DEF_PAGE_2(         mpAutoFind,                                                 
     "Office of the automatic search the trigger level.",
     mcAutoFind_Mode,    // —»Õ’– - œŒ»—  - –ÂÊËÏ
     mbAutoFind_Search,  // —»Õ’– - œŒ»—  - Õ‡ÈÚË
-    Page_TrigAuto, &pTrig, FuncActive, EmptyPressPage
+    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage
 );
 
 

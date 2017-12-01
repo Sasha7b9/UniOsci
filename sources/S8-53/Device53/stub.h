@@ -1,8 +1,6 @@
 #pragma once
 #include "Hardware/Timer.h"
 
-void Timer_SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
-
 
 #define FPGA_SetTShift(x)                   fpga.SetTShift(x)
 #define FPGA_SetTrigLev(x, y)               fpga.SetTrigLev(x, y)
@@ -14,8 +12,6 @@ void Timer_SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
 #define FSMC_SET_MODE(x)
 #define FSMC_RESTORE_MODE()
 #define SHOW_STRING_NAVI_TEMP               false
-#define Timer_SetAndEnable(x, y, z)
-#define Timer_SetAndStartOnce(x, y, z)
 #define IsRegSetActiveOnCursors()           true
 #define FUNC_MODE_DRAW_IS_ENABLED           true
 #define PageDisplay_Init()

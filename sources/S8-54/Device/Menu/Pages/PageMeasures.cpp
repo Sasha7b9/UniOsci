@@ -11,13 +11,13 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int8 posActive = 0;                 ///< Позиция активного измерения (на котором курсор)
-bool pageChoiceIsActive = false;    ///< Если true - раскрыта страница выбора измерения
-int8 posOnPageChoice = 0;           ///< Позиция курсора на странице выбора измерения
-
 extern const Page pMeasures;
 extern const Page ppFreqMeter;
 extern const Page ppTune;
+
+extern bool pageChoiceIsActive;
+extern int8 posOnPageChoice;
+extern int8 posActive;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_FreqMeter_Enable(bool)
