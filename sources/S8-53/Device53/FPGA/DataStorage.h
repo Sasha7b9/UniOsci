@@ -1,8 +1,4 @@
 #pragma once
-#include "defines.h"
-#include "FPGA/FPGA.h"
-#include "Settings/SettingsTypes.h"
-#include "Hardware/RTC.h"
 
 
 class DataStorage
@@ -56,7 +52,7 @@ private:
 
     DataSettings* GetSettingsDataFromEnd(int fromEnd);
     ///  опирует данные канала chan из, определ€емые ds, в одну из двух строк массива dataImportRel. ¬озвращаемое значение false означает, что данный канал выключен.
-    bool CopyData(DataSettings *ds, Channel chan, uint8 datatImportRel[NumChannels][FPGA_MAX_POINTS]);
+    bool CopyData(DataSettings *ds, Channel chan, uint8 *datat);
 
     void PrintElement(DataSettings *dp);
 };

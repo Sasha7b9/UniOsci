@@ -1,7 +1,8 @@
 #include "FPGA.h"
-#include "Utils/Math.h"
 #include "Log.h"
+#include "Hardware/RTC.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
 
 
 DataStorage dataStorage;
@@ -279,7 +280,8 @@ DataSettings* DataStorage::GetSettingsDataFromEnd(int fromEnd)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool DataStorage::GetDataFromEnd(int fromEnd, DataSettings **ds, uint8 **data0, uint8 **data1)
 {
-    static uint8 dataImportRel[2][FPGA_MAX_POINTS];
+    static uint8 dataImportRelA[FPGA_MAX_POINTS];
+    static uint8 dataImportRelB[FPGA_MAX_POINTS];
 
     DataSettings* dp = FromEnd(fromEnd);
     if(dp == 0)
@@ -289,11 +291,11 @@ bool DataStorage::GetDataFromEnd(int fromEnd, DataSettings **ds, uint8 **data0, 
 
     if(data0 != 0)
     {
-        *data0 = CopyData(dp, A, dataImportRel) ?  &dataImportRel[0][0] : 0;
+        *data0 = CopyData(dp, A, dataImportRelA) ?  &dataImportRelA[0] : 0;
     }
     if(data1 != 0)
     {
-        *data1 = CopyData(dp, B, dataImportRel) ? &dataImportRel[1][0] : 0;
+        *data1 = CopyData(dp, B, dataImportRelB) ? &dataImportRelB[0] : 0;
     }
     *ds = dp;
     
@@ -303,24 +305,24 @@ bool DataStorage::GetDataFromEnd(int fromEnd, DataSettings **ds, uint8 **data0, 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8* DataStorage::GetData(Channel chan, int fromEnd)
 {
-    static uint8 dataImportRel[2][FPGA_MAX_POINTS];
+    static uint8 dataImportRel[FPGA_MAX_POINTS];
     DataSettings* dp = FromEnd(fromEnd);
     if(dp == 0)
     {
         return 0;
     }
 
-    return CopyData(dp, chan, dataImportRel) ? &dataImportRel[chan][0] : 0;
+    return CopyData(dp, chan, dataImportRel) ? dataImportRel : 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool DataStorage::CopyData(DataSettings *ds, Channel chan, uint8 datatImportRel[2][FPGA_MAX_POINTS])
+bool DataStorage::CopyData(DataSettings *ds, Channel chan, uint8 *data)
 {
     if((chan == A && ds->enableCh0 == 0) || (chan == B && ds->enableCh1 == 0))
     {
         return false;
     }
-    uint8* pointer = (chan == A) ? (&datatImportRel[0][0]) : (&datatImportRel[1][0]);
+    uint8* pointer = data;
 
     uint8* address = ((uint8*)ds + sizeof(DataSettings));
 
