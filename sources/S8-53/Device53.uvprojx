@@ -89,7 +89,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -962,6 +962,16 @@
               <FileName>commonDefines.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\commonDefines.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stub.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device53\stub.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>stub.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device53\stub.h</FilePath>
             </File>
           </Files>
         </Group>

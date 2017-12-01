@@ -11,7 +11,7 @@
  *  @{
  */
 
-extern const Page mpHelp;
+extern const Page pHelp;
 
 void DrawSB_Help_ParagraphEnter(int x, int y)
 {
@@ -50,14 +50,14 @@ DEF_SMALL_BUTTON(   sbHelpParagraphEnter,                                       
     "Открыть", "Open",
     "Открывает раздел справки",
     "Opens the section of the reference",
-    mpHelp, HelpContent_EnterParagraphIsActive, HelpContent_EnterParagraph, DrawSB_Help_ParagraphEnter
+    pHelp, HelpContent_EnterParagraphIsActive, HelpContent_EnterParagraph, DrawSB_Help_ParagraphEnter
 );
 
 DEF_SMALL_BUTTON(   sbHelpParagraphLeave,                                                                                      // ПОМОЩЬ - Закрыть ///
     "Закрыть", "Close",
     "Закрывает раздел справки",
     "Closes the section of the reference",
-    mpHelp, HelpContent_LeaveParagraphIsActive, HelpContent_LeaveParagraph, DrawSB_Help_ParagraphLeave
+    pHelp, HelpContent_LeaveParagraphIsActive, HelpContent_LeaveParagraph, DrawSB_Help_ParagraphLeave
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ DEF_SMALL_BUTTON(   sbHelpParagraphPrev,                                        
     "Предыдущий раздел", "Previous section",
     "Выбрать предыдущий раздел справки",
     "To choose the previous section of the reference",
-    mpHelp, FuncActive, HelpContent_PrevParagraph,  DrawSB_Help_ParagraphPrev
+    pHelp, FuncActive, HelpContent_PrevParagraph,  DrawSB_Help_ParagraphPrev
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ DEF_SMALL_BUTTON(   sbHelpParagraphNext,                                        
     "Следующий раздел", "Next section",
     "Выбрать следующий раздел справки",
     "To choose the next section of the reference",
-    mpHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
+    pHelp, FuncActive, HelpContent_NextParagraph, DrawSB_Help_ParagraphNext
 );
 
 static void PressSB_Help_Exit()
@@ -83,13 +83,13 @@ static void PressSB_Help_Exit()
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_SMALL_BUTTON_EXIT(  sbExitHelp,                                                                                              // ПОМОЩЬ - Выход ///
-    mpHelp, FuncActive, PressSB_Help_Exit, DrawSB_Exit
+    pHelp, FuncActive, PressSB_Help_Exit, DrawSB_Exit
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const Page * pointerPageHelp = &mpHelp;
+const Page * pointerPageHelp = &pHelp;
 
-DEF_PAGE_SB(        mpHelp,                                                                                                             // ПОМОЩШЬ ///
+DEF_PAGE_SB(        pHelp,                                                                                                             // ПОМОЩШЬ ///
     "ПОМОЩЬ", "HELP",
     "Открыть разделы помощи",
     "To open sections of the help",
