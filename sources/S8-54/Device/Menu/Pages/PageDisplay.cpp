@@ -262,7 +262,7 @@ DEF_PAGE_2(         ppAverage,                                                  
     Page_Display_Average, &pDisplay, IsActive_Average, EmptyPressPage
 );
 
-//----------------------------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - Мин Макс ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_MinMax(void)
 {
     return !IN_RANDOM_MODE && !IN_P2P_MODE;
@@ -281,7 +281,7 @@ static void OnChanged_MinMax(bool)
     */
 }
 
-DEF_CHOICE_8(       cMinMax, 
+DEF_CHOICE_8(       cMinMax,                                                                                              //--- ДИСПЛЕЙ - Мин Макс ---
     "Мин Макс", "Min Max",
     "Задаёт количество последних измерений, по которым строятся ограничительные линии, огибающие минимумы и максимумы измерений.",
     "Sets number of the last measurements on which the limiting lines which are bending around minima and maxima of measurements are under "

@@ -281,8 +281,7 @@ DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                             
     ppLast, FuncActive, OnPress_Last_Exit, DrawSB_Exit
 );
 
-
-// ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий --------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Next(void)
 {
     CircleIncrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
@@ -295,17 +294,14 @@ static void Draw_Last_Next(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bLast_Next,
+DEF_SMALL_BUTTON(   bLast_Next,                                                                               //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Следующий ---
     "Следующий", "Next",
     "Перейти к следующему сигналу",
     "Go to the next signal",
     ppLast, FuncActive, OnPress_Last_Next, Draw_Last_Next
 );
 
-
-// ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий -------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Prev(void)
 {
     CircleDecrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
@@ -318,17 +314,14 @@ static void Draw_Last_Prev(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bLast_Prev,
+DEF_SMALL_BUTTON(   bLast_Prev,                                                                              //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий ---
     "Предыдущий", "Previous",
     "Перейти к предыдущему сигналу",
     "Go to the previous signal",
     ppLast, FuncActive, OnPress_Last_Prev, Draw_Last_Prev
 );
 
-
-// ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ ---------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_SaveToROM(void)
 {
     ppInternal.SetCurrentSB();
@@ -347,17 +340,14 @@ static void Draw_Last_SaveToROM(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bLast_SaveToROM,
+DEF_SMALL_BUTTON(   bLast_SaveToROM,                                                                           //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ ---
     "Внутр ЗУ", "Internal storage",
     "Нажмите эту кнопку, чтобы сохранить сигнал во внутреннем запоминающем устройстве",
     "Press this button to keep a signal in an internal memory",
     ppLast, FuncActive, OnPress_Last_SaveToROM, Draw_Last_SaveToROM
 );
 
-
-// ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить --------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_SaveToDrive(void)
 {
     EXIT_FROM_SETNAME_TO = RETURN_TO_LAST_MEM;
@@ -374,9 +364,7 @@ static void Draw_Last_SaveToDrive(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON
-(
-    bLast_SaveToDrive,
+DEF_SMALL_BUTTON(   bLast_SaveToDrive,                                                                        //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить ---
     "Сохранить", "Save",
     "Кнопка становится доступна при присоединённом внешнем ЗУ. Позволяет сохранить сигнал на внешем ЗУ",
     "Click this button to save the signal on the external FLASH",
@@ -551,7 +539,7 @@ DEF_SMALL_BUTTON_EXIT(  bInternal_Exit,                                         
     ppInternal, FuncActive, OnPress_Internal_Exit, DrawSB_Exit
 );
 
-//---------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНУТР ЗУ - Показывать всегда ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_ShowAlways(void)
 {
     ALWAYS_SHOW_ROM_SIGNAL = ALWAYS_SHOW_ROM_SIGNAL ? 0u : 1u;
@@ -583,9 +571,7 @@ static void Draw_Internal_ShowAlways_No(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON_HINTS_2
-(
-    bInternal_ShowAlways,
+DEF_SMALL_BUTTON_HINTS_2(   bInternal_ShowAlways,                                                      //--- ПАМЯТЬ - ВНУТР ЗУ - Показывать всегда ---
     "Показывать всегда", "To show always",
     "Позволяет всегда показывать выбранный сохранённый сигнал поверх текущего",
     "Allows to show always the chosen kept signal over the current",
@@ -685,7 +671,6 @@ static void Draw_Internal_EraseAll(int x, int y)
 }
 */
 
-// ПАМЯТЬ - ВНУТР ЗУ - Масштаб -----------------------------------------------------------------------------------------------------------------------
 /*
 void OnPress_Internal_Scale(void)
 {
@@ -728,9 +713,7 @@ void Draw_Internal_Scale_Original(int x, int y)
 */
 
 /*
-DEF_SMALL_BUTTON_HINTS_2
-(
-    bInternal_Scale,
+DEF_SMALL_BUTTON_HINTS_2(   bInternal_Scale,                                                                     //--- ПАМЯТЬ - ВНУТР ЗУ - Масштаб ---
     "Масштаб", "Scale",
     "Приводить или нет записанный сигнал к текущим установкам",
     "Whether or not to record the recorded signal to the current settings",
@@ -743,7 +726,7 @@ DEF_SMALL_BUTTON_HINTS_2
 );
 */
 
-// ПАМЯТЬ - ВНУТР ЗУ - Сохранить в памяти ------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void SaveSignalToIntMemory(void)
 {
     // Заносим в указатели DS, DATA_A, DATA_B данные из ОЗУ или последний считанный сигнал, в зависимости от того, из какого режима зашли в 
@@ -771,16 +754,14 @@ static void Draw_Internal_SaveToMemory(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bInternal_SaveToMemory,
+DEF_SMALL_BUTTON(   bInternal_SaveToMemory,                                                           //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить в памяти ---
     "Сохранить в памяти", "Save to memory",
     "Сохранить сигнал во внутреннем запоминующем устройстве",
     "To keep a signal in an internal memory",
     ppInternal, FuncActive, OnPress_Internal_SaveToMemory, Draw_Internal_SaveToMemory
 );
 
-// ПАМЯТЬ - ВНУТР ЗУ - Удалить -----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_Delete(void)
 {
     display.FuncOnWaitStart(DICT(DDeleteFromMemory), false);
@@ -795,16 +776,14 @@ static void Draw_Internal_Delete(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bInternal_Delete,
+DEF_SMALL_BUTTON(   bInternal_Delete,                                                                            //--- ПАМЯТЬ - ВНУТР ЗУ - Удалить ---
     "Удалить", "Delete",
     "Удаляет выбранный сигнал из внутреннего запоминающего устройства",
     "Removes the selected signal from the internal storage device",
     ppInternal, FuncActive, OnPress_Internal_Delete, Draw_Internal_Delete
 );
 
-//-------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_SaveToDrive(void)
 {
     EXIT_FROM_SETNAME_TO = RETURN_TO_INT_MEM;
@@ -821,9 +800,7 @@ static void Draw_Internal_SaveToDrive(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON
-(
-    bInternal_SaveToDrive,
+DEF_SMALL_BUTTON(   bInternal_SaveToDrive,                                                           //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку ---
     "Сохранить на флешку", "Save to disk",
     "Сохраняет сигнал на флешку",
     "Save signal to flash drive",
@@ -934,7 +911,7 @@ DEF_SMALL_BUTTON_EXIT(  bDrive_Manager_Exit,                                    
     pppDrive_Manager, FuncActive, OnPress_Drive_Manager_Exit, DrawSB_Exit
 );
 
-//-------------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Tab ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_Tab(int x, int y)
 {
     painter.SetFont(TypeFont_UGO2);
@@ -942,16 +919,14 @@ static void Draw_Drive_Manager_Tab(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Manager_Tab,
+DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                                                    //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Tab ---
     "Tab", "Tab",
     "Переход между каталогами и файлами",
     "The transition between the directories and files",
     pppDrive_Manager, FuncActive, PressSB_FM_Tab, Draw_Drive_Manager_Tab
 );
 
-//------------------------------------------------------------------------------------------------ ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_LevelUp(int x, int y)
 {
     painter.SetFont(TypeFont_UGO2);
@@ -959,16 +934,14 @@ static void Draw_Drive_Manager_LevelUp(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Manager_LevelUp,
+DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога ---
     "Выйти из каталого", "Leave from directory",
     "Переход в родительский каталог",
     "Transition to the parental catalog",
     pppDrive_Manager, FuncActive, PressSB_FM_LevelUp, Draw_Drive_Manager_LevelUp
 );
 
-//-------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_LevelDown(int x, int y)
 {
     painter.SetFont(TypeFont_UGO2);
@@ -976,9 +949,7 @@ static void Draw_Drive_Manager_LevelDown(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Manager_LevelDown,
+DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог ---
     "Войти в каталог", "Enter in directory",
     "Переход в выбранный каталог",
     "Transition to the chosen catalog",
@@ -1118,7 +1089,7 @@ DEF_SMALL_BUTTON_EXIT(  bDrive_Mask_Exit,                                       
     pppDrive_Mask, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
-//------------------------------------------------------------------------------------------------------------ ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Удалить ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Mask_Delete(void)
 {
     FILE_NAME_MASK[0] = '\0';
@@ -1131,16 +1102,14 @@ static void Draw_Drive_Mask_Delete(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Mask_Delete,
+DEF_SMALL_BUTTON(   bDrive_Mask_Delete,                                                                  //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Удалить ---
     "Удалить", "Delete",
     "Удаляет все введённые символы",
     "Deletes all entered symbols",
     pppDrive_Mask, FuncActive, OnPress_Drive_Mask_Delete, Draw_Drive_Mask_Delete
 );
 
-//---------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Mask_Backspace(void)
 {
     int size = strlen(FILE_NAME_MASK);
@@ -1164,16 +1133,14 @@ static void Draw_Drive_Mask_Backspace(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Mask_Backspace,
+DEF_SMALL_BUTTON(   bDrive_Mask_Backspace,                                                             //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace ---
     "Backspace", "Backspace",
     "Удаляет последний введённый символ",
     "Deletes the last entered symbol",
     pppDrive_Mask, FuncActive, OnPress_Drive_Mask_Backspace, Draw_Drive_Mask_Backspace
 );
 
-//----------------------------------------------------------------------------------------------------------- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Mask_Insert(void)
 {
     int index = INDEX_SYMBOL;
@@ -1217,9 +1184,7 @@ static void Draw_Drive_Mask_Insert(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bDrive_Mask_Insert,
+DEF_SMALL_BUTTON(   bDrive_Mask_Insert,                                                                 //--- ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить ---
     "Вставить", "Insert",
     "Вставляет выбранный символ",
     "Inserts the chosen symbol",
@@ -1304,9 +1269,7 @@ static void Draw_SetName_Delete(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bSetName_Delete,
+DEF_SMALL_BUTTON(   bSetName_Delete,                                                                                     //--- ИМЯ ФАЙЛА - Удалить ---
     "Удалить", "Delete",
     "Удаляет все введённые символы",
     "Deletes all entered characters",
@@ -1330,9 +1293,7 @@ static void Draw_SetName_Backspace(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bSetName_Backspace,
+DEF_SMALL_BUTTON(   bSetName_Backspace,                                                                                //--- ИМЯ ФАЙЛА - Backspace ---
     "Backspace", "Backspace",
     "Удаляет последний символ",
     "Delete the last character",
@@ -1357,9 +1318,7 @@ static void Draw_SetName_Insert(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-DEF_SMALL_BUTTON
-(
-    bSetName_Insert,
+DEF_SMALL_BUTTON(   bSetName_Insert,                                                                                    //--- ИМЯ ФАЙЛА - Вставить ---
     "Вставить", "Insert",
     "Вводит очередной символ",
     "Print the next character",
@@ -1386,9 +1345,7 @@ static void Draw_SetName_Save(int x, int y)
     }
 }
 
-DEF_SMALL_BUTTON
-(
-    bSetName_Save,
+DEF_SMALL_BUTTON(   bSetName_Save,                                                                                     //--- ИМЯ ФАЙЛА - Сохранить ---
     "Сохранить", "Save",
     "Сохранение на флеш под заданным именем",
     "Saving to flashdrive with the specified name",

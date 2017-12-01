@@ -5,34 +5,9 @@
 #include "Utils/Dictionary.h"
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const Page mainPage;
-extern const    Page pTime;
-extern const  Choice cSample;               ///< РАЗВЕРТКА - Выборка
-static bool  IsActive_Sample(void);
-extern const  Choice cPeakDet;              ///< РАЗВЕРТКА - Пик дет
-static bool  IsActive_PeakDet(void);
-       void OnChanged_PeakDet(bool active);
-extern const  Choice cTPos;                 ///< РАЗВЕРТКА - То
-       void OnChanged_TPos(bool active);
-extern const  Choice cDivRole;              ///< РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
-extern const  Choice cShiftXtype;           ///< РАЗВЕРТКА - Смещение
+extern const Page pTime;
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
-    "РАЗВЕРТКА", "SCAN",
-    "Содержит настройки развёртки.",
-    "Contains scan settings.",
-    cSample,        // РАЗВЕРТКА - Выборка
-    cPeakDet,       // РАЗВЕРТКА - Пик дет
-    cTPos,          // РАЗВЕРТКА - То
-    cDivRole,       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
-    cShiftXtype,    // РАЗВЕРТКА - Смещение
-    Page_Time, &mainPage, FuncActive, EmptyPressPage
-);
-
-const Page * pointerPageTime = &pTime;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Sample(void)
@@ -69,7 +44,7 @@ static bool IsActive_PeakDet(void)
 
 void OnChanged_PeakDet(bool active)
 {
-    if(active)
+    if (active)
     {
         FPGA_SetPeackDetMode(SET_PEAKDET);
         FPGA_SetTBase(SET_TBASE);
@@ -92,7 +67,7 @@ void OnChanged_PeakDet(bool active)
     }
 }
 
-DEF_CHOICE_2(cPeakDet,                                                                                                   //--- РАЗВЕРТКА - Пик дет ---
+DEF_CHOICE_2(       cPeakDet,                                                                                            //--- РАЗВЕРТКА - Пик дет ---
     "Пик дет", "Pic deat",
     "Включает/выключает пиковый детектор.",
     "Turns on/off peak detector.",
@@ -110,7 +85,7 @@ void OnChanged_TPos(bool active)
 
 DEF_CHOICE_3(       cTPos,                                                                                                    //--- РАЗВЕРТКА - То ---
     "\x7b", "\x7b",
-    "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.", 
+    "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край.",
     "Sets the anchor point nuleovgo time offset to the screen - the left edge, center, right edge.",
     "Лево",  "Left",
     "Центр", "Center",
@@ -120,13 +95,16 @@ DEF_CHOICE_3(       cTPos,                                                      
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cDivRole,                                                                                       //--- РАЗВЕРТКА - Ф-ция ВР/ДЕЛ ---
-    "Ф-ция ВР/ДЕЛ", "Funct Time/DIV",
+    "Ф-ция ВР/ДЕЛ", "Funct Time/DIV"
+    ,
     "Задаёт функцию для ручки ВРЕМЯ/ДЕЛ: в режиме сбора информации (ПУСК/СТОП в положении ПУСК):\n"
     "1. \"Время\" - изменение смещения по времени.\n"
-    "2. \"Память\" - перемещение по памяти.",
+    "2. \"Память\" - перемещение по памяти."
+    ,
     "Sets the function to handle TIME/DIV: mode of collecting information (START/STOP to start position):\n"
     "1. \"Time\" - change the time shift.\n"
-    "2. \"Memory\" - moving from memory.",
+    "2. \"Memory\" - moving from memory."
+    ,
     "Время",  "Time",
     "Память", "Memory",
     TIME_DIVXPOS, pTime, FuncActive, FuncChangedChoice, FuncDraw
@@ -134,12 +112,30 @@ DEF_CHOICE_2(       cDivRole,                                                   
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cShiftXtype,                                                                                        //--- РАЗВЕРТКА - Смещение ---
-    "Смещение", "Offset",
+    "Смещение", "Offset"
+    ,
     "Задаёт режим удержания смещения по горизонтали\n1. \"Время\" - сохраняется абсолютное смещение в секундах.\n2. \"Деления\" - сохраняется "
-    "положение мещения на экране.",
+    "положение мещения на экране."
+    ,
     "Sets the mode of retaining the horizontal displacement\n1. \"Time\" - saved the asbolutic offset in seconds.\n2. \"Divisions\" - retained "
-    "the position of the offset on the screen.",
+    "the position of the offset on the screen."
+    ,
     "Время",   "Time",
     "Деления", "Divisions",
     LINKING_TSHIFT, pTime, FuncActive, FuncChangedChoice, FuncDraw
 );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DEF_PAGE_5(         pTime,                                                                                                            // РАЗВЕРТКА ///
+    "РАЗВЕРТКА", "SCAN",
+    "Содержит настройки развёртки.",
+    "Contains scan settings.",
+    cSample,        // РАЗВЕРТКА - Выборка
+    cPeakDet,       // РАЗВЕРТКА - Пик дет
+    cTPos,          // РАЗВЕРТКА - То
+    cDivRole,       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
+    cShiftXtype,    // РАЗВЕРТКА - Смещение
+    Page_Time, &mainPage, FuncActive, EmptyPressPage
+);
+
+const Page * pointerPageTime = &pTime;
