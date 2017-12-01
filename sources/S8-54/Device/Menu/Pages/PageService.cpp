@@ -112,7 +112,7 @@ DEF_PAGE_2(         ppCalibrator,                                               
     "Control of the calibrator and calibration of an oscillograph",
     cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
     bCalibrator_Calibrate,      // СЕРВИС - КАЛИБРАТОР - Калибровать
-    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage
+    &pService, FuncActive, EmptyPressPage
 );
 
 #ifdef OLD_RECORDER
@@ -359,7 +359,7 @@ DEF_PAGE_SB(        pppFFT_Cursors,                                             
     0,
     0,
     0,
-    PageSB_Service_FFT_Cursors, &ppFFT, IsActive_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors
+    &ppFFT, IsActive_FFT_Cursors, EmptyPressPage, FuncDrawPage, OnRegSet_FFT_Cursors
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -402,7 +402,7 @@ DEF_PAGE_6(         ppFFT,                                                      
     cFFT_Window,       // СЕРВИС - СПЕКТР - Окно 
     pppFFT_Cursors,    // СЕРВИС - СПЕКТР - КУРСОРЫ
     cFFT_Range,        // СЕРВИС - СПЕКТР - Диапазон
-    Page_Service_FFT, &pService, IsActive_FFT, OnPress_FFT
+    &pService, IsActive_FFT, OnPress_FFT
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -661,7 +661,7 @@ DEF_PAGE_SB(        ppFunction,                                                 
     &bFunction_ModeRegSet,  // СЕРВИС - ФУНКЦИЯ - Режим ручки УСТАНОВКА
     &bFunction_RangeA,      // СЕРВИС - ФУНКЦИЯ - Масштаб 1-го канала
     &bFunction_RangeB,
-    PageSB_Service_Function, &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
+    &pService, IsActive_Function, OnPress_Function, FuncDrawPage, OnRegSet_Function
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -744,7 +744,7 @@ DEF_PAGE_5(         ppEthernet,                                                 
     ipEthernet_NetMask,     // СЕРВИС - ETHERNET - Маска подсети
     ipEthernet_Gateway,     // СЕРВИС - ETHERNET - Шлюз
     ipEthernet_MAC,         // СЕРВИС - ETHERNET - MAC адрес
-    Page_Service_Ethernet, &pService, FuncActive, EmptyPressPage
+    &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -772,7 +772,7 @@ DEF_PAGE_2(         ppSound,                                                    
     "In this menu, you can adjust the volume",
     cSound_Enable,  // СЕРВИС - ЗВУК - Звук
     gSound_Volume,  // СЕРВИС - ЗВУК - Громкость
-    Page_Service_Sound, &pService, FuncActive, EmptyPressPage
+    &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -818,7 +818,7 @@ DEF_PAGE_2(         ppRTC,                                                      
     "Set and setup time",
     tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
     tRTC_Correction,    // CЕРВИС - ВРЕМЯ - Коррекция
-    Page_Service_RTC, &pService, FuncActive, EmptyPressPage
+    &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -894,29 +894,29 @@ DEF_PAGE_SB(        ppInformation,                                              
     0,
     0,
     0,
-    PageSB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
+    &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 #ifdef OLD_RECORDER
-DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///
-                   "СЕРВИС", "SERVICE",
-                   "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
-                   "Additional settings, calibration, signal search, mathematical functions",
-                   bResetSettings,    // СЕРВИС - Сброс настроек
-                   bAutoSearch,       // СЕРВИС - Поиск сигнала
-                   ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
-                   cRecorder,         // СЕРВИС - Регистратор
-                   ppFFT,             // СЕРВИС - СПЕКТР
-                   ppFunction,        // СЕРВИС - ФУНКЦИЯ
-                   ppEthernet,        // СЕРВИС - ETHERNET
-                   ppSound,           // СЕРВИС - ЗВУК
-                   ppRTC,             // СЕРВИС - ВРЕМЯ
-                   cLanguage,         // СЕРВИС - Язык
-                   ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
-                   Page_Service, &mainPage, FuncActive, FuncPress
+DEF_PAGE_11_GLOBAL( pService,                                                                                                            // СЕРВИС ///
+    "СЕРВИС", "SERVICE",
+    "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
+    "Additional settings, calibration, signal search, mathematical functions",
+    bResetSettings,    // СЕРВИС - Сброс настроек
+    bAutoSearch,       // СЕРВИС - Поиск сигнала
+    ppCalibrator,      // СЕРВИС - КАЛИБРАТОР
+    cRecorder,         // СЕРВИС - Регистратор
+    ppFFT,             // СЕРВИС - СПЕКТР
+    ppFunction,        // СЕРВИС - ФУНКЦИЯ
+    ppEthernet,        // СЕРВИС - ETHERNET
+    ppSound,           // СЕРВИС - ЗВУК
+    ppRTC,             // СЕРВИС - ВРЕМЯ
+    cLanguage,         // СЕРВИС - Язык
+    ppInformation,     // СЕРВИС - ИНФОРМАЦИЯ
+    &mainPage, FuncActive, FuncPress
 );
 #else
 DEF_PAGE_11_GLOBAL(pService,                                                                                                            // СЕРВИС ///

@@ -169,7 +169,7 @@ DEF_PAGE_2(         ppSearch,                                                   
     "Office of the automatic search the trigger level.",
     cSearch_Mode,       // СИНХР - ПОИСК - Режим
     bSearch_Search,     // СИНХР - ПОИСК - Найти
-    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage
+    &pTrig, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -182,5 +182,5 @@ DEF_PAGE_5(         pTrig,                                                      
     cPolarity,      // СИНХР - Полярность
     cInput,         // СИНХР - Вход
     ppSearch,       // СИНХР - ПОИСК
-    Page_Trig, &mainPage, FuncActive, EmptyPressPage
+    &mainPage, FuncActive, EmptyPressPage
 );

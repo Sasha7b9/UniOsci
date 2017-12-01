@@ -882,7 +882,7 @@ static void DrawMeasures(void)
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = measures.IsActive(str, elem) && menu.GetNameOpenedPage() == PageSB_Measures_Tune;
+            bool active = measures.IsActive(str, elem) && menu.GetOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? gColorBack : gColorFill;
             Meas measure = measures.Type(str, elem);
             if(measure != Meas_None)
@@ -924,7 +924,7 @@ static void DrawMeasures(void)
         }
     }
 
-    if(menu.GetNameOpenedPage() == PageSB_Measures_Tune)
+    if(menu.GetOpenedPage() == PageSB_Measures_Tune)
     {
         measures.DrawPageChoice();
     }

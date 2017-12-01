@@ -1,7 +1,6 @@
 #pragma once
 #include "defines.h"
 #include "Panel/Controls.h"
-#include "Menu/MenuPagesNames.h"
 #include "Menu/MenuItems.h"
 
 
@@ -60,9 +59,8 @@ public:
     /// Возвращает тип открытого элемента меню
     TypeItem TypeOpenedItem(void);
 
-    NamePage GetNameOpenedPage(void);
+    Page GetOpenedPage(void);
 
-    Page *PagePointerFromName(NamePage namePage);
     /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
     void *CurrentItem(void);
     /// Закрыть открытый элемент меню
@@ -72,11 +70,9 @@ public:
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
-    void OpenPageAndSetItCurrent(NamePage namePage);
+    void OpenPageAndSetItCurrent(Page *page);
 
     void ShortPressOnPageItem(Page *, int);
-
-    NamePage GetNamePage(const Page *);
 
 private:
     void *RetLastOpened(Page *_page, TypeItem *_type);

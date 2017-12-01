@@ -257,7 +257,7 @@ DEF_PAGE_SB(        ppLast,                                                     
     &bLast_Prev,            // ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий
     &bLast_SaveToROM,       // ПАМЯТЬ - ПОСЛЕДНИЕ - Внутр ЗУ
     &bLast_SaveToDrive,     // ПАМЯТЬ - ПОСЛЕДНИЕ - Сохранить
-    PageSB_Memory_Last, &pMemory, FuncActive, OnPress_Last, OnDraw_Last, OnRegSet_Last
+    &pMemory, FuncActive, OnPress_Last, OnDraw_Last, OnRegSet_Last
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -346,7 +346,7 @@ DEF_PAGE_SB(        pppDrive_Manager,                                           
     0,
     &bDrive_Manager_LevelUp,    // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога
     &bDrive_Manager_LevelDown,  // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
-    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet
+    &ppDrive, IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -623,7 +623,7 @@ DEF_PAGE_SB(        pppDrive_Mask,                                              
     0,
     &bDrive_Mask_Backspace, // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace
     &bDrive_Mask_Insert,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
-    PageSB_Memory_Drive_Mask, &ppDrive, IsActive_Drive_Mask, OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask
+    &ppDrive, IsActive_Drive_Mask, OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -647,7 +647,7 @@ DEF_PAGE_6(         ppDrive,                                                    
     cDrive_SaveAs,          // ПАМЯТЬ - ВНЕШН ЗУ - Сохранять как
     cDrive_ModeBtnMemory,   // ПАМЯТЬ - ВНЕШН ЗУ - Реж кн ПАМЯТЬ
     cDrive_Autoconnect,     // ПАМЯТЬ - ВНЕШН ЗУ - Автоподключение
-    Page_Memory_Drive, &pMemory, FuncActive, EmptyPressPage
+    &pMemory, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -659,7 +659,7 @@ DEF_PAGE_4(         pMemory,                                                    
     ppLast,         // ПАМЯТЬ - Последние
     ppInternal,     // ПАМЯТЬ - ВНУТР ЗУ
     ppDrive,        // ПАМЯТЬ - ВНЕШН ЗУ
-    Page_Memory, &mainPage, FuncActive, EmptyPressPage
+    &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageMemory = &pMemory;
@@ -1005,7 +1005,7 @@ DEF_PAGE_SB(        ppInternal,                                                 
     &bInternal_Delete,          // ПАМЯТЬ - ВНУТР ЗУ - Удалить
     &bInternal_SaveToMemory,    // ПАМЯТЬ - ВНУТР ЗУ - Сохранить
     &bInternal_SaveToDrive,     // ПАМЯТЬ - ВНУТР ЗУ - Сохранить на флешку
-    PageSB_Memory_Internal, &pMemory, FuncActive, OnPress_Internal, OnDraw_Internal, OnRegSet_Internal
+    &pMemory, FuncActive, OnPress_Internal, OnDraw_Internal, OnRegSet_Internal
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1164,7 +1164,7 @@ DEF_PAGE_SB(        pSetName,                                                   
     &bSetName_Backspace,    // ВВОД ИМЕНИ ФАЙЛА - Backspace
     &bSetName_Insert,       // ВВОД ИМЕНИ ФАЙЛА - Вставить
     &bSetName_Save,         // ВВОД ИМЕНИ ФАЙЛА - Сохранить
-    PageSB_Memory_SetName, 0, FuncActive, EmptyPressPage, FuncDrawPage, OnRegSet_SetName
+    0, FuncActive, EmptyPressPage, FuncDrawPage, OnRegSet_SetName
 );
 
 /*

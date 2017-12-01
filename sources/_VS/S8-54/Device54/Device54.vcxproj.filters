@@ -498,9 +498,6 @@
     <ClInclude Include="..\..\..\common\Utils\Measures.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuPagesNames.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\stub.h">
       <Filter>src</Filter>
     </ClInclude>

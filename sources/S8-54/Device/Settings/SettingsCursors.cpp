@@ -20,7 +20,7 @@ float sCursors_GetCursPosU(Channel ch, int numCur)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool sCursors_NecessaryDrawCursors(void)
 {
-    return (CURsU_ENABLED || CURsT_ENABLED) && (CURS_SHOW || menu.GetNameOpenedPage() == PageSB_Cursors_Set);
+    return (CURsU_ENABLED || CURsT_ENABLED) && (CURS_SHOW || menu.GetOpenedPage() == PageSB_Cursors_Set);
 }
 
 

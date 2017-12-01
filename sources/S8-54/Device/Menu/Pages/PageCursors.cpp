@@ -390,7 +390,7 @@ DEF_PAGE_SB(        ppSet,                                                      
     &bSet_T,                // йспянпш - сярюмнбхрэ - йСПЯНПШ р
     &bSet_100,              // йспянпш - сярюмнбхрэ - 100%
     &bSet_Movement,         // йспянпш - сярюмнбхрэ - оЕПЕЛЕЫЕМХЕ
-    PageSB_Cursors_Set, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
+    &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRegSet_Set
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -403,7 +403,7 @@ DEF_PAGE_5(         pCursors,                                                   
     cLookModeChanB,     // йспянпш - яКЕФЕМХЕ ЙЮМЮК 2
     cShowFreq,          // йспняпш - 1/dT
     ppSet,              // йспянпш - сярюмнбхрэ
-    Page_Cursors, &mainPage, FuncActive, EmptyPressPage
+    &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageCursors = &pCursors;
@@ -564,6 +564,6 @@ static void MoveCursTonPercentsOrPoints(int delta)
 
 bool IsRegSetActiveOnCursors(void)
 {
-    return ((menu.GetNameOpenedPage() == PageSB_Cursors_Set) &&
+    return ((menu.GetOpenedPage() == PageSB_Cursors_Set) &&
         ((CURS_ACTIVE_U && CURsU_ENABLED) || (CURS_ACTIVE_T && CURsT_ENABLED)));
 }

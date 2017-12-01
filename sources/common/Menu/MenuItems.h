@@ -3,7 +3,6 @@
 #include "Display/Display.h"
 #include "defines.h"
 #include "MenuItemsDefs.h"
-#include "Menu/MenuPagesNames.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,6 +16,7 @@
 extern int8 gCurDigit;
 
 #define MENU_ITEMS_ON_DISPLAY       5   ///< Сколько пунктов меню помещается на экране по вертикали.
+#define NUM_PAGES_IN_MENU           49  ///< Число страниц в меню.
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,7 +56,6 @@ typedef enum
 #define COMMON_PART_MENU_ITEM_PAGE                                                                  \
     TypeItem    type;           /* Тип итема */                                                     \
     bool        isPageSB;       /* Если true, то это страница малых кнопок */                       \
-    NamePage    name;           /* Имя из перечисления NamePage */                                  \
     int8        numItems;                                                                           \
     const Page *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV     funcOfActive;   /* Активен ли данный элемент */                                     \
@@ -64,9 +63,13 @@ typedef enum
 
 class SButton;
 
+class Control
+{
+};
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
 /// Описывает страницу меню.
-class Page
+class Page : public Control
 {
 public:
     COMMON_PART_MENU_ITEM_PAGE
@@ -78,7 +81,6 @@ public:
     int NumSubPages() const;                ///< Dозвращает число подстраниц в странице по адресу page
     int NumItems() const;                   ///< Возвращает количество элементов в странице по адресу page
     int NumCurrentSubPage();                ///< Возвращает номер текущей подстранцы элемента по адресу page
-    NamePage GetNamePage() const;           ///< Возвращает имя страницы page
     void SetCurrentSB() const;              ///< Установить текущей данную страницу с мылыми кнопками.
     
     void *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы

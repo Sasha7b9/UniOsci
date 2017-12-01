@@ -500,7 +500,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Log.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\main.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuPagesNames.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.h" />

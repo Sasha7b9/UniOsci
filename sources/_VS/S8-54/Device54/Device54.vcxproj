@@ -190,7 +190,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Log.h" />
     <ClInclude Include="..\..\..\S8-54\Device\main.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuPagesNames.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContentPages.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.h" />

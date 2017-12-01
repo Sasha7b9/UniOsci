@@ -194,7 +194,7 @@ DEF_CHOICE_2(       cConsole_Registers_TShift,                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_12(        pppConsole_Registers,                                                                          // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ ///
-    Page_Debug_Console_Registers, &ppConsole, FuncActive, EmptyPressPage,
+    &ppConsole, FuncActive, EmptyPressPage,
     "РЕГИСТРЫ", "REGISTERS",
     "",
     "",
@@ -237,7 +237,7 @@ DEF_PAGE_5(         ppConsole,                                                  
     cConsole_ModeStop,          // ОТЛАДКА - КОНСОЛЬ - Реж. останова
     pppConsole_Registers,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
     bConsole_SizeSettings,      // ОТЛАДКА - КОНСОЛЬ - Размер настроек
-    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage
+    &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -310,7 +310,7 @@ DEF_PAGE_3(         pppADC_Balance,                                             
     cADC_Balance_Mode,      // ОТЛАДКА - АЦП - БАЛАНС - Режим
     gADC_Balance_ShiftA,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
     gADC_Balance_ShiftB,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
-    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
+    &ppADC, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -440,7 +440,7 @@ DEF_GOVERNOR(       gADC_Stretch_Bk2V,                                          
 static const Choice emptyChoice = {Item_Choice};
 
 DEF_PAGE_15(        pppADC_Stretch,                                                                                    // ОТЛАДКА - АЦП - РАСТЯЖКА ///
-    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
+    &ppADC, FuncActive, EmptyPressPage,
     "РАСТЯЖКА", "STRETCH",
     "Устанавливает режим и величину растяжки (для ручного режима)",
     "Sets mode and the value of stretching (manual mode)",
@@ -552,7 +552,7 @@ DEF_PAGE_7(         pppADC_Shift,                                               
     gADC_Shift_B5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
     gADC_Shift_A10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
     gADC_Shift_B10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост
-    Page_Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage
+    &ppADC, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -563,7 +563,7 @@ DEF_PAGE_3(         ppADC,                                                      
     pppADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
     pppADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
     pppADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
-    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage
+    &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -668,7 +668,7 @@ DEF_PAGE_8(         ppRand,                                                     
     gRand_TimeCompensation, // ОТЛАДКА - РАНД-ТОР - Компенсация задержки
     gRand_AddTimeShift,     // ОТЛАДКА - РАНД-ТОР - Смещение
     gRand_Pretriggered,     // ОТЛАДКА - РAНД-ТОР - Предзапуск
-    Page_Debug_Rand, &pDebug, FuncActive, EmptyPressPage
+    &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ DEF_PAGE_2(         ppChannels,                                                 
     "",
     cChannels_BandwidthA,   // ОТЛАДКА - КАНАЛЫ - Полоса 1
     cChannels_BandwidthB,   // ОТЛАДКА - КАНАЛЫ - Полоса 2
-    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage
+    &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -890,7 +890,7 @@ DEF_PAGE_SB(        ppSettings,                                                 
     0,
     0,
     0,
-    PageSB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
+    &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1090,7 +1090,7 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
     0,
     0,
     &bSerialNumber_Save,            // ОТЛАДКА - С/Н - Сохранить
-    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
+    &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1110,7 +1110,7 @@ DEF_BUTTON(         bEraseData,                                                 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_13(        pDebug,                                                                                                             // ОТЛАДКА ///
-    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
+    &mainPage, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
     "",
     "",
@@ -1130,150 +1130,3 @@ DEF_PAGE_13(        pDebug,                                                     
 );
 
 const Page * pointerPageDebug = &pDebug;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-void OnPressDebugDisable(void)
-{
-    ShowMenu(false);
-    SetMenuPageDebugActive(false);
-    SetMenuPosActItem(Page_Main, 0);
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-void OnDegubConsoleViewChanged(bool active)
-{
-    display.SetPauseForConsole(CONSOLE_IN_PAUSE);
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressDebugConsoleUp(void)
-{
-    display.OneStringUp();
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressDebugConsoleDown(void)
-{
-    display.OneStringDown();
-}
-
-        /// ОТЛАДКА - АЦП - ДОП. СМЕЩ. ПАМ. - Величина
-        const Governor mgDebugADCaltShift =
-        {
-            Item_Governor, &mspDebugADCaltShift,
-            {
-                "Величина", "Value"
-            },
-            {
-                "",
-                ""
-            },
-            0,
-            &set.debug.altShift, -2, 2, 0
-        };
-
-bool sIsShowReg_RShift1(void)
-{
-    return set.debug.showRegisters.rShiftB || set.debug.showRegisters.all;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TrigLev(void)
-{
-    return set.debug.showRegisters.trigLev || set.debug.showRegisters.all;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_Range(Channel ch)
-{
-    return set.debug.showRegisters.range[ch] || set.debug.showRegisters.all;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TrigParam(void)
-{
-    return set.debug.showRegisters.trigParam || set.debug.showRegisters.all;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_ChanParam(Channel ch)
-{
-    return set.debug.showRegisters.chanParam[ch] || set.debug.showRegisters.all;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TShift(void)
-{
-    return set.debug.showRegisters.tShift || set.debug.showRegisters.all;
-}
-
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TBase(void)
-{
-    return set.debug.showRegisters.tBase || set.debug.showRegisters.all;
-}
-
-
-const Page mspDebugADCaltShift =    // ОТЛАДКА - АЦП - ДОП СМЕЩ ПАМ
-{
-    Item_Page, &ppADC,
-    {
-        "ДОП СМЕЩ ПАМ", "ALT SHIFT MEM"
-    },
-    {
-        "",
-        ""
-    },
-    0, Page_Debug_ADC_AltShift,
-    {
-        (void *)&mgDebugADCaltShift
-    }
-};
-*/

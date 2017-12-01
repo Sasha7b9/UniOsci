@@ -845,7 +845,7 @@ void Menu::ChangeStateFlashDrive()
 {
     if(!FDRIVE_IS_CONNECTED)
     {
-        if(GetNameOpenedPage() == PageSB_Memory_Drive_Manager)
+        if(GetOpenedPage() == PageSB_Memory_Drive_Manager)
         {
             ((Page *)OpenedItem())->ShortPressOnItem(0);
         }
@@ -884,7 +884,7 @@ static bool NeedForFireSetLED(void)
         return (type == Item_ChoiceReg) || (type == Item_Choice) || (type == Item_Governor);
     }
 
-    NamePage name = menu.GetNameOpenedPage();
+    NamePage name = menu.GetOpenedPage();
     if (
             name == PageSB_Debug_SerialNumber   ||
             name == PageSB_Service_FFT_Cursors  || 
@@ -975,7 +975,7 @@ TypeItem Menu::TypeOpenedItem(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-NamePage Menu::GetNameOpenedPage(void)
+NamePage Menu::GetOpenedPage(void)
 {
     return ((const Page *)OpenedItem())->GetNamePage();
 }
