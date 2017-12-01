@@ -459,9 +459,9 @@ static void WriteParametersFFT(Channel chan, float freq0, float density0, float 
 
     char buffer[20];
     painter.SetColor(Color::Fill());
-    painter.DrawText(x, y, su.Freq2String(freq0, false, buffer));
+    painter.DrawText(x, y, Freq2String(freq0, false, buffer));
     y += dY;
-    painter.DrawText(x, y, su.Freq2String(freq1, false, buffer));
+    painter.DrawText(x, y, Freq2String(freq1, false, buffer));
     if (chan == A)
     {
         y += dY + 2;
@@ -471,9 +471,9 @@ static void WriteParametersFFT(Channel chan, float freq0, float density0, float 
         y += dY * 3 + 4;
     }
     painter.SetColor(Color::Chan(chan));
-    painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : su.Float2String(density0, false, 7, buffer));
+    painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : Float2String(density0, false, 7, buffer));
     y += dY;
-    painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : su.Float2String(density1, false, 7, buffer));
+    painter.DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : Float2String(density1, false, 7, buffer));
 }
 
 
@@ -1060,7 +1060,7 @@ void Display::WriteCursors()
             float pos1 = mathFPGA.VoltageCursor(sCursors_GetCursPosU(source, 1), SET_RANGE(source), SET_RSHIFT(source));
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dU=");
-            painter.DrawText(x + 17, y1, su.Voltage2String(delta, false, buffer));
+            painter.DrawText(x + 17, y1, Voltage2String(delta, false, buffer));
             painter.DrawText(x, y2, ":");
             painter.DrawText(x + 10, y2, sCursors_GetCursorPercentsU(source, buffer));
         }
@@ -1082,7 +1082,7 @@ void Display::WriteCursors()
             float delta = fabsf(pos1 - pos0);
             painter.DrawText(x, y1, ":dT=");
             char buffer[20];
-            painter.DrawText(x + 17, y1, su.Time2String(delta, false, buffer));
+            painter.DrawText(x + 17, y1, Time2String(delta, false, buffer));
             painter.DrawText(x, y2, ":");
             painter.DrawText(x + 8, y2, sCursors_GetCursorPercentsT(source, buffer ));
 
@@ -1094,7 +1094,7 @@ void Display::WriteCursors()
                 painter.FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, Color::Back());
                 painter.DrawText(x + 1, GRID_TOP + 2, "1/dT=", colorText);
                 char buffer[20];
-                painter.DrawText(x + 25, GRID_TOP + 2, su.Freq2String(1.0f / delta, false, buffer));
+                painter.DrawText(x + 25, GRID_TOP + 2, Freq2String(1.0f / delta, false, buffer));
             }
         }
     }
@@ -1311,7 +1311,7 @@ void Display::WriteValueTrigLevel()
         char buffer[20];
         strcpy(buffer, LANG_RU ? "Óð ñèíõð = " : "Trig lvl = ");
         char bufForVolt[20];
-        strcat(buffer, su.Voltage2String(trigLev, true, bufForVolt));
+        strcat(buffer, Voltage2String(trigLev, true, bufForVolt));
         int width = 96;
         int x = (grid.Width() - width) / 2 + grid.Left();
         int y = grid.BottomMessages() - 20;
@@ -2104,7 +2104,7 @@ void Display::DrawLowPart()
         }
         else
         {
-            strcat(mesFreq, su.Freq2String(freq, false, buffer));
+            strcat(mesFreq, Freq2String(freq, false, buffer));
         }
         painter.DrawText(x + 3, GRID_BOTTOM + 2, mesFreq);
     }

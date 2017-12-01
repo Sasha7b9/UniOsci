@@ -457,7 +457,7 @@ void FPGA::LoadTShift(void)
 const char *FPGA::GetTShiftString(int16 tShiftRel, char buffer[20])
 {
     float tShiftVal = TSHIFT_2_ABS(tShiftRel, SET_TBASE);
-    return su.Time2String(tShiftVal, true, buffer);
+    return Time2String(tShiftVal, true, buffer);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

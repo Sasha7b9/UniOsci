@@ -210,7 +210,7 @@ int Display::WriteChannel(Channel ch, int x, int y)
 
     CHAR_BUF(buffer, 20);
 
-    su.Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buffer);
+    Voltage2String(RSHIFT_2_ABS(SET_RSHIFT(ch), SET_RANGE(ch)), true, buffer);
 
     painter.DrawText(x, y, buffer);
 

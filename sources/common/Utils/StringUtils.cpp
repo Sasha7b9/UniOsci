@@ -18,9 +18,10 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 StringUtils su;
 
+static int NumDigitsInIntPart(float value);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-char *StringUtils::Voltage2String(float voltage, bool alwaysSign, char buffer[20])
+char *Voltage2String(float voltage, bool alwaysSign, char buffer[20])
 {
     buffer[0] = 0;
     char *suffix;
@@ -58,7 +59,7 @@ char *StringUtils::Voltage2String(float voltage, bool alwaysSign, char buffer[20
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
+char *Float2String(float value, bool alwaysSign, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char *pBuffer = bufferOut;
@@ -120,7 +121,7 @@ char *StringUtils::Float2String(float value, bool alwaysSign, int numDigits, cha
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int StringUtils::NumDigitsInIntPart(float value)
+static int NumDigitsInIntPart(float value)
 {
     float fabsValue = fabsf(value);
 
@@ -150,7 +151,7 @@ int StringUtils::NumDigitsInIntPart(float value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* StringUtils::Time2String(float time, bool alwaysSign, char buffer[20])
+char *Time2String(float time, bool alwaysSign, char buffer[20])
 {
     buffer[0] = 0;
     char *suffix = 0;
@@ -186,7 +187,7 @@ char* StringUtils::Time2String(float time, bool alwaysSign, char buffer[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Freq2String(float freq, bool, char bufferOut[20])
+char *Freq2String(float freq, bool, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char *suffix = 0;
@@ -216,13 +217,13 @@ char *StringUtils::Freq2String(float freq, bool, char bufferOut[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* StringUtils::FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
+char *FloatFract2String(float value, bool alwaysSign, char bufferOut[20])
 {
     return Float2String(value, alwaysSign, 4, bufferOut);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* StringUtils::Phase2String(float phase, bool, char bufferOut[20])
+char *Phase2String(float phase, bool, char bufferOut[20])
 {
     char buffer[20];
     sprintf(bufferOut, "%s\xa8", Float2String(phase, false, 4, buffer));
@@ -378,7 +379,7 @@ char *Time2StringAccuracy(float time, bool alwaysSign, char buffer[20], int numD
     }
 
     char bufferOut[20];
-    strcat(buffer, su.Float2String(time, alwaysSign, numDigits, bufferOut));
+    strcat(buffer, Float2String(time, alwaysSign, numDigits, bufferOut));
     strcat(buffer, suffix);
 
     return buffer;
@@ -389,7 +390,7 @@ char *Db2String(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
     char buffer[20];
-    strcat(bufferOut, su.Float2String(value, false, numDigits, buffer));
+    strcat(bufferOut, Float2String(value, false, numDigits, buffer));
     strcat(bufferOut, "Да");
     return bufferOut;
 }
