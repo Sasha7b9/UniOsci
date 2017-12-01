@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FPGA.h" 
 #include "FPGATypes.h"
 #include "Display/Display.h"

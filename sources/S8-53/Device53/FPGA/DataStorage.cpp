@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "FPGA.h"
 #include "Log.h"
 #include "Hardware/RTC.h"

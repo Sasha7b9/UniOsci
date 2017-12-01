@@ -1,5 +1,5 @@
 #pragma once
-#include "defines.h"
+//#include "defines.h"
 #include "FPGATypes.h"
 #include "Panel/Controls.h"
 #include "DataStorage.h"
