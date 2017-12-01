@@ -343,7 +343,7 @@ void ShowMenu(bool show)
 
 bool MenuIsMinimize()
 {
-    return menu.TypeOpenedItem() == Item_Page && menu.GetNamePage((const Page *)menu.OpenedItem()) >= Page_SB_Curs;
+    return menu.TypeOpenedItem() == Item_Page && menu.GetNamePage((const Page *)menu.OpenedItem()) >= PageSB_Cursors_Set;
 }
 
 bool MenuPageDebugIsActive()

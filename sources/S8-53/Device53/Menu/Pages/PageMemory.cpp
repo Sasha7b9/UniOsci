@@ -690,7 +690,7 @@ static void PressSB_SetName_Exit()
     display.RemoveAddDrawFunction();
     if (gMemory.exitFromModeSetNameTo == RETURN_TO_DISABLE_MENU)
     {
-        menu.ShortPressOnPageItem(menu.PagePointerFromName(Page_SB_MemExtSetName), 0);
+        menu.ShortPressOnPageItem(menu.PagePointerFromName(PageSB_Memory_SetName), 0);
     }
     else if (gMemory.exitFromModeSetNameTo == RETURN_TO_LAST_MEM)
     {
@@ -733,7 +733,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMemInt,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnPressMemoryExtMask(void)
 {
-    menu.OpenPageAndSetItCurrent(Page_SB_MemExtSetMask);
+    menu.OpenPageAndSetItCurrent(PageSB_Memory_Drive_Mask);
     display.SetAddDrawFunction(DrawSetMask);
 }
 
@@ -961,7 +961,7 @@ void Memory_SaveSignalToFlashDrive()
     {
         if (FILE_NAMING_MODE_IS_HAND)
         {
-            menu.OpenPageAndSetItCurrent(Page_SB_MemExtSetName);
+            menu.OpenPageAndSetItCurrent(PageSB_Memory_SetName);
             display.SetAddDrawFunction(DrawSetName);
         }
         else
@@ -1048,7 +1048,7 @@ DEF_PAGE_SB(        mspSetMask,                                                 
     0,
     &sbSetMaskBackspace,
     &sbSetMaskInsert,
-    Page_SB_MemExtSetMask, &mspMemoryExt, IsActiveMemoryExtSetMask, OnPressMemoryExtMask, FuncDrawPage, OnMemExtSetMaskRegSet
+    PageSB_Memory_Drive_Mask, &mspMemoryExt, IsActiveMemoryExtSetMask, OnPressMemoryExtMask, FuncDrawPage, OnMemExtSetMaskRegSet
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1102,7 +1102,7 @@ DEF_PAGE_6(         mspMemoryExt,                                               
     mcMemoryExtModeSave,
     mcMemoryExtModeBtnMemory,
     mcMemoryExtAutoConnectFlash,
-    Page_MemoryExt, &pMemory, FuncActive, FuncPress
+    Page_Memory_Drive, &pMemory, FuncActive, FuncPress
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1142,7 +1142,7 @@ DEF_PAGE_SB(        mpSetName,                                                  
     &sbSetNameBackspace,
     &sbSetNameInsert,
     &sbSetNameSave,
-    Page_SB_MemExtSetName, 0, FuncActive, FuncPress, FuncDrawPage, OnMemExtSetNameRegSet
+    PageSB_Memory_SetName, 0, FuncActive, FuncPress, FuncDrawPage, OnMemExtSetNameRegSet
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

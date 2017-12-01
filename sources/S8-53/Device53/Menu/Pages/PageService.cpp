@@ -116,7 +116,7 @@ DEF_PAGE_2(         ppCalibrator,                                               
     "Control of the calibrator and calibration of an oscillograph",
     cCalibrator_Mode,       // СЕРВИС - КАЛИБРАТОР - Калибратор
     cCalibrator_Calibrate,  // СЕРВИС - КАЛИБРАТОР - Калибровать
-    Page_ServiceCalibrator, &pService, FuncActive, EmptyPressPage
+    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -609,7 +609,7 @@ DEF_PAGE_5(         ppEthernet,                                                 
     ipEthernet_Mask,        // СЕРВИС - ETHERNET - Маска подсети
     ipEthernet_Gateway,     // СЕРВИС - ETHERNET - Шлюз
     macEthernet_MAC,        // СЕРВИС - ETHERNET - Физ адрес
-    Page_ServiceEthernet, &pService, FuncActive, FuncPress
+    Page_Service_Ethernet, &pService, FuncActive, FuncPress
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -719,7 +719,7 @@ static void Information_Draw(void)
 
 static void OnPress_Information(void)
 {
-    menu.OpenPageAndSetItCurrent(Page_SB_Information);
+    menu.OpenPageAndSetItCurrent(PageSB_Service_Information);
     display.SetDrawMode(DrawMode_Hand, Information_Draw);
 }
 
@@ -733,7 +733,7 @@ DEF_PAGE_SB(        ppInformation,                                              
     0,
     0,
     0,
-    Page_SB_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
+    PageSB_Service_Information, &pService, FuncActive, OnPress_Information, FuncDrawPage, FuncRegSetPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

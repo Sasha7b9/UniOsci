@@ -26,31 +26,31 @@ typedef enum
     Page_Cursors,                   ///< ÊÓĞÑÎĞÛ
     Page_Trig,                      ///< ÑÈÍÕĞ.
     Page_Memory,                    ///< ÏÀÌßÒÜ
-    Page_MemoryExt,                 ///< ÏÀÌßÒÜ - ÂÍÅØÍ. ÇÓ
+    Page_Memory_Drive,              ///< ÏÀÌßÒÜ - ÂÍÅØÍ. ÇÓ
     Page_Measures,                  ///< ÈÇÌÅĞÅÍÈß
     Page_MeasuresField,             ///< ÈÇÌÅĞÅÍÈß - ÇÎÍÀ
     Page_Service,                   ///< ÑÅĞÂÈÑ
     Page_Service_Display,           ///< ÑÅĞÂÈÑ - ÄÈÑÏËÅÉ
     Page_Service_Display_Colors,    ///< ÑÅĞÂÈÑ - ÄÈÑÏËÅÉ - ÖÂÅÒÀ
-    Page_ServiceCalibrator,         ///< ÑÅĞÂÈÑ - ÊÀËÈÁĞÀÒÎĞ
-    Page_ServiceEthernet,           ///< ÑÅĞÂÈÑ - ETHERNET
+    Page_Service_Calibrator,        ///< ÑÅĞÂÈÑ - ÊÀËÈÁĞÀÒÎĞ
+    Page_Service_Ethernet,          ///< ÑÅĞÂÈÑ - ETHERNET
     Page_Help,                      ///< ÏÎÌÎÙÜ
     Page_Time,                      ///< ĞÀÇÂÅĞÒÊÀ
     Page_Math,                      ///< ÑÅĞÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ
     Page_MathFFT,
     Page_Trig_Search,               ///< ÑÈÍÕĞ - ÀÂÒ ÏÎÈÑÊ
-    Page_SB_Curs,                   ///< Îòêğûòà ñòğàíèöà ÊÓĞÑÎĞÛ - Èçìåğåíèÿ
+    PageSB_Cursors_Set,             ///< Îòêğûòà ñòğàíèöà ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ
     PageSB_Measures_Tune,           ///< Îòêğûòà ñòğàíèöà ÈÇÌÅĞÅÍÈß - Íàñòğîèòü
     Page_SB_MeasTuneField,          ///< Îòêğûòà ñòğàíèöà ÈÇÌÅĞÅÍÈß - ÇÎÍÀ - Çàäàòü
     PageSB_Memory_Last,             ///< Îòêğûòà ñòğàíèöà ÏÀÌßÒÜ - Ïîñëåäíèå
     PageSB_Memory_Internal,         ///< Îòêğûòà ñòğàíèöà ÏÀÌßÒÜ - Âíóòğ ÇÓ
-    Page_SB_MemExtSetMask,          ///< Îòêğûòà ñòğàíèöà ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
-    Page_SB_MemExtSetName,          ///< Ïîÿâëÿåòñÿ ïåğåä ñîõğàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïğè ñîîòâåòñòâóşùåé îïöèè ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
+    PageSB_Memory_Drive_Mask,       ///< Îòêğûòà ñòğàíèöà ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
+    PageSB_Memory_SetName,          ///< Ïîÿâëÿåòñÿ ïåğåä ñîõğàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïğè ñîîòâåòñòâóşùåé îïöèè ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
     PageSB_Memory_Drive_Manager,    ///< Îòêğûòà ñòğàíèöà ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÊÀTAËÎÃ
     PageSB_Help,                    ///< Îòêğûòà ñòğàíèöà HELP
     PageSB_Service_FFT_Cursors,     ///< Îòêğûòà ñòğàíèöà ÑÅĞÂÈÑ - Ìàòåìàòèêà - Êóğñîğû
     PageSB_Service_Function,        ///< ÑÅĞÂÈÑ - ÌÀÒÅÌÀÒÈÊÀ - ÔÓÍÊÖÈß
-    Page_SB_Information,            ///< ÑÅĞÂÈÑ - ÈÍÔÎĞÌÀÖÈß
+    PageSB_Service_Information,     ///< ÑÅĞÂÈÑ - ÈÍÔÎĞÌÀÖÈß
     PageSB_Debug_SerialNumber,      ///< ÎÒÀÄÊÀ - Ñ/Í
     Page_NumPages,
     Page_NoPage

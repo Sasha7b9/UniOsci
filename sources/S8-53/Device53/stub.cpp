@@ -24,5 +24,5 @@ void Menu::ShortPressOnPageItem(Page *, int)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 NamePage Menu::GetNamePage(const Page *)
 {
-    return Page_SB_Curs;
+    return PageSB_Cursors_Set;
 }

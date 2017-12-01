@@ -426,7 +426,7 @@ DEF_PAGE_SB(        mspSet,                                                     
     &sbSetT,                    // йспянпш - сярюмнбхрэ - йСПЯНПШ T
     &sbSet100,                  // йспянпш - сярюмнбхрэ - 100%
     &sbSetPointsPercents,       // йспянпш - сярюмнбхрэ - оЕПЕЛЕЫЕМХЕ
-    Page_SB_Curs, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRotate_RegSet_Set
+    PageSB_Cursors_Set, &pCursors, FuncActive, FuncPress, FuncDrawPage, OnRotate_RegSet_Set
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
