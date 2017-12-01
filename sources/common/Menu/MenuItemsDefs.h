@@ -18,18 +18,18 @@ static const void * const  items##name[] = {(void *)item0, (void *)item1, (void 
 const Page name = {Item_Page, true, namePage, 6, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                        \
     items##name, funcPress, funcDraw, funcRegSet};
 
-#define DEF_PAGE_2(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN, item1, item2)                               \
+#define DEF_PAGE_2(name, titleRU, titleEN, hintRU, hintEN, item1, item2, namePage, keeper, funcActive, funcPress)                               \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2};                                                                    \
 const Page name = {Item_Page, false, namePage, 2, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_3(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN, item1, item2, item3)                        \
+#define DEF_PAGE_3(name, titleRU, titleEN, hintRU, hintEN, item1, item2, item3, namePage, keeper, funcActive, funcPress)                        \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (void *)&item3};                                                    \
 const Page name = {Item_Page, false, namePage, 3, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_4(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                             \
-    item1, item2, item3, item4)                                                                                                                 \
+#define DEF_PAGE_4(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
+    item1, item2, item3, item4, namePage, keeper, funcActive, funcPress)                                                                        \
 static const void * const  items##name[] = {(void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4};                                    \
 const Page name = {Item_Page, false, namePage, 4, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
@@ -53,27 +53,27 @@ static const void * const  items##name[] = {                                    
 const Page name = {Item_Page, false, namePage, 7, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_8(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                             \
-    item1, item2, item3, item4, item5, item6, item7, item8)                                                                                     \
+#define DEF_PAGE_8(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
+    item1, item2, item3, item4, item5, item6, item7, item8, namePage, keeper, funcActive, funcPress)                                            \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7, (void *)&item8};            \
-const Page name = {Item_Page, false, namePage, 8, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 8, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_9(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                          \
-    item1, item2, item3, item4, item5, item6, item7, item8, item9)                                                                              \
+#define DEF_PAGE_9(name, titleRU, titleEN, hintRU, hintEN,                                                                                      \
+    item1, item2, item3, item4, item5, item6, item7, item8, item9, namePage, keeper, funcActive, funcPress)                                     \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9};                                                                                                            \
-const Page name = {Item_Page, false, namePage, 9, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                     \
+const Page name = {Item_Page, false, namePage, 9, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                       \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_10(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
-    item1, item2, item3, item4, item5, item6, item7, item8, item9, item10)                                                                      \
+#define DEF_PAGE_10(name, titleRU, titleEN, hintRU, hintEN,                                                                                     \
+    item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, namePage, keeper, funcActive, funcPress)                             \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10};                                                                                           \
-const Page name = {Item_Page, false, namePage, 10, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 10, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 /*
@@ -94,29 +94,29 @@ static const void * const  items##name[] = {                                    
 const Page name = {Item_Page, false, namePage, 11, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_12(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_12(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                            \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12)                                                      \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11, (void *)&item12};                                                         \
-const Page name = {Item_Page, false, namePage, 12, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 12, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_13(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_13(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                            \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13)                                              \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11, (void *)&item12, (void *)&item13};                                        \
-const Page name = {Item_Page, false, namePage, 13, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 13, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
-#define DEF_PAGE_15(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                         \
+#define DEF_PAGE_15(name, namePage, keeper, funcActive, funcPress, titleRU, titleEN, hintRU, hintEN,                                            \
     item1, item2, item3, item4, item5, item6, item7, item8, item9, item10,                                                                      \
     item11, item12, item13, item14, item15)                                                                                                     \
 static const void * const  items##name[] = {                                                                                                    \
     (void *)&item1, (void *)&item2, (void *)&item3, (void *)&item4, (void *)&item5, (void *)&item6, (void *)&item7,                             \
     (void *)&item8, (void *)&item9, (void *)&item10, (void *)&item11, (void *)&item12, (void *)&item13, (void *)&item14, (void *)&item15};      \
-const Page name = {Item_Page, false, namePage, 15, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                    \
+const Page name = {Item_Page, false, namePage, 15, keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},                                      \
     items##name, funcPress, FuncDrawPage, FuncRegSetPage};
 
 
@@ -155,66 +155,66 @@ static const Governor name = {Item_Governor, &keeper, funcActive, {titleRU, titl
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_CHOICE_2(name, titleRU, titleEN, hintRU, hintEN, nameRu1, nameEn1, nameRu2, nameEn2, cell, keeper, funcActive, funcChanged, funcDraw)   \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2};                                                \
-static const Choice name = {Item_Choice, 2, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2};                                                                                \
+static const Choice name = {Item_Choice, 2, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_3(name, titleRU, titleEN, hintRU, hintEN,                                                        \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, cell, keeper, funcActive, funcChanged, funcDraw)          \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3};                              \
-static const Choice name = {Item_Choice, 3, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_3(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, cell, keeper, funcActive, funcChanged, funcDraw)                                          \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3};                                                              \
+static const Choice name = {Item_Choice, 3, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_4(name, titleRU, titleEN, hintRU, hintEN,                                                                    \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, cell, keeper, funcActive, funcChanged, funcDraw)    \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4};                        \
-static const Choice name = {Item_Choice, 4, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,             \
+#define DEF_CHOICE_4(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, cell, keeper, funcActive, funcChanged, funcDraw)                        \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4};                                            \
+static const Choice name = {Item_Choice, 4, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_5(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5)                       \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,  \
-    nameRu5, nameEn5};                                                                                              \
-static const Choice name = {Item_Choice, 5, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_5(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5, cell, keeper, funcActive, funcChanged, funcDraw)      \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
+    nameRu5, nameEn5};                                                                                                                              \
+static const Choice name = {Item_Choice, 5, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_6(name, titleRU, titleEN, hintRU, hintEN,nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,      \
-    nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, cell, keeper, funcActive, funcChanged, funcDraw)                               \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                         \
-    nameRu5, nameEn5, nameRu6, nameEn6};                                                                                        \
-static const Choice name = {Item_Choice, 6, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,             \
+#define DEF_CHOICE_6(name, titleRU, titleEN, hintRU, hintEN,nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,                          \
+    nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, cell, keeper, funcActive, funcChanged, funcDraw)                                                   \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
+    nameRu5, nameEn5, nameRu6, nameEn6};                                                                                                            \
+static const Choice name = {Item_Choice, 6, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_7(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                       \
-    nameRu6, nameEn6, nameRu7, nameEn7)                                                                             \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,           \
-    nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7};                                                 \
-static const Choice name = {Item_Choice, 7, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_7(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                                                       \
+    nameRu6, nameEn6, nameRu7, nameEn7, cell, keeper, funcActive, funcChanged, funcDraw)                                                            \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,                                                      \
+    nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7};                                                                                 \
+static const Choice name = {Item_Choice, 7, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_8(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                       \
-    nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8)                                                           \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,  \
-    nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8};                                        \
-static const Choice name = {Item_Choice, 8, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_8(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                                                       \
+    nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, cell, keeper, funcActive, funcChanged, funcDraw)                                          \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
+    nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8};                                                                        \
+static const Choice name = {Item_Choice, 8, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_REG_9(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,       \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                           \
-    nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9)                                             \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,      \
-    nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9};                          \
-static const Choice name = {Item_ChoiceReg, 9, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,  \
+#define DEF_CHOICE_REG_9(name, titleRU, titleEN, hintRU, hintEN,                                                                                    \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                                                       \
+    nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, cell, keeper, funcActive, funcChanged, funcDraw)                        \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
+    nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9};                                                      \
+static const Choice name = {Item_ChoiceReg, 9, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                              \
     hints##name, funcChanged, funcDraw};
 
-#define DEF_CHOICE_REG_10(name, keeper, cell, funcActive, funcChanged, funcDraw, titleRU, titleEN, hintRU, hintEN,      \
-    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                           \
-    nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, nameRu10, nameEn10)                         \
-static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,      \
-    nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, nameRu10, nameEn10};      \
-static const Choice name = {Item_ChoiceReg, 10, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell, \
+#define DEF_CHOICE_REG_10(name, titleRU, titleEN, hintRU, hintEN,                                                                                   \
+    nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5,                                                       \
+    nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, nameRu10, nameEn10, cell, keeper, funcActive, funcChanged, funcDraw)    \
+static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
+    nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, nameRu10, nameEn10};                                  \
+static const Choice name = {Item_ChoiceReg, 10, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                             \
     hints##name, funcChanged, funcDraw};
 
 

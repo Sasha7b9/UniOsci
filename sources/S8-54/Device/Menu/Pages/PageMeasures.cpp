@@ -85,8 +85,6 @@ static bool IsActive_Number(void)
 }
 
 DEF_CHOICE_7(       cNumber,                                                                                          //--- ИЗМЕРЕНИЯ - Количество ---
-    pMeasures,
-    NUM_MEASURES, IsActive_Number, FuncChangedChoice, FuncDraw,
     "Количество", "Number"
     ,
     "Устанавливает максимальное количество выводимых измерений:\n"
@@ -112,7 +110,8 @@ DEF_CHOICE_7(       cNumber,                                                    
     "2x5", "2x5",
     "3x5", "3x5",
     "6x1", "6x1",
-    "6x2", "6x2"
+    "6x2", "6x2",
+    NUM_MEASURES, pMeasures, IsActive_Number, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -270,14 +269,14 @@ DEF_PAGE_SB(        ppTune,                                                     
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_4(         ppFreqMeter,                                                                                         // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР ///
-    Page_Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage,
     "ЧАСТОТОМЕР", "FREQ METER",
     "",
     "",
-    cFreqMeter_Enable,     // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Частотомер
-    cFreqMeter_TimeF,      // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Время счёта F
-    cFreqMeter_FreqClc,    // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Метки времени
-    cFreqMeter_NumPeriods  // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов
+    cFreqMeter_Enable,      // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Частотомер
+    cFreqMeter_TimeF,       // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Время счёта F
+    cFreqMeter_FreqClc,     // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Метки времени
+    cFreqMeter_NumPeriods,  // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов
+    Page_Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

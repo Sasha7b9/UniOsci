@@ -135,14 +135,14 @@ static void SaveSignalToIntMemory(void);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_4(     pMemory,                                                                                                                 // ѕяћя“№ ///
-    Page_Memory, &mainPage, FuncActive, EmptyPressPage,
     "ѕјћя“№", "MEMORY",
     "–абота с внешней и внутренней пам€тью.",
     "Working with external and internal memory.",
-    cPoints,    // ѕјћя“№ - “очки
-    ppLast,     // ѕјћя“№ - ѕоследние
-    ppInternal, // ѕјћя“№ - ¬Ќ”“– «”
-    ppDrive     // ѕјћя“№ - ¬Ќ≈ЎЌ «”
+    cPoints,        // ѕјћя“№ - “очки
+    ppLast,         // ѕјћя“№ - ѕоследние
+    ppInternal,     // ѕјћя“№ - ¬Ќ”“– «”
+    ppDrive,        // ѕјћя“№ - ¬Ќ≈ЎЌ «”
+    Page_Memory, &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageMemory = &pMemory;

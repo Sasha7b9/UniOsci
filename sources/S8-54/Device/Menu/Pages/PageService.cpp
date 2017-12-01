@@ -107,12 +107,12 @@ DEF_BUTTON(         bCalibrator_Calibrate,                                      
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
-    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage,
     "КАЛИБРАТОР", "CALIBRATOR",
     "Управлением калибратором и калибровка осциллографа",
     "Control of the calibrator and calibration of an oscillograph",
     cCalibrator_Calibrator,     // СЕРВИС - КАЛИБРАТОР - Калибратор
-    bCalibrator_Calibrate       // СЕРВИС - КАЛИБРАТОР - Калибровать
+    bCalibrator_Calibrate,      // СЕРВИС - КАЛИБРАТОР - Калибровать
+    Page_Service_Calibrator, &pService, FuncActive, EmptyPressPage
 );
 
 #ifdef OLD_RECORDER
@@ -767,12 +767,12 @@ DEF_GOVERNOR(       gSound_Volume,                                              
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppSound,                                                                                                      // СЕРВИС - ЗВУК ///
-    Page_Service_Sound, &pService, FuncActive, EmptyPressPage,
     "ЗВУК", "SOUND",
     "В этом меню можно настроить громкость звука",
     "In this menu, you can adjust the volume",
     cSound_Enable,  // СЕРВИС - ЗВУК - Звук
-    gSound_Volume   // СЕРВИС - ЗВУК - Громкость
+    gSound_Volume,  // СЕРВИС - ЗВУК - Громкость
+    Page_Service_Sound, &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -813,12 +813,12 @@ DEF_GOVERNOR(       tRTC_Correction,                                            
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppRTC,                                                                                                       // СЕРВИС - ВРЕМЯ ///
-    Page_Service_RTC, &pService, FuncActive, EmptyPressPage,
     "ВРЕМЯ", "TIME",
     "Установка и настройка времени",
     "Set and setup time",
     tRTC_Time,          // СЕРВИС - ВРЕМЯ - Время
-    tRTC_Correction     // CЕРВИС - ВРЕМЯ - Коррекция
+    tRTC_Correction,    // CЕРВИС - ВРЕМЯ - Коррекция
+    Page_Service_RTC, &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -133,8 +133,6 @@ static bool IsActiveChoiceMeasuresNumber()
 }
 
 DEF_CHOICE_7(       mcMeasuresNumber,                                                                                 //--- ИЗМЕРЕНИЯ - Количество ---
-    pMeasures,
-    NUM_MEASURES, IsActiveChoiceMeasuresNumber, FuncChangedChoice, FuncDraw,
     "Количество", "Number"
     ,
     "Устанавливает максимальное количество выводимых измерений:\n"
@@ -161,7 +159,8 @@ DEF_CHOICE_7(       mcMeasuresNumber,                                           
     "2x5", "2x5",
     "3x5", "3x5",
     "6x1", "6x1",
-    "6x2", "6x2"
+    "6x2", "6x2",
+    NUM_MEASURES, pMeasures, IsActiveChoiceMeasuresNumber, FuncChangedChoice, FuncDraw
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

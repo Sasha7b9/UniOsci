@@ -143,7 +143,7 @@ static const Choice cSearch_Mode =
     hintsSearch_Mode, FuncChangedChoice, FuncDraw
 };
 
-//--------------------------------------------------------------------------------------------------------------------------- СИНХР - ПОИСК - Найти --
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Search_Search(void)
 {
     return TRIG_MODE_FIND_HAND;
@@ -154,9 +154,7 @@ static void OnPress_Search_Search(void)
     FPGA_FindAndSetTrigLevel();
 }
 
-DEF_BUTTON
-(
-    bSearch_Search,
+DEF_BUTTON(         bSearch_Search,                                                                                    //--- СИНХР - ПОИСК - Найти ---
     "Найти", "Search",
     "Производит поиск уровня синхронизации.",
     "Runs for search synchronization level.",
@@ -166,12 +164,12 @@ DEF_BUTTON
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppSearch,                                                                                                     // СИНХР - ПОИСК ///
-    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage,
     "ПОИСК", "SEARCH",
     "Управление автоматическим поиском уровня синхронизации.",
     "Office of the automatic search the trigger level.",
-    cSearch_Mode,   // СИНХР - ПОИСК - Режим
-    bSearch_Search  // СИНХР - ПОИСК - Найти
+    cSearch_Mode,       // СИНХР - ПОИСК - Режим
+    bSearch_Search,     // СИНХР - ПОИСК - Найти
+    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

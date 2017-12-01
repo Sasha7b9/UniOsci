@@ -304,13 +304,13 @@ DEF_GOVERNOR(       gADC_Balance_ShiftB,                                        
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         pppADC_Balance,                                                                                      // ОТЛАДКА - АЦП - БАЛАНС ///
-    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage,
     "БАЛАНС", "BALANCE",
     "",
     "",
     cADC_Balance_Mode,      // ОТЛАДКА - АЦП - БАЛАНС - Режим
     gADC_Balance_ShiftA,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
-    gADC_Balance_ShiftB     // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
+    gADC_Balance_ShiftB,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
+    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -557,13 +557,13 @@ DEF_PAGE_7(         pppADC_Shift,                                               
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         ppADC,                                                                                                        // ОТЛАДКА - АЦП ///
-    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage,
     "АЦП", "ADC",
     "",
     "",
     pppADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
     pppADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
-    pppADC_Shift    // ОТЛАДКА - АЦП - ДОП СМЕЩ
+    pppADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
+    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -657,7 +657,6 @@ DEF_GOVERNOR(       gRand_Pretriggered,                                         
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_8(         ppRand,                                                                                                  // ОТЛАДКА - РАНД-ТОР ///
-    Page_Debug_Rand, &pDebug, FuncActive, EmptyPressPage,
     "РАНД-ТОР", "RANDOMIZER",
     "",
     "",
@@ -668,7 +667,8 @@ DEF_PAGE_8(         ppRand,                                                     
     gRand_ShowStat,         // ОТЛАДКА - РАНД-ТОР - Статистика
     gRand_TimeCompensation, // ОТЛАДКА - РАНД-ТОР - Компенсация задержки
     gRand_AddTimeShift,     // ОТЛАДКА - РАНД-ТОР - Смещение
-    gRand_Pretriggered      // ОТЛАДКА - РAНД-ТОР - Предзапуск
+    gRand_Pretriggered,     // ОТЛАДКА - РAНД-ТОР - Предзапуск
+    Page_Debug_Rand, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -678,7 +678,6 @@ static void OnChanged_Channels_BandwidthA(bool)
 }
 
 DEF_CHOICE_7(       cChannels_BandwidthA,                                                                        //--- ОТЛАДКА - КАНЛАЫ - Полоса 1 ---
-    ppChannels, BANDWIDTH_DEBUG(A), FuncActive, OnChanged_Channels_BandwidthA, FuncDraw,
     "Полоса 1", "Bandwidth 1",
     "Здесь можно выбрать полосу, которая будет действовать в КАНАЛ1-Полоса при выборе значения Полная",
     "Here you can select the bandwidth, which will operate in CHANNEL1-Bandwidth when set to Full",
@@ -688,7 +687,8 @@ DEF_CHOICE_7(       cChannels_BandwidthA,                                       
     "200МГц", "200MHz",
     "350МГц", "350MHz",
     "650МГц", "650MHz",
-    "750МГц", "750MHz"
+    "750МГц", "750MHz",
+    BANDWIDTH_DEBUG(A), ppChannels, FuncActive, OnChanged_Channels_BandwidthA, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -698,27 +698,27 @@ static void OnChanged_Channels_BandwidthB(bool)
 }
 
 DEF_CHOICE_7(       cChannels_BandwidthB,                                                                        //--- ОТЛАДКА - КАНЛАЫ - Полоса 2 ---
-    ppChannels, BANDWIDTH_DEBUG(B), FuncActive, OnChanged_Channels_BandwidthB, FuncDraw,
     "Полоса 2", "Bandwidth 2",
     "Здесь можно выбрать полосу, которая будет действовать в КАНАЛ2-Полоса при выборе значения Полная",
     "Here you can select the bandwidth, which will operate in CHANNEL2-Bandwidth when set to Full",
     "Полная", "Full",
-    "20МГц", "20MHz",
+    "20МГц",  "20MHz",
     "100МГц", "100MHz",
     "200МГц", "200MHz",
     "350МГц", "350MHz",
     "650МГц", "650MHz",
-    "750МГц", "750MHz"
+    "750МГц", "750MHz",
+    BANDWIDTH_DEBUG(B), ppChannels, FuncActive, OnChanged_Channels_BandwidthB, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppChannels,                                                                                                // ОТЛАДКА - КАНАЛЫ ///
-    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage,
     "КАНАЛЫ", "CHANNELS",
     "",
     "",
     cChannels_BandwidthA,   // ОТЛАДКА - КАНАЛЫ - Полоса 1
-    cChannels_BandwidthB    // ОТЛАДКА - КАНАЛЫ - Полоса 2
+    cChannels_BandwidthB,   // ОТЛАДКА - КАНАЛЫ - Полоса 2
+    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

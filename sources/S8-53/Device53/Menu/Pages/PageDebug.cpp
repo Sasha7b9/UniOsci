@@ -259,13 +259,13 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftB,                                       
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpADC_Balance,                                                                                       // ОТЛАДКА - АЦП - БАЛАНС ///
-    Page_DebugADCbalance, &mpADC, FuncActive, EmptyPressPage,
     "БАЛАНС", "BALANCE",
     "",
     "",
     mcADC_Balance_Mode,     // ОТЛАДКА - АЦП - БАЛАНС - Режим
     mgADC_Balance_ShiftA,   // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
-    mgADC_Balance_ShiftB    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
+    mgADC_Balance_ShiftB,   // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
+    Page_DebugADCbalance, &mpADC, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -338,13 +338,13 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_B,                                        
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpADC_Stretch,                                                                                     // ОТЛАДКА - АЦП - РАСТЯЖКА ///
-    Page_DebugADCstretch, &mpADC, FuncActive, EmptyPressPage,
     "РАСТЯЖКА", "STRETCH",
     "",
     "",
-    mcADC_Stretch_Mode,  // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
-    mgADC_Stretch_ADC_A, // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к
-    mgADC_Stretch_ADC_B  // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к
+    mcADC_Stretch_Mode,     // ОТЛАДКА - АЦП - РАСТЯЖКА - Режим
+    mgADC_Stretch_ADC_A,    // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 1к
+    mgADC_Stretch_ADC_B,    // ОТЛАДКА - АЦП - РАСТЯЖКА - Коэфф. 2к
+    Page_DebugADCstretch, &mpADC, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -447,13 +447,13 @@ DEF_PAGE_7(         mpADC_AltRShift,                                            
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpADC,                                                                                                        // ОТЛАДКА - АЦП ///
-    Page_DebugADC, &pDebug, FuncActive, EmptyPressPage,
     "АЦП", "ADC",
     "",
     "",
-    mpADC_Balance,  // ОТЛАДКА - АЦП - БАЛАНС
-    mpADC_Stretch,  // ОТЛАДКА - АЦП - РАСТЯЖКА
-    mpADC_AltRShift // ОТЛАДКА - АЦП - ДОП СМЕЩ
+    mpADC_Balance,      // ОТЛАДКА - АЦП - БАЛАНС
+    mpADC_Stretch,      // ОТЛАДКА - АЦП - РАСТЯЖКА
+    mpADC_AltRShift,    // ОТЛАДКА - АЦП - ДОП СМЕЩ
+    Page_DebugADC, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -493,18 +493,14 @@ DEF_GOVERNOR(       mgRandomizer_Average,                                       
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpRandomizer,                                                                                            // ОТЛАДКА - РАНД-ТОР ///
-    Page_DebugRandomizer, &pDebug, FuncActive, EmptyPressPage,
     "РАНД-ТОР", "RANDOMIZER",
     "",
     "",
     mgRandomizer_SamplesForGates, // ОТЛАДКА - РАНД-ТОР - Выб-к/ворота
     mgRandomizer_AltTShift0,      // ОТЛАДКА - РАНД-ТОР - tShift доп.
-    mgRandomizer_Average          // ОТЛАДКА - РАНД-ТОР - Усредн.
+    mgRandomizer_Average,         // ОТЛАДКА - РАНД-ТОР - Усредн.
+    Page_DebugRandomizer, &pDebug, FuncActive, EmptyPressPage
 );
-
-
-
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnDraw_SizeSettings(int x, int y)
@@ -761,13 +757,13 @@ DEF_CHOICE_2(       mcConsole_SizeFont,                                         
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_3(         mpConsole,                                                                                                // ОТЛАДКА - КОНСОЛЬ ///
-    Page_DebugConsole, &pDebug, FuncActive, EmptyPressPage,
     "КОНСОЛЬ", "CONSOLE",
     "",
     "",
-    mgConsole_NumStrings, // ОТЛАДКА - КОНСОЛЬ - Число строк
-    mcConsole_SizeFont,   // ОТЛАДКА - КОНСОЛЬ - Размер шрифта
-    mpConsole_Registers   // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
+    mgConsole_NumStrings,   // ОТЛАДКА - КОНСОЛЬ - Число строк
+    mcConsole_SizeFont,     // ОТЛАДКА - КОНСОЛЬ - Размер шрифта
+    mpConsole_Registers,    // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
+    Page_DebugConsole, &pDebug, FuncActive, EmptyPressPage
 );
 
 

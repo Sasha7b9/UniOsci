@@ -1147,14 +1147,14 @@ DEF_PAGE_SB(        mpSetName,                                                  
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_4(         pMemory,                                                                                                             // ѕјћя“№ ///
-    Page_Memory, &mainPage, FuncActive, FuncPress,
     "ѕјћя“№", "MEMORY",
     "–абота с внешней и внутренней пам€тью.",
     "Working with external and internal memory.",
     mcMemoryNumPoints,
     mspMemLast,
     mspMemInt,
-    mspMemoryExt
+    mspMemoryExt,
+    Page_Memory, &mainPage, FuncActive, FuncPress
 );
 
 

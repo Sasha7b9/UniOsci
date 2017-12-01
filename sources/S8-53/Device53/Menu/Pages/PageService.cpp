@@ -111,12 +111,12 @@ DEF_BUTTON(         cCalibrator_Calibrate,                                      
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
-    Page_ServiceCalibrator, &pService, FuncActive, EmptyPressPage,
     "КАЛИБРАТОР", "CALIBRATOR",
     "Управлением калибратором и калибровка осциллографа",
     "Control of the calibrator and calibration of an oscillograph",
-    cCalibrator_Mode,     // СЕРВИС - КАЛИБРАТОР - Калибратор
-    cCalibrator_Calibrate // СЕРВИС - КАЛИБРАТОР - Калибровать
+    cCalibrator_Mode,       // СЕРВИС - КАЛИБРАТОР - Калибратор
+    cCalibrator_Calibrate,  // СЕРВИС - КАЛИБРАТОР - Калибровать
+    Page_ServiceCalibrator, &pService, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -520,12 +520,12 @@ DEF_PAGE_6(         pppMath_FFT,                                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         ppMath,                                                                                                 // СЕРВИС - МАТЕМАТИКА ///
-    Page_Math, &pService, FuncActive, FuncPress,
     "МАТЕМАТИКА", "MATH",
     "Математические функции и БПФ",
     "Mathematical functions and FFT",
-    pppMath_Function, // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ
-    pppMath_FFT       // СЕРВИС - МАТЕМАТИКА - СПЕКТР
+    pppMath_Function,   // СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ
+    pppMath_FFT,        // СЕРВИС - МАТЕМАТИКА - СПЕКТР
+    Page_Math, &pService, FuncActive, FuncPress
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -738,7 +738,6 @@ DEF_PAGE_SB(        ppInformation,                                              
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_10(        pService,                                                                                                            // СЕРВИС ///
-    Page_Service,&mainPage, FuncActive, FuncPress,
     "СЕРВИС", "SERVICE",
     "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
     "Additional settings, calibration, signal search, mathematical functions",
@@ -751,7 +750,8 @@ DEF_PAGE_10(        pService,                                                   
     cLang,                    // СЕРВИС - Язык
     tTime,                    // СЕРВИС - Время
     cModeLongPressButtonTrig, // СЕРВИС - Реж длит СИНХР
-    ppInformation             // СЕРВИС - ИНФОРМАЦИЯ
+    ppInformation,            // СЕРВИС - ИНФОРМАЦИЯ
+    Page_Service, &mainPage, FuncActive, FuncPress
 );
 
 

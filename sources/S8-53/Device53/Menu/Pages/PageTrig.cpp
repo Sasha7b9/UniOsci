@@ -148,12 +148,12 @@ DEF_BUTTON(         mbAutoFind_Search,                                          
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         mpAutoFind,                                                                                                   // СИНХР - ПОИСК ///
-    Page_TrigAuto, &pTrig, FuncActive, EmptyPressPage,
     "ПОИСК", "SEARCH",
     "Управление автоматическим поиском уровня синхронизации.",
     "Office of the automatic search the trigger level.",
     mcAutoFind_Mode,    // СИНХР - ПОИСК - Режим
-    mbAutoFind_Search   // СИНХР - ПОИСК - Найти    
+    mbAutoFind_Search,  // СИНХР - ПОИСК - Найти
+    Page_TrigAuto, &pTrig, FuncActive, EmptyPressPage
 );
 
 

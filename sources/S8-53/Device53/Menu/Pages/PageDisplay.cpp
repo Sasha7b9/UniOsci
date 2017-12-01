@@ -36,8 +36,6 @@ DEF_CHOICE_2(       mcMapping,                                                  
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_REG_9(   mcAccumulation_Number,                                                                    // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество ---
-    mspAccumulation,
-    ENUM_ACCUM, FuncActive, FuncChangedChoice, FuncDraw,
     "Количество", "Number"
     ,
     "Задаёт максимальное количество последних сигналов на экране. Если в настройке \"Режим\" выбрано \"Бесконечность\", экран очищается только "
@@ -55,7 +53,8 @@ DEF_CHOICE_REG_9(   mcAccumulation_Number,                                      
     "32",            "32",
     "64",            "64",
     "128",           "128",
-    "Бесконечность", "Infinity"
+    "Бесконечность", "Infinity",
+    ENUM_ACCUM, mspAccumulation, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -101,31 +100,31 @@ static bool IsActive_Accumulation(void)
 }
 
 DEF_PAGE_3(         mspAccumulation,                                                                                       // ДИСПЛЕЙ - НАКОПЛЕНИЕ ///
-    Page_DisplayAccumulation, &pDisplay, IsActive_Accumulation, EmptyPressPage,
     "НАКОПЛЕНИЕ", "ACCUMULATION",
     "Настройки режима отображения последних сигналов на экране.",
     "Mode setting signals to display the last screen.",
     mcAccumulation_Number, // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Количество
     mcAccumulation_Mode,   // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Режим
-    mcAccumulation_Clear   // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить
+    mcAccumulation_Clear,  // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить
+    Page_DisplayAccumulation, &pDisplay, IsActive_Accumulation, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_REG_10(  mcAveraging_Number,                                                                       // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество ---
-    mspAveraging, ENUM_AVE, FuncActive, FuncChangedChoice, FuncDraw,
     "Количество", "Number",
     "Задаёт количество последних измерений, по которым производится усреднение.",
     "Sets number of the last measurements on which averaging is made.",
     DISABLE_RU, DISABLE_EN,
-    "2",        "2",
-    "4",        "4",
-    "8",        "8",
-    "16",       "16",
-    "32",       "32",
-    "64",       "64",
-    "128",      "128",
-    "256",      "256",
-    "512",      "512"
+    "2",   "2",
+    "4",   "4",
+    "8",   "8",
+    "16",  "16",
+    "32",  "32",
+    "64",  "64",
+    "128", "128",
+    "256", "256",
+    "512", "512",
+    ENUM_AVE, mspAveraging, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -152,12 +151,12 @@ static bool IsActive_Averaging(void)
 }
 
 DEF_PAGE_2(         mspAveraging,                                                                                          // ДИСПЛЕЙ - УСРЕДНЕНИЕ ///
-    Page_DisplayAverage, &pDisplay, IsActive_Averaging, EmptyPressPage,
     "УСРЕДНЕНИЕ", "AVERAGE",
     "Настройки режима усреднения по последним измерениям.",
     "Settings of the mode of averaging on the last measurements.",
-    mcAveraging_Number, // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество
-    mcAveraging_Mode    // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим
+    mcAveraging_Number,     // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Количество
+    mcAveraging_Mode,       // ДИСПЛЕЙ - УСРЕДНЕНИЕ - Режим
+   Page_DisplayAverage, &pDisplay, IsActive_Averaging, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -171,7 +170,6 @@ static void OnChanged_MinMax(bool active)
 }
 
 DEF_CHOICE_8(       mcMinMax,                                                                                                // ДИСПЛЕЙ - Мин Макс ---
-    pDisplay, ENUM_MIN_MAX, IsActive_MinMax, OnChanged_MinMax, FuncDraw,
     "Мин Макс", "Min Max"
     ,
     "Задаёт количество последних измерений, по которым строятся ограничительные линии, огибающие минимумы и максимумы измерений."
@@ -184,12 +182,12 @@ DEF_CHOICE_8(       mcMinMax,                                                   
     "16",       "16",
     "32",       "32",
     "64",       "64",
-    "128",      "128"
+    "128",      "128",
+    ENUM_MIN_MAX, pDisplay, IsActive_MinMax, OnChanged_MinMax, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_REG_10(  mcSmoothing,                                                                                          // ДИСПЛЕЙ - Сглаживание ---
-    pDisplay,  SMOOTHING, FuncActive, FuncChangedChoice, FuncDraw,
     "Сглаживание", "Smoothing",
     "Устанавливает количество точек для расчёта сглаженного по соседним точкам сигнала.",
     "Establishes quantity of points for calculation of the signal smoothed on the next points.",
@@ -202,7 +200,8 @@ DEF_CHOICE_REG_10(  mcSmoothing,                                                
     "7 точек",  "7 points",
     "8 точек",  "8 points",
     "9 точек",  "9 points",
-    "10 точек", "10 points"
+    "10 точек", "10 points",
+    SMOOTHING, pDisplay, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -212,7 +211,6 @@ void OnChanged_RefreshFPS(bool active)
 }
 
 DEF_CHOICE_5(       mcRefreshFPS,                                                                                      // ДИСПЛЕЙ - Частота обновл ---
-    pDisplay, ENUM_SIGNALS_IN_SEC, FuncActive, OnChanged_RefreshFPS, FuncDraw,
     "Частота обновл", "Refresh rate",
     "Задаёт максимальное число выводимых в секунду кадров.",
     "Sets the maximum number of the shots removed in a second.",
@@ -220,7 +218,8 @@ DEF_CHOICE_5(       mcRefreshFPS,                                               
     "10", "10",
     "5",  "5",
     "2",  "2",
-    "1",  "1"
+    "1",  "1",
+    ENUM_SIGNALS_IN_SEC, pDisplay, FuncActive, OnChanged_RefreshFPS, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -259,12 +258,12 @@ DEF_GOVERNOR(       mgGrid_Brightness,                                          
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_2(         mspGrid,                                                                                                    // ДИСПЛЕЙ - СЕТКА ///
-    Page_DisplayGrid, &pDisplay, FuncActive, EmptyPressPage,
     "СЕТКА", "GRID",
     "Содержит настройки отображения координатной сетки.",
     "Contains settings of display of a coordinate grid.",
-    mcGrid_Type,      // ДИСПЛЕЙ - СЕТКА - Тип
-    mgGrid_Brightness // ДИСПЛЕЙ - СЕТКА - Яркость
+    mcGrid_Type,        // ДИСПЛЕЙ - СЕТКА - Тип
+    mgGrid_Brightness,  // ДИСПЛЕЙ - СЕТКА - Яркость
+    Page_DisplayGrid, &pDisplay, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -329,14 +328,14 @@ static const GovernorColor mgcSettings_Colors_Grid =
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_4(         mspSettings_Colors,                                                                             // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ///
-    Page_ServiceDisplayColors, &mspSettings, FuncActive, EmptyPressPage,
     "ЦВЕТА", "COLORS",
     "Выбор цветов дисплея",
     "The choice of colors display",
     mcSettings_Colors_Scheme,    // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
     mgcSettings_Colors_ChannelA, // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
     mgcSettings_Colors_ChannelB, // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
-    mgcSettings_Colors_Grid      // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
+    mgcSettings_Colors_Grid,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка
+    Page_ServiceDisplayColors, &mspSettings, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -440,7 +439,6 @@ DEF_PAGE_7(         mspSettings,                                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_9(         pDisplay,                                                                                                           // ДИСПЛЕЙ ///
-    Page_Display, &mainPage, FuncActive, EmptyPressPage,
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
     "Contains settings of display of the display.",
@@ -452,7 +450,8 @@ DEF_PAGE_9(         pDisplay,                                                   
     mcRefreshFPS,    // ДИСПЛЕЙ - Частота обновл
     mspGrid,         // ДИСПЛЕЙ - СЕТКА
     mcTypeShift,     // ДИСПЛЕЙ - Смещение
-    mspSettings      // ДИСПЛЕЙ - НАСТРОЙКИ
+    mspSettings,     // ДИСПЛЕЙ - НАСТРОЙКИ
+    Page_Display, &mainPage, FuncActive, EmptyPressPage
 );
 
 
