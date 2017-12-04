@@ -663,9 +663,9 @@ void ProcessingReleaseButton(void)
 void ShortPress_Page(void *item)
 {
     Page *page = (Page *)item;
-    if (page->funcOnPress)
+    if (page->s->funcOnPress)
     {
-        page->funcOnPress();
+        page->s->funcOnPress();
     }
 
     page->SetCurrentSB();

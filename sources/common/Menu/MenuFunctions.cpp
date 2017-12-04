@@ -65,7 +65,7 @@ int HeightOpenedItem(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *TitleItem(void *item) 
 {
-    return ((Page *)item)->titleHint[LANG];
+    return ((Page *)item)->s->titleHint[LANG];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ bool ItemIsOpened(const void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Page *Keeper(const void *item)
 {
-    const Page *page = ((Page *)(item))->keeper;
+    const Page *page = ((Page *)(item))->s->keeper;
     return (Page *)page;
 }
 
@@ -112,7 +112,7 @@ bool ItemIsAcitve(const void *item)
 
     if (type == Item_Choice || type == Item_Page || type == Item_Button || type == Item_Governor || type == Item_SmallButton || type == Item_ChoiceReg)
     {
-        pFuncBV func = ((Page *)(item))->funcOfActive;
+        pFuncBV func = ((Page *)(item))->s->funcOfActive;
 
         return func ? func() : true;
     }
@@ -159,7 +159,7 @@ bool IsPageSB(const void *item)
 {
     if (TypeMenuItem(item) == Item_Page)
     {
-        return ((Page *)item)->isPageSB;
+        return ((Page *)item)->s->isPageSB;
     }
     return false;
 }

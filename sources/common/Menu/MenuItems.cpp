@@ -51,12 +51,12 @@ const char *Choice::NamePrevSubItem()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void *Page::Item(int numElement) const
 {
-    return (void *)items[numElement + (IsPageSB(this) ? 1 : 0)];
+    return (void *)s->items[numElement + (IsPageSB(this) ? 1 : 0)];
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 SButton* Page::SmallButonFromPage(int numButton)
 {
-    return (SButton *)items[numButton];
+    return (SButton *)s->items[numButton];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -85,7 +85,7 @@ void Page::ShortPressOnItem(int numItem) const
 {
     if (TypeMenuItem(this) == Item_Page)
     {
-        CallFuncOnPressButton((void *)items[numItem]);
+        CallFuncOnPressButton((void *)s->items[numItem]);
     }
 }
 

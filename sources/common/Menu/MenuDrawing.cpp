@@ -72,15 +72,15 @@ static void DrawHintItem(int x, int y, int width)
 
     const int SIZE = 100;
     char title[SIZE];
-    snprintf(title, SIZE, "%s \"%s\"", names[type][lang], item->titleHint[lang]);
+    snprintf(title, SIZE, "%s \"%s\"", names[type][lang], item->s->titleHint[lang]);
 
-    if (item->type == Item_SmallButton)
+    if (item->s->type == Item_SmallButton)
     {
         y -= 9;
     }
     painter.DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, gColorBack, gColorFill);
-    y = painter.DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], gColorBack, gColorFill);
-    if (item->type == Item_SmallButton)
+    y = painter.DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->s->titleHint[2 + lang], gColorBack, gColorFill);
+    if (item->s->type == Item_SmallButton)
     {
         painter.DrawHintsForSmallButton(x, y, width, (SButton*)item);
     }
@@ -319,9 +319,9 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
         }
     }
 
-    if (page->funcOnDraw)
+    if (page->s->funcOnDraw)
     {
-        page->funcOnDraw();
+        page->s->funcOnDraw();
     }
 }
 
