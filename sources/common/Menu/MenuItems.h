@@ -63,13 +63,9 @@ typedef enum
 
 class SButton;
 
-class Control
-{
-};
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
 /// Описывает страницу меню.
-class Page : public Control
+class Page
 {
 public:
     COMMON_PART_MENU_ITEM_PAGE
@@ -89,7 +85,7 @@ public:
     /// подстраница 1, это будет 5 и т.д.
     int PosItemOnTop();
     /// Вызывает функцию короткого нажатия кнопки над итемом numItem страницы page
-    void ShortPressOnItem(int numItem);
+    void ShortPressOnItem(int numItem) const;
     /// Возвращает позицию текущего элемента странцы page
     int8 PosCurrentItem() const;
     void ChangeSubPage(int delta) const;

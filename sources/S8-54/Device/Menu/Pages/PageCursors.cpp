@@ -20,7 +20,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const Page pCursors;
-extern const Page ppSet;
+extern const Page ppCursors_Set;
 
 static void MoveCursUonPercentsOrPoints(int delta);
 static void MoveCursTonPercentsOrPoints(int delta);
@@ -105,7 +105,7 @@ DEF_CHOICE_2(       cShowFreq,                                                  
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_SMALL_BUTTON_EXIT(  bSet_Exit,                                                                              //--- КУРСОРЫ - УСТАНОВИТЬ - Выход ---
-    ppSet, FuncActive, OnPressSB_Exit, DrawSB_Exit
+    ppCursors_Set, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +135,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bSet_Channel,                                       
     "Канал", "Channel",
     "Выбор канала для курсорных измерений",
     "Channel choice for measurements",
-    ppSet, FuncActive, OnPress_Set_Channel, Draw_Set_Channel,
+    ppCursors_Set, FuncActive, OnPress_Set_Channel, Draw_Set_Channel,
     Draw_Set_ChannelA, "канал 1", "channel 1",
     Draw_Set_ChannelB, "канал 2", "channel 2"
 );
@@ -213,7 +213,7 @@ DEF_SMALL_BUTTON_HINTS_5(   bSet_U,                                             
     "Курсоры U", "Cursors U",
     "Выбор курсоров напряжения для индикации и управления",
     "Choice of cursors of voltage for indication and management",
-    ppSet, FuncActive, OnPress_Set_U, Draw_Set_U,
+    ppCursors_Set, FuncActive, OnPress_Set_U, Draw_Set_U,
     Draw_Set_U_disable,     "курсоры напряжения выключены",
                             "cursors of tension are switched off",
     Draw_Set_U_disableBoth, "курсоры напряжения включены",
@@ -298,7 +298,7 @@ DEF_SMALL_BUTTON_HINTS_5(   bSet_T,                                             
     "Курсоры T", "Cursors T",
     "Выбор курсоров времени для индикации и управления",
     "Choice of cursors of time for indication and management",
-    ppSet, FuncActive, OnPress_Set_T, Draw_Set_T,
+    ppCursors_Set, FuncActive, OnPress_Set_T, Draw_Set_T,
     Draw_Set_T_disable,     "курсоры времени выключены",                             "cursors of time are switched off",
     Draw_Set_T_disableBoth, "курсоры времени включены",                              "cursors of time are switched on",
     Draw_Set_T_enableLeft,  "курсоры времени включены, управление левым курсором",   "cursors of time are switched on, control of the left cursor",
@@ -324,7 +324,7 @@ DEF_SMALL_BUTTON(   bSet_100,                                                   
     "100%", "100%",
     "Используется для процентных измерений. Нажатие помечает расстояние между активными курсорами как 100%",
     "It is used for percentage measurements. Pressing marks distance between active cursors as 100%",
-    ppSet, FuncActive, OnPress_Set_100, Draw_Set_100
+    ppCursors_Set, FuncActive, OnPress_Set_100, Draw_Set_100
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -361,7 +361,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bSet_Movement,                                      
     "Перемещение", "Movement",
     "Выбор шага перемещения курсоров - проценты или точки",
     "Choice of a step of movement of cursors - percent or points",
-    ppSet, FuncActive, OnPress_Set_Movement, Draw_Set_Movement,
+    ppCursors_Set, FuncActive, OnPress_Set_Movement, Draw_Set_Movement,
     Draw_Set_Movement_Percents, "шаг перемещения курсоров кратен одному проценту", "the step of movement of cursors is multiple to one percent",
     Draw_Set_Movement_Points,   "шаг перемещения курсора кратен одному пикселю",   "the step of movement of the cursor is multiple to one pixel"
 );
@@ -380,7 +380,7 @@ static void OnRegSet_Set(int angle)
     sound.RegulatorShiftRotate();
 }
 
-DEF_PAGE_SB(        ppSet,                                                                                                 // КУРСОРЫ - УСТАНОВИТЬ ///
+DEF_PAGE_SB(        ppCursors_Set,                                                                                                 // КУРСОРЫ - УСТАНОВИТЬ ///
     "УСТАНОВИТЬ", "SET",
     "Переход в режим курсорных измерений",
     "Switch to cursor measures",
@@ -402,7 +402,7 @@ DEF_PAGE_5(         pCursors,                                                   
     cLookModeChanA,     // КУРСОРЫ - Слежение канал 1
     cLookModeChanB,     // КУРСОРЫ - Слежение канал 2
     cShowFreq,          // КУРОСРЫ - 1/dT
-    ppSet,              // КУРСОРЫ - УСТАНОВИТЬ
+    ppCursors_Set,              // КУРСОРЫ - УСТАНОВИТЬ
     &mainPage, FuncActive, EmptyPressPage
 );
 
@@ -564,6 +564,6 @@ static void MoveCursTonPercentsOrPoints(int delta)
 
 bool IsRegSetActiveOnCursors(void)
 {
-    return ((menu.GetOpenedPage() == PageSB_Cursors_Set) &&
+    return ((menu.GetOpenedPage() == &ppCursors_Set) &&
         ((CURS_ACTIVE_U && CURsU_ENABLED) || (CURS_ACTIVE_T && CURsT_ENABLED)));
 }

@@ -1,4 +1,5 @@
 #include "MenuItems.h"
+#include "Menu/Menu.h"
 #include "Menu/MenuFunctions.h"
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
@@ -80,7 +81,7 @@ const char *Choice::NameSubItem(int i)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Page::ShortPressOnItem(int numItem)
+void Page::ShortPressOnItem(int numItem) const
 {
     if (TypeMenuItem(this) == Item_Page)
     {
@@ -91,20 +92,20 @@ void Page::ShortPressOnItem(int numItem)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int8 Page::PosCurrentItem() const
 {
-    return MENU_POS_ACT_ITEM(name) & 0x7f;
+    return MENU_POS_ACT_ITEM(menu.CalculateNumPage((Page *)this)) & 0x7f;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::ChangeSubPage(int delta) const
 {
-    if (delta > 0 && MenuCurrentSubPage(name) < NumSubPages() - 1)
+    if (delta > 0 && MenuCurrentSubPage((Page *)this) < NumSubPages() - 1)
     {
         sound.RegulatorSwitchRotate();
-        SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) + 1);
+        SetMenuCurrentSubPage((Page *)this, MenuCurrentSubPage((Page *)this) + 1);
     }
-    else if (delta < 0 && MenuCurrentSubPage(name) > 0)
+    else if (delta < 0 && MenuCurrentSubPage((Page *)this) > 0)
     {
         sound.RegulatorSwitchRotate();
-        SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) - 1);
+        SetMenuCurrentSubPage((Page *)this, MenuCurrentSubPage((Page *)this) - 1);
     }
 }

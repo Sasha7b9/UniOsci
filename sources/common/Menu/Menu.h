@@ -59,7 +59,7 @@ public:
     /// Возвращает тип открытого элемента меню
     TypeItem TypeOpenedItem(void);
 
-    Page GetOpenedPage(void);
+    Page *GetOpenedPage(void);
 
     /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
     void *CurrentItem(void);
@@ -67,6 +67,8 @@ public:
     void CloseOpenedItem(void);
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     void ChangeItem(void *item, int delta);
+    /// Возвращает номер страницы по её адресу
+    int CalculateNumPage(Page *page);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB

@@ -1058,7 +1058,7 @@ static void PressSB_FM_Exit()
     display.RemoveAddDrawFunction();
 }
 
-DEF_SMALL_BUTTON(   sbExitFileManager,                                                                                 // ПАМЯТЬ - КАТАЛОГ - Выход ///
+DEF_SMALL_BUTTON(   sbExitFileManager,                                                                    // ПАМЯТЬ - ВНЕШН - ЗУ - КАТАЛОГ - Выход ///
     "Выход", "Exit",
     "Сохранить выбранный каталог в качестве текущего и выйти",
     "Save the selected directory as the current one and exit",
@@ -1078,7 +1078,7 @@ static bool FuncOfActiveExtMemFolder()
     return gBF.flashDriveIsConnected == 1;
 }
 
-DEF_PAGE_SB(        mspFileManager,                                                                                            // ПАМЯТЬ - КАТАЛОГ ///
+DEF_PAGE_SB(        mspFileManager,                                                                                 // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ ///
     "КАТАЛОГ", "DIRECTORY",
     "Открывает доступ к файловой системе подключенного накопителя",
     "Provides access to the file system of the connected drive",

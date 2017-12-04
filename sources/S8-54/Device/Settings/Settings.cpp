@@ -297,23 +297,23 @@ bool Settings_DebugModeEnable(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SetMenuPosActItem(NamePage namePage, int8 pos)
+void SetMenuPosActItem(Page *page, int8 pos)
 {
-    set.menu_PosActItem[namePage] = pos;
+    set.menu_PosActItem[menu.CalculateNumPage(page)] = pos;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int8 MenuCurrentSubPage(NamePage namePage)
+int8 MenuCurrentSubPage(Page *page)
 {
-    return set.menu_CurrentSubPage[namePage];
+    return set.menu_CurrentSubPage[menu.CalculateNumPage(page)];
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
+void SetMenuCurrentSubPage(Page *page, int8 posSubPage)
 {
-    set.menu_CurrentSubPage[namePage] = posSubPage;
+    set.menu_CurrentSubPage[menu.CalculateNumPage(page)] = posSubPage;
 }
 
 

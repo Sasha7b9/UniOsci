@@ -4,6 +4,7 @@
 #include "Utils/StringUtils.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuFunctions.h"
+#include "Menu/Pages/Definition.h"
 #include "FPGA/FPGAtypes.h"
 #include "FPGA/FPGAMath.h"
 #include <math.h>
@@ -20,7 +21,7 @@ float sCursors_GetCursPosU(Channel ch, int numCur)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool sCursors_NecessaryDrawCursors(void)
 {
-    return (CURsU_ENABLED || CURsT_ENABLED) && (CURS_SHOW || menu.GetOpenedPage() == PageSB_Cursors_Set);
+    return (CURsU_ENABLED || CURsT_ENABLED) && (CURS_SHOW || menu.GetOpenedPage() == &ppCursors_Set);
 }
 
 

@@ -13,21 +13,21 @@ TypeItem TypeMenuItem(const void *address)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool    CurrentItemIsOpened(NamePage namePage)
+bool CurrentItemIsOpened(Page *page)
 {
-    bool retValue = _GET_BIT(MENU_POS_ACT_ITEM(namePage), 7) == 1;
+    bool retValue = _GET_BIT(MENU_POS_ACT_ITEM(menu.CalculateNumPage(page)), 7) == 1;
     return retValue;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void    SetCurrentItem(const void *item, bool active)
+void SetCurrentItem(const void *item, bool active)
 {
     if(item != 0)
     {
         Page *page = (Keeper(item));
         if(!active)
         {
-            SetMenuPosActItem(page->name, 0x7f);
+            SetMenuPosActItem(page, 0x7f);
         }
         else
         {
@@ -35,7 +35,7 @@ void    SetCurrentItem(const void *item, bool active)
             {
                 if(page->Item(i) == item)
                 {
-                    SetMenuPosActItem(page->name, (int8)i);
+                    SetMenuPosActItem(page, (int8)i);
                     return;
                 }
             }
@@ -80,7 +80,7 @@ void OpenItem(const void *item, bool open)
     if(item)
     {
         Page *page = Keeper(item);
-        SetMenuPosActItem(page->GetNamePage(), open ? (page->PosCurrentItem() | 0x80) : (page->PosCurrentItem() & 0x7f));
+        SetMenuPosActItem(page, open ? (page->PosCurrentItem() | 0x80) : (page->PosCurrentItem() & 0x7f));
     }
 }
 
@@ -91,9 +91,9 @@ bool ItemIsOpened(const void *item)
     Page *page = Keeper(item);
     if(type == Item_Page)
     {
-        return CurrentItemIsOpened(Keeper(item)->GetNamePage());
+        return CurrentItemIsOpened(Keeper(item));
     }
-    return (MENU_POS_ACT_ITEM(page->name) & 0x80) != 0;
+    return (MENU_POS_ACT_ITEM(menu.CalculateNumPage(page)) & 0x80) != 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

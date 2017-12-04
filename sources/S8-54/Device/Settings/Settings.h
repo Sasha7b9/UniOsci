@@ -273,7 +273,7 @@ void CurrentPageSBregSet(int angle);
 const SButton*  GetSmallButton(PanelButton button);
 
 /// Возвращает позицию активного пункта на странице namePage.
-#define MENU_POS_ACT_ITEM(namePage) (set.menu_PosActItem[namePage])
+#define MENU_POS_ACT_ITEM(num) (set.menu_PosActItem[num])
 
 /// \brief Загрузить настройки. Если default == true, загружаются настройки по умолчанию, иначе пытается загрузить настройки из ПЗУ, а в случае 
 /// неудачи - тоже настройки по умолчанию.

@@ -10,7 +10,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const Page pTrig;
-extern const Page ppSearch;
+extern const Page ppTrig_Search;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "A
 
 static const Choice cSearch_Mode =
 {
-    Item_Choice, 2, &ppSearch, 0,
+    Item_Choice, 2, &ppTrig_Search, 0,
     {
         "Режим", "Mode"
         ,
@@ -158,12 +158,12 @@ DEF_BUTTON(         bSearch_Search,                                             
     "Найти", "Search",
     "Производит поиск уровня синхронизации.",
     "Runs for search synchronization level.",
-    ppSearch, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
+    ppTrig_Search, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
 );
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppSearch,                                                                                                     // СИНХР - ПОИСК ///
+DEF_PAGE_2(         ppTrig_Search,                                                                                                     // СИНХР - ПОИСК ///
     "ПОИСК", "SEARCH",
     "Управление автоматическим поиском уровня синхронизации.",
     "Office of the automatic search the trigger level.",
@@ -181,6 +181,6 @@ DEF_PAGE_5(         pTrig,                                                      
     cSource,        // СИНХР - Источник
     cPolarity,      // СИНХР - Полярность
     cInput,         // СИНХР - Вход
-    ppSearch,       // СИНХР - ПОИСК
+    ppTrig_Search,       // СИНХР - ПОИСК
     &mainPage, FuncActive, EmptyPressPage
 );

@@ -96,7 +96,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
         return;
     }
     int height = HeightOpenedItem(page);
-    bool shade = CurrentItemIsOpened(page->GetNamePage());
+    bool shade = CurrentItemIsOpened(page);
     painter.FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, gColorBack);
     painter.DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
 
@@ -281,7 +281,7 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
 {
     DrawTitlePage(page, layer, yTop);
     DrawItemsPage(page, layer, yTop + MP_TITLE_HEIGHT);
-    if (CurrentItemIsOpened(page->GetNamePage()))
+    if (CurrentItemIsOpened(page))
     {
         int8 posCurItem = page->PosCurrentItem();
         void *item = page->Item(posCurItem);
@@ -334,7 +334,7 @@ int CalculateX(int layer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsShade(void *item)
 {
-    return CurrentItemIsOpened(Keeper(item)->GetNamePage()) && (item != menu.OpenedItem());
+    return CurrentItemIsOpened(Keeper(item)) && (item != menu.OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
