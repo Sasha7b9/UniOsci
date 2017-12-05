@@ -679,7 +679,7 @@ void FuncOnLongPressItemButton(void *button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_Button(void *button)
 {
-    if(!((Control *)button)->IsActive())
+    if(!((Button *)button)->IsActive())
     {
         return;
     }
@@ -837,7 +837,7 @@ pFuncVpV FuncForLongPressureOnItem(void *item)
         ShortPress_SmallButton      // Item_SmallButton
     };
 
-    Control *control = (Control *)item;
+    Button *control = (Button *)item;
 
     return control->IsActive() ? longFunction[TypeMenuItem(item)] : EmptyFuncVpV;
 }
