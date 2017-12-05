@@ -12,8 +12,6 @@
  *  @{
  */
 
-/// Вовзращает true, если элемент меню item является ативным, т.е. может быть нажат
-bool ItemIsAcitve(const void *item);
 /// Возвращает тип элемента меню по адресу address
 TypeItem TypeMenuItem(const void *address);
 /// Возвращает true, если текущий элемент страницы с именем namePage открыт

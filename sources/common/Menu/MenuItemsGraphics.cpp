@@ -49,7 +49,7 @@ void GovernorColor::DrawOpened(int x, int y)
 void GovernorColor::DrawClosed(int x, int y)
 {
     ct->Init(false);
-    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(this), IsShade(this) || !ItemIsAcitve(this), true);
+    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(this), IsShade(this) || !IsActive(), true);
     painter.FillRegion(x + 2, y + 20, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1, ct->color);
 }
 
@@ -111,7 +111,7 @@ void Governor::DrawOpened(int x, int y)
 void Governor::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !ItemIsAcitve(this);
+    bool shade = IsShade(this) || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -218,7 +218,7 @@ void IPaddress::DrawOpened(int x, int y)
 void IPaddress::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !ItemIsAcitve(this);
+    bool shade = IsShade(this) || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -310,7 +310,7 @@ void MACaddress::DrawOpened(int x, int y)
 void MACaddress::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !ItemIsAcitve(this);
+    bool shade = IsShade(this) || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -385,7 +385,7 @@ void Formula::Draw(int x, int y, bool opened)
 void Formula::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !ItemIsAcitve(this);
+    bool shade = IsShade(this) || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -479,7 +479,7 @@ void Choice::DrawOpened(int x, int y)
 void Choice::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !ItemIsAcitve(this);
+    bool shade = IsShade(this) || !funcOfActive();
 
     painter.DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 1, Color::MENU_FIELD, Color::MENU_ITEM_BRIGHT,
                              Color::MENU_ITEM_DARK, true, shade);
@@ -511,7 +511,7 @@ void Choice::DrawClosed(int x, int y)
 void Button::Draw(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !ItemIsAcitve(this);
+    bool shade = IsShade(this) || !funcOfActive();
 
     painter.DrawHLine(y + 1, x, x + MI_WIDTH, Color::MenuTitle(shade));
     Color color = shade ? Color::MenuItem(true) : Color::WHITE;
@@ -529,7 +529,7 @@ void Button::Draw(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void SButton::Draw(int x, int y)
 {
-    if (ItemIsAcitve(this))
+    if (funcOfActive())
     {
         if (IsPressed(this))
         {
@@ -551,7 +551,7 @@ void SButton::Draw(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::Draw(int x, int y)
 {
-    bool isShade = IsShade(this) || !ItemIsAcitve(this);
+    bool isShade = IsShade(this) || !funcOfActive();
     bool isPressed = IsPressed(this);
     painter.DrawHLine(y + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
 

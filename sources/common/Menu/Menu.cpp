@@ -640,7 +640,7 @@ void ShortPress_Choice(void *choice_)
 {
     Choice *choice = (Choice*)choice_;
 
-    if (!ItemIsAcitve(choice))
+    if (!choice->IsActive())
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     }
@@ -660,7 +660,7 @@ void ShortPress_ChoiceReg(void *choice_)
 {
     Choice *choice = (Choice*)choice_;
 
-    if(!ItemIsAcitve(choice)) 
+    if(!choice->IsActive()) 
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     } 
@@ -679,7 +679,7 @@ void FuncOnLongPressItemButton(void *button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_Button(void *button)
 {
-    if(!ItemIsAcitve(button))
+    if(!((Control *)button)->IsActive())
     {
         return;
     }
@@ -731,7 +731,7 @@ void ShortPress_Time(void *time)
 void ShortPress_Governor(void *governor)
 {
     Governor *gov = (Governor*)governor;
-    if(!ItemIsAcitve(governor))
+    if(!gov->IsActive())
     {
         return;
     }
@@ -766,11 +766,11 @@ void ShortPress_MAC(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_GovernorColor(void *governorColor)
 {
-    if(!ItemIsAcitve(governorColor))
+    GovernorColor *governor = (GovernorColor*)governorColor;
+    if(!governor->IsActive())
     {
         return;
     }
-    GovernorColor *governor = (GovernorColor*)governorColor;
     if(menu.OpenedItem() == governor)
     {
         CircleIncrease<int8>(&(governor->ct->currentField), 0, 3);
@@ -837,7 +837,9 @@ pFuncVpV FuncForLongPressureOnItem(void *item)
         ShortPress_SmallButton      // Item_SmallButton
     };
 
-    return ItemIsAcitve(item) ? longFunction[TypeMenuItem(item)] : EmptyFuncVpV;
+    Control *control = (Control *)item;
+
+    return control->IsActive() ? longFunction[TypeMenuItem(item)] : EmptyFuncVpV;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

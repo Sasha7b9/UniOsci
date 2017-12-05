@@ -63,11 +63,17 @@ typedef enum
     const char *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 class SButton;
+class Page;
 
 class Control
 {
 public:
-
+    TypeItem type;
+    const Page *keeper;
+    pFuncBV funcOfActive;
+    const char *titleHint[4];
+    /// Возвращает true, если элемент меню является активным, т.е. может быть нажат
+    bool IsActive();
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
@@ -98,6 +104,7 @@ public:
     int8 PosCurrentItem() const;
     void ChangeSubPage(int delta) const;
     void Draw(int x, int y);
+    bool IsActive();
 };
 
 //typedef class Page Page;
@@ -112,6 +119,7 @@ public:
     pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
     void CallFuncOnDraw(int x, int y);
     void Draw(int x, int y);
+    bool IsActive();
 };
 
 #define DEF_BUTTON(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw) \
@@ -169,6 +177,7 @@ public:
     void DrawLowPart(int x, int y, bool pressed, bool shade);
     /// Возвращает изображение регулятора, соответствующее его текущему положению
     static char GetSymbol(int value);
+    bool IsActive();
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Choice ///
@@ -194,6 +203,7 @@ public:
     const char *NamePrevSubItem();
     /// Возвращает имя варианта выбора элемента choice в позиции i как оно записано в исходном коде программы
     const char *NameSubItem(int i);
+    bool IsActive();
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IPaddress ///
@@ -215,6 +225,7 @@ public:
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
+    bool IsActive();
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MACaddress ///
@@ -235,6 +246,7 @@ public:
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
+    bool IsActive();
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Formuala ////
@@ -264,6 +276,7 @@ public:
     void DrawClosed(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
     void WriteText(int x, int y, bool opened);
+    bool IsActive();
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GovernorColor ///
@@ -275,6 +288,7 @@ public:
     pFuncVV     funcOnChanged;      ///< Эту функцию нужно вызывать после изменения значения элемента.
     void ChangeValue(int delta);    ///< Изменить яркость цвета в governor.
     void Draw(int x, int y, bool opened);
+    bool IsActive();
 private:
     void DrawOpened(int x, int y);
     void DrawClosed(int x, int y);

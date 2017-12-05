@@ -104,23 +104,6 @@ Page *Keeper(const void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ItemIsAcitve(const void *item) 
-{
-    TypeItem type = TypeMenuItem(item);
-
-    /// \todo Здесь оптимизировать через битовую маску
-
-    if (type == Item_Choice || type == Item_Page || type == Item_Button || type == Item_Governor || type == Item_SmallButton || type == Item_ChoiceReg)
-    {
-        pFuncBV func = ((Page *)(item))->funcOfActive;
-
-        return func ? func() : true;
-    }
-
-    return true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ChangeOpenedItem(void *item, int delta)
 {
     if (delta < 2 && delta > -2)

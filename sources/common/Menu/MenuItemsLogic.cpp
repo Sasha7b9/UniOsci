@@ -51,7 +51,7 @@ void Choice::StartChange(int delta)
     {
         SetItemForHint(this);
     }
-    else if (!ItemIsAcitve(this))
+    else if (!IsActive())
     {
         CHOICE_RUN_FUNC_CHANGED(this, false);
     }
@@ -96,7 +96,7 @@ float Choice::Step()
         }
         *cell = index;
         tsChoice.address = 0;
-        CHOICE_RUN_FUNC_CHANGED(this, ItemIsAcitve(this));
+        CHOICE_RUN_FUNC_CHANGED(this, IsActive());
         NEED_FINISH_DRAW = 1;
         tsChoice.dir = NONE;
         return 0.0f;
@@ -125,7 +125,7 @@ void Choice::ChangeIndex(int delta)
         }
     }
     *cell = (int8)index;
-    CHOICE_RUN_FUNC_CHANGED(this, ItemIsAcitve(this));
+    CHOICE_RUN_FUNC_CHANGED(this, IsActive());
     sound.GovernorChangedValue();
     NEED_FINISH_DRAW = 1;
 }
@@ -373,7 +373,7 @@ void Time::DecCurrentPosition()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::SetCurrentSB() const
 {
-    if (ItemIsAcitve(this))
+    if (funcOfActive())
     {
         if (SHOW_STRING_NAVI_TEMP)
         {
