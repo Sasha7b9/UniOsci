@@ -290,41 +290,30 @@ DEF_CHOICE_2(       mcSettings_Colors_Scheme,                                   
     COLOR_SCHEME, mspSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
-//---------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_A};
+DEF_GOVERNOR_COLOR( mgcSettings_Colors_ChannelA,                                                       //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
+    "Канал 1", "Channel 1",
+    "",  "",
+    colorT1, mspSettings_Colors
+);
 
-static const GovernorColor mgcSettings_Colors_ChannelA =
-{
-    Item_GovernorColor, &mspSettings_Colors, 0,
-    {
-        "Канал 1", "Channel 1", "",  ""
-    },
-    &colorT1
-};
-
-//---------------------------------------------------------------------------------------------------------- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2 ---
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static ColorType colorT2 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_B};
+DEF_GOVERNOR_COLOR( mgcSettings_Colors_ChannelB,                                                       //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2 ---
+    "Канал 2", "Channel 2",
+    "",
+    "",
+    colorT2, mspSettings_Colors
+);
 
-static const GovernorColor mgcSettings_Colors_ChannelB =
-{
-    Item_GovernorColor, &mspSettings_Colors, 0,
-    {
-        "Канал 2", "Channel 2", "", ""
-    },
-    &colorT2
-};
-
-//------------------------------------------------------------------------------------------------------------ ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка ---
-static const GovernorColor mgcSettings_Colors_Grid =
-{
-    Item_GovernorColor, &mspSettings_Colors, 0,
-    {
-        "Сетка", "Grid",
-        "Устанавливает цвет сетки",
-        "Sets the grid color"
-    },
-    &colorTypeGrid
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_GOVERNOR_COLOR( mgcSettings_Colors_Grid,                                                             //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка ---
+    "Сетка", "Grid",
+    "Устанавливает цвет сетки",
+    "Sets the grid color",
+    colorTypeGrid, mspSettings_Colors
+);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_4(         mspSettings_Colors,                                                                             // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ///

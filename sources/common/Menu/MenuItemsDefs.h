@@ -152,6 +152,10 @@ static const SButton name = { Item_SmallButton, &keeper, funcActive, {titleRU, t
 static const Governor name = {Item_Governor, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, min, max, (int16 *)(&(cell)), funcChanged,    \
     funcBeforeDraw};
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#define DEF_GOVERNOR_COLOR(name, titleRU, titleEN, hintRU, hintEN, colorType, keeper)   \
+static const GovernorColor name = {Item_GovernorColor, &keeper, FuncActive, {titleRU, titleEN, hintRU, hintEN}, &colorType};
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_CHOICE_2(name, titleRU, titleEN, hintRU, hintEN, nameRu1, nameEn1, nameRu2, nameEn2, cell, keeper, funcActive, funcChanged, funcDraw)   \

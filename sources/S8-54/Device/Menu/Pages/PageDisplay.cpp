@@ -38,42 +38,30 @@ DEF_CHOICE_2(       cSettings_Colors_Scheme,                                    
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_A};
-static const GovernorColor gcSettings_Colors_ChannelA =                                                //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
-{
-    Item_GovernorColor, &pppSettings_Colors, 0,
-    {
-        "Канал 1", "Channel 1",
-        "",
-        ""
-    },
-    &colorT1
-};
+DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                                        //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
+    "Канал 1", "Channel 1",
+    "",
+    "",
+    colorT1, pppSettings_Colors
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static ColorType colorT2 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_B};
-static const GovernorColor gcSettings_Colors_ChannelB =                                                //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2 ---
-{
-    Item_GovernorColor, &pppSettings_Colors, 0,
-    {
-        "Канал 2", "Channel 2",
-        "",
-        ""
-    },
-    &colorT2
-};
+DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                                        //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2 ---
+    "Канал 2", "Channel 2",
+    "",
+    "",
+    colorT2, pppSettings_Colors
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::GRID};
-static const GovernorColor gcSettings_Colors_Grid =                                                      //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка ---
-{
-    Item_GovernorColor, &pppSettings_Colors, 0,
-    {
-        "Сетка", "Grid",
-        "Устанавливает цвет сетки",
-        "Sets the grid color"
-    },
-    &colorTypeGrid
-};
+DEF_GOVERNOR_COLOR( gcSettings_Colors_Grid,                                                              //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сетка ---
+    "Сетка", "Grid",
+    "Устанавливает цвет сетки",
+    "Sets the grid color",
+    colorTypeGrid, pppSettings_Colors
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_Colors_Background(bool)
