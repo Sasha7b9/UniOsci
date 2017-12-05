@@ -95,7 +95,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
         page->SmallButonFromPage(0)->Draw(LEFT_SB, yTop + 3);
         return;
     }
-    int height = HeightOpenedItem(page);
+    int height = page->HeightOpened();
     bool shade = CurrentItemIsOpened(page->GetNamePage());
     painter.FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, gColorBack);
     painter.DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
@@ -110,7 +110,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
         painter.DrawVolumeButton(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, 2, Color::MenuTitle(false), Color::MENU_TITLE_BRIGHT, Color::MENU_TITLE_DARK, shade, shade);
     }
     
-    painter.DrawVLine(x, yTop, yTop + HeightOpenedItem(page), Color::BorderMenu(false));
+    painter.DrawVLine(x, yTop, yTop + page->HeightOpened(), Color::BorderMenu(false));
     bool condDrawRSet = page->NumSubPages() > 1 && menu.CurrentItem()->Type() != Item_ChoiceReg && 
         menu.CurrentItem()->Type() != Item_Governor && menu.TypeOpenedItem() == Item_Page;
     int delta = condDrawRSet ? -10 : 0;
@@ -358,9 +358,9 @@ int ItemOpenedPosY(void *item)
     Page *page = (Page *)((Control *)item)->Keeper();
     int8 posCurItem = page->PosCurrentItem();
     int y = GRID_TOP + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
-    if(y + HeightOpenedItem((Control *)item) > GRID_BOTTOM)
+    if(y + ((Control *)item)->HeightOpened() > GRID_BOTTOM)
     {
-        y = GRID_BOTTOM - HeightOpenedItem((Control *)item) - 2;
+        y = GRID_BOTTOM - ((Control *)item)->HeightOpened() - 2;
     }
     return y + 1;
 }

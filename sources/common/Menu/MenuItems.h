@@ -62,6 +62,8 @@ public:
     TypeItem  Type() const;
     bool IsActive() const;
     bool IsPageSB() const;
+    /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
+    int HeightOpened() const;
 };
 
 

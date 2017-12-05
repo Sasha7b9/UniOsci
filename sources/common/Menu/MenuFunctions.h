@@ -19,8 +19,6 @@ void SetCurrentItem(const void *item,               ///< адрес элемента, активно
                     bool active                     ///< true - сделать элемент текущим, false - расделать элемент текущим. В этом случае текущим становится заголовок страницы
                     );
 bool ChangeOpenedItem(Control *item, int delta);
-/// Возвращает высоту в пикселях открытого элемента Choice или NamePage по адресу item
-int HeightOpenedItem(Control *item);
 /// Возвращает название элемента по адресу item, как оно выглядит на дисплее прибора
 const char *TitleItem(void *item);
 /// Возвращает true, если button - функциональная клавиша [1..5]

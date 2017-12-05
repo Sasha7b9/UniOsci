@@ -451,7 +451,7 @@ void Choice::Draw(int x, int y, bool opened)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Choice::DrawOpened(int x, int y)
 {
-    int height = HeightOpenedItem(this);
+    int height = HeightOpened();
 
     painter.DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3, gColorBack);
 

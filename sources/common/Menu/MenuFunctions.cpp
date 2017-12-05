@@ -38,25 +38,6 @@ void    SetCurrentItem(const void *item, bool active)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int HeightOpenedItem(Control *item) 
-{
-    TypeItem type = item->Type();
-    if(type == Item_Page)
-    {
-        int numItems = ((const Page *)item)->NumItems() - ((Page *)item)->NumCurrentSubPage() * MENU_ITEMS_ON_DISPLAY;
-        LIMITATION(numItems, 0, MENU_ITEMS_ON_DISPLAY);
-        return MP_TITLE_HEIGHT + MI_HEIGHT * numItems;
-    } 
-    else if(type == Item_Choice || type == Item_ChoiceReg)
-    {
-        return MOI_HEIGHT_TITLE + ((Choice *)item)->NumSubItems() * MOSI_HEIGHT - 1;
-    }
-    return MI_HEIGHT;
-}
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 const char *TitleItem(void *item) 
 {
     return ((Page *)item)->titleHint[LANG];
