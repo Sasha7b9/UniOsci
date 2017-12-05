@@ -8,12 +8,6 @@
 #include "Utils/CommonFunctions.h"
 
 
-#ifndef WIN32
-#pragma push
-#pragma diag_suppress 191
-#endif
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const Page pTrig;
 extern const Page ppSearch;
@@ -190,8 +184,3 @@ DEF_PAGE_5(         pTrig,                                                      
     ppSearch,       // —»Õ’– - œŒ»— 
     Page_Trig, &mainPage, FuncActive, EmptyPressPage
 );
-
-
-#ifndef WIN32
-#pragma pop
-#endif

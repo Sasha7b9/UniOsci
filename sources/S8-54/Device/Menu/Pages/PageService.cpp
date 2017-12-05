@@ -12,11 +12,6 @@
 #include "Utils/Dictionary.h"
 #include "Utils/Math.h"
 
-#ifndef WIN32
-#pragma push
-#pragma diag_suppress 177 , 191
-#endif
-
 
 extern const Page pService;
 extern const Page ppCalibrator;
@@ -1042,9 +1037,3 @@ const Formula mfMathFormula =
     (int8 *)&MATH_FUNC, (int8 *)&set.math_koeff1add, (int8 *)&set.math_koeff2add, (int8 *)&set.math_koeff1mul, (int8 *)&set.math_koeff2mul, &curDigit, ChangeF_MathFormula
 };
 */
-
-
-#ifndef WIN32
-#pragma pop
-#endif
-
