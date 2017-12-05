@@ -878,6 +878,9 @@
     <ClInclude Include="..\..\..\S8-53\Device53\stub.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuPagesNames.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\S8-53\Device53\libs\startup_stm32f207xx.s">
