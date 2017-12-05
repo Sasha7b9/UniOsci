@@ -24,7 +24,7 @@ void    SetCurrentItem(const void *item, bool active)
 {
     if(item != 0)
     {
-        Page *page = (Keeper(item));
+        Page *page = (Page *)Keeper(item);
         if(!active)
         {
             SetMenuPosActItem(page->name, 0x7f);
@@ -79,7 +79,7 @@ void OpenItem(const void *item, bool open)
 {
     if(item)
     {
-        Page *page = Keeper(item);
+        Page *page = (Page *)Keeper(item);
         SetMenuPosActItem(page->GetNamePage(), open ? (page->PosCurrentItem() | 0x80) : (page->PosCurrentItem() & 0x7f));
     }
 }
@@ -88,19 +88,19 @@ void OpenItem(const void *item, bool open)
 bool ItemIsOpened(const void *item)
 {
     TypeItem type = TypeMenuItem(item);
-    Page *page = Keeper(item);
+    Page *page = (Page *)Keeper(item);
     if(type == Item_Page)
     {
-        return CurrentItemIsOpened(Keeper(item)->GetNamePage());
+        return CurrentItemIsOpened(((Page *)Keeper(item))->GetNamePage());
     }
     return (MENU_POS_ACT_ITEM(page->name) & 0x80) != 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Page *Keeper(const void *item)
+PageBase *Keeper(const void *item)
 {
-    const Page *page = ((Page *)(item))->keeper;
-    return (Page *)page;
+    const PageBase *page = ((Page *)(item))->keeper;
+    return (PageBase *)page;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

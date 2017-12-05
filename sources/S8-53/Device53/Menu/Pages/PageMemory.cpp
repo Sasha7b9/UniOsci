@@ -34,15 +34,15 @@
  */
 
 
-extern const Page pMemory;
-extern const Page mainPage;
-extern const Page mspMemLast;
-extern const Page mspMemInt;
-extern const Page mpSetName;
-extern const Page mspSetMask;
-extern const Page mspFileManager;
-extern const Page mpSetName;
-extern const Page mspMemoryExt;
+extern const PageBase pMemory;
+extern const PageBase mainPage;
+extern const PageBase mspMemLast;
+extern const PageBase mspMemInt;
+extern const PageBase mpSetName;
+extern const PageBase mspSetMask;
+extern const PageBase mspFileManager;
+extern const PageBase mpSetName;
+extern const PageBase mspMemoryExt;
 
 extern void PressSB_SetName_Exit();
 

@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Page pHelp;
+extern const PageBase pHelp;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +90,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitHelp,                                             
     pHelp, FuncActive, PressSB_Help_Exit, DrawSB_Help_ParagraphNext
 );
 
-const Page * pointerPageHelp = &pHelp;
+const PageBase * pointerPageHelp = &pHelp;
 
 DEF_PAGE_SB(        pHelp,                                                                                                               // онлныэ ///
     "онлныэ", "HELP",

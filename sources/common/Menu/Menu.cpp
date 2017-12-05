@@ -22,7 +22,7 @@ Menu menu;
 extern void OnChanged_InputA(bool active);
 extern void OnChanged_InputB(bool active);
 extern void Long_Help(void);
-extern const Page * const pointerPageHelp;
+extern const PageBase * const pointerPageHelp;
 
 /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
 static PanelButton shortPressureButton = B_Empty;

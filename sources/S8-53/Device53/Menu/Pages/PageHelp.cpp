@@ -11,7 +11,7 @@
  *  @{
  */
 
-extern const Page pHelp;
+extern const PageBase pHelp;
 
 void DrawSB_Help_ParagraphEnter(int x, int y)
 {
@@ -87,7 +87,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitHelp,                                             
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const Page * pointerPageHelp = &pHelp;
+const PageBase * pointerPageHelp = &pHelp;
 
 DEF_PAGE_SB(        pHelp,                                                                                                             // онлныьэ ///
     "онлныэ", "HELP",

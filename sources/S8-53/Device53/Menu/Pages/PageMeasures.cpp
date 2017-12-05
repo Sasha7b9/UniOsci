@@ -19,9 +19,9 @@
  *  @{
  */
 
-extern const Page pMeasures;
-extern const Page mainPage;
-extern const Page mspMeasTune;
+extern const PageBase pMeasures;
+extern const PageBase mainPage;
+extern const PageBase mspMeasTune;
 
 static CursCntrl    GetMeasuresCursCntrlActive();           // Каким курсором из активной пары сейчас происходит управление.
 

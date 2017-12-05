@@ -18,8 +18,8 @@
  */
 
 
-extern const Page pTime;
-extern const Page mainPage;
+extern const PageBase pTime;
+extern const PageBase mainPage;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static bool IsActive_Sample(void)

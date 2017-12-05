@@ -13,15 +13,15 @@
 #include "Utils/Math.h"
 
 
-extern const Page pService;
-extern const Page ppCalibrator;
-extern const Page ppFFT;
-extern const Page pppFFT_Cursors;
-extern const Page ppFunction;
-extern const Page ppEthernet;
-extern const Page ppSound;
-extern const Page ppRTC;
-extern const Page ppInformation;
+extern const PageBase pService;
+extern const PageBase ppCalibrator;
+extern const PageBase ppFFT;
+extern const PageBase pppFFT_Cursors;
+extern const PageBase ppFunction;
+extern const PageBase ppEthernet;
+extern const PageBase ppSound;
+extern const PageBase ppRTC;
+extern const PageBase ppInformation;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1001,7 +1001,7 @@ void OnChangedColorMenu2Item(void)
 
 
 // СЕРВИС ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Page pService;
+extern const PageBase pService;
 
 // СЕРВИС - Откат настроек
 const Button mbServicePreviousSettings =

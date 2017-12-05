@@ -23,7 +23,7 @@ static int ItemOpenedPosY(void *item);
 
 static void *itemUnderButton[B_NumButtons] = {0};
 
-//extern const Page mainPage;
+//extern const PageBase mainPage;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PanelButton GetFuncButtonFromY(int _y)
@@ -159,15 +159,15 @@ static void DrawPagesUGO(Page *page, int right, int bottom)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawNestingPage(Page *page, int left, int bottom)
 {
-    if (page != &mainPage)
+    if (page != (Page *)&mainPage)
     {
         int nesting = 0;
 
-        Page *parent = Keeper(page);
+        PageBase *parent = Keeper(page);
 
         while (parent != &mainPage)
         {
-            page = parent;
+            page = (Page *)parent;
             parent = Keeper(page);
             nesting++;
         }
@@ -334,7 +334,7 @@ int CalculateX(int layer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsShade(void *item)
 {
-    return CurrentItemIsOpened(Keeper(item)->GetNamePage()) && (item != menu.OpenedItem());
+    return CurrentItemIsOpened(((Page *)Keeper(item))->GetNamePage()) && (item != menu.OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -352,7 +352,7 @@ void *ItemUnderButton(PanelButton button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int ItemOpenedPosY(void *item)
 {
-    Page *page = Keeper(item);
+    Page *page = (Page *)Keeper(item);
     int8 posCurItem = page->PosCurrentItem();
     int y = GRID_TOP + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
     if(y + HeightOpenedItem(item) > GRID_BOTTOM)
@@ -371,7 +371,7 @@ void Menu::Draw(void)
         void *item = OpenedItem();
         if (MENU_IS_SHOWN)
         {
-            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : Keeper(item), 0, GRID_TOP);
+            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : (Page *)Keeper(item), 0, GRID_TOP);
         }
         else
         {

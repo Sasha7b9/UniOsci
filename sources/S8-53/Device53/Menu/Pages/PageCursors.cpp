@@ -23,9 +23,9 @@
  *  @{
  */
 
-extern const Page mainPage;
-extern const Page pCursors;
-extern const Page mspSet;
+extern const PageBase mainPage;
+extern const PageBase pCursors;
+extern const PageBase mspSet;
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

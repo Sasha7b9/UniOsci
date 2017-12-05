@@ -5,8 +5,8 @@
 #include "Utils/Dictionary.h"
 
 
-extern const Page mainPage;
-extern const Page pTime;
+extern const PageBase mainPage;
+extern const PageBase pTime;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -137,5 +137,3 @@ DEF_PAGE_5(         pTime,                                                      
     cShiftXtype,    // РАЗВЕРТКА - Смещение
     Page_Time, &mainPage, FuncActive, EmptyPressPage
 );
-
-const Page * pointerPageTime = &pTime;

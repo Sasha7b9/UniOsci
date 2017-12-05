@@ -11,9 +11,9 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Page pMeasures;
-extern const Page ppFreqMeter;
-extern const Page ppTune;
+extern const PageBase pMeasures;
+extern const PageBase ppFreqMeter;
+extern const PageBase ppTune;
 
 extern bool pageChoiceIsActive;
 extern int8 posOnPageChoice;
@@ -293,4 +293,4 @@ DEF_PAGE_6(         pMeasures,                                                  
     Page_Measures, &mainPage, FuncActive, EmptyPressPage
 );
 
-const Page * pointerPageMeasures = &pMeasures;
+const PageBase * pointerPageMeasures = &pMeasures;

@@ -21,4 +21,4 @@ void DrawMenuCursTime(int x, int y, bool left, bool right);
 /// Рассчитывает условия отрисовки УГО малых кнопок управления выбором курсорами.
 void CalculateConditions(int16 pos0, int16 pos1, CursCntrl cursCntrl, bool *cond0, bool *cond1);
 
-extern const Page mainPage;
+extern const PageBase mainPage;

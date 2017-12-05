@@ -19,8 +19,8 @@
 #include <string.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Page pCursors;
-extern const Page ppSet;
+extern const PageBase pCursors;
+extern const PageBase ppSet;
 
 static void MoveCursUonPercentsOrPoints(int delta);
 static void MoveCursTonPercentsOrPoints(int delta);
@@ -406,7 +406,7 @@ DEF_PAGE_5(         pCursors,                                                   
     Page_Cursors, &mainPage, FuncActive, EmptyPressPage
 );
 
-const Page * pointerPageCursors = &pCursors;
+const PageBase * pointerPageCursors = &pCursors;
 
 static void CalculateConditions(int16 pos0, int16 pos1, CursCntrl cursCntrl, bool *cond0, bool *cond1)
 {

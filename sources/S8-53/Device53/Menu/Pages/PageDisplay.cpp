@@ -16,13 +16,13 @@
  *  @{
  */
 
-extern const Page mainPage;
-extern const Page pDisplay;
-extern const Page mspAccumulation;
-extern const Page mspAveraging;
-extern const Page mspGrid;
-extern const Page mspSettings_Colors;
-extern const Page mspSettings;
+extern const PageBase mainPage;
+extern const PageBase pDisplay;
+extern const PageBase mspAccumulation;
+extern const PageBase mspAveraging;
+extern const PageBase mspGrid;
+extern const PageBase mspSettings_Colors;
+extern const PageBase mspSettings;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcMapping,                                                                                         //--- ДИСПЛЕЙ - Отображение ---

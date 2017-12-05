@@ -17,18 +17,18 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern void LoadTShift(void);
 
-extern const Page mainPage;
-extern const Page pDebug;
-extern const Page ppConsole;
-extern const Page pppConsole_Registers;
-extern const Page ppADC;
-extern const Page pppADC_Balance;
-extern const Page pppADC_Stretch;
-extern const Page pppADC_Shift;
-extern const Page ppRand;
-extern const Page ppChannels;
-extern const Page ppSettings;
-extern const Page ppSerialNumber;
+extern const PageBase mainPage;
+extern const PageBase pDebug;
+extern const PageBase ppConsole;
+extern const PageBase pppConsole_Registers;
+extern const PageBase ppADC;
+extern const PageBase pppADC_Balance;
+extern const PageBase pppADC_Stretch;
+extern const PageBase pppADC_Shift;
+extern const PageBase ppRand;
+extern const PageBase ppChannels;
+extern const PageBase ppSettings;
+extern const PageBase ppSerialNumber;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// В этой структуре будут храниться данные серийного номера при открытой странице ppSerialNumer
@@ -1128,8 +1128,6 @@ DEF_PAGE_13(        pDebug,                                                     
     ppSerialNumber,         // ОТЛАДКА - С/Н
     bEraseData              // ОТЛАДКА - Стереть данные
 );
-
-const Page * pointerPageDebug = &pDebug;
 
 
 

@@ -18,15 +18,15 @@
  *  @{
  */
 
-extern const Page mainPage;
-extern const Page pService;
-extern const Page ppCalibrator;
-extern const Page pppMath_Function;
-extern const Page ppMath;
-extern const Page pppMath_FFT;
-extern const Page ppppMath_FFT_Cursors;
-extern const Page ppEthernet;
-extern const Page ppInformation;
+extern const PageBase mainPage;
+extern const PageBase pService;
+extern const PageBase ppCalibrator;
+extern const PageBase pppMath_Function;
+extern const PageBase ppMath;
+extern const PageBase pppMath_FFT;
+extern const PageBase ppppMath_FFT_Cursors;
+extern const PageBase ppEthernet;
+extern const PageBase ppInformation;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncDraw(void)

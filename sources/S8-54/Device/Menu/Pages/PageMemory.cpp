@@ -16,13 +16,13 @@
 #include "Utils/CommonFunctions.h"
 
 
-extern const Page pMemory;
-extern const Page ppLast;
-extern const Page ppInternal;
-extern const Page ppDrive;
-extern const Page pppDrive_Manager;
-extern const Page pppDrive_Mask;
-extern const Page pSetName;
+extern const PageBase pMemory;
+extern const PageBase ppLast;
+extern const PageBase ppInternal;
+extern const PageBase ppDrive;
+extern const PageBase pppDrive_Manager;
+extern const PageBase pppDrive_Mask;
+extern const PageBase pSetName;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern void PressSB_FM_Tab(void);
@@ -161,7 +161,7 @@ DEF_SMALL_BUTTON(   bLast_Prev,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_SaveToROM(void)
 {
-    ppInternal.SetCurrentSB();
+    ((Page *)&ppInternal)->SetCurrentSB();
     MODE_WORK = ModeWork_ROM;   // Находимся в режиме внутренного ЗУ
     EXIT_FROM_ROM_TO_RAM = 1;   // Этот признак мы устанавливаем для того, чтобы:
                                 // 1 - по нажатии кнопки Выход со страницы "ВНУТР ЗУ" выходить в "Последние", а не в основное меню;
@@ -662,8 +662,6 @@ DEF_PAGE_4(         pMemory,                                                    
     Page_Memory, &mainPage, FuncActive, EmptyPressPage
 );
 
-const Page * pointerPageMemory = &pMemory;
-
 void Memory_SaveSignalToFlashDrive(void)
 {
     if (FDRIVE_IS_CONNECTED)
@@ -732,7 +730,7 @@ static void DrawSetName(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncForInternalExit(void)
 {
-    ppLast.SetCurrentSB();
+    ((Page *)&ppLast)->SetCurrentSB();
 }
 
 static void OnPress_Internal_Exit(void)
@@ -1189,8 +1187,8 @@ void DrawSB_MemExtNewFolder(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-extern const Page pMemory;
-extern const Page ppDrive;
+extern const PageBase pMemory;
+extern const PageBase ppDrive;
 
 */
 

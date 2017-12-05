@@ -33,16 +33,16 @@ typedef struct
 } StructForSN;
 
 
-extern const Page mainPage;
-extern const Page mpConsole_Registers;
-extern const Page pDebug;
-extern const Page mpConsole;
-extern const Page mpADC;
-extern const Page mpADC_Balance;
-extern const Page mpADC_Stretch;
-extern const Page mpADC_AltRShift;
-extern const Page mpRandomizer;
-extern const Page ppSerialNumber;
+extern const PageBase mainPage;
+extern const PageBase mpConsole_Registers;
+extern const PageBase pDebug;
+extern const PageBase mpConsole;
+extern const PageBase mpADC;
+extern const PageBase mpADC_Balance;
+extern const PageBase mpADC_Stretch;
+extern const PageBase mpADC_AltRShift;
+extern const PageBase mpRandomizer;
+extern const PageBase ppSerialNumber;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_ShowAll,                                               //--- Œ“À¿ƒ ¿ -  ŒÕ—ŒÀ‹ - –≈√»—“–€ - œÓÍ‡Á˚‚‡Ú¸ ‚ÒÂ ---

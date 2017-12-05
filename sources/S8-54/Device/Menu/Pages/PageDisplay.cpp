@@ -7,13 +7,13 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern ColorType colorTypeGrid;
-extern const Page mainPage;
-extern const Page pppSettings_Colors;
-extern const Page ppDisplaySettings;
-extern const Page pDisplay;
-extern const Page ppAccum;
-extern const Page ppAverage;
-extern const Page ppGrid;
+extern const PageBase mainPage;
+extern const PageBase pppSettings_Colors;
+extern const PageBase ppDisplaySettings;
+extern const PageBase pDisplay;
+extern const PageBase ppAccum;
+extern const PageBase ppAverage;
+extern const PageBase ppGrid;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PageService_InitGlobalColors(void)

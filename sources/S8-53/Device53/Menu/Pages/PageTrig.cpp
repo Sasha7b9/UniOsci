@@ -11,9 +11,9 @@
  *  @{
  */
 
-extern const Page pTrig;
-extern const Page mainPage;
-extern const Page mpAutoFind;
+extern const PageBase pTrig;
+extern const PageBase mainPage;
+extern const PageBase mpAutoFind;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnPress_Mode(bool active)

@@ -4,18 +4,18 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern const Page pChanA;
-extern const Page pChanB;
-extern const Page pTrig;
-extern const Page pTime;
-extern const Page pDisplay;
-extern const Page pCursors;
-extern const Page pMemory;
-extern const Page pMeasures;
-extern const Page pService;
-extern const Page pHelp;
-extern const Page pDebug;
-extern const Page mainPage;
+extern const PageBase pChanA;
+extern const PageBase pChanB;
+extern const PageBase pTrig;
+extern const PageBase pTime;
+extern const PageBase pDisplay;
+extern const PageBase pCursors;
+extern const PageBase pMemory;
+extern const PageBase pMeasures;
+extern const PageBase pService;
+extern const PageBase pHelp;
+extern const PageBase pDebug;
+extern const PageBase mainPage;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
