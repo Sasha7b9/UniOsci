@@ -19,16 +19,16 @@ extern void LoadTShift(void);
 
 extern const Page mainPage;
 extern const Page pDebug;
-extern const Page ppDebug_Console;
-extern const Page pppDebug_Console_Registers;
-extern const Page ppDebug_ADC;
-extern const Page pppDebug_ADC_Balance;
-extern const Page pppDebug_ADC_Stretch;
-extern const Page pppDebug_ADC_Shift;
-extern const Page ppDebug_Rand;
-extern const Page ppDebug_Channels;
-extern const Page ppDebug_Settings;
-extern const Page ppDebug_SerialNumber;
+extern const Page ppConsole;
+extern const Page pppConsole_Registers;
+extern const Page ppADC;
+extern const Page pppADC_Balance;
+extern const Page pppADC_Stretch;
+extern const Page pppADC_Shift;
+extern const Page ppRand;
+extern const Page ppChannels;
+extern const Page ppSettings;
+extern const Page ppSerialNumber;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// В этой структуре будут храниться данные серийного номера при открытой странице ppSerialNumer
@@ -44,7 +44,7 @@ DEF_GOVERNOR(       gConsole_NumStrings,                                        
     "Число строк", "Number strings",
     "",
     "",
-    CONSOLE_NUM_STRINGS, 0, 33, ppDebug_Console, FuncActive, FuncChanged, FuncBeforeDraw
+    CONSOLE_NUM_STRINGS, 0, 33, ppConsole, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ DEF_CHOICE_2(       cConsole_SizeFont,                                          
     "",
     "5", "5",
     "8", "8",
-    set.dbg_SizeFont, ppDebug_Console, FuncActive, FuncChangedChoice, FuncDraw
+    set.dbg_SizeFont, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ DEF_CHOICE_2(       cConsole_ModeStop,                                          
     "It provides the ability to pause the output to the console by pressing the ПУСК/СТОП button",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    MODE_PAUSE_CONSOLE, ppDebug_Console, FuncActive, FuncChangedChoice, FuncDraw
+    MODE_PAUSE_CONSOLE, ppConsole, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ DEF_CHOICE_2(   cConsole_Registers_ShowAll,                                     
     "To show all values transferred in registers",
     "Нет", "No",
     "Да", "Yes",
-    DBG_SHOW_ALL, pppDebug_Console_Registers, FuncActive, FuncChangedChoice, FuncDraw
+    DBG_SHOW_ALL, pppConsole_Registers, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -89,7 +89,7 @@ DEF_CHOICE_2(       cConsole_Registers_RD_FL,                                   
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    DBG_SHOW_FLAG, pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    DBG_SHOW_FLAG, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftA,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRShift[A], pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowRShift[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -109,7 +109,7 @@ DEF_CHOICE_2(       cConsole_Registers_RShiftB,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRShift[B], pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowRShift[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ DEF_CHOICE_2(       cConsole_Registers_TrigLev,                                 
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTrigLev, pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowTrigLev, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeA,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRange[A], pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowRange[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -139,7 +139,7 @@ DEF_CHOICE_2(       cConsole_Registers_RangeB,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowRange[B], pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowRange[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -149,7 +149,7 @@ DEF_CHOICE_2(       cConsole_Registers_TrigParam,                               
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTrigParam, pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowTrigParam, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -159,7 +159,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamA,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowChanParam[A], pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowChanParam[A], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +169,7 @@ DEF_CHOICE_2(       cConsole_Registers_ChanParamB,                              
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowChanParam[B], pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowChanParam[B], pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ DEF_CHOICE_2(       cConsole_Registers_TBase,                                   
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTBase, pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowTBase, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -189,12 +189,12 @@ DEF_CHOICE_2(       cConsole_Registers_TShift,                                  
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU,  ENABLE_EN,
-    set.dbg_ShowTShift, pppDebug_Console_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
+    set.dbg_ShowTShift, pppConsole_Registers, IsActive_Console_Registers, FuncChangedChoice, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_12(        pppDebug_Console_Registers,                                                                          // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ ///
-    &ppDebug_Console, FuncActive, EmptyPressPage,
+DEF_PAGE_12(        pppConsole_Registers,                                                                          // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ ///
+    Page_Debug_Console_Registers, &ppConsole, FuncActive, EmptyPressPage,
     "РЕГИСТРЫ", "REGISTERS",
     "",
     "",
@@ -224,20 +224,20 @@ DEF_BUTTON(     bConsole_SizeSettings,                                          
     "", "",
     "Показывает текущий размер структуры для сохранения настроек",
     "Displays the current size of the structure to save settings",
-    ppDebug_Console, FuncActive, FuncPress, Draw_Console_SizeSettings
+    ppConsole, FuncActive, FuncPress, Draw_Console_SizeSettings
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         ppDebug_Console,                                                                                                // ОТЛАДКА - КОНСОЛЬ ///
+DEF_PAGE_5(         ppConsole,                                                                                                // ОТЛАДКА - КОНСОЛЬ ///
     "КОНСОЛЬ", "CONSOLE",
     "",
     "",
     gConsole_NumStrings,        // ОТЛАДКА - КОНСОЛЬ - Число строк
     cConsole_SizeFont,          // ОТЛАДКА - КОНСОЛЬ - Размер шрифта
     cConsole_ModeStop,          // ОТЛАДКА - КОНСОЛЬ - Реж. останова
-    pppDebug_Console_Registers,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
+    pppConsole_Registers,       // ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ
     bConsole_SizeSettings,      // ОТЛАДКА - КОНСОЛЬ - Размер настроек
-    &pDebug, FuncActive, EmptyPressPage
+    Page_Debug_Console, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -268,7 +268,7 @@ DEF_CHOICE_3(       cADC_Balance_Mode,                                          
     DISABLE_RU, DISABLE_EN,
     "Реальный", "Real",
     "Ручной",   "Manual",
-    NRST_BALANCE_ADC_TYPE, pppDebug_ADC_Balance, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode
+    NRST_BALANCE_ADC_TYPE, pppADC_Balance, FuncActive, OnChanged_ADC_Balance_Mode, Draw_ADC_Balance_Mode
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -286,7 +286,7 @@ DEF_GOVERNOR(       gADC_Balance_ShiftA,                                        
     "Смещение 1", "Offset 1",
     "",
     "",
-    shiftADCA, -125, 125, pppDebug_ADC_Balance, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
+    shiftADCA, -125, 125, pppADC_Balance, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftA, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -299,18 +299,18 @@ DEF_GOVERNOR(       gADC_Balance_ShiftB,                                        
     "Смещение 2", "Offset 2",
     "",
     "",
-    shiftADCB, -125, 125, pppDebug_ADC_Balance, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
+    shiftADCB, -125, 125, pppADC_Balance, IsActive_ADC_Balance_ShiftAB, OnChanged_ADC_Balance_ShiftB, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_3(         pppDebug_ADC_Balance,                                                                                      // ОТЛАДКА - АЦП - БАЛАНС ///
+DEF_PAGE_3(         pppADC_Balance,                                                                                      // ОТЛАДКА - АЦП - БАЛАНС ///
     "БАЛАНС", "BALANCE",
     "",
     "",
     cADC_Balance_Mode,      // ОТЛАДКА - АЦП - БАЛАНС - Режим
     gADC_Balance_ShiftA,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 1
     gADC_Balance_ShiftB,    // ОТЛАДКА - АЦП - БАЛАНС - Смещение 2
-    &ppDebug_ADC, FuncActive, EmptyPressPage
+    Page_Debug_ADC_Balance, &ppADC, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -338,7 +338,7 @@ DEF_CHOICE_3(       cADC_Stretch_Mode,                                          
     DISABLE_RU, DISABLE_EN,
     "Реальный", "Real",
     "Ручной",   "Manual",
-    NRST_STRETCH_ADC_TYPE, pppDebug_ADC_Stretch, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw
+    NRST_STRETCH_ADC_TYPE, pppADC_Stretch, FuncActive, OnChanged_ADC_Stretch_Mode, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -356,7 +356,7 @@ DEF_GOVERNOR(       gADC_Stretch_A,                                             
     "Растяжка 1к", "Stretch 1ch",
     "Задаёт ручную растяжку первого канала.\n1 единица = 0.0001",
     "Sets the manual stretching of the first channel.\n1 = 0.0001",
-    stretchA, -10000, 10000, pppDebug_ADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_A, FuncBeforeDraw
+    stretchA, -10000, 10000, pppADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -369,7 +369,7 @@ DEF_GOVERNOR(       gADC_Stretch_B,                                             
     "Растяжка 2к", "Stretch 2ch",
     "Задаёт ручную растяжку второго канала.\n1 единица = 0.0001",
     "Sets the manual stretching of the second channel.\n1 = 0.0001",
-    stretchB, -10000, 10000, pppDebug_ADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_B, FuncBeforeDraw
+    stretchB, -10000, 10000, pppADC_Stretch, IsActive_ADC_StretchAB, OnChanged_ADC_Stretch_B, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -377,7 +377,7 @@ DEF_GOVERNOR(       gADC_Stretch_Ak20mV,                                        
     "20мВ/1В 1к", "20mV/1V 1k",
     "",
     "",
-    NRST_ADD_STRETCH_20mV_A, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_20mV_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -385,7 +385,7 @@ DEF_GOVERNOR(       gADC_Stretch_Ak50mV,                                        
     "50мВ 1к", "50mV 1k",
     "",
     "",
-    NRST_ADD_STRETCH_50mV_A, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_50mV_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -393,7 +393,7 @@ DEF_GOVERNOR(       gADC_Stretch_Ak100mV,                                       
     "100мВ/5В 1к", "100mV/5V 1ch",
     "",
     "",
-    NRST_ADD_STRETCH_100mV_A, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_100mV_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -401,7 +401,7 @@ DEF_GOVERNOR(       gADC_Stretch_Ak2V,                                          
     "2В 1к", "2V 1ch",
     "",
     "",
-    NRST_ADD_STRETCH_2V_A, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_2V_A, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -409,7 +409,7 @@ DEF_GOVERNOR(       gADC_Stretch_Bk20mV,                                        
     "20мВ/1В 2к", "20mV/1V 2k",
     "",
     "",
-    NRST_ADD_STRETCH_20mV_B, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_20mV_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -417,7 +417,7 @@ DEF_GOVERNOR(       gADC_Stretch_Bk50mV,                                        
     "50мВ 2к", "50mV 2k",
     "",
     "",
-    NRST_ADD_STRETCH_50mV_B, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_50mV_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -425,7 +425,7 @@ DEF_GOVERNOR(       gADC_Stretch_Bk100mV,                                       
     "100мВ/5В 2к", "100mV/5V 2k",
     "",
     "",
-    NRST_ADD_STRETCH_100mV_B, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_100mV_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -433,14 +433,14 @@ DEF_GOVERNOR(       gADC_Stretch_Bk2V,                                          
     "2В 2к", "2V 2ch",
     "",
     "",
-    NRST_ADD_STRETCH_2V_B, -10000, 10000, pppDebug_ADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_ADD_STRETCH_2V_B, -10000, 10000, pppADC_Stretch, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static const Choice emptyChoice = {Item_Choice};
 
-DEF_PAGE_15(        pppDebug_ADC_Stretch,                                                                                    // ОТЛАДКА - АЦП - РАСТЯЖКА ///
-    &ppDebug_ADC, FuncActive, EmptyPressPage,
+DEF_PAGE_15(        pppADC_Stretch,                                                                                    // ОТЛАДКА - АЦП - РАСТЯЖКА ///
+    Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
     "РАСТЯЖКА", "STRETCH",
     "Устанавливает режим и величину растяжки (для ручного режима)",
     "Sets mode and the value of stretching (manual mode)",
@@ -479,7 +479,7 @@ DEF_BUTTON(         bADC_Shift_Reset,                                           
     "Сброс", "Reset",
     "",
     "",
-    pppDebug_ADC_Shift, FuncActive, OnPress_ADC_Shift_Reset, FuncDraw
+    pppADC_Shift, FuncActive, OnPress_ADC_Shift_Reset, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -492,7 +492,7 @@ DEF_GOVERNOR(       gADC_Shift_A2mV,                                            
     "См 1к 2мВ пост", "Shift 1ch 2mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_A(Range_2mV), -100, 100, pppDebug_ADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_A(Range_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -505,7 +505,7 @@ DEF_GOVERNOR(       gADC_Shift_B2mV,                                            
     "См 2к 2мВ пост", "Shift 2ch 2mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_B(Range_2mV), -100, 100, pppDebug_ADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_B(Range_2mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -513,7 +513,7 @@ DEF_GOVERNOR(       gADC_Shift_A5mV,                                            
     "См 1к 5мВ пост", "Shift 1ch 5mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_A(Range_5mV), -100, 100, pppDebug_ADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_A(Range_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -521,7 +521,7 @@ DEF_GOVERNOR(       gADC_Shift_B5mV,                                            
     "См 2к 5мВ пост", "Shift 2ch 5mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_B(Range_5mV), -100, 100, pppDebug_ADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_B(Range_5mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -529,7 +529,7 @@ DEF_GOVERNOR(       gADC_Shift_A10mV,                                           
     "См 1к 10мВ пост", "Shift 1ch 10mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_A(Range_10mV), -100, 100, pppDebug_ADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_A(Range_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_A, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -537,11 +537,11 @@ DEF_GOVERNOR(       gADC_Shift_B10mV,                                           
     "См 2к 10мВ пост", "Shift 2ch 10mV DC",
     "",
     "",
-    RSHIFT_ADD_STABLE_B(Range_10mV), -100, 100, pppDebug_ADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
+    RSHIFT_ADD_STABLE_B(Range_10mV), -100, 100, pppADC_Shift, FuncActive, OnChanged_ADC_Shift_B, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_7(         pppDebug_ADC_Shift,                                                                                      // ОТЛАДКА - АЦП - ДОП СМЕЩ ///
+DEF_PAGE_7(         pppADC_Shift,                                                                                      // ОТЛАДКА - АЦП - ДОП СМЕЩ ///
     "ДОП СМЕЩ", "ADD RSHFIT",
     "",
     "",
@@ -552,18 +552,18 @@ DEF_PAGE_7(         pppDebug_ADC_Shift,                                         
     gADC_Shift_B5mV,    // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 5мВ пост
     gADC_Shift_A10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 1к 10мВ пост
     gADC_Shift_B10mV,   // ОТЛАДКА - АЦП - ДОП СМЕЩ - См 2к 10мВ пост
-    &ppDebug_ADC, FuncActive, EmptyPressPage
+    Page_Debug_ADC_Shift, &ppADC, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_3(         ppDebug_ADC,                                                                                                        // ОТЛАДКА - АЦП ///
+DEF_PAGE_3(         ppADC,                                                                                                        // ОТЛАДКА - АЦП ///
     "АЦП", "ADC",
     "",
     "",
-    pppDebug_ADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
-    pppDebug_ADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
-    pppDebug_ADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
-    &pDebug, FuncActive, EmptyPressPage
+    pppADC_Balance, // ОТЛАДКА - АЦП - БАЛАНС
+    pppADC_Stretch, // ОТЛАДКА - АЦП - РАСТЯЖКА
+    pppADC_Shift,   // ОТЛАДКА - АЦП - ДОП СМЕЩ
+    Page_Debug_ADC, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -571,7 +571,7 @@ DEF_GOVERNOR(       gRand_NumAverage,                                           
     "Усредн.", "Average",
     "",
     "",
-    NRST_NUM_AVE_FOR_RAND, 1, 32, ppDebug_Rand, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_NUM_AVE_FOR_RAND, 1, 32, ppRand, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -579,7 +579,7 @@ DEF_GOVERNOR(       gRand_NumSmooth,                                            
     "Сглаживание", "Smoothing",
     "",
     "",
-    NRST_NUM_SMOOTH_FOR_RAND, 1, 10, ppDebug_Rand, FuncActive, FuncChanged, FuncBeforeDraw
+    NRST_NUM_SMOOTH_FOR_RAND, 1, 10, ppRand, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
 static void OnChanged_Rand_NumMeasures(void)
@@ -591,7 +591,7 @@ DEF_GOVERNOR(       gRand_NumMeasures,                                          
     "Выб-к/ворота", "Samples/gates",
     "",
     "",
-    NUM_MEASURES_FOR_GATES, 1, 2500, ppDebug_Rand, FuncActive, OnChanged_Rand_NumMeasures, FuncBeforeDraw
+    NUM_MEASURES_FOR_GATES, 1, 2500, ppRand, FuncActive, OnChanged_Rand_NumMeasures, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -601,7 +601,7 @@ DEF_CHOICE_2(       cRand_ShowInfo,                                             
     "To show information on randomizer gate",
     "Не показывать", "Hide",
     "Показывать", "Show",
-    SHOW_RAND_INFO, ppDebug_Rand, FuncActive, FuncChangedChoice, FuncDraw
+    SHOW_RAND_INFO, ppRand, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -611,7 +611,7 @@ DEF_CHOICE_2(       gRand_ShowStat,                                             
     "Statistics show schedule",
     "Не показывать", "Hide",
     "Показывать", "Show",
-    SHOW_RAND_STAT, ppDebug_Rand, FuncActive, FuncChangedChoice, FuncDraw
+    SHOW_RAND_STAT, ppRand, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -624,7 +624,7 @@ DEF_GOVERNOR(   gRand_TimeCompensation,                                         
     "Компенсация задержки", "Compenstaion time",
     "Подстройка компенсации задержки АЦП 40 нс",
     "",
-    TIME_COMPENSATION, 0, 510, ppDebug_Rand, FuncActive, OnChanged_Rand_TimeCompensation, FuncBeforeDraw
+    TIME_COMPENSATION, 0, 510, ppRand, FuncActive, OnChanged_Rand_TimeCompensation, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -639,7 +639,7 @@ DEF_GOVERNOR(       gRand_AddTimeShift,                                         
     "Доп смещение", "Add shift",
     "Добавочное смщение при вращении tShift",
     "",
-    addShift, -100, 100, ppDebug_Rand, FuncActive, OnChanged_Rand_AddTimeShift, FuncBeforeDraw
+    addShift, -100, 100, ppRand, FuncActive, OnChanged_Rand_AddTimeShift, FuncBeforeDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -652,11 +652,11 @@ DEF_GOVERNOR(       gRand_Pretriggered,                                         
     "Предзапуск", "Pretiggered",
     "Величина предзапуска, которая пишется в рандомизатор",
     "",
-    PRETRIGGERED, 0, 30000, ppDebug_Rand, FuncActive, OnChanged_Rand_Pretriggered, FuncBeforeDraw
+    PRETRIGGERED, 0, 30000, ppRand, FuncActive, OnChanged_Rand_Pretriggered, FuncBeforeDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_8(         ppDebug_Rand,                                                                                                  // ОТЛАДКА - РАНД-ТОР ///
+DEF_PAGE_8(         ppRand,                                                                                                  // ОТЛАДКА - РАНД-ТОР ///
     "РАНД-ТОР", "RANDOMIZER",
     "",
     "",
@@ -668,7 +668,7 @@ DEF_PAGE_8(         ppDebug_Rand,                                               
     gRand_TimeCompensation, // ОТЛАДКА - РАНД-ТОР - Компенсация задержки
     gRand_AddTimeShift,     // ОТЛАДКА - РАНД-ТОР - Смещение
     gRand_Pretriggered,     // ОТЛАДКА - РAНД-ТОР - Предзапуск
-    &pDebug, FuncActive, EmptyPressPage
+    Page_Debug_Rand, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -688,7 +688,7 @@ DEF_CHOICE_7(       cChannels_BandwidthA,                                       
     "350МГц", "350MHz",
     "650МГц", "650MHz",
     "750МГц", "750MHz",
-    BANDWIDTH_DEBUG(A), ppDebug_Channels, FuncActive, OnChanged_Channels_BandwidthA, FuncDraw
+    BANDWIDTH_DEBUG(A), ppChannels, FuncActive, OnChanged_Channels_BandwidthA, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -708,17 +708,17 @@ DEF_CHOICE_7(       cChannels_BandwidthB,                                       
     "350МГц", "350MHz",
     "650МГц", "650MHz",
     "750МГц", "750MHz",
-    BANDWIDTH_DEBUG(B), ppDebug_Channels, FuncActive, OnChanged_Channels_BandwidthB, FuncDraw
+    BANDWIDTH_DEBUG(B), ppChannels, FuncActive, OnChanged_Channels_BandwidthB, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppDebug_Channels,                                                                                                // ОТЛАДКА - КАНАЛЫ ///
+DEF_PAGE_2(         ppChannels,                                                                                                // ОТЛАДКА - КАНАЛЫ ///
     "КАНАЛЫ", "CHANNELS",
     "",
     "",
     cChannels_BandwidthA,   // ОТЛАДКА - КАНАЛЫ - Полоса 1
     cChannels_BandwidthB,   // ОТЛАДКА - КАНАЛЫ - Полоса 2
-    &pDebug, FuncActive, EmptyPressPage
+    Page_Debug_Channels, &pDebug, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -802,7 +802,7 @@ static void OnPress_Settings_Exit(void)
 }
 
 DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                                                          //--- ОТЛАДКА - НАСТРОЙКИ - Выход ---
-    ppDebug_Settings, FuncActive, OnPress_Settings_Exit, DrawSB_Exit
+    ppSettings, FuncActive, OnPress_Settings_Exit, DrawSB_Exit
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -880,7 +880,7 @@ static void OnPress_Settings(void)
     display.SetDrawMode(DrawMode_Auto, DebugShowSetInfo_Draw);
 }
 
-DEF_PAGE_SB(        ppDebug_Settings,                                                                                             // ОТЛАДКА - НАСТРОЙКИ ///
+DEF_PAGE_SB(        ppSettings,                                                                                             // ОТЛАДКА - НАСТРОЙКИ ///
     "НАСТРОЙКИ", "SETTINGS",
     "Показать информацию о настройках",
     "Show settings information",
@@ -890,7 +890,7 @@ DEF_PAGE_SB(        ppDebug_Settings,                                           
     0,
     0,
     0,
-    &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
+    PageSB_Debug_Settings, &pDebug, FuncActive, OnPress_Settings, FuncDrawPage, FuncRegSetPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -940,7 +940,7 @@ static void OnPress_SerialNumber_Exit(void)
 }
 
 DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                                                            //--- ОТЛАДКА - С/Н - Выход ---
-    ppDebug_SerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -963,7 +963,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Change,                                       
     "Вставить", "Insert",
     "Вставляет выбраный символ",
     "Inserts the chosen symbol",
-    ppDebug_SerialNumber, FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -992,7 +992,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Save,                                         
     "Сохранить", "Save",
     "Записывает серийный номер в OTP",
     "Records the serial number in OTP",
-    ppDebug_SerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1080,7 +1080,7 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
-DEF_PAGE_SB(        ppDebug_SerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
+DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
     "С/Н", "S/N",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",
@@ -1090,7 +1090,7 @@ DEF_PAGE_SB(        ppDebug_SerialNumber,                                       
     0,
     0,
     &bSerialNumber_Save,            // ОТЛАДКА - С/Н - Сохранить
-    &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
+    PageSB_Debug_SerialNumber, &pDebug, FuncActive, OnPress_SerialNumber, FuncDrawPage, OnRegSet_SerialNumber
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1110,23 +1110,170 @@ DEF_BUTTON(         bEraseData,                                                 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_13(        pDebug,                                                                                                             // ОТЛАДКА ///
-    &mainPage, FuncActive, EmptyPressPage,
+    Page_Debug, &mainPage, FuncActive, EmptyPressPage,
     "ОТЛАДКА", "DEBUG",
     "",
     "",
-    ppDebug_Console,              // ОТЛАДКА - КОНСОЛЬ
-    ppDebug_ADC,                  // ОТЛАДКА - АЦП
-    ppDebug_Rand,			        // ОТЛАДКА - РАНД-ТОР
-    ppDebug_Channels,		        // ОТЛАДКА - КАНАЛЫ
+    ppConsole,              // ОТЛАДКА - КОНСОЛЬ
+    ppADC,                  // ОТЛАДКА - АЦП
+    ppRand,			        // ОТЛАДКА - РАНД-ТОР
+    ppChannels,		        // ОТЛАДКА - КАНАЛЫ
     cStats,			        // ОТЛАДКА - Статистика
     cDisplayOrientation,    // ОТЛАДКА - Ориентация
     cEMS,                   // ОТЛАДКА - Режим ЭМС
     mgPred,			        // ОТЛАДКА - Предзапуск
     mgPost,			        // ОТЛАДКА - Послезапуск
-    ppDebug_Settings,		        // ОТЛАДКА - НАСТРОЙКИ
+    ppSettings,		        // ОТЛАДКА - НАСТРОЙКИ
     bSaveFirmware,          // ОТЛАДКА - Сохр. прошивку
-    ppDebug_SerialNumber,         // ОТЛАДКА - С/Н
+    ppSerialNumber,         // ОТЛАДКА - С/Н
     bEraseData              // ОТЛАДКА - Стереть данные
 );
 
 const Page * pointerPageDebug = &pDebug;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+void OnPressDebugDisable(void)
+{
+    ShowMenu(false);
+    SetMenuPageDebugActive(false);
+    SetMenuPosActItem(Page_Main, 0);
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+void OnDegubConsoleViewChanged(bool active)
+{
+    display.SetPauseForConsole(CONSOLE_IN_PAUSE);
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+void OnPressDebugConsoleUp(void)
+{
+    display.OneStringUp();
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+void OnPressDebugConsoleDown(void)
+{
+    display.OneStringDown();
+}
+
+        /// ОТЛАДКА - АЦП - ДОП. СМЕЩ. ПАМ. - Величина
+        const Governor mgDebugADCaltShift =
+        {
+            Item_Governor, &mspDebugADCaltShift,
+            {
+                "Величина", "Value"
+            },
+            {
+                "",
+                ""
+            },
+            0,
+            &set.debug.altShift, -2, 2, 0
+        };
+
+bool sIsShowReg_RShift1(void)
+{
+    return set.debug.showRegisters.rShiftB || set.debug.showRegisters.all;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+bool sIsShowReg_TrigLev(void)
+{
+    return set.debug.showRegisters.trigLev || set.debug.showRegisters.all;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+bool sIsShowReg_Range(Channel ch)
+{
+    return set.debug.showRegisters.range[ch] || set.debug.showRegisters.all;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+bool sIsShowReg_TrigParam(void)
+{
+    return set.debug.showRegisters.trigParam || set.debug.showRegisters.all;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+bool sIsShowReg_ChanParam(Channel ch)
+{
+    return set.debug.showRegisters.chanParam[ch] || set.debug.showRegisters.all;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+bool sIsShowReg_TShift(void)
+{
+    return set.debug.showRegisters.tShift || set.debug.showRegisters.all;
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+bool sIsShowReg_TBase(void)
+{
+    return set.debug.showRegisters.tBase || set.debug.showRegisters.all;
+}
+
+
+const Page mspDebugADCaltShift =    // ОТЛАДКА - АЦП - ДОП СМЕЩ ПАМ
+{
+    Item_Page, &ppADC,
+    {
+        "ДОП СМЕЩ ПАМ", "ALT SHIFT MEM"
+    },
+    {
+        "",
+        ""
+    },
+    0, Page_Debug_ADC_AltShift,
+    {
+        (void *)&mgDebugADCaltShift
+    }
+};
+*/

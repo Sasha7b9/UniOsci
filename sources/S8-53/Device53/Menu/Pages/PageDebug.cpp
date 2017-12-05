@@ -42,7 +42,7 @@ extern const Page mpADC_Balance;
 extern const Page mpADC_Stretch;
 extern const Page mpADC_AltRShift;
 extern const Page mpRandomizer;
-extern const Page ppDebug_SerialNumber;
+extern const Page ppSerialNumber;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       mcConsole_Registers_ShowAll,                                               //--- ОТЛАДКА - КОНСОЛЬ - РЕГИСТРЫ - Показывать все ---
@@ -562,7 +562,7 @@ static void OnPress_SerialNumber_Exit(void)
 }
 
 DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                                                            //--- ОТЛАДКА - С/Н - Выход ---
-    ppDebug_SerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Exit, DrawSB_Exit
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -585,7 +585,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Change,                                       
     "Вставить", "Insert",
     "Вставляет выбраный символ",
     "Inserts the chosen symbol",
-    ppDebug_SerialNumber,  FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
+    ppSerialNumber,  FuncActive, OnPress_SerialNumber_Change, Draw_SerialNumber_Change
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -614,7 +614,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Save,                                         
     "Сохранить", "Save",
     "Записывает серийный номер в OTP",
     "Records the serial number in OTP",
-    ppDebug_SerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
+    ppSerialNumber, FuncActive, OnPress_SerialNumber_Save, Draw_SerialNumber_Save
 );
 
 
@@ -708,7 +708,7 @@ static void OnRegSet_SerialNumber(int angle)
     sound.GovernorChangedValue();
 }
 
-DEF_PAGE_SB(        ppDebug_SerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
+DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///
     "С/Н", "S/N",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     "Serial number recording in OTP-memory. ATTENTION!!! OTP memory is a one-time programming memory.",

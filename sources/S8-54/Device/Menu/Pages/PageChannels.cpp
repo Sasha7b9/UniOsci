@@ -152,7 +152,7 @@ DEF_PAGE_7(         pChanA,                                                     
     cChanA_Inverse,    // КАНАЛ 1 - Инверсия
     cChanA_Divider,    // КАНАЛ 1 - Делитель
     bChanA_Balance,    // КАНАЛ 1 - Балансировать
-    &mainPage, FuncActive, EmptyPressPage
+    Page_ChannelA, &mainPage, FuncActive, EmptyPressPage
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -284,5 +284,5 @@ DEF_PAGE_7(         pChanB,                                                     
     cChanB_Inverse,     // КАНАЛ 2 - Инверсия
     cChanB_Divider,     // КАНАЛ 2 - Делитель
     bChanB_Balance,     // КАНАЛ 2 - Балансировать
-    &mainPage, FuncActive, EmptyPressPage
+    Page_ChannelB, &mainPage, FuncActive, EmptyPressPage
 );

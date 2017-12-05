@@ -1476,6 +1476,11 @@
               <FileType>8</FileType>
               <FilePath>..\common\Menu\MenuItemsGraphics.cpp</FilePath>
             </File>
+            <File>
+              <FileName>MenuPagesNames.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\Menu\MenuPagesNames.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

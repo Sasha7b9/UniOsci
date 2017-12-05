@@ -64,58 +64,6 @@ static  pFuncVpV    FuncForLongPressureOnItem(void *item);  ///< Âîçâðàùàåò ôóíê
 
 static void OnTimerStrNaviAutoHide(void);                   ///< Ôóíêöèÿ, êîòîðàÿ îòêëþ÷èò âûâîä ñòðîêè íàâèãàöèè ìåíþ.
 
-static const Page *pages[] =
-{
-    &mainPage,                      ///< Ãëàâíàÿ ñòðàíèöà ìåíþ
-    &pDisplay,                      ///< ÄÈÑÏÅÉ
-    &ppDisplay_Accum,               ///< ÄÈÑÏËÅÉ - ÍÀÊÎÏËÅÍÈÅ
-    &ppDisplay_Average,             ///< ÄÈÑÏËÅÉ - ÓÑÐÅÄÍÅÍÈÅ
-    &ppDisplay_Grid,                ///< ÄÈÑÏËÅÉ - ÑÅÒÊÀ
-    &ppDisplay_Settings,            ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ
-    &pppDisplay_Settings_Colors,    ///< ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ
-    &pChanA,                        ///< ÊÀÍÀË 1
-    &pChanB,                        ///< ÊÀÍÀË 2
-    &pTrig,                         ///< ÑÈÍÕÐ
-    &ppTrig_Search,                 ///< ÑÈÍÕÐ - ÏÎÈÑÊ
-    &pTime,                         ///< ÐÀÇÂÅÐÒÊÀ
-    &pCursors,                      ///< ÊÓÐÑÎÐÛ
-    &ppCursors_Set,                 ///< ÊÓÐÑÎÐÛ - ÓÑÒÀÍÎÂÈÒÜ
-    &pMemory,                       ///< ÏÀÌßÒÜ
-    &ppMemory_Last,                 ///< ÏÀÌßÒÜ - ÏÎÑËÅÄÍÈÅ
-    &ppMemory_Internal,             ///< ÏÀÌßÒÜ - ÂÍÓÒÐ ÇÓ
-    &ppMemory_Drive,                ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ
-    &pppMemory_Drive_FileManager,   ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÊÀÒÀËÎÃ
-    &pppMemory_Drive_Mask,          ///< ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ
-    &pMemory_SetName,               ///< \brief Ïîÿâëÿåòñÿ ïåðåä ñîõðàíåíèåì ôàéëà íà ôëåøêó äëÿ çàäàíèÿ èìåíè ôàéëà ïðè ñîîòâåòñòâóþùåé îïöèè 
-                                    ///< ÂÍÅØÍ ÇÓ - Èìÿ ôàéëà
-    &pMeasures,                     ///< ÈÇÌÅÐÅÍÈß
-    &ppMeasures_Tune,               ///< ÈÇÌÅÐÅÍÈß - ÍÀÑÒÐÎÈÒÜ
-    &pService,                      ///< ÑÅÐÂÈÑ
-    &ppService_Calibrator,          ///< ÑÅÐÂÈÑ - ÊÀËÈÁÐÀÒÎÐ
-    &ppService_Ethernet,            ///< ÑÅÐÂÈÑ - ETHERNET
-    &ppMeasures_FreqMeter,          ///< ÑÅÐÂÈÑ - ×ÀÑÒÎÒÎÌÅÐ
-    &ppService_Sound,               ///< ÑÅÐÂÈÑ - ÇÂÓÊ
-    &ppService_RTC,                 ///< ÑÅÐÂÈÑ - ÂÐÅÌß
-    &ppService_FFT,                 ///< ÑÅÐÂÈÑ - ÑÏÅÊÒÐ
-    &pppService_FFT_Cursors,        ///< ÑÅÐÂÈÑ - ÑÏÅÊÒÐ - ÊÓÐÑÎÐÛ
-    &ppService_Function,            ///< ÑÅÐÂÈÑ - ÔÓÍÊÖÈß
-    &ppService_Information,         ///< ÑÅÐÂÈÑ - ÈÍÔÎÐÌÀÖÈß
-    (const Page *)1,                ///< ÑÅÐÂÈÑ - ÐÅÃÈÑÒÐÀÒÎÐ
-    &pHelp,                         ///< ÏÎÌÎÙÜ
-    &pDebug,                        ///< ÎÒËÀÄÊÀ
-    &ppDebug_Console,               ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ
-    &pppDebug_Console_Registers,    ///< ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - ÐÅÃÈÑÒÐÛ
-    &ppDebug_ADC,                   ///< ÎÒËÀÄÊÀ - ÀÖÏ
-    &pppDebug_ADC_Balance,          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ
-    &pppDebug_ADC_Stretch,          ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÐÀÑÒßÆÊÀ
-    &pppDebug_ADC_Shift,            ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ
-    (const Page *)1,                ///< ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ ÏÀÌ
-    &ppDebug_Rand,                  ///< ÎÒËÀÄÊÀ - ÐÀÍÄ-ÒÎÐ
-    &ppDebug_Channels,              ///< ÎÒËÀÄÊÀ - ÊÀÍÀËÛ
-    &ppDebug_Settings,              ///< ÎÒËÀÄÊÀ - ÍÀÑÒÐÎÉÊÈ
-    &ppDebug_SerialNumber,          ///< ÎÒËÀÄÊÀ - Ñ/Í
-    0
-};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define SIZE_BUFFER_FOR_BUTTONS 10
@@ -477,21 +425,21 @@ static void ProcessingShortPressureButton(void)
             }
             else                                                        // Åñëè ìåíþ íå ïîêàçàíî.
             {
-                const Page *page = ((const Page *)menu.OpenedItem());
-                if(button == B_ChannelA && page == &pChanA && MENU_IS_SHOWN)
+                NamePage name = ((const Page *)menu.OpenedItem())->GetNamePage();
+                if(button == B_ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
                     OnChanged_InputB(true);
                     break;
                 }
-                if(button == B_ChannelB && page == &pChanB && MENU_IS_SHOWN)
+                if(button == B_ChannelB && name == Page_ChannelB && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_B = !SET_ENABLED_B;
                     OnChanged_InputB(true);
                     break;
                 }
 
-                page = (const Page *)PageForButton(button);
+                const void *page = PageForButton(button);
                 if(page && page != pointerPageHelp)
                 {
                     SetCurrentItem(page, true);
@@ -663,9 +611,9 @@ void ProcessingReleaseButton(void)
 void ShortPress_Page(void *item)
 {
     Page *page = (Page *)item;
-    if (page->s->funcOnPress)
+    if (page->funcOnPress)
     {
-        page->s->funcOnPress();
+        page->funcOnPress();
     }
 
     page->SetCurrentSB();
@@ -897,7 +845,7 @@ void Menu::ChangeStateFlashDrive()
 {
     if(!FDRIVE_IS_CONNECTED)
     {
-        if(GetOpenedPage() == &pppMemory_Drive_FileManager)
+        if(GetNameOpenedPage() == PageSB_Memory_Drive_Manager)
         {
             ((Page *)OpenedItem())->ShortPressOnItem(0);
         }
@@ -936,15 +884,15 @@ static bool NeedForFireSetLED(void)
         return (type == Item_ChoiceReg) || (type == Item_Choice) || (type == Item_Governor);
     }
 
-    Page *page = menu.GetOpenedPage();
+    NamePage name = menu.GetNameOpenedPage();
     if (
-            page == &ppDebug_SerialNumber     ||
-            page == &pppService_FFT_Cursors     || 
-            page == &ppMeasures_Tune    || 
-            page == &ppMemory_Last      || 
-            page == &ppMemory_Internal  ||
-            IsRegSetActiveOnCursors()   ||
-            (page == &ppService_Function && FUNC_MODE_DRAW_IS_ENABLED)
+            name == PageSB_Debug_SerialNumber   ||
+            name == PageSB_Service_FFT_Cursors  || 
+            name == PageSB_Measures_Tune        || 
+            name == PageSB_Memory_Last          || 
+            name == PageSB_Memory_Internal      ||
+            IsRegSetActiveOnCursors()           ||
+            (name == PageSB_Service_Function && FUNC_MODE_DRAW_IS_ENABLED)
         )
     {
         return true;
@@ -1027,15 +975,15 @@ TypeItem Menu::TypeOpenedItem(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Page *Menu::GetOpenedPage(void)
+NamePage Menu::GetNameOpenedPage(void)
 {
-    return (Page *)OpenedItem();
+    return ((const Page *)OpenedItem())->GetNamePage();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void *Menu::RetLastOpened(Page *page, TypeItem *type)
 {
-    if (CurrentItemIsOpened(page))
+    if (CurrentItemIsOpened(page->GetNamePage()))
     {
         int8 posActItem = page->PosCurrentItem();
         void *item = page->Item(posActItem);
@@ -1076,8 +1024,8 @@ void Menu::CloseOpenedItem(void)
         {
             CallFuncOnPressButton(((Page *)item)->SmallButonFromPage(0));
         }
-        Page *page = Keeper(item);
-        SetMenuPosActItem(page, MENU_POS_ACT_ITEM(CalculateNumPage(page)) & 0x7f);
+        NamePage name = Keeper(item)->name;
+        SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == &mainPage)
         {
             menu.Show(false);
@@ -1116,15 +1064,7 @@ void Menu::ChangeItem(void *item, int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Menu::CalculateNumPage(Page *page)
+Page *Menu::PagePointerFromName(NamePage)
 {
-    for(int i = 0; pages[i] != 0; i++)
-    {
-        if(pages[i] == page)
-        {
-            return i;
-        }
-    }
     return 0;
 }
-

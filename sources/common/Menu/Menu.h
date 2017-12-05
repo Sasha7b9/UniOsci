@@ -1,6 +1,7 @@
 #pragma once
 #include "defines.h"
 #include "Panel/Controls.h"
+#include "Menu/MenuPagesNames.h"
 #include "Menu/MenuItems.h"
 
 
@@ -59,22 +60,23 @@ public:
     /// Возвращает тип открытого элемента меню
     TypeItem TypeOpenedItem(void);
 
-    Page *GetOpenedPage(void);
+    NamePage GetNameOpenedPage(void);
 
+    Page *PagePointerFromName(NamePage namePage);
     /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
     void *CurrentItem(void);
     /// Закрыть открытый элемент меню
     void CloseOpenedItem(void);
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     void ChangeItem(void *item, int delta);
-    /// Возвращает номер страницы по её адресу
-    int CalculateNumPage(Page *page);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
-    void OpenPageAndSetItCurrent(Page *page);
+    void OpenPageAndSetItCurrent(NamePage namePage);
 
     void ShortPressOnPageItem(Page *, int);
+
+    NamePage GetNamePage(const Page *);
 
 private:
     void *RetLastOpened(Page *_page, TypeItem *_type);

@@ -3,6 +3,7 @@
 #include "Display/Display.h"
 #include "defines.h"
 #include "MenuItemsDefs.h"
+#include "Menu/MenuPagesNames.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +17,6 @@
 extern int8 gCurDigit;
 
 #define MENU_ITEMS_ON_DISPLAY       5   ///< Сколько пунктов меню помещается на экране по вертикали.
-#define NUM_PAGES_IN_MENU           49  ///< Число страниц в меню.
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,38 +56,29 @@ typedef enum
 #define COMMON_PART_MENU_ITEM_PAGE                                                                  \
     TypeItem    type;           /* Тип итема */                                                     \
     bool        isPageSB;       /* Если true, то это страница малых кнопок */                       \
+    NamePage    name;           /* Имя из перечисления NamePage */                                  \
     int8        numItems;                                                                           \
     const Page *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV     funcOfActive;   /* Активен ли данный элемент */                                     \
     const char *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 class SButton;
-class Page;
-
-class Control
-{
-};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
 /// Описывает страницу меню.
-struct StructPage
+class Page
 {
+public:
     COMMON_PART_MENU_ITEM_PAGE
     const void   * const *items;            ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                             ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
     pFuncVV  funcOnDraw;                    ///< Будет вызываться после отрисовки кнопок
     pFuncVI  funcRegSetSB;                  ///< В странице малых кнопок вызывается при повороте ручки установка
-};
-
-class Page : public Control
-{
-public:
-    Page (const StructPage *s_) : s(s_) {};
-    const StructPage *s;
     int NumSubPages() const;                ///< Dозвращает число подстраниц в странице по адресу page
     int NumItems() const;                   ///< Возвращает количество элементов в странице по адресу page
     int NumCurrentSubPage();                ///< Возвращает номер текущей подстранцы элемента по адресу page
+    NamePage GetNamePage() const;           ///< Возвращает имя страницы page
     void SetCurrentSB() const;              ///< Установить текущей данную страницу с мылыми кнопками.
     
     void *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы
@@ -96,7 +87,7 @@ public:
     /// подстраница 1, это будет 5 и т.д.
     int PosItemOnTop();
     /// Вызывает функцию короткого нажатия кнопки над итемом numItem страницы page
-    void ShortPressOnItem(int numItem) const;
+    void ShortPressOnItem(int numItem);
     /// Возвращает позицию текущего элемента странцы page
     int8 PosCurrentItem() const;
     void ChangeSubPage(int delta) const;

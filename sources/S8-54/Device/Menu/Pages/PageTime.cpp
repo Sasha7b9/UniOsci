@@ -135,7 +135,7 @@ DEF_PAGE_5(         pTime,                                                      
     cTPos,          // РАЗВЕРТКА - То
     cDivRole,       // РАЗВЕРТКА - Ф-ция ВР/ДЕЛ
     cShiftXtype,    // РАЗВЕРТКА - Смещение
-    &mainPage, FuncActive, EmptyPressPage
+    Page_Time, &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageTime = &pTime;

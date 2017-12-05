@@ -81,8 +81,8 @@ void DataSettings_Fill(DataSettings *ds);
 #define COUPLE_B(ds)            ((ModeCouple)Lval_COUPLE_B(ds))
 #define COUPLE(ds, ch)          ((ch == A) ? COUPLE_A(ds) : COUPLE_B(ds))
 
-#define Lval_PEAKDET(ds)        ((ds)->peackDet)
-#define PEAKDET(ds)             ((PeakDetMode)Lval_PEAKDET(ds))
+#define Lval_PEAKDET(ds)       ((ds)->peackDet)
+#define PEAKDET(ds)            ((PeakDetMode)Lval_PEAKDET(ds))
 
 #define INVERSE_A(ds)           ((ds)->inverseA)
 #define INVERSE_B(ds)           ((ds)->inverseB)

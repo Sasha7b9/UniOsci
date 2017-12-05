@@ -10,7 +10,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const Page pTrig;
-extern const Page ppTrig_Search;
+extern const Page ppSearch;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "A
 
 static const Choice cSearch_Mode =
 {
-    Item_Choice, 2, &ppTrig_Search, 0,
+    Item_Choice, 2, &ppSearch, 0,
     {
         "Режим", "Mode"
         ,
@@ -158,18 +158,18 @@ DEF_BUTTON(         bSearch_Search,                                             
     "Найти", "Search",
     "Производит поиск уровня синхронизации.",
     "Runs for search synchronization level.",
-    ppTrig_Search, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
+    ppSearch, IsActive_Search_Search, OnPress_Search_Search, FuncDraw
 );
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppTrig_Search,                                                                                                     // СИНХР - ПОИСК ///
+DEF_PAGE_2(         ppSearch,                                                                                                     // СИНХР - ПОИСК ///
     "ПОИСК", "SEARCH",
     "Управление автоматическим поиском уровня синхронизации.",
     "Office of the automatic search the trigger level.",
     cSearch_Mode,       // СИНХР - ПОИСК - Режим
     bSearch_Search,     // СИНХР - ПОИСК - Найти
-    &pTrig, FuncActive, EmptyPressPage
+    Page_Trig_Search, &pTrig, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -181,6 +181,6 @@ DEF_PAGE_5(         pTrig,                                                      
     cSource,        // СИНХР - Источник
     cPolarity,      // СИНХР - Полярность
     cInput,         // СИНХР - Вход
-    ppTrig_Search,       // СИНХР - ПОИСК
-    &mainPage, FuncActive, EmptyPressPage
+    ppSearch,       // СИНХР - ПОИСК
+    Page_Trig, &mainPage, FuncActive, EmptyPressPage
 );

@@ -1,5 +1,4 @@
 #include "MenuItems.h"
-#include "Menu/Menu.h"
 #include "Menu/MenuFunctions.h"
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
@@ -51,12 +50,12 @@ const char *Choice::NamePrevSubItem()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void *Page::Item(int numElement) const
 {
-    return (void *)s->items[numElement + (IsPageSB(this) ? 1 : 0)];
+    return (void *)items[numElement + (IsPageSB(this) ? 1 : 0)];
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 SButton* Page::SmallButonFromPage(int numButton)
 {
-    return (SButton *)s->items[numButton];
+    return (SButton *)items[numButton];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -81,31 +80,31 @@ const char *Choice::NameSubItem(int i)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Page::ShortPressOnItem(int numItem) const
+void Page::ShortPressOnItem(int numItem)
 {
     if (TypeMenuItem(this) == Item_Page)
     {
-        CallFuncOnPressButton((void *)s->items[numItem]);
+        CallFuncOnPressButton((void *)items[numItem]);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int8 Page::PosCurrentItem() const
 {
-    return MENU_POS_ACT_ITEM(menu.CalculateNumPage((Page *)this)) & 0x7f;
+    return MENU_POS_ACT_ITEM(name) & 0x7f;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::ChangeSubPage(int delta) const
 {
-    if (delta > 0 && MenuCurrentSubPage((Page *)this) < NumSubPages() - 1)
+    if (delta > 0 && MenuCurrentSubPage(name) < NumSubPages() - 1)
     {
         sound.RegulatorSwitchRotate();
-        SetMenuCurrentSubPage((Page *)this, MenuCurrentSubPage((Page *)this) + 1);
+        SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) + 1);
     }
-    else if (delta < 0 && MenuCurrentSubPage((Page *)this) > 0)
+    else if (delta < 0 && MenuCurrentSubPage(name) > 0)
     {
         sound.RegulatorSwitchRotate();
-        SetMenuCurrentSubPage((Page *)this, MenuCurrentSubPage((Page *)this) - 1);
+        SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) - 1);
     }
 }

@@ -20,13 +20,13 @@
 
 extern const Page mainPage;
 extern const Page pService;
-extern const Page ppService_Calibrator;
+extern const Page ppCalibrator;
 extern const Page pppMath_Function;
 extern const Page ppMath;
 extern const Page pppMath_FFT;
 extern const Page ppppMath_FFT_Cursors;
-extern const Page ppService_Ethernet;
-extern const Page ppService_Information;
+extern const Page ppEthernet;
+extern const Page ppInformation;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncDraw(void)
@@ -93,7 +93,7 @@ DEF_CHOICE_3(       cCalibrator_Mode,                                           
     "Перем", "DC",
     "Пост",  "AC",
     "0В",    "OV",
-    CALIBRATOR, ppService_Calibrator, FuncActive, OnChanged_Calibrator_Mode, FuncDraw
+    CALIBRATOR, ppCalibrator, FuncActive, OnChanged_Calibrator_Mode, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -106,11 +106,11 @@ DEF_BUTTON(         cCalibrator_Calibrate,                                      
     "Калибровать", "Calibrate",
     "Запуск процедуры калибровки",
     "Running the calibration procedure",
-    ppService_Calibrator, FuncActive, OnPress_Calibrator_Calibrate, FuncDraw
+    ppCalibrator, FuncActive, OnPress_Calibrator_Calibrate, FuncDraw
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_2(         ppService_Calibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
+DEF_PAGE_2(         ppCalibrator,                                                                                           // СЕРВИС - КАЛИБРАТОР ///
     "КАЛИБРАТОР", "CALIBRATOR",
     "Управлением калибратором и калибровка осциллографа",
     "Control of the calibrator and calibration of an oscillograph",
@@ -545,13 +545,13 @@ DEF_CHOICE_2(       cEthernet_Enable,                                           
     "To disconnect ethernet, choose \"Disconnected\" and switch off the device.",
     "Включено",  "Included",
     "Отключено", "Disconnected",
-    ETH_ENABLE, ppService_Ethernet, FuncActive, OnChanged_Ethernet_Enable, FuncDraw
+    ETH_ENABLE, ppEthernet, FuncActive, OnChanged_Ethernet_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const IPaddress ipEthernet_IP =                                                                          //--- СЕРВИС - ETHERNET - IP адрес ---
 {
-    Item_IP, &ppService_Ethernet, 0,
+    Item_IP, &ppEthernet, 0,
     {
         "IP адрес", "IP-address",
         "Установка IP адреса",
@@ -565,7 +565,7 @@ static const IPaddress ipEthernet_IP =                                          
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const IPaddress ipEthernet_Mask =                                                                   //--- СЕРВИС - ETHERNET - Маска подсети ---
 {
-    Item_IP, &ppService_Ethernet, 0,
+    Item_IP, &ppEthernet, 0,
     {
         "Маска подсети", "Network mask",
         "Установка маски подсети",
@@ -578,7 +578,7 @@ static const IPaddress ipEthernet_Mask =                                        
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const IPaddress ipEthernet_Gateway =                                                                         //--- СЕРВИС - ETHERNET - Шлюз ---
 {
-    Item_IP, &ppService_Ethernet, 0,
+    Item_IP, &ppEthernet, 0,
     {   "Шлюз", "Gateway",
     "Установка адреса основного шлюза",
     "Set of gateway address", },
@@ -589,7 +589,7 @@ static const IPaddress ipEthernet_Gateway =                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const MACaddress macEthernet_MAC =                                                                      //--- СЕРВИС - ETHERNET - Физ адрес ---
 {
-    Item_MAC, &ppService_Ethernet, 0,
+    Item_MAC, &ppEthernet, 0,
     {
         "Физ адрес", "MAC-address",
         "Установка физического адреса",
@@ -600,7 +600,7 @@ static const MACaddress macEthernet_MAC =                                       
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_5(         ppService_Ethernet,                                                                                               // СЕРВИС - ETHERNET ///
+DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///
     "ETHERNET", "ETHERNET",
     "Настройки ethernet",
     "Settings of ethernet",
@@ -679,7 +679,7 @@ static void OnPress_Information_Exit(void)
 }
 
 DEF_SMALL_BUTTON_EXIT(  sbInformation_Exit,                                                                      //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
-    ppService_Information, FuncActive, OnPress_Information_Exit, DrawSB_Exit
+    ppInformation, FuncActive, OnPress_Information_Exit, DrawSB_Exit
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -723,7 +723,7 @@ static void OnPress_Information(void)
     display.SetDrawMode(DrawMode_Hand, Information_Draw);
 }
 
-DEF_PAGE_SB(        ppService_Information,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
+DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///
     "ИНФОРМАЦИЯ", "INFORMATION",
     "Выводит на экран идентификационные данные осциллографа",
     "Displays identification data of the oscilloscope",
@@ -743,14 +743,14 @@ DEF_PAGE_10(        pService,                                                   
     "Additional settings, calibration, signal search, mathematical functions",
     bResetSettings,           // СЕРВИС - Сброс настроек
     bAutoSearch,              // СЕРВИС - Поиск сигнала
-    ppService_Calibrator,             // СЕРВИС - КАЛИБРАТОР
+    ppCalibrator,             // СЕРВИС - КАЛИБРАТОР
     ppMath,                   // СЕРВИС - МАТЕМАТИКА
-    ppService_Ethernet,               // СЕРВИС - ETHERNET
+    ppEthernet,               // СЕРВИС - ETHERNET
     cSound,                   // СЕРВИС - Звук
     cLang,                    // СЕРВИС - Язык
     tTime,                    // СЕРВИС - Время
     cModeLongPressButtonTrig, // СЕРВИС - Реж длит СИНХР
-    ppService_Information,            // СЕРВИС - ИНФОРМАЦИЯ
+    ppInformation,            // СЕРВИС - ИНФОРМАЦИЯ
     Page_Service, &mainPage, FuncActive, FuncPress
 );
 

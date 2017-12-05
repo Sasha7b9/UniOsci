@@ -222,9 +222,9 @@ typedef struct
     bool                dbg_ShowTShift;
     bool                dbg_ShowTBase;
     // SettingsMenu
-    int8                menu_PosActItem[NUM_PAGES_IN_MENU];         ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
+    int8                menu_PosActItem[Page_NumPages];             ///< \brief Позиция активного пункта. bit7 == 1 - item is opened, 0x7f - нет 
                                                                     ///< активного пункта.
-    int8                menu_CurrentSubPage[NUM_PAGES_IN_MENU];     ///< Номер текущей подстраницы.
+    int8                menu_CurrentSubPage[Page_NumPages];         ///< Номер текущей подстраницы.
     bool                menu_PageDebugActive;                       ///< Активна ли кнопка отладки в меню.
     int8                menu_IsShown;                               ///< \brief Меню показано. Если == false, и при этом какой-либо элемент меню раскрыт,
                                                                     ///< то он будет показан на экране.
@@ -256,11 +256,11 @@ typedef struct
 extern Settings set;
 
 /// Установить позицию активного пункта на странице namePage.
-void SetMenuPosActItem(Page *page, int8 pos);
+void SetMenuPosActItem(NamePage namePage, int8 pos);
 /// Возвращает номер текущей подстраницы страницы namePage.
-int8 MenuCurrentSubPage(Page *page);
+int8 MenuCurrentSubPage(NamePage namePage);
 /// Устанавливает номер текущей подстраницы в странице namePage.
-void SetMenuCurrentSubPage(Page *page, int8 posSubPage);
+void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage);
 /// Если true - меню находится в дополнительном режиме.
 bool MenuIsMinimize(void);
 /// Активна ли страница отладки.
@@ -273,7 +273,7 @@ void CurrentPageSBregSet(int angle);
 const SButton*  GetSmallButton(PanelButton button);
 
 /// Возвращает позицию активного пункта на странице namePage.
-#define MENU_POS_ACT_ITEM(num) (set.menu_PosActItem[num])
+#define MENU_POS_ACT_ITEM(namePage) (set.menu_PosActItem[namePage])
 
 /// \brief Загрузить настройки. Если default == true, загружаются настройки по умолчанию, иначе пытается загрузить настройки из ПЗУ, а в случае 
 /// неудачи - тоже настройки по умолчанию.

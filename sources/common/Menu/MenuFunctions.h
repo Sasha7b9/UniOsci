@@ -17,7 +17,7 @@ bool ItemIsAcitve(const void *item);
 /// ¬озвращает тип элемента меню по адресу address
 TypeItem TypeMenuItem(const void *address);
 /// ¬озвращает true, если текущий элемент страницы с именем namePage открыт
-bool CurrentItemIsOpened(Page *page);
+bool CurrentItemIsOpened(NamePage namePage);
 /// —делать/разделать текущим пункт страницы
 void SetCurrentItem(const void *item,               ///< адрес элемента, активность которого нужно установить/сн€ть
                     bool active                     ///< true - сделать элемент текущим, false - расделать элемент текущим. ¬ этом случае текущим становитс€ заголовок страницы
@@ -40,7 +40,6 @@ bool ItemIsOpened(const void *item);
 bool IsPageSB(const void *item);
 
 void CallFuncOnPressButton(void *button);
-
 
 /** @}
  */

@@ -72,15 +72,15 @@ static void DrawHintItem(int x, int y, int width)
 
     const int SIZE = 100;
     char title[SIZE];
-    snprintf(title, SIZE, "%s \"%s\"", names[type][lang], item->s->titleHint[lang]);
+    snprintf(title, SIZE, "%s \"%s\"", names[type][lang], item->titleHint[lang]);
 
-    if (item->s->type == Item_SmallButton)
+    if (item->type == Item_SmallButton)
     {
         y -= 9;
     }
     painter.DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, gColorBack, gColorFill);
-    y = painter.DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->s->titleHint[2 + lang], gColorBack, gColorFill);
-    if (item->s->type == Item_SmallButton)
+    y = painter.DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], gColorBack, gColorFill);
+    if (item->type == Item_SmallButton)
     {
         painter.DrawHintsForSmallButton(x, y, width, (SButton*)item);
     }
@@ -96,7 +96,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
         return;
     }
     int height = HeightOpenedItem(page);
-    bool shade = CurrentItemIsOpened(page);
+    bool shade = CurrentItemIsOpened(page->GetNamePage());
     painter.FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, gColorBack);
     painter.DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
 
@@ -281,7 +281,7 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
 {
     DrawTitlePage(page, layer, yTop);
     DrawItemsPage(page, layer, yTop + MP_TITLE_HEIGHT);
-    if (CurrentItemIsOpened(page))
+    if (CurrentItemIsOpened(page->GetNamePage()))
     {
         int8 posCurItem = page->PosCurrentItem();
         void *item = page->Item(posCurItem);
@@ -319,9 +319,9 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
         }
     }
 
-    if (page->s->funcOnDraw)
+    if (page->funcOnDraw)
     {
-        page->s->funcOnDraw();
+        page->funcOnDraw();
     }
 }
 
@@ -334,7 +334,7 @@ int CalculateX(int layer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsShade(void *item)
 {
-    return CurrentItemIsOpened(Keeper(item)) && (item != menu.OpenedItem());
+    return CurrentItemIsOpened(Keeper(item)->GetNamePage()) && (item != menu.OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -12,8 +12,8 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern const Page pMeasures;
-extern const Page ppMeasures_FreqMeter;
-extern const Page ppMeasures_Tune;
+extern const Page ppFreqMeter;
+extern const Page ppTune;
 
 extern bool pageChoiceIsActive;
 extern int8 posOnPageChoice;
@@ -31,7 +31,7 @@ DEF_CHOICE_2(       cFreqMeter_Enable,                                          
     "",
     DISABLE_RU, DISABLE_EN,
     ENABLE_RU, ENABLE_EN,
-    FREQ_METER_ENABLED, ppMeasures_FreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_ENABLED, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ DEF_CHOICE_3(       cFreqMeter_TimeF,                                           
     "100мс", "100ms",
     "1с",    "1s",
     "10с",   "10ms",
-    FREQ_METER_TIMECOUNTING, ppMeasures_FreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_TIMECOUNTING, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ DEF_CHOICE_4(       cFreqMeter_FreqClc,                                         
     "1МГц",   "200MHz",
     "10МГц",  "10MHz",
     "100МГц", "100MHz",
-    FREQ_METER_FREQ_CLC, ppMeasures_FreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_FREQ_CLC, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@ DEF_CHOICE_3(       cFreqMeter_NumPeriods,                                      
     "1",   "1",
     "10",  "10",
     "100", "100",
-    FREQ_METER_NUM_PERIODS, ppMeasures_FreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
+    FREQ_METER_NUM_PERIODS, ppFreqMeter, FuncActive, OnChanged_FreqMeter_Enable, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -147,7 +147,7 @@ DEF_CHOICE_2(       cMode,                                                      
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_SMALL_BUTTON_EXIT(  bTune_Exit,                                                                            //--- ИЗМЕРЕНИЯ - НАСТРОИТЬ - Выход ---
-    ppMeasures_Tune, FuncActive, OnPressSB_Exit, DrawSB_Exit
+    ppTune, FuncActive, OnPressSB_Exit, DrawSB_Exit
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -167,7 +167,7 @@ DEF_SMALL_BUTTON(   bTune_Markers,                                              
     "Маркер", "Marker",
     "Позволяет установить маркеры для визуального контроля измерений",
     "Allows to establish markers for visual control of measurements",
-    ppMeasures_Tune, FuncActive, OnPress_Tune_Markers, Draw_Tune_Markers
+    ppTune, FuncActive, OnPress_Tune_Markers, Draw_Tune_Markers
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -191,7 +191,7 @@ DEF_SMALL_BUTTON(   bTune_Settings,                                             
     "Настройка", "Setup",
     "Позволяет выбрать необходимые измерения",
     "Allows to choose necessary measurements",
-    ppMeasures_Tune, FuncActive, OnPress_Tune_Settings, Draw_Tune_Settings
+    ppTune, FuncActive, OnPress_Tune_Settings, Draw_Tune_Settings
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -254,7 +254,7 @@ static void OnRegSet_Tune(int angle)
     currentAngle = 0;
 }
 
-DEF_PAGE_SB(        ppMeasures_Tune,                                                                                               // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
+DEF_PAGE_SB(        ppTune,                                                                                               // ИЗМЕРЕНИЯ - НАСТРОИТЬ ///
     "НАСТРОИТЬ", "CONFIGURE",
     "Переход в режми точной настройки количества и видов измерений",
     "Transition to rezhm of exact control of quantity and types of measurements",
@@ -264,11 +264,11 @@ DEF_PAGE_SB(        ppMeasures_Tune,                                            
     0,
     &bTune_Markers,
     &bTune_Settings,
-    &pMeasures, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
+    PageSB_Measures_Tune, &pMeasures, IsActive_Tune, EmptyPressPage, FuncDrawPage, OnRegSet_Tune
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DEF_PAGE_4(         ppMeasures_FreqMeter,                                                                                         // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР ///
+DEF_PAGE_4(         ppFreqMeter,                                                                                         // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР ///
     "ЧАСТОТОМЕР", "FREQ METER",
     "",
     "",
@@ -276,7 +276,7 @@ DEF_PAGE_4(         ppMeasures_FreqMeter,                                       
     cFreqMeter_TimeF,       // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Время счёта F
     cFreqMeter_FreqClc,     // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Метки времени
     cFreqMeter_NumPeriods,  // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР - Кол-во периодов
-    &pMeasures, FuncActive, EmptyPressPage
+    Page_Service_FreqMeter, &pMeasures, FuncActive, EmptyPressPage
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -284,13 +284,13 @@ DEF_PAGE_6(         pMeasures,                                                  
     "ИЗМЕРЕНИЯ", "MEASURES",
     "Автоматические измерения",
     "Automatic measurements",
-    ppMeasures_FreqMeter,   // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР
+    ppFreqMeter,   // ИЗМЕРЕНИЯ - ЧАСТОТОМЕР
     cIsShow,       // ИЗМЕРЕНИЯ - Показывать
     cNumber,       // ИЗМЕРЕНИЯ - Количество
     cChannels,     // ИЗМЕРЕНИЯ - Каналы
-    ppMeasures_Tune,        // ИЗМЕРЕНИЯ - НАСТРОИТЬ
+    ppTune,        // ИЗМЕРЕНИЯ - НАСТРОИТЬ
     cMode,         // ИЗМЕРЕНИЯ - Вид
-    &mainPage, FuncActive, EmptyPressPage
+    Page_Measures, &mainPage, FuncActive, EmptyPressPage
 );
 
 const Page * pointerPageMeasures = &pMeasures;
