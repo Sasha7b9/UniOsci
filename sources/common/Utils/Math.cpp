@@ -11,7 +11,7 @@ class Math math;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int Math::LowSignedBit(uint value)
+int LowSignedBit(uint value)
 {
     int verValue = 1;
 
@@ -65,13 +65,13 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Math::IntInRange(int value, int min, int max)
+bool IntInRange(int value, int min, int max)
 {
     return (value >= min) && (value <= max);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Math::MaxFloat(float val1, float val2, float val3)
+float MaxFloat(float val1, float val2, float val3)
 {
     float retValue = val1;
     if (val2 > retValue)
@@ -86,7 +86,7 @@ float Math::MaxFloat(float val1, float val2, float val3)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math::SwapInt(int *value0, int *value1)
+void SwapInt(int *value0, int *value1)
 {
     int temp = *value0;
     *value0 = *value1;
@@ -94,7 +94,7 @@ void Math::SwapInt(int *value0, int *value1)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Math::SortInt(int *value0, int *value1)
+void SortInt(int *value0, int *value1)
 {
     if (*value1 < *value0)
     {
@@ -176,7 +176,7 @@ uint8 Math::MinFromArray(const uint8 *data, int firstPoint, int lastPoint)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Math::FloatsIsEquals(float value0, float value1, float epsilonPart)
+bool FloatsIsEquals(float value0, float value1, float epsilonPart)
 {
     float max = fabsf(value0) > fabsf(value1) ? fabsf(value0) : fabsf(value1);
 
@@ -186,7 +186,7 @@ bool Math::FloatsIsEquals(float value0, float value1, float epsilonPart)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Math::RandFloat(float min, float max)
+float RandFloat(float min, float max)
 {
     float delta = max - min;
     return min + ((rand() / (float)RAND_MAX) * delta);

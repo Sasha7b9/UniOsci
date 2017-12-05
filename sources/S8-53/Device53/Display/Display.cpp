@@ -1726,14 +1726,14 @@ void Display::DrawCursorTShift()
     float scale = (lastPoint - firstPoint) / (float)grid.Width();
     int gridLeft = grid.Left();
     int x = (int)(gridLeft + shiftTPos * scale - 3);
-    if (math.IntInRange(x + 3, gridLeft, grid.Right() + 1))
+    if (IntInRange(x + 3, gridLeft, grid.Right() + 1))
     {
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, Color::Back(), Color::Fill());
     };
 
     // Рисуем tShift
     int shiftTShift = sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, gDSet->length1channel, TPOS) - sTime_TShiftInPoints((PeackDetMode)gDSet->peakDet);
-    if(math.IntInRange(shiftTShift, firstPoint, lastPoint))
+    if(IntInRange(shiftTShift, firstPoint, lastPoint))
     {
         int x = gridLeft + shiftTShift - firstPoint - 3;
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, Color::Back(), Color::Fill());
@@ -1841,8 +1841,8 @@ void Display::DrawMeasures()
         int y0 = MEAS_POS_CUR_U0 + GRID_TOP;
         int x1 = MEAS_POS_CUR_T1 - SHIFT_IN_MEMORY + grid.Left();
         int y1 = MEAS_POS_CUR_U1 + GRID_TOP;
-        math.SortInt(&x0, &x1);
-        math.SortInt(&y0, &y1);
+        SortInt(&x0, &x1);
+        SortInt(&y0, &y1);
         painter.DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::Fill());
     }
 

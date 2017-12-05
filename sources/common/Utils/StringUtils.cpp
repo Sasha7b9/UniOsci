@@ -594,7 +594,7 @@ bool StringUtils::WordEqualZeroString(Word *word, char* string)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool StringUtils::EqualsZeroStrings(char *str1, char *str2)
+bool EqualsZeroStrings(char *str1, char *str2)
 {
     while ((*str1) == (*str2))
     {
@@ -609,7 +609,7 @@ bool StringUtils::EqualsZeroStrings(char *str1, char *str2)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool StringUtils::EqualsStrings(char *str1, char *str2, int size)
+bool EqualsStrings(char *str1, char *str2, int size)
 {
     for (int i = 0; i < size; i++)
     {
@@ -622,7 +622,7 @@ bool StringUtils::EqualsStrings(char *str1, char *str2, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool StringUtils::EqualsStrings(char *str1, char *str2)
+bool EqualsStrings(char *str1, char *str2)
 {
     int size = strlen(str1);
 

@@ -82,7 +82,7 @@ void SCPI_ProcessingCommand(const StructCommand *commands, uint8 *buffer)
     {
         numCommand++;   
         name = commands[numCommand].name;
-    } while (name != 0 && (!su.EqualsStrings(name, (char*)buffer)));
+    } while (name != 0 && (!EqualsStrings(name, (char*)buffer)));
 
     if (name) 
     {

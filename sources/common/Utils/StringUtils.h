@@ -45,6 +45,12 @@ char* Int2String(int value,                     ///< значение
                  int numMinFields,              ///< минимальное число занимаемых знакомест. Если для вывода числа столько не требуется, лишние заполняются нулями
                  char bufferOut[20]             ///< сюда записывается возвращаемое значение
 );
+/// Сравнивает две строки. Число символов берётся из str1
+bool EqualsStrings(char *str1, char *str2);
+
+bool EqualsStrings(char *str1, char *str2, int size);
+
+bool EqualsZeroStrings(char *str1, char *str2);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class StringUtils
@@ -60,12 +66,6 @@ public:
     bool GetWord(const char *string, Word *word, const int numWord);
 
     bool WordEqualZeroString(Word *word, char* string);
-    /// Сравнивает две строки. Число символов берётся из str1
-    bool EqualsStrings(char *str1, char *str2);
-
-    bool EqualsStrings(char *str1, char *str2, int size);
-
-    bool EqualsZeroStrings(char *str1, char *str2);
 private:
     /// Возвращает false, если выбор невозможен - строка кончилась.
     bool ChooseSymbols(const char **string);

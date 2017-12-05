@@ -836,7 +836,7 @@ float CalculateDelayPlus(Channel chan)
     float period1 = CalculatePeriod(B);
 
     EXIT_IF_ERRORS_FLOAT(period0, period1);
-    if(!math.FloatsIsEquals(period0, period1, 1.05f))
+    if(!FloatsIsEquals(period0, period1, 1.05f))
     {
         return ERROR_VALUE_FLOAT;
     }
@@ -875,7 +875,7 @@ float CalculateDelayMinus(Channel chan)
 
     EXIT_IF_ERRORS_FLOAT(period0, period1);
 
-    if(!math.FloatsIsEquals(period0, period1, 1.05f))
+    if(!FloatsIsEquals(period0, period1, 1.05f))
     {
         return ERROR_VALUE_FLOAT;
     }

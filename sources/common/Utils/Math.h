@@ -26,22 +26,28 @@
 #define IN_RANGE(x, min, max)               ((x) >= (min) && (x) <= (max))
 
 
+/// Возвращает true, если value входит в диапазон [min; max]
+bool IntInRange(int value, int min, int max);
+/// Возвращает номер младшего бита, равного единице
+int LowSignedBit(uint value);
+/// Возвращает максимальное значение из трёх
+float MaxFloat(float val1, float val2, float val3);
+/// Обменивает местами содержимое памяти по адресам value0 и value1
+void SwapInt(int *value0, int *value1);
+/// Размещает переменные value0 и value1 в порядке возрастания
+void SortInt(int *value0, int *value1);
+/// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
+/// используется большее в смысле модуля число.
+bool FloatsIsEquals(float value0, float value1, float epsilonPart);
+
+float RandFloat(float min, float max);
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Math
 {
 public:
-    /// Возвращает true, если value входит в диапазон [min; max]
-    bool IntInRange(int value, int min, int max );
-
-    int LowSignedBit(uint value);
-
     void Smoothing(uint8 *data, int numPoints, int numSmooth);
-    /// Возвращает максимальное значение из трёх
-    float MaxFloat(float val1, float val2, float val3);
-    /// Обменивает местами содержимое памяти по адресам value0 и value1
-    void SwapInt(int *value0, int *value1);
-    /// Размещает переменные value0 и value1 в порядке возрастания
-    void SortInt(int *value0, int *value1);
     
     int MinFrom2Int(int val0, int val1);
 
@@ -56,11 +62,6 @@ public:
     uint8 MaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
 
     uint8 MinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
-    /// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
-    /// используется большее в смысле модуля число.
-    bool FloatsIsEquals(float value0, float value1, float epsilonPart);
-
-    float RandFloat(float min, float max);
     /// \brief Возвращает координату x пересечения линии, проходящей через (x0, y0), (x1, y1), с горизонтальной линией, проходящей через точку с 
     /// ординатой yHorLine.
     float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);

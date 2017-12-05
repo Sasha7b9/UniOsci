@@ -863,8 +863,8 @@ static void DrawMeasures(void)
         int y0 = POS_MEAS_CUR_U_0 + GRID_TOP;
         int x1 = POS_MEAS_CUR_T_1 - SHIFT_IN_MEMORY + grid.Left();
         int y1 = POS_MEAS_CUR_U_1 + GRID_TOP;
-        math.SortInt(&x0, &x1);
-        math.SortInt(&y0, &y1);
+        SortInt(&x0, &x1);
+        SortInt(&y0, &y1);
         painter.DrawRectangle(x0, y0, x1 - x0, y1 - y0, gColorFill);
     }
 
@@ -966,14 +966,14 @@ static void DrawCursorTShift(void)
     int gridRight = grid.Right();
 
     int x = gridLeft + (int)(shiftTPos * scale) - 3;
-    if(math.IntInRange(x + 3, gridLeft, gridRight + 1))
+    if(IntInRange(x + 3, gridLeft, gridRight + 1))
     {
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_1, gColorBack, gColorFill);
     };
 
     // Рисуем tShift
     int shiftTShift = TPOS_IN_POINTS - TSHIFT_IN_POINTS;
-    if(math.IntInRange(shiftTShift, FIRST_POINT, LAST_POINT))
+    if(IntInRange(shiftTShift, FIRST_POINT, LAST_POINT))
     {
         x = gridLeft + shiftTShift - FIRST_POINT - 3;
         painter.Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, gColorBack, gColorFill);
