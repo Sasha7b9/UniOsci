@@ -49,9 +49,9 @@ typedef enum
 
 #define COMMON_PART_MENU_ITEM_PAGE                                                                  \
     TypeItem        type;           /* Тип итема */                                                     \
+    int8            numItems;                                                                           \
     bool            isPageSB;       /* Если true, то это страница малых кнопок */                       \
     NamePage        name;           /* Имя из перечисления NamePage */                                  \
-    int8            numItems;                                                                           \
     const PageBase *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                     \
     const char      *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
