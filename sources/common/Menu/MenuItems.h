@@ -1,9 +1,9 @@
 #pragma once
-#include "Display/Colors.h"
 #include "Display/Display.h"
 #include "defines.h"
 #include "MenuItemsDefs.h"
 #include "Menu/MenuPagesNames.h"
+#include "Display/Colors.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,6 +59,8 @@ class Control
 public:
     COMMON_PART_MENU_ITEM;
     PageBase *Keeper();
+    TypeItem  Type() const;
+    bool IsActive();
 };
 
 
@@ -89,7 +91,7 @@ public:
     NamePage GetNamePage() const;           ///< Возвращает имя страницы page
     void SetCurrentSB() const;              ///< Установить текущей данную страницу с мылыми кнопками.
     
-    void *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы
+    Control *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы
     SButton* SmallButonFromPage(int numButton);
     /// \todo Возвращает позицию первого элемента страницы по адресу page на экране. Если текущая подстраница 0, это будет 0, если текущая 
     /// подстраница 1, это будет 5 и т.д.
@@ -120,7 +122,6 @@ public:
     pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
     void CallFuncOnDraw(int x, int y);
     void Draw(int x, int y);
-    bool IsActive();
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SButton ///
@@ -145,10 +146,20 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Governor ///
 /// Описывает регулятор.
-class Governor
+class GovernorBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    int16   minValue;       ///< Минмальное значение, которое может принимать регулятор.
+    int16   maxValue;       ///< Максимальное значение.
+    int16  *cell;
+    pFuncVV funcOfChanged;  ///< Функция, которую нужно вызывать после того, как значение регулятора изменилось.
+    pFuncVV funcBeforeDraw; ///< Функция, которая вызывается перед отрисовкой
+};
+
+class Governor : public Control
+{
+public:
     int16   minValue;       ///< Минмальное значение, которое может принимать регулятор.
     int16   maxValue;       ///< Максимальное значение.
     int16  *cell;
@@ -175,14 +186,22 @@ public:
     void DrawLowPart(int x, int y, bool pressed, bool shade);
     /// Возвращает изображение регулятора, соответствующее его текущему положению
     static char GetSymbol(int value);
-    bool IsActive();
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Choice ///
-class Choice
+class ChoiceBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    int8                *cell;
+    const char  * const *names;             ///< Варианты выбора на русском и английском языках.
+    pFuncVB			    funcOnChanged;      ///< Функция должна вызываться после изменения значения элемента.
+    pFuncVII            funcForDraw;        ///< Функция вызывается после отрисовки элемента. 
+};
+
+class Choice : public Control
+{
+public:
     int8                *cell;
     const char  * const *names;             ///< Варианты выбора на русском и английском языках.
     pFuncVB			    funcOnChanged;      ///< Функция должна вызываться после изменения значения элемента.
@@ -201,14 +220,24 @@ public:
     const char *NamePrevSubItem();
     /// Возвращает имя варианта выбора элемента choice в позиции i как оно записано в исходном коде программы
     const char *NameSubItem(int i);
-    bool IsActive();
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IPaddress ///
-class IPaddress
+class IPaddressBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    uint8 *ip0;
+    uint8 *ip1;
+    uint8 *ip2;
+    uint8 *ip3;
+    pFuncVB funcOfChanged;
+    uint16 *port;
+};
+
+class IPaddress : public Control
+{
+public:
     uint8 *ip0;
     uint8 *ip1;
     uint8 *ip2;
@@ -223,14 +252,25 @@ public:
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
-    bool IsActive();
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MACaddress ///
-class MACaddress
+class MACaddressBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    uint8 *mac0;
+    uint8 *mac1;
+    uint8 *mac2;
+    uint8 *mac3;
+    uint8 *mac4;
+    uint8 *mac5;
+    pFuncVB funcOfChanged;
+};
+
+class MACaddress : public Control
+{
+public:
     uint8 *mac0;
     uint8 *mac1;
     uint8 *mac2;
@@ -244,7 +284,6 @@ public:
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
-    bool IsActive();
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Formuala ////
@@ -259,10 +298,22 @@ public:
 #define POS_SIGN_MEMBER_2       2
 #define POS_KOEFF_MEMBER_2      3
 
-class Formula
+class FormulaBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    int8   *function;       ///< Адрес ячейки, где хранится Function, из которой берётся знак операции
+    int8   *koeff1add;      ///< Адрес коэффициента при первом члене для сложения
+    int8   *koeff2add;      ///< Адрес коэффициента при втором члене для сложения
+    int8   *koeff1mul;      ///< Адрес коэффициента при первом члене для умножения
+    int8   *koeff2mul;      ///< Адрес коэффициента при втором члене для умножения
+    int8   *curDigit;       ///< Текущий разряд : 0 - знак первого члена, 1 - коэффициент первого члена, 2 - знак второго члена, 3 - коэффициент второго члена
+    pFuncVV funcOfChanged;  ///< Эта функция вызывается после изменения состояния элемента управления.
+};
+
+class Formula : public Control
+{
+public:
     int8   *function;       ///< Адрес ячейки, где хранится Function, из которой берётся знак операции
     int8   *koeff1add;      ///< Адрес коэффициента при первом члене для сложения
     int8   *koeff2add;      ///< Адрес коэффициента при втором члене для сложения
@@ -274,19 +325,27 @@ public:
     void DrawClosed(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
     void WriteText(int x, int y, bool opened);
-    bool IsActive();
 };
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GovernorColor ///
-class GovernorColor
+class ColorType;
+
+class GovernorColorBase
 {
 public:
     COMMON_PART_MENU_ITEM;
     ColorType  *ct;                 ///< Структура для описания цвета.
     pFuncVV     funcOnChanged;      ///< Эту функцию нужно вызывать после изменения значения элемента.
+};
+
+class GovernorColor : public Control
+{
+public:
+    ColorType  *ct;                 ///< Структура для описания цвета.
+    pFuncVV     funcOnChanged;      ///< Эту функцию нужно вызывать после изменения значения элемента.
     void ChangeValue(int delta);    ///< Изменить яркость цвета в governor.
     void Draw(int x, int y, bool opened);
-    bool IsActive();
 private:
     void DrawOpened(int x, int y);
     void DrawClosed(int x, int y);

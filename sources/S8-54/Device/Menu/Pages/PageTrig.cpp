@@ -118,7 +118,7 @@ DEF_CHOICE_4(       cInput,                                                     
 //-------------------------------------------------------------------------------------------------------------------------- СИНХР - ПОИСК - Режим ---
 static const char *hintsSearch_Mode[] ={ "Ручной", "Hand", "Автоматический",  "Auto" };
 
-static const Choice cSearch_Mode =
+static const ChoiceBase cSearch_Mode =
 {
     Item_Choice, 2, false, Page_NoPage, &ppSearch, FuncActive,
     {

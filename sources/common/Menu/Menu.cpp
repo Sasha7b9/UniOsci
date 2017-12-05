@@ -538,8 +538,8 @@ void ProcessingRegulatorSetRotate(void)
 
     if (MENU_IS_SHOWN || menu.TypeOpenedItem() != Item_Page)
     {
-        void *item = menu.CurrentItem();
-        TypeItem type = TypeMenuItem(item);
+        Control *item = menu.CurrentItem();
+        TypeItem type = item->Type();
         static const int step = 2;
         if (menu.TypeOpenedItem() == Item_Page && (type == Item_ChoiceReg || type == Item_Governor || type == Item_IP || type == Item_MAC))
         {
@@ -553,7 +553,7 @@ void ProcessingRegulatorSetRotate(void)
         else
         {
             item = menu.OpenedItem();
-            type = TypeMenuItem(item);
+            type = item->Type();
             if (MenuIsMinimize())
             {
                 CurrentPageSBregSet(angleRegSet);
@@ -694,7 +694,7 @@ void FuncOnLongPressItem(void *item)
     {
         SetCurrentItem(item, true);
     }
-    OpenItem(item, !ItemIsOpened(item));
+    OpenItem(item, !ItemIsOpened((Control *)item));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -704,18 +704,18 @@ void FuncOnLongPressItemTime(void *time)
     {
         SetCurrentItem(time, true);
     }
-    if(ItemIsOpened(time) && *((Time*)time)->curField == iSET)
+    if(ItemIsOpened((Control *)time) && *((Time*)time)->curField == iSET)
     {
         ((Time *)time)->SetNewTime();
     }
-    OpenItem(time, !ItemIsOpened(time));
+    OpenItem(time, !ItemIsOpened((Control *)time));
     ((Time *)time)->SetOpened();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_Time(void *time)
 {
-    if(!ItemIsOpened(time))
+    if(!ItemIsOpened((const Control *)time))
     {
         SetCurrentItem(time, true);
         ((Time *)time)->SetOpened();
@@ -815,7 +815,12 @@ pFuncVpV FuncForShortPressOnItem(void *item)
         ShortPress_SmallButton      // Item_SmallButton
     };
 
-    return shortFunction[TypeMenuItem(item)];
+    if(!item)
+    {
+        return EmptyFuncVpV;
+    }
+
+    return shortFunction[((Control *)item)->Type()];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -837,9 +842,14 @@ pFuncVpV FuncForLongPressureOnItem(void *item)
         ShortPress_SmallButton      // Item_SmallButton
     };
 
-    Button *control = (Button *)item;
+    if(!item)
+    {
+        return EmptyFuncVpV;
+    }
 
-    return control->IsActive() ? longFunction[TypeMenuItem(item)] : EmptyFuncVpV;
+    Control *control = (Control *)item;
+
+    return control->IsActive() ? longFunction[control->Type()] : EmptyFuncVpV;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -900,7 +910,7 @@ static bool NeedForFireSetLED(void)
         return true;
     }
     
-    TypeItem type = TypeMenuItem(menu.CurrentItem());
+    TypeItem type = menu.CurrentItem()->Type();
     if (type == Item_Governor    ||
         type == Item_ChoiceReg   ||
         type == Item_GovernorColor)
@@ -964,16 +974,16 @@ void Menu::RunAfterUpdate(pFuncVV func)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void *Menu::OpenedItem(void)
+Control *Menu::OpenedItem(void)
 {
     TypeItem type = Item_None;
-    return RetLastOpened((Page *)&mainPage, &type);
+    return (Control *)RetLastOpened((Page *)&mainPage, &type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 TypeItem Menu::TypeOpenedItem(void)
 {
-    return TypeMenuItem(OpenedItem());
+    return OpenedItem()->Type();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -989,7 +999,7 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
     {
         int8 posActItem = page->PosCurrentItem();
         void *item = page->Item(posActItem);
-        TypeItem typeLocal = TypeMenuItem(page->Item(posActItem));
+        TypeItem typeLocal = page->Item(posActItem)->Type();
         if (typeLocal == Item_Page)
         {
             return RetLastOpened((Page *)item, type);
@@ -1004,7 +1014,7 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void *Menu::CurrentItem(void)
+Control *Menu::CurrentItem(void)
 {
     TypeItem type = Item_None;
     void *lastOpened = RetLastOpened((Page *)&mainPage, &type);
@@ -1013,13 +1023,13 @@ void *Menu::CurrentItem(void)
     {
         return ((const Page *)lastOpened)->Item(pos);
     }
-    return lastOpened;
+    return (Control *)lastOpened;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::CloseOpenedItem(void)
 {
-    void *item = OpenedItem();
+    Control *item = OpenedItem();
     if (TypeOpenedItem() == Item_Page)
     {
         if (IsPageSB(item))
@@ -1028,7 +1038,7 @@ void Menu::CloseOpenedItem(void)
         }
         NamePage name = ((Control *)item)->Keeper()->name;
         SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
-        if (item == &mainPage)
+        if (item == (Control *)&mainPage)
         {
             menu.Show(false);
         }
@@ -1042,7 +1052,7 @@ void Menu::CloseOpenedItem(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ChangeItem(void *item, int delta)
 {
-    TypeItem type = TypeMenuItem(item);
+    TypeItem type = ((Control *)item)->Type();
     if (type == Item_Choice || type == Item_ChoiceReg)
     {
         ((Choice *)item)->StartChange(delta);

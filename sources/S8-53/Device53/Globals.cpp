@@ -116,13 +116,13 @@ StateFPGA gStateFPGA =
 };
 
 const char *gStringForHint = 0;
-void *gItemHint = 0;
+Control *gItemHint = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void SetItemForHint(void *item)
 {
     gStringForHint = 0;
-    gItemHint = item;
+    gItemHint = (Control *)item;
 }
 
 uint8           *gData0 = 0;

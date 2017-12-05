@@ -682,7 +682,7 @@ DEF_CHOICE_2(       cEthernet_Ethernet,                                         
 );
 
 //------------------------------------------------------------------------------------------------------------------- ÑÅÐÂÈÑ - ETHERNET - IP àäðåñ ---
-static const IPaddress ipEthernet_IP =
+static const IPaddressBase ipEthernet_IP =
 {
     Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
@@ -696,7 +696,7 @@ static const IPaddress ipEthernet_IP =
 };
 
 //-------------------------------------------------------------------------------------------------------------- ÑÅÐÂÈÑ - ETHERNET - Ìàñêà ïîäñåòè ---
-static const IPaddress ipEthernet_NetMask =
+static const IPaddressBase ipEthernet_NetMask =
 {
     Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
@@ -709,7 +709,7 @@ static const IPaddress ipEthernet_NetMask =
 };
 
 //----------------------------------------------------------------------------------------------------------------------- ÑÅÐÂÈÑ - ETHERNET - Øëþç ---
-static const IPaddress ipEthernet_Gateway =
+static const IPaddressBase ipEthernet_Gateway =
 {
     Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
@@ -722,7 +722,7 @@ static const IPaddress ipEthernet_Gateway =
 };
 
 //------------------------------------------------------------------------------------------------------------------ ÑÅÐÂÈÑ - ETHERNET - MAC àäðåñ ---
-static const MACaddress ipEthernet_MAC =
+static const MACaddressBase ipEthernet_MAC =
 {
     Item_MAC, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {

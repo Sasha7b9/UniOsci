@@ -66,7 +66,7 @@ static void DrawHintItem(int x, int y, int width)
         {"",            ""},        // Item_ChoiceReg
         {"Êíîïêà",      "Button"}   // Item_SmallButton
     };
-    TypeItem type = TypeMenuItem(gItemHint);
+    TypeItem type = gItemHint->Type();
     Language lang = LANG;
     Page *item = (Page *)gItemHint;
 
@@ -111,8 +111,8 @@ void DrawTitlePage(Page *page, int layer, int yTop)
     }
     
     painter.DrawVLine(x, yTop, yTop + HeightOpenedItem(page), Color::BorderMenu(false));
-    bool condDrawRSet = page->NumSubPages() > 1 && TypeMenuItem(menu.CurrentItem()) != Item_ChoiceReg && 
-        TypeMenuItem(menu.CurrentItem()) != Item_Governor && menu.TypeOpenedItem() == Item_Page;
+    bool condDrawRSet = page->NumSubPages() > 1 && menu.CurrentItem()->Type() != Item_ChoiceReg && 
+        menu.CurrentItem()->Type() != Item_Governor && menu.TypeOpenedItem() == Item_Page;
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
     x = painter.DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, TitleItem(page), colorText);
@@ -267,8 +267,8 @@ void DrawItemsPage(Page *page, int layer, int yTop)
     int count = 0;
     for(int posItem = posFirstItem; posItem <= posLastItem; posItem++)
     {
-        void *item = page->Item(posItem);
-        TypeItem type = TypeMenuItem(item);
+        Control *item = page->Item(posItem);
+        TypeItem type = item->Type();
         int top = yTop + MI_HEIGHT * count;
         funcOfDraw[type](item, CalculateX(layer), top);
         count++;
@@ -284,7 +284,7 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
     if (CurrentItemIsOpened(page->GetNamePage()))
     {
         int8 posCurItem = page->PosCurrentItem();
-        void *item = page->Item(posCurItem);
+        Control *item = page->Item(posCurItem);
         for (int i = 0; i < 5; i++)
         {
             if (itemUnderButton[i + B_F1] != item)
@@ -292,7 +292,7 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
                 itemUnderButton[i + B_F1] = 0;
             }
         }
-        TypeItem type = TypeMenuItem(item);
+        TypeItem type = item->Type();
         if (type == Item_Choice || type == Item_ChoiceReg)
         {
             ((Choice *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
@@ -358,9 +358,9 @@ int ItemOpenedPosY(void *item)
     Page *page = (Page *)((Control *)item)->Keeper();
     int8 posCurItem = page->PosCurrentItem();
     int y = GRID_TOP + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
-    if(y + HeightOpenedItem(item) > GRID_BOTTOM)
+    if(y + HeightOpenedItem((Control *)item) > GRID_BOTTOM)
     {
-        y = GRID_BOTTOM - HeightOpenedItem(item) - 2;
+        y = GRID_BOTTOM - HeightOpenedItem((Control *)item) - 2;
     }
     return y + 1;
 }
@@ -371,14 +371,14 @@ void Menu::Draw(void)
     if (MENU_IS_SHOWN || TypeOpenedItem() != Item_Page)
     {
         ResetItemsUnderButton();
-        void *item = OpenedItem();
+        Control *item = OpenedItem();
         if (MENU_IS_SHOWN)
         {
-            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : (Page *)((Control *)item)->Keeper(), 0, GRID_TOP);
+            DrawOpenedPage(item->Type() == Item_Page ? (Page *)item : (Page *)((Control *)item)->Keeper(), 0, GRID_TOP);
         }
         else
         {
-            if (TypeMenuItem(item) == Item_Choice || TypeMenuItem(item) == Item_ChoiceReg)
+            if (item->Type() == Item_Choice || item->Type() == Item_ChoiceReg)
             {
                 ((Choice *)item)->Draw(CalculateX(0), GRID_TOP, false);
                 painter.DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));
@@ -387,7 +387,7 @@ void Menu::Draw(void)
                 painter.DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, gColorBack);
                 painter.DrawHLine(GRID_TOP + 35, CalculateX(0) - 1, GRID_RIGHT - 1);
             }
-            else if (TypeMenuItem(item) == Item_Governor)
+            else if (item->Type() == Item_Governor)
             {
                 ((Governor *)item)->Draw(CalculateX(0), GRID_TOP, true);
                 painter.DrawHLine(GRID_TOP, CalculateX(0) - 2, GRID_RIGHT, gColorFill);

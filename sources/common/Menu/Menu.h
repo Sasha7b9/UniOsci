@@ -56,7 +56,7 @@ public:
     /// Нарисовать меню
     void Draw();
     /// Возвращает адрес открытого элемента меню
-    void *OpenedItem(void);
+    Control *OpenedItem(void);
     /// Возвращает тип открытого элемента меню
     TypeItem TypeOpenedItem(void);
 
@@ -64,7 +64,7 @@ public:
 
     Page *PagePointerFromName(NamePage namePage);
     /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
-    void *CurrentItem(void);
+    Control *CurrentItem(void);
     /// Закрыть открытый элемент меню
     void CloseOpenedItem(void);
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta

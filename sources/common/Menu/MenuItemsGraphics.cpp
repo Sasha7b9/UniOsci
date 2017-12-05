@@ -792,7 +792,9 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
     int delta = pressed && !shade ? 1 : 0;
     int width = MI_WIDTH_VALUE;
 
-    if (TypeMenuItem(item) == Item_IP && opened && ((IPaddress*)item)->port != 0)
+    Control *control = (Control *)item;
+
+    if (control->Type() == Item_IP && opened && ((IPaddress*)item)->port != 0)
     {
         width += MOI_WIDTH_D_IP;
     }
@@ -805,7 +807,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
 
     painter.DrawText(x + 6 + delta, y + 6 + delta, TitleItem(item), color);
     
-    TypeItem type = TypeMenuItem(item);
+    TypeItem type = ((Control *)item)->Type();
 
     if(menu.CurrentItem() == item)
     {
@@ -815,7 +817,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
         {
             symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
-        else if (type == Item_Governor || type == Item_ChoiceReg ||  (ItemIsOpened(item) && type == Item_Choice))
+        else if (type == Item_Governor || type == Item_ChoiceReg ||  (ItemIsOpened(control) && type == Item_Choice))
         {
             symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
@@ -838,7 +840,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
             }
         }
 
-        painter.Draw4SymbolsInRect(x + MI_WIDTH - 13, y + 5 + (ItemIsOpened(item) ? 0 : 15), symbol, shade ? color : Color::BLACK);
+        painter.Draw4SymbolsInRect(x + MI_WIDTH - 13, y + 5 + (ItemIsOpened(control) ? 0 : 15), symbol, shade ? color : Color::BLACK);
     }
 }
 

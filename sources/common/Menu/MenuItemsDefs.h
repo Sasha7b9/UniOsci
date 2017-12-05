@@ -21,12 +21,12 @@ static const Time name = { Item_Time, 0, false, Page_NoPage, &keeper, funcActive
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_GOVERNOR(name, titleRU, titleEN, hintRU, hintEN, cell, min, max, keeper, funcActive, funcChanged, funcBeforeDraw)                       \
-static const Governor name = {Item_Governor, 0, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, min, max, (int16 *)(&(cell)), funcChanged,    \
+static const GovernorBase name = {Item_Governor, 0, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, min, max, (int16 *)(&(cell)), funcChanged,    \
     funcBeforeDraw};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_GOVERNOR_COLOR(name, titleRU, titleEN, hintRU, hintEN, colorType, keeper)   \
-static const GovernorColor name = {Item_GovernorColor, 0, false, Page_NoPage, &keeper, FuncActive, {titleRU, titleEN, hintRU, hintEN}, &colorType};
+static const GovernorColorBase name = {Item_GovernorColor, 0, false, Page_NoPage, &keeper, FuncActive, {titleRU, titleEN, hintRU, hintEN}, &colorType};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_PAGE_SB(name, titleRU, titleEN, hintRU, hintEN, item0, item1, item2, item3, item4, item5,                                           \
@@ -158,33 +158,33 @@ static const SButton name = { Item_SmallButton, 0, false, Page_NoPage, &keeper, 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_CHOICE_2(name, titleRU, titleEN, hintRU, hintEN, nameRu1, nameEn1, nameRu2, nameEn2, cell, keeper, funcActive, funcChanged, funcDraw)   \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2};                                                                                \
-static const Choice name = {Item_Choice, 2, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 2, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_3(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
     nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, cell, keeper, funcActive, funcChanged, funcDraw)                                          \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3};                                                              \
-static const Choice name = {Item_Choice, 3, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 3, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_4(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
     nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, cell, keeper, funcActive, funcChanged, funcDraw)                        \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4};                                            \
-static const Choice name = {Item_Choice, 4, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 4, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_5(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
     nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4, nameRu5, nameEn5, cell, keeper, funcActive, funcChanged, funcDraw)      \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
     nameRu5, nameEn5};                                                                                                                              \
-static const Choice name = {Item_Choice, 5, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 5, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_6(name, titleRU, titleEN, hintRU, hintEN,nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,                          \
     nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, cell, keeper, funcActive, funcChanged, funcDraw)                                                   \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
     nameRu5, nameEn5, nameRu6, nameEn6};                                                                                                            \
-static const Choice name = {Item_Choice, 6, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 6, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_7(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
@@ -192,7 +192,7 @@ static const Choice name = {Item_Choice, 6, false, Page_NoPage, &keeper, funcAct
     nameRu6, nameEn6, nameRu7, nameEn7, cell, keeper, funcActive, funcChanged, funcDraw)                                                            \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4,                                                      \
     nameEn4, nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7};                                                                                 \
-static const Choice name = {Item_Choice, 7, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 7, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_8(name, titleRU, titleEN, hintRU, hintEN,                                                                                        \
@@ -200,7 +200,7 @@ static const Choice name = {Item_Choice, 7, false, Page_NoPage, &keeper, funcAct
     nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, cell, keeper, funcActive, funcChanged, funcDraw)                                          \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
     nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8};                                                                        \
-static const Choice name = {Item_Choice, 8, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
+static const ChoiceBase name = {Item_Choice, 8, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                                 \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_REG_9(name, titleRU, titleEN, hintRU, hintEN,                                                                                    \
@@ -208,7 +208,7 @@ static const Choice name = {Item_Choice, 8, false, Page_NoPage, &keeper, funcAct
     nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, cell, keeper, funcActive, funcChanged, funcDraw)                        \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
     nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9};                                                      \
-static const Choice name = {Item_ChoiceReg, 9, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                              \
+static const ChoiceBase name = {Item_ChoiceReg, 9, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                              \
     hints##name, funcChanged, funcDraw};
 
 #define DEF_CHOICE_REG_10(name, titleRU, titleEN, hintRU, hintEN,                                                                                   \
@@ -216,5 +216,5 @@ static const Choice name = {Item_ChoiceReg, 9, false, Page_NoPage, &keeper, func
     nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, nameRu10, nameEn10, cell, keeper, funcActive, funcChanged, funcDraw)    \
 static pString hints##name[] = {nameRu1, nameEn1, nameRu2, nameEn2, nameRu3, nameEn3, nameRu4, nameEn4,                                             \
     nameRu5, nameEn5, nameRu6, nameEn6, nameRu7, nameEn7, nameRu8, nameEn8, nameRu9, nameEn9, nameRu10, nameEn10};                                  \
-static const Choice name = {Item_ChoiceReg, 10, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                             \
+static const ChoiceBase name = {Item_ChoiceReg, 10, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, (int8 *)&cell,                             \
     hints##name, funcChanged, funcDraw};

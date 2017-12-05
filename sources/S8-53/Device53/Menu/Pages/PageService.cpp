@@ -549,7 +549,7 @@ DEF_CHOICE_2(       cEthernet_Enable,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const IPaddress ipEthernet_IP =                                                                          //--- СЕРВИС - ETHERNET - IP адрес ---
+static const IPaddressBase ipEthernet_IP =                                                                          //--- СЕРВИС - ETHERNET - IP адрес ---
 {
     Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
@@ -563,7 +563,7 @@ static const IPaddress ipEthernet_IP =                                          
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const IPaddress ipEthernet_Mask =                                                                   //--- СЕРВИС - ETHERNET - Маска подсети ---
+static const IPaddressBase ipEthernet_Mask =                                                                   //--- СЕРВИС - ETHERNET - Маска подсети ---
 {
     Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
@@ -576,7 +576,7 @@ static const IPaddress ipEthernet_Mask =                                        
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const IPaddress ipEthernet_Gateway =                                                                         //--- СЕРВИС - ETHERNET - Шлюз ---
+static const IPaddressBase ipEthernet_Gateway =                                                                         //--- СЕРВИС - ETHERNET - Шлюз ---
 {
     Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {   "Шлюз", "Gateway",
@@ -587,7 +587,7 @@ static const IPaddress ipEthernet_Gateway =                                     
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const MACaddress macEthernet_MAC =                                                                      //--- СЕРВИС - ETHERNET - Физ адрес ---
+static const MACaddressBase macEthernet_MAC =                                                                      //--- СЕРВИС - ETHERNET - Физ адрес ---
 {
     Item_MAC, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {

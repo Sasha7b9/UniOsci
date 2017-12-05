@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Data/DataSettings.h"
 #include "FPGA/FPGAtypes.h"
+#include "Menu/MenuItems.h"
 #include "Panel/Controls.h"
 #include "Settings/SettingsTypes.h"
 #include <stm32f4xx_hal.h>
@@ -133,7 +134,7 @@ typedef struct
 } StateFPGA;
 
 extern const char *gStringForHint;              ///< Строка подсказки, которую надо выводить в случае включённого режима подсказок.
-extern void *gItemHint;                         ///< Item, подсказку для которого нужно выводить в случае включённого режима подсказок.
+extern Control *gItemHint;                         ///< Item, подсказку для которого нужно выводить в случае включённого режима подсказок.
 
 void SetItemForHint(void *item);
 

@@ -7,12 +7,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-TypeItem TypeMenuItem(const void *address) 
-{
-    return address ? (*((TypeItem*)address)) : Item_None;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool    CurrentItemIsOpened(NamePage namePage)
 {
     bool retValue = _GET_BIT(MENU_POS_ACT_ITEM(namePage), 7) == 1;
@@ -44,9 +38,9 @@ void    SetCurrentItem(const void *item, bool active)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int HeightOpenedItem(void *item) 
+int HeightOpenedItem(Control *item) 
 {
-    TypeItem type = TypeMenuItem(item);
+    TypeItem type = item->Type();
     if(type == Item_Page)
     {
         int numItems = ((const Page *)item)->NumItems() - ((Page *)item)->NumCurrentSubPage() * MENU_ITEMS_ON_DISPLAY;
@@ -85,9 +79,9 @@ void OpenItem(const void *item, bool open)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ItemIsOpened(const void *item)
+bool ItemIsOpened(const Control *item)
 {
-    TypeItem type = TypeMenuItem(item);
+    TypeItem type = item->Type();
     Page *page = (Page *)((Control *)item)->Keeper();
     if(type == Item_Page)
     {
@@ -97,14 +91,14 @@ bool ItemIsOpened(const void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ChangeOpenedItem(void *item, int delta)
+bool ChangeOpenedItem(Control *item, int delta)
 {
     if (delta < 2 && delta > -2)
     {
         return false;
     }
 
-    TypeItem type = TypeMenuItem(item);
+    TypeItem type = item->Type();
 
     if (type == Item_Page)
     {
@@ -131,9 +125,9 @@ bool ChangeOpenedItem(void *item, int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IsPageSB(const void *item)
+bool IsPageSB(const Control *item)
 {
-    if (TypeMenuItem(item) == Item_Page)
+    if (item->Type() == Item_Page)
     {
         return ((Page *)item)->isPageSB;
     }
