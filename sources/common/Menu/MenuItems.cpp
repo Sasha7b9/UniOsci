@@ -191,3 +191,9 @@ bool Button::IsActive()
 {
     return funcOfActive ? funcOfActive() : true;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+PageBase *Control::Keeper()
+{
+    return (PageBase *)keeper;
+}

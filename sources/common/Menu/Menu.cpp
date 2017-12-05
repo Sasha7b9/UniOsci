@@ -351,7 +351,7 @@ char *Menu::StringNavigation(char buffer[100])
     while(!IsMainPage(item))
     {
         titles[numTitle++] = TitleItem(item);
-        item = Keeper(item);
+        item = ((Control *)item)->Keeper();
     }
     for(int i = 9; i >= 0; i--)
     {
@@ -1026,7 +1026,7 @@ void Menu::CloseOpenedItem(void)
         {
             CallFuncOnPressButton(((Page *)item)->SmallButonFromPage(0));
         }
-        NamePage name = Keeper(item)->name;
+        NamePage name = ((Control *)item)->Keeper()->name;
         SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == &mainPage)
         {

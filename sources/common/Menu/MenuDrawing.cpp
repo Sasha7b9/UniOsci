@@ -163,12 +163,12 @@ static void DrawNestingPage(Page *page, int left, int bottom)
     {
         int nesting = 0;
 
-        PageBase *parent = Keeper(page);
+        PageBase *parent = page->Keeper();
 
         while (parent != &mainPage)
         {
             page = (Page *)parent;
-            parent = Keeper(page);
+            parent = page->Keeper();
             nesting++;
         }
 
@@ -334,7 +334,10 @@ int CalculateX(int layer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsShade(void *item)
 {
-    return CurrentItemIsOpened(((Page *)Keeper(item))->GetNamePage()) && (item != menu.OpenedItem());
+    Control *control = (Control *)item;
+    Page *keeper = (Page *)control->Keeper();
+
+    return CurrentItemIsOpened(keeper->GetNamePage()) && (item != menu.OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -352,7 +355,7 @@ void *ItemUnderButton(PanelButton button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int ItemOpenedPosY(void *item)
 {
-    Page *page = (Page *)Keeper(item);
+    Page *page = (Page *)((Control *)item)->Keeper();
     int8 posCurItem = page->PosCurrentItem();
     int y = GRID_TOP + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
     if(y + HeightOpenedItem(item) > GRID_BOTTOM)
@@ -371,7 +374,7 @@ void Menu::Draw(void)
         void *item = OpenedItem();
         if (MENU_IS_SHOWN)
         {
-            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : (Page *)Keeper(item), 0, GRID_TOP);
+            DrawOpenedPage(TypeMenuItem(item) == Item_Page ? (Page *)item : (Page *)((Control *)item)->Keeper(), 0, GRID_TOP);
         }
         else
         {

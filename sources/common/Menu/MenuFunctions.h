@@ -20,9 +20,6 @@ bool CurrentItemIsOpened(NamePage namePage);
 void SetCurrentItem(const void *item,               ///< адрес элемента, активность которого нужно установить/снять
                     bool active                     ///< true - сделать элемент текущим, false - расделать элемент текущим. В этом случае текущим становится заголовок страницы
                     );
-/// Возвращает адрес элемента, которому принадлежит элемент по адресу item
-PageBase *Keeper(const void *item);
-
 bool ChangeOpenedItem(void *item, int delta);
 /// Возвращает высоту в пикселях открытого элемента Choice или NamePage по адресу item
 int HeightOpenedItem(void *item);

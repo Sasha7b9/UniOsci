@@ -47,21 +47,18 @@ typedef enum
     NamePage        name;           /* Имя из перечисления NamePage */                                  \
     const PageBase  *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                     \
-    const char      *titleHint[4];  /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
+    const char      *titleHint[4]   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 class SButton;
 class Page;
+class PageBase;
 
 
 class Control
 {
 public:
-    /*
-    TypeItem type;
-    const Page *keeper;
-    pFuncBV funcOfActive;
-    const char *titleHint[4];
-    */
+    COMMON_PART_MENU_ITEM;
+    PageBase *Keeper();
 };
 
 
@@ -70,9 +67,9 @@ public:
 class PageBase
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     const Control * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
-                                                ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
+                                            ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
     pFuncVV  funcOnDraw;                    ///< Будет вызываться после отрисовки кнопок
     pFuncVI  funcRegSetSB;                  ///< В странице малых кнопок вызывается при повороте ручки установка
@@ -81,7 +78,6 @@ public:
 class Page : public Control
 {
 public:
-    COMMON_PART_MENU_ITEM
     const Control * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                             ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
@@ -112,7 +108,7 @@ public:
 class ButtonBase
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     pFuncVV     funcOnPress;        ///< Функция, которая вызывается при нажатии на кнопку.
     pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
 };
@@ -120,7 +116,6 @@ public:
 class Button : public Control
 {
 public:
-    COMMON_PART_MENU_ITEM
     pFuncVV     funcOnPress;        ///< Функция, которая вызывается при нажатии на кнопку.
     pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
     void CallFuncOnDraw(int x, int y);
@@ -140,7 +135,7 @@ typedef struct
 class SButton
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
     pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
     const StructHelpSmallButton    *hintUGO; 
@@ -153,7 +148,7 @@ public:
 class Governor
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     int16   minValue;       ///< Минмальное значение, которое может принимать регулятор.
     int16   maxValue;       ///< Максимальное значение.
     int16  *cell;
@@ -187,7 +182,7 @@ public:
 class Choice
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     int8                *cell;
     const char  * const *names;             ///< Варианты выбора на русском и английском языках.
     pFuncVB			    funcOnChanged;      ///< Функция должна вызываться после изменения значения элемента.
@@ -213,7 +208,7 @@ public:
 class IPaddress
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     uint8 *ip0;
     uint8 *ip1;
     uint8 *ip2;
@@ -235,7 +230,7 @@ public:
 class MACaddress
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     uint8 *mac0;
     uint8 *mac1;
     uint8 *mac2;
@@ -267,7 +262,7 @@ public:
 class Formula
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     int8   *function;       ///< Адрес ячейки, где хранится Function, из которой берётся знак операции
     int8   *koeff1add;      ///< Адрес коэффициента при первом члене для сложения
     int8   *koeff2add;      ///< Адрес коэффициента при втором члене для сложения
@@ -286,7 +281,7 @@ public:
 class GovernorColor
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     ColorType  *ct;                 ///< Структура для описания цвета.
     pFuncVV     funcOnChanged;      ///< Эту функцию нужно вызывать после изменения значения элемента.
     void ChangeValue(int delta);    ///< Изменить яркость цвета в governor.
@@ -313,7 +308,7 @@ private:
 class Time
 {
 public:
-    COMMON_PART_MENU_ITEM
+    COMMON_PART_MENU_ITEM;
     int8 *curField;   ///< Текущее поле установки. 0 - выход, 1 - сек, 2 - мин, 3 - часы, 4 - день, 5 - месяц, 6 - год, 7 - установить.
     int8 *hours;
     int8 *minutes;
