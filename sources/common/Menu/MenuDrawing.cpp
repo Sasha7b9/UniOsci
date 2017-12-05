@@ -90,7 +90,7 @@ static void DrawHintItem(int x, int y, int width)
 void DrawTitlePage(Page *page, int layer, int yTop)
 {
     int x = CalculateX(layer);
-    if (IsPageSB(page))
+    if (page->IsPageSB())
     {
         page->SmallButonFromPage(0)->Draw(LEFT_SB, yTop + 3);
         return;

@@ -320,7 +320,7 @@ void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool MenuIsMinimize(void)
 {
-    return IsPageSB(menu.OpenedItem());
+    return menu.OpenedItem()->IsPageSB();
 }
 
 

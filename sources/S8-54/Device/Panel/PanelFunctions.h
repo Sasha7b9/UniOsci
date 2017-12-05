@@ -86,7 +86,7 @@ void EFB(int)
 void Func_Power(int)                // B_Power
 {
     NEED_DISABLE_POWER = 1;
-    if (IsPageSB(menu.OpenedItem()))     // Если открата страница малых кнопок,
+    if (menu.OpenedItem()->IsPageSB())     // Если открата страница малых кнопок,
     {
         menu.CloseOpenedItem();          // то закрываем её
     }

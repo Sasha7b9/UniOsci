@@ -483,7 +483,7 @@ void ProcessingLongPressureButton(void)
         }
         else if(button == B_Menu)
         {
-            if (IsPageSB(menu.OpenedItem()))
+            if (menu.OpenedItem()->IsPageSB())
             {
                 menu.CloseOpenedItem();
             }
@@ -1032,7 +1032,7 @@ void Menu::CloseOpenedItem(void)
     Control *item = OpenedItem();
     if (TypeOpenedItem() == Item_Page)
     {
-        if (IsPageSB(item))
+        if (item->IsPageSB())
         {
             CallFuncOnPressButton(((Page *)item)->SmallButonFromPage(0));
         }

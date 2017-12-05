@@ -73,7 +73,7 @@ const char *Choice::NamePrevSubItem()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Control *Page::Item(int numElement) const
 {
-    return (Control *)items[numElement + (IsPageSB(this) ? 1 : 0)];
+    return (Control *)items[numElement + (isPageSB ? 1 : 0)];
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 SButton* Page::SmallButonFromPage(int numButton)
@@ -142,13 +142,13 @@ void Page::ChangeSubPage(int delta) const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Control::IsActive()
+bool Control::IsActive() const
 {
     return funcOfActive ? funcOfActive() : true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-PageBase *Control::Keeper()
+PageBase *Control::Keeper() const
 {
     return (PageBase *)keeper;
 }
@@ -157,4 +157,10 @@ PageBase *Control::Keeper()
 TypeItem Control::Type() const
 {
     return type;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Control::IsPageSB() const
+{
+    return isPageSB;
 }

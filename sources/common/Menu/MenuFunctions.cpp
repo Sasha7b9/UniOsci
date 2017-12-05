@@ -125,16 +125,6 @@ bool ChangeOpenedItem(Control *item, int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IsPageSB(const Control *item)
-{
-    if (item->Type() == Item_Page)
-    {
-        return ((Page *)item)->isPageSB;
-    }
-    return false;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void CallFuncOnPressButton(void *button)
 {
     if (button)

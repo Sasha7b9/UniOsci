@@ -58,9 +58,10 @@ class Control
 {
 public:
     COMMON_PART_MENU_ITEM;
-    PageBase *Keeper();
+    PageBase *Keeper() const;
     TypeItem  Type() const;
-    bool IsActive();
+    bool IsActive() const;
+    bool IsPageSB() const;
 };
 
 

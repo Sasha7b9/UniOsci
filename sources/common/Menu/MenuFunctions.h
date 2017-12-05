@@ -30,8 +30,6 @@ void OpenItem(const void *item, bool open);
 /// Возвращает true, если элемент меню по адрему item открыт
 bool ItemIsOpened(const Control *item);
 
-bool IsPageSB(const Control *item);
-
 void CallFuncOnPressButton(void *button);
 
 /** @}
