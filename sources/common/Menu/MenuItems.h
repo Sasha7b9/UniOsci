@@ -64,6 +64,12 @@ typedef enum
 
 class SButton;
 
+class Control
+{
+public:
+
+};
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
 /// Описывает страницу меню.
 class Page
@@ -190,8 +196,10 @@ public:
     const char *NameSubItem(int i);
 };
 
-typedef struct
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// IPaddress ///
+class IPaddress
 {
+public:
     COMMON_PART_MENU_ITEM
     uint8 *ip0;
     uint8 *ip1;
@@ -207,10 +215,12 @@ typedef struct
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
-} IPaddress;
+};
 
-typedef struct
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// MACaddress ///
+class MACaddress
 {
+public:
     COMMON_PART_MENU_ITEM
     uint8 *mac0;
     uint8 *mac1;
@@ -225,7 +235,9 @@ typedef struct
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
-} MACaddress;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Formuala ////
 
 /// Описывает элемент меню для установки коэффициентов и знаков математической формулы
 #define FIELD_SIGN_MEMBER_1_ADD 0
@@ -236,8 +248,10 @@ typedef struct
 #define POS_KOEFF_MEMBER_1      1
 #define POS_SIGN_MEMBER_2       2
 #define POS_KOEFF_MEMBER_2      3
-typedef struct
+
+class Formula
 {
+public:
     COMMON_PART_MENU_ITEM
     int8   *function;       ///< Адрес ячейки, где хранится Function, из которой берётся знак операции
     int8   *koeff1add;      ///< Адрес коэффициента при первом члене для сложения
@@ -250,10 +264,12 @@ typedef struct
     void DrawClosed(int x, int y);
     void DrawLowPart(int x, int y, bool pressed, bool shade);
     void WriteText(int x, int y, bool opened);
-} Formula;
+};
 
-typedef struct
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GovernorColor ///
+class GovernorColor
 {
+public:
     COMMON_PART_MENU_ITEM
     ColorType  *ct;                 ///< Структура для описания цвета.
     pFuncVV     funcOnChanged;      ///< Эту функцию нужно вызывать после изменения значения элемента.
@@ -263,7 +279,9 @@ private:
     void DrawOpened(int x, int y);
     void DrawClosed(int x, int y);
     void DrawValue(int x, int y, int delta);
-} GovernorColor;
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Time ///
 
 #define iEXIT   0
 #define iDAY    1
@@ -295,12 +313,6 @@ public:
     void DrawClosed(int x, int y);
     void DrawOpened(int x, int y);
 };
-
-/// Структура для хранения меню, вызываемого по нажатию ручки
-typedef struct
-{
-    int16 i;
-} StructFuncReg;
 
 #define CHOICE_RUN_FUNC_CHANGED(c, val)     \
     if(c->funcOnChanged)                    \
