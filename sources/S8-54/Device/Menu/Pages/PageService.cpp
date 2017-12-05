@@ -684,7 +684,7 @@ DEF_CHOICE_2(       cEthernet_Ethernet,                                         
 //------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - IP адрес ---
 static const IPaddress ipEthernet_IP =
 {
-    Item_IP, 0, &ppEthernet, FuncActive,
+    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
         "IP адрес", "IP-address",
         "Установка IP адреса",
@@ -698,7 +698,7 @@ static const IPaddress ipEthernet_IP =
 //-------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Маска подсети ---
 static const IPaddress ipEthernet_NetMask =
 {
-    Item_IP, 0, &ppEthernet, FuncActive,
+    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
         "Маска подсети", "Network mask",
         "Установка маски подсети",
@@ -711,7 +711,7 @@ static const IPaddress ipEthernet_NetMask =
 //----------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Шлюз ---
 static const IPaddress ipEthernet_Gateway =
 {
-    Item_IP, 0, &ppEthernet, FuncActive,
+    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
         "Шлюз", "Gateway",
         "Установка адреса основного шлюза",
@@ -724,7 +724,7 @@ static const IPaddress ipEthernet_Gateway =
 //------------------------------------------------------------------------------------------------------------------ СЕРВИС - ETHERNET - MAC адрес ---
 static const MACaddress ipEthernet_MAC =
 {
-    Item_MAC, 0, &ppEthernet, FuncActive,
+    Item_MAC, 0, false, Page_NoPage, &ppEthernet, FuncActive,
     {
         "MAC адрес", "MAC-address",
         "Установка физического адреса",

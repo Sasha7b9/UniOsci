@@ -41,20 +41,13 @@ typedef enum
 
 /// Общая часть для всех типов элементов меню
 #define COMMON_PART_MENU_ITEM                                                                           \
-    TypeItem        type;            /* Тип итема */                                                    \
-    int8            num;             /* Число вариантов для Choice или число контролов для Page*/       \
-    const PageBase  *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */       \
-    pFuncBV         funcOfActive;    /* Активен ли данный элемент */                                    \
-    const char      *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
-
-    #define COMMON_PART_MENU_ITEM_PAGE                                                                  \
     TypeItem        type;           /* Тип итема */                                                     \
-    int8            num;                                                                                \
+    int8            num;            /* Число вариантов для Choice или число контролов для Page*/        \
     bool            isPageSB;       /* Если true, то это страница малых кнопок */                       \
     NamePage        name;           /* Имя из перечисления NamePage */                                  \
-    const PageBase *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
+    const PageBase  *keeper;        /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
     pFuncBV         funcOfActive;   /* Активен ли данный элемент */                                     \
-    const char      *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
+    const char      *titleHint[4];  /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
 class SButton;
 class Page;
@@ -77,7 +70,7 @@ public:
 class PageBase
 {
 public:
-    COMMON_PART_MENU_ITEM_PAGE
+    COMMON_PART_MENU_ITEM
     const Control * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                                 ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
@@ -88,7 +81,7 @@ public:
 class Page : public Control
 {
 public:
-    COMMON_PART_MENU_ITEM_PAGE
+    COMMON_PART_MENU_ITEM
     const Control * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                             ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу

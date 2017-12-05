@@ -456,9 +456,6 @@
     <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\Menu\MenuItems.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -503,6 +500,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\stub.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Menu\MenuItems.h">
+      <Filter>Menu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
