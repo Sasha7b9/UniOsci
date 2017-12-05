@@ -841,7 +841,7 @@ void FreqMeter_Draw(int x, int y)
 
     bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
 
-    painter.DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : su.Freq2StringAccuracy(freq, buffer, 6));
+    painter.DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
 
     freq = PeriodSetToFreq(&periodActual);
 

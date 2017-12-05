@@ -231,7 +231,7 @@ char *Phase2String(float phase, bool, char bufferOut[20])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
+char *Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits)
 {
     bufferOut[0] = 0;
     const char *suffix = DICT(DHz);
@@ -278,28 +278,28 @@ char *Bin2String16(uint16 value, char valBuffer[19])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Hex8toString(uint8 value, char buffer[3])
+char *Hex8toString(uint8 value, char buffer[3])
 {
     sprintf(buffer, "%02X", value);
     return buffer;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char* StringUtils::Hex16toString(uint16 value, char buffer[5])
+char *Hex16toString(uint16 value, char buffer[5])
 {
     sprintf(buffer, "%04X", value);
     return buffer;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Hex32toString(uint value, char buffer[9], bool upper)
+char *Hex32toString(uint value, char buffer[9], bool upper)
 {
     sprintf(buffer, upper ? "%08X" : "%08x", value);
     return buffer;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-char *StringUtils::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
+char *Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
 {
     const int SIZE = 20;
     char format[SIZE] = "%";

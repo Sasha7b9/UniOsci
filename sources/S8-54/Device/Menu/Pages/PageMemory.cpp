@@ -226,9 +226,9 @@ static void OnDraw_Last(void)
     int height = 10;
     painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, gColorBack);
     painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, gColorFill);
-    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
-    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, su.Int2String(dS.NumElementsInStorage(), false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, Int2String(dS.NumElementsInStorage(), false, 3, buffer));
 }
 
 static void OnRegSet_Last(int angle)
@@ -970,7 +970,7 @@ static void DrawMemoryWave(int num, bool exist)
     painter.SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : gColorFill);
     if (exist)
     {
-        painter.DrawText(x + 2, y + 1, su.Int2String(num + 1, false, 2, buffer));
+        painter.DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));
     }
     else
     {

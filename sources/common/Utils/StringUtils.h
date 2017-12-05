@@ -29,28 +29,27 @@ char* Freq2String(float freq, bool, char bufferOut[20]);
 char* FloatFract2String(float value, bool alwaysSign, char bufferOut[20]);
 /// Преобразует градусы в строку.
 char* Phase2String(float phase, bool, char bufferOut[20]);
+/// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
+char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
+/// @brief Преобразует value в текстовую строку в шестнадцатиричном виде
+/// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
+char* Hex8toString(uint8 value, char bufferOut[3]);
 
+char* Hex16toString(uint16 value, char bufferOut[5]);
+
+char* Hex32toString(uint value, char bufferOut[9], bool upper);
+/// @brief Преобразует value в текстовую строку
+/// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
+char* Int2String(int value,                     ///< значение
+                 bool alwaysSign,               ///< если установлен в true, знак будет выводиться всегда
+                 int numMinFields,              ///< минимальное число занимаемых знакомест. Если для вывода числа столько не требуется, лишние заполняются нулями
+                 char bufferOut[20]             ///< сюда записывается возвращаемое значение
+);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class StringUtils
 {
 public:
-    /// Преобразует freq герц в текстовую строку. При этом число количество цифр в строке равно numDigits
-    char* Freq2StringAccuracy(float freq, char bufferOut[20], int numDigits);
-    /// @brief Преобразует value в текстовую строку в шестнадцатиричном виде
-    /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
-    char* Hex8toString(uint8 value, char bufferOut[3]);
-
-    char* Hex16toString(uint16 value, char bufferOut[5]);
-
-    char* Hex32toString(uint value, char bufferOut[9], bool upper);
-    /// @brief Преобразует value в текстовую строку
-    /// @attention Строка будет храниться до следующего вызова функции. Если результат нужен большее количество времени, то его нужно скопировать себе
-    char* Int2String(int value,                     ///< значение
-                     bool alwaysSign,               ///< если установлен в true, знак будет выводиться всегда
-                     int numMinFields,              ///< минимальное число занимаемых знакомест. Если для вывода числа столько не требуется, лишние заполняются нулями
-                     char bufferOut[20]             ///< сюда записывается возвращаемое значение
-    );
     /// Возвращает число слов в строке string
     int NumWords(const char *string);
     /// Возвращает указатель на n слово в строке. Если char == 0 - слова нет, если ret value == 0xffffffff - выходной буфер слишком мал

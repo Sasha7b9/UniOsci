@@ -505,7 +505,7 @@ static void DrawMemoryWave(int num, bool exist)
     painter.SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : Color::Fill());
     if (exist)
     {
-        painter.DrawText(x + 2, y + 1, su.Int2String(num + 1, false, 2, buffer));
+        painter.DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));
     }
     else
     {
@@ -1008,9 +1008,9 @@ static void FuncDrawingAdditionSPageMemoryLast()
     int height = 10;
     painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, Color::Back());
     painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, Color::Fill());
-    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, su.Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
-    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, su.Int2String(dataStorage.AllDatas(), false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, Int2String(dataStorage.AllDatas(), false, 3, buffer));
 }
 
 DEF_PAGE_SB(        mspMemLast,                                                                                              // œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ ///
