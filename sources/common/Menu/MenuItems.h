@@ -40,16 +40,16 @@ typedef enum
 
 
 /// Общая часть для всех типов элементов меню
-#define COMMON_PART_MENU_ITEM                                                                       \
+#define COMMON_PART_MENU_ITEM                                                                           \
     TypeItem        type;            /* Тип итема */                                                    \
-    int8            num;             /* Число вариантов */                                               \
+    int8            num;             /* Число вариантов для Choice или число контролов для Page*/       \
     const PageBase  *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */       \
     pFuncBV         funcOfActive;    /* Активен ли данный элемент */                                    \
     const char      *titleHint[4];   /* Название страницы на русском и английском языках. Также подсказка для режима помощи */
 
-#define COMMON_PART_MENU_ITEM_PAGE                                                                  \
+    #define COMMON_PART_MENU_ITEM_PAGE                                                                  \
     TypeItem        type;           /* Тип итема */                                                     \
-    int8            numItems;                                                                           \
+    int8            num;                                                                                \
     bool            isPageSB;       /* Если true, то это страница малых кнопок */                       \
     NamePage        name;           /* Имя из перечисления NamePage */                                  \
     const PageBase *keeper;         /* Адрес страницы, которой принадлежит. Для Page_Main = 0 */        \
