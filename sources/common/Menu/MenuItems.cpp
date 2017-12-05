@@ -4,6 +4,29 @@
 #include "Settings/Settings.h"
 
 
+/*
+template <typename T>
+struct Base
+{
+    const int var0;
+    const int var1;
+    const T *t;
+};
+
+struct A
+{
+    A(int var0, int var1, int var2, int var3) : b({var0, var1, this}), var2(var2), var3(var3)
+    {
+    }
+    const Base<A> b;
+    int var2;
+    int var3;
+};
+
+struct A a = {1, 2, 3, 4};
+*/
+
+
 #define NAME_FROM_INDEX(index) (names[index * 2 + LANG])
 //#define ITEM_FROM_INDEX(index) (items[(index + LANG) * 2])
 
@@ -60,6 +83,15 @@ SButton* Page::SmallButonFromPage(int numButton)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Button::CallFuncOnDraw(int x, int y)
+{
+    if (funcForDraw)
+    {
+        funcForDraw(x, y);
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ButtonBase::CallFuncOnDraw(int x, int y)
 {
     if (funcForDraw)
     {
@@ -168,6 +200,12 @@ bool Formula::IsActive()
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Button::IsActive()
+{
+    return funcOfActive ? funcOfActive() : true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool ButtonBase::IsActive()
 {
     return funcOfActive ? funcOfActive() : true;
 }

@@ -131,14 +131,14 @@ DEF_CHOICE_2(       cChanA_Divider,                                             
 static void OnPress_ChanA_Balance(void)
 {
     FPGA_BalanceChannel(A);
-}
+};
 
 DEF_BUTTON(         bChanA_Balance,                                                                                  //--- КАНАЛ 1 - Балансировать ---
     "Балансировать", "Balance",
     "Балансировать канал",
     "Balancing channel",
     pChanA, EmptyFuncBV, OnPress_ChanA_Balance, EmptyFuncVII
-)
+);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_7(         pChanA,                                                                                                             // КАНАЛ 1 ///

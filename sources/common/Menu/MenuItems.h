@@ -65,18 +65,18 @@ typedef enum
 class SButton;
 class Page;
 
-/*
+
 class Control
 {
 public:
+    /*
     TypeItem type;
     const Page *keeper;
     pFuncBV funcOfActive;
     const char *titleHint[4];
-    /// Возвращает true, если элемент меню является активным, т.е. может быть нажат
-    bool IsActive();
+    */
 };
-*/
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page ///
 /// Описывает страницу меню.
@@ -84,7 +84,7 @@ class Page
 {
 public:
     COMMON_PART_MENU_ITEM_PAGE
-    const void   * const *items;            ///< Здесь указатели на пункты этой страницы (в обычной странице)
+    const void * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                             ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
     pFuncVV  funcOnDraw;                    ///< Будет вызываться после отрисовки кнопок
@@ -109,11 +109,9 @@ public:
     bool IsActive();
 };
 
-//typedef class Page Page;
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button ///
 /// Описывает кнопку.
-class Button
+class ButtonBase
 {
 public:
     COMMON_PART_MENU_ITEM
@@ -124,8 +122,16 @@ public:
     bool IsActive();
 };
 
-#define DEF_BUTTON(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, funcPress, funcDraw) \
-static const Button name = { Item_Button, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN}, funcPress, funcDraw };
+class Button : public Control
+{
+public:
+    COMMON_PART_MENU_ITEM
+    pFuncVV     funcOnPress;        ///< Функция, которая вызывается при нажатии на кнопку.
+    pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
+    void CallFuncOnDraw(int x, int y);
+    void Draw(int x, int y);
+    bool IsActive();
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SButton ///
 typedef struct

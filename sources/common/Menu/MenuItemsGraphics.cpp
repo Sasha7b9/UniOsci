@@ -527,6 +527,25 @@ void Button::Draw(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+void ButtonBase::Draw(int x, int y)
+{
+    bool pressed = IsPressed(this);
+    bool shade = IsShade(this) || !funcOfActive();
+
+    painter.DrawHLine(y + 1, x, x + MI_WIDTH, Color::MenuTitle(shade));
+    Color color = shade ? Color::MenuItem(true) : Color::WHITE;
+    painter.FillRegion(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, Color::MenuItem(false));
+    painter.DrawVolumeButton(x + 3, y + 4, MI_WIDTH - 6, MI_HEIGHT - 6, 2, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT,
+                             Color::MENU_ITEM_DARK, pressed, shade);
+
+    int delta = (pressed && (!shade)) ? 2 : 1;
+
+    painter.DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, TitleItem(this), color);
+
+    CallFuncOnDraw(x, y);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void SButton::Draw(int x, int y)
 {
     if (funcOfActive())
