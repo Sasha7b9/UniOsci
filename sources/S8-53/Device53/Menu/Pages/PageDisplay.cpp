@@ -87,10 +87,10 @@ void OnPress_Accumulation_Clear(void)
 }
 
 DEF_BUTTON(mcAccumulation_Clear,                                                                       // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить ///
-           "Очистить", "Clear",
-           "Очищает экран от накопленных сигналов.",
-           "Clears the screen of the saved-up signals.",
-           mspAccumulation, IsActive_Accumulation_Clear, OnPress_Accumulation_Clear, FuncDraw
+    "Очистить", "Clear",
+    "Очищает экран от накопленных сигналов.",
+    "Clears the screen of the saved-up signals.",
+    mspAccumulation, IsActive_Accumulation_Clear, OnPress_Accumulation_Clear, FuncDraw
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -551,7 +551,7 @@ DEF_CHOICE_2(       cEthernet_Enable,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const IPaddress ipEthernet_IP =                                                                          //--- СЕРВИС - ETHERNET - IP адрес ---
 {
-    Item_IP, &ppEthernet, 0,
+    Item_IP, 0, &ppEthernet, FuncActive,
     {
         "IP адрес", "IP-address",
         "Установка IP адреса",
@@ -565,7 +565,7 @@ static const IPaddress ipEthernet_IP =                                          
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const IPaddress ipEthernet_Mask =                                                                   //--- СЕРВИС - ETHERNET - Маска подсети ---
 {
-    Item_IP, &ppEthernet, 0,
+    Item_IP, 0, &ppEthernet, FuncActive,
     {
         "Маска подсети", "Network mask",
         "Установка маски подсети",
@@ -578,7 +578,7 @@ static const IPaddress ipEthernet_Mask =                                        
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const IPaddress ipEthernet_Gateway =                                                                         //--- СЕРВИС - ETHERNET - Шлюз ---
 {
-    Item_IP, &ppEthernet, 0,
+    Item_IP, 0, &ppEthernet, FuncActive,
     {   "Шлюз", "Gateway",
     "Установка адреса основного шлюза",
     "Set of gateway address", },
@@ -589,7 +589,7 @@ static const IPaddress ipEthernet_Gateway =                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static const MACaddress macEthernet_MAC =                                                                      //--- СЕРВИС - ETHERNET - Физ адрес ---
 {
-    Item_MAC, &ppEthernet, 0,
+    Item_MAC, 0, &ppEthernet, FuncActive,
     {
         "Физ адрес", "MAC-address",
         "Установка физического адреса",
@@ -636,7 +636,7 @@ static int8 dServicetime = 0;
 static int8 hours = 0, minutes = 0, secondes = 0, year = 0, month = 0, day = 0;
 static const Time tTime =                                                                                                     //--- СЕРВИС - Время ---
 {
-    Item_Time, &pService, 0,
+    Item_Time, 0, &pService, FuncActive,
     {
     "Время", "Time"
     ,

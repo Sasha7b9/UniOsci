@@ -325,17 +325,17 @@ void MACaddress::DrawValue(int x, int y)
     uint8 *bytes = mac0;
     x += MOI_WIDTH - 14;
     y++;
-    for (int num = 5; num >= 0; num--)
+    for (int i = 5; i >= 0; --i)
     {
-        int value = (int)(*(bytes + num));
-        if (gCurDigit == num)
+        int value = (int)(*(bytes + i));
+        if (gCurDigit == i)
         {
             painter.FillRegion(x - 1, y, 10, 8, Color::WHITE);
         }
         const int SIZE = 20;
         char buffer[SIZE];
         snprintf(buffer, SIZE, "%02X", value);
-        painter.DrawText(x, y, buffer, gCurDigit == num ? Color::BLACK : Color::WHITE);
+        painter.DrawText(x, y, buffer, gCurDigit == i ? Color::BLACK : Color::WHITE);
         x -= 12;
     }
 }
