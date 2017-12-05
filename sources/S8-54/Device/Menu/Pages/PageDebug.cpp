@@ -437,7 +437,7 @@ DEF_GOVERNOR(       gADC_Stretch_Bk2V,                                          
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static const Choice emptyChoice = {Item_Choice};
+static const Choice emptyChoice = {Item_Choice, 0, 0, FuncActive};
 
 DEF_PAGE_15(        pppADC_Stretch,                                                                                    // Œ“À¿ƒ ¿ - ¿÷œ - –¿—“ﬂ∆ ¿ ///
     Page_Debug_ADC_Stretch, &ppADC, FuncActive, EmptyPressPage,
