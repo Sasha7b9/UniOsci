@@ -90,7 +90,9 @@ void Button::CallFuncOnDraw(int x, int y)
     }
 }
 
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+/*
 void ButtonBase::CallFuncOnDraw(int x, int y)
 {
     if (funcForDraw)
@@ -98,6 +100,7 @@ void ButtonBase::CallFuncOnDraw(int x, int y)
         funcForDraw(x, y);
     }
 }
+*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Page::PosItemOnTop()
@@ -140,21 +143,6 @@ void Page::ChangeSubPage(int delta) const
         SetMenuCurrentSubPage(name, MenuCurrentSubPage(name) - 1);
     }
 }
-
-/*
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Control::IsActive()
-{
-    /// \todo Здесь оптимизировать через битовую маску
-
-    if (type == Item_Choice || type == Item_Page || type == Item_Button || type == Item_Governor || type == Item_SmallButton || type == Item_ChoiceReg)
-    {
-        return funcOfActive ? funcOfActive() : true;
-    }
-
-    return true;
-}
-*/
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool GovernorColor::IsActive()
@@ -200,12 +188,6 @@ bool Formula::IsActive()
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Button::IsActive()
-{
-    return funcOfActive ? funcOfActive() : true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ButtonBase::IsActive()
 {
     return funcOfActive ? funcOfActive() : true;
 }

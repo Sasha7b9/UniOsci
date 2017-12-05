@@ -117,9 +117,6 @@ public:
     COMMON_PART_MENU_ITEM
     pFuncVV     funcOnPress;        ///< Функция, которая вызывается при нажатии на кнопку.
     pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
-    void CallFuncOnDraw(int x, int y);
-    void Draw(int x, int y);
-    bool IsActive();
 };
 
 class Button : public Control
