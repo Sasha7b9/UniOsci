@@ -35,7 +35,7 @@ static void TuneTIM(TypeTimer2 type);   // Настроить систему на таймер
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Timer_IsRun(TypeTimer2 type)
+bool Timer::IsRun(TypeTimer2 type)
 {
     return TIME_NEXT(type) != UINT_MAX;
 }
@@ -108,7 +108,7 @@ void Timer::Set(TypeTimer2 type, pFuncVV func, uint dTms)
 void Timer::SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms)
 {
     Timer::Set(type, func, dTms);
-    Timer_StartOnce(type);
+    StartOnce(type);
 }
 
 
@@ -116,12 +116,12 @@ void Timer::SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms)
 void Timer::SetAndEnable(TypeTimer2 type, pFuncVV func, uint dTms)
 {
     Set(type, func, dTms);
-    Timer_Enable(type);
+    Enable(type);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartOnce(TypeTimer2 type)
+void Timer::StartOnce(TypeTimer2 type)
 {
     timers[type].repeat = false;
     TuneTIM(type);
@@ -129,7 +129,7 @@ void Timer_StartOnce(TypeTimer2 type)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Enable(TypeTimer2 type)
+void Timer::Enable(TypeTimer2 type)
 {
     timers[type].repeat = true;
     TuneTIM(type);
@@ -155,7 +155,7 @@ static void TuneTIM(TypeTimer2 type)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Disable(TypeTimer2 type)
+void Timer::Disable(TypeTimer2 type)
 {
     timers[type].timeNextMS = UINT_MAX;
     timers[type].repeat = false;
@@ -240,7 +240,7 @@ static void StopTIM(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_PauseOnTime(uint timeMS)
+void Timer::PauseOnTime(uint timeMS)
 {
     uint time = gTimeMS;
     while (gTimeMS - time < timeMS)
@@ -250,7 +250,7 @@ void Timer_PauseOnTime(uint timeMS)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_PauseOnTicks(uint numTicks)
+void Timer::PauseOnTicks(uint numTicks)
 {
     uint startTicks = gTimerTics;
     while (gTimerTics - startTicks < numTicks)
@@ -260,7 +260,7 @@ void Timer_PauseOnTicks(uint numTicks)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartMultiMeasurement(void)
+void Timer::StartMultiMeasurement(void)
 {
     TIM2->CR1 &= (uint)~TIM_CR1_CEN;
     TIM2->CNT = 0;
@@ -269,7 +269,7 @@ void Timer_StartMultiMeasurement(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartLogging(void)
+void Timer::StartLogging(void)
 {
     timeStartLogging = gTimerTics;
     timePrevPoint = timeStartLogging;
@@ -277,7 +277,7 @@ void Timer_StartLogging(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Timer_LogPointUS(char *name)
+uint Timer::LogPointUS(char *name)
 {
     uint interval = gTimerTics - timePrevPoint;
     timePrevPoint = gTimerTics;
@@ -287,7 +287,7 @@ uint Timer_LogPointUS(char *name)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Timer_LogPointMS(char *name)
+uint Timer::LogPointMS(char *name)
 {
     uint interval = gTimerTics - timePrevPoint;
     timePrevPoint = gTimerTics;

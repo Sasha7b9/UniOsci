@@ -642,7 +642,7 @@ void Painter::SendToDisplay(uint8 *bytes, int numBytes)
         while (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_11) == GPIO_PIN_RESET)
         {
         };
-        Timer_PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
+        Timer::PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;
@@ -707,7 +707,7 @@ static uint8 Read2points(int x, int y)
     while (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_11) == GPIO_PIN_RESET)
     {
     };
-    Timer_PauseOnTicks(12);               /// \todo временно увеличено время ожидания - не читает флешку
+    Timer::PauseOnTicks(12);               /// \todo временно увеличено время ожидания - не читает флешку
 
     *ADDR_CDISPLAY = GET_PIXEL;
     *ADDR_CDISPLAY = (uint8)x;

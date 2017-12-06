@@ -312,7 +312,7 @@ void Display::EnableTrigLabel(bool enable)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::ClearFromWarnings(void)
 {
-    Timer_Disable(kShowMessages);
+    Timer::Disable(kShowMessages);
     for(int i = 0; i < NUM_WARNINGS; i++)
     {
         warnings[i] = 0;
@@ -330,7 +330,7 @@ void Display::SetDrawMode(DrawMode mode, pFuncVV func)
     }
     else
     {
-        Timer_Disable(kTimerDisplay);
+        Timer::Disable(kTimerDisplay);
     }
 }
 
@@ -1770,7 +1770,7 @@ static void OnTimerShowWarning(void)
 
     if(pointer == 0)
     {
-        Timer_Disable(kShowMessages);
+        Timer::Disable(kShowMessages);
     }
 }
 

@@ -258,7 +258,7 @@ static float CalculateStretchADC(Channel ch)
     int numMAX = 0;
     volatile int numNot = 0;
 
-    Timer_PauseOnTime(100);
+    Timer::PauseOnTime(100);
 
     for(int i = 0; i < numMeasures; i++)
     {
@@ -1192,7 +1192,7 @@ static bool FindParams(Channel, TBase *tBase)
                 *tBase = MIN_TBASE_P2P;
             }
             FPGA_SetTBase(*tBase);
-            Timer_PauseOnTime(10);
+            Timer::PauseOnTime(10);
             FPGA_Start();
             return true;
         }

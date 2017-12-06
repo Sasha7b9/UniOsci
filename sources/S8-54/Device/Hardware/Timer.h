@@ -42,29 +42,27 @@ public:
     static void SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms);
 
     static void SetAndEnable(TypeTimer2 type, pFuncVV func, uint dTms);
+
+    static void StartOnce(TypeTimer2 type);
+
+    static void Enable(TypeTimer2 type);
+
+    static void Disable(TypeTimer2 type);
+
+    static bool IsRun(TypeTimer2 type);
+
+    static void PauseOnTime(uint timeMS);
+
+    static void PauseOnTicks(uint numTicks);
+    /// Запускает счётчик для измерения малых отрезков времени
+    static void StartMultiMeasurement(void);
+    /// Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки
+    static void StartLogging(void);
+
+    static uint LogPointUS(char *name);
+
+    static uint LogPointMS(char *name);
 };
-
-
-
-void Timer_StartOnce(TypeTimer2 type);
-
-void Timer_Enable(TypeTimer2 type);
-
-void Timer_Disable(TypeTimer2 type);
-
-bool Timer_IsRun(TypeTimer2 type);
-
-void Timer_PauseOnTime(uint timeMS);
-
-void Timer_PauseOnTicks(uint numTicks);
-/// Запускает счётчик для измерения малых отрезков времени
-void Timer_StartMultiMeasurement(void);
-/// Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки
-void Timer_StartLogging(void);
-
-uint Timer_LogPointUS(char *name);
-
-uint Timer_LogPointMS(char *name);
 
 
 /// @brief Количество тиков, прошедших с момента последнего вызова функции Timer_StartMultiMeasurement(). Не более (1 << 32)

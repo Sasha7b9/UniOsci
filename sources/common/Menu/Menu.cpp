@@ -329,7 +329,7 @@ void Menu::SetAutoHide(bool)
     }
     if(sDisplay_TimeMenuAutoHide() == 0)
     {
-        Timer_Disable(kMenuAutoHide);
+        Timer::Disable(kMenuAutoHide);
     }
     else
     {

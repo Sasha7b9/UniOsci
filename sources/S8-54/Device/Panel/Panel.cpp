@@ -349,7 +349,7 @@ void Panel::Update(void)
                 menu.ShortPressureButton(releaseButton);
                 pressedKey = B_Empty;
             }
-            Timer_Disable(kPressKey);
+            Timer::Disable(kPressKey);
         }
         else if (pressButton)
         {
