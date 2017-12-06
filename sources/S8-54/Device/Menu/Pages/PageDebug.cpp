@@ -975,7 +975,7 @@ static void OnPress_SerialNumber_Save(void)
 
     snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
 
-    if (!OTP_SaveSerialNumber(stringSN))
+    if (!otp.SaveSerialNumber(stringSN))
     {
         display.ShowWarning(FullyCompletedOTP);
     }
@@ -1045,7 +1045,7 @@ static void Draw_EnterSerialNumber(void)
 
     // Теперь выведем информацию об оставшемся месте в OTP-памяти для записи
 
-    int allShots = OTP_GetSerialNumber(buffer);
+    int allShots = otp.GetSerialNumber(buffer);
 
     painter.DrawFormText(x0 + deltaX, y0 + 130, gColorFill, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
 
@@ -1097,7 +1097,7 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
 static void OnPress_EraseData(void)
 {
     display.FuncOnWaitStart(DICT(DDeleteFromMemory), false);
-    FLASH_DeleteAllData();
+    flash.DeleteAllData();
     display.FuncOnWaitStop();
 }
 
