@@ -617,12 +617,10 @@ DEF_CHOICE_2(       cLang,                                                      
     LANG, pService, FuncActive, FuncChangedChoice, FuncDraw
 );
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static int8 dServicetime = 0;
 static int8 hours = 0, minutes = 0, secondes = 0, year = 0, month = 0, day = 0;
-static const Time tTime =                                                                                                     //--- СЕРВИС - Время ---
-{
-    Item_Time, 0, false, Page_NoPage, &pService, FuncActive,
-    {
+DEF_TIME(           tTime,                                                                                                    //--- СЕРВИС - Время ---
     "Время", "Time"
     ,
     "Установка текущего времени.\nПорядок работы:\n"
@@ -638,9 +636,9 @@ static const Time tTime =                                                       
     "Turn the setting knob to set the desired value. Then highlight \"Save\", press and udrezhivat more than 0.5 seconds, the button on the panel "
     "Control. Menu Setting the current time will be closed to the conservation of the new current time. Pressing a button on the prolonged retention "
     "of any other element will lead to the closure of the current time setting menu without saving the new current time"
-    },
-    &dServicetime, &hours, &minutes, &secondes, &month, &day, &year
-};
+    ,
+    pService, FuncActive, dServicetime, hours, minutes, secondes, month, day, year
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cModeLongPressButtonTrig,                                                                        //--- СЕРВИС - Реж длит СИНХР ---
