@@ -79,7 +79,7 @@ void FSMC_SetMode(ModeFSMC mode)
 
         prevMode = curMode;
 
-        RAM_WaitWriteReadComplete();
+        RAM::WaitWriteReadComplete();
 
         curMode = mode;
 

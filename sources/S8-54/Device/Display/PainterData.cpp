@@ -614,14 +614,14 @@ static int FillDataP2PforRecorder(int numPoints, int numPointsDS, int pointsInSc
     // Если точек меньше, чем вмещается на экран - просто копируем их в буфер
     if (numPoints <= pointsInScreen)
     {
-        RAM_MemCpy16(src, dest, numPoints);
+        RAM::MemCpy16(src, dest, numPoints);
         return numPoints;
     }
 
     // Если точек больше, то в буфер копируем последние 281
     int allPoints = numPoints <= numPointsDS ? numPoints : numPointsDS;
     int startIndex = allPoints - pointsInScreen;
-    RAM_MemCpy16(src + startIndex, dest, pointsInScreen);
+    RAM::MemCpy16(src + startIndex, dest, pointsInScreen);
     return pointsInScreen;
 }
 
@@ -636,7 +636,7 @@ static int FillDataP2PforNormal(int numPoints, int numPointsDS, int pointsInScre
 
     if (numPoints > 0)
     {
-        RAM_MemCpy16(src, dest, numPoints < numPointsDS ? numPoints : numPointsDS);
+        RAM::MemCpy16(src, dest, numPoints < numPointsDS ? numPoints : numPointsDS);
     }
 
     //    int kP2P = SET_PEAKDET_EN ? 2 : 1;

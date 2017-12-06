@@ -87,7 +87,7 @@ void Hardware::Init()
     
     FSMC_SetMode(ModeFSMC_FPGA);
 
-    RAM_Init();
+    RAM::Init();
 
     FDrive::Init();
     

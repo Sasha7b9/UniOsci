@@ -503,8 +503,8 @@ bool FPGA::ReadRandomizeModeSave(bool first, bool last, bool onlySave)
     // Теперь сохраняем данные обратно во внешнее ОЗУ
     if (last)
     {
-        RAM_MemCpy16(dataRandA, RAM8(FPGA_DATA_A), bytesInChannel);
-        RAM_MemCpy16(dataRandB, RAM8(FPGA_DATA_B), bytesInChannel);
+        RAM::MemCpy16(dataRandA, RAM8(FPGA_DATA_A), bytesInChannel);
+        RAM::MemCpy16(dataRandB, RAM8(FPGA_DATA_B), bytesInChannel);
     }
 
     return true;
@@ -606,8 +606,8 @@ void FPGA::ReadRealMode(uint8 *dataA, uint8 *dataB)
     
     ReadChannel(dataB, B, ds.BytesInChannel(), nStop, shift, balanceB);
 
-    RAM_MemCpy16(dataA, RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
-    RAM_MemCpy16(dataB, RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
+    RAM::MemCpy16(dataA, RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
+    RAM::MemCpy16(dataB, RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
 
     FPGA_IN_PROCESS_OF_READ = 0;
 }
@@ -650,8 +650,8 @@ void FPGA::DataReadSave(bool first, bool saveToStorage, bool onlySave)
 
     int numBytes = ds.BytesInChannel();
 
-    RAM_MemCpy16(RAM8(FPGA_DATA_A), OUT_A, numBytes);
-    RAM_MemCpy16(RAM8(FPGA_DATA_B), OUT_B, numBytes);
+    RAM::MemCpy16(RAM8(FPGA_DATA_A), OUT_A, numBytes);
+    RAM::MemCpy16(RAM8(FPGA_DATA_B), OUT_B, numBytes);
 
     for (int i = 0; i < numBytes; i++)
     {
@@ -961,8 +961,8 @@ bool FPGA::IsRunning()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::ClearData()
 {
-    RAM_MemClear(RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
-    RAM_MemClear(RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
+    RAM::MemClear(RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
+    RAM::MemClear(RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

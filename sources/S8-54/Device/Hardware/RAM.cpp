@@ -15,7 +15,7 @@ static volatile bool transferComplete = true;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void RAM_WriteRead_Sinch2(void *src_, void *dest_, int numBytes)
+void RAM::WriteRead_Sinch2(void *src_, void *dest_, int numBytes)
 {
     uint16 *src = (uint16 *)src_;
     uint16 *end = src + numBytes / 2;
@@ -33,7 +33,7 @@ void RAM_WriteRead_Sinch2(void *src_, void *dest_, int numBytes)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WriteRead_Sinch4(void *src_, void *dest_, int numBytes)
+void RAM::WriteRead_Sinch4(void *src_, void *dest_, int numBytes)
 {
     uint16 *src = (uint16 *)src_;
     uint16 *end = src + numBytes / 2;
@@ -52,7 +52,7 @@ void RAM_WriteRead_Sinch4(void *src_, void *dest_, int numBytes)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WriteRead_Sinch8(void *src_, void *dest_, int numBytes)
+void RAM::WriteRead_Sinch8(void *src_, void *dest_, int numBytes)
 {
     uint16 *src = (uint16 *)src_;
     uint16 *end = src + numBytes / 2;
@@ -73,7 +73,7 @@ void RAM_WriteRead_Sinch8(void *src_, void *dest_, int numBytes)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_MemCpy16(void *src_, void *dest_, int numBytes)
+void RAM::MemCpy16(void *src_, void *dest_, int numBytes)
 {
     FSMC_SET_MODE(ModeFSMC_RAM);
 
@@ -98,14 +98,14 @@ void RAM_MemCpy16(void *src_, void *dest_, int numBytes)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_ReadBuffer1(void *src, void *dest, int numBytes)
+void RAM::ReadBuffer1(void *src, void *dest, int numBytes)
 {
     uint16 *addrRAM = (uint16 *)src;
     uint16 *addrDest = (uint16 *)dest;
 
     if ((uint)addrRAM & 0x1)
     {
-        uint8 data = RAM_ReadByte(src);
+        uint8 data = ReadByte(src);
         *((uint8 *)dest) = data;
         numBytes--;
         addrRAM = (uint16 *)(((uint8 *)src) + 1);
@@ -121,27 +121,27 @@ void RAM_ReadBuffer1(void *src, void *dest, int numBytes)
 
     if (numBytes & 0x1)
     {
-        uint8 data = RAM_ReadByte(src);
+        uint8 data = ReadByte(src);
         *((uint8 *)dest) = data;
     }
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WriteRead_Asinch(uint16 *src, uint16 *dest, int numHalfWords)
+void RAM::WriteRead_Asinch(uint16 *src, uint16 *dest, int numHalfWords)
 {
-    RAM_WaitWriteReadComplete();
+    WaitWriteReadComplete();
 
     transferComplete = false;
 
     HAL_DMA_Start_IT(&handleDMA_RAM, (uint)src, (uint)dest, (uint)numHalfWords * 2);
     
-    RAM_WaitWriteReadComplete();
+    WaitWriteReadComplete();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_MemSet_Sinch(uint8 *dest, uint8 value_, int numBytes)
+void RAM::MemSet_Sinch(uint8 *dest, uint8 value_, int numBytes)
 {
     uint16 value = (uint16)((value_ << 8) | value_);
     
@@ -154,14 +154,14 @@ void RAM_MemSet_Sinch(uint8 *dest, uint8 value_, int numBytes)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool RAM_WriteReadComplete()
+bool RAM::WriteReadComplete()
 {
     return transferComplete;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WaitWriteReadComplete()
+void RAM::WaitWriteReadComplete()
 {
     while (!transferComplete) {};
 }
@@ -180,7 +180,7 @@ static void TransferError(DMA_HandleTypeDef *)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_Init()
+void RAM::Init()
 {
     __HAL_RCC_DMA2_CLK_ENABLE();
 
@@ -201,7 +201,7 @@ void RAM_Init()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WriteByte(void *dest, uint8 value)
+void RAM::WriteByte(void *dest, uint8 value)
 {
     if ((int)dest & 0x1)
     {
@@ -217,7 +217,7 @@ void RAM_WriteByte(void *dest, uint8 value)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WriteWord(void *dest, uint value)
+void RAM::WriteWord(void *dest, uint value)
 {
     uint16 *addr = (uint16 *)((int)dest);
     *addr = (uint16)value;
@@ -226,7 +226,7 @@ void RAM_WriteWord(void *dest, uint value)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_MemShiftLeft(uint8 *address, int numBytes, int shift)
+void RAM::MemShiftLeft(uint8 *address, int numBytes, int shift)
 {
     uint16 *addr = (uint16 *)address;
     int counter = numBytes / 2;
@@ -241,7 +241,7 @@ void RAM_MemShiftLeft(uint8 *address, int numBytes, int shift)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 RAM_ReadByte(void *src)
+uint8 RAM::ReadByte(void *src)
 {
     uint16 *addr = 0;
     bool odd = (int)src & 0x1;
@@ -267,7 +267,7 @@ uint8 RAM_ReadByte(void *src)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-uint RAM_ReadWord(void *src)
+uint RAM::ReadWord(void *src)
 {
     uint16 *addr0 = (uint16 *)((int)src);
     uint16 *addr1 = addr0 + 1;
@@ -277,7 +277,7 @@ uint RAM_ReadWord(void *src)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_MemClear(void *address_, int numHalfWords)
+void RAM::MemClear(void *address_, int numHalfWords)
 {
     FSMC_SET_MODE(ModeFSMC_RAM);
     
