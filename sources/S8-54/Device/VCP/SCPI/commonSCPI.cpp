@@ -11,7 +11,7 @@ void Process_IDN(uint8 *)
 {
     char buf[100] = {0};
 
-    sprintf(buf, "%s, %s, V%s, %0X", "MNIPI", MODEL_EN, NUM_VER, Hardware_CalculateCRC32());
+    sprintf(buf, "%s, %s, V%s, %0X", "MNIPI", MODEL_EN, NUM_VER, Hardware::CalculateCRC32());
 
     SCPI_SEND(buf);
 }

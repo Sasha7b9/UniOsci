@@ -47,7 +47,7 @@ static void SystemClock_Config(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Hardware_Init(void)
+void Hardware::Init(void)
 {
     HAL_Init();
 
@@ -120,7 +120,7 @@ void Hardware_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Hardware_CalculateCRC32(void)
+uint Hardware::CalculateCRC32(void)
 {
     return HAL_CRC_Calculate(&crcHandle, (uint *)0x08020000, 128 * 1024 * 3 / 4);
 }
