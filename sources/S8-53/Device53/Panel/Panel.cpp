@@ -184,7 +184,7 @@ void OnTimerPressedKey()
     if(pressedKey != B_Empty)
     {
         void (*func)() = funcOnLongPressure[pressedKey];
-        menu.ReleaseButton(pressedKey);
+        Menu::ReleaseButton(pressedKey);
         if(func != 0)
         {
             func();
@@ -194,7 +194,7 @@ void OnTimerPressedKey()
     Timer_Disable(kPressKey);
 }
 
-bool Panel::ProcessingCommandFromPIC(uint16 command)
+bool Painter::ProcessingCommandFromPIC(uint16 command)
 {
     static int allRecData = 0;
 
@@ -225,18 +225,18 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
 
     if(releaseButton)
     {
-        menu.ReleaseButton(releaseButton);
+        Menu::ReleaseButton(releaseButton);
         funcOnKeyUp[releaseButton]();
         if(pressedKey != B_Empty)
         {
-            menu.ShortPressureButton(releaseButton);
+            Menu::ShortPressureButton(releaseButton);
             pressedKey = B_Empty;
         }
     }
     else if(pressButton)
     {
         funcOnKeyDown[pressButton]();
-        menu.PressButton(pressButton);
+        Menu::PressButton(pressButton);
         pressedKey = pressButton;
         Timer_Enable(kPressKey, 500, OnTimerPressedKey);
     }
@@ -277,25 +277,25 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
     return true;
 }
 
-void Panel::EnableLEDChannelA(bool enable)
+void Painter::EnableLEDChannelA(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
+    Painter::TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
 }
 
-void Panel::EnableLEDChannelB(bool enable)
+void Painter::EnableLEDChannelB(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
+    Painter::TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
 }
 
-void Panel::EnableLEDTrig(bool enable)
+void Painter::EnableLEDTrig(bool enable)
 {
     static uint timeEnable = 0;
     static bool first = true;
     static bool fired = false;
     if(first)
     {
-        panel.TransmitData(LED_TRIG_DISABLE);
-        display.EnableTrigLabel(false);
+        Painter::TransmitData(LED_TRIG_DISABLE);
+        Display::EnableTrigLabel(false);
         timeEnable = gTimeMS;
         first = false;
     }
@@ -309,20 +309,20 @@ void Panel::EnableLEDTrig(bool enable)
     {
         if(enable)
         {
-            panel.TransmitData(LED_TRIG_ENABLE);
-            display.EnableTrigLabel(true);
+            Painter::TransmitData(LED_TRIG_ENABLE);
+            Display::EnableTrigLabel(true);
             fired = true;
         }
         else if(gTimeMS - timeEnable > 100)
         {
-            panel.TransmitData(LED_TRIG_DISABLE);
-            display.EnableTrigLabel(false);
+            Painter::TransmitData(LED_TRIG_DISABLE);
+            Display::EnableTrigLabel(false);
             fired = false;
         }
     }
 }
 
-void Panel::TransmitData(uint16 data)
+void Painter::TransmitData(uint16 data)
 {
     if(numDataForTransmitted >= MAX_DATA)
     {
@@ -335,7 +335,7 @@ void Panel::TransmitData(uint16 data)
     }
 }
 
-uint16 Panel::NextData()
+uint16 Painter::NextData()
 {
     if (numDataForTransmitted > 0)
     {
@@ -345,12 +345,12 @@ uint16 Panel::NextData()
     return 0;
 }
 
-void Panel::Disable()
+void Painter::Disable()
 {
     gBF.panelIsRunning = 0;
 }
 
-void Panel::Enable()
+void Painter::Enable()
 {
     gBF.panelIsRunning = 1;
 }
@@ -365,7 +365,7 @@ void Panel::Enable()
 
 
 
-void Panel::Init()
+void Painter::Init()
 {
     __SPI1_CLK_ENABLE();
 
@@ -410,15 +410,15 @@ void Panel::Init()
     isGPIOG.Alternate = GPIO_AF0_MCO;
     HAL_GPIO_Init(GPIOG, &isGPIOG);
 
-    panel.EnableLEDRegSet(false);
+    Painter::EnableLEDRegSet(false);
 }
 
-void Panel::EnableLEDRegSet(bool enable)
+void Painter::EnableLEDRegSet(bool enable)
 {
     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_12, enable ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 
-PanelButton Panel::WaitPressingButton()
+PanelButton Painter::WaitPressingButton()
 {
     pressedButton = B_Empty;
     while (pressedButton == B_Empty) {};
@@ -438,11 +438,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
 
 void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* handleSPI)
 {
-    if (!panel.ProcessingCommandFromPIC(dataSPIfromPanel))
+    if (!Painter::ProcessingCommandFromPIC(dataSPIfromPanel))
     {
         HAL_SPI_DeInit(handleSPI);
         HAL_SPI_Init(handleSPI);
     }
-    uint16 data = panel.NextData();
+    uint16 data = Painter::NextData();
     SPI1->DR = data;
 }

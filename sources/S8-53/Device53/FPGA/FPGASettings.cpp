@@ -181,7 +181,7 @@ void FPGA::SetRange(Channel chan, Range range)
     }
     else
     {
-        display.ShowWarningBad(chan == A ? LimitChan1_Volts : LimitChan2_Volts);
+        Display::ShowWarningBad(chan == A ? LimitChan1_Volts : LimitChan2_Volts);
     }
 };
 
@@ -208,12 +208,12 @@ void FPGA::SetTBase(TBase tBase)
         float tShiftAbsOld = TSHIFT_2_ABS(TSHIFT, SET_TBASE);
         sTime_SetTBase(tBase);
         LoadTBase();
-        fpga.SetTShift(TSHIFT_2_REL(tShiftAbsOld, SET_TBASE));
-        display.Redraw();
+        FPGA::SetTShift(TSHIFT_2_REL(tShiftAbsOld, SET_TBASE));
+        Display::Redraw();
     }
     else
     {
-        display.ShowWarningBad(LimitSweep_Time);
+        Display::ShowWarningBad(LimitSweep_Time);
     }
 };
 
@@ -222,7 +222,7 @@ void FPGA::LoadTBase()
 {
     TBase tBase = SET_TBASE;
     uint8 mask = SET_PEAKDET ? masksTBase[tBase].maskPeackDet : masksTBase[tBase].maskNorm;
-    fpga.WriteToHardware(WR_RAZVERTKA, mask, true);
+    FPGA::WriteToHardware(WR_RAZVERTKA, mask, true);
     ADD_SHIFT_T0 = deltaTShift[tBase];
 }
 
@@ -231,8 +231,8 @@ void FPGA::TBaseDecrease()
 {
     if (SET_PEAKDET && SET_TBASE <= MIN_TBASE_PEC_DEAT)
     {
-        display.ShowWarningBad(LimitSweep_Time);
-        display.ShowWarningBad(EnabledPeakDet);
+        Display::ShowWarningBad(LimitSweep_Time);
+        Display::ShowWarningBad(EnabledPeakDet);
         return;
     }
 
@@ -240,17 +240,17 @@ void FPGA::TBaseDecrease()
     {
         if (SELFRECORDER && SET_TBASE == MIN_TBASE_P2P)
         {
-            display.ShowWarningBad(TooFastScanForSelfRecorder);
+            Display::ShowWarningBad(TooFastScanForSelfRecorder);
         }
         else
         {
             TBase base = (TBase)((int)SET_TBASE - 1);
-            fpga.SetTBase(base);
+            FPGA::SetTBase(base);
         }
     }
     else
     {
-        display.ShowWarningBad(LimitSweep_Time);
+        Display::ShowWarningBad(LimitSweep_Time);
     }
 }
 
@@ -260,11 +260,11 @@ void FPGA::TBaseIncrease()
     if (SET_TBASE < (TBaseSize - 1))
     {
         TBase base = (TBase)(SET_TBASE + 1);
-        fpga.SetTBase(base);
+        FPGA::SetTBase(base);
     }
     else
     {
-        display.ShowWarningBad(LimitSweep_Time);
+        Display::ShowWarningBad(LimitSweep_Time);
     }
 }
 
@@ -275,11 +275,11 @@ void FPGA::SetRShift(Channel chan, int16 rShift)
     {
         return;
     }
-    display.ChangedRShiftMarkers();
+    Display::ChangedRShiftMarkers();
 
     if (rShift > RShiftMax || rShift < RShiftMin)
     {
-        display.ShowWarningBad(chan == A ? LimitChan1_RShift : LimitChan2_RShift);
+        Display::ShowWarningBad(chan == A ? LimitChan1_RShift : LimitChan2_RShift);
     }
 
     Limitation<int16>(&rShift, RShiftMin, RShiftMax);
@@ -294,7 +294,7 @@ void FPGA::SetRShift(Channel chan, int16 rShift)
     }
     SET_RSHIFT(chan) = rShift;
     LoadRShift(chan);
-    display.RotateRShift(chan);
+    Display::RotateRShift(chan);
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -323,10 +323,10 @@ void FPGA::LoadRShift(Channel chan)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetTrigLev(TrigSource chan, int16 trigLev)
 {
-    display.ChangedRShiftMarkers();
+    Display::ChangedRShiftMarkers();
     if (trigLev < TrigLevMin || trigLev > TrigLevMax)
     {
-        display.ShowWarningBad(LimitSweep_Level);
+        Display::ShowWarningBad(LimitSweep_Level);
     }
 
     Limitation<int16>(&trigLev, TrigLevMin, TrigLevMax);
@@ -344,7 +344,7 @@ void FPGA::SetTrigLev(TrigSource chan, int16 trigLev)
     {
         TRIG_LEVEL(chan) = trigLev;
         LoadTrigLev();
-        display.RotateTrigLev();
+        Display::RotateTrigLev();
     }
 };
 
@@ -371,12 +371,12 @@ void FPGA::SetTShift(int tShift)
     if (tShift < sTime_TShiftMin() || tShift > TShiftMax)
     {
         Limitation<int>(&tShift, sTime_TShiftMin(), TShiftMax);
-        display.ShowWarningBad(LimitSweep_TShift);
+        Display::ShowWarningBad(LimitSweep_TShift);
     }
 
     sTime_SetTShift(tShift);
     LoadTShift();
-    display.Redraw();
+    Display::Redraw();
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -421,13 +421,13 @@ void FPGA::LoadRegUPR()
         _SET_BIT(data, 3);
     }
 
-    fpga.WriteToHardware(WR_UPR, data, true);
+    FPGA::WriteToHardware(WR_UPR, data, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::LoadKoeffCalibration(Channel chan)
 {
-    fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)(STRETCH_ADC(chan) * 0x80), false);
+    FPGA::WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)(STRETCH_ADC(chan) * 0x80), false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -442,7 +442,7 @@ void FPGA::LoadTShift()
         tShift = tShift / k[tBase] + deltaTShift[tBase];
     }
     int additionShift = (tShiftOld % k[tBase]) * 2;
-    fpga.SetAdditionShift(additionShift);
+    FPGA::SetAdditionShift(additionShift);
     uint16 post = tShift;
     post = (~post);
     WriteToHardware(WR_POST_LOW, (uint8)post, true);
@@ -471,9 +471,9 @@ bool FPGA::RangeIncrease(Channel chan)
     }
     else
     {
-       display.ShowWarningBad(chan == A ? LimitChan1_Volts : LimitChan2_Volts);
+       Display::ShowWarningBad(chan == A ? LimitChan1_Volts : LimitChan2_Volts);
     }
-    display.Redraw();
+    Display::Redraw();
     return retValue;
 };
 
@@ -488,9 +488,9 @@ bool FPGA::RangeDecrease(Channel chan)
     }
     else
     {
-        display.ShowWarningBad(chan == A ? LimitChan1_Volts : LimitChan2_Volts);
+        Display::ShowWarningBad(chan == A ? LimitChan1_Volts : LimitChan2_Volts);
     }
-    display.Redraw();
+    Display::Redraw();
     return retValue;
 };
 

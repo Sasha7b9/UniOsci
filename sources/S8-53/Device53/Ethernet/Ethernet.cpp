@@ -51,7 +51,7 @@ static void FuncReceiver(const char *buffer, uint length)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-void Ethernet_Init()
+void Ethernet::Init()
 {
     // Initilaize the LwIP stack
     lwip_init();
@@ -63,7 +63,7 @@ void Ethernet_Init()
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-void Ethernet_Update(uint timeMS)
+void Ethernet::Update(uint timeMS)
 {
     uint time = gTimeMS;
 

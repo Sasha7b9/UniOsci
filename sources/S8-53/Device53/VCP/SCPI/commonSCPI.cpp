@@ -42,5 +42,5 @@ void Process_AUTOSCALE(uint8 *buffer)
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Process_REQUEST(uint8 *buffer)
 {
-    vcp.SendFormatStringAsynch("S8-53/1");
+    VCP::SendFormatStringAsynch("S8-53/1");
 }

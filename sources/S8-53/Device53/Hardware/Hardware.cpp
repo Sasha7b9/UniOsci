@@ -101,15 +101,15 @@ void Hardware_Init()
         ERROR_HANDLER();
     }
 
-    sound.Init();
+    Sound::Init();
     
-    panel.Init();
+    Panel::Init();
 
     FSMC_Init();
 
     adc.Init();
 
-    drive.Init();
+    FDrive.Init();
     
 // Analog and DAC programmable SPI ////////////////////////////////////////
 

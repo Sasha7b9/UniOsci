@@ -289,13 +289,13 @@ void Settings_Load(bool _default)
     }
 
 
-    fpga.LoadSettings();
-    fpga.SetNumSignalsInSec(sDisplay_NumSignalsInS());
-    panel.EnableLEDChannelA(sChannel_Enabled(A));
-    panel.EnableLEDChannelB(sChannel_Enabled(B));
-    fpga.SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
-    menu.SetAutoHide(true);
-    display.ChangedRShiftMarkers();
+    FPGA::LoadSettings();
+    FPGA::SetNumSignalsInSec(sDisplay_NumSignalsInS());
+    Painter::EnableLEDChannelA(sChannel_Enabled(A));
+    Painter::EnableLEDChannelB(sChannel_Enabled(B));
+    FPGA::SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
+    Menu::SetAutoHide(true);
+    Display::ChangedRShiftMarkers();
 
     SETTINGS_IS_LOADED = 1;
 }
@@ -312,53 +312,53 @@ bool Settings_DebugModeEnable()
 
 int8 MenuPosActItem(NamePage namePage)
 {
-    return set.menu.posActItem[namePage];
+    return set.Menu::posActItem[namePage];
 }
 
 void SetMenuPosActItem(NamePage namePage, int8 pos)
 {
-    set.menu.posActItem[namePage] = pos;
+    set.Menu::posActItem[namePage] = pos;
 }
 
 int8 MenuCurrentSubPage(NamePage namePage)
 {
-    return set.menu.currentSubPage[namePage];
+    return set.Menu::currentSubPage[namePage];
 }
 
 void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 {
-    set.menu.currentSubPage[namePage] = posSubPage;
+    set.Menu::currentSubPage[namePage] = posSubPage;
 }
 
 bool MenuIsShown()
 {
-    return set.menu.isShown;
+    return set.Menu::isShown;
 }
 
 void ShowMenu(bool show)
 {
-    set.menu.isShown = show;
-    menu.SetAutoHide(true);
+    set.Menu::isShown = show;
+    Menu::SetAutoHide(true);
 }
 
 bool MenuIsMinimize()
 {
-    return menu.TypeOpenedItem() == Item_Page && menu.GetNamePage((const Page *)menu.OpenedItem()) >= PageSB_Cursors_Set;
+    return Menu::TypeOpenedItem() == Item_Page && Menu::GetNamePage((const Page *)Menu::OpenedItem()) >= PageSB_Cursors_Set;
 }
 
 bool MenuPageDebugIsActive()
 {
-    return set.menu.pageDebugActive;
+    return set.Menu::pageDebugActive;
 }
 
 void SetMenuPageDebugActive(bool active)
 {
-    set.menu.pageDebugActive = active;
+    set.Menu::pageDebugActive = active;
 }
 
 void CurrentPageSBregSet(int angle)
 {
-    Page *page = (Page *)menu.OpenedItem();
+    Page *page = (Page *)Menu::OpenedItem();
     if (page->funcRegSetSB)
     {
         page->funcRegSetSB(angle);
@@ -369,7 +369,7 @@ const SButton* GetSmallButton(PanelButton button)
 {
     if(MenuIsMinimize() && button >= B_Menu && button <= B_F5)
     {
-        Page *page = (Page *)menu.OpenedItem();
+        Page *page = (Page *)Menu::OpenedItem();
         SButton *sb = (SButton *)page->items[button - B_Menu];
         return sb;
     }

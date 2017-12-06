@@ -71,13 +71,13 @@ void FPGA::Start()
 {
     if(SET_TBASE >= MIN_TBASE_P2P)
     {
-        display.ResetP2Ppoints(false);
+        Display::ResetP2Ppoints(false);
         Timer_Enable(kP2P, 1, ReadPoint);
     }
     else
     {
         Timer_Disable(kP2P);
-        display.ResetP2Ppoints(true);
+        Display::ResetP2Ppoints(true);
     }
     FSMC_Write(WR_START, 1);
     FillDataPointer(&ds);
@@ -123,7 +123,7 @@ bool FPGA::ProcessingData()
                 char buffer[9];
                 LOG_WRITE("флаг готовности %s", Bin2String(flag, buffer));
             }
-            panel.EnableLEDTrig(true);
+            Painter::EnableLEDTrig(true);
             FPGA::Stop(true);
             DataRead(_GET_BIT(flag, BIT_SIGN_SHIFT_POINT), (num == 1) || (i == num - 1));
             retValue = true;
@@ -148,7 +148,7 @@ bool FPGA::ProcessingData()
                 timeStart = gTimeMS;
             }
         }
-        panel.EnableLEDTrig(_GET_BIT(flag, BIT_TRIG) ? true : false);
+        Painter::EnableLEDTrig(_GET_BIT(flag, BIT_TRIG) ? true : false);
     }
 
     return retValue;
@@ -428,7 +428,7 @@ void FPGA::ReadRealMode(bool necessaryShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::DataRead(bool necessaryShift, bool saveToStorage) 
 {
-    panel.EnableLEDTrig(false);
+    Painter::EnableLEDTrig(false);
     gBF.FPGAinProcessingOfRead = 1;
     if((TBase)ds.tBase < TBase_100ns)
     {
@@ -614,7 +614,7 @@ void ReadPoint()
         uint8 dataB2 = *RD_ADC_B2;
         uint8 dataA1 = *RD_ADC_A1;
         uint8 dataA2 = *RD_ADC_A2;
-        display.AddPoints(dataA2, dataA1, dataB2, dataB1);
+        Display::AddPoints(dataA2, dataA1, dataB2, dataB1);
     }
 }
 
@@ -1074,7 +1074,7 @@ void FPGA::AutoFind()
 {
     if (!FindWave(A) && !FindWave(B))
     {
-        display.ShowWarningBad(SignalNotFound);
+        Display::ShowWarningBad(SignalNotFound);
     }
 
     gBF.FPGAautoFindInProgress = 0;

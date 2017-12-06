@@ -2,32 +2,30 @@
 #include "defines.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Panel
 {
 public:
 
-    void Init();
+    static void Init();
 
-    void EnableLEDRegSet(bool enable);
+    static void EnableLEDRegSet(bool enable);
     /// Включить/выключить светодиод КАНАЛ 1.
-    void EnableLEDChannelA(bool enable);
+    static void EnableLEDChannelA(bool enable);
     /// Включить/выключить светодиод КАНАЛ 2.
-    void EnableLEDChannelB(bool enable);
+    static void EnableLEDChannelB(bool enable);
     /// Включить/выключить светодиод СИНХР.
-    void EnableLEDTrig(bool enable);
+    static void EnableLEDTrig(bool enable);
     /// Передать даннные в мк панели управления.
-    void TransmitData(uint16 data);
+    static void TransmitData(uint16 data);
     /// В отлюченном режиме панель лишь обновляет состояние переменной pressedButton, не выполняя больше никаких действий.
-    void Disable();
+    static void Disable();
 
-    void Enable();
+    static void Enable();
     /// Ожидать нажатие клавиши.
-    PanelButton WaitPressingButton();
+    static PanelButton WaitPressingButton();
 
-    bool ProcessingCommandFromPIC(uint16 command);
+    static bool ProcessingCommandFromPIC(uint16 command);
 
-    uint16 NextData();
+    static uint16 NextData();
 };
-
-
-extern Panel panel;

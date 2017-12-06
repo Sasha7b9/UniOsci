@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FuncOfDraw() 
 {
-    painter.BeginScene(Color::Fill());
+    Painter::BeginScene(Color::Fill());
 }
 
 
@@ -42,14 +42,14 @@ int main()
     Hardware_Init();
     Init();
     Settings_Load(false);
-    fpga.Init();    
+    FPGA::Init();    
     HAL_Delay(250);
-    fpga.OnPressStartStop();
+    FPGA::OnPressStartStop();
     Ethernet_Init();
-    display.Init();
+    Display::Init();
     if (gBF.tuneTime == 1)
     {
-        //menu.OpenItemTime();
+        //Menu::OpenItemTime();
     }
 
     while(1)
@@ -60,13 +60,13 @@ int main()
 
         Ethernet_Update(0);
 
-        fpga.Update();                      // Обновляем аппаратную часть.
+        FPGA::Update();                      // Обновляем аппаратную часть.
 
         ProcessingSignal();
 
-        display.Update();               // Рисуем экран.
+        Display::Update();               // Рисуем экран.
 
-        menu.UpdateInput();                 // Обновляем состояние меню
+        Menu::UpdateInput();                 // Обновляем состояние меню
     }
 }
 
@@ -123,6 +123,6 @@ void ProcessingSignal()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Init() 
 {
-    vcp.Init();
+    VCP::Init();
 }
 

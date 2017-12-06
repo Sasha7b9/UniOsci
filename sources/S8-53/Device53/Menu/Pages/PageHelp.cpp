@@ -15,30 +15,30 @@ extern const PageBase pHelp;
 
 void DrawSB_Help_ParagraphEnter(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, '\x4a');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x4a');
+    Painter::SetFont(TypeFont_8);
 }
 
 void DrawSB_Help_ParagraphLeave(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x48');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x48');
+    Painter::SetFont(TypeFont_8);
 }
 
 void DrawSB_Help_ParagraphPrev(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 5, '\x4c');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 5, '\x4c');
+    Painter::SetFont(TypeFont_8);
 }
 
 void DrawSB_Help_ParagraphNext(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 5, '\x4e');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 5, '\x4e');
+    Painter::SetFont(TypeFont_8);
 }
 
 void OnHelpRegSet(int angle) 
@@ -78,7 +78,7 @@ DEF_SMALL_BUTTON(   sbHelpParagraphNext,                                        
 
 static void PressSB_Help_Exit()
 {
-    display.RemoveAddDrawFunction();
+    Display::RemoveAddDrawFunction();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

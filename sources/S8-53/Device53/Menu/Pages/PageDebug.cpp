@@ -210,8 +210,8 @@ static void OnChanged_ADC_Balance_Mode(bool active)
 {
     Draw_ADC_Balance_Mode(0, 0);
 
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)shiftADCA, false);
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)shiftADCA, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
 }
 
 DEF_CHOICE_3(       mcADC_Balance_Mode,                                                                       //--- Œ“À¿ƒ ¿ - ¿÷œ - ¡¿À¿Õ— - –ÂÊËÏ ---
@@ -228,7 +228,7 @@ DEF_CHOICE_3(       mcADC_Balance_Mode,                                         
 static void OnChanged_ADC_Balance_ShiftA()
 {
     BALANCE_ADC_A = shiftADCA;
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)BALANCE_ADC_A, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)BALANCE_ADC_A, false);
 }
 
 static bool IsActive_ADC_Balance_Shift()
@@ -247,7 +247,7 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftA,                                       
 static void OnChanged_ADC_Balance_ShiftB()
 {
     BALANCE_ADC_B = shiftADCB;
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
 }
 
 DEF_GOVERNOR(       mgADC_Balance_ShiftB,                                                                //--- Œ“À¿ƒ ¿ - ¿÷œ - ¡¿À¿Õ— - —ÏÂ˘ÂÌËÂ 2 ---
@@ -273,15 +273,15 @@ void LoadStretchADC(Channel chan)
 {
     if (DEBUG_STRETCH_ADC_TYPE_IS_DISABLED)
     {
-        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, 0x80, true);
+        FPGA::WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, 0x80, true);
     }
     else if (DEBUG_STRETCH_ADC_TYPE_IS_HAND)
     {
-        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)DEBUG_STRETCH_ADC(chan), true);
+        FPGA::WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)DEBUG_STRETCH_ADC(chan), true);
     }
     else if (DEBUG_STRETCH_ADC_TYPE_IS_SETTINGS)
     {
-        fpga.LoadKoeffCalibration(chan);
+        FPGA::LoadKoeffCalibration(chan);
     }
 }
 
@@ -312,7 +312,7 @@ static bool IsActive_ADC_Stretch_ADC()
 
 static void OnChanged_ADC_Stretch_ADC_A()
 {
-    fpga.WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
+    FPGA::WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
 }
 
 DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                                                //--- Œ“À¿ƒ ¿ - ¿÷œ - –¿—“ﬂ∆ ¿ -  Ó˝ÙÙ. 1Í ---
@@ -325,7 +325,7 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                        
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Stretch_ADC_B()
 {
-    fpga.WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
+    FPGA::WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
 }
 
 DEF_GOVERNOR(       mgADC_Stretch_ADC_B,                                                                //--- Œ“À¿ƒ ¿ - ¿÷œ - –¿—“ﬂ∆ ¿ -  Ó˝ÙÙ. 2Í ---
@@ -360,8 +360,8 @@ static void OnPress_ADC_AltRShift_Reset()
             }
         }
     }
-    fpga.SetRShift(A, SET_RSHIFT_A);
-    fpga.SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_BUTTON(         mbADC_AltRShift_Reset,                                                                  //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —·ÓÒ ---
@@ -373,7 +373,7 @@ DEF_BUTTON(         mbADC_AltRShift_Reset,                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_AltRShift_A()
 {
-    fpga.SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
 }
 
 DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                                      //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —Ï 1Í 2Ï¬ ÔÓÒÚ ---
@@ -386,7 +386,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_AltRShift_B()
 {
-    fpga.SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_B,                                                      //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —Ï 2Í 2Ï¬ ÔÓÒÚ ---
@@ -459,7 +459,7 @@ DEF_PAGE_3(         mpADC,                                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Randomizer_SamplesForGates()
 {
-    fpga.SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
+    FPGA::SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
 }
 
 DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                                                             // Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– - ¬˚·-Í/‚ÓÓÚ‡ ---
@@ -472,7 +472,7 @@ DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Randomizer_AltTShift0()
 {
-    fpga.SetDeltaTShift(ADD_SHIFT_T0);
+    FPGA::SetDeltaTShift(ADD_SHIFT_T0);
 }
 
 DEF_GOVERNOR(       mgRandomizer_AltTShift0,                                                                   // Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– - tShift ‰ÓÔ. ---
@@ -505,7 +505,7 @@ DEF_PAGE_3(         mpRandomizer,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnDraw_SizeSettings(int x, int y)
 {
-    painter.DrawFormatText(x + 5, y + 21, Color::BLACK, "–‡ÁÏÂ %d", sizeof(Settings));
+    Painter::DrawFormatText(x + 5, y + 21, Color::BLACK, "–‡ÁÏÂ %d", sizeof(Settings));
 }
 
 static int8 temp = 0;
@@ -544,7 +544,7 @@ static void OnPress_SaveFirmware()
 
     drive.CloseFile(&structForWrite);
 
-    display.ShowWarningGood(FirmwareSaved);
+    Display::ShowWarningGood(FirmwareSaved);
 }
 
 DEF_BUTTON(         mbSaveFirmware,                                                                                    // Œ“À¿ƒ ¿ - —Óı. ÔÓ¯Ë‚ÍÛ ---
@@ -557,7 +557,7 @@ DEF_BUTTON(         mbSaveFirmware,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SerialNumber_Exit()
 {
-    display.RemoveAddDrawFunction();
+    Display::RemoveAddDrawFunction();
     FREE_EXTRAMEM();
 }
 
@@ -571,14 +571,14 @@ static void OnPress_SerialNumber_Change()
     ACCESS_EXTRAMEM(StructForSN, s);
     ++s->curDigt;
     s->curDigt %= 2;
-    painter.ResetFlash();
+    Painter::ResetFlash();
 }
 
 static void Draw_SerialNumber_Change(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSerialNumber_Change,                                                                           //--- Œ“À¿ƒ ¿ - —/Õ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -599,15 +599,15 @@ static void OnPress_SerialNumber_Save()
 
     if (!OTP_SaveSerialNumber(stringSN))
     {
-        display.ShowWarningBad(FullyCompletedOTP);
+        Display::ShowWarningBad(FullyCompletedOTP);
     }
 }
 
 static void Draw_SerialNumber_Save(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSerialNumber_Save,                                                                               // Œ“À¿ƒ ¿ - —/Õ - —Óı‡ÌËÚ¸ ---
@@ -621,13 +621,13 @@ DEF_SMALL_BUTTON(   bSerialNumber_Save,                                         
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void Draw_EnterSerialNumber()
 {
-    int x0 = grid.Left() + 40;
+    int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 20;
-    int width = grid.Width() - 80;
+    int width = Grid::Width() - 80;
     int height = 160;
 
-    painter.DrawRectangle(x0, y0, width, height, Color::Fill());
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
+    Painter::DrawRectangle(x0, y0, width, height, Color::Fill());
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int deltaX = 10;
 
@@ -649,8 +649,8 @@ static void Draw_EnterSerialNumber()
 
     int y = y0 + 50;
 
-    painter.SetColor(colorText);
-    int x = painter.DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
+    Painter::SetColor(colorText);
+    int x = Painter::DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
 
     colorText = Color::FLASH_01;
     colorBackground = Color::FLASH_10;
@@ -663,24 +663,24 @@ static void Draw_EnterSerialNumber()
 
     snprintf(buffer, 19, "%04d", s->year);
 
-    painter.SetColor(colorText);
-    painter.DrawTextOnBackground(x + 5, y, buffer, colorBackground);
+    Painter::SetColor(colorText);
+    Painter::DrawTextOnBackground(x + 5, y, buffer, colorBackground);
 
     // “ÂÔÂ¸ ‚˚‚Â‰ÂÏ ËÌÙÓÏ‡ˆË˛ Ó· ÓÒÚ‡‚¯ÂÏÒˇ ÏÂÒÚÂ ‚ OTP-Ô‡ÏˇÚË ‰Îˇ Á‡ÔËÒË
 
     int allShots = OTP_GetSerialNumber(buffer);
 
-    painter.SetColor(Color::Fill());
+    Painter::SetColor(Color::Fill());
 
-    painter.DrawFormatText(x0 + deltaX, y0 + 130, "“ÂÍÛ˘ËÈ ÒÓı‡Ì∏ÌÌ˚È ÌÓÏÂ %s", buffer[0] == 0 ? "-- ----" : buffer);
+    Painter::DrawFormatText(x0 + deltaX, y0 + 130, "“ÂÍÛ˘ËÈ ÒÓı‡Ì∏ÌÌ˚È ÌÓÏÂ %s", buffer[0] == 0 ? "-- ----" : buffer);
 
-    painter.DrawFormatText(x0 + deltaX, y0 + 100, "ŒÒÚ‡ÎÓÒ¸ ÏÂÒÚ‡ ‰Îˇ %d ÔÓÔ˚ÚÓÍ", allShots);
+    Painter::DrawFormatText(x0 + deltaX, y0 + 100, "ŒÒÚ‡ÎÓÒ¸ ÏÂÒÚ‡ ‰Îˇ %d ÔÓÔ˚ÚÓÍ", allShots);
 }
 
 static void OnPress_SerialNumber()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Debug_SerialNumber);
-    display.SetAddDrawFunction(Draw_EnterSerialNumber);
+    Menu::OpenPageAndSetItCurrent(PageSB_Debug_SerialNumber);
+    Display::SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);
     s->number = 01;
     s->year = 2017;
@@ -705,7 +705,7 @@ static void OnRegSet_SerialNumber(int angle)
     {
         p(&s->year, 2014, 2050);
     }
-    sound.GovernorChangedValue();
+    Sound::GovernorChangedValue();
 }
 
 DEF_PAGE_SB(        ppSerialNumber,                                                                                               // Œ“À¿ƒ ¿ - —/Õ ///

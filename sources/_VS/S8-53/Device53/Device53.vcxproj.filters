@@ -345,9 +345,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\MSP_USBH.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Timer.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.cpp">
       <Filter>Menu\Pages</Filter>
     </ClCompile>
@@ -707,9 +704,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Sound.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Timer.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h">
       <Filter>Menu\Pages</Filter>
     </ClInclude>
@@ -880,6 +874,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuPagesNames.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Hardware\Timer.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

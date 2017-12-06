@@ -140,12 +140,12 @@ static void PressSB_Cursors_Source()
 
 static void DrawSB_Cursors_SourceA(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "1");
+    Painter::DrawText(x + 7, y + 5, "1");
 }
 
 static void DrawSB_Cursors_SourceB(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "2");
+    Painter::DrawText(x + 7, y + 5, "2");
 }
 
 static void DrawSB_Cursors_Source(int x, int y)
@@ -174,7 +174,7 @@ static void PressSB_Cursors_U()
 
 static void DrawSB_Cursors_U_Disable(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "U");
+    Painter::DrawText(x + 7, y + 5, "U");
 }
 
 static void DrawSB_Cursors_U_Upper(int x, int y)
@@ -260,7 +260,7 @@ static void PressSB_Cursors_T()
 
 static void DrawSB_Cursors_T_Disable(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "T");
+    Painter::DrawText(x + 7, y + 5, "T");
 }
 
 static void DrawSB_Cursors_T_Both_Disable(int x, int y)
@@ -348,9 +348,9 @@ static void PressSB_Cursors_100()
 
 static void DrawSB_Cursors_100(int x, int y)
 {
-    painter.SetFont(TypeFont_5);
-    painter.DrawText(x + 2, y + 3, "100%");
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_5);
+    Painter::DrawText(x + 2, y + 3, "100%");
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   sbSet100,                                                                                    //---  ”–—Œ–€ - ”—“¿ÕŒ¬»“‹ - 100% ---
@@ -368,14 +368,14 @@ static void PressSB_Cursors_PointsPercents()
 
 static void DrawSB_Cursors_PointsPercents_Percents(int x, int y)
 {
-    painter.DrawText(x + 6, y + 5, "\x83");
+    Painter::DrawText(x + 6, y + 5, "\x83");
 }
 
 static void DrawSB_Cursors_PointsPercents_Points(int x, int y)
 {
-    painter.SetFont(TypeFont_5);
-    painter.DrawText(x + 4, y + 3, "Ú˜Í");
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_5);
+    Painter::DrawText(x + 4, y + 3, "Ú˜Í");
+    Painter::SetFont(TypeFont_8);
 }
 
 static void DrawSB_Cursors_PointsPercents(int x, int y)
@@ -413,7 +413,7 @@ static void OnRotate_RegSet_Set(int angle)
     {
         MoveCursTonPercentsOrPoints(angle);
     }
-    sound.RegulatorShiftRotate();
+    Sound::RegulatorShiftRotate();
 }
 
 DEF_PAGE_SB(        mspSet,                                                                                                //  ”–—Œ–€ - ”—“¿ÕŒ¬»“‹ ///

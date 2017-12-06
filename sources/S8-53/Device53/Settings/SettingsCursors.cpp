@@ -11,14 +11,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 float sCursors_GetCursPosU(Channel chan, int numCur)
 {
-    return CURS_POS_U(chan, numCur) / (grid.ChannelBottom() == grid.FullBottom() ? 1.0f : 2.0f);
+    return CURS_POS_U(chan, numCur) / (Grid::ChannelBottom() == Grid::FullBottom() ? 1.0f : 2.0f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool sCursors_NecessaryDrawCursors()
 {
     return ((!CURS_CNTRL_U_IS_DISABLE(CURS_SOURCE)) || (!CURS_CNTRL_T_IS_DISABLE(CURS_SOURCE))) && 
-        (CURS_SHOW || menu.GetNameOpenedPage() == PageSB_Cursors_Set);
+        (CURS_SHOW || Menu::GetNameOpenedPage() == PageSB_Cursors_Set);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

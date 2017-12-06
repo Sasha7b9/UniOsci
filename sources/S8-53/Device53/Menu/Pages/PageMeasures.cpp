@@ -28,9 +28,9 @@ static CursCntrl    GetMeasuresCursCntrlActive();           // Каким курсором из
 
 void DrawSB_MeasTune_Settings(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x62');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x62');
+    Painter::SetFont(TypeFont_8);
 }
 
 void PressSB_MeasTune_Settings()
@@ -40,9 +40,9 @@ void PressSB_MeasTune_Settings()
 
 void DrawSB_MeasTune_Markers(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, '\x60');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x60');
+    Painter::SetFont(TypeFont_8);
 }
 
 void PressSB_MeasTune_Markers()
@@ -230,7 +230,7 @@ CursCntrl GetMeasuresCursCntrlActive()
 
 static void PressSB_MeasTune_Exit()
 {
-    display.RemoveAddDrawFunction();
+    Display::RemoveAddDrawFunction();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

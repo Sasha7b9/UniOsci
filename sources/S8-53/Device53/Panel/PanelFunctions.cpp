@@ -26,28 +26,28 @@ void Long_Help()
 
 void ChannelALong()
 {
-    menu.LongPressureButton(B_ChannelA);
+    Menu::LongPressureButton(B_ChannelA);
 }
 
 void ChannelBLong()
 {
-    menu.LongPressureButton(B_ChannelB);
+    Menu::LongPressureButton(B_ChannelB);
 }
 
 void TimeLong()
 {
-    menu.LongPressureButton(B_Time);
+    Menu::LongPressureButton(B_Time);
 }
 
 void TrigLong()
 {
     if (MODE_LONG_PRESS_TRIG_IS_LEVEL0)
     {
-        menu.LongPressureButton(B_Trig);
+        Menu::LongPressureButton(B_Trig);
     }
     else
     {
-        fpga.FindAndSetTrigLevel();
+        FPGA::FindAndSetTrigLevel();
     }
 }
 
@@ -55,46 +55,46 @@ void StartDown()                        // B_Start
 {
     if (MODE_WORK_IS_DIR)
     {
-        menu.PressButton(B_Start);
+        Menu::PressButton(B_Start);
     }
 }
 
 void PowerDown()                        // B_Power
 {
-    menu.ShortPressOnPageItem((Page *)menu.OpenedItem(), 0);
+    Menu::ShortPressOnPageItem((Page *)Menu::OpenedItem(), 0);
     Settings_Save();
     Log_DisconnectLoggerUSB();
-    panel.TransmitData(0x04);           // Посылаем команду выключения
+    Painter::TransmitData(0x04);           // Посылаем команду выключения
 }
 
 void MenuLong() 
 {
-    menu.LongPressureButton(B_Menu);
+    Menu::LongPressureButton(B_Menu);
 }
 
 void F1Long()
 {
-    menu.LongPressureButton(B_F1);
+    Menu::LongPressureButton(B_F1);
 }
 
 void F2Long()
 {
-    menu.LongPressureButton(B_F2);
+    Menu::LongPressureButton(B_F2);
 }
 
 void F3Long()
 {
-    menu.LongPressureButton(B_F3);
+    Menu::LongPressureButton(B_F3);
 }
 
 void F4Long()
 {
-    menu.LongPressureButton(B_F4);
+    Menu::LongPressureButton(B_F4);
 }
 
 void F5Long()
 {
-    menu.LongPressureButton(B_F5);
+    Menu::LongPressureButton(B_F5);
 }
 
 //****************************************************************************************************************
@@ -163,7 +163,7 @@ void ChangeRShift(int *prevTime, void(*f)(Channel, int16), Channel chan, int16 r
 {
     if (ENUM_ACCUM_IS_NONE)
     {
-        fpga.TemporaryPause();
+        FPGA::TemporaryPause();
     }
     int count = CalculateCount(prevTime);
     int rShiftOld = SET_RSHIFT(chan);
@@ -174,7 +174,7 @@ void ChangeRShift(int *prevTime, void(*f)(Channel, int16), Channel chan, int16 r
     }
     if (CanChangeRShiftOrTrigLev((TrigSource)chan, rShift))
     {
-        sound.RegulatorShiftRotate();
+        Sound::RegulatorShiftRotate();
         f(chan, rShift);
     }
 }
@@ -190,7 +190,7 @@ void ChangeTrigLev(int *prevTime, void(*f)(TrigSource, int16), TrigSource trigSo
     }
     if (CanChangeRShiftOrTrigLev(trigSource, trigLev))
     {
-        sound.RegulatorShiftRotate();
+        Sound::RegulatorShiftRotate();
         f(trigSource, trigLev);
     }
 }
@@ -222,7 +222,7 @@ void ChangeTShift(int *prevTime, void(*f)(int), int16 relStep)
     }
     if (CanChangeTShift(tShift))
     {
-        sound.RegulatorShiftRotate();
+        Sound::RegulatorShiftRotate();
         f(tShift);
     }
 }
@@ -247,7 +247,7 @@ void ChangeShiftScreen(int *prevTime, void(*f)(int), int16 relStep)
 
 static void SetRShift(Channel ch, int16 rShift)
 {
-    fpga.SetRShift(ch, rShift);
+    FPGA::SetRShift(ch, rShift);
 }
 
 void RShiftALeft()
@@ -276,7 +276,7 @@ void RShiftBRight()
 
 static void SetTrigLev(TrigSource ch, int16 trigLev)
 {
-    fpga.SetTrigLev(ch, trigLev);
+    FPGA::SetTrigLev(ch, trigLev);
 }
 
 void TrigLevLeft()
@@ -293,12 +293,12 @@ void TrigLevRight()
 
 static void ShiftScreen(int shift)
 {
-    display.ShiftScreen(shift);
+    Display::ShiftScreen(shift);
 }
 
 static void SetTShift(int tShift)
 {
-    fpga.SetTShift(tShift);
+    FPGA::SetTShift(tShift);
 }
 
 void XShift(int delta)
@@ -329,46 +329,46 @@ void TShiftRight()
 
 void RangeALeft()
 {
-    sound.RegulatorSwitchRotate();
-    fpga.RangeIncrease(A);
+    Sound::RegulatorSwitchRotate();
+    FPGA::RangeIncrease(A);
 }
 
 void RangeARight()
 {
-    sound.RegulatorSwitchRotate();
-    fpga.RangeDecrease(A);
+    Sound::RegulatorSwitchRotate();
+    FPGA::RangeDecrease(A);
 }
 
 void RangeBLeft()
 {
-    sound.RegulatorSwitchRotate();
-    fpga.RangeIncrease(B);
+    Sound::RegulatorSwitchRotate();
+    FPGA::RangeIncrease(B);
 }
 
 void RangeBRight()
 {
-    sound.RegulatorSwitchRotate();
-    fpga.RangeDecrease(B);
+    Sound::RegulatorSwitchRotate();
+    FPGA::RangeDecrease(B);
 }
 
 void TBaseLeft()
 {
-    sound.RegulatorSwitchRotate();
-    fpga.TBaseIncrease();
+    Sound::RegulatorSwitchRotate();
+    FPGA::TBaseIncrease();
 }
 
 void TBaseRight()
 {
-    sound.RegulatorSwitchRotate();
-    fpga.TBaseDecrease();
+    Sound::RegulatorSwitchRotate();
+    FPGA::TBaseDecrease();
 }
 
 void SetLeft()
 {
-    menu.RotateRegSetLeft();
+    Menu::RotateRegSetLeft();
 }
 
 void SetRight()
 {
-    menu.RotateRegSetRight();
+    Menu::RotateRegSetRight();
 }

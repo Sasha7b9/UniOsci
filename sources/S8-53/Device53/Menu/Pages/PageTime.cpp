@@ -48,8 +48,8 @@ void OnChanged_PeakDet(bool active)
 {
     if (active)
     {
-        fpga.SetPeackDetMode(SET_PEAKDET);
-        fpga.SetTBase(SET_TBASE);
+        FPGA::SetPeackDetMode(SET_PEAKDET);
+        FPGA::SetTBase(SET_TBASE);
         if (PEAKDET_IS_DISABLE)
         {
             int8 shift[2][3] =
@@ -58,32 +58,32 @@ void OnChanged_PeakDet(bool active)
                 {0, (int8)SET_BALANCE_ADC_B, (int8)BALANCE_ADC_B}
             };
 
-            fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, shift[0][BALANCE_ADC_TYPE], false);
-            fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, shift[1][BALANCE_ADC_TYPE], false);
+            FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC1, shift[0][BALANCE_ADC_TYPE], false);
+            FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC2, shift[1][BALANCE_ADC_TYPE], false);
         }
         else
         {
-            fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, 3, false);     // Почему-то при пиковом детекторе смещение появляется. Вот его и компенсируем.
-            fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, 3, false);
+            FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC1, 3, false);     // Почему-то при пиковом детекторе смещение появляется. Вот его и компенсируем.
+            FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC2, 3, false);
         }
         if (PEAKDET_IS_DISABLE)
         {
-            int centerX = SHIFT_IN_MEMORY + grid.Width() / 2;
-            SHIFT_IN_MEMORY = centerX * 2 - grid.Width() / 2;
+            int centerX = SHIFT_IN_MEMORY + Grid::Width() / 2;
+            SHIFT_IN_MEMORY = centerX * 2 - Grid::Width() / 2;
             ENUM_POINTS = set.time.oldNumPoints;
             ChangeC_Memory_NumPoints(true);
         }
         else if (PEAKDET_IS_ENABLE)
         {
-            int centerX = SHIFT_IN_MEMORY + grid.Width() / 2;
-            SHIFT_IN_MEMORY = centerX / 2 - grid.Width() / 2;
-            Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - grid.Width());
+            int centerX = SHIFT_IN_MEMORY + Grid::Width() / 2;
+            SHIFT_IN_MEMORY = centerX / 2 - Grid::Width() / 2;
+            Limitation<int16>(&SHIFT_IN_MEMORY, 0, sMemory_GetNumPoints(false) - Grid::Width());
             ChangeC_Memory_NumPoints(true);
         }
     }
     else
     {
-        display.ShowWarningBad(TooSmallSweepForPeakDet);
+        Display::ShowWarningBad(TooSmallSweepForPeakDet);
     }
 }
 
@@ -100,7 +100,7 @@ DEF_CHOICE_2(       mcPeakDet,                                                  
 void OnChanged_TPos(bool active)
 {
     ChangeC_Memory_NumPoints(active);
-    fpga.SetTShift(TSHIFT);
+    FPGA::SetTShift(TSHIFT);
 }
 
 DEF_CHOICE_3(       mcTPos,                                                                                                   //--- РАЗВЕРТКА - To ---
