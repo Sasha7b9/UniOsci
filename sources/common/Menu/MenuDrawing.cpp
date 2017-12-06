@@ -268,11 +268,14 @@ void DrawItemsPage(Page *page, int layer, int yTop)
     for(int posItem = posFirstItem; posItem <= posLastItem; posItem++)
     {
         Control *item = page->Item(posItem);
-        TypeItem type = item->Type();
-        int top = yTop + MI_HEIGHT * count;
-        funcOfDraw[type](item, CalculateX(layer), top);
-        count++;
-        itemUnderButton[GetFuncButtonFromY(top)] = item;
+        if(item)
+        {
+            TypeItem type = item->Type();
+            int top = yTop + MI_HEIGHT * count;
+            funcOfDraw[type](item, CalculateX(layer), top);
+            count++;
+            itemUnderButton[GetFuncButtonFromY(top)] = item;
+        }
     }
 }
 
