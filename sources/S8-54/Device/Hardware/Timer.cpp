@@ -41,7 +41,7 @@ bool Timer_IsRun(TypeTimer2 type)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Init(void)
+void Timer::Init(void)
 {
     for(uint i = 0; i < NumTimers; i++)
     {
@@ -96,7 +96,7 @@ void TIM3_IRQHandler(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Set(TypeTimer2 type, pFuncVV func, uint dTms)
+void Timer::Set(TypeTimer2 type, pFuncVV func, uint dTms)
 {
     TimerStruct *timer = &timers[type];
     timer->func = func;
@@ -105,17 +105,17 @@ void Timer_Set(TypeTimer2 type, pFuncVV func, uint dTms)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms)
+void Timer::SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms)
 {
-    Timer_Set(type, func, dTms);
+    Timer::Set(type, func, dTms);
     Timer_StartOnce(type);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_SetAndEnable(TypeTimer2 type, pFuncVV func, uint dTms)
+void Timer::SetAndEnable(TypeTimer2 type, pFuncVV func, uint dTms)
 {
-    Timer_Set(type, func, dTms);
+    Set(type, func, dTms);
     Timer_Enable(type);
 }
 

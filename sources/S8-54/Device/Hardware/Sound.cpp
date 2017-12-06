@@ -188,7 +188,7 @@ static void Sound_Beep(const TypeWave newTypeWave, const float newFreq, const fl
     
     HAL_DAC_Start_DMA(&handleDAC, DAC_CHANNEL_1, (uint32_t*)points, POINTS_IN_PERIOD_SOUND, DAC_ALIGN_8B_R);
 
-    Timer_SetAndStartOnce(kStopSound, Stop, (uint)newDuration);
+    Timer::SetAndStartOnce(kStopSound, Stop, (uint)newDuration);
 }
 
 

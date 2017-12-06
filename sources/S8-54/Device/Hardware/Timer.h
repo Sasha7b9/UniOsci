@@ -32,13 +32,19 @@ typedef enum
 } TypeTimer2;
 
 
-void Timer_Init(void);
-/// Назначает таймеру timer функцию и время срабатывания
-void Timer_Set(TypeTimer2 type, pFuncVV func, uint dTms);
+class Timer
+{
+public:
+    static void Init(void);
+    /// Назначает таймеру timer функцию и время срабатывания
+    static void Set(TypeTimer2 type, pFuncVV func, uint dTms);
 
-void Timer_SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms);
+    static void SetAndStartOnce(TypeTimer2 type, pFuncVV func, uint dTms);
 
-void Timer_SetAndEnable(TypeTimer2 type, pFuncVV func, uint dTms);
+    static void SetAndEnable(TypeTimer2 type, pFuncVV func, uint dTms);
+};
+
+
 
 void Timer_StartOnce(TypeTimer2 type);
 

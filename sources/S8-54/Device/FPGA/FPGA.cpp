@@ -131,7 +131,7 @@ static void OnTimerCanReadData(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA_SetENumSignalsInSec(int numSigInSec) 
 {
-    Timer_SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (uint)(1000.f / numSigInSec));
+    Timer::SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (uint)(1000.f / numSigInSec));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -804,7 +804,7 @@ static void ProcessingAfterReadData(void)
         {
             if(!NEED_STOP_AFTER_READ_FRAME_2P2)
             {
-                Timer_SetAndStartOnce(kTimerStartP2P, FPGA_Start, 1000);    // то откладываем следующий запуск, чтобы зафиксировать сигнал на экране
+                Timer::SetAndStartOnce(kTimerStartP2P, FPGA_Start, 1000);    // то откладываем следующий запуск, чтобы зафиксировать сигнал на экране
             }
         }
         else
@@ -1003,7 +1003,7 @@ void StopTemporaryPause(void)
 void FPGA_TemporaryPause(void)
 {
     FPGA_IN_PAUSE = 1;
-    Timer_SetAndStartOnce(kTemporaryPauseFPGA, StopTemporaryPause, 100);
+    Timer::SetAndStartOnce(kTemporaryPauseFPGA, StopTemporaryPause, 100);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

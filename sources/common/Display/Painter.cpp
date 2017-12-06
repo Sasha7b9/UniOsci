@@ -106,7 +106,7 @@ void Painter::SendFrame(bool first)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::ResetFlash(void)
 {
-    Timer_SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 400);
+    Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 400);
     inverseColors = false;
 }
 

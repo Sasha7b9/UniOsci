@@ -286,7 +286,7 @@ void Display::RotateRShift(Channel ch)
     if(TIME_SHOW_LEVELS)
     {
         (ch == A) ? (showLevelRShiftA = true) : (showLevelRShiftB = true);
-        Timer_SetAndStartOnce((ch == A) ? kShowLevelRShiftA : kShowLevelRShiftB, (ch == A) ? DisableShowLevelRShiftA : DisableShowLevelRShiftB, 
+        Timer::SetAndStartOnce((ch == A) ? kShowLevelRShiftA : kShowLevelRShiftB, (ch == A) ? DisableShowLevelRShiftA : DisableShowLevelRShiftB, 
                               TIME_SHOW_LEVELS  * 1000U);
     };
     NEED_FINISH_DRAW = 1;
@@ -298,7 +298,7 @@ void Display::RotateTrigLev(void)
     if(TIME_SHOW_LEVELS && TRIG_MODE_FIND_HAND)
     {
         showLevelTrigLev = true;
-        Timer_SetAndStartOnce(kShowLevelTrigLev, DisableShowLevelTrigLev, TIME_SHOW_LEVELS * 1000U);
+        Timer::SetAndStartOnce(kShowLevelTrigLev, DisableShowLevelTrigLev, TIME_SHOW_LEVELS * 1000U);
     }
     NEED_FINISH_DRAW = 1;
 }
@@ -326,7 +326,7 @@ void Display::SetDrawMode(DrawMode mode, pFuncVV func)
     funcOnHand = func;
     if (mode == DrawMode_Hand)
     {
-        Timer_SetAndEnable(kTimerDisplay, funcOnHand, 40);
+        Timer::SetAndEnable(kTimerDisplay, funcOnHand, 40);
     }
     else
     {
@@ -383,7 +383,7 @@ void Display::ShiftScreen(int delta)
 void Display::ChangedRShiftMarkers(bool)
 {
     drawRShiftMarkers = !ALT_MARKERS_HIDE;
-    Timer_SetAndStartOnce(kRShiftMarkersAutoHide, OnRShiftMarkersAutoHide, 5000);
+    Timer::SetAndStartOnce(kRShiftMarkersAutoHide, OnRShiftMarkersAutoHide, 5000);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1248,7 +1248,7 @@ static void ShowWarn(const char *message)
 {
     if(warnings[0] == 0)
     {
-        Timer_SetAndEnable(kShowMessages, OnTimerShowWarning, 100);
+        Timer::SetAndEnable(kShowMessages, OnTimerShowWarning, 100);
     }
     bool alreadyStored = false;
     for(int i = 0; i < NUM_WARNINGS; i++)

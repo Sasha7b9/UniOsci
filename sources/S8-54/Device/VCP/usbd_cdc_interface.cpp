@@ -49,7 +49,7 @@ static void SetAttributeConnected(void)
 static int8_t CDC_Itf_Init(void)
 {
     USBD_CDC_SetRxBuffer(&handleUSBD, UserRxBuffer);
-    Timer_SetAndStartOnce(kUSB, SetAttributeConnected, 100);   /** \todo Задержка введена для того, чтобы не было ложных срабатываний в 
+    Timer::SetAndStartOnce(kUSB, SetAttributeConnected, 100);   /** \todo Задержка введена для того, чтобы не было ложных срабатываний в 
                                                                  usbd_conf.c:HAL_PCD_SetupStageCallback при определении подключения хоста */
     return (USBD_OK);
 }

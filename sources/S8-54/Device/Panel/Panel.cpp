@@ -356,7 +356,7 @@ void Panel::Update(void)
             funcButton[pressButton].funcOnKey(1);
             menu.PressButton(pressButton);
             pressedKey = pressButton;
-            Timer_SetAndStartOnce(kPressKey, OnTimerPressedKey, 500);
+            Timer::SetAndStartOnce(kPressKey, OnTimerPressedKey, 500);
         }
         else if (regLeft)
         {
