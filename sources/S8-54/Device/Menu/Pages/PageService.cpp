@@ -681,58 +681,42 @@ DEF_CHOICE_2(       cEthernet_Ethernet,                                         
     ETH_ENABLED, ppEthernet, FuncActive, OnChanged_Ethernet_Settings, FuncDraw
 );
 
-//------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - IP адрес ---
-static const IPaddressBase ipEthernet_IP =
-{
-    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "IP адрес", "IP-address",
-        "Установка IP адреса",
-        "Set of IP-address"
-    },
-    &IP_ADDR0, &IP_ADDR1, &IP_ADDR2, &IP_ADDR3,
-    OnChanged_Ethernet_Settings,
-    &ETH_PORT
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_IP_ADDRESS(     ipEthernet_IP,                                                                              //--- СЕРВИС - ETHERNET - IP адрес ---
+    "IP адрес", "IP-address",
+    "Установка IP адреса",
+    "Set of IP-address",
+    IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3, &ETH_PORT,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
+);
 
-//-------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Маска подсети ---
-static const IPaddressBase ipEthernet_NetMask =
-{
-    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "Маска подсети", "Network mask",
-        "Установка маски подсети",
-        "Set of network mask"
-    },
-    &NETMASK_ADDR0, &NETMASK_ADDR1, &NETMASK_ADDR2, &NETMASK_ADDR3,
-    OnChanged_Ethernet_Settings
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_IP_ADDRESS(     ipEthernet_NetMask,                                                                    //--- СЕРВИС - ETHERNET - Маска подсети ---
+    "Маска подсети", "Network mask",
+    "Установка маски подсети",
+    "Set of network mask",
+    NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3, 0,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
+);
 
-//----------------------------------------------------------------------------------------------------------------------- СЕРВИС - ETHERNET - Шлюз ---
-static const IPaddressBase ipEthernet_Gateway =
-{
-    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "Шлюз", "Gateway",
-        "Установка адреса основного шлюза",
-        "Set of gateway address"
-    },
-    &GW_ADDR0, &GW_ADDR1, &GW_ADDR2, &GW_ADDR3,
-    OnChanged_Ethernet_Settings
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_IP_ADDRESS(     ipEthernet_Gateway,                                                                             //--- СЕРВИС - ETHERNET - Шлюз ---
+    "Шлюз", "Gateway",
+    "Установка адреса основного шлюза",
+    "Set of gateway address",
+    GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3, 0,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
+);
 
-//------------------------------------------------------------------------------------------------------------------ СЕРВИС - ETHERNET - MAC адрес ---
-static const MACaddressBase ipEthernet_MAC =
-{
-    Item_MAC, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "MAC адрес", "MAC-address",
-        "Установка физического адреса",
-        "Set of MAC-address"
-    },
-    &set.eth_mac0, &set.eth_mac1, &set.eth_mac2, &set.eth_mac3, &set.eth_mac4, &set.eth_mac5,
-    OnChanged_Ethernet_Settings
-};
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+DEF_MAC_ADDRESS(    ipEthernet_MAC,                                                                            //--- СЕРВИС - ETHERNET - MAC адрес ---
+    "MAC адрес", "MAC-address",
+    "Установка физического адреса",
+    "Set of MAC-address",
+    set.eth_mac0, set.eth_mac1, set.eth_mac2, set.eth_mac3, set.eth_mac4, set.eth_mac5,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Settings
+);
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///

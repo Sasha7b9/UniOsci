@@ -549,55 +549,40 @@ DEF_CHOICE_2(       cEthernet_Enable,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const IPaddressBase ipEthernet_IP =                                                                          //--- СЕРВИС - ETHERNET - IP адрес ---
-{
-    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "IP адрес", "IP-address",
-        "Установка IP адреса",
-        "Set of IP-address"
-    },
-    &IP_ADDR0, &IP_ADDR1, &IP_ADDR2, &IP_ADDR3,
-    OnChanged_Ethernet_Enable,
-    &PORT
-};
+DEF_IP_ADDRESS(     ipEthernet_IP,                                                                              //--- СЕРВИС - ETHERNET - IP адрес ---
+    "IP адрес", "IP-address",
+    "Установка IP адреса",
+    "Set of IP-address",
+    IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3, &PORT,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Enable
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const IPaddressBase ipEthernet_Mask =                                                                   //--- СЕРВИС - ETHERNET - Маска подсети ---
-{
-    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "Маска подсети", "Network mask",
-        "Установка маски подсети",
-        "Set of network mask"
-    },
-    &NETMASK_ADDR0, &NETMASK_ADDR1, &NETMASK_ADDR2, &NETMASK_ADDR3,
-    OnChanged_Ethernet_Enable
-};
+DEF_IP_ADDRESS(     ipEthernet_Mask,                                                                       //--- СЕРВИС - ETHERNET - Маска подсети ---
+    "Маска подсети", "Network mask",
+    "Установка маски подсети",
+    "Set of network mask",
+    NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3, 0,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Enable
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const IPaddressBase ipEthernet_Gateway =                                                                         //--- СЕРВИС - ETHERNET - Шлюз ---
-{
-    Item_IP, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {   "Шлюз", "Gateway",
+DEF_IP_ADDRESS(     ipEthernet_Gateway,                                                                             //--- СЕРВИС - ETHERNET - Шлюз ---
+    "Шлюз", "Gateway",
     "Установка адреса основного шлюза",
-    "Set of gateway address", },
-    &GW_ADDR0, &GW_ADDR1, &GW_ADDR2, &GW_ADDR3,
-    OnChanged_Ethernet_Enable
-};
+    "Set of gateway address",
+    GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3, 0,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Enable
+);
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static const MACaddressBase macEthernet_MAC =                                                                      //--- СЕРВИС - ETHERNET - Физ адрес ---
-{
-    Item_MAC, 0, false, Page_NoPage, &ppEthernet, FuncActive,
-    {
-        "Физ адрес", "MAC-address",
-        "Установка физического адреса",
-        "Set of MAC-address"
-    },
-    &MAC_ADDR0, &MAC_ADDR1, &MAC_ADDR2, &MAC_ADDR3, &MAC_ADDR4, &MAC_ADDR5,
-    OnChanged_Ethernet_Enable
-};
+DEF_MAC_ADDRESS(    macEthernet_MAC,                                                                           //--- СЕРВИС - ETHERNET - Физ адрес ---
+    "Физ адрес", "MAC-address",
+    "Установка физического адреса",
+    "Set of MAC-address",
+    MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5,
+    ppEthernet, FuncActive, OnChanged_Ethernet_Enable
+);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 DEF_PAGE_5(         ppEthernet,                                                                                               // СЕРВИС - ETHERNET ///
