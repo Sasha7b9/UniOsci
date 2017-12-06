@@ -1,5 +1,3 @@
-
-
 #include "PainterMem.h"
 
 
@@ -36,7 +34,7 @@ static uint8 GetMask(int x, int y, int color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_SetBuffer(uint8 *address, int eWidth, int eHeight)
+void PainterMem::SetBuffer(uint8 *address, int eWidth, int eHeight)
 {
     buffer = address;
     width = eWidth;
@@ -44,7 +42,7 @@ void PainterMem_SetBuffer(uint8 *address, int eWidth, int eHeight)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_SetPoint(int x, int y, int color)
+void PainterMem::SetPoint(int x, int y, int color)
 {
     uint8 *byte = FindByte(x, y);
 
@@ -59,29 +57,29 @@ void PainterMem_SetPoint(int x, int y, int color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_FillRect(int x, int y, int w, int h, int color)
+void PainterMem::FillRect(int x, int y, int w, int h, int color)
 {
     for(int i = 0; i <= h; i++)
     {
-        PainterMem_DrawHLine(y + i, x, x + w, color);
+        DrawHLine(y + i, x, x + w, color);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_DrawVLine(int x, int y0, int y1, int color)
+void PainterMem::DrawVLine(int x, int y0, int y1, int color)
 {
     for (int y = y0; y <= y1; y++)
     {
-        PainterMem_SetPoint(x, y, color);
+        SetPoint(x, y, color);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_DrawHLine(int y, int x0, int x1, int color)
+void PainterMem::DrawHLine(int y, int x0, int x1, int color)
 {
     for(int x = x0; x <= x1; x++)
     {
-        PainterMem_SetPoint(x, y, color);
+        SetPoint(x, y, color);
     }
     /*
     uint8 *byte = FindByte(x0, y);
@@ -113,10 +111,10 @@ void PainterMem_DrawHLine(int y, int x0, int x1, int color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterMem_DrawRectangle(int x, int y, int w, int h, int color)
+void PainterMem::DrawRectangle(int x, int y, int w, int h, int color)
 {
-    PainterMem_DrawVLine(x, y, y + h, color);
-    PainterMem_DrawVLine(x + w, y, y + h, color);
-    PainterMem_DrawHLine(y, x, x + w, color);
-    PainterMem_DrawHLine(y + h, x, x + w, color);
+    DrawVLine(x, y, y + h, color);
+    DrawVLine(x + w, y, y + h, color);
+    DrawHLine(y, x, x + w, color);
+    DrawHLine(y + h, x, x + w, color);
 }
