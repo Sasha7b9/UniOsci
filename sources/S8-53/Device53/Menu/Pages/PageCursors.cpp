@@ -77,24 +77,24 @@ void Cursors_Update()
 
     if((lookMode0 == CursLookMode_Voltage || lookMode0 == CursLookMode_Both) && CURS_ACTIVE_IS_T)
     {
-        float posU0 = Processing_GetCursU(source, CURS_POS_T0(source));
+        float posU0 = Processing::GetCursU(source, CURS_POS_T0(source));
         SetCursPosU(source, 0, posU0);
     }
     if((lookMode1 == CursLookMode_Voltage || lookMode1 == CursLookMode_Both)  && CURS_ACTIVE_IS_T)
     {
-        float posU1 = Processing_GetCursU(source, CURS_POS_T1(source));
+        float posU1 = Processing::GetCursU(source, CURS_POS_T1(source));
         SetCursPosU(source, 1, posU1);
     }
     if((lookMode0 == CursLookMode_Time || lookMode0 == CursLookMode_Both) && CURS_ACTIVE_IS_U)
     {
         float posU0 = CURS_POS_U0(source);
-        posT0 = Processing_GetCursT(source, posU0, 0);
+        posT0 = Processing::GetCursT(source, posU0, 0);
         SetCursPosT(source, 0, posT0);
     }
     if((lookMode1 == CursLookMode_Time || lookMode1 == CursLookMode_Both) && CURS_ACTIVE_IS_U)
     {
         float posU1 = CURS_POS_U1(source);
-        posT1 = Processing_GetCursT(source, posU1, 1);
+        posT1 = Processing::GetCursT(source, posU1, 1);
         SetCursPosT(source, 1, posT1);
     }
 }

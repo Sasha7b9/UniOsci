@@ -350,8 +350,8 @@ void FPGA::ReadRandomizeMode()
 
     if (START_MODE_IS_SINGLE || SAMPLE_TYPE_IS_REAL)
     {
-        Processing_InterpolationSinX_X(dataRel0, SET_TBASE);
-        Processing_InterpolationSinX_X(dataRel1, SET_TBASE);
+        Processing::InterpolationSinX_X(dataRel0, SET_TBASE);
+        Processing::InterpolationSinX_X(dataRel1, SET_TBASE);
     }
 }
 
