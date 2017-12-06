@@ -135,11 +135,11 @@ void Processing::CalculateMeasures()
     periodAccurateIsCalculating[0] = periodAccurateIsCalculating[1] = false;
     picIsCalculating[0] = picIsCalculating[1] = false;
 
-    for(int str = 0; str < measures.NumRows(); str++)
+    for(int str = 0; str < Measures::NumRows(); str++)
     {
-        for(int elem = 0; elem < measures.NumCols(); elem++)
+        for(int elem = 0; elem < Measures::NumCols(); elem++)
         {
-            Meas meas = measures.Type(str, elem);
+            Meas meas = Measures::Type(str, elem);
             if (meas == Meas_TimeNarastaniya)
             {
                 meas = meas;

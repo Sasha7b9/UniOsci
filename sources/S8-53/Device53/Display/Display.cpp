@@ -1655,7 +1655,7 @@ void Display::DrawCursorTrigLevel()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawCursorRShift(Channel chan)
 {
-    int x = Grid::Right() - Grid::Width() - measures.GetDeltaGridLeft();
+    int x = Grid::Right() - Grid::Width() - Measures::GetDeltaGridLeft();
 
     if (chan == Math)
     {
@@ -1846,13 +1846,13 @@ void Display::DrawMeasures()
         Painter::DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::Fill());
     }
 
-    int x0 = Grid::Left() - measures.GetDeltaGridLeft();
-    int dX = measures.GetDX();
-    int dY = measures.GetDY();
-    int y0 = measures.GetTopTable();
+    int x0 = Grid::Left() - Measures::GetDeltaGridLeft();
+    int dX = Measures::GetDX();
+    int dY = Measures::GetDY();
+    int y0 = Measures::GetTopTable();
 
-    int numRows = measures.NumRows();
-    int numCols = measures.NumCols();
+    int numRows = Measures::NumRows();
+    int numCols = Measures::NumCols();
 
     for(int str = 0; str < numRows; str++)
     {
@@ -1860,9 +1860,9 @@ void Display::DrawMeasures()
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = measures.IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
+            bool active = Measures::IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? Color::Back() : Color::Fill();
-            Meas meas = measures.Type(str, elem);
+            Meas meas = Measures::Type(str, elem);
             if(meas != Meas_None)
             {
                 Painter::FillRegion(x, y, dX, dY, Color::Back());
@@ -1876,11 +1876,11 @@ void Display::DrawMeasures()
             if(meas != Meas_None)
             {
                 char buffer[20];
-                Painter::DrawText(x + 4, y + 2, measures.Name(str, elem), color);
+                Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), color);
                 if(meas == MEAS_MARKED)
                 {
                     Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::Back() : Color::Fill());
-                    Painter::DrawText(x + 4, y + 2, measures.Name(str, elem), active ? Color::Fill() : Color::Back());
+                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::Fill() : Color::Back());
                 }
                 if(SOURCE_MEASURE_IS_A)
                 {
@@ -1901,7 +1901,7 @@ void Display::DrawMeasures()
 
     if(Menu::GetNameOpenedPage() == PageSB_Measures_Tune)
     {
-        measures.DrawPageChoice();
+        Measures::DrawPageChoice();
     }
 }
 
@@ -1987,8 +1987,8 @@ void Display::DrawLowPart()
     int y1 = SCREEN_HEIGHT - 10;
     int x = -1;
 
-    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - measures.GetDeltaGridLeft() - 2, Color::Fill());
-    Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - measures.GetDeltaGridLeft() - 2);
+    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::Fill());
+    Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2);
 
     WriteTextVoltage(A, x + 2, y0);
 

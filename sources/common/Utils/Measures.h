@@ -44,39 +44,36 @@ typedef enum
 class Measures
 {
 public:
-    char GetChar(Meas measure);
+    static char GetChar(Meas measure);
 
-    bool IsActive(int row, int col);
+    static bool IsActive(int row, int col);
 
-    void GetActive(int *row, int *col);
+    static void GetActive(int *row, int *col);
 
-    void SetActive(int row, int col);
+    static void SetActive(int row, int col);
 
-    int GetDY();
+    static int GetDY();
 
-    int GetDX();
+    static int GetDX();
 
-    const char *Name(int row, int col);
+    static const char *Name(int row, int col);
 
-    Meas Type(int row, int col);
+    static Meas Type(int row, int col);
 
-    int NumRows();
+    static int NumRows();
 
-    int NumCols();
+    static int NumCols();
 
-    int GetTopTable();
+    static int GetTopTable();
 
-    int GetDeltaGridLeft();
+    static int GetDeltaGridLeft();
 
-    int GetDeltaGridBottom();
+    static int GetDeltaGridBottom();
 
-    void ShortPressOnSmallButonMarker();
+    static void ShortPressOnSmallButonMarker();
     /// Нарисовать страницу выбора измерений
-    void DrawPageChoice();
+    static void DrawPageChoice();
 };
-
-
-extern Measures measures;
 
 
 /** @}  @}

@@ -147,7 +147,7 @@ DEF_SMALL_BUTTON_EXIT(  bTune_Exit,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Tune_Markers()
 {
-    measures.ShortPressOnSmallButonMarker();
+    Measures::ShortPressOnSmallButonMarker();
 }
 
 static void Draw_Tune_Markers(int x, int y)
@@ -222,27 +222,27 @@ static void OnRegSet_Tune(int angle)
     {
         int row = 0;
         int col = 0;
-        measures.GetActive(&row, &col);
+        Measures::GetActive(&row, &col);
         col += Sign(currentAngle);
         if (col < 0)
         {
-            col = measures.NumCols() - 1;
+            col = Measures::NumCols() - 1;
             row--;
             if (row < 0)
             {
-                row = measures.NumRows() - 1;
+                row = Measures::NumRows() - 1;
             }
         }
-        else if (col == measures.NumCols())
+        else if (col == Measures::NumCols())
         {
             col = 0;
             row++;
-            if (row >= measures.NumRows())
+            if (row >= Measures::NumRows())
             {
                 row = 0;
             }
         }
-        measures.SetActive(row, col);
+        Measures::SetActive(row, col);
         Sound::RegulatorSwitchRotate();
     }
     currentAngle = 0;
