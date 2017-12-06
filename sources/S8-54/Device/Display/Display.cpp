@@ -64,7 +64,7 @@ static const StructWarning warns[Warning_Count] =
     {ImpossibleEnableMathFunction, true, {{"Отключите вычисление БПФ"},                                           {"DISCONNECT CALCULATION OF FFT"}}},
     {ImpossibleEnableFFT, true,         {{"Отключите математическую функцию"},                                 {"DISCONNECT MATHEMATICAL FUNCTION"}}},
     {WrongFileSystem, false,            {{"Не могу прочитать флешку. Убедитесь, что на ней FAT32"}, 
-                                                                                      {"I can not mount a usb flash drive. Make sure to her FAT32"}}},
+                                                                                      {"I can not mount a usb flash FDrive:: Make sure to her FAT32"}}},
     {WrongModePeackDet, true,           {{"Чтобы изменить длину памяти, отключите пиковый детектор"},
                                                                                  {"To change the length of the memory, turn off the peak detector"}}},
     {DisableChannelB, true,             {{"Сначала выключите канал 2"},                                           {"First, turn off the channel 2"}}},

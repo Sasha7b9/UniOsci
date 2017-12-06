@@ -556,9 +556,9 @@ bool Painter::SaveScreenToFlashDrive()
         return false;
     }
 
-    drive.OpenNewFileForWrite(fileName, &structForWrite);
+    FDrive::OpenNewFileForWrite(fileName, &structForWrite);
 
-    drive.WriteToFile((uint8 *)(&bmFH), 14, &structForWrite);
+    FDrive::WriteToFile((uint8 *)(&bmFH), 14, &structForWrite);
 
     BITMAPINFOHEADER bmIH =
     {
@@ -575,7 +575,7 @@ bool Painter::SaveScreenToFlashDrive()
         0   // clrImportant;
     };
 
-    drive.WriteToFile((uint8 *)(&bmIH), 40, &structForWrite);
+    FDrive::WriteToFile((uint8 *)(&bmIH), 40, &structForWrite);
 
     uint8 buffer[320 * 3] = {0};
 
@@ -601,7 +601,7 @@ bool Painter::SaveScreenToFlashDrive()
 
     for (int i = 0; i < 4; i++)
     {
-        drive.WriteToFile(buffer, 256, &structForWrite);
+        FDrive::WriteToFile(buffer, 256, &structForWrite);
     }
 
     FSMC_SET_MODE(ModeFSMC_Display);
@@ -620,12 +620,12 @@ bool Painter::SaveScreenToFlashDrive()
             buffer[x / 2] = (uint8)(((color & 0x0f) << 4) + (color >> 4));
         }
 
-        drive.WriteToFile(buffer, 160, &structForWrite);
+        FDrive::WriteToFile(buffer, 160, &structForWrite);
     }
 
     FSMC_RESTORE_MODE();
 
-    drive.CloseFile(&structForWrite);
+    FDrive::CloseFile(&structForWrite);
 
     return true;
 }

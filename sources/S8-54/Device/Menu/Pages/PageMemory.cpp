@@ -326,7 +326,7 @@ void OnPress_Drive_Manager(void)
 {
     if (FDRIVE_IS_CONNECTED)
     {
-        drive.Mount();
+        FDrive::Mount();
         Display::SetDrawMode(DrawMode_Auto, FM_Draw);
         FM_NEED_REDRAW = FM_REDRAW_FULL;
     }

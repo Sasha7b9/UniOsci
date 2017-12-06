@@ -71,16 +71,16 @@ static void DrawHat(int x, int y, char *string, int num1, int num2)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawDirs(int x, int y)
 {
-    drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+    FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
     DrawHat(x, y, "Каталог : %d/%d", numCurDir + ((numDirs == 0) ? 0 : 1), numDirs);
     char nameDir[255];
     StructForReadDir sfrd;
     y += 12;
-    if (drive.GetNameDir(currentDir, numFirstDir, nameDir, &sfrd))
+    if (FDrive::GetNameDir(currentDir, numFirstDir, nameDir, &sfrd))
     {
         int  drawingDirs = 0;
         DrawLongString(x, y, nameDir, FM_CURSOR_IN_DIRS && ( numFirstDir + drawingDirs == numCurDir));
-        while (drawingDirs < (RECS_ON_PAGE - 1) && drive.GetNextNameDir(nameDir, &sfrd))
+        while (drawingDirs < (RECS_ON_PAGE - 1) && FDrive::GetNextNameDir(nameDir, &sfrd))
         {
             drawingDirs++;
             DrawLongString(x, y + drawingDirs * 9, nameDir, FM_CURSOR_IN_DIRS && ( numFirstDir + drawingDirs == numCurDir));
@@ -95,11 +95,11 @@ static void DrawFiles(int x, int y)
     char nameFile[255];
     StructForReadDir sfrd;
     y += 12;
-    if (drive.GetNameFile(currentDir, numFirstFile, nameFile, &sfrd))
+    if (FDrive::GetNameFile(currentDir, numFirstFile, nameFile, &sfrd))
     {
         int drawingFiles = 0;
         DrawLongString(x, y, nameFile, !FM_CURSOR_IN_DIRS && (numFirstFile + drawingFiles == numCurFile));
-        while (drawingFiles < (RECS_ON_PAGE - 1) && drive.GetNextNameFile(nameFile, &sfrd))
+        while (drawingFiles < (RECS_ON_PAGE - 1) && FDrive::GetNextNameFile(nameFile, &sfrd))
         {
             drawingFiles++;
             DrawLongString(x, y + drawingFiles * 9, nameFile, !FM_CURSOR_IN_DIRS && (numFirstFile + drawingFiles == numCurFile));
@@ -157,7 +157,7 @@ void FM_Draw(void)
         menu.Draw();
         Painter::DrawRectangle(0, 0, width, 239, gColorFill);
         Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, gColorBack);
-        drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+        FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
         Painter::DrawVLine(left2col, top + 16, 239, gColorFill);
         Painter::DrawHLine(top + 15, 0, width);
@@ -189,18 +189,18 @@ void PressSB_FM_LevelDown(void)
     }
     char nameDir[100];
     StructForReadDir sfrd;
-    if (drive.GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
+    if (FDrive::GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
     {
         if (strlen(currentDir) + strlen(nameDir) < 250)
         {
-            drive.CloseCurrentDir(&sfrd);
+            FDrive::CloseCurrentDir(&sfrd);
             strcat(currentDir, "\\");
             strcat(currentDir, nameDir);
             numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
         }
 
     }
-    drive.CloseCurrentDir(&sfrd);
+    FDrive::CloseCurrentDir(&sfrd);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

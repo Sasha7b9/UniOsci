@@ -37,7 +37,7 @@ int main(void)
     {
         Timer::StartMultiMeasurement();  // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
         Ethernet_Update(0);             // Обрабатываем LAN
-        drive.Update();                // Обрабатываем флешку
+        FDrive::Update();                // Обрабатываем флешку
         FPGA_Update();                  // Обновляем аппаратную часть.
         panel.Update();                 // Обрабатываем панель
         menu.UpdateInput();             // Обновляем состояние меню

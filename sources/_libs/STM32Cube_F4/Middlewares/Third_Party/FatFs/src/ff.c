@@ -3045,7 +3045,7 @@ FRESULT find_volume (	/* FR_OK(0): successful, !=0: any error occurred */
 	if (SS(fs) > _MAX_SS || SS(fs) < _MIN_SS || (SS(fs) & (SS(fs) - 1))) return FR_DISK_ERR;
 #endif
 
-	/* Find an FAT partition on the drive. Supports only generic partitioning rules, FDISK and SFD. */
+	/* Find an FAT partition on the FDrive:: Supports only generic partitioning rules, FDISK and SFD. */
 	bsect = 0;
 	fmt = check_fs(fs, bsect);			/* Load sector 0 and check if it is an FAT-VBR as SFD */
 	if (fmt == 2 || (fmt < 2 && LD2PT(vol) != 0)) {	/* Not an FAT-VBR or forced partition number */
