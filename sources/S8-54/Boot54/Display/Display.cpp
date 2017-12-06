@@ -221,7 +221,7 @@ static void DrawBigMNIPI(void)
 
     uint time = gTimeMS - startTime;
 
-    int numColor = (int)(time / (float)TIME_WAIT * 13.0f);
+    int numColor = (int)(time / (float)TIME_WAIT * 14.0f);
     Limitation(&numColor, 0, 13);
 
     Painter_SetColor((Color)(numColor + 2));

@@ -81,7 +81,7 @@ static void OnTimerFlashDisplay(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter_ResetFlash(void)
 {
-    Timer_Enable(kFlashDisplay, 400, OnTimerFlashDisplay);
+    Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 400);
     inverseColors = false;
 }
 
@@ -111,7 +111,7 @@ void Painter_SendToDisplay(uint8 *bytes, int numBytes)
         while (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_11) == GPIO_PIN_RESET)
         {
         };
-        Timer_PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
+        Timer::PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;

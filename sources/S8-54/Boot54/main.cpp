@@ -53,20 +53,26 @@ int main(void)
 
     Settings_Load();
 
-    Timer_PauseOnTime(250);
+    Timer::PauseOnTime(250);
 
     Display_Init();
 
     ms->state = State_Start;
 
-    Timer_Enable(kTemp, 10, Display_Update);
+    Timer::SetAndEnable(kTemp, Display_Update, 10);
 
     uint timeStart = gTimeMS;
 
     drive.Init();
 
+    bool update = drive.Update();
+    
+    uint time = gTimeMS - timeStart;
+
     while (gTimeMS - timeStart < TIME_WAIT && !drive.Update())
     {
+        update = drive.Update();
+        time = gTimeMS - timeStart;
     }
 
     if ((ms->drive.connection && ms->drive.active == 0) ||  // Если флеша подключена, но в активное состояние почему-то не перешла
@@ -105,14 +111,14 @@ int main(void)
     }
     else if (ms->state == State_WrongFlash) // Диск не удалось примонтировать
     {
-        Timer_PauseOnTime(5000);
+        Timer::PauseOnTime(5000);
     }
 
     ms->state = State_Ok;
 
     Panel_DeInit();
 
-    Timer_Disable(kTemp);
+    Timer::Disable(kTemp);
 
     while (Display_IsRun())
     {

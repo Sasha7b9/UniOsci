@@ -769,16 +769,6 @@
               <FilePath>.\Boot54\Hardware\Hardware.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Boot54\Hardware\Timer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Timer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Boot54\Hardware\Timer.cpp</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Hardware\FLASH.cpp</FilePath>
@@ -792,6 +782,16 @@
               <FileName>Hardware.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Boot54\Hardware\Hardware.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Hardware\Timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Hardware\Timer.h</FilePath>
             </File>
           </Files>
         </Group>

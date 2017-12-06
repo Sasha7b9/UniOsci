@@ -28,6 +28,7 @@ typedef enum
     kStrNaviAutoHide,           ///< Прятать строку навигации меню
     kTimerStartP2P,             ///< Таймер для запуска следующего цикла поточечного чтения
     kTimerDisplay,              ///< Таймер на ручную отрисовку экрана
+    kTemp,
     NumTimers
 } TypeTimer2;
 

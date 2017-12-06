@@ -111,9 +111,6 @@
     <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\Hardware.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\Timer.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Boot54\Panel\Controls.h">
       <Filter>Panel</Filter>
     </ClInclude>
@@ -185,6 +182,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Hardware\Timer.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\Log.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\_Timer.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,9 +295,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.cpp">
       <Filter>libs</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Timer.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Boot54\FlashDrive\FlashDrive.cpp">
       <Filter>FlashDrive</Filter>
     </ClCompile>
@@ -336,6 +339,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Hardware\Timer.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\_Timer.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
