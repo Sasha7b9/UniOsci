@@ -40,7 +40,7 @@ static const char chanDividerEn[] = "Attenuation: \n\"Off\" - the signal is not 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_InputA(bool)
 {
-    panel.EnableLEDChannel(A, SET_ENABLED_A);
+    Panel::EnableLEDChannel(A, SET_ENABLED_A);
 }
 
 DEF_CHOICE_2(       cChanA_Input,                                                                                             //---  ¿Õ¿À 1 - ¬ıÓ‰ ---
@@ -173,7 +173,7 @@ void OnChanged_InputB(bool active)
     {
         SET_ENABLED_B = false;
     }
-    panel.EnableLEDChannel(B, SET_ENABLED_B);
+    Panel::EnableLEDChannel(B, SET_ENABLED_B);
 }
 
 DEF_CHOICE_2(       cChanB_Input,                                                                                             //---  ¿Õ¿À 2 - ¬ıÓ‰ ---

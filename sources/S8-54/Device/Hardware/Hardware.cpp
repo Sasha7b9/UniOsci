@@ -81,7 +81,7 @@ void Hardware_Init(void)
 
     Sound::Init();
     
-    panel.Init();
+    Panel::Init();
 
     FSMC_Init();
     

@@ -148,7 +148,7 @@ void FPGA_SwitchingTrig(void)
         *WR_TRIG = 0;
     }
     timeSwitchingTrig = gTimeMS;
-    panel.EnableLEDTrig(false);
+    Panel::EnableLEDTrig(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ uint16 ReadFlag(void)
     {
         if(_GET_BIT(flag, FL_TRIG_READY) == 1 && timeStart > timeSwitchingTrig)
         {
-            panel.EnableLEDTrig(true);
+            Panel::EnableLEDTrig(true);
         }
     }
 
@@ -765,7 +765,7 @@ bool ProcessingData(void)
             {
                 if (IN_P2P_MODE)
                 {
-                    panel.EnableLEDTrig(false);                                     // В поточечном режиме просто тушим лампочку синхронизации
+                    Panel::EnableLEDTrig(false);                                     // В поточечном режиме просто тушим лампочку синхронизации
                 }
                 else
                 {
@@ -814,7 +814,7 @@ static void ProcessingAfterReadData(void)
     }
     else
     {
-        panel.EnableLEDTrig(false);
+        Panel::EnableLEDTrig(false);
     }
 }
 
@@ -958,7 +958,7 @@ void FPGA_OnPressStartStop(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA_Stop(bool pause) 
 {
-    panel.EnableLEDTrig(false);
+    Panel::EnableLEDTrig(false);
     HAL_NVIC_DisableIRQ(EXTI2_IRQn);        // Выключаем прерывание на чтение считанной точки
     fpgaStateWork = pause ? StateWorkFPGA_Pause : StateWorkFPGA_Stop;
 }
@@ -1084,7 +1084,7 @@ void FPGA_Write(TypeRecord type, uint16 *address, uint data, bool restart)
         FSMC_SetMode(modePrev);
     }
 
-    panel.EnableLEDTrig(false); // После каждой засылки выключаем лампочку синхронизации
+    Panel::EnableLEDTrig(false); // После каждой засылки выключаем лампочку синхронизации
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

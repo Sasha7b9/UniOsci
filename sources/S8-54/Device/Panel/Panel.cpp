@@ -11,8 +11,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Panel panel;
-
 extern void OnPress_ResetSettings(void);
 
 
@@ -403,14 +401,14 @@ void Panel::Update(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void EnableLEDChannelA(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
+    Panel::TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void EnableLEDChannelB(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
+    Panel::TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
 }
 
 
@@ -436,7 +434,7 @@ void Panel::EnableLEDTrig(bool enable)
     if (enable != enabled)
     {
         enabled = enable;
-        panel.TransmitData(enable ? LED_TRIG_ENABLE : LED_TRIG_DISABLE);
+        Panel::TransmitData(enable ? LED_TRIG_ENABLE : LED_TRIG_DISABLE);
         Display::EnableTrigLabel(enable);
     }
 }
@@ -549,7 +547,7 @@ void Panel::Init(void)
     isGPIOG.Alternate = GPIO_AF0_MCO;
     HAL_GPIO_Init(GPIOG, &isGPIOG);
 
-    panel.EnableLEDRegSet(false);
+    Panel::EnableLEDRegSet(false);
 }
 
 
@@ -576,7 +574,7 @@ void Panel::DisableIfNessessary(void)
     {
         Settings_Save();
         Log_DisconnectLoggerUSB();
-        panel.TransmitData(0x04);
+        Panel::TransmitData(0x04);
         while (1)
         {
         };
@@ -608,13 +606,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* hSPI)
 {
-    if (!panel.ProcessingCommandFromPIC(dataSPIfromPanel))
+    if (!Panel::ProcessingCommandFromPIC(dataSPIfromPanel))
     {
         HAL_SPI_DeInit(hSPI);
         HAL_SPI_Init(hSPI);
     }
 
-    SPI1->DR = panel.NextData();
+    SPI1->DR = Panel::NextData();
 }
 
 

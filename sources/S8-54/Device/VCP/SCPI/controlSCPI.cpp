@@ -52,7 +52,7 @@ void Process_KEY(uint8 *buffer)
                 {
                     code += 128;
                 }
-                panel.ProcessingCommandFromPIC(code);
+                Panel::ProcessingCommandFromPIC(code);
                 return;
             }
             numKey++;
@@ -93,7 +93,7 @@ void Process_GOVERNOR(uint8 *buffer)
                 {
                     code += 128;
                 }
-                panel.ProcessingCommandFromPIC(code);
+                Panel::ProcessingCommandFromPIC(code);
                 return;
             }
             numGov++;

@@ -271,8 +271,8 @@ void Settings_Load(bool _default)
 
     FPGA_LoadSettings();
     FPGA_SetENumSignalsInSec(NUM_SIGNALS_IN_SEC);
-    panel.EnableLEDChannel(A, SET_ENABLED_A);
-    panel.EnableLEDChannel(B, SET_ENABLED_B);
+    Panel::EnableLEDChannel(A, SET_ENABLED_A);
+    Panel::EnableLEDChannel(B, SET_ENABLED_B);
     FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
     menu.SetAutoHide(true);
     Display::ChangedRShiftMarkers(true);

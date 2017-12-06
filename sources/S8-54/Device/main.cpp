@@ -39,9 +39,9 @@ int main(void)
         Ethernet_Update(0);             // Обрабатываем LAN
         FDrive::Update();                // Обрабатываем флешку
         FPGA_Update();                  // Обновляем аппаратную часть.
-        panel.Update();                 // Обрабатываем панель
+        Panel::Update();                 // Обрабатываем панель
         menu.UpdateInput();             // Обновляем состояние меню
         Display::Update();               // Рисуем экран.
-        panel.DisableIfNessessary();    // Выключаем, если необходимо
+        Panel::DisableIfNessessary();    // Выключаем, если необходимо
     }
 }

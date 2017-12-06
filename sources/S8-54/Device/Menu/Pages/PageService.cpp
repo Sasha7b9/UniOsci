@@ -37,16 +37,16 @@ static void Draw_ResetSettings(void)
 
 void OnPress_ResetSettings(void)
 {
-    panel.Disable();
+    Panel::Disable();
     Display::SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
 
-    if (panel.WaitPressingButton() == B_Start)
+    if (Panel::WaitPressingButton() == B_Start)
     {
         Settings_Load(true);
     }
 
     Display::SetDrawMode(DrawMode_Auto, 0);
-    panel.Enable();
+    Panel::Enable();
     //Func_Start(1);
 }
 
