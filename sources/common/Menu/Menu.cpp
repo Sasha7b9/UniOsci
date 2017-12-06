@@ -251,7 +251,7 @@ static void ProcessButtonForHint(PanelButton button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::PressButton(PanelButton button)
 {
-    sound.ButtonPress();
+    Sound::ButtonPress();
     if (HINT_MODE_ENABLE)
     {
         ProcessButtonForHint(button);
@@ -278,7 +278,7 @@ void Menu::PressButton(PanelButton button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ReleaseButton(PanelButton button)
 {
-    sound.ButtonRelease();
+    Sound::ButtonRelease();
     if (!HINT_MODE_ENABLE)
     {
         releaseButton = button;
@@ -461,7 +461,7 @@ void ProcessingLongPressureButton(void)
 
     if(button != B_Empty)
     {
-        sound.ButtonRelease();
+        Sound::ButtonRelease();
         NEED_FINISH_DRAW = 1;
         menu.SetAutoHide(true);
 

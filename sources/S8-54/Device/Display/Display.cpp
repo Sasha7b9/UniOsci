@@ -452,11 +452,11 @@ void Display::ShowWarning(Warning warning)
     }
     if(warns[warning].good)
     {
-        sound.WarnBeepGood();
+        Sound::WarnBeepGood();
     }
     else
     {
-        sound.WarnBeepBad();
+        Sound::WarnBeepBad();
     }
 }
 

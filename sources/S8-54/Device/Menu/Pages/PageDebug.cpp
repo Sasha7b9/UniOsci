@@ -1077,7 +1077,7 @@ static void OnRegSet_SerialNumber(int angle)
     {
         p(&s->year, 2016, 2050);
     }
-    sound.GovernorChangedValue();
+    Sound::GovernorChangedValue();
 }
 
 DEF_PAGE_SB(        ppSerialNumber,                                                                                               // Œ“À¿ƒ ¿ - —/Õ ///

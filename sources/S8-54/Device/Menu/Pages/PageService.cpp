@@ -346,7 +346,7 @@ static bool IsActive_FFT_Cursors(void)
 static void OnRegSet_FFT_Cursors(int angle)
 {
     FFT_POS_CURSOR(MATH_CURRENT_CUR) += (uint8)angle;
-    sound.RegulatorShiftRotate();
+    Sound::RegulatorShiftRotate();
 }
 
 DEF_PAGE_SB(        pppFFT_Cursors,                                                                                   // —≈–¬»— - —œ≈ “– -  ”–—Œ–€ ///
@@ -602,7 +602,7 @@ static void OnRegSet_Function(int delta)
                 {
                     rShift = RShiftZero;
                 }
-                sound.RegulatorShiftRotate();
+                Sound::RegulatorShiftRotate();
                 SET_RSHIFT_MATH = rShift;
             }
         }
@@ -616,7 +616,7 @@ static void OnRegSet_Function(int delta)
                 {
                     rShift = RShiftZero;
                 }
-                sound.RegulatorShiftRotate();
+                Sound::RegulatorShiftRotate();
                 SET_RSHIFT_MATH = rShift;
             }
         }
@@ -634,7 +634,7 @@ static void OnRegSet_Function(int delta)
             {
                 SET_RANGE_MATH = (Range)((int)SET_RANGE_MATH + 1);  // SET_RANGE_MATH++;
                 SET_RSHIFT_MATH = (uint16)RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
-                sound.RegulatorSwitchRotate();
+                Sound::RegulatorSwitchRotate();
             }
             sum = 0;
         }
@@ -644,7 +644,7 @@ static void OnRegSet_Function(int delta)
             {
                 SET_RANGE_MATH = (Range)((int)SET_RANGE_MATH - 1);  // SET_RANGE_MATH--;
                 SET_RSHIFT_MATH = (uint16)RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
-                sound.RegulatorSwitchRotate();
+                Sound::RegulatorSwitchRotate();
             }
             sum = 0;
         }

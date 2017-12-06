@@ -213,7 +213,7 @@ static bool EraseSector(uint startAddress)
 
     uint32_t error = 0;
 
-    sound.WaitCompletion();
+    Sound::WaitCompletion();
 
     HAL_FLASHEx_Erase(&flashITD, &error);
 
@@ -407,7 +407,7 @@ static uint AddressSectorForAddress(uint address)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void WriteBufferBytes(uint address, void *buffer, int size)
 {
-    sound.WaitCompletion();
+    Sound::WaitCompletion();
     
     CLEAR_FLASH_FLAGS
 

@@ -235,7 +235,7 @@ static void OnRegSet_Last(int angle)
 {
     if (Storage::NumElementsInStorage() > 1)
     {
-        sound.RegulatorSwitchRotate();
+        Sound::RegulatorSwitchRotate();
     }
     if (Sign(angle) > 0)
     {
@@ -978,7 +978,7 @@ static void DrawMemoryWave(int num, bool exist)
 
 static void OnRegSet_Internal(int delta)
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     if (delta < 0)
     {
         CircleDecrease<int8>(&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
@@ -1148,7 +1148,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
         INDEX_SYMBOL = (int8)(maxIndex - 1);
     }
     func[Sign(angle) + 1](&INDEX_SYMBOL, 0, (int8)(maxIndex - 1));
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
 
 }
 

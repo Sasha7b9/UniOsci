@@ -23,27 +23,25 @@ typedef enum
 class Sound
 {
 public:
-    void Init(void);
+    static void Init(void);
     /// Звук нажатия на кнопку.
-    void ButtonPress(void);
+    static void ButtonPress(void);
     /// Функция вызовет звук отпускаемой кнопки только если перед этим проигрывался звук нажатия кнопки.
-    void ButtonRelease(void);
+    static void ButtonRelease(void);
 
-    void GovernorChangedValue(void);
+    static void GovernorChangedValue(void);
     
-    void RegulatorShiftRotate(void);
+    static void RegulatorShiftRotate(void);
 
-    void RegulatorSwitchRotate(void);
+    static void RegulatorSwitchRotate(void);
 
-    void WarnBeepBad(void);
+    static void WarnBeepBad(void);
 
-    void WarnBeepGood(void);
+    static void WarnBeepGood(void);
     /// Эту функцию надо вызывать перед записью/стиранием ППЗУ. Звук конфликтует с ППЗУ.
-    void WaitCompletion(void);
+    static void WaitCompletion(void);
 };
 
-
-extern Sound sound;
 
 /** @}  @}
  */
