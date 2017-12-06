@@ -278,7 +278,7 @@ void Settings_Load(bool _default)
     Display::ChangedRShiftMarkers(true);
     OnChanged_ADC_Stretch_Mode(true);
     OnChanged_DisplayOrientation(true);
-    painter.SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
+    Painter::SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
 }
 
 

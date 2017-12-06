@@ -327,10 +327,10 @@ static void AlignmentADC(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawParametersChannel(Channel ch, int eX, int eY, bool inProgress)
 {
-    painter.SetColor(gColorFill);
+    Painter::SetColor(gColorFill);
     if(inProgress)
     {
-        painter.DrawText(eX, eY + 4, ch == 0 ? "КАНАЛ 1" : "КАНАЛ 2");
+        Painter::DrawText(eX, eY + 4, ch == 0 ? "КАНАЛ 1" : "КАНАЛ 2");
         ProgressBar *bar = (ch == A) ? &cal->barA : &cal->barB;
         bar->width = 240;
         bar->height = 15;
@@ -343,20 +343,20 @@ static void DrawParametersChannel(Channel ch, int eX, int eY, bool inProgress)
     {
         int x = inProgress ? 5 : eX;
         int y = eY + (inProgress ? 110 : 0);
-        painter.DrawText(x, y, "Отклонение от нуля:");
+        Painter::DrawText(x, y, "Отклонение от нуля:");
         const int SIZE = 100;
         char buffer[SIZE] = {0};
         snprintf(buffer, SIZE, "АЦП1 = %.2f/%.2f, АЦП2 = %.2f/%.2f, d = %.2f/%.2f", cal->avrADC1old[ch] - AVE_VALUE, cal->avrADC1[ch] - AVE_VALUE,
                 cal->avrADC2old[ch] - AVE_VALUE, cal->avrADC2[ch] - AVE_VALUE,
                 cal->deltaADCold[ch], cal->deltaADC[ch]);
         y += 10;
-        painter.DrawText(x, y, buffer);
+        Painter::DrawText(x, y, buffer);
         buffer[0] = 0;
         snprintf(buffer, SIZE, "Расхождение AЦП = %.2f/%.2f %%", cal->deltaADCPercentsOld[ch], cal->deltaADCPercents[ch]);
-        painter.DrawText(x, y + 11, buffer);
+        Painter::DrawText(x, y + 11, buffer);
         buffer[0] = 0;
         snprintf(buffer, SIZE, "Записано %d", SET_BALANCE_ADC(ch));
-        painter.DrawText(x, y + 19, buffer);
+        Painter::DrawText(x, y + 19, buffer);
     }
 }
 
@@ -365,11 +365,11 @@ static void FuncDrawAdditionRShift(int x, int y, const int16 *addRShift)
 {
     if (*addRShift == ERROR_VALUE_INT16)
     {
-        painter.DrawFormText(x, y, gColorFill, "Err");
+        Painter::DrawFormText(x, y, gColorFill, "Err");
     }
     else
     {
-        painter.DrawFormText(x, y, gColorFill, "%d", *addRShift);
+        Painter::DrawFormText(x, y, gColorFill, "%d", *addRShift);
     }
 }
 
@@ -378,32 +378,32 @@ static void WriteStretch(Channel ch, int x, int y)
 {
     if (cal->isCalculateStretch[ch])
     {
-        painter.DrawFormText(x, y, gColorFill, "Коэффициент калибровки %dк : %f", (int)ch + 1, GetStretchADC(ch));
+        Painter::DrawFormText(x, y, gColorFill, "Коэффициент калибровки %dк : %f", (int)ch + 1, GetStretchADC(ch));
     }
     else
     {
-        painter.DrawFormText(x, y, Color::FLASH_01, "Калибровка %dк не прошла. Старый коэффициент %f", (int)ch + 1, GetStretchADC(ch));
+        Painter::DrawFormText(x, y, Color::FLASH_01, "Калибровка %dк не прошла. Старый коэффициент %f", (int)ch + 1, GetStretchADC(ch));
     }
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawMessageErrorCalibrate(Channel ch)
 {
-    painter.SetColor(Color::FLASH_01);
-    painter.DrawBigText(100, 30, 2, "ВНИМАНИЕ !!!");
+    Painter::SetColor(Color::FLASH_01);
+    Painter::DrawBigText(100, 30, 2, "ВНИМАНИЕ !!!");
 
     const int SIZE = 100;
     char buffer[SIZE];
     snprintf(buffer, SIZE, "Канал %d не скалиброван.", (int)ch + 1);
-    painter.DrawBigText(50, 70, 2, buffer);
+    Painter::DrawBigText(50, 70, 2, buffer);
 
-    painter.DrawStringInCenterRect(0, 200, 319, 40, "Для продолжения нажмите кнопку ПУСК/СТОП", gColorFill);
+    Painter::DrawStringInCenterRect(0, 200, 319, 40, "Для продолжения нажмите кнопку ПУСК/СТОП", gColorFill);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncAttScreen(void)
 {
-    painter.BeginScene(Color::BLACK);
+    Painter::BeginScene(Color::BLACK);
 
     static bool first = true;
     static uint startTime = 0;
@@ -415,7 +415,7 @@ static void FuncAttScreen(void)
     int16 y = 10;
     Display::Clear();
 
-    painter.SetColor(gColorFill);
+    Painter::SetColor(gColorFill);
 
 #define dX 20
 #define dY -15
@@ -425,13 +425,13 @@ static void FuncAttScreen(void)
         case StateCalibration_None:
         {
 
-            painter.DrawTextInRect(40 + dX, y + 25 + dY, SCREEN_WIDTH - 100, "Калибровка завершена. Нажмите любую кнопку, чтобы выйти из режима калибровки.");
+            Painter::DrawTextInRect(40 + dX, y + 25 + dY, SCREEN_WIDTH - 100, "Калибровка завершена. Нажмите любую кнопку, чтобы выйти из режима калибровки.");
 
             bool drawA = IsCalibrateChannel(A);
             bool drawB = IsCalibrateChannel(B);
             
-            if (drawA) { painter.DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :"); }
-            if (drawB) { painter.DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :"); }
+            if (drawA) { Painter::DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :"); }
+            if (drawB) { Painter::DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :"); }
 
             int x = 95 + dX;
             for(int i = 0; i < RangeSize; i++)
@@ -469,7 +469,7 @@ static void FuncAttScreen(void)
             break;
 
         case StateCalibration_RShiftAstart:
-            painter.DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 1 выход калибратора и нажмите кнопку ПУСК/СТОП. \
+            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 1 выход калибратора и нажмите кнопку ПУСК/СТОП. \
                                                                         Если вы не хотите калибровать первый канала, нажмите любую другую кнопку.");
             break;
 
@@ -477,7 +477,7 @@ static void FuncAttScreen(void)
             break;
 
         case StateCalibration_RShiftBstart:
-            painter.DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 2 выход калибратора и нажмите кнопку ПУСК/СТОП. \
+            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 2 выход калибратора и нажмите кнопку ПУСК/СТОП. \
                                                                         Если вы не хотите калибровать второй канал, нажмите любую другую кнопку.");
             break;
 
@@ -509,9 +509,9 @@ static void FuncAttScreen(void)
     const int SIZE = 100;
     char buffer[SIZE];
     snprintf(buffer, SIZE, "%.1f", (gTimeMS - startTime) / 1000.0f);
-    painter.DrawText(0, 0, buffer, Color::BLACK);
+    Painter::DrawText(0, 0, buffer, Color::BLACK);
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -829,29 +829,29 @@ void FreqMeter_Draw(int x, int y)
     int width = 68;
     int height = 19;
 
-    painter.FillRegion(x + 1, y + 1, width - 2, height - 2, gColorBack);
-    painter.DrawRectangle(x, y, width, height, Color::Trig());
+    Painter::FillRegion(x + 1, y + 1, width - 2, height - 2, gColorBack);
+    Painter::DrawRectangle(x, y, width, height, Color::Trig());
 
-    painter.DrawText(x + 2, y + 1, "F =");
-    painter.DrawText(x + 2, y + 10, "T");
-    painter.DrawText(x + 10, y + 10, "=");
+    Painter::DrawText(x + 2, y + 1, "F =");
+    Painter::DrawText(x + 2, y + 10, "T");
+    Painter::DrawText(x + 10, y + 10, "=");
 
     char buffer[30];
     float freq = FreqSetToFreq(&freqActual);
 
     bool condFreq = _SET_BIT(flag, FL_OVERFLOW_FREQ) == 1 || drawFreq == false || freq == 0.0f;
 
-    painter.DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
+    Painter::DrawText(x + 17, y + 1, condFreq ? EMPTY_STRING : Freq2StringAccuracy(freq, buffer, 6));
 
     freq = PeriodSetToFreq(&periodActual);
 
     bool condPeriod = _GET_BIT(flag, FL_OVERFLOW_PERIOD) == 1 || drawPeriod == false || freq == 0.0f;
 
-    painter.SetColor(Color::Trig());
-    painter.DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
+    Painter::SetColor(Color::Trig());
+    Painter::DrawText(x + 17, y + 10, condPeriod ? EMPTY_STRING : Time2StringAccuracy(1.0f / freq, false, buffer, 6));
 
     /** @todo Последняя страка оставлена, потому что без неё получается артефакт изображения */
-    painter.DrawText(x + 71, y + 10, "");
+    Painter::DrawText(x + 71, y + 10, "");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1128,10 +1128,10 @@ static void FuncDrawAutoFind(void)
     int height = 60;
     int x = 160 - width / 2;
     int y = 120 - height / 2;
-    painter.BeginScene(gColorBack);
-    painter.FillRegion(x, y, width, height, gColorBack);
-    painter.DrawRectangle(x, y, width, height, gColorFill);
-    painter.DrawStringInCenterRect(x, y, width, height - 20, "Идёт поиск сигнала. Подождите");
+    Painter::BeginScene(gColorBack);
+    Painter::FillRegion(x, y, width, height, gColorBack);
+    Painter::DrawRectangle(x, y, width, height, gColorFill);
+    Painter::DrawStringInCenterRect(x, y, width, height - 20, "Идёт поиск сигнала. Подождите");
     
     char buffer[101] = "";
     uint progress = ((HAL_GetTick() - s->startTime) / 20) % 80;
@@ -1139,11 +1139,11 @@ static void FuncDrawAutoFind(void)
     {
         strcat(buffer, ".");
     }
-    painter.DrawStringInCenterRect(x, y + (height - 30), width, 20, buffer);
+    Painter::DrawStringInCenterRect(x, y + (height - 30), width, 20, buffer);
 
     Display::DrawConsole();
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

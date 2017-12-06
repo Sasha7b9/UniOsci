@@ -49,8 +49,8 @@ void Process_AUTOSEND(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (1 == value)         { painter.SendFrame(true); }
-        else if (2 == value)    { painter.SendFrame(false); } 
+        if (1 == value)         { Painter::SendFrame(true); }
+        else if (2 == value)    { Painter::SendFrame(false); } 
     LEAVE_ANALYSIS
 }
 

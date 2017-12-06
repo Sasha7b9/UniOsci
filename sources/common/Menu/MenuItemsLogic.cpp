@@ -340,7 +340,7 @@ void Time::SetNewTime()
 void Time::SelectNextPosition()
 {
     CircleIncrease<int8>(curField, 0, 7);
-    painter.ResetFlash();
+    Painter::ResetFlash();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

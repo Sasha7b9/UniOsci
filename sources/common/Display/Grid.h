@@ -13,43 +13,40 @@
 class Grid
 {
 public:
-    int Left(void);
+    static int Left(void);
 
-    int Right(void);
+    static int Right(void);
 
-    int Width(void);
+    static int Width(void);
 
-    float DeltaY(void);
+    static float DeltaY(void);
 
-    float DeltaX(void);
+    static float DeltaX(void);
 
-    int WidthInCells(void);
+    static int WidthInCells(void);
 
-    int FullBottom(void);
+    static int FullBottom(void);
 
-    int FullHeight(void);
+    static int FullHeight(void);
 
-    int FullCenterHeight(void);
+    static int FullCenterHeight(void);
 
-    int ChannelBottom(void);
+    static int ChannelBottom(void);
 
-    int ChannelHeight(void);
+    static int ChannelHeight(void);
 
-    int ChannelCenterHeight(void);
+    static int ChannelCenterHeight(void);
 
-    int MathHeight(void);
+    static int MathHeight(void);
 
-    int MathBottom(void);
+    static int MathBottom(void);
 
-    int MathTop(void);
+    static int MathTop(void);
 
-    int BottomMessages(void);
+    static int BottomMessages(void);
 
-    void CoordTrigLevel(int *left, int *top, int width);
+    static void CoordTrigLevel(int *left, int *top, int width);
 };
-
-
-extern Grid grid;
 
 /** @}  @}
  */

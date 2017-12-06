@@ -361,8 +361,8 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
         *density0 = result[FFT_POS_CURSOR_0];
         *density1 = result[FFT_POS_CURSOR_1];
     }
-    *y0 = (int)(grid.MathBottom() - result[FFT_POS_CURSOR_0] * grid.MathHeight());
-    *y1 = (int)(grid.MathBottom() - result[FFT_POS_CURSOR_1] * grid.MathHeight());
+    *y0 = (int)(Grid::MathBottom() - result[FFT_POS_CURSOR_0] * Grid::MathHeight());
+    *y1 = (int)(Grid::MathBottom() - result[FFT_POS_CURSOR_1] * Grid::MathHeight());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

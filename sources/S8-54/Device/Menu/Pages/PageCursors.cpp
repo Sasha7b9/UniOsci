@@ -111,12 +111,12 @@ DEF_SMALL_BUTTON_EXIT(  bSet_Exit,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Set_ChannelA(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "1");
+    Painter::DrawText(x + 7, y + 5, "1");
 }
 
 static void Draw_Set_ChannelB(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "2");
+    Painter::DrawText(x + 7, y + 5, "2");
 }
 
 static void OnPress_Set_Channel(void)
@@ -143,7 +143,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bSet_Channel,                                       
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Set_U_disable(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "U");
+    Painter::DrawText(x + 7, y + 5, "U");
 }
 
 static void Draw_Set_U_disableBoth(int x, int y)
@@ -229,7 +229,7 @@ DEF_SMALL_BUTTON_HINTS_5(   bSet_U,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Set_T_disable(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, "T");
+    Painter::DrawText(x + 7, y + 5, "T");
 }
 
 static void Draw_Set_T_disableBoth(int x, int y)
@@ -314,9 +314,9 @@ static void OnPress_Set_100(void)
 
 static void Draw_Set_100(int x, int y)
 {
-    painter.SetFont(TypeFont_5);
-    painter.DrawText(x + 2, y + 3, "100%");
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_5);
+    Painter::DrawText(x + 2, y + 3, "100%");
+    Painter::SetFont(TypeFont_8);
 }
 
 // Установка 100 процентов в текущие места курсоров.
@@ -330,14 +330,14 @@ DEF_SMALL_BUTTON(   bSet_100,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Set_Movement_Percents(int x, int y)
 {
-    painter.DrawText(x + 6, y + 5, "\x83");
+    Painter::DrawText(x + 6, y + 5, "\x83");
 }
 
 static void Draw_Set_Movement_Points(int x, int y)
 {
-    painter.SetFont(TypeFont_5);
-    painter.DrawText(x + 4, y + 3, "тчк");
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_5);
+    Painter::DrawText(x + 4, y + 3, "тчк");
+    Painter::SetFont(TypeFont_8);
 }
 
 static void OnPress_Set_Movement(void)

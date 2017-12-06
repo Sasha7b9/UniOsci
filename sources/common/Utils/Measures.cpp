@@ -200,14 +200,14 @@ void Measures::DrawPageChoice(void)
     {
         return;
     }
-    int x = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? (grid.Right() - 3 * GRID_WIDTH / 5) : grid.Left();
+    int x = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? (Grid::Right() - 3 * GRID_WIDTH / 5) : Grid::Left();
     int y = GRID_TOP;
     int dX = GRID_WIDTH / 5;
     int dY = 22;
     int maxRow = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 8 : 5;
     int maxCol = (NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2) ? 3 : 5;
     Meas meas = Meas_None;
-    painter.SetFont(TypeFont_UGO);
+    Painter::SetFont(TypeFont_UGO);
     for(int row = 0; row < maxRow; row++)
     {
         for(int col = 0; col < maxCol; col++)
@@ -219,18 +219,18 @@ void Measures::DrawPageChoice(void)
             int x0 = x + col * dX;
             int y0 = y + row * dY;
             bool active = meas == posOnPageChoice;
-            painter.DrawRectangle(x0, y0, dX, dY, Color::WHITE);
-            painter.FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, active ? Color::FLASH_10 : gColorBack);
-            painter.SetColor(active ? Color::FLASH_01 : gColorFill);
-            painter.Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
+            Painter::DrawRectangle(x0, y0, dX, dY, Color::WHITE);
+            Painter::FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, active ? Color::FLASH_10 : gColorBack);
+            Painter::SetColor(active ? Color::FLASH_01 : gColorFill);
+            Painter::Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
             if(meas < Meas_NumMeasures)
             {
-                painter.SetFont(TypeFont_5);
-                painter.DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : gColorFill);
-                painter.SetFont(TypeFont_UGO);
+                Painter::SetFont(TypeFont_5);
+                Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : gColorFill);
+                Painter::SetFont(TypeFont_UGO);
             }
             meas = (Meas)((int)meas + 1);    // meas++;
         }
     }
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_8);
 }

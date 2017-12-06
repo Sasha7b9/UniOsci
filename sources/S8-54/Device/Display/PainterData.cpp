@@ -219,22 +219,22 @@ static void DrawData_ModeROM(void)
         pString str2[2] = {"внутреннего ЗУ", "internal storage device"};
         pString str3[2] = {"установите длину памяти %s", "set the memory length %s"};
 
-        int x = grid.Left() + 10;
+        int x = Grid::Left() + 10;
         int width = 260;
         int height = 60;
-        int y = (grid.ChannelBottom() + GRID_TOP) / 2 - height / 2;
+        int y = (Grid::ChannelBottom() + GRID_TOP) / 2 - height / 2;
 
         int x0 = x + 3;
         int y0 = y + 3;
 
-        painter.FillRegion(x, y, width, height, gColorBack);
-        painter.DrawBigText(x0 + 2, y0 + 2, 2, str1[LANG], gColorFill);
-        painter.DrawBigText(x0 + 2, y0 + 20, 2, str2[LANG]);
+        Painter::FillRegion(x, y, width, height, gColorBack);
+        Painter::DrawBigText(x0 + 2, y0 + 2, 2, str1[LANG], gColorFill);
+        Painter::DrawBigText(x0 + 2, y0 + 20, 2, str2[LANG]);
         char buffer[100];
         sprintf(buffer, (char *)str3[LANG], namesLengthMemory[ENUM_POINTS_DS]);
-        painter.DrawBigText(x0 + 2, y0 + 38, 2, buffer);
+        Painter::DrawBigText(x0 + 2, y0 + 38, 2, buffer);
 
-        painter.DrawRectangle(grid.Left(), GRID_TOP, grid.Width(), grid.FullHeight(), gColorFill);
+        Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), gColorFill);
     }
 }
 
@@ -254,7 +254,7 @@ static void DrawData(bool forAccum)
         DrawChannel(ch, forAccum ? Color::ChanAccum(ch) : gColorChan[ch]);
     }
 
-    painter.DrawRectangle(grid.Left(), GRID_TOP, grid.Width(), grid.FullHeight(), gColorFill);
+    Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), gColorFill);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -265,10 +265,10 @@ static void DrawChannel(Channel ch, Color color)
         return;
     }
 
-    painter.SetColor(color);
+    Painter::SetColor(color);
 
-    int left = grid.Left();
-    int bottom = grid.ChannelBottom();
+    int left = Grid::Left();
+    int bottom = Grid::ChannelBottom();
     int top = GRID_TOP;
 
     float scaleY = (bottom - top) / (float)(MAX_VALUE - MIN_VALUE + 1);
@@ -282,11 +282,11 @@ static void DrawChannel(Channel ch, Color color)
         DrawChannel_Normal(ch, left, bottom, scaleY);
     }
 
-    painter.DrawVLine(left + dataStruct->posBreak, top, bottom, Color::GRID);
+    Painter::DrawVLine(left + dataStruct->posBreak, top, bottom, Color::GRID);
 
     DrawMarkersForMeasure(ch);
 
-    painter.RunDisplay();
+    Painter::RunDisplay();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -318,7 +318,7 @@ static void DrawChannel_Normal(Channel ch, int left, int bottom, float scaleY)
 
         if(MODE_DRAW_SIGNAL_POINTS)
         {
-            painter.SetPoint(x, y);
+            Painter::SetPoint(x, y);
         }
         else
         {
@@ -326,15 +326,15 @@ static void DrawChannel_Normal(Channel ch, int left, int bottom, float scaleY)
 
             if(yNext < y)
             {
-                painter.DrawVLine(x, y, yNext + 1);
+                Painter::DrawVLine(x, y, yNext + 1);
             }
             else if(yNext > y)
             {
-                painter.DrawVLine(x, y, yNext - 1);
+                Painter::DrawVLine(x, y, yNext - 1);
             }
             else
             {
-                painter.SetPoint(x, y);
+                Painter::SetPoint(x, y);
             }
 
         }
@@ -388,18 +388,18 @@ static void DrawChannel_PeakDet(Channel ch, int left, int bottom, float scaleY)
 
         if(MODE_DRAW_SIGNAL_POINTS)
         {
-            painter.SetPoint(x, min);
-            painter.SetPoint(x, max);
+            Painter::SetPoint(x, min);
+            Painter::SetPoint(x, max);
         }
         else
         {
             if(min == max)
             {
-                painter.SetPoint(x, min);
+                Painter::SetPoint(x, min);
             }
             else
             {
-                painter.DrawVLine(x, min, max);
+                Painter::DrawVLine(x, min, max);
             }
         }
     }
@@ -480,22 +480,22 @@ static void DrawLimitLabel(int delta)
     int width = 150;
     int height = 20;
 
-    Color color = painter.GetColor();
+    Color color = Painter::GetColor();
 
-    int x = grid.Width() / 2 - width / 2 + grid.Left();
+    int x = Grid::Width() / 2 - width / 2 + Grid::Left();
     int y = 0;
     if (delta < 0)
     {
-        y = grid.FullBottom() + delta - height;
+        y = Grid::FullBottom() + delta - height;
     }
     else
     {
         y = GRID_TOP + delta;
     }
 
-    painter.FillRegion(x, y, width, height, gColorBack);
-    painter.DrawRectangle(x, y, width, height, color);
-    painter.DrawStringInCenterRect(x, y, width, height, "Сигнал за пределами экрана");
+    Painter::FillRegion(x, y, width, height, gColorBack);
+    Painter::DrawRectangle(x, y, width, height, color);
+    Painter::DrawStringInCenterRect(x, y, width, height, "Сигнал за пределами экрана");
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -525,20 +525,20 @@ void PainterData::DrawMath(void)
     static const int WIDTH = 71;
     static const int HEIGHT = 10;
     int delta = (SHOW_STRING_NAVI_ALL && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
-    painter.DrawRectangle(grid.Left(), grid.MathTop() + delta, WIDTH, HEIGHT, gColorFill);
-    painter.FillRegion(grid.Left() + 1, grid.MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, gColorBack);
+    Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, gColorFill);
+    Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, gColorBack);
     Divider divider = set.math_Divider;
-    painter.DrawText(grid.Left() + 2, grid.MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, divider), gColorFill);
-    painter.DrawText(grid.Left() + 25, grid.MathTop() + 1 + delta, ":");
+    Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, divider), gColorFill);
+    Painter::DrawText(Grid::Left() + 25, Grid::MathTop() + 1 + delta, ":");
     char buffer[20];
-    painter.DrawText(grid.Left() + 27, grid.MathTop() + 1 + delta, sChannel_RShift2String(SET_RSHIFT_MATH, SET_RANGE_MATH, divider, buffer));
+    Painter::DrawText(Grid::Left() + 27, Grid::MathTop() + 1 + delta, sChannel_RShift2String(SET_RSHIFT_MATH, SET_RANGE_MATH, divider, buffer));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawChannel_Math(uint8 *dataIn)
 {
-    int minY = grid.MathTop();
-    int maxY = grid.MathBottom();
+    int minY = Grid::MathTop();
+    int maxY = Grid::MathBottom();
 
     bool calculateFiltr = true;
 //    int sizeBuffer = NUM_BYTES_DS;
@@ -572,9 +572,9 @@ static void DrawChannel_Math(uint8 *dataIn)
     }
 
     float scaleY = (float)(maxY - minY) / (MAX_VALUE - MIN_VALUE);
-    float scaleX = (float)grid.Width() / 280.0f;
+    float scaleX = (float)Grid::Width() / 280.0f;
 
-    painter.SetColor(gColorChan[MathCh]);
+    Painter::SetColor(gColorChan[MathCh]);
 
     //    if (!DataBeyondTheBorders(dataIn, firstPoint, lastPoint))   // Если сигнал не выходит за пределы экрана
     {
@@ -657,13 +657,13 @@ static int FillDataP2PforNormal(int numPoints, int numPointsDS, int pointsInScre
 
         memcpy(dataTemp, dest + numScreens * pointsInScreen - deltaNumPoints, numPoints % pointsInScreen);  // Теперь скопируем остаток в начало буфера
 
-                                                                                                            //        xP2P = grid.Left() + ((numPoints  % pointsInScreen) / kP2P) - 1;
+                                                                                                            //        xP2P = Grid::Left() + ((numPoints  % pointsInScreen) / kP2P) - 1;
 
         memcpy(dest, dataTemp, pointsInScreen);                                                             // Теперь скопируем временный буфер в выходной
     }
     else
     {
-        //        xP2P = grid.Left() + numPoints / kP2P - 1;
+        //        xP2P = Grid::Left() + numPoints / kP2P - 1;
     }
 
     return numPoints > pointsInScreen ? pointsInScreen : numPoints;
@@ -677,27 +677,27 @@ static void DrawMarkersForMeasure(Channel ch)
         return;
     }
 
-    int bottom = grid.ChannelBottom();
-    int left = grid.Left();
-    int right = grid.Right();
+    int bottom = Grid::ChannelBottom();
+    int left = Grid::Left();
+    int right = Grid::Right();
     float scaleY = (float)(bottom - GRID_TOP) / (MAX_VALUE - MIN_VALUE);
 
     BitSet64 points = sDisplay_PointsOnDisplay();
-    float scaleX = (float)(grid.Right() - grid.Left()) / (float)(points.word1 - points.word0);
+    float scaleX = (float)(Grid::Right() - Grid::Left()) / (float)(points.word1 - points.word0);
 
-    painter.SetColor(Color::Cursors(ch));
+    Painter::SetColor(Color::Cursors(ch));
     for (int numMarker = 0; numMarker < 2; numMarker++)
     {
         int posY = bottom - (int)(MARKER_VOLTAGE(ch, numMarker) * scaleY);
         if (posY > GRID_TOP && posY < bottom)
         {
-            painter.DrawDashedHLine(posY, left, right, 3, 2, 0);
+            Painter::DrawDashedHLine(posY, left, right, 3, 2, 0);
         }
 
         int posX = left + (int)(MARKER_TIME(ch, numMarker) * scaleX);
         if (posX > left && posX < right)
         {
-            painter.DrawDashedVLine(posX, GRID_TOP, bottom, 3, 2, 0);
+            Painter::DrawDashedVLine(posX, GRID_TOP, bottom, 3, 2, 0);
         }
     }
 }
@@ -712,10 +712,10 @@ static void DrawSignalLined(const uint8 *data, int startPoint, int endPoint, int
         return;
     }
 
-    int gridLeft = grid.Left();
+    int gridLeft = Grid::Left();
     if (PEAKDET_DS == PeakDet_Disable)
     {
-        int gridRight = grid.Right();
+        int gridRight = Grid::Right();
         int numPoints = NUM_BYTES_DS;
         for (int i = startPoint; i < endPoint; i++)
         {
@@ -749,7 +749,7 @@ static void DrawSignalLined(const uint8 *data, int startPoint, int endPoint, int
 
             PLACE_2_ASCENDING(y0, y1);
 
-            painter.DrawVLine((int)x, y0, y1);
+            Painter::DrawVLine((int)x, y0, y1);
 
             int z0 = 0;
             int z1 = 0;
@@ -764,11 +764,11 @@ static void DrawSignalLined(const uint8 *data, int startPoint, int endPoint, int
 
             if (y1 < z0)
             {
-                painter.DrawVLine((int)x, y1, z0);
+                Painter::DrawVLine((int)x, y1, z0);
             }
             else if (y0 > z1)
             {
-                painter.DrawVLine((int)(x + 1), z1, y0);
+                Painter::DrawVLine((int)(x + 1), z1, y0);
             }
         }
     }
@@ -784,7 +784,7 @@ static void DrawSignalLined(const uint8 *data, int startPoint, int endPoint, int
     if (PEAKDET_DS == PeakDet_Disable)
     {
         CONVERT_DATA_TO_DISPLAY(dataCD[280], data[endPoint]);
-        painter.DrawSignal(grid.Left(), dataCD, true);
+        Painter::DrawSignal(Grid::Left(), dataCD, true);
     }
 }
 
@@ -801,7 +801,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
             int index = i - startPoint;
             CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
         }
-        painter.DrawSignal(grid.Left(), dataCD, false);
+        Painter::DrawSignal(Grid::Left(), dataCD, false);
     }
     else
     {
@@ -810,7 +810,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
             int index = i - startPoint;
             int dat = 0;
             CONVERT_DATA_TO_DISPLAY(dat, math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
-            painter.SetPoint(grid.Left() + (int)(index * scaleX), dat);
+            Painter::SetPoint(Grid::Left() + (int)(index * scaleX), dat);
         }
     }
 }
@@ -835,7 +835,7 @@ static void DrawMemoryWindow(void)
     float scaleX = (float)(rightX - leftX + 1) / SET_POINTS_IN_CHANNEL;
     const int xVert0 = leftX + (int)(SHIFT_IN_MEMORY_IN_POINTS * scaleX);
     int width = (int)((rightX - leftX) * (282.0f / SET_POINTS_IN_CHANNEL));
-    painter.DrawRectangle(xVert0, 0, width - (FPGA_POINTS_8k ? 1 : 0), GRID_TOP - 2, gColorFill);
+    Painter::DrawRectangle(xVert0, 0, width - (FPGA_POINTS_8k ? 1 : 0), GRID_TOP - 2, gColorFill);
 
     DrawTPos(leftX, rightX);
 
@@ -945,8 +945,8 @@ static void DrawTPos(int leftX, int rightX)
 {
     int x[] = {leftX, (rightX - leftX) / 2 + leftX, rightX};
     int x0 = x[TPOS];
-    painter.FillRegion(x0 - 3, 10, 6, 6, gColorBack);
-    painter.DrawChar(x0 - 3, 10, SYMBOL_TPOS_1, gColorFill);
+    Painter::FillRegion(x0 - 3, 10, 6, 6, gColorBack);
+    Painter::DrawChar(x0 - 3, 10, SYMBOL_TPOS_1, gColorFill);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -981,10 +981,10 @@ static void DrawTShift(int leftX, int rightX, int numBytes)
         dY11 = 5; dY12 = 7;
     }
 
-    painter.FillRegion((int)xShift - 1, 1, 6, 6, gColorBack);
-    painter.FillRegion((int)xShift, 2, 4, 4, gColorFill);
-    painter.DrawLine((int)xShift + dX01, 3, (int)xShift + dX11, dY11 - 2, gColorBack);
-    painter.DrawLine((int)xShift + dX02, 4, (int)xShift + 2, dY12 - 2);
+    Painter::FillRegion((int)xShift - 1, 1, 6, 6, gColorBack);
+    Painter::FillRegion((int)xShift, 2, 4, 4, gColorFill);
+    Painter::DrawLine((int)xShift + dX01, 3, (int)xShift + dX11, dY11 - 2, gColorBack);
+    Painter::DrawLine((int)xShift + dX02, 4, (int)xShift + 2, dY12 - 2);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1018,5 +1018,5 @@ static void SendToDisplayDataInRect(Channel ch, int x, int *min, int *max, int w
         points[i * 2 + 1] = (uint8)(min[i] < 0 ? 0 : min[i]);
     }
 
-    painter.DrawVLineArray(x, (int)width, points, gColorChan[ch]);
+    Painter::DrawVLineArray(x, (int)width, points, gColorChan[ch]);
 }

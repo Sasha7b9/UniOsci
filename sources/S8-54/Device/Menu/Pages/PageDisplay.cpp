@@ -327,7 +327,7 @@ DEF_CHOICE_5(       cRefreshFPS,                                                
 DEF_CHOICE_4(       cGrid_Type,                                                                                        //--- ДИСПЛЕЙ - СЕТКА - Тип ---
     "Тип", "Type",
     "Выбор типа сетки.",
-    "Choice like grid.",
+    "Choice like Grid::",
     "Тип 1", "Type 1",
     "Тип 2", "Type 2",
     "Тип 3", "Type 3",
@@ -350,7 +350,7 @@ static void BeforeDraw_Grid_Brightness(void)
 DEF_GOVERNOR(       gGrid_Brightness,                                                                              //--- ДИСПЛЕЙ - СЕТКА - Яркость ---
     "Яркость", "Brightness",
     "Устанавливает яркость сетки.",
-    "Adjust the brightness of the grid.",
+    "Adjust the brightness of the Grid::",
     BRIGHTNESS_GRID, 0, 100, ppGrid, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
 );
 
@@ -358,7 +358,7 @@ DEF_GOVERNOR(       gGrid_Brightness,                                           
 DEF_PAGE_2(         ppGrid,                                                                                                     // ДИСПЛЕЙ - СЕТКА ///
     "СЕТКА", "GRID",
     "Содержит настройки отображения координатной сетки.",
-    "Contains settings of display of a coordinate grid.",
+    "Contains settings of display of a coordinate Grid::",
     cGrid_Type,         // ДИСПЛЕЙ - СЕТКА - Тип
     gGrid_Brightness,   // ДИСПЛЕЙ - СЕТКА - Яркость
     Page_Display_Grid, &pDisplay, FuncActive, EmptyPressPage
@@ -396,7 +396,7 @@ DEF_PAGE_9(         pDisplay,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_Brightness(void)
 {
-    painter.SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
+    Painter::SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
 }
 
 DEF_GOVERNOR(       gSettings_Brightness,                                                                      //--- ДИСПЛЕЙ - НАСТРОЙКИ - Яркость ---

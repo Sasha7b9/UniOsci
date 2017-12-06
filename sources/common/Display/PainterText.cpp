@@ -100,7 +100,7 @@ static void DrawCharInColorDisplay(int eX, int eY, char symbol)
             {
                 if (BitInFontIsExist(symbol, b, bit))
                 {
-                    painter.SetPoint(x, y);
+                    Painter::SetPoint(x, y);
                 }
                 x++;
             }
@@ -129,7 +129,7 @@ static int DrawBigChar(int eX, int eY, int size, char symbol)
                     {
                         for (int j = 0; j < size; j++)
                         {
-                            painter.SetPoint(x + i, y + j);
+                            Painter::SetPoint(x + i, y + j);
                         }
                     }
                 }
@@ -146,7 +146,7 @@ static void DrawCharHardCol(int x, int y, char symbol)
 {
     char str[2] = {0, 0};
     str[0] = symbol;
-    painter.DrawText(x, y, str);
+    Painter::DrawText(x, y, str);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -254,7 +254,7 @@ static int DrawCharWithLimitation(int eX, int eY, char symbol, int limitX, int l
                 {
                     if ((x >= limitX) && (x <= (limitX + limitWidth)) && (y >= limitY) && (y <= limitY + limitHeight))
                     {
-                        painter.SetPoint(x, y);
+                        Painter::SetPoint(x, y);
                     }
                 }
                 x++;
@@ -494,7 +494,7 @@ static int DrawPartWord(char *word, int x, int y, int xRight, bool draw)
         {
             if (draw)
             {
-                painter.DrawText(x, y, subString);
+                Painter::DrawText(x, y, subString);
             }
             return strlen(subString) - 1;
         }
@@ -727,7 +727,7 @@ static int DrawSubString(int x, int y, char *text)
     int numSymbols = 0;
     while (((*text) != ' ') && ((*text) != '\0'))
     {
-        x = painter.DrawChar(x, y, *text);
+        x = Painter::DrawChar(x, y, *text);
         numSymbols++;
         text++;
     }
@@ -740,7 +740,7 @@ static int DrawSpaces(int x, int y, char *text, int *numSymbols)
     *numSymbols = 0;
     while (*text == ' ')
     {
-        x = painter.DrawChar(x, y, *text);
+        x = Painter::DrawChar(x, y, *text);
         text++;
         (*numSymbols)++;
     }

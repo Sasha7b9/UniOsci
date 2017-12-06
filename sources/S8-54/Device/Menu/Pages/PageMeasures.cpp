@@ -158,9 +158,9 @@ static void OnPress_Tune_Markers(void)
 
 static void Draw_Tune_Markers(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, '\x60');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x60');
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bTune_Markers,                                                                            //--- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - Ã‡ÍÂ ---
@@ -182,9 +182,9 @@ static void OnPress_Tune_Settings(void)
 
 static void Draw_Tune_Settings(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x62');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x62');
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bTune_Settings,                                                                        //--- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - Õ‡ÒÚÓÈÍ‡ ---
@@ -222,7 +222,7 @@ static void OnRegSet_Tune(int angle)
             posOnPageChoice = 0;
         }
         MEASURE(posActive) = (Meas)posOnPageChoice;
-        painter.ResetFlash();
+        Painter::ResetFlash();
     }
     else
     {

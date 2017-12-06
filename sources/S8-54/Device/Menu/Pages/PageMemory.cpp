@@ -58,7 +58,7 @@ void OnChanged_Points(bool active)
         FPGA_ENUM_POINTS = FNP_16k;
     }
 
-    int width = grid.Width();
+    int width = Grid::Width();
 
     FPGA_Reset();
 
@@ -126,9 +126,9 @@ static void OnPress_Last_Next(void)
 
 static void Draw_Last_Next(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, '\x64');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x64');
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bLast_Next,                                                                               //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - —ÎÂ‰Û˛˘ËÈ ---
@@ -146,9 +146,9 @@ static void OnPress_Last_Prev(void)
 
 static void Draw_Last_Prev(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_BACKSPACE);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_BACKSPACE);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bLast_Prev,                                                                              //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - œÂ‰˚‰Û˘ËÈ ---
@@ -172,9 +172,9 @@ static void OnPress_Last_SaveToROM(void)
 
 static void Draw_Last_SaveToROM(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_ROM);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_ROM);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bLast_SaveToROM,                                                                           //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - ¬ÌÛÚ «” ---
@@ -195,9 +195,9 @@ static void Draw_Last_SaveToDrive(int x, int y)
 {
     if (FDRIVE_IS_CONNECTED)
     {
-        painter.SetFont(TypeFont_UGO2);
-        painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-        painter.SetFont(TypeFont_8);
+        Painter::SetFont(TypeFont_UGO2);
+        Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
+        Painter::SetFont(TypeFont_8);
     }
 }
 
@@ -224,11 +224,11 @@ static void OnDraw_Last(void)
 
     int width = 40;
     int height = 10;
-    painter.FillRegion(grid.Right() - width, GRID_TOP, width, height, gColorBack);
-    painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, gColorFill);
-    painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
-    painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
-    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, Int2String(Storage::NumElementsInStorage(), false, 3, buffer));
+    Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, gColorBack);
+    Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, gColorFill);
+    Painter::DrawText(Grid::Right() - width + 2, GRID_TOP + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
+    Painter::DrawText(Grid::Right() - width + 17, GRID_TOP + 1, "/");
+    Painter::DrawText(Grid::Right() - width + 23, GRID_TOP + 1, Int2String(Storage::NumElementsInStorage(), false, 3, buffer));
 }
 
 static void OnRegSet_Last(int angle)
@@ -274,9 +274,9 @@ DEF_SMALL_BUTTON_EXIT(  bDrive_Manager_Exit,                                    
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_Tab(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_TAB);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_TAB);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                                                    //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - Tab ---
@@ -289,9 +289,9 @@ DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                         
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_LevelUp(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x48');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x48');
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                                  //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬˚ÈÚË ËÁ Í‡Ú‡ÎÓ„‡ ---
@@ -304,9 +304,9 @@ DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Drive_Manager_LevelDown(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, '\x4a');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x4a');
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                                  //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬ÓÈÚË ‚ Í‡Ú‡ÎÓ„ ---
@@ -379,9 +379,9 @@ static void OnPress_Drive_Mask_Delete(void)
 
 static void Draw_Drive_Mask_Delete(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Mask_Delete,                                                                  //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ”‰‡ÎËÚ¸ ---
@@ -410,9 +410,9 @@ static void OnPress_Drive_Mask_Backspace(void)
 
 static void Draw_Drive_Mask_Backspace(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_BACKSPACE);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_BACKSPACE);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Mask_Backspace,                                                             //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - Backspace ---
@@ -461,9 +461,9 @@ static void OnPress_Drive_Mask_Insert(void)
 
 static void Draw_Drive_Mask_Insert(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_INSERT);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_INSERT);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bDrive_Mask_Insert,                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -511,13 +511,13 @@ static void OnPress_Drive_Mask(void)
 
 static void DrawSetMask(void)
 {
-    int x0 = grid.Left() + 40;
+    int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 20;
-    int width = grid.Width() - 80;
+    int width = Grid::Width() - 80;
     int height = 160;
 
-    painter.DrawRectangle(x0, y0, width, height, gColorFill);
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
+    Painter::DrawRectangle(x0, y0, width, height, gColorFill);
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
 
     int index = 0;
     int position = 0;
@@ -571,10 +571,10 @@ static void DrawSetMask(void)
     };
 
     deltaY--;
-    painter.SetColor(gColorFill);
+    Painter::SetColor(gColorFill);
     for (int i = 0; i < sizeof(strings) / 4; i++)
     {
-        painter.DrawText(x0 + deltaX, y0 + 100 + deltaY * i, strings[i]);
+        Painter::DrawText(x0 + deltaX, y0 + 100 + deltaY * i, strings[i]);
     }
 }
 
@@ -582,30 +582,30 @@ static void DrawFileMask(int x, int y)
 {
     char *ch = FILE_NAME_MASK;
 
-    painter.SetColor(gColorFill);
+    Painter::SetColor(gColorFill);
     while (*ch != '\0')
     {
         if (*ch >= 32)
         {
-            x = painter.DrawChar(x, y, *ch);
+            x = Painter::DrawChar(x, y, *ch);
         }
         else
         {
             if (*ch == 0x07)
             {
-                x = painter.DrawChar(x, y, '%');
-                x = painter.DrawChar(x, y, (char)(0x30 | *(ch + 1)));
-                x = painter.DrawChar(x, y, 'N');
+                x = Painter::DrawChar(x, y, '%');
+                x = Painter::DrawChar(x, y, (char)(0x30 | *(ch + 1)));
+                x = Painter::DrawChar(x, y, 'N');
                 ch++;
             }
             else
             {
-                x = painter.DrawText(x, y, symbolsAlphaBet[*ch + 0x40]);
+                x = Painter::DrawText(x, y, symbolsAlphaBet[*ch + 0x40]);
             }
         }
         ch++;
     }
-    painter.FillRegion(x, y, 5, 8, Color::FLASH_10);
+    Painter::FillRegion(x, y, 5, 8, Color::FLASH_10);
 }
 
 static void OnRegSet_Drive_Mask(int angle)
@@ -683,13 +683,13 @@ void Memory_SaveSignalToFlashDrive(void)
 
 static void DrawSetName(void)
 {
-    int x0 = grid.Left() + 40;
+    int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 60;
-    int width = grid.Width() - 80;
+    int width = Grid::Width() - 80;
     int height = 80;
 
-    painter.DrawRectangle(x0, y0, width, height, gColorFill);
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
+    Painter::DrawRectangle(x0, y0, width, height, gColorFill);
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
 
     int index = 0;
     int position = 0;
@@ -723,8 +723,8 @@ static void DrawSetName(void)
         position++;
     }
 
-    int x = painter.DrawText(x0 + deltaX, y0 + 65, FILE_NAME, gColorFill);
-    painter.FillRegion(x, y0 + 65, 5, 8, Color::FLASH_10);
+    int x = Painter::DrawText(x0 + deltaX, y0 + 65, FILE_NAME, gColorFill);
+    Painter::FillRegion(x, y0 + 65, 5, 8, Color::FLASH_10);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -766,16 +766,16 @@ static void OnPress_Internal_ShowAlways(void)
 
 static void Draw_Internal_ShowAlways_Yes(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x66');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x66');
+    Painter::SetFont(TypeFont_8);
 }
 
 static void Draw_Internal_ShowAlways_No(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x68');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x68');
+    Painter::SetFont(TypeFont_8);
 }
 
 static void Draw_Internal_ShowAlways(int x, int y)
@@ -809,24 +809,24 @@ static void OnPress_Internal_ModeShow(void)
 
 static void Draw_Internal_ModeShow_Direct(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x6a');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x6a');
+    Painter::SetFont(TypeFont_8);
 }
 
 
 static void Draw_Internal_ModeShow_Saved(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, '\x6c');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, '\x6c');
+    Painter::SetFont(TypeFont_8);
 }
 
 static void Draw_Internal_ModeShow_Both(int x, int y)
 {
-    painter.DrawText(x + 1, y + 5, "Œ¡¿");
-    painter.DrawVLine(x + 1, y + 2, y + 14, gColorBack);
-    painter.DrawVLine(x + 2, y + 6, y + 11, gColorFill);
+    Painter::DrawText(x + 1, y + 5, "Œ¡¿");
+    Painter::DrawVLine(x + 1, y + 2, y + 14, gColorBack);
+    Painter::DrawVLine(x + 2, y + 6, y + 11, gColorFill);
 }
 
 static void Draw_Internal_ModeShow(int x, int y)
@@ -865,9 +865,9 @@ static void OnPress_Internal_Delete(void)
 
 static void Draw_Internal_Delete(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bInternal_Delete,                                                                            //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” - ”‰‡ÎËÚ¸ ---
@@ -900,9 +900,9 @@ static void OnPress_Internal_SaveToMemory(void)
 
 static void Draw_Internal_SaveToMemory(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bInternal_SaveToMemory,                                                           //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” - —Óı‡ÌËÚ¸ ‚ Ô‡ÏˇÚË ---
@@ -923,9 +923,9 @@ static void Draw_Internal_SaveToDrive(int x, int y)
 {
     if (FDRIVE_IS_CONNECTED)
     {
-        painter.SetFont(TypeFont_UGO2);
-        painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-        painter.SetFont(TypeFont_8);
+        Painter::SetFont(TypeFont_UGO2);
+        Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
+        Painter::SetFont(TypeFont_8);
     }
 }
 
@@ -960,19 +960,19 @@ static void DrawMemoryWave(int num, bool exist)
 {
     char buffer[20];
 
-    int x = grid.Left() + 2 + num * 12;
-    int y = grid.FullBottom() - 10;
+    int x = Grid::Left() + 2 + num * 12;
+    int y = Grid::FullBottom() - 10;
     int width = 12;
-    painter.FillRegion(x, y, width, 10, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : gColorBack);
-    painter.DrawRectangle(x, y, width, 10, gColorFill);
-    painter.SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : gColorFill);
+    Painter::FillRegion(x, y, width, 10, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : gColorBack);
+    Painter::DrawRectangle(x, y, width, 10, gColorFill);
+    Painter::SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : gColorFill);
     if (exist)
     {
-        painter.DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));
+        Painter::DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));
     }
     else
     {
-        painter.DrawText(x + 3, y + 1, "\x88");
+        Painter::DrawText(x + 3, y + 1, "\x88");
     }
 }
 
@@ -987,7 +987,7 @@ static void OnRegSet_Internal(int delta)
     {
         CircleIncrease<int8>(&NUM_ROM_SIGNAL, 0, MAX_NUM_SAVED_WAVES - 1);
     }
-    painter.ResetFlash();
+    Painter::ResetFlash();
 }
 
 DEF_PAGE_SB(        ppInternal,                                                                                               // œ¿Ãﬂ“‹ - ¬Õ”“– «” ///
@@ -1039,9 +1039,9 @@ static void OnPress_SetName_Delete(void)
 
 static void Draw_SetName_Delete(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_DELETE);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSetName_Delete,                                                                                     //--- »Ãﬂ ‘¿…À¿ - ”‰‡ÎËÚ¸ ---
@@ -1063,9 +1063,9 @@ static void OnPress_SetName_Backspace(void)
 
 static void Draw_SetName_Backspace(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_BACKSPACE);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_BACKSPACE);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSetName_Backspace,                                                                                //--- »Ãﬂ ‘¿…À¿ - Backspace ---
@@ -1088,9 +1088,9 @@ static void OnPress_SetName_Insert(void)
 
 static void Draw_SetName_Insert(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, '\x26');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, '\x26');
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSetName_Insert,                                                                                    //--- »Ãﬂ ‘¿…À¿ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -1114,9 +1114,9 @@ static void Draw_SetName_Save(int x, int y)
 {
     if (FDRIVE_IS_CONNECTED)
     {
-        painter.SetFont(TypeFont_UGO2);
-        painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
-        painter.SetFont(TypeFont_8);
+        Painter::SetFont(TypeFont_UGO2);
+        Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_FLASH_DRIVE_BIG);
+        Painter::SetFont(TypeFont_8);
     }
 }
 
@@ -1142,7 +1142,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
         CircleIncrease<int8>
     };
 
-    painter.ResetFlash();
+    Painter::ResetFlash();
     if (INDEX_SYMBOL > maxIndex)
     {
         INDEX_SYMBOL = (int8)(maxIndex - 1);
@@ -1169,9 +1169,9 @@ DEF_PAGE_SB(        pSetName,                                                   
 
 void DrawSB_MemLastSelect(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 3, y + 2, set.memory.strMemoryLast.isActiveModeSelect ? '\x2a' : '\x28');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 3, y + 2, set.memory.strMemoryLast.isActiveModeSelect ? '\x2a' : '\x28');
+    Painter::SetFont(TypeFont_8);
 }
 
 void PressSB_MemLastSelect(void)
@@ -1182,9 +1182,9 @@ void PressSB_MemLastSelect(void)
 
 void DrawSB_MemExtNewFolder(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 1, y, '\x46');
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 1, y, '\x46');
+    Painter::SetFont(TypeFont_8);
 }
 
 extern const PageBase pMemory;
@@ -1222,7 +1222,7 @@ display.FuncOnWaitStop();
 
 static void Draw_Internal_EraseAll(int x, int y)
 {
-painter.DrawText(x + 5, y + 5, "E");
+Painter::DrawText(x + 5, y + 5, "E");
 }
 */
 
@@ -1250,20 +1250,20 @@ Draw_Internal_Scale_Original(x, y);
 /*
 void Draw_Internal_Scale_Recalculated(int x, int y)
 {
-painter.DrawText(x + 8, y + 2, DICT(DM));
-painter.SetFont(TypeFont_5);
-painter.DrawText(x + 5, y + 9, DICT(DABS));
-painter.SetFont(TypeFont_8);
+Painter::DrawText(x + 8, y + 2, DICT(DM));
+Painter::SetFont(TypeFont_5);
+Painter::DrawText(x + 5, y + 9, DICT(DABS));
+Painter::SetFont(TypeFont_8);
 }
 */
 
 /*
 void Draw_Internal_Scale_Original(int x, int y)
 {
-painter.DrawText(x + 8, y + 2, DICT(DM));
-painter.SetFont(TypeFont_5);
-painter.DrawText(x + 5, y + 9, DICT(DREL));
-painter.SetFont(TypeFont_8);
+Painter::DrawText(x + 8, y + 2, DICT(DM));
+Painter::SetFont(TypeFont_5);
+Painter::DrawText(x + 5, y + 9, DICT(DREL));
+Painter::SetFont(TypeFont_8);
 }
 */
 

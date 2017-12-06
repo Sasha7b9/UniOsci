@@ -4,10 +4,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Grid grid;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int Grid::Left(void)
 {
     return (MenuIsMinimize() && MENU_IS_SHOWN ? 9 : 20) + measures.GetDeltaGridLeft();
@@ -28,13 +24,13 @@ int Grid::ChannelBottom(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::ChannelHeight(void)
 {
-    return (sDisplay_IsSeparate()) ? grid.FullHeight() / 2 : grid.FullHeight();
+    return (sDisplay_IsSeparate()) ? Grid::FullHeight() / 2 : Grid::FullHeight();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::ChannelCenterHeight(void)
 {
-    return (GRID_TOP + grid.ChannelBottom()) / 2;
+    return (GRID_TOP + Grid::ChannelBottom()) / 2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -46,19 +42,19 @@ int Grid::FullBottom(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::FullHeight(void)
 {
-    return grid.FullBottom() - GRID_TOP;
+    return Grid::FullBottom() - GRID_TOP;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::Width(void)
 {
-    return grid.Right() - grid.Left();
+    return Grid::Right() - Grid::Left();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::FullCenterHeight(void)
 {
-    return (grid.FullBottom() + GRID_TOP) / 2;
+    return (Grid::FullBottom() + GRID_TOP) / 2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,21 +66,21 @@ int Grid::WidthInCells(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float Grid::DeltaY(void)
 {
-    float delta = (grid.FullBottom() - GRID_TOP) / 10.0f;
+    float delta = (Grid::FullBottom() - GRID_TOP) / 10.0f;
     return sDisplay_IsSeparate() ? (delta / 2.0f) : delta;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 float Grid::DeltaX(void)
 {
-    float delta = (grid.Right() - grid.Left()) / 14.0f;
+    float delta = (Grid::Right() - Grid::Left()) / 14.0f;
     return delta;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::MathTop(void)
 {
-    return grid.MathBottom() - grid.MathHeight();
+    return Grid::MathBottom() - Grid::MathHeight();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -92,21 +88,21 @@ int Grid::MathHeight(void)
 {
     if (FFT_ENABLED || FUNC_MODE_DRAW_IS_SEPARATE)
     {
-        return grid.FullHeight() / 2;
+        return Grid::FullHeight() / 2;
     }
-    return grid.FullHeight();
+    return Grid::FullHeight();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::MathBottom(void)
 {
-    return grid.FullBottom();
+    return Grid::FullBottom();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Grid::BottomMessages(void)
 {
-    int retValue = grid.FullBottom();
+    int retValue = Grid::FullBottom();
     if (MODE_WORK_IS_ROM)
     {
         retValue -= 12;
@@ -123,12 +119,12 @@ void Grid::CoordTrigLevel(int *left, int *top, int width)
 {
     if (!SHOW_MEASURES || NUM_MEASURES < MN_6_1)
     {
-        *left = (grid.Width() - width) / 2 + grid.Left();
+        *left = (Grid::Width() - width) / 2 + Grid::Left();
         *top = BottomMessages() - 20;
     }
     else
     {
         *left = NUM_MEASURES_IS_6_1 ? 100 : 130;
-        *top = grid.FullBottom() - 32;
+        *top = Grid::FullBottom() - 32;
     }
 }
