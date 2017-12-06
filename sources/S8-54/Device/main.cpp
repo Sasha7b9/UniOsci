@@ -25,7 +25,7 @@ int main(void)
     Log_EnableLoggerUSB(true);
     //main3();
     Hardware::Init();
-    vcp.Init();
+    VCP::Init();
     Settings_Load(false);
     FPGA_Init();
     FPGA_OnPressStartStop();

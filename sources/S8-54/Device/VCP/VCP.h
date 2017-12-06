@@ -12,27 +12,24 @@
 class VCP
 {
 public:
-    void Init(void);
+    static void Init(void);
 
-    void SendDataAsynch(uint8 *data, int size);
+    static void SendDataAsynch(uint8 *data, int size);
 
-    void SendDataSynch(const uint8 *data, int size);
+    static void SendDataSynch(const uint8 *data, int size);
     /// Передаётся строка без завершающего нуля
-    void SendStringAsynch(char *data);
+    static void SendStringAsynch(char *data);
     /// Передаётся строка без завершающего нуля
-    void SendStringSynch(char *data);
+    static void SendStringSynch(char *data);
     /// Эта строка передаётся с завершающими символами \\r\\n
-    void SendFormatStringAsynch(char *format, ...);
+    static void SendFormatStringAsynch(char *format, ...);
     /// Эта строка передаётся с завершающими символами \\r\\n
-    void SendFormatStringSynch(char *format, ...);
+    static void SendFormatStringSynch(char *format, ...);
 
-    void SendByte(uint8 data);
+    static void SendByte(uint8 data);
 
-    void Flush(void);
+    static void Flush(void);
 };
-
-
-extern VCP vcp;
 
 
 /** @}
