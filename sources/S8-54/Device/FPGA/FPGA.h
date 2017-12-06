@@ -211,6 +211,8 @@ private:
     static void LoadRegUPR(void);
     /// \todo временный костыль. ѕри изменении tShift нужно временно останавливать альтеру, а при изменении развЄртки не нужно
     static void SetTShift(int tShift, bool needFPGApause);
+
+    static bool ReadOnePoint(void);
 };
 
 

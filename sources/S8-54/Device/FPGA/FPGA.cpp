@@ -56,7 +56,6 @@ bool gFPGAisCalibrateAddRshift = false;      ///< Происходит процедура калибровк
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool ReadPoint(void);                                        ///< Чтение точки в поточечном режиме.
 static void InitADC(void);
 /// Сдвигает данные в массиве на одну точку вправо
 static void ShiftOnePoint2Right(uint8 *data, int size);
@@ -154,11 +153,11 @@ uint16 FPGA::ReadFlag(void)
 void FPGA::ReadPoint(void)
 {
     readingPointP2P = false;
-    ReadPoint();
+    ReadOnePoint();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool ReadPoint(void)
+bool FPGA::ReadOnePoint(void)
 {
     if (readingPointP2P)
     {
@@ -167,7 +166,7 @@ static bool ReadPoint(void)
     else if (FSMC_InSetStateMode()                  // Если шина находится в состоянии смены режима
              || FSMC_GetMode() == ModeFSMC_Display) // Или в режиме работы с дисплеем
     {
-        FSMC_SetFuncitonAfterSetMode(ReadPoint);    // То назначаем вызов этой функции при следющей смене режима шины
+        FSMC_SetFuncitonAfterSetMode(FPGA::ReadOnePoint);    // То назначаем вызов этой функции при следющей смене режима шины
     }
     else
     {
