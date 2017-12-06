@@ -155,7 +155,7 @@ void FM_Draw()
     if (gBF.needRedrawFileManager == 1)
     {
         painter.BeginScene(Color::Back());
-        menu.Draw();
+        Menu::Draw();
         painter.DrawRectangle(0, 0, width, 239, Color::Fill());
         painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, Color::Back());
         drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);

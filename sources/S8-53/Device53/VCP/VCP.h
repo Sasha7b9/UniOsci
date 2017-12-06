@@ -4,15 +4,13 @@
 class VCP
 {
 public:
-    void Init();
-    void SendDataAsinch(uint8 *buffer, int size);
-    void SendDataSynch(const uint8 *data, int size);
-    void SendStringSynch(char *data);                   ///< Передаётся строка без завершающего нуля.
-    void SendFormatStringAsynch(char *format, ...);     ///< Эта строка передаётся с завершающими символами \r\n.
-    void SendFormatStringSynch(char *format, ...);      ///< Эта строка передаётся с завершающими символами \r\n.
-    void SendByte(uint8 data);
-    void Flush();
-    void SendStringAsinch(char *data);
+    static void Init();
+    static void SendDataAsinch(uint8 *buffer, int size);
+    static void SendDataSynch(const uint8 *data, int size);
+    static void SendStringSynch(char *data);                   ///< Передаётся строка без завершающего нуля.
+    static void SendFormatStringAsynch(char *format, ...);     ///< Эта строка передаётся с завершающими символами \r\n.
+    static void SendFormatStringSynch(char *format, ...);      ///< Эта строка передаётся с завершающими символами \r\n.
+    static void SendByte(uint8 data);
+    static void Flush();
+    static void SendStringAsinch(char *data);
 };
-
-extern VCP vcp;

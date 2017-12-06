@@ -210,8 +210,8 @@ static void OnChanged_ADC_Balance_Mode(bool active)
 {
     Draw_ADC_Balance_Mode(0, 0);
 
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)shiftADCA, false);
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)shiftADCA, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)shiftADCB, false);
 }
 
 DEF_CHOICE_3(       mcADC_Balance_Mode,                                                                       //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ğåæèì ---
@@ -228,7 +228,7 @@ DEF_CHOICE_3(       mcADC_Balance_Mode,                                         
 static void OnChanged_ADC_Balance_ShiftA()
 {
     BALANCE_ADC_A = shiftADCA;
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)BALANCE_ADC_A, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)BALANCE_ADC_A, false);
 }
 
 static bool IsActive_ADC_Balance_Shift()
@@ -247,7 +247,7 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftA,                                       
 static void OnChanged_ADC_Balance_ShiftB()
 {
     BALANCE_ADC_B = shiftADCB;
-    fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
+    FPGA::WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
 }
 
 DEF_GOVERNOR(       mgADC_Balance_ShiftB,                                                                //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÁÀËÀÍÑ - Ñìåùåíèå 2 ---
@@ -273,15 +273,15 @@ void LoadStretchADC(Channel chan)
 {
     if (DEBUG_STRETCH_ADC_TYPE_IS_DISABLED)
     {
-        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, 0x80, true);
+        FPGA::WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, 0x80, true);
     }
     else if (DEBUG_STRETCH_ADC_TYPE_IS_HAND)
     {
-        fpga.WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)DEBUG_STRETCH_ADC(chan), true);
+        FPGA::WriteToHardware(chan == A ? WR_CAL_A : WR_CAL_B, (uint8)DEBUG_STRETCH_ADC(chan), true);
     }
     else if (DEBUG_STRETCH_ADC_TYPE_IS_SETTINGS)
     {
-        fpga.LoadKoeffCalibration(chan);
+        FPGA::LoadKoeffCalibration(chan);
     }
 }
 
@@ -312,7 +312,7 @@ static bool IsActive_ADC_Stretch_ADC()
 
 static void OnChanged_ADC_Stretch_ADC_A()
 {
-    fpga.WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
+    FPGA::WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
 }
 
 DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                                                //--- ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - Êîıôô. 1ê ---
@@ -325,7 +325,7 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                        
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Stretch_ADC_B()
 {
-    fpga.WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
+    FPGA::WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
 }
 
 DEF_GOVERNOR(       mgADC_Stretch_ADC_B,                                                                //--- ÎÒËÀÄÊÀ - ÀÖÏ - ĞÀÑÒßÆÊÀ - Êîıôô. 2ê ---
@@ -360,8 +360,8 @@ static void OnPress_ADC_AltRShift_Reset()
             }
         }
     }
-    fpga.SetRShift(A, SET_RSHIFT_A);
-    fpga.SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_BUTTON(         mbADC_AltRShift_Reset,                                                                  //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñáğîñ ---
@@ -373,7 +373,7 @@ DEF_BUTTON(         mbADC_AltRShift_Reset,                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_AltRShift_A()
 {
-    fpga.SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
 }
 
 DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                                      //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 1ê 2ìÂ ïîñò ---
@@ -386,7 +386,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_AltRShift_B()
 {
-    fpga.SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_B,                                                      //--- ÎÒËÀÄÊÀ - ÀÖÏ - ÄÎÏ ÑÌÅÙ - Ñì 2ê 2ìÂ ïîñò ---
@@ -459,7 +459,7 @@ DEF_PAGE_3(         mpADC,                                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Randomizer_SamplesForGates()
 {
-    fpga.SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
+    FPGA::SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
 }
 
 DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                                                             // ÎÒËÀÄÊÀ - ĞÀÍÄ-ÒÎĞ - Âûá-ê/âîğîòà ---
@@ -472,7 +472,7 @@ DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Randomizer_AltTShift0()
 {
-    fpga.SetDeltaTShift(ADD_SHIFT_T0);
+    FPGA::SetDeltaTShift(ADD_SHIFT_T0);
 }
 
 DEF_GOVERNOR(       mgRandomizer_AltTShift0,                                                                   // ÎÒËÀÄÊÀ - ĞÀÍÄ-ÒÎĞ - tShift äîï. ---
@@ -679,7 +679,7 @@ static void Draw_EnterSerialNumber()
 
 static void OnPress_SerialNumber()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Debug_SerialNumber);
+    Menu::OpenPageAndSetItCurrent(PageSB_Debug_SerialNumber);
     display.SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);
     s->number = 01;

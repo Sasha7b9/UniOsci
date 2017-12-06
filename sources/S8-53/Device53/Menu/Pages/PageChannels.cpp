@@ -63,7 +63,7 @@ DEF_CHOICE_2(       mcInputA,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_CoupleA(bool active)
 {
-    fpga.SetModeCouple(A, SET_COUPLE_A);
+    FPGA::SetModeCouple(A, SET_COUPLE_A);
 }
 
 DEF_CHOICE_3(       mcCoupleA,                                                                                               //---  ¿Õ¿À 1 - —‚ˇÁ¸ ---
@@ -79,7 +79,7 @@ DEF_CHOICE_3(       mcCoupleA,                                                  
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_FiltrA(bool active)
 {
-    fpga.EnableChannelFiltr(A, FILTR_A);
+    FPGA::EnableChannelFiltr(A, FILTR_A);
 }
 
 DEF_CHOICE_2(       mcFiltrA,                                                                                               //---  ¿Õ¿À 1 - ‘ËÎ¸Ú ---
@@ -94,7 +94,7 @@ DEF_CHOICE_2(       mcFiltrA,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_InverseA(bool active)
 {
-    fpga.SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
 }
 
 DEF_CHOICE_2(       mcInverseA,                                                                                           //---  ¿Õ¿À 1 - »Ì‚ÂÒËˇ ---
@@ -147,7 +147,7 @@ DEF_CHOICE_2(       mcInputB,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_CoupleB(bool active)
 {
-    fpga.SetModeCouple(B, SET_COUPLE_B);
+    FPGA::SetModeCouple(B, SET_COUPLE_B);
 }
 
 DEF_CHOICE_3(       mcCoupleB,                                                                                               //---  ¿Õ¿À 2 - —‚ˇÁ¸ ---
@@ -163,7 +163,7 @@ DEF_CHOICE_3(       mcCoupleB,                                                  
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_FiltrB(bool active)
 {
-    fpga.EnableChannelFiltr(B, FILTR_B);
+    FPGA::EnableChannelFiltr(B, FILTR_B);
 }
 
 DEF_CHOICE_2(       mcFiltrB,                                                                                               //---  ¿Õ¿À 2 - ‘ËÎ¸Ú ---
@@ -178,7 +178,7 @@ DEF_CHOICE_2(       mcFiltrB,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_InverseB(bool active)
 {
-    fpga.SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_CHOICE_2(       mcInverseB,                                                                                           //---  ¿Õ¿À 2 - »Ì‚ÂÒËˇ ---

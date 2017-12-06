@@ -70,7 +70,7 @@ DEF_BUTTON(         bResetSettings,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_AutoSearch()
 {
-    fpga.StartAutoFind();
+    FPGA::StartAutoFind();
 };
 
 DEF_BUTTON(         bAutoSearch,                                                                                      //--- СЕРВИС - Поиск сигнала ---
@@ -83,7 +83,7 @@ DEF_BUTTON(         bAutoSearch,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Calibrator_Mode(bool active)
 {
-    fpga.SetCalibratorMode(CALIBRATOR);
+    FPGA::SetCalibratorMode(CALIBRATOR);
 }
 
 DEF_CHOICE_3(       cCalibrator_Mode,                                                                       //--- СЕРВИС - КАЛИБРАТОР - Калибратор ---
@@ -696,13 +696,13 @@ static void Information_Draw()
     painter.DrawStringInCenterRect(0, 205 + dY, 320, 20, "Отдел маркетинга: тел./факс. 8-017-262-57-50");
     painter.DrawStringInCenterRect(0, 220 + dY, 320, 20, "Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-262-57-51");
 
-    menu.Draw();
+    Menu::Draw();
     painter.EndScene();
 }
 
 static void OnPress_Information()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Service_Information);
+    Menu::OpenPageAndSetItCurrent(PageSB_Service_Information);
     display.SetDrawMode(DrawMode_Hand, Information_Draw);
 }
 

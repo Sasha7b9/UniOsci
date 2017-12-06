@@ -104,7 +104,7 @@ static void CalculateAroundAverage(uint8 *data0, uint8 *data1, DataSettings *dss
 void DataStorage::AddData(uint8 *data0, uint8 *data1, DataSettings dss)
 {
     uint time = gTimerTics;
-    dss.time = RTC_GetPackedTime();
+    dss.time = RTClock::GetPackedTime();
 
     if(dss.enableCh0 == 0 && dss.enableCh1 == 0)
     {
@@ -236,7 +236,7 @@ int DataStorage::NumElementsWithSameSettings()
 int DataStorage::NumElementsWithCurrentSettings()
 {
     DataSettings dp;
-    fpga.FillDataPointer(&dp);
+    FPGA::FillDataPointer(&dp);
     int retValue = 0;
     int numElements = NumElementsInStorage();
     for(retValue = 0; retValue < numElements; retValue++)

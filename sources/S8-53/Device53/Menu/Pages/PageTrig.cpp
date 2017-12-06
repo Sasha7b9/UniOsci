@@ -18,10 +18,10 @@ extern const PageBase mpAutoFind;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnPress_Mode(bool active)
 {
-    fpga.Stop(false);
+    FPGA::Stop(false);
     if (!START_MODE_IS_SINGLE)
     {
-        fpga.Start();
+        FPGA::Start();
     }
 }
 
@@ -47,7 +47,7 @@ DEF_CHOICE_3(       mcMode,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Source(bool active)
 {
-    fpga.SetTrigSource(TRIGSOURCE);
+    FPGA::SetTrigSource(TRIGSOURCE);
 }
 
 DEF_CHOICE_3(       mcSource,                                                                                               //--- —»Õ’– - »ÒÚÓ˜ÌËÍ ---
@@ -63,7 +63,7 @@ DEF_CHOICE_3(       mcSource,                                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Polarity(bool active)
 {
-    fpga.SetTrigPolarity(TRIG_POLARITY);
+    FPGA::SetTrigPolarity(TRIG_POLARITY);
 }
 
 DEF_CHOICE_2(       mcPolarity,                                                                                           //--- —»Õ’– - œÓÎˇÌÓÒÚ¸ ---
@@ -83,7 +83,7 @@ DEF_CHOICE_2(       mcPolarity,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Input(bool active)
 {
-    fpga.SetTrigInput(TRIG_INPUT);
+    FPGA::SetTrigInput(TRIG_INPUT);
 }
 
 DEF_CHOICE_4(       mcInput,                                                                                                    //--- —»Õ’– - ¬ıÓ‰ ---
@@ -135,7 +135,7 @@ static bool IsActive_AutoFind_Search()
 
 static void OnPress_AutoFind_Search()
 {
-    fpga.FindAndSetTrigLevel();
+    FPGA::FindAndSetTrigLevel();
 }
 
 DEF_BUTTON(         mbAutoFind_Search,                                                                                 //--- —»Õ’– - œŒ»—  - Õ‡ÈÚË ---

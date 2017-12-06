@@ -71,7 +71,7 @@ void ChangeC_Memory_NumPoints(bool active)
             SHIFT_IN_MEMORY = sMemory_GetNumPoints(false) - grid.Width() - 2;
         }
     }
-    fpga.SetTShift(TSHIFT);
+    FPGA::SetTShift(TSHIFT);
 }
 
 // ¿ÍÚË‚Ì‡ ÎË œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã‡ÒÍ‡
@@ -172,7 +172,7 @@ DEF_SMALL_BUTTON(   sbMemLastNext,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PressSB_MemLast_IntEnter()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Memory_Internal);
+    Menu::OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     MODE_WORK = ModeWork_ROM;
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     gMemory.exitFromIntToLast = 1;
@@ -690,15 +690,15 @@ static void PressSB_SetName_Exit()
     display.RemoveAddDrawFunction();
     if (gMemory.exitFromModeSetNameTo == RETURN_TO_DISABLE_MENU)
     {
-        menu.ShortPressOnPageItem(menu.PagePointerFromName(PageSB_Memory_SetName), 0);
+        Menu::ShortPressOnPageItem(Menu::PagePointerFromName(PageSB_Memory_SetName), 0);
     }
     else if (gMemory.exitFromModeSetNameTo == RETURN_TO_LAST_MEM)
     {
-        menu.OpenPageAndSetItCurrent(PageSB_Memory_Last);
+        Menu::OpenPageAndSetItCurrent(PageSB_Memory_Last);
     }
     else if (gMemory.exitFromModeSetNameTo == RETURN_TO_INT_MEM)
     {
-        menu.OpenPageAndSetItCurrent(PageSB_Memory_Internal);
+        Menu::OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     }
     gMemory.exitFromModeSetNameTo = RETURN_TO_DISABLE_MENU;
 }
@@ -716,13 +716,13 @@ void PressSB_MemInt_Exit()
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     if (gMemory.exitFromIntToLast == 1)
     {
-        menu.OpenPageAndSetItCurrent(PageSB_Memory_Last);
+        Menu::OpenPageAndSetItCurrent(PageSB_Memory_Last);
         MODE_WORK = ModeWork_RAM;
         gMemory.exitFromIntToLast = 0;
     }
     else
     {
-        menu.ShortPressOnPageItem(menu.PagePointerFromName(PageSB_Memory_Internal), 0);
+        Menu::ShortPressOnPageItem(Menu::PagePointerFromName(PageSB_Memory_Internal), 0);
     }
 }
 
@@ -733,7 +733,7 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMemInt,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnPressMemoryExtMask()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Memory_Drive_Mask);
+    Menu::OpenPageAndSetItCurrent(PageSB_Memory_Drive_Mask);
     display.SetAddDrawFunction(DrawSetMask);
 }
 
@@ -961,7 +961,7 @@ void Memory_SaveSignalToFlashDrive()
     {
         if (FILE_NAMING_MODE_IS_HAND)
         {
-            menu.OpenPageAndSetItCurrent(PageSB_Memory_SetName);
+            Menu::OpenPageAndSetItCurrent(PageSB_Memory_SetName);
             display.SetAddDrawFunction(DrawSetName);
         }
         else
@@ -981,7 +981,7 @@ static void PressSB_MemLast_Exit()
     MODE_WORK = ModeWork_Dir;
     if (gMemory.runningFPGAbeforeSmallButtons == 1)
     {
-        fpga.Start();
+        FPGA::Start();
         gMemory.runningFPGAbeforeSmallButtons = 0;
     }
     display.RemoveAddDrawFunction();
@@ -995,8 +995,8 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMemLast,                                          
 static void OnPressMemoryLatest()
 {
     gMemory.currentNumLatestSignal = 0;
-    gMemory.runningFPGAbeforeSmallButtons = fpga.IsRunning() ? 1 : 0;
-    fpga.Stop(false);
+    gMemory.runningFPGAbeforeSmallButtons = FPGA::IsRunning() ? 1 : 0;
+    FPGA::Stop(false);
     MODE_WORK = ModeWork_RAM;
 }
 
@@ -1068,7 +1068,7 @@ DEF_SMALL_BUTTON(   sbExitFileManager,                                          
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void OnPress_Drive_Manager()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Memory_Drive_Manager);
+    Menu::OpenPageAndSetItCurrent(PageSB_Memory_Drive_Manager);
     display.SetDrawMode(DrawMode_Hand, FM_Draw);
     gBF.needRedrawFileManager = 1;
 }
@@ -1108,7 +1108,7 @@ DEF_PAGE_6(         mspMemoryExt,                                               
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnPressMemoryInt()
 {
-    menu.OpenPageAndSetItCurrent(PageSB_Memory_Internal);
+    Menu::OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     MODE_WORK = ModeWork_ROM;
     FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
 }

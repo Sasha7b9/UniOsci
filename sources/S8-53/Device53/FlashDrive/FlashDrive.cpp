@@ -10,15 +10,13 @@
 static FATFS USBDISKFatFs;
 static char USBDISKPath[4];
 
-FlashDrive drive;
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FlashDrive::Init()
+void FDrive::Init()
 {
     if(FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK) 
     {
@@ -33,7 +31,7 @@ void FlashDrive::Init()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashDrive::Update()
+void FDrive::Update()
 {
     USBH_Process(&handleUSBH);
 }
@@ -48,7 +46,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id)
         case HOST_USER_CLASS_ACTIVE:
             gBF.flashDriveIsConnected = 1;
             FM_Init();
-            menu.ChangeStateFlashDrive();
+            Menu::ChangeStateFlashDrive();
             if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 0) != FR_OK)
             {
                 LOG_ERROR("Не могу примонтировать диск");
@@ -61,7 +59,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id)
             break;
         case HOST_USER_DISCONNECTION:
             gBF.flashDriveIsConnected = 0;
-            menu.ChangeStateFlashDrive();
+            Menu::ChangeStateFlashDrive();
             break;
         default:
             break;
@@ -69,7 +67,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::AppendStringToFile(const char* string)
+bool FDrive::AppendStringToFile(const char* string)
 {
     return false;
 }
@@ -85,7 +83,7 @@ void WriteToFile(FIL *file, char *string)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashDrive::GetNumDirsAndFiles(const char* fullPath, int *numDirs, int *numFiles)
+void FDrive::GetNumDirsAndFiles(const char* fullPath, int *numDirs, int *numFiles)
 {
     FILINFO fno;
     DIR dir;
@@ -140,7 +138,7 @@ void FlashDrive::GetNumDirsAndFiles(const char* fullPath, int *numDirs, int *num
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s)
+bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s)
 {
     memcpy(s->nameDir, fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
@@ -188,7 +186,7 @@ bool FlashDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s)
+bool FDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s)
 {
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -224,13 +222,13 @@ bool FlashDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashDrive::CloseCurrentDir(StructForReadDir *s)
+void FDrive::CloseCurrentDir(StructForReadDir *s)
 {
     f_closedir(&s->dir);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
+bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
     memcpy(s->nameDir, fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
@@ -278,7 +276,7 @@ bool FlashDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOu
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s)
+bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s)
 {
     FILINFO *pFNO = &s->fno;
     bool alreadyNull = false;
@@ -313,7 +311,7 @@ bool FlashDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::OpenNewFileForWrite(const char* fullPathToFile, StructForWrite *structForWrite)
+bool FDrive::OpenNewFileForWrite(const char* fullPathToFile, StructForWrite *structForWrite)
 {
     if (f_open(&structForWrite->fileObj, fullPathToFile, FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
     {
@@ -324,7 +322,7 @@ bool FlashDrive::OpenNewFileForWrite(const char* fullPathToFile, StructForWrite 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::WriteToFile(uint8* data, int sizeData, StructForWrite *structForWrite)
+bool FDrive::WriteToFile(uint8* data, int sizeData, StructForWrite *structForWrite)
 {
     while (sizeData > 0)
     {
@@ -352,7 +350,7 @@ bool FlashDrive::WriteToFile(uint8* data, int sizeData, StructForWrite *structFo
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FlashDrive::CloseFile(StructForWrite *structForWrite)
+bool FDrive::CloseFile(StructForWrite *structForWrite)
 {
     if (structForWrite->sizeData != 0)
     {

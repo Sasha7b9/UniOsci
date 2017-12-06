@@ -36,7 +36,6 @@
     <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\FLASH.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\FSMC.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\Hardware.h" />
-    <ClInclude Include="..\..\..\S8-54\Boot54\Hardware\_Timer.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\libs\ffconf.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Boot54\libs\usbh_conf.h" />
@@ -96,7 +95,6 @@
     <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FLASH.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\FSMC.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\Hardware.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Boot54\Hardware\_Timer.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Boot54\libs\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

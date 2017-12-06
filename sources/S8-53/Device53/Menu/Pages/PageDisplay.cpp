@@ -207,7 +207,7 @@ DEF_CHOICE_REG_10(  mcSmoothing,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_RefreshFPS(bool active)
 {
-    fpga.SetNumSignalsInSec(sDisplay_NumSignalsInS());
+    FPGA::SetNumSignalsInSec(sDisplay_NumSignalsInS());
 }
 
 DEF_CHOICE_5(       mcRefreshFPS,                                                                                      // ƒ»—œÀ≈… - ◊‡ÒÚÓÚ‡ Ó·ÌÓ‚Î ---
@@ -393,7 +393,7 @@ DEF_CHOICE_3(       mcSettings_ShowAltMarkers,                                  
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_AutoHide(bool autoHide)
 {
-    menu.SetAutoHide(autoHide);
+    Menu::SetAutoHide(autoHide);
 }
 
 DEF_CHOICE_6(       mcSettings_AutoHide,                                                                      //--- ƒ»—œÀ≈… - Õ¿—“–Œ… » - —Í˚‚‡Ú¸ ---
