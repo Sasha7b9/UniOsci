@@ -146,7 +146,7 @@ static void DrawData_ModeDir(void)
     if (MODE_ACCUM_NO_RESET && !IN_P2P_MODE && ENUM_ACCUM > ENumAccum_1)
     {
         int numAccum = NUM_ACCUM;
-        int numSignalsInStorage = dS.NumElementsWithCurrentSettings();
+        int numSignalsInStorage = Storage::NumElementsWithCurrentSettings();
         if (numSignalsInStorage < numAccum)
         {
             numAccum = numSignalsInStorage;
@@ -501,7 +501,7 @@ static void DrawLimitLabel(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawMath(void)
 {
-    if (!FUNC_MODE_DRAW_IS_ENABLED || dS.GetData_RAM(A, 0) == 0 || dS.GetData_RAM(B, 0) == 0)
+    if (!FUNC_MODE_DRAW_IS_ENABLED || Storage::GetData_RAM(A, 0) == 0 || Storage::GetData_RAM(B, 0) == 0)
     {
         return;
     }
@@ -601,7 +601,7 @@ static int FillDataP2P(uint8 *data, DataSettings **ds)
     uint8 *dataA = 0;
     uint8 *dataB = 0;
 
-    int numPoints = dS.GetFrameP2P_RAM(ds, &dataA, &dataB); // Получаем фрейм поточечного вывода
+    int numPoints = Storage::GetFrameP2P_RAM(ds, &dataA, &dataB); // Получаем фрейм поточечного вывода
 
     int numPointsDS = (*ds)->BytesInChannel();
 

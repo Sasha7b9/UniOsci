@@ -1074,7 +1074,7 @@ static Range FindRange(Channel ch)
         uint8 min = 0;
         uint8 max = 0;
 
-        uint8 bound = GetBound(dS.GetData_RAM(ch, 0), &min, &max);
+        uint8 bound = GetBound(Storage::GetData_RAM(ch, 0), &min, &max);
 
         if (bound > (MAX_VALUE - MIN_VALUE) / 10.0 * 2)      // Если размах сигнала меньше двух клеток - тоже выходим
         {
@@ -1088,7 +1088,7 @@ static Range FindRange(Channel ch)
 
                 ReadingCycle(10000);
 
-                GetBound(dS.GetData_RAM(ch, 0), &min, &max);
+                GetBound(Storage::GetData_RAM(ch, 0), &min, &max);
 
                 if (min > MIN_VALUE && max < MAX_VALUE)     // Если все значения внутри экрана
                 {

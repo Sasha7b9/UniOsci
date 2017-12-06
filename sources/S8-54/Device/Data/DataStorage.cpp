@@ -6,8 +6,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-DataStorage dS;
-
 // Возвращает 0, если канал выключен
 static uint8 *AddressChannel(DataSettings *ds, Channel ch);
 static bool DataSettingsIsEquals(const DataSettings *ds1, const DataSettings *ds2);
@@ -61,7 +59,7 @@ void ClearLimitsAndSums(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::Clear(void)
+void Storage::Clear(void)
 {
     SIZE_POOL = RAM8(DS_POOL_END) - RAM8(DS_POOL_BEGIN);
 
@@ -93,14 +91,14 @@ void DataStorage::Clear(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *dss)
+void Storage::CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 {
     if (!dataA && !dataB)
     {
         return;
     }
 
-    int numAveData = dS.NumElementsWithCurrentSettings();
+    int numAveData = NumElementsWithCurrentSettings();
 
     int size = NUM_BYTES(dss);
 
@@ -116,9 +114,9 @@ static void CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *dss
     {
         numAveData = sDisplay_NumAverage();
 
-        if(numAveData > dS.NumElementsInStorage())
+        if(numAveData > NumElementsInStorage())
         {
-            numAveData = dS.NumElementsInStorage();
+            numAveData = NumElementsInStorage();
         }
 
         float numAveDataF = (float)numAveData;
@@ -329,7 +327,7 @@ static void BeginLimits(uint8 *dataA, uint8 *dataB, int numElements)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DataSettings* DataStorage::DataSettingsFromEnd(int indexFromEnd)
+DataSettings* Storage::DataSettingsFromEnd(int indexFromEnd)
 {
     int index = 0;
 
@@ -347,14 +345,14 @@ DataSettings* DataStorage::DataSettingsFromEnd(int indexFromEnd)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-DataSettings* GetSettingsDataFromEnd(int fromEnd)
+DataSettings* Storage::GetSettingsDataFromEnd(int fromEnd)
 {
-    return dS.DataSettingsFromEnd(fromEnd);
+    return DataSettingsFromEnd(fromEnd);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
+void Storage::CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 {
 #define SET_LIMIT(d, up, down)          \
     data = RAM_ReadByte(d + i);         \
@@ -371,16 +369,16 @@ void CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 
     int numBytes = NUM_BYTES(dss);
 
-    if(dS.NumElementsInStorage() == 0 || NUM_MIN_MAX == 1 || (!DataSettingsIsEquals(dss, GetSettingsDataFromEnd(0))))
+    if(NumElementsInStorage() == 0 || NUM_MIN_MAX == 1 || (!DataSettingsIsEquals(dss, GetSettingsDataFromEnd(0))))
     {
         BeginLimits(dataA, dataB, numBytes);
     }
     else
     {
-        int allDatas = dS.NumElementsWithSameSettings();
+        int allDatas = NumElementsWithSameSettings();
         LIMITATION(allDatas, 1, NUM_MIN_MAX);
 
-        if(dS.NumElementsWithSameSettings() >= NUM_MIN_MAX)
+        if(NumElementsWithSameSettings() >= NUM_MIN_MAX)
         {
             BeginLimits(dataA, dataB, numBytes);
             allDatas--;
@@ -388,8 +386,8 @@ void CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 
         for(int numData = 0; numData < allDatas; numData++)
         {
-            dataA = dS.GetData_RAM(A, numData);
-            dataB = dS.GetData_RAM(B, numData);
+            dataA = GetData_RAM(A, numData);
+            dataB = GetData_RAM(B, numData);
 
             uint8 data = 0;
             uint8 limitUp = 0;
@@ -411,13 +409,13 @@ void CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateSums(void)
+void Storage::CalculateSums(void)
 {
     DataSettings *ds = 0;
     uint16 *dataA = 0;
     uint16 *dataB = 0;
 
-    dS.GetDataFromEnd_RAM(0, &ds, &dataA, &dataB);
+    GetDataFromEnd_RAM(0, &ds, &dataA, &dataB);
 
     int numPoints = NUM_BYTES(ds);
 
@@ -445,7 +443,7 @@ void CalculateSums(void)
 
     if(numAveragings > 1)
     {
-        int numSameSettins = dS.NumElementsWithSameSettings();
+        int numSameSettins = NumElementsWithSameSettings();
         if(numSameSettins < numAveragings)
         {
             numAveragings = numSameSettins;
@@ -453,7 +451,7 @@ void CalculateSums(void)
 
         for(int i = 1; i < numAveragings; i++)
         {
-            dS.GetDataFromEnd_RAM(i, &ds, &dataA, &dataB);
+            GetDataFromEnd_RAM(i, &ds, &dataA, &dataB);
 
             sumA16 = (uint16 *)sumA_RAM;
             uint16 *dA = dataA;
@@ -509,7 +507,7 @@ void CalculateSums(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::AddData(uint8 *dataA, uint8 *dataB, DataSettings dss)
+void Storage::AddData(uint8 *dataA, uint8 *dataB, DataSettings dss)
 {
     if (!ENABLED_A(&dss) && !ENABLED_B(&dss))
     {
@@ -531,17 +529,16 @@ void DataStorage::AddData(uint8 *dataA, uint8 *dataB, DataSettings dss)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-// Возвращает true, если настройки измерений с индексами elemFromEnd0 и elemFromEnd1 совпадают, и false в ином случае.
-static bool SettingsIsIdentical(int elemFromEnd0, int elemFromEnd1)
+bool Storage::SettingsIsIdentical(int elemFromEnd0, int elemFromEnd1)
 {
-    DataSettings* dp0 = dS.DataSettingsFromEnd(elemFromEnd0);
-    DataSettings* dp1 = dS.DataSettingsFromEnd(elemFromEnd1);
+    DataSettings* dp0 = DataSettingsFromEnd(elemFromEnd0);
+    DataSettings* dp1 = DataSettingsFromEnd(elemFromEnd1);
     return DataSettingsIsEquals(dp0, dp1);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumElementsWithSameSettings(void)
+int Storage::NumElementsWithSameSettings(void)
 {
     int retValue = 0;
     for(retValue = 1; retValue < numElementsInStorage; retValue++)
@@ -556,7 +553,7 @@ int DataStorage::NumElementsWithSameSettings(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumElementsWithCurrentSettings(void)
+int Storage::NumElementsWithCurrentSettings(void)
 {
     DataSettings dp;
     dp.Fill();
@@ -576,7 +573,7 @@ int DataStorage::NumElementsWithCurrentSettings(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumElementsInStorage(void)
+int Storage::NumElementsInStorage(void)
 {
     return numElementsInStorage;
 }
@@ -608,7 +605,7 @@ static bool CopyData(DataSettings *ds, Channel ch, uint8 *dataImportRel)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 *DataStorage::GetData_RAM(Channel ch, int fromEnd)
+uint8 *Storage::GetData_RAM(Channel ch, int fromEnd)
 {
     uint8 *dataImport = (ch == A) ? RAM8(DS_DATA_IMPORT_REL_A) : RAM8(DS_DATA_IMPORT_REL_B);
 
@@ -629,7 +626,7 @@ uint8 *DataStorage::GetData_RAM(Channel ch, int fromEnd)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool DataStorage::GetDataFromEnd(int fromEnd, DataSettings *ds, uint8 *dataA, uint8 *dataB)
+bool Storage::GetDataFromEnd(int fromEnd, DataSettings *ds, uint8 *dataA, uint8 *dataB)
 {
     DataSettings *dataSettings = 0;
     uint16 *dA = 0;
@@ -654,7 +651,7 @@ bool DataStorage::GetDataFromEnd(int fromEnd, DataSettings *ds, uint8 *dataA, ui
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool DataStorage::GetLimitation(Channel ch, uint8 *data, int direction)
+bool Storage::GetLimitation(Channel ch, uint8 *data, int direction)
 {
     if (!MIN_MAX_ENABLED || NumElementsWithSameSettings() < 2)
     {
@@ -675,7 +672,7 @@ bool DataStorage::GetLimitation(Channel ch, uint8 *data, int direction)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool DataStorage::GetDataFromEnd_RAM(int fromEnd, DataSettings **ds, uint16 **dataA, uint16 **dataB)
+bool Storage::GetDataFromEnd_RAM(int fromEnd, DataSettings **ds, uint16 **dataA, uint16 **dataB)
 {
     DataSettings *dp = DataSettingsFromEnd(fromEnd);
 
@@ -703,7 +700,7 @@ bool DataStorage::GetDataFromEnd_RAM(int fromEnd, DataSettings **ds, uint16 **da
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 *DataStorage::GetAverageData(Channel ch)
+uint8 *Storage::GetAverageData(Channel ch)
 {
     if (newSumCalculated[ch] == false)
     {
@@ -749,7 +746,7 @@ uint8 *DataStorage::GetAverageData(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumberAvailableEntries(void)
+int Storage::NumberAvailableEntries(void)
 {
     if(ADDRESS_DATA(&datas[iFirst]) == 0)
     {
@@ -764,7 +761,7 @@ int DataStorage::NumberAvailableEntries(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::NewFrameP2P(DataSettings *dss)
+void Storage::NewFrameP2P(DataSettings *dss)
 {
     if (!ENABLED_A(dss) && !ENABLED_B(dss))
     {
@@ -780,7 +777,7 @@ void DataStorage::NewFrameP2P(DataSettings *dss)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::AddPointsP2P(uint16 dataA, uint16 dataB)
+void Storage::AddPointsP2P(uint16 dataA, uint16 dataB)
 {
     if (!ENABLED_A(&dsP2P) && !ENABLED_B(&dsP2P))
     {
@@ -823,7 +820,7 @@ void DataStorage::AddPointsP2P(uint16 dataA, uint16 dataB)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB)
+int Storage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB)
 {
     if (!inFrameP2Pmode)
     {

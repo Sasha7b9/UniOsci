@@ -121,7 +121,7 @@ DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Next(void)
 {
-    CircleIncrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
+    CircleIncrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Next(int x, int y)
@@ -141,7 +141,7 @@ DEF_SMALL_BUTTON(   bLast_Next,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Last_Prev(void)
 {
-    CircleDecrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(dS.NumElementsInStorage() - 1));
+    CircleDecrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
 
 static void Draw_Last_Prev(int x, int y)
@@ -228,12 +228,12 @@ static void OnDraw_Last(void)
     painter.DrawRectangle(grid.Right() - width, GRID_TOP, width, height, gColorFill);
     painter.DrawText(grid.Right() - width + 2, GRID_TOP + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
     painter.DrawText(grid.Right() - width + 17, GRID_TOP + 1, "/");
-    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, Int2String(dS.NumElementsInStorage(), false, 3, buffer));
+    painter.DrawText(grid.Right() - width + 23, GRID_TOP + 1, Int2String(Storage::NumElementsInStorage(), false, 3, buffer));
 }
 
 static void OnRegSet_Last(int angle)
 {
-    if (dS.NumElementsInStorage() > 1)
+    if (Storage::NumElementsInStorage() > 1)
     {
         sound.RegulatorSwitchRotate();
     }
