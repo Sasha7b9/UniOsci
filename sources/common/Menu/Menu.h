@@ -20,70 +20,67 @@ class Menu
 {
 public:
     /// Инициализация
-    void Init(void);
+    static void Init(void);
 
-    void ChangeStateFlashDrive();
+    static void ChangeStateFlashDrive();
     /// Функция должна вызываться в главном цикле.
-    void UpdateInput(void);
+    static void UpdateInput(void);
     /// Функция обработки короткого нажатия кнопки (менее 0.5 сек.).
-    void ShortPressureButton(PanelButton button);
+    static void ShortPressureButton(PanelButton button);
     /// Функция обработки длинного нажатия кнопки (более 0.5 сек.).
-    void LongPressureButton(PanelButton button);
+    static void LongPressureButton(PanelButton button);
     /// Функция вызывается, когда кнопка переходит из отжатого в нажатое положение.
-    void PressButton(PanelButton button);
+    static void PressButton(PanelButton button);
     /// Функция вызывается, когда кнопка переходит из нажатого в отжатое положение.
-    void ReleaseButton(PanelButton button);
+    static void ReleaseButton(PanelButton button);
     /// Функция вызывается в момент нажатия гувернёра.
-    void PressReg(PanelRegulator reg);
+    static void PressReg(PanelRegulator reg);
     /// Функция обработки поворота ручки УСТАНОВКА вправо.
-    void RotateRegSetRight(void);
+    static void RotateRegSetRight(void);
     /// Функция обработки поворота ручки УСТАНОВКА влево.
-    void RotateRegSetLeft(void);
+    static void RotateRegSetLeft(void);
     /// Установить время автоматического сокрытия меню в соответствии с установками.
-    void SetAutoHide(bool active);
+    static void SetAutoHide(bool active);
     /// Возвращает адрес пункта меню, находящегося под нажатой в данный момент кнопкой.
-    void *ItemUnderKey(void);
+    static void *ItemUnderKey(void);
     /// Возвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
-    char *StringNavigation(char buffer[100]);
+    static char *StringNavigation(char buffer[100]);
 
-    void Show(bool show);
+    static void Show(bool show);
 
-    void OpenItemTime(void);
+    static void OpenItemTime(void);
     /// Функция временно включает отображение строки навигации меню, если задано настройками.
-    void TemporaryEnableStrNavi(void);
+    static void TemporaryEnableStrNavi(void);
     /// Ввыполнить эту функцию после Menu_UpdateInput().
-    void RunAfterUpdate(pFuncVV func);
+    static void RunAfterUpdate(pFuncVV func);
     /// Нарисовать меню
-    void Draw();
+    static void Draw();
     /// Возвращает адрес открытого элемента меню
-    Control *OpenedItem(void);
+    static Control *OpenedItem(void);
     /// Возвращает тип открытого элемента меню
-    TypeItem TypeOpenedItem(void);
+    static TypeItem TypeOpenedItem(void);
 
-    NamePage GetNameOpenedPage(void);
+    static NamePage GetNameOpenedPage(void);
 
-    Page *PagePointerFromName(NamePage namePage);
+    static Page *PagePointerFromName(NamePage namePage);
     /// Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
-    Control *CurrentItem(void);
+    static Control *CurrentItem(void);
     /// Закрыть открытый элемент меню
-    void CloseOpenedItem(void);
+    static void CloseOpenedItem(void);
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
-    void ChangeItem(void *item, int delta);
+    static void ChangeItem(void *item, int delta);
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
-    void OpenPageAndSetItCurrent(NamePage namePage);
+    static void OpenPageAndSetItCurrent(NamePage namePage);
 
-    void ShortPressOnPageItem(Page *, int);
+    static void ShortPressOnPageItem(Page *, int);
 
-    NamePage GetNamePage(const Page *);
+    static NamePage GetNamePage(const Page *);
 
 private:
-    void *RetLastOpened(Page *_page, TypeItem *_type);
+    static void *RetLastOpened(Page *_page, TypeItem *_type);
 };
-
-
-extern Menu menu;
 
 
 /** @}

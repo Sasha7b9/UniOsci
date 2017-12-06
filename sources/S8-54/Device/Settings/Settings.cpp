@@ -274,7 +274,7 @@ void Settings_Load(bool _default)
     Panel::EnableLEDChannel(A, SET_ENABLED_A);
     Panel::EnableLEDChannel(B, SET_ENABLED_B);
     FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
-    menu.SetAutoHide(true);
+    Menu::SetAutoHide(true);
     Display::ChangedRShiftMarkers(true);
     OnChanged_ADC_Stretch_Mode(true);
     OnChanged_DisplayOrientation(true);
@@ -320,7 +320,7 @@ void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool MenuIsMinimize(void)
 {
-    return menu.OpenedItem()->IsPageSB();
+    return Menu::OpenedItem()->IsPageSB();
 }
 
 
@@ -341,7 +341,7 @@ void SetMenuPageDebugActive(bool active)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void CurrentPageSBregSet(int angle)
 {
-    Page *page = (Page *)menu.OpenedItem();
+    Page *page = (Page *)Menu::OpenedItem();
     if (page->funcRegSetSB)
     {
         page->funcRegSetSB(angle);
@@ -354,7 +354,7 @@ const SButton* GetSmallButton(PanelButton button)
 {
     if(MenuIsMinimize() && button >= B_Menu && button <= B_F5)
     {
-        Page *page = (Page *)menu.OpenedItem();
+        Page *page = (Page *)Menu::OpenedItem();
         SButton *sb = (SButton *)page->items[button - B_Menu];
         return sb;
     }

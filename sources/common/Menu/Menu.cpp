@@ -17,8 +17,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Menu menu;
-
 extern void OnChanged_InputA(bool active);
 extern void OnChanged_InputB(bool active);
 extern void Long_Help(void);
@@ -129,17 +127,17 @@ static void ProcessButtonForHint(PanelButton button)
             "5. Если меню находится в режиме малых кнопок, то нажатие закрывает страницу."
             :
         "МЕНЮ button performs the following functions:\n"
-            "1. At the closed menu pressing or pressing with deduction during 0.5s opens the menu.\n"
-            "2. At the open menu deduction of the button during 0.5s closes the menu.\n"
+            "1. At the closed menu pressing or pressing with deduction during 0.5s opens the Menu::\n"
+            "2. At the open menu deduction of the button during 0.5s closes the Menu::\n"
 #ifndef WIN32
 #pragma push
 #pragma diag_suppress 192
-            "3. At control \"SERVICE\x99Mode btn MENU\x99\Close\" current becomes the page of the previous level of the menu. If the root page is "
+            "3. At control \"SERVICE\x99Mode btn MENU\x99\Close\" current becomes the page of the previous level of the Menu:: If the root page is "
             "current, the menu is closed.\n"
 #pragma pop
 #endif
-            "4. At control \"SERVICE\x99Mode btn MENU\x99Toggle\" current becomes the page of the current level of the menu. If the current page the "
-            "last in the current level, happens transition to the previous level of the menu.\n"
+            "4. At control \"SERVICE\x99Mode btn MENU\x99Toggle\" current becomes the page of the current level of the Menu:: If the current page the "
+            "last in the current level, happens transition to the previous level of the Menu::\n"
             "5. If the menu is in the mode of small buttons, pressing closes the page.";
 
     } else if (button == B_Cursors)
@@ -154,7 +152,7 @@ static void ProcessButtonForHint(PanelButton button)
         gStringForHint = LANG_RU ?
             "Кнопка ДИСПЛЕЙ открывает меню настроек дисплея."
             :
-            "ДИСПЛЕЙ button opens the display settings menu.";
+            "ДИСПЛЕЙ button opens the display settings Menu::";
     }
     else if (button == B_Memory)
     {
@@ -178,7 +176,7 @@ static void ProcessButtonForHint(PanelButton button)
             "1. Кнопка ПОМОЩЬ открывает меню помощи.\n"
             "2. Нажатие и удержание кнопки ПОМОЩЬ в течение 0.5с включает и отключает режим вывода подсказок."
             :
-            "1. ПОМОЩЬ button opens the help menu.\n"
+            "1. ПОМОЩЬ button opens the help Menu::\n"
             "2. Pressing and holding the ПОМОЩЬ for 0.5s enables and disables output mode hints.";
     }
     else if (button == B_Service)
@@ -370,7 +368,7 @@ char *Menu::StringNavigation(char buffer[100])
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnTimerAutoHide(void)
 {
-    menu.Show(false);
+    Menu::Show(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -386,7 +384,7 @@ static void ProcessingShortPressureButton(void)
             return;
         }
         NEED_FINISH_DRAW = 1;
-        menu.SetAutoHide(true);
+        Menu::SetAutoHide(true);
 
         PanelButton button = shortPressureButton;
 
@@ -400,15 +398,15 @@ static void ProcessingShortPressureButton(void)
             {
                 if(!MENU_IS_SHOWN)
                 {
-                    menu.Show(true);
+                    Menu::Show(true);
                 }
                 else
                 {
-                    if (menu.TypeOpenedItem() == Item_Page)
+                    if (Menu::TypeOpenedItem() == Item_Page)
                     {
-                        menu.TemporaryEnableStrNavi();
+                        Menu::TemporaryEnableStrNavi();
                     }
-                    menu.CloseOpenedItem();
+                    Menu::CloseOpenedItem();
                 }
             }
             else if (MENU_IS_SHOWN && IsFunctionalButton(button))       // Если меню показано и нажата функциональная клавиша
@@ -425,7 +423,7 @@ static void ProcessingShortPressureButton(void)
             }
             else                                                        // Если меню не показано.
             {
-                NamePage name = ((const Page *)menu.OpenedItem())->GetNamePage();
+                NamePage name = ((const Page *)Menu::OpenedItem())->GetNamePage();
                 if(button == B_ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
@@ -444,8 +442,8 @@ static void ProcessingShortPressureButton(void)
                 {
                     SetCurrentItem(page, true);
                     OpenItem(page, true);
-                    menu.TemporaryEnableStrNavi();
-                    menu.Show(true);
+                    Menu::TemporaryEnableStrNavi();
+                    Menu::Show(true);
                 }
             }
         } while(false);
@@ -463,7 +461,7 @@ void ProcessingLongPressureButton(void)
     {
         Sound::ButtonRelease();
         NEED_FINISH_DRAW = 1;
-        menu.SetAutoHide(true);
+        Menu::SetAutoHide(true);
 
         if(button == B_Time)
         {
@@ -483,16 +481,16 @@ void ProcessingLongPressureButton(void)
         }
         else if(button == B_Menu)
         {
-            if (menu.OpenedItem()->IsPageSB())
+            if (Menu::OpenedItem()->IsPageSB())
             {
-                menu.CloseOpenedItem();
+                Menu::CloseOpenedItem();
             }
             else
             {
-                menu.Show(!MENU_IS_SHOWN);
-                if (menu.TypeOpenedItem() != Item_Page)
+                Menu::Show(!MENU_IS_SHOWN);
+                if (Menu::TypeOpenedItem() != Item_Page)
                 {
-                    menu.TemporaryEnableStrNavi();
+                    Menu::TemporaryEnableStrNavi();
                 }
             }
         }
@@ -500,9 +498,9 @@ void ProcessingLongPressureButton(void)
         {
             void *item = ItemUnderButton(button);
             FuncForLongPressureOnItem(item)(item);
-            if (menu.TypeOpenedItem() != Item_Page)
+            if (Menu::TypeOpenedItem() != Item_Page)
             {
-                menu.TemporaryEnableStrNavi();
+                Menu::TemporaryEnableStrNavi();
             }
         }
         longPressureButton = B_Empty;
@@ -514,13 +512,13 @@ void ProcessingRegulatorPress(void)
 {
     if (pressRegulator != R_Empty)
     {
-        menu.SetAutoHide(true);
+        Menu::SetAutoHide(true);
         if (pressRegulator == R_Set)
         {
-            menu.Show(!MENU_IS_SHOWN);
-            if (menu.TypeOpenedItem() != Item_Page)
+            Menu::Show(!MENU_IS_SHOWN);
+            if (Menu::TypeOpenedItem() != Item_Page)
             {
-                menu.TemporaryEnableStrNavi();
+                Menu::TemporaryEnableStrNavi();
             }
         }
 
@@ -536,23 +534,23 @@ void ProcessingRegulatorSetRotate(void)
         return;
     }
 
-    if (MENU_IS_SHOWN || menu.TypeOpenedItem() != Item_Page)
+    if (MENU_IS_SHOWN || Menu::TypeOpenedItem() != Item_Page)
     {
-        Control *item = menu.CurrentItem();
+        Control *item = Menu::CurrentItem();
         TypeItem type = item->Type();
         static const int step = 2;
-        if (menu.TypeOpenedItem() == Item_Page && (type == Item_ChoiceReg || type == Item_Governor || type == Item_IP || type == Item_MAC))
+        if (Menu::TypeOpenedItem() == Item_Page && (type == Item_ChoiceReg || type == Item_Governor || type == Item_IP || type == Item_MAC))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
-                menu.ChangeItem(item, angleRegSet);
+                Menu::ChangeItem(item, angleRegSet);
                 angleRegSet = 0;
             }
             return;
         }
         else
         {
-            item = menu.OpenedItem();
+            item = Menu::OpenedItem();
             type = item->Type();
             if (MenuIsMinimize())
             {
@@ -568,7 +566,7 @@ void ProcessingRegulatorSetRotate(void)
             }
             else if (type == Item_GovernorColor)
             {
-                menu.ChangeItem(item, angleRegSet);
+                Menu::ChangeItem(item, angleRegSet);
             }
             else if (type == Item_Time)
             {
@@ -646,7 +644,7 @@ void ShortPress_Choice(void *choice_)
     }
     else if (!ItemIsOpened(choice))
     {
-        SetCurrentItem(choice, menu.CurrentItem() != choice);
+        SetCurrentItem(choice, Menu::CurrentItem() != choice);
         choice->StartChange(1);
     }
     else
@@ -664,9 +662,9 @@ void ShortPress_ChoiceReg(void *choice_)
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     } 
-    else if(menu.OpenedItem() != choice) 
+    else if(Menu::OpenedItem() != choice) 
     {
-        SetCurrentItem(choice, menu.CurrentItem() != choice);
+        SetCurrentItem(choice, Menu::CurrentItem() != choice);
     }
 }
 
@@ -690,7 +688,7 @@ void ShortPress_Button(void *button)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncOnLongPressItem(void *item)
 {
-    if (menu.CurrentItem() != item)
+    if (Menu::CurrentItem() != item)
     {
         SetCurrentItem(item, true);
     }
@@ -700,7 +698,7 @@ void FuncOnLongPressItem(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncOnLongPressItemTime(void *time)
 {
-    if (menu.CurrentItem() != time)
+    if (Menu::CurrentItem() != time)
     {
         SetCurrentItem(time, true);
     }
@@ -735,20 +733,20 @@ void ShortPress_Governor(void *governor)
     {
         return;
     }
-    if(menu.OpenedItem() == gov)
+    if(Menu::OpenedItem() == gov)
     {
         gov->NextPosition();
     }
     else
     {
-        SetCurrentItem(gov, menu.CurrentItem() != gov);
+        SetCurrentItem(gov, Menu::CurrentItem() != gov);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_IP(void *item)
 {
-    if (menu.OpenedItem() == item)
+    if (Menu::OpenedItem() == item)
     {
         ((IPaddress*)item)->NextPosition();
     }
@@ -757,7 +755,7 @@ void ShortPress_IP(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_MAC(void *item)
 {
-    if (menu.OpenedItem() == item)
+    if (Menu::OpenedItem() == item)
     {
         CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
@@ -771,7 +769,7 @@ void ShortPress_GovernorColor(void *governorColor)
     {
         return;
     }
-    if(menu.OpenedItem() == governor)
+    if(Menu::OpenedItem() == governor)
     {
         CircleIncrease<int8>(&(governor->ct->currentField), 0, 3);
     }
@@ -892,11 +890,11 @@ static bool NeedForFireSetLED(void)
 {
     if (!MENU_IS_SHOWN)
     {
-        TypeItem type = menu.TypeOpenedItem();
+        TypeItem type = Menu::TypeOpenedItem();
         return (type == Item_ChoiceReg) || (type == Item_Choice) || (type == Item_Governor);
     }
 
-    NamePage name = menu.GetNameOpenedPage();
+    NamePage name = Menu::GetNameOpenedPage();
     if (
             name == PageSB_Debug_SerialNumber   ||
             name == PageSB_Service_FFT_Cursors  || 
@@ -910,7 +908,7 @@ static bool NeedForFireSetLED(void)
         return true;
     }
     
-    TypeItem type = menu.CurrentItem()->Type();
+    TypeItem type = Menu::CurrentItem()->Type();
     if (type == Item_Governor    ||
         type == Item_ChoiceReg   ||
         type == Item_GovernorColor)
@@ -918,9 +916,9 @@ static bool NeedForFireSetLED(void)
         return true;
     }
 
-    type = menu.TypeOpenedItem();
+    type = Menu::TypeOpenedItem();
     if (type == Item_Choice       ||
-        (type == Item_Page && ((const Page *)menu.OpenedItem())->NumSubPages() > 1)
+        (type == Item_Page && ((const Page *)Menu::OpenedItem())->NumSubPages() > 1)
         )
     {
         return true;
@@ -1040,7 +1038,7 @@ void Menu::CloseOpenedItem(void)
         SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == (Control *)&mainPage)
         {
-            menu.Show(false);
+            Menu::Show(false);
         }
     }
     else

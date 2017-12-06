@@ -871,7 +871,7 @@ static void DebugShowSetInfo_Draw(void)
 
     DRAW_FORMAT("numSmoothForRand : %d", NRST_NUM_SMOOTH_FOR_RAND);
 
-    menu.Draw();
+    Menu::Draw();
     Painter::EndScene();
 }
 

@@ -237,7 +237,7 @@ void Governor::ChangeValue(int delta)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Governor::NextPosition()
 {
-    if (menu.OpenedItem() == this)
+    if (Menu::OpenedItem() == this)
     {
         CircleIncrease<int8>(&gCurDigit, 0, (int8)(NumDigits() - 1));
     }
@@ -377,7 +377,7 @@ void Page::SetCurrentSB() const
     {
         if (SHOW_STRING_NAVI_TEMP)
         {
-            menu.TemporaryEnableStrNavi();
+            Menu::TemporaryEnableStrNavi();
         }
         SetCurrentItem(this, true);
         OpenItem(this, !ItemIsOpened(this));

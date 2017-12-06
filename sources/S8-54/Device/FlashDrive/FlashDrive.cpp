@@ -52,7 +52,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
             {
                 gFlashDriveIsConnected = true;
                 FM_Init();
-                menu.ChangeStateFlashDrive();
+                Menu::ChangeStateFlashDrive();
             }
             */
             break;
@@ -66,7 +66,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
         case HOST_USER_DISCONNECTION:
             gFlashDriveIsConnected = false;
-            menu.ChangeStateFlashDrive();
+            Menu::ChangeStateFlashDrive();
             break;
 
         default:
@@ -79,7 +79,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 void FDrive::Mount(void)
 {
     FM_Init();
-    menu.ChangeStateFlashDrive();
+    Menu::ChangeStateFlashDrive();
     if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 0) != FR_OK)
     {
         LOG_ERROR_TRACE("Не могу примонтировать диск");
@@ -127,7 +127,7 @@ void FDrive::Update(void)
         {
             gFlashDriveIsConnected = true;
             FM_Init();
-            menu.ChangeStateFlashDrive();
+            Menu::ChangeStateFlashDrive();
         }
         while (gTimeMS - timeStart < 3000)
         {

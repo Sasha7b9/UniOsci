@@ -157,7 +157,7 @@ void Governor::DrawLowPart(int x, int y, bool, bool shade)
     }
 
     x = Painter::DrawText(x + 4, y + 21, "\x80", colorTextDown);
-    if (menu.OpenedItem() != this)
+    if (Menu::OpenedItem() != this)
     {
         int delta = (int)Step();
         if (delta == 0)
@@ -276,7 +276,7 @@ void IPaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     snprintf(buffer, SIZE, "%03d.%03d.%03d.%03d", *ip0, *ip1, *ip2, *ip3);
 
-    if (menu.OpenedItem() != this)
+    if (Menu::OpenedItem() != this)
     {
         Painter::DrawText(x + 4, y + 21, buffer, colorTextDown);
     }
@@ -357,7 +357,7 @@ void MACaddress::DrawLowPart(int x, int y, bool, bool shade)
 
     snprintf(buffer, SIZE, "%02X.%02X.%02X.%02X.%02X.%02X", *mac0, *mac1, *mac2, *mac3, *mac4, *mac5);
 
-    if (menu.OpenedItem() != this)
+    if (Menu::OpenedItem() != this)
     {
 
         Painter::DrawText(x + 4, y + 21, buffer, colorTextDown);
@@ -809,7 +809,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
     
     TypeItem type = ((Control *)item)->Type();
 
-    if(menu.CurrentItem() == item)
+    if(Menu::CurrentItem() == item)
     {
         char symbol = 0;
 
@@ -824,7 +824,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
         else if (type == Item_Time)
         {
             Time *time = (Time*)item;
-            if ((menu.OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))
+            if ((Menu::OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))
             {
                 int8 values[7] =
                 {

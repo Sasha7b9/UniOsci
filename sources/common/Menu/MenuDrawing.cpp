@@ -111,8 +111,8 @@ void DrawTitlePage(Page *page, int layer, int yTop)
     }
     
     Painter::DrawVLine(x, yTop, yTop + page->HeightOpened(), Color::BorderMenu(false));
-    bool condDrawRSet = page->NumSubPages() > 1 && menu.CurrentItem()->Type() != Item_ChoiceReg && 
-        menu.CurrentItem()->Type() != Item_Governor && menu.TypeOpenedItem() == Item_Page;
+    bool condDrawRSet = page->NumSubPages() > 1 && Menu::CurrentItem()->Type() != Item_ChoiceReg && 
+        Menu::CurrentItem()->Type() != Item_Governor && Menu::TypeOpenedItem() == Item_Page;
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
     x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, TitleItem(page), colorText);
@@ -337,13 +337,13 @@ bool IsShade(void *item)
     Control *control = (Control *)item;
     Page *keeper = (Page *)control->Keeper();
 
-    return CurrentItemIsOpened(keeper->GetNamePage()) && (item != menu.OpenedItem());
+    return CurrentItemIsOpened(keeper->GetNamePage()) && (item != Menu::OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsPressed(void *item)
 {
-    return item == menu.ItemUnderKey();
+    return item == Menu::ItemUnderKey();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -154,7 +154,7 @@ void FM_Draw(void)
     if (FM_NEED_REDRAW == FM_REDRAW_FULL)
     {
         Painter::BeginScene(gColorBack);
-        menu.Draw();
+        Menu::Draw();
         Painter::DrawRectangle(0, 0, width, 239, gColorFill);
         Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, gColorBack);
         FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);

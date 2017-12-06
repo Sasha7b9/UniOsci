@@ -564,6 +564,6 @@ static void MoveCursTonPercentsOrPoints(int delta)
 
 bool IsRegSetActiveOnCursors(void)
 {
-    return ((menu.GetNameOpenedPage() == PageSB_Cursors_Set) &&
+    return ((Menu::GetNameOpenedPage() == PageSB_Cursors_Set) &&
         ((CURS_ACTIVE_U && CURsU_ENABLED) || (CURS_ACTIVE_T && CURsT_ENABLED)));
 }

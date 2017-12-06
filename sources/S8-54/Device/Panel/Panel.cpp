@@ -220,7 +220,7 @@ void OnTimerPressedKey(void)
         }
         else
         {
-            menu.ReleaseButton(pressedKey);
+            Menu::ReleaseButton(pressedKey);
         }
         pressedKey = B_Empty;
     }
@@ -340,11 +340,11 @@ void Panel::Update(void)
     {
         if (releaseButton)
         {
-            menu.ReleaseButton(releaseButton);
+            Menu::ReleaseButton(releaseButton);
             funcButton[releaseButton].funcOnKey(-1);
             if (pressedKey != B_Empty)
             {
-                menu.ShortPressureButton(releaseButton);
+                Menu::ShortPressureButton(releaseButton);
                 pressedKey = B_Empty;
             }
             Timer::Disable(kPressKey);
@@ -352,7 +352,7 @@ void Panel::Update(void)
         else if (pressButton)
         {
             funcButton[pressButton].funcOnKey(1);
-            menu.PressButton(pressButton);
+            Menu::PressButton(pressButton);
             pressedKey = pressButton;
             Timer::SetAndStartOnce(kPressKey, OnTimerPressedKey, 500);
         }

@@ -459,7 +459,7 @@ DEF_CHOICE_3(       cSettings_AltMarkers,                                       
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_AutoHide(bool autoHide)
 {
-    menu.SetAutoHide(autoHide);
+    Menu::SetAutoHide(autoHide);
 }
 
 DEF_CHOICE_6(       cSettings_AutoHide,                                                                       //--- ƒ»—œÀ≈… - Õ¿—“–Œ… » - —Í˚‚‡Ú¸ ---

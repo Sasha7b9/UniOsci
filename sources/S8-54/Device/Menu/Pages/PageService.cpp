@@ -849,7 +849,7 @@ static void Information_Draw(void)
     Painter::DrawStringInCenterRect(0, 220 + dY, 320, 20, "Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-262-57-51");
 #endif
 
-    menu.Draw();
+    Menu::Draw();
     Painter::EndScene();
 }
 

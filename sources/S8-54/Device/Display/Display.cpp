@@ -236,7 +236,7 @@ void Display::Update(void)
 
     FreqMeter_Draw(Grid::Left(), GRID_TOP);
 
-    menu.Draw();
+    Menu::Draw();
 
     if(SHOW_RAND_STAT)
     {
@@ -879,7 +879,7 @@ static void DrawMeasures(void)
         {
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
-            bool active = measures.IsActive(str, elem) && menu.GetNameOpenedPage() == PageSB_Measures_Tune;
+            bool active = measures.IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
             Color color = active ? gColorBack : gColorFill;
             Meas measure = measures.Type(str, elem);
             if(measure != Meas_None)
@@ -921,7 +921,7 @@ static void DrawMeasures(void)
         }
     }
 
-    if(menu.GetNameOpenedPage() == PageSB_Measures_Tune)
+    if(Menu::GetNameOpenedPage() == PageSB_Measures_Tune)
     {
         measures.DrawPageChoice();
     }
@@ -930,10 +930,10 @@ static void DrawMeasures(void)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawStringNavigation(void)
 {
-    if((SHOW_STRING_NAVIGATION || SHOW_STRING_NAVI_ALL) && (MENU_IS_SHOWN || (menu.TypeOpenedItem()) != Item_Page))
+    if((SHOW_STRING_NAVIGATION || SHOW_STRING_NAVI_ALL) && (MENU_IS_SHOWN || (Menu::TypeOpenedItem()) != Item_Page))
     {
         char buffer[100];
-        char *string = menu.StringNavigation(buffer);
+        char *string = Menu::StringNavigation(buffer);
         if(string)
         {
             int length = Font_GetLengthText(string);

@@ -739,7 +739,7 @@ static void OnPress_Internal_Exit(void)
     {
         MODE_WORK = ModeWork_RAM;
         EXIT_FROM_ROM_TO_RAM = 0;
-        menu.RunAfterUpdate(FuncForInternalExit);
+        Menu::RunAfterUpdate(FuncForInternalExit);
     }
     else
     {
@@ -1012,7 +1012,7 @@ static void OnPress_SetName_Exit(void)
     OnPressSB_Exit();
     if (EXIT_FROM_SETNAME_TO == RETURN_TO_DISABLE_MENU)
     {
-        menu.PagePointerFromName(PageSB_Memory_SetName)->ShortPressOnItem(0);
+        Menu::PagePointerFromName(PageSB_Memory_SetName)->ShortPressOnItem(0);
     }
     else if (EXIT_FROM_SETNAME_TO == RETURN_TO_LAST_MEM)
     {
