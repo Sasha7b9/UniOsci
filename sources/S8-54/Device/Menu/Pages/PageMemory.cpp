@@ -60,7 +60,7 @@ void OnChanged_Points(bool active)
 
     int width = Grid::Width();
 
-    FPGA_Reset();
+    FPGA::Reset();
 
     if (SET_PEAKDET_EN)
     {
@@ -79,9 +79,9 @@ void OnChanged_Points(bool active)
         SHIFT_IN_MEMORY = (int16)(NUM_BYTES_SET - width - 2);
     }
 
-    FPGA_Reset();
-    FPGA_SetTShift(SET_TSHIFT);
-    FPGA_Reset();
+    FPGA::Reset();
+    FPGA::SetTShift(SET_TSHIFT);
+    FPGA::Reset();
 }
 
 pString namesLengthMemory[] = {"512", "1k", "2k", "4k", "8k", "16k", "32k"};
@@ -108,7 +108,7 @@ static void OnPress_Last_Exit(void)
     MODE_WORK = ModeWork_Dir;
     if (RUN_FPGA_BEFORE_SB)
     {
-        FPGA_Start();
+        FPGA::Start();
         RUN_FPGA_BEFORE_SB = 0;
     }
     OnPressSB_Exit();
@@ -214,7 +214,7 @@ static void OnPress_Last(void)
 {
     NUM_RAM_SIGNAL = 0;
     RUN_FPGA_BEFORE_SB = FPGA_IS_RUNNING ? 1u : 0u;
-    FPGA_Stop(false);
+    FPGA::Stop(false);
     MODE_WORK = ModeWork_RAM;
 }
 
@@ -746,7 +746,7 @@ static void OnPress_Internal_Exit(void)
         MODE_WORK = ModeWork_Dir;
         if (RUN_FPGA_BEFORE_SB)
         {
-            FPGA_Start();
+            FPGA::Start();
             RUN_FPGA_BEFORE_SB = 0;
         }
         OnPressSB_Exit();

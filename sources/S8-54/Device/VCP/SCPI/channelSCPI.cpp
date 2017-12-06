@@ -1,12 +1,6 @@
-#include "defines.h"
 #include "SCPI.h"
-#include "FPGA/FPGAextensions.h"
-#include "Settings/Settings.h"
-#include "Settings/SettingsChannel.h"
-#include "Utils/Map.h"
-#include "VCP/VCP.h"
 #include "FPGA/FPGA.h"
-#include "Log.h"
+#include "Utils/Map.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,9 +78,9 @@ void Process_COUPLING(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (0 == value)         { SET_COUPLE(ch) = ModeCouple_DC; FPGA_SetModeCouple(ch, SET_COUPLE(ch)); }
-        else if (1 == value)    { SET_COUPLE(ch) = ModeCouple_AC; FPGA_SetModeCouple(ch, SET_COUPLE(ch)); }
-        else if (2 == value)    { SET_COUPLE(ch) = ModeCouple_GND; FPGA_SetModeCouple(ch, SET_COUPLE(ch)); }
+        if (0 == value)         { SET_COUPLE(ch) = ModeCouple_DC; FPGA::SetModeCouple(ch, SET_COUPLE(ch)); }
+        else if (1 == value)    { SET_COUPLE(ch) = ModeCouple_AC; FPGA::SetModeCouple(ch, SET_COUPLE(ch)); }
+        else if (2 == value)    { SET_COUPLE(ch) = ModeCouple_GND; FPGA::SetModeCouple(ch, SET_COUPLE(ch)); }
         else if (3 == value)
         {
             SCPI_SEND(":CHANNEL%d:COUPLING %s", Tables_GetNumChannel(ch), map[SET_COUPLE(ch)].key);
@@ -107,8 +101,8 @@ void Process_BWLIMIT(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (0 == value || 1 == value)         { SET_BANDWIDTH(ch) = Bandwidth_20MHz; FPGA_SetBandwidth(ch); }
-        else if (2 == value || 3 == value)    { SET_BANDWIDTH(ch) = Bandwidth_Full; FPGA_SetBandwidth(ch); }
+        if (0 == value || 1 == value)         { SET_BANDWIDTH(ch) = Bandwidth_20MHz; FPGA::SetBandwidth(ch); }
+        else if (2 == value || 3 == value)    { SET_BANDWIDTH(ch) = Bandwidth_Full; FPGA::SetBandwidth(ch); }
         else if (4 == value)
         {
             SCPI_SEND(":CHANNEL%d:FILTR %s", Tables_GetNumChannel(ch), SET_BANDWIDTH(ch) == Bandwidth_20MHz ? "ON" : "OFF");
@@ -164,7 +158,7 @@ void Process_RANGE(uint8 *buffer)
         }
         else
         {
-            FPGA_SetRange(ch, (Range)value);
+            FPGA::SetRange(ch, (Range)value);
         }
     LEAVE_ANALYSIS
 }
@@ -181,7 +175,7 @@ void Process_OFFSET(uint8 *buffer)
     if (SCPI_FirstIsInt(buffer, &intVal, -240, 240))
     {
         int rShift = RShiftZero + (intVal * RSHIFT_IN_CELL / 20);
-        FPGA_SetRShift(ch, (uint16)rShift);
+        FPGA::SetRShift(ch, (uint16)rShift);
         return;
     }
     ENTER_ANALYSIS
@@ -221,5 +215,5 @@ void Process_PROBE(uint8 *buffer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Process_BALANCE(uint8 *)
 {
-    FPGA_BalanceChannel(ch);
+    FPGA::BalanceChannel(ch);
 }

@@ -269,11 +269,11 @@ void Settings_Load(bool _default)
                                 // будут актуальные значения по умолчанию
     }
 
-    FPGA_LoadSettings();
-    FPGA_SetENumSignalsInSec(NUM_SIGNALS_IN_SEC);
+    FPGA::LoadSettings();
+    FPGA::SetENumSignalsInSec(NUM_SIGNALS_IN_SEC);
     Panel::EnableLEDChannel(A, SET_ENABLED_A);
     Panel::EnableLEDChannel(B, SET_ENABLED_B);
-    FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
+    FPGA::SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
     Menu::SetAutoHide(true);
     Display::ChangedRShiftMarkers(true);
     OnChanged_ADC_Stretch_Mode(true);
@@ -395,11 +395,11 @@ void Settings_RestoreState(const Settings *set_)
             }
         }
     }
-    FPGA_LoadSettings();
+    FPGA::LoadSettings();
     if (gStateFPGA.stateWorkBeforeCalibration != StateWorkFPGA_Stop)
     {
         gStateFPGA.stateWorkBeforeCalibration = StateWorkFPGA_Stop;
-        FPGA_OnPressStartStop();
+        FPGA::OnPressStartStop();
     }
 }
 

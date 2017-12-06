@@ -234,7 +234,7 @@ void Display::Update(void)
         DrawCursorTShift();
     }
 
-    FreqMeter_Draw(Grid::Left(), GRID_TOP);
+    FPGA::FreqMeter_Draw(Grid::Left(), GRID_TOP);
 
     Menu::Draw();
 
@@ -640,7 +640,7 @@ static void DrawLowPart(void)
 
     buffer[0] = 0;
     char bufForVal[20];
-    snprintf(buffer, SIZE, "\xa5%s", FPGA_GetTShiftString(tShift, bufForVal));
+    snprintf(buffer, SIZE, "\xa5%s", FPGA::GetTShiftString(tShift, bufForVal));
     Painter::DrawText(x + 35, y0, buffer);
 
     buffer[0] = 0;
@@ -719,7 +719,7 @@ static void DrawLowPart(void)
     if(MODE_WORK_IS_DIR)
     {
         char mesFreq[20] = "\x7c=";
-        float freq = FreqMeter_GetFreq();
+        float freq = FPGA::FreqMeter_GetFreq();
         if(freq == -1.0f)
         {
             strcat(mesFreq, "******");

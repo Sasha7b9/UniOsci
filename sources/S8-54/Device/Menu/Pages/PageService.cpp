@@ -74,7 +74,7 @@ DEF_BUTTON(         bAutoSearch,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Calibrator_Calibrator(bool)
 {
-    FPGA_SetCalibratorMode(CALIBRATOR_MODE);
+    FPGA::SetCalibratorMode(CALIBRATOR_MODE);
 }
 
 DEF_CHOICE_3(       cCalibrator_Calibrator,                                                                 //--- СЕРВИС - КАЛИБРАТОР - Калибратор ---
@@ -120,7 +120,7 @@ DEF_PAGE_2(         ppCalibrator,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Recorder(bool)
 {
-    FPGA_EnableRecorderMode(RECORDER_MODE);
+    FPGA::EnableRecorderMode(RECORDER_MODE);
 }
 
 DEF_CHOICE_2(       cRecorder,                                                                                          //--- СЕРВИС - Регистратор ---

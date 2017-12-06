@@ -2,12 +2,8 @@
 #include "Panel.h"
 #include "PanelFunctions.h"
 #include "Display/PainterData.h"
-#include "FPGA/FPGA.h"
 #include "Hardware/Hardware.h"
-#include "Hardware/Sound.h"
-#include "Hardware/Timer.h"
-#include "Menu/Menu.h"
-#include "Utils/CommonFunctions.h"
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -598,7 +594,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
     // ѕрерывание на чтение точки поточечного вывода
     if (pin == GPIO_PIN_2)
     {
-        FPGA_ReadPoint();
+        FPGA::ReadPoint();
     }
 }
 

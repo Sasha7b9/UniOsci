@@ -465,19 +465,19 @@ void ProcessingLongPressureButton(void)
 
         if(button == B_Time)
         {
-            FPGA_SetTShift(0);
+            FPGA::SetTShift(0);
         }
         else if(button == B_Trig)
         {
-            FPGA_SetTrigLev(TRIGSOURCE, TrigLevZero);
+            FPGA::SetTrigLev(TRIGSOURCE, TrigLevZero);
         }
         else if(button == B_ChannelA)
         {
-            FPGA_SetRShift(A, RShiftZero);
+            FPGA::SetRShift(A, RShiftZero);
         }
         else if(button == B_ChannelB)
         {
-            FPGA_SetRShift(B, RShiftZero);
+            FPGA::SetRShift(B, RShiftZero);
         }
         else if(button == B_Menu)
         {
@@ -590,7 +590,7 @@ void ProcessingPressButton(void)
     }
     if (pressButton == B_Start && !MODE_WORK_IS_RAM)
     {
-        FPGA_OnPressStartStop();
+        FPGA::OnPressStartStop();
     }
     pressButton = B_Empty;
 }

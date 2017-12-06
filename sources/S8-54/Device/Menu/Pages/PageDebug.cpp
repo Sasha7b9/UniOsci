@@ -15,8 +15,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern void LoadTShift(void);
-
 extern const PageBase mainPage;
 extern const PageBase pDebug;
 extern const PageBase ppConsole;
@@ -471,8 +469,8 @@ static void OnPress_ADC_Shift_Reset(void)
             RSHIFT_ADD_STABLE(ch, range) = 0;
         }
     }
-    FPGA_SetRShift(A, SET_RSHIFT_A);
-    FPGA_SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_BUTTON(         bADC_Shift_Reset,                                                                        //-- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —·ÓÒ ---
@@ -485,7 +483,7 @@ DEF_BUTTON(         bADC_Shift_Reset,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Shift_A(void)
 {
-    FPGA_SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
 }
 
 DEF_GOVERNOR(       gADC_Shift_A2mV,                                                               //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —Ï 1Í 2Ï¬ ÔÓÒÚ ---
@@ -498,7 +496,7 @@ DEF_GOVERNOR(       gADC_Shift_A2mV,                                            
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ADC_Shift_B(void)
 {
-    FPGA_SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_GOVERNOR(       gADC_Shift_B2mV,                                                               //--- Œ“À¿ƒ ¿ - ¿÷œ - ƒŒœ —Ã≈Ÿ - —Ï 2Í 2Ï¬ ÔÓÒÚ ---
@@ -584,7 +582,7 @@ DEF_GOVERNOR(       gRand_NumSmooth,                                            
 
 static void OnChanged_Rand_NumMeasures(void)
 {
-    FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
+    FPGA::SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
 }
 
 DEF_GOVERNOR(       gRand_NumMeasures,                                                                     //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– - ¬˚·-Í/‚ÓÓÚ‡ ---
@@ -617,7 +615,7 @@ DEF_CHOICE_2(       gRand_ShowStat,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Rand_TimeCompensation(void)
 {
-    FPGA_SetDeltaTShift(TIME_COMPENSATION);
+    FPGA::SetDeltaTShift(TIME_COMPENSATION);
 }
 
 DEF_GOVERNOR(   gRand_TimeCompensation,                                                            //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– -  ÓÏÔÂÌÒ‡ˆËˇ Á‡‰ÂÊÍË ---
@@ -630,7 +628,7 @@ DEF_GOVERNOR(   gRand_TimeCompensation,                                         
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Rand_AddTimeShift(void)
 {
-    FPGA_SetTShift(SET_TSHIFT);
+    FPGA::SetTShift(SET_TSHIFT);
 }
 
 int16 addShift = 0;
@@ -645,7 +643,7 @@ DEF_GOVERNOR(       gRand_AddTimeShift,                                         
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Rand_Pretriggered(void)
 {
-    LoadTShift();
+    FPGA::LoadTShift();
 }
 
 DEF_GOVERNOR(       gRand_Pretriggered,                                                                      //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– - œÂ‰Á‡ÔÛÒÍ ---
@@ -674,7 +672,7 @@ DEF_PAGE_8(         ppRand,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Channels_BandwidthA(bool)
 {
-    FPGA_SetBandwidth(A);
+    FPGA::SetBandwidth(A);
 }
 
 DEF_CHOICE_7(       cChannels_BandwidthA,                                                                        //--- Œ“À¿ƒ ¿ -  ¿ÕÀ¿€ - œÓÎÓÒ‡ 1 ---
@@ -694,7 +692,7 @@ DEF_CHOICE_7(       cChannels_BandwidthA,                                       
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Channels_BandwidthB(bool)
 {
-    FPGA_SetBandwidth(B);
+    FPGA::SetBandwidth(B);
 }
 
 DEF_CHOICE_7(       cChannels_BandwidthB,                                                                        //--- Œ“À¿ƒ ¿ -  ¿ÕÀ¿€ - œÓÎÓÒ‡ 2 ---
@@ -750,8 +748,8 @@ DEF_CHOICE_2(       cDisplayOrientation,                                        
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_EMS(bool)
 {
-    FPGA_SetBandwidth(A);
-    FPGA_SetBandwidth(B);
+    FPGA::SetBandwidth(A);
+    FPGA::SetBandwidth(B);
 }
 
 DEF_CHOICE_2(       cEMS,                                                                                                //--- Œ“À¿ƒ ¿ - –ÂÊËÏ ›Ã— ---

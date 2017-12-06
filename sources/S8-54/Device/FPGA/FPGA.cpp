@@ -1,23 +1,12 @@
 #include "FPGA.h"
 #include "FPGA/FPGAMath.h"
-#include "FPGATypes.h"
 #include "Log.h"
 #include "Data/Reader.h"
-#include "Data/DataStorage.h"
-#include "Display/Display.h"
-#include "FPGA/FPGAtypes.h"
-#include "FPGA/FPGAextensions.h"
-#include "Hardware/FSMC.h"
 #include "Hardware/Hardware.h"
 #include "Hardware/RAM.h"
 #include "Hardware/Timer.h"
-#include "Hardware/RTC.h"
-#include "Menu/Pages/PageMemory.h"
 #include "Panel/Panel.h"
-#include "Panel/Controls.h"
-#include "Settings/Settings.h"
 #include "Utils/ProcessingSignal.h"
-#include "Utils/Debug.h"
 #include "Utils/Math.h"
 
 
@@ -68,15 +57,7 @@ bool gFPGAisCalibrateAddRshift = false;      ///< Происходит процедура калибровк
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool ReadPoint(void);                                        ///< Чтение точки в поточечном режиме.
-static void Write(TypeRecord type, uint16 *address, uint data);     ///< Запись в регистры и альтеру.
 static void InitADC(void);
-static void ProcessingAfterReadData(void);                          ///< Действия, которые нужно предпринять после успешного считывания данных.
-       bool ProcessingData(void);                                   ///< Возвращает true, если считаны данные.
-/// \brief Прочитать данные.
-/// \param first          Нужно для режима рандомизматора - чтобы подготовить память.
-/// \param saveToStorage  Нужно в режиме рандомизатора для указания, что пора сохранять измерение.
-/// \param onlySave       Только сохранить в хранилище.
-static void DataReadSave(bool first, bool saveToStorage, bool onlySave);
 /// Сдвигает данные в массиве на одну точку вправо
 static void ShiftOnePoint2Right(uint8 *data, int size);
 
@@ -96,7 +77,7 @@ static uint16 READ_DATA_ADC_16(const uint16 *address, Channel ch )
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void HardwareInit(void)
+void FPGA::HardwareInit(void)
 {
     __HAL_RCC_GPIOD_CLK_ENABLE();
 
@@ -113,7 +94,7 @@ static void HardwareInit(void)
     // Включать прерывание будем только тогда, когда нужно. (FPGA_Start())
 }
 
-void FPGA_Init(void)
+void FPGA::Init(void)
 {
     Storage::Clear();
     HardwareInit();     /// \todo Пока не получается чтение флага сделать на прерывании
@@ -129,13 +110,13 @@ static void OnTimerCanReadData(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetENumSignalsInSec(int numSigInSec) 
+void FPGA::SetENumSignalsInSec(int numSigInSec) 
 {
     Timer::SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (uint)(1000.f / numSigInSec));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SwitchingTrig(void)
+void FPGA::SwitchingTrig(void)
 {
     if (TRIG_POLARITY_FRONT)
     {
@@ -152,7 +133,7 @@ void FPGA_SwitchingTrig(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 ReadFlag(void)
+uint16 FPGA::ReadFlag(void)
 {
     uint16 flag = FSMC_READ(RD_FL);
 
@@ -170,7 +151,7 @@ uint16 ReadFlag(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_ReadPoint(void)
+void FPGA::ReadPoint(void)
 {
     readingPointP2P = false;
     ReadPoint();
@@ -225,7 +206,7 @@ static bool ReadPoint(void)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_WriteStartToHardware(void)
+void FPGA::WriteStartToHardware(void)
 {
     *WR_POST = gPost;
     *WR_PRED = (uint16)gPred;
@@ -234,11 +215,11 @@ void FPGA_WriteStartToHardware(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_Start(void)
+void FPGA::Start(void)
 {
     NEED_STOP_AFTER_READ_FRAME_2P2 = 0;
 
-    FPGA_WriteStartToHardware();
+    WriteStartToHardware();
 
     timeCompletePredTrig = 0;
 
@@ -445,9 +426,7 @@ static void ReadRandomizeChannel(Channel ch, uint16 addrFirstRead, uint8 *data, 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-// first - если true, это первый вызов из последовательности, нужно подготовить память
-// last - если true, это последний вызов из последовательности, нужно записать результаты в память.
-static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave)
+bool FPGA::ReadRandomizeModeSave(bool first, bool last, bool onlySave)
 {
     int bytesInChannel = ds.BytesInChannel();
 
@@ -482,7 +461,7 @@ static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave)
 
         if (START_MODE_SINGLE || SAMPLE_TYPE_IS_REAL)
         {
-            FPGA_ClearData();
+            ClearData();
 
             // Очищаем массив для данных. После чтения точек несчитанные позиции будут равны нулю, что нужно для экстраполяции
             memset(dataRandA, 0, bytesInChannel);
@@ -606,7 +585,7 @@ uint16 ReadNStop(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ReadRealMode(uint8 *dataA, uint8 *dataB)
+void FPGA::ReadRealMode(uint8 *dataA, uint8 *dataB)
 {
     FPGA_IN_PROCESS_OF_READ = 1;
 
@@ -656,7 +635,7 @@ static void InverseDataIsNecessary(Channel ch, uint8 *data)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DataReadSave(bool first, bool saveToStorage, bool onlySave)
+void FPGA::DataReadSave(bool first, bool saveToStorage, bool onlySave)
 {
     // В этой функции испльзуем память, предназначенную для хранения выходного сигнала, в качестве временного буфера.
 
@@ -694,14 +673,14 @@ static void DataReadSave(bool first, bool saveToStorage, bool onlySave)
 
     if (TRIG_MODE_FIND_AUTO)
     {
-        FPGA_FindAndSetTrigLevel();
+        FindAndSetTrigLevel();
     }
 
     FPGA_IN_PROCESS_OF_READ = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ProcessingData(void)
+bool FPGA::ProcessingData(void)
 {
     bool retValue = false;                          // Здесь будет true, когда данные считаются
 
@@ -769,7 +748,7 @@ bool ProcessingData(void)
                 }
                 else
                 {
-                    FPGA_SwitchingTrig();                                           // В непоточечном даём принудительно даём синхронизацю
+                    FPGA::SwitchingTrig();                                           // В непоточечном даём принудительно даём синхронизацю
                 }
             }
         }
@@ -796,7 +775,7 @@ bool ProcessingData(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ProcessingAfterReadData(void)
+void FPGA::ProcessingAfterReadData(void)
 {
     if(!START_MODE_SINGLE)
     {
@@ -804,12 +783,12 @@ static void ProcessingAfterReadData(void)
         {
             if(!NEED_STOP_AFTER_READ_FRAME_2P2)
             {
-                Timer::SetAndStartOnce(kTimerStartP2P, FPGA_Start, 1000);    // то откладываем следующий запуск, чтобы зафиксировать сигнал на экране
+                Timer::SetAndStartOnce(kTimerStartP2P, FPGA::Start, 1000);    // то откладываем следующий запуск, чтобы зафиксировать сигнал на экране
             }
         }
         else
         {
-            FPGA_Start();
+            Start();
         }
     }
     else
@@ -872,7 +851,7 @@ TBase CalculateTBase(float freq)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_Update(void)
+void FPGA::Update(void)
 {
     if (FPGA_IN_STATE_STOP)
     {
@@ -883,7 +862,7 @@ void FPGA_Update(void)
 
     if (gStateFPGA.needCalibration)              // Если вошли в режим калибровки -
     {
-        FPGA_ProcedureCalibration();            // выполняем её.
+        ProcedureCalibration();            // выполняем её.
         gStateFPGA.needCalibration = false;
     }
     if (FPGA_IN_PAUSE)
@@ -893,7 +872,7 @@ void FPGA_Update(void)
 
 	if(FPGA_NEED_AUTO_FIND)
     {
-		FPGA_AutoFind();
+		AutoFind();
 		return;
 	}
 
@@ -911,7 +890,7 @@ void FPGA_Update(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPressStartStopInP2P(void)
+void FPGA::OnPressStartStopInP2P(void)
 {
     if(Timer::IsRun(kTimerStartP2P))             // Если находимся в режиме поточечного вывода и в данный момент пауза после считывания очередного 
     {                                           // полного сигнала
@@ -921,18 +900,18 @@ static void OnPressStartStopInP2P(void)
     {
         if(FPGA_IN_STATE_STOP)
         {
-            FPGA_Start();
+            Start();
         }
         else
         {   // то устанавливаем признак того, что после окончания не надо запускать следующий цикл
             NEED_STOP_AFTER_READ_FRAME_2P2 = NEED_STOP_AFTER_READ_FRAME_2P2 == 0 ? 1u : 0u;
-            FPGA_Stop(false);
+            Stop(false);
         }
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_OnPressStartStop(void)
+void FPGA::OnPressStartStop(void)
 {
     if (!MODE_WORK_IS_DIR || CONSOLE_IN_PAUSE)           // Если находимся не в режиме непосредственного считывания сигнала
     {
@@ -945,18 +924,18 @@ void FPGA_OnPressStartStop(void)
     }
     else if(FPGA_IN_STATE_STOP) 
     {
-        FPGA_Start();
+        Start();
         fpgaStateWork = StateWorkFPGA_Wait;
     } 
     else
     {
-        FPGA_Stop(false);
+        Stop(false);
         fpgaStateWork = StateWorkFPGA_Stop;
     } 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_Stop(bool pause) 
+void FPGA::Stop(bool pause) 
 {
     Panel::EnableLEDTrig(false);
     HAL_NVIC_DisableIRQ(EXTI2_IRQn);        // Выключаем прерывание на чтение считанной точки
@@ -964,31 +943,31 @@ void FPGA_Stop(bool pause)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_Reset(void)
+void FPGA::Reset(void)
 {
     bool needStart = FPGA_IS_RUNNING;
-    FPGA_Stop(false);
+    Stop(false);
     if (needStart)
     {
-        FPGA_Start();
+        Start();
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FPGA_IsRunning(void)
+bool FPGA::IsRunning(void)
 {
     return !FPGA_IN_STATE_STOP;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_ClearData(void)
+void FPGA::ClearData(void)
 {
     RAM_MemClear(RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
     RAM_MemClear(RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetNumberMeasuresForGates(int number)
+void FPGA::SetNumberMeasuresForGates(int number)
 {
     numberMeasuresForGates = number;
 }
@@ -1000,14 +979,14 @@ void StopTemporaryPause(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_TemporaryPause(void)
+void FPGA::TemporaryPause(void)
 {
     FPGA_IN_PAUSE = 1;
     Timer::SetAndStartOnce(kTemporaryPauseFPGA, StopTemporaryPause, 100);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_FindAndSetTrigLevel(void)
+void FPGA::FindAndSetTrigLevel(void)
 {
     if(Storage::NumElementsInStorage() == 0 || TRIGSOURCE_IS_EXT)
     {
@@ -1033,11 +1012,11 @@ void FPGA_FindAndSetTrigLevel(void)
 
     int trigLev = (int)(TrigLevZero + scale * ((int)aveValue - AVE_VALUE) - (SET_RSHIFT(TRIGSOURCE) - RShiftZero));
 
-    FPGA_SetTrigLev(TRIGSOURCE, (uint16)trigLev);
+    SetTrigLev(TRIGSOURCE, (uint16)trigLev);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_Write(TypeRecord type, uint16 *address, uint data, bool restart)
+void FPGA::Write(TypeRecord type, uint16 *address, uint data, bool restart)
 {
     // Если необходимо, сохраняем установленный режим на шине, чтобы затем его восстановить
     ModeFSMC modePrev = FSMC_GetMode();
@@ -1053,18 +1032,18 @@ void FPGA_Write(TypeRecord type, uint16 *address, uint data, bool restart)
     {
         if (FPGA_IN_PROCESS_OF_READ)
         {
-            FPGA_Stop(true);
+            Stop(true);
             FPGA_IN_PROCESS_OF_READ = 0;
             Write(type, address, data);
-            FPGA_Start();
+            Start();
         }
         else
         {
             if (!FPGA_IN_STATE_STOP)
             {
-                FPGA_Stop(true);
+                Stop(true);
                 Write(type, address, data);
-                FPGA_Start();
+                Start();
             }
             else
             {
@@ -1111,7 +1090,7 @@ static GPIO_TypeDef* AddrGPIO(uint16 *addrAnalog)
 #define DATA_SET(x)         HAL_GPIO_WritePin(GPIOC, pinData, x);
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static void Write(TypeRecord type, uint16 *address, uint data)
+void FPGA::Write(TypeRecord type, uint16 *address, uint data)
 {
     if (type == RecordFPGA)
     {
@@ -1220,7 +1199,7 @@ static void InitADC(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTPos(TPos tPos)
+void FPGA::SetTPos(TPos tPos)
 {
 extern void OnChanged_TPos(bool active);
 

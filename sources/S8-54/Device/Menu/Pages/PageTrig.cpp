@@ -16,10 +16,10 @@ extern const PageBase ppSearch;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_TrigMode(bool)
 {
-    FPGA_Stop(false);
+    FPGA::Stop(false);
     if(!START_MODE_SINGLE)
     {
-        FPGA_OnPressStartStop();
+        FPGA::OnPressStartStop();
     }
     
     // Елси находимся в режиме рандомизатора
@@ -60,7 +60,7 @@ DEF_CHOICE_3(       cMode,                                                      
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Source(bool)
 {
-    FPGA_SetTrigSource(TRIGSOURCE);
+    FPGA::SetTrigSource(TRIGSOURCE);
 }
 
 DEF_CHOICE_3(       cSource,                                                                                                //--- СИНХР - Источник ---
@@ -76,7 +76,7 @@ DEF_CHOICE_3(       cSource,                                                    
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Polarity(bool)
 {
-    FPGA_SetTrigPolarity(TRIG_POLARITY);
+    FPGA::SetTrigPolarity(TRIG_POLARITY);
 }
 
 DEF_CHOICE_2(       cPolarity,                                                                                            //--- СИНХР - Полярность ---
@@ -93,7 +93,7 @@ DEF_CHOICE_2(       cPolarity,                                                  
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Input(bool)
 {
-    FPGA_SetTrigInput(TRIG_INPUT);
+    FPGA::SetTrigInput(TRIG_INPUT);
 }
 
 DEF_CHOICE_4(       cInput,                                                                                                     //--- СИНХР - Вход ---
@@ -151,7 +151,7 @@ static bool IsActive_Search_Search(void)
 
 static void OnPress_Search_Search(void)
 {
-    FPGA_FindAndSetTrigLevel();
+    FPGA::FindAndSetTrigLevel();
 }
 
 DEF_BUTTON(         bSearch_Search,                                                                                    //--- СИНХР - ПОИСК - Найти ---

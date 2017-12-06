@@ -1,11 +1,6 @@
-
-
-#include "defines.h"
 #include "SCPI.h"
-#include "Settings/Settings.h"
-#include "Utils/Map.h"
-#include "VCP/VCP.h"
 #include "FPGA/FPGA.h"
+#include "Utils/Map.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +73,7 @@ void Process_RANGE(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (TBaseSize > value) { FPGA_SetTBase((TBase)value); }
+        if (TBaseSize > value) { FPGA::SetTBase((TBase)value); }
         else if (255 == value)
         {
             SCPI_SEND(":TBASE:RANGE %s", Tables_GetTBaseStringEN(SET_TBASE));
@@ -100,7 +95,7 @@ void Process_OFFSET(uint8 *buffer)
     if (SCPI_FirstIsInt(buffer, &intVal, -1024, 15000))
     {
         int tShift = intVal + 1024;
-        FPGA_SetTShift(tShift);
+        FPGA::SetTShift(tShift);
         return;
     }
 
@@ -169,7 +164,7 @@ void Process_TPOS(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (value < 3)      { FPGA_SetTPos((TPos)value); }
+        if (value < 3)      { FPGA::SetTPos((TPos)value); }
         else if (4 == value)
         {
             SCPI_SEND(":TBASE:TPOS %s", map[TPOS].key);

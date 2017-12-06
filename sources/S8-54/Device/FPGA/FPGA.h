@@ -22,84 +22,7 @@ extern StateWorkFPGA fpgaStateWork;
 extern int gAddNStop;
 extern bool gFPGAisCalibrateAddRshift;
 
-#define FPGA_IS_RUNNING FPGA_IsRunning()
-
-/// Инициализация
-void FPGA_Init(void);
-/// Установить количество считываемых сигналов в секунду
-void FPGA_SetENumSignalsInSec(int numSigInSec);
-/// Функция должна вызываться каждый кадр
-void FPGA_Update(void);
-/// Запускает цикл сбора информации
-void FPGA_OnPressStartStop(void);
-/// Запуск процесса сбора информации
-void FPGA_Start(void);
-
-void FPGA_WriteStartToHardware(void);
-/// Прерывает процесс сбора информации
-void FPGA_Stop(bool pause);
-/// Можно делать при изменении каких-то настроек. Например, при изменении числа точек (ПАМЯТЬ-Точки) если не вызвать, то будут артефакты изображения
-void FPGA_Reset(void);
-/// Возвращает true, если прибор находится не в процессе сбора информации
-bool FPGA_IsRunning(void);
-/// Удаляет данные. Нужно для режима рандомизаотра, где информация каждого цикла не является самостоятельной
-void FPGA_ClearData(void);
-/// Установить количество измерений, по которым будут рассчитываться ворота в режиме рандомизатора
-void FPGA_SetNumberMeasuresForGates(int number);
-/// Принудительно запустить синхронизацию
-void FPGA_SwitchingTrig(void);
-/// Установить временную паузу после изменения ручек - чтобы смещённый сигнал зафиксировать на некоторое время
-void FPGA_TemporaryPause(void);
-
-/// Найти и установить уровень синхронизации по последнему считанному сигналу
-void FPGA_FindAndSetTrigLevel(void);
-/// Загрузить настройки в аппаратную часть из глобальной структуры SSettings
-void FPGA_LoadSettings(void);
-/// Установить режим канала по входу
-void FPGA_SetModeCouple(Channel ch, ModeCouple modeCoupe);
-/// Установить масштаб по напряжению
-void FPGA_SetRange(Channel ch, Range range);
-/// Увеличить масштаб по напряжению
-bool FPGA_RangeIncrease(Channel ch);
-/// Уменьшить масштаб по напряжению
-bool FPGA_RangeDecrease(Channel ch);
-/// Установить масштаб по времени
-void FPGA_SetTBase(TBase tBase);
-/// Уменьшить масштаб по времени
-void FPGA_TBaseDecrease(void);
-/// Увеличить масштаб по времени
-void FPGA_TBaseIncrease(void);
-/// Установить относительное смещение по напряжению
-void FPGA_SetRShift(Channel ch, uint16 rShift);
-/// Установить относительное смещение по времени
-void FPGA_SetTShift(int tShift);
-
-/// Установить добавочное смещение по времени для режима рандомизатора. В каждой развёртке это смещение должно быть разное
-void FPGA_SetDeltaTShift(int16 shift);
-/// Включить/выключить режим пикового детектора
-void FPGA_SetPeackDetMode(PeakDetMode peackDetMode);
-/// Включить/выключить калибратор.
-void FPGA_SetCalibratorMode(CalibratorMode calibratorMode);
-
-void FPGA_EnableRecorderMode(bool enable);
-/// Установить относительный уровень синхронизации
-void FPGA_SetTrigLev(TrigSource ch, uint16 trigLev);
-/// Установить источник синхронизации
-void FPGA_SetTrigSource(TrigSource trigSource);
-/// Установить полярность синхронизации
-void FPGA_SetTrigPolarity(TrigPolarity polarity);
-/// Установить режим входа синхронизации
-void FPGA_SetTrigInput(TrigInput trigInput);
-
-void FPGA_SetResistance(Channel ch, Resistance resistance);
-
-void FPGA_SetTPos(TPos tPos);
-
-void FPGA_SetBandwidth(Channel ch);
-/// Функция чтения точки при поточечном выводе. Вызывается из внешнего прерывания
-void FPGA_ReadPoint(void);
-/// Возвращает установленное смещение по времени в текстовом виде, пригодном для вывода на экран
-const char *FPGA_GetTShiftString(int16 tShiftRel, char buffer[20]);
+#define FPGA_IS_RUNNING (FPGA::IsRunning())
 
 typedef enum
 {
@@ -117,8 +40,179 @@ typedef enum
 #define dacRShiftB ((uint16 *)1)
 #define dacTrigLev ((uint16 *)2)
 
+class FPGA
+{
+public:
+    /// Инициализация
+    static void Init();
+    /// Установить количество считываемых сигналов в секунду
+    static void SetENumSignalsInSec(int numSigInSec);
+    /// Функция должна вызываться каждый кадр
+    static void Update();
+    /// Запускает цикл сбора информации
+    static void OnPressStartStop();
+    /// Запуск процесса сбора информации
+    static void Start();
+    
+    static void WriteStartToHardware();
+    /// Прерывает процесс сбора информации
+    static void Stop(bool pause);
+    /// Можно делать при изменении каких-то настроек. Например, при изменении числа точек (ПАМЯТЬ-Точки) если не вызвать, то будут артефакты изображения
+    static void Reset();
+    /// Возвращает true, если прибор находится не в процессе сбора информации
+    static bool IsRunning();
+    /// Удаляет данные. Нужно для режима рандомизаотра, где информация каждого цикла не является самостоятельной
+    static void ClearData();
+    /// Установить количество измерений, по которым будут рассчитываться ворота в режиме рандомизатора
+    static void SetNumberMeasuresForGates(int number);
+    /// Принудительно запустить синхронизацию
+    static void SwitchingTrig();
+    /// Установить временную паузу после изменения ручек - чтобы смещённый сигнал зафиксировать на некоторое время
+    static void TemporaryPause();
+    
+    /// Найти и установить уровень синхронизации по последнему считанному сигналу
+    static void FindAndSetTrigLevel();
+    /// Загрузить настройки в аппаратную часть из глобальной структуры SSettings
+    static void LoadSettings();
+    /// Установить режим канала по входу
+    static void SetModeCouple(Channel ch, ModeCouple modeCoupe);
+    /// Установить масштаб по напряжению
+    static void SetRange(Channel ch, Range range);
+    /// Увеличить масштаб по напряжению
+    static bool RangeIncrease(Channel ch);
+    /// Уменьшить масштаб по напряжению
+    static bool RangeDecrease(Channel ch);
+    /// Установить масштаб по времени
+    static void SetTBase(TBase tBase);
+    /// Уменьшить масштаб по времени
+    static void TBaseDecrease();
+    /// Увеличить масштаб по времени
+    static void TBaseIncrease();
+    /// Установить относительное смещение по напряжению
+    static void SetRShift(Channel ch, uint16 rShift);
+    /// Установить относительное смещение по времени
+    static void SetTShift(int tShift);
+    
+    /// Установить добавочное смещение по времени для режима рандомизатора. В каждой развёртке это смещение должно быть разное
+    static void SetDeltaTShift(int16 shift);
+    /// Включить/выключить режим пикового детектора
+    static void SetPeackDetMode(PeakDetMode peackDetMode);
+    /// Включить/выключить калибратор.
+    static void SetCalibratorMode(CalibratorMode calibratorMode);
+    
+    static void EnableRecorderMode(bool enable);
+    /// Установить относительный уровень синхронизации
+    static void SetTrigLev(TrigSource ch, uint16 trigLev);
+    /// Установить источник синхронизации
+    static void SetTrigSource(TrigSource trigSource);
+    /// Установить полярность синхронизации
+    static void SetTrigPolarity(TrigPolarity polarity);
+    /// Установить режим входа синхронизации
+    static void SetTrigInput(TrigInput trigInput);
+    
+    static void SetResistance(Channel ch, Resistance resistance);
+    
+    static void SetTPos(TPos tPos);
+    
+    static void SetBandwidth(Channel ch);
+    /// Функция чтения точки при поточечном выводе. Вызывается из внешнего прерывания
+    static void ReadPoint();
+    /// Возвращает установленное смещение по времени в текстовом виде, пригодном для вывода на экран
+    static const char *GetTShiftString(int16 tShiftRel, char buffer[20]);
 
-void FPGA_Write(TypeRecord type, uint16 *address, uint data, bool restart);
+    static void LoadTShift(void);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Функции калибровки
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    /// Запуск функции калибровки
+    static void ProcedureCalibration(void);
+    /// Провести процедуру балансировки
+    static void BalanceChannel(Channel ch);
+
+    static bool FreqMeter_Init(void);
+
+    static void FreqMeter_Draw(int x, int y);
+    /// Получить значение частоты для вывода в нижней части экрана
+    static float FreqMeter_GetFreq(void);
+    /// Функция вызывается из FPGA
+    static void FreqMeter_Update(uint16 flag);
+    /// Запуск процесса поиска сигнала
+    static void  AutoFind(void);
+
+private:
+    /// \brief first - если true, это первый вызов из последовательности, нужно подготовить память
+    /// last - если true, это последний вызов из последовательности, нужно записать результаты в память.
+    static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave);
+    /// \brief Прочитать данные.
+    /// \param first          Нужно для режима рандомизматора - чтобы подготовить память.
+    /// \param saveToStorage  Нужно в режиме рандомизатора для указания, что пора сохранять измерение.
+    /// \param onlySave       Только сохранить в хранилище.
+    static void DataReadSave(bool first, bool saveToStorage, bool onlySave);
+    /// Возвращает true, если считаны данные.
+    static bool ProcessingData(void);
+
+    static void OnPressStartStopInP2P(void);
+    /// Измерить добавочное смещение канала по напряжению.
+    static int16 CalculateAdditionRShift(Channel ch, Range range);
+    ///< Действия, которые нужно предпринять после успешного считывания данных.
+    static void ProcessingAfterReadData(void);
+
+    static void Write(TypeRecord type, uint16 *address, uint data, bool restart);
+    ///< Запись в регистры и альтеру.
+    static void Write(TypeRecord type, uint16 *address, uint data);
+    /// Измерить коэффициент калибровки канала по напряжению.
+    static float CalculateStretchADC(Channel ch);
+
+    static float CalculateDeltaADC(Channel ch, float *avgADC1, float *avgADC2, float *delta);
+
+    static void CalibrateAddRShift(Channel ch);
+
+    static void CalibrateChannel(Channel ch);
+
+    static void HardwareInit(void);
+
+    static uint16 ReadFlag(void);
+
+    static void ReadRealMode(uint8 *dataA, uint8 *dataB);
+
+    static bool FindWave(Channel ch);
+    /// \brief Функция даёт старт АЦП и ждёт считывания информаии timeWait мс. Если данные получены, то функция возвращает true и их можно получить 
+    /// DS_GetData_RAM(ch, 0). Если данные не получены, функция возвращает false.
+    static bool ReadingCycle(uint timeWait);
+    ///< Возвращает RangeSize, если масштаб не найден.
+    static Range FindRange(Channel ch);
+
+    static bool FindParams(Channel ch, TBase *tBase);
+
+    static bool AccurateFindParams(Channel ch);
+
+    static void CalibrateStretch(Channel ch);
+
+    static void LoadTBase(void);
+
+    static void LoadRShift(Channel ch);
+
+    static void LoadRange(Channel ch);
+
+    static void LoadTrigLev(void);
+
+    static void WriteChipSelect2(void);
+
+    static void WriteChipSelect3(void);
+
+    static void WriteChipSelect4(void);
+
+    static void PrepareAndWriteDataToAnalogSPI(uint16 *addrAnalog);
+
+    static void LoadTrigPolarity(void);
+    /// Загрузить регистр WR_UPR (пиковый детектор и калибратор).
+    static void LoadRegUPR(void);
+    /// \todo временный костыль. При изменении tShift нужно временно останавливать альтеру, а при изменении развёртки не нужно
+    static void SetTShift(int tShift, bool needFPGApause);
+};
+
 
 /** @}
  */

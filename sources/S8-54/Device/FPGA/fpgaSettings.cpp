@@ -118,16 +118,12 @@ int16 gPred = 1024;
 int gAddNStop = 0;
 
 
-static void LoadTrigLev(void);
-/// \todo временный костыль. ѕри изменении tShift нужно временно останавливать альтеру, а при изменении развЄртки не нужно
-static void SetTShift(int tShift, bool needFPGApause);
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void LoadTBase(void)
+void FPGA::LoadTBase(void)
 {
     TBase tBase = SET_TBASE;
     uint8 mask = SET_PEAKDET ? masksTBase[tBase].maskPeackDet : masksTBase[tBase].maskNorm;
-    FPGA_Write(RecordFPGA, WR_RAZV, mask, true);
+    Write(RecordFPGA, WR_RAZV, mask, true);
     TIME_COMPENSATION = timeCompensation[tBase];
 }
 
@@ -147,7 +143,7 @@ static void LoadTBase(void)
 int addShiftForFPGA = 0;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void LoadTShift(void)
+void FPGA::LoadTShift(void)
 {
     TBase tBase = SET_TBASE;
     int tShift = SET_TSHIFT - sTime_TShiftMin() + timeCompensation[tBase];
@@ -206,8 +202,8 @@ void LoadTShift(void)
             ++gPost;
             --gPred;
         }
-        FPGA_Write(RecordFPGA, WR_POST, gPost, true);
-        FPGA_Write(RecordFPGA, WR_PRED, (uint)gPred, true);
+        Write(RecordFPGA, WR_POST, gPost, true);
+        Write(RecordFPGA, WR_PRED, (uint)gPred, true);
     }
 }
 
@@ -256,7 +252,7 @@ static int CalculateDeltaRShift(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void LoadRShift(Channel ch)
+void FPGA::LoadRShift(Channel ch)
 {
     // AD5064   : bits 24...27 - 0011b - command bits - Write to and update DAC channel
     //          : bits 20...23 - DAC channel - 0 - DACA, 1 - DACB
@@ -265,7 +261,7 @@ static void LoadRShift(Channel ch)
 
     int rShift = RShiftZero + CalculateDeltaRShift(ch);
 
-    FPGA_Write(RecordDAC, ch == A ? dacRShiftA : dacRShiftB, mask[ch] | (rShift << 4), true);
+    Write(RecordDAC, ch == A ? dacRShiftA : dacRShiftB, mask[ch] | (rShift << 4), true);
 
     if (TRIG_INPUT_LPF || TRIG_INPUT_FULL)
     {
@@ -275,7 +271,7 @@ static void LoadRShift(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void LoadTrigLev(void)
+void FPGA::LoadTrigLev(void)
 {
     uint data = 0x3200000;
     uint trigLev = SET_TRIGLEV(TRIGSOURCE);
@@ -298,7 +294,7 @@ static void LoadTrigLev(void)
     
     data |= trigLev << 4;
 
-    FPGA_Write(RecordDAC, dacTrigLev, data, true);
+    Write(RecordDAC, dacTrigLev, data, true);
 }
 
 
@@ -310,7 +306,7 @@ void WriteChipSelect1(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WriteChipSelect2(void)
+void FPGA::WriteChipSelect2(void)
 {
     uint data = 0;
 
@@ -360,7 +356,7 @@ void WriteChipSelect2(void)
 
     data |= trigInput[TRIG_INPUT];
 
-    FPGA_Write(RecordAnalog, CS2, data, true);
+    Write(RecordAnalog, CS2, data, true);
 }
 
 
@@ -396,21 +392,21 @@ uint PrepareChannel(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WriteChipSelect3(void)
+void FPGA::WriteChipSelect3(void)
 {
-    FPGA_Write(RecordAnalog, CS3, PrepareChannel(A), true);
+    Write(RecordAnalog, CS3, PrepareChannel(A), true);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WriteChipSelect4(void)
+void FPGA::WriteChipSelect4(void)
 {
-    FPGA_Write(RecordAnalog, CS4, PrepareChannel(B), true);
+    Write(RecordAnalog, CS4, PrepareChannel(B), true);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PrepareAndWriteDataToAnalogSPI(uint16 *addrAnalog)
+void FPGA::PrepareAndWriteDataToAnalogSPI(uint16 *addrAnalog)
 {
     static pFuncVV funcs[4] = {WriteChipSelect1, WriteChipSelect2, WriteChipSelect3, WriteChipSelect4};
     funcs[(int)addrAnalog]();
@@ -418,7 +414,7 @@ void PrepareAndWriteDataToAnalogSPI(uint16 *addrAnalog)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void LoadRange(Channel ch)
+void FPGA::LoadRange(Channel ch)
 {
     PrepareAndWriteDataToAnalogSPI(ch == A ? CS3 : CS4);
     PrepareAndWriteDataToAnalogSPI(CS2);
@@ -432,15 +428,14 @@ static void LoadRange(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void LoadTrigPolarity(void)
+void FPGA::LoadTrigPolarity(void)
 {
-    FPGA_Write(RecordFPGA, WR_TRIG, TRIG_POLARITY_FRONT ? 1u : 0u, true);
+    Write(RecordFPGA, WR_TRIG, TRIG_POLARITY_FRONT ? 1u : 0u, true);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-// «агрузить регистр WR_UPR (пиковый детектор и калибратор).
-void LoadRegUPR(void)
+void FPGA::LoadRegUPR(void)
 {
     uint16 data = 0;
     if(IN_RANDOM_MODE)
@@ -467,12 +462,12 @@ void LoadRegUPR(void)
         data |= (1 << UPR_BIT_PEAKDET);
     }
 
-    FPGA_Write(RecordFPGA, WR_UPR, data, false);
+    Write(RecordFPGA, WR_UPR, data, false);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_LoadSettings(void) 
+void FPGA::LoadSettings(void) 
 {
     LoadTBase();
     LoadTShift();
@@ -492,7 +487,7 @@ void FPGA_LoadSettings(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetResistance(Channel ch, Resistance resistance)
+void FPGA::SetResistance(Channel ch, Resistance resistance)
 {
     SET_RESISTANCE(ch) = resistance;
     PrepareAndWriteDataToAnalogSPI(CS2);
@@ -500,14 +495,14 @@ void FPGA_SetResistance(Channel ch, Resistance resistance)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetBandwidth(Channel ch)
+void FPGA::SetBandwidth(Channel ch)
 {
     PrepareAndWriteDataToAnalogSPI(ch == A ? CS3 : CS4);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetRange(Channel ch, Range range)
+void FPGA::SetRange(Channel ch, Range range)
 {
     if (!SET_ENABLED(ch))
     {
@@ -534,7 +529,7 @@ void FPGA_SetRange(Channel ch, Range range)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTBase(TBase tBase)
+void FPGA::SetTBase(TBase tBase)
 {
     if (!SET_ENABLED_A && !SET_ENABLED_B)
     {
@@ -559,7 +554,7 @@ void FPGA_SetTBase(TBase tBase)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_TBaseDecrease(void)
+void FPGA::TBaseDecrease(void)
 {
     if (SET_PEAKDET && SET_TBASE <= MIN_TBASE_PEC_DEAT)
     {
@@ -577,7 +572,7 @@ void FPGA_TBaseDecrease(void)
         else
         {
             TBase base = (TBase)((int)SET_TBASE - 1);
-            FPGA_SetTBase(base);
+            SetTBase(base);
         }
     }
     else
@@ -594,12 +589,12 @@ void FPGA_TBaseDecrease(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_TBaseIncrease(void)
+void FPGA::TBaseIncrease(void)
 {
     if (SET_TBASE < (TBaseSize - 1))
     {
         TBase base = (TBase)(SET_TBASE + 1);
-        FPGA_SetTBase(base);
+        SetTBase(base);
     }
     else
     {
@@ -615,7 +610,7 @@ void FPGA_TBaseIncrease(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetRShift(Channel ch, uint16 rShift)
+void FPGA::SetRShift(Channel ch, uint16 rShift)
 {
     if (!SET_ENABLED(ch))
     {
@@ -637,12 +632,12 @@ void FPGA_SetRShift(Channel ch, uint16 rShift)
 
     if (oldRShift != rShift)
     {
-        FPGA_TemporaryPause();
+        TemporaryPause();
     }
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTrigLev(TrigSource ch, uint16 trigLev)
+void FPGA::SetTrigLev(TrigSource ch, uint16 trigLev)
 {
     Display::ChangedRShiftMarkers(true);
     if (trigLev < TrigLevMin || trigLev > TrigLevMax)
@@ -661,13 +656,13 @@ void FPGA_SetTrigLev(TrigSource ch, uint16 trigLev)
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTShift(int tShift)
+void FPGA::SetTShift(int tShift)
 {
     SetTShift(tShift, true);
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void SetTShift(int tShift, bool needFPGApause)
+void FPGA::SetTShift(int tShift, bool needFPGApause)
 {
     if (!SET_ENABLED_A && !SET_ENABLED_B)
     {
@@ -688,13 +683,13 @@ static void SetTShift(int tShift, bool needFPGApause)
 
     if (needFPGApause && tShift != oldTShift)
     {
-        FPGA_TemporaryPause();
+        TemporaryPause();
     }
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetDeltaTShift(int16 shift)
+void FPGA::SetDeltaTShift(int16 shift)
 {
     timeCompensation[SET_TBASE] = shift;
     LoadTShift();
@@ -702,7 +697,7 @@ void FPGA_SetDeltaTShift(int16 shift)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetPeackDetMode(PeakDetMode peackDetMode)
+void FPGA::SetPeackDetMode(PeakDetMode peackDetMode)
 {
     SET_PEAKDET = peackDetMode;
     LoadRegUPR();
@@ -712,7 +707,7 @@ void FPGA_SetPeackDetMode(PeakDetMode peackDetMode)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetCalibratorMode(CalibratorMode calibratorMode)
+void FPGA::SetCalibratorMode(CalibratorMode calibratorMode)
 {
     CALIBRATOR_MODE = calibratorMode;
     LoadRegUPR();
@@ -720,7 +715,7 @@ void FPGA_SetCalibratorMode(CalibratorMode calibratorMode)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_EnableRecorderMode(bool enable)
+void FPGA::EnableRecorderMode(bool enable)
 {
     RECORDER_MODE = enable;
 
@@ -728,21 +723,21 @@ void FPGA_EnableRecorderMode(bool enable)
     {
         if (SET_TBASE < TBase_100ms)
         {
-            FPGA_SetTBase(TBase_100ms);
+            SetTBase(TBase_100ms);
         }
     }
 
-    FPGA_SetModeCouple(A, ModeCouple_DC);
-    FPGA_SetModeCouple(B, ModeCouple_DC);
+    SetModeCouple(A, ModeCouple_DC);
+    SetModeCouple(B, ModeCouple_DC);
     
     LoadRegUPR();
 
-    FPGA_SetTrigSource(TRIGSOURCE);
+    SetTrigSource(TRIGSOURCE);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *FPGA_GetTShiftString(int16 tShiftRel, char buffer[20])
+const char *FPGA::GetTShiftString(int16 tShiftRel, char buffer[20])
 {
     float tShiftVal = TSHIFT_2_ABS(tShiftRel, SET_TBASE);
     return Time2String(tShiftVal, true, buffer);
@@ -750,12 +745,12 @@ const char *FPGA_GetTShiftString(int16 tShiftRel, char buffer[20])
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FPGA_RangeIncrease(Channel ch)
+bool FPGA::RangeIncrease(Channel ch)
 {
     bool retValue = false;
     if (SET_RANGE(ch) < RangeSize - 1)
     {
-        FPGA_SetRange(ch, (Range)(SET_RANGE(ch) + 1));
+        SetRange(ch, (Range)(SET_RANGE(ch) + 1));
         retValue = true;
     }
     else
@@ -768,12 +763,12 @@ bool FPGA_RangeIncrease(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FPGA_RangeDecrease(Channel ch)
+bool FPGA::RangeDecrease(Channel ch)
 {
     bool retValue = false;
     if (SET_RANGE(ch) > 0)
     {
-        FPGA_SetRange(ch, (Range)(SET_RANGE(ch) - 1));
+        SetRange(ch, (Range)(SET_RANGE(ch) - 1));
         retValue = true;
     }
     else
@@ -786,19 +781,19 @@ bool FPGA_RangeDecrease(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTrigSource(TrigSource trigSource)
+void FPGA::SetTrigSource(TrigSource trigSource)
 {
     TRIGSOURCE = trigSource;
     PrepareAndWriteDataToAnalogSPI(CS2);
     if (!TRIGSOURCE_IS_EXT)
     {
-        FPGA_SetTrigLev(TRIGSOURCE, SET_TRIGLEV(TRIGSOURCE));
+        SetTrigLev(TRIGSOURCE, SET_TRIGLEV(TRIGSOURCE));
     }
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTrigPolarity(TrigPolarity polarity)
+void FPGA::SetTrigPolarity(TrigPolarity polarity)
 {
     TRIG_POLARITY = polarity;
     LoadTrigPolarity();
@@ -806,7 +801,7 @@ void FPGA_SetTrigPolarity(TrigPolarity polarity)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetTrigInput(TrigInput trigInput)
+void FPGA::SetTrigInput(TrigInput trigInput)
 {
     TRIG_INPUT = trigInput;
     PrepareAndWriteDataToAnalogSPI(CS2);
@@ -815,9 +810,9 @@ void FPGA_SetTrigInput(TrigInput trigInput)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA_SetModeCouple(Channel ch, ModeCouple modeCoupe)
+void FPGA::SetModeCouple(Channel ch, ModeCouple modeCoupe)
 {
     SET_COUPLE(ch) = modeCoupe;
     PrepareAndWriteDataToAnalogSPI(CS2);
-    FPGA_SetRShift(ch, SET_RSHIFT(ch));
+    SetRShift(ch, SET_RSHIFT(ch));
 }

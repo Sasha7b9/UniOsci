@@ -27,8 +27,8 @@ int main(void)
     Hardware::Init();
     VCP::Init();
     Settings_Load(false);
-    FPGA_Init();
-    FPGA_OnPressStartStop();
+    FPGA::Init();
+    FPGA::OnPressStartStop();
     Display::Init();
     Ethernet_Init();
     Menu::Init();
@@ -38,7 +38,7 @@ int main(void)
         Timer::StartMultiMeasurement();  // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
         Ethernet_Update(0);             // Обрабатываем LAN
         FDrive::Update();                // Обрабатываем флешку
-        FPGA_Update();                  // Обновляем аппаратную часть.
+        FPGA::Update();                  // Обновляем аппаратную часть.
         Panel::Update();                 // Обрабатываем панель
         Menu::UpdateInput();             // Обновляем состояние меню
         Display::Update();               // Рисуем экран.

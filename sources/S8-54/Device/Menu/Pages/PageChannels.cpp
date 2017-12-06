@@ -55,7 +55,7 @@ DEF_CHOICE_2(       cChanA_Input,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Couple(bool)
 {
-    FPGA_SetModeCouple(A, SET_COUPLE_A);
+    FPGA::SetModeCouple(A, SET_COUPLE_A);
 }
 
 DEF_CHOICE_3(       cChanA_Couple,                                                                                           //--- КАНАЛ 1 - Связь ---
@@ -71,7 +71,7 @@ DEF_CHOICE_3(       cChanA_Couple,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Bandwidth(bool)
 {
-    FPGA_SetBandwidth(A);
+    FPGA::SetBandwidth(A);
 }
 
 DEF_CHOICE_2(       cChanA_Bandwidth,                                                                                       //--- КАНАЛ 1 - Полоса ---
@@ -86,7 +86,7 @@ DEF_CHOICE_2(       cChanA_Bandwidth,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Resistance(bool)
 {
-    FPGA_SetResistance(A, SET_RESISTANCE_A);
+    FPGA::SetResistance(A, SET_RESISTANCE_A);
     if (SET_RESISTANCE_A == Resistance_50Om)
     {
         Display::ShowWarning(Warn50Ohms);
@@ -105,7 +105,7 @@ DEF_CHOICE_2(       cChanA_Resistance,                                          
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanA_Inverse(bool)
 {
-    FPGA_SetRShift(A, SET_RSHIFT_A);
+    FPGA::SetRShift(A, SET_RSHIFT_A);
 }
 
 DEF_CHOICE_2(       cChanA_Inverse,                                                                                       //--- КАНАЛ 1 - Инверсия ---
@@ -130,7 +130,7 @@ DEF_CHOICE_2(       cChanA_Divider,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_ChanA_Balance(void)
 {
-    FPGA_BalanceChannel(A);
+    FPGA::BalanceChannel(A);
 };
 
 DEF_BUTTON(         bChanA_Balance,                                                                                  //--- КАНАЛ 1 - Балансировать ---
@@ -188,7 +188,7 @@ DEF_CHOICE_2(       cChanB_Input,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Couple(bool)
 {
-    FPGA_SetModeCouple(B, SET_COUPLE_B);
+    FPGA::SetModeCouple(B, SET_COUPLE_B);
 }
 
 DEF_CHOICE_3(       cChanB_Couple,                                                                                           //--- КАНАЛ 2 - Связь ---
@@ -204,7 +204,7 @@ DEF_CHOICE_3(       cChanB_Couple,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Bandwidth(bool)
 {
-    FPGA_SetBandwidth(B);
+    FPGA::SetBandwidth(B);
 }
 
 DEF_CHOICE_2(       cChanB_Bandwidth,                                                                                       //--- КАНАЛ 2 - Полоса ---
@@ -219,7 +219,7 @@ DEF_CHOICE_2(       cChanB_Bandwidth,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Resistance(bool)
 {
-    FPGA_SetResistance(B, SET_RESISTANCE_B);
+    FPGA::SetResistance(B, SET_RESISTANCE_B);
     if (SET_RESISTANCE_B == Resistance_50Om)
     {
         Display::ShowWarning(Warn50Ohms);
@@ -237,7 +237,7 @@ DEF_CHOICE_2(       cChanB_Resistance,                                          
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_ChanB_Inverse(bool)
 {
-    FPGA_SetRShift(B, SET_RSHIFT_B);
+    FPGA::SetRShift(B, SET_RSHIFT_B);
 }
 
 DEF_CHOICE_2(       cChanB_Inverse,                                                                                       //--- КАНАЛ 2 - Инверсия ---
@@ -262,7 +262,7 @@ DEF_CHOICE_2(       cChanB_Divider,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_ChanB_Balance(void)
 {
-    FPGA_BalanceChannel(B);
+    FPGA::BalanceChannel(B);
 }
 
 DEF_BUTTON(         bChanB_Balance,                                                                                  //--- КАНАЛ 2 - Балансировать ---

@@ -197,7 +197,7 @@ void ChangeRShift(int *prevTime, void(*f)(Channel, uint16), Channel ch, int relS
 {
     if (ENUM_ACCUM == ENumAccum_1)
     {
-        FPGA_TemporaryPause();
+        FPGA::TemporaryPause();
     }
     int count = CalculateCount(prevTime);
     int rShiftOld = SET_RSHIFT(ch);
@@ -298,21 +298,21 @@ void ChangeShiftScreen(int *prevTime, int16 relStep)
 void FuncRShiftA(int delta)
 {
     static int prevTime = 0;
-    ChangeRShift(&prevTime, FPGA_SetRShift, A, delta * STEP_RSHIFT);
+    ChangeRShift(&prevTime, FPGA::SetRShift, A, delta * STEP_RSHIFT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncRShiftB(int delta)
 {
     static int prevTime = 0;
-    ChangeRShift(&prevTime, FPGA_SetRShift, B, delta * STEP_RSHIFT);
+    ChangeRShift(&prevTime, FPGA::SetRShift, B, delta * STEP_RSHIFT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncTrigLev(int delta)
 {
     static int prevTime = 0;
-    ChangeTrigLev(&prevTime, FPGA_SetTrigLev, TRIGSOURCE, (int16)(delta * STEP_RSHIFT));
+    ChangeTrigLev(&prevTime, FPGA::SetTrigLev, TRIGSOURCE, (int16)(delta * STEP_RSHIFT));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -325,7 +325,7 @@ void XShift(int delta)
     }
     else
     {
-        ChangeTShift(&prevTime, FPGA_SetTShift, (int16)delta);
+        ChangeTShift(&prevTime, FPGA::SetTShift, (int16)delta);
     }
 }
 
@@ -340,7 +340,7 @@ void FuncTBase(int delta)
 {
     Sound::RegulatorSwitchRotate();
 
-    delta == 1 ? FPGA_TBaseDecrease() : FPGA_TBaseIncrease();
+    delta == 1 ? FPGA::TBaseDecrease() : FPGA::TBaseIncrease();
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -349,11 +349,11 @@ static void ChangeRange(Channel ch, int delta)    // delta == -1 - уменьшаем. de
     Sound::RegulatorSwitchRotate();
     if (delta > 0)
     {
-        FPGA_RangeIncrease(ch);
+        FPGA::RangeIncrease(ch);
     }
     else
     {
-        FPGA_RangeDecrease(ch);
+        FPGA::RangeDecrease(ch);
     }
 }
 

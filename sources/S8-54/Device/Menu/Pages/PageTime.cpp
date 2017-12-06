@@ -46,8 +46,8 @@ void OnChanged_PeakDet(bool active)
 {
     if (active)
     {
-        FPGA_SetPeackDetMode(SET_PEAKDET);
-        FPGA_SetTBase(SET_TBASE);
+        FPGA::SetPeackDetMode(SET_PEAKDET);
+        FPGA::SetTBase(SET_TBASE);
         OnChanged_Points(true);
     }
     else
@@ -80,7 +80,7 @@ DEF_CHOICE_2(       cPeakDet,                                                   
 void OnChanged_TPos(bool active)
 {
     OnChanged_Points(active);
-    FPGA_SetTShift(SET_TSHIFT);
+    FPGA::SetTShift(SET_TSHIFT);
 }
 
 DEF_CHOICE_3(       cTPos,                                                                                                    //--- –¿«¬≈–“ ¿ - “Ó ---

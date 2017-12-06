@@ -1,13 +1,7 @@
-#include "defines.h"
-#include "Menu/MenuItems.h"
-#include "Utils/Measures.h"
-#include "Settings/Settings.h"
-#include "Utils/Math.h"
-#include "Utils/CommonFunctions.h"
-#include "Menu/Pages/Definition.h"
+#include "FPGA/FPGA.h"
 #include "Hardware/Sound.h"
-#include "FPGA/fpgaExtensions.h"
-#include "Utils/Dictionary.h"
+#include "Menu/Pages/Definition.h"
+#include "Utils/Math.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +16,7 @@ extern int8 posActive;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_FreqMeter_Enable(bool)
 {
-    FreqMeter_Init();
+    FPGA::FreqMeter_Init();
 }
 
 DEF_CHOICE_2(       cFreqMeter_Enable,                                                                   //--- ÈÇÌÅĞÅÍÈß - ×ÀÑÒÎÒÎÌÅĞ - ×àñòîòîìåğ ---

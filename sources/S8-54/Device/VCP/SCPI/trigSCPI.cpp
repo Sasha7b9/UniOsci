@@ -1,9 +1,6 @@
-#include "defines.h"
 #include "SCPI.h"
-#include "Settings/Settings.h"
-#include "Utils/Map.h"
-#include "VCP/VCP.h"
 #include "FPGA/FPGA.h"
+#include "Utils/Map.h"
 
 
 /*
@@ -80,9 +77,9 @@ void Process_SOURCE(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (0 == value)         { FPGA_SetTrigSource(TrigSource_A); }
-        else if (1 == value)    { FPGA_SetTrigSource(TrigSource_B); }
-        else if (2 == value)    { FPGA_SetTrigSource(TrigSource_Ext); }
+        if (0 == value)         { FPGA::SetTrigSource(TrigSource_A); }
+        else if (1 == value)    { FPGA::SetTrigSource(TrigSource_B); }
+        else if (2 == value)    { FPGA::SetTrigSource(TrigSource_Ext); }
         else if (3 == value)
         {
             SCPI_SEND(":TRIGGER:SOUCRE %s", map[START_MODE].key);
@@ -102,8 +99,8 @@ void Process_POLARITY(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (0 == value)         { FPGA_SetTrigPolarity(TrigPolarity_Front); }
-        else if (1 == value)    { FPGA_SetTrigPolarity(TrigPolarity_Back); }
+        if (0 == value)         { FPGA::SetTrigPolarity(TrigPolarity_Front); }
+        else if (1 == value)    { FPGA::SetTrigPolarity(TrigPolarity_Back); }
         else if (2 == value)
         {
             SCPI_SEND(":TRIGGER:POLARITY %s", map[TRIG_POLARITY].key);
@@ -125,10 +122,10 @@ void Process_INPUT(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (0 == value)         { FPGA_SetTrigInput(TrigInput_Full); }
-        else if (1 == value)    { FPGA_SetTrigInput(TrigInput_AC); }
-        else if (2 == value)    { FPGA_SetTrigInput(TrigInput_LPF); }
-        else if (3 == value)    { FPGA_SetTrigInput(TrigInput_HPF); }
+        if (0 == value)         { FPGA::SetTrigInput(TrigInput_Full); }
+        else if (1 == value)    { FPGA::SetTrigInput(TrigInput_AC); }
+        else if (2 == value)    { FPGA::SetTrigInput(TrigInput_LPF); }
+        else if (3 == value)    { FPGA::SetTrigInput(TrigInput_HPF); }
         else if (4 == value)
         {
             SCPI_SEND(":TRIGGER:INPUT %s", map[TRIG_INPUT].key);
@@ -151,7 +148,7 @@ void Process_FIND(uint8 *buffer)
     ENTER_ANALYSIS
         if (0 == value)         { TRIG_MODE_FIND = TrigModeFind_Hand; }
         else if (1 == value)    { TRIG_MODE_FIND = TrigModeFind_Auto; }
-        else if (2 == value)    { FPGA_FindAndSetTrigLevel(); }
+        else if (2 == value)    { FPGA::FindAndSetTrigLevel(); }
         else if (3 == value)
         {
             SCPI_SEND(":TRIGGER:FIND %s", map[TRIG_MODE_FIND].key);
@@ -173,7 +170,7 @@ void Process_OFFSET(uint8 *buffer)
     if (SCPI_FirstIsInt(buffer, &intVal, -240, 240))
     {
         int trigLev = RShiftZero + 2 * intVal;
-        FPGA_SetTrigLev(TRIGSOURCE, (uint16)trigLev);
+        FPGA::SetTrigLev(TRIGSOURCE, (uint16)trigLev);
         return;
     }
 
