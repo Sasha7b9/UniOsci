@@ -123,36 +123,36 @@ static void DRAW_SPECTRUM(const uint8 *dataIn, int numPoints, Channel ch);
 static void DrawSpectrumChannel(const float *spectrum, Color color);
 static void WriteParametersFFT(Channel ch, float freq0, float density0, float freq1, float density1);
 
-static void DrawCursors();                          ///< Нарисовать курсоры курсорных измерений.
+static void DrawCursors();                              ///< Нарисовать курсоры курсорных измерений.
 static void DrawVerticalCursor(int x, int yTearing);    ///< \brief Нарисовать вертикальный курсор курсорных измерений. x - числовое значение курсора, 
                                                         ///< yTearing - координата места, в котором необходимо сделать разрыв для квадрата пересечения.
 static void DrawHorizontalCursor(int y, int xTearing);  ///< Нарисовать горизонтальный курсор курсорных измерений. y - числовое значение курсора, 
-                                                    ///< xTearing - координата места, в котором необходимо сделать разрыв для квадрата пересечения.
+                                                        ///< xTearing - координата места, в котором необходимо сделать разрыв для квадрата пересечения.
 
-static void DrawCursorsWindow();                    ///< Нарисовать вспомогательные курсоры для смещения по напряжению.
+static void DrawCursorsWindow();                        ///< Нарисовать вспомогательные курсоры для смещения по напряжению.
 static void DrawScaleLine(int x, bool forTrigLev);      ///< Нарисовать сетку для вспомогательных курсоров по напряжению.
 
 static void DrawCursorTrigLevel();
-static void WriteValueTrigLevel();                  ///< Вывести значение уровня синхронизации.
+static void WriteValueTrigLevel();                      ///< Вывести значение уровня синхронизации.
 static void DrawCursorsRShift();
 static void DrawCursorRShift(Channel ch);
 static void DrawCursorTShift();
 
-static void DrawHiPart();                           ///< Нарисовать то, что находится над основной сеткой.
-static void WriteCursors();                         ///< Вывести значения курсоров курсорных измерений.
-static void DrawHiRightPart();                      ///< Вывести то, что находится в правой части верхней строки.
+static void DrawHiPart();                               ///< Нарисовать то, что находится над основной сеткой.
+static void WriteCursors();                             ///< Вывести значения курсоров курсорных измерений.
+static void DrawHiRightPart();                          ///< Вывести то, что находится в правой части верхней строки.
 
-static void DrawLowPart();                          ///< Нарисовать то, что находится под основной сеткой.
+static void DrawLowPart();                              ///< Нарисовать то, что находится под основной сеткой.
 static void DrawTime(int x, int y);
 static void WriteTextVoltage(Channel ch, int x, int y); ///< Написать в нижней строке параметры вертикального тракта.
 
-static void DrawMeasures();                         ///< Вывести значения автоматических измерений.
-static void DrawStringNavigation();                 ///< Вывести строку навигации по меню.
-static void DrawRandStat();                         ///< Нарисовать график статистики рандомизатора.
-static void DrawWarnings();                         ///< Вывести предупреждающие сообщения.
+static void DrawMeasures();                             ///< Вывести значения автоматических измерений.
+static void DrawStringNavigation();                     ///< Вывести строку навигации по меню.
+static void DrawRandStat();                             ///< Нарисовать график статистики рандомизатора.
+static void DrawWarnings();                             ///< Вывести предупреждающие сообщения.
 static void DrawTimeForFrame(uint timeTicks);
-static void DisableShowLevelRShiftA();              ///< Отключить вспомогательную линию маркера смещения по напряжению первого канала.
-static void DisableShowLevelRShiftB();              ///< Отключить вспомогательную линию маркера смещения по напряжению второго канала.
+static void DisableShowLevelRShiftA();                  ///< Отключить вспомогательную линию маркера смещения по напряжению первого канала.
+static void DisableShowLevelRShiftB();                  ///< Отключить вспомогательную линию маркера смещения по напряжению второго канала.
 static void DisableShowLevelTrigLev();
 static void OnRShiftMarkersAutoHide();
 static int  FirstEmptyString();
