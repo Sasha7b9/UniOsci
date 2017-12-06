@@ -14,3 +14,5 @@ inline bool EmptyFuncBV() { return true; };
 inline void EmptyFuncVB(bool) {};
 
 inline void EmptyFuncpVII(void *, int, int) {};
+
+void LoggingFloatArray(float *data, int num);

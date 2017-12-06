@@ -35,7 +35,6 @@ int main(void)
 
     while(1)
     {
-        LOG_WRITE("%d", sizeof(Color));
         Timer_StartMultiMeasurement();  // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
         Ethernet_Update(0);             // Обрабатываем LAN
         FDrive_Update();                // Обрабатываем флешку

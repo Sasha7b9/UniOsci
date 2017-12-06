@@ -15,15 +15,16 @@
 #define ASSEERT(cond, ...)      if(cond)(LOG_ERROR_TRACE(__VA_ARGS__));
 #define ASSERT_RET(cond, ...)   if(cond) {LOG_ERROR_TRACE(__VA_ARGS__); return; }
 #elif defined(WIN32)
-void LOG_WRITE(char *, char *, float);
-void LOG_WRITE(char *, int, uint16, uint16);
-void LOG_WRITE(char *, uint);
-void LOG_WRITE(char *, float);
-void LOG_WRITE(char *, int16, char*);
-void LOG_WRITE(char *);
-void LOG_WRITE(char *, char *, uint, float);
+//#define LOG_WRITE(char *, char *, float)
+//#define LOG_WRITE(char *, int, uint16, uint16);
+//#define LOG_WRITE(char *, uint)
+//#define LOG_WRITE(char *, float)
+//#define LOG_WRITE(char *, int16, char*)
+//#define LOG_WRITE(char *)
+//#define LOG_WRITE(char *, char *, uint, float)
 #define ASSERT_RET(cont, ...)
 #define LOG_ERROR_TRACE(...)
+#define LOG_WRITE(...)
 #else
 #define LOG_WRITE(...)
 #define LOG_ERROR(...)

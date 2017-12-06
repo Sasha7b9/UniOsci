@@ -1801,6 +1801,16 @@
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Measures.h</FilePath>
             </File>
+            <File>
+              <FileName>CommonFunctions.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\CommonFunctions.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CommonFunctions.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\CommonFunctions.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

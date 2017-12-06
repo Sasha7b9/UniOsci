@@ -1,18 +1,8 @@
-#include "DataSettings.h"
 #include "DataStorage.h"
 #include "Log.h"
-#include "FPGA/FPGAtypes.h"
 #include "FPGA/FPGA.h"
-#include "Hardware/Timer.h"
-#include "Hardware/RTC.h"
-#include "Hardware/FSMC.h"
 #include "Hardware/RAM.h"
-#include "Menu/Pages/PageMemory.h"
-#include "Settings/Settings.h"
-#include "Settings/Settings.h"
 #include "Utils/Math.h"
-#include "Utils/Debug.h"
-#include <string.h>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,9 +114,11 @@ static void CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *dss
     }
     else
     {
-        if (numAveData > sDisplay_NumAverage())
+        numAveData = sDisplay_NumAverage();
+
+        if(numAveData > dS.NumElementsInStorage())
         {
-            numAveData = sDisplay_NumAverage();
+            numAveData = dS.NumElementsInStorage();
         }
 
         float numAveDataF = (float)numAveData;
@@ -141,10 +133,10 @@ static void CalculateAroundAverage(uint8 *dataA, uint8 *dataB, DataSettings *dss
         do 
         {
             *aDataA = ((*aDataA) * numAveDataFless + (float)(*dA++)) * numAveDataInv;
-            aDataA++;
+            ++aDataA;
             *aDataB = ((*aDataB) * numAveDataFless + (float)(*dB++)) * numAveDataInv;
-            aDataB++;
-        } while (aDataA != endData && !NEED_FINISH_DRAW);
+            ++aDataB;
+        } while (aDataA < endData);
     }
 }
 
