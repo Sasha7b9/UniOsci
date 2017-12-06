@@ -324,9 +324,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\Hardware\Sound.h">
       <Filter>Hardware</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\Timer.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-54\Device\Log.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -503,6 +500,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuItems.h">
       <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Hardware\Timer.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -779,9 +779,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\Hardware\Sound.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\Timer.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Hardware\Hardware.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -955,6 +952,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\stub54.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\common\Hardware\Timer.cpp">
+      <Filter>Hardware</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
