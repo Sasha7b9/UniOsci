@@ -79,7 +79,7 @@ void FPGA::Start()
         Timer::Disable(kTimerStartP2P);
         Display::ResetP2Ppoints(true);
     }
-    FSMC_Write(WR_START, 1);
+    FSMC::Write(WR_START, 1);
     FillDataPointer(&ds);
     timeStart = gTimeMS;
     stateWork = StateWorkFPGA_Wait;
@@ -89,8 +89,8 @@ void FPGA::Start()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SwitchingTrig()
 {
-    FSMC_Write(WR_TRIG_F, TRIG_POLARITY_IS_FRONT ? 0x00 : 0x01);
-    FSMC_Write(WR_TRIG_F, TRIG_POLARITY_IS_FRONT ? 0x01 : 0x00);
+    FSMC::Write(WR_TRIG_F, TRIG_POLARITY_IS_FRONT ? 0x00 : 0x01);
+    FSMC::Write(WR_TRIG_F, TRIG_POLARITY_IS_FRONT ? 0x01 : 0x00);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -214,7 +214,7 @@ void FPGA::OnPressStartStop()
 void FPGA::Stop(bool pause) 
 {
     Timer::Disable(kTimerStartP2P);
-    FSMC_Write(WR_STOP, 1);
+    FSMC::Write(WR_STOP, 1);
     stateWork = pause ? StateWorkFPGA_Pause : StateWorkFPGA_Stop;
 }
 
@@ -582,7 +582,7 @@ void FPGA::WriteToHardware(uint8 *address, uint8 value, bool restart)
         {
             FPGA::Stop(true);
             gBF.FPGAinProcessingOfRead = 0;
-            FSMC_Write(address, value);
+            FSMC::Write(address, value);
             FPGA::Start();
         }
         else
@@ -590,18 +590,18 @@ void FPGA::WriteToHardware(uint8 *address, uint8 value, bool restart)
             if(stateWork != StateWorkFPGA_Stop)
             {
                 FPGA::Stop(true);
-                FSMC_Write(address, value);
+                FSMC::Write(address, value);
                 FPGA::Start();
             }
             else
             {
-                FSMC_Write(address, value);
+                FSMC::Write(address, value);
             }
         }
     }
     else
     {
-        FSMC_Write(address, value);
+        FSMC::Write(address, value);
     }
 }
 
@@ -665,9 +665,9 @@ static bool readPeriod = false;     ///< Установленный в true флаг означает, что
 static BitSet32 ReadRegFreq()
 {
     BitSet32 freq;
-    freq.byte[0] = FSMC_Read(RD_ADDR_FREQ_LOW);
-    freq.byte[1] = FSMC_Read(RD_ADDR_FREQ_MID);
-    freq.byte[2] = FSMC_Read(RD_ADDR_FREQ_HI);
+    freq.byte[0] = FSMC::Read(RD_ADDR_FREQ_LOW);
+    freq.byte[1] = FSMC::Read(RD_ADDR_FREQ_MID);
+    freq.byte[2] = FSMC::Read(RD_ADDR_FREQ_HI);
     freq.byte[3] = 0;
     return freq;
 }
@@ -676,10 +676,10 @@ static BitSet32 ReadRegFreq()
 static BitSet32 ReadRegPeriod()
 {
     BitSet32 period;
-    period.byte[0] = FSMC_Read(RD_ADDR_PERIOD_LOW_LOW);
-    period.byte[1] = FSMC_Read(RD_ADDR_PERIOD_LOW);
-    period.byte[2] = FSMC_Read(RD_ADDR_PERIOD_MID);
-    period.byte[3] = FSMC_Read(RD_ADDR_PERIOD_HI);
+    period.byte[0] = FSMC::Read(RD_ADDR_PERIOD_LOW_LOW);
+    period.byte[1] = FSMC::Read(RD_ADDR_PERIOD_LOW);
+    period.byte[2] = FSMC::Read(RD_ADDR_PERIOD_MID);
+    period.byte[3] = FSMC::Read(RD_ADDR_PERIOD_HI);
     return period;
 }
 
@@ -743,7 +743,7 @@ void ReadPeriod()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static uint8 ReadFlag()
 {
-    uint8 flag = FSMC_Read(RD_FL);
+    uint8 flag = FSMC::Read(RD_FL);
     if(!readPeriod) 
     {
         if(_GET_BIT(flag, BIT_FREQ_READY)) 
@@ -762,9 +762,9 @@ static uint8 ReadFlag()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static float CalculateFreqFromCounterFreq()
 {
-    while (_GET_BIT(FSMC_Read(RD_FL), BIT_FREQ_READY) == 0) {};
+    while (_GET_BIT(FSMC::Read(RD_FL), BIT_FREQ_READY) == 0) {};
     ReadRegFreq();
-    while (_GET_BIT(FSMC_Read(RD_FL), BIT_FREQ_READY) == 0) {};
+    while (_GET_BIT(FSMC::Read(RD_FL), BIT_FREQ_READY) == 0) {};
     BitSet32 freq = ReadRegFreq();
     if (freq.word >= 5)
     {
@@ -777,10 +777,10 @@ static float CalculateFreqFromCounterFreq()
 static float CalculateFreqFromCounterPeriod()
 {
     uint timeStart = gTimeMS;
-    while (gTimeMS - timeStart < 1000 && _GET_BIT(FSMC_Read(RD_FL), BIT_PERIOD_READY) == 0) {};
+    while (gTimeMS - timeStart < 1000 && _GET_BIT(FSMC::Read(RD_FL), BIT_PERIOD_READY) == 0) {};
     ReadRegPeriod();
     timeStart = gTimeMS;
-    while (gTimeMS - timeStart < 1000 && _GET_BIT(FSMC_Read(RD_FL), BIT_PERIOD_READY) == 0) {};
+    while (gTimeMS - timeStart < 1000 && _GET_BIT(FSMC::Read(RD_FL), BIT_PERIOD_READY) == 0) {};
     BitSet32 period = ReadRegPeriod();
     if (period.word > 0 && (gTimeMS - timeStart < 1000))
     {
@@ -934,33 +934,33 @@ Range FPGA::FindRange(Channel chan)
 
         for (int i = 0; i < 50; i++)
         {
-            while (_GET_BIT(FSMC_Read(RD_FL), BIT_POINT_READY) == 0) {};
-            FSMC_Read(RD_ADC_B2);
-            FSMC_Read(RD_ADC_B1);
-            FSMC_Read(RD_ADC_A2);
-            FSMC_Read(RD_ADC_A1);
+            while (_GET_BIT(FSMC::Read(RD_FL), BIT_POINT_READY) == 0) {};
+            FSMC::Read(RD_ADC_B2);
+            FSMC::Read(RD_ADC_B1);
+            FSMC::Read(RD_ADC_A2);
+            FSMC::Read(RD_ADC_A1);
         }
 
         if (chan == A)
         {
             for (int i = 0; i < 100; i += 2)
             {
-                while (_GET_BIT(FSMC_Read(RD_FL), BIT_POINT_READY) == 0) {};
-                FSMC_Read(RD_ADC_B2);
-                FSMC_Read(RD_ADC_B1);
-                buffer[i] = FSMC_Read(RD_ADC_A2);
-                buffer[i + 1] = FSMC_Read(RD_ADC_A1);
+                while (_GET_BIT(FSMC::Read(RD_FL), BIT_POINT_READY) == 0) {};
+                FSMC::Read(RD_ADC_B2);
+                FSMC::Read(RD_ADC_B1);
+                buffer[i] = FSMC::Read(RD_ADC_A2);
+                buffer[i + 1] = FSMC::Read(RD_ADC_A1);
             }
         }
         else
         {
             for (int i = 0; i < 100; i += 2)
             {
-                while (_GET_BIT(FSMC_Read(RD_FL), BIT_POINT_READY) == 0) {};
-                buffer[i] = FSMC_Read(RD_ADC_B2);
-                buffer[i + 1] = FSMC_Read(RD_ADC_B1);
-                FSMC_Read(RD_ADC_A2);
-                FSMC_Read(RD_ADC_A1);
+                while (_GET_BIT(FSMC::Read(RD_FL), BIT_POINT_READY) == 0) {};
+                buffer[i] = FSMC::Read(RD_ADC_B2);
+                buffer[i + 1] = FSMC::Read(RD_ADC_B1);
+                FSMC::Read(RD_ADC_A2);
+                FSMC::Read(RD_ADC_A1);
             }
         }
 

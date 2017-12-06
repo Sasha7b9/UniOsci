@@ -105,7 +105,7 @@ void Hardware_Init()
     
     Panel::Init();
 
-    FSMC_Init();
+    FSMC::Init();
 
     ADConverter::Init();
 

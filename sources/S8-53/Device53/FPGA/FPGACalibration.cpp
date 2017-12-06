@@ -91,8 +91,8 @@ void FPGA::ProcedureCalibration()
         FPGA::SetRShift(B, RShiftZero);
         FPGA::SetModeCouple(A, ModeCouple_GND);
         FPGA::SetModeCouple(B, ModeCouple_GND);
-        FSMC_Write(WR_ADD_RSHIFT_DAC1, 0);
-        FSMC_Write(WR_ADD_RSHIFT_DAC2, 0);
+        FSMC::Write(WR_ADD_RSHIFT_DAC1, 0);
+        FSMC::Write(WR_ADD_RSHIFT_DAC2, 0);
 
         deltaADCPercentsOld[0] = CalculateDeltaADC(A, &avrADC1old[A], &avrADC2old[A], &deltaADCold[A]);
         deltaADCPercentsOld[1] = CalculateDeltaADC(B, &avrADC1old[B], &avrADC2old[B], &deltaADCold[B]);
@@ -192,8 +192,8 @@ void FPGA::ProcedureCalibration()
 
     SET_BALANCE_ADC_A = shiftADC0;
     SET_BALANCE_ADC_B = shiftADC1;
-    FSMC_Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
-    FSMC_Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
+    FSMC::Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
+    FSMC::Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
 
     FPGA::SetRShift(A, SET_RSHIFT_A);
     FPGA::SetRShift(B, SET_RSHIFT_B);
@@ -367,27 +367,27 @@ float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *del
     static const int numCicles = 10;
     for(int cicle = 0; cicle < numCicles; cicle++)
     {
-        FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0) {};
+        FSMC::Write(WR_START, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 2) == 0) {};
         FPGA::SwitchingTrig();
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0) {};
-        FSMC_Write(WR_STOP, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 0) == 0) {};
+        FSMC::Write(WR_STOP, 1);
 
         for(int i = 0; i < FPGA_MAX_POINTS; i++)
         {
             if(chan == A)
             {
-                *avgADC1 += FSMC_Read(address1);
-                *avgADC2 += FSMC_Read(address2);
-                FSMC_Read(RD_ADC_B1);
-                FSMC_Read(RD_ADC_B2);
+                *avgADC1 += FSMC::Read(address1);
+                *avgADC2 += FSMC::Read(address2);
+                FSMC::Read(RD_ADC_B1);
+                FSMC::Read(RD_ADC_B2);
             }
             else
             {
-                FSMC_Read(RD_ADC_A1);
-                FSMC_Read(RD_ADC_A2);
-                *avgADC1 += FSMC_Read(address1);
-                *avgADC2 += FSMC_Read(address2);
+                FSMC::Read(RD_ADC_A1);
+                FSMC::Read(RD_ADC_A2);
+                *avgADC1 += FSMC::Read(address1);
+                *avgADC2 += FSMC::Read(address2);
             }
         }
         
@@ -410,8 +410,8 @@ void AlignmentADC()
     SET_BALANCE_ADC_A = shiftADC0;
     shiftADC1 = (int8)((deltaADCold[1] > 0) ? (deltaADCold[1] + 0.5f) : (deltaADCold[1] - 0.5f));
     SET_BALANCE_ADC_B = shiftADC1;
-    FSMC_Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
-    FSMC_Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
+    FSMC::Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
+    FSMC::Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -439,8 +439,8 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
         uint startTime = gTimeMS;
         const uint timeWait = 100;
 
-        FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimeMS - startTime < timeWait)) {}; 
+        FSMC::Write(WR_START, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 2) == 0 && (gTimeMS - startTime < timeWait)) {}; 
         if(gTimeMS - startTime > timeWait)                 // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;                       // выход с ошибкой.
@@ -450,21 +450,21 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
 
         startTime = gTimeMS;
 
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimeMS - startTime < timeWait)) {};
+        while(_GET_BIT(FSMC::Read(RD_FL), 0) == 0 && (gTimeMS - startTime < timeWait)) {};
         if(gTimeMS - startTime > timeWait)                 // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;                       // выход с ошибкой.
         }
 
-        FSMC_Write(WR_STOP, 1);
+        FSMC::Write(WR_STOP, 1);
 
         uint8 *addressRead1 = chan == A ? RD_ADC_A1 : RD_ADC_B1;
         uint8 *addressRead2 = chan == A ? RD_ADC_A2 : RD_ADC_B2;
 
         for(int i = 0; i < FPGA_MAX_POINTS; i += 2)
         {
-            sum += FSMC_Read(addressRead1);
-            sum += FSMC_Read(addressRead2);
+            sum += FSMC::Read(addressRead1);
+            sum += FSMC::Read(addressRead2);
             numPoints += 2;
         }
     }
@@ -503,8 +503,8 @@ float CalculateKoeffCalibration(Channel chan)
         while(gTimeMS - startTime < 20) {}
         startTime = gTimeMS;
 
-        FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimeMS - startTime > timeWait)) {};
+        FSMC::Write(WR_START, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 2) == 0 && (gTimeMS - startTime > timeWait)) {};
         if(gTimeMS - startTime > timeWait)
         {
             return ERROR_VALUE_FLOAT;
@@ -513,20 +513,20 @@ float CalculateKoeffCalibration(Channel chan)
         FPGA::SwitchingTrig();
         startTime = gTimeMS;
 
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimeMS - startTime > timeWait)) {};
+        while(_GET_BIT(FSMC::Read(RD_FL), 0) == 0 && (gTimeMS - startTime > timeWait)) {};
         if(gTimeMS - startTime > timeWait)
         {
             return ERROR_VALUE_FLOAT;
         }
 
-        FSMC_Write(WR_STOP, 1);
+        FSMC::Write(WR_STOP, 1);
 
         uint8 *addressRead1 = chan == A ? RD_ADC_A1 : RD_ADC_B1;
         uint8 *addressRead2 = chan == A ? RD_ADC_A2 : RD_ADC_B2;
 
         for(int i = 0; i < FPGA_MAX_POINTS; i += 2)
         {
-            uint8 val0 = FSMC_Read(addressRead1);
+            uint8 val0 = FSMC::Read(addressRead1);
             if(val0 > AVE_VALUE + 60)
             {
                 numMAX++;
@@ -538,7 +538,7 @@ float CalculateKoeffCalibration(Channel chan)
                 sumMIN += val0;
             }
 
-            uint8 val1 = FSMC_Read(addressRead2);
+            uint8 val1 = FSMC::Read(addressRead2);
             if(val1 > AVE_VALUE + 60)
             {
                 numMAX++;
