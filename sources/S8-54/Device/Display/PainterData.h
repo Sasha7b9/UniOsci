@@ -16,15 +16,12 @@ class PainterData
 {
 public:
     /// Отрисовка сигнала на основном экране.
-    void DrawData(void);
+    static void DrawData(void);
     /// Прервать процесс рисования
-    void InterruptDrawing(void);
+    static void InterruptDrawing(void);
     /// Нарисовать результат математической функции
-    void DrawMath(void);
+    static void DrawMath(void);
 };
-
-
-extern PainterData painterData;
 
 
 /** @}  @}
