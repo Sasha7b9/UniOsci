@@ -106,7 +106,7 @@ void FPGA::ProcedureCalibration()
 
         koeffCal0 = koeffCal1 = ERROR_VALUE_FLOAT;
 
-		if(Painter::WaitPressingButton() == B_Start)             // ќжидаем подтверждени€ или отмены процедуры калибровки первого канала.
+		if(Panel::WaitPressingButton() == B_Start)             // ќжидаем подтверждени€ или отмены процедуры калибровки первого канала.
         {
 			gStateFPGA.stateCalibration = StateCalibration_RShift0inProgress;
 
@@ -114,7 +114,7 @@ void FPGA::ProcedureCalibration()
 			if(koeffCal0 == ERROR_VALUE_FLOAT)
             {
 				gStateFPGA.stateCalibration = StateCalibration_ErrorCalibration0;
-				Painter::WaitPressingButton();
+				Panel::WaitPressingButton();
                 DEBUG_STRETCH_ADC_TYPE = StretchADC_Hand;
                 LoadStretchADC(A);
             }
@@ -143,7 +143,7 @@ void FPGA::ProcedureCalibration()
 
         HAL_Delay(500);
 
-		if(Painter::WaitPressingButton() == B_Start)                 // ќжидаем подтверждени€ или отмены процедуры калибровки второго канала.
+		if(Panel::WaitPressingButton() == B_Start)                 // ќжидаем подтверждени€ или отмены процедуры калибровки второго канала.
         {
 			gStateFPGA.stateCalibration = StateCalibration_RShift1inProgress;
 
@@ -151,7 +151,7 @@ void FPGA::ProcedureCalibration()
 			if(koeffCal1 == ERROR_VALUE_FLOAT)
             {
 				gStateFPGA.stateCalibration = StateCalibration_ErrorCalibration1;
-				Painter::WaitPressingButton();
+				Panel::WaitPressingButton();
                 DEBUG_STRETCH_ADC_TYPE = StretchADC_Hand;
                 LoadStretchADC(B);
 			}
@@ -206,9 +206,9 @@ void FPGA::ProcedureCalibration()
     FPGA::LoadKoeffCalibration(B);
 
     gStateFPGA.stateCalibration = StateCalibration_None;
-    Painter::WaitPressingButton();
-    Painter::Enable();
-    Timer_Disable(kTimerDrawHandFunction);
+    Panel::WaitPressingButton();
+    Panel::Enable();
+    Timer::Disable(kTimerDisplay);
     Display::SetDrawMode(DrawMode_Auto, 0);
     gStateFPGA.stateCalibration = StateCalibration_None;
 

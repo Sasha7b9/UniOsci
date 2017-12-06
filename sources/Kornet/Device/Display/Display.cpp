@@ -156,14 +156,14 @@ void Display::UpdateMultimeter()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawGrid()
 {
-    int x0 = grid.Left();
-    int y0 = grid.Top();
+    int x0 = Grid::Left();
+    int y0 = Grid::Top();
 
     painter.DrawVLine(x0 + Grid::WIDTH / 2, y0, y0 + Grid::HEIGHT, Color::GRID);
 
     painter.DrawHLine(y0 + Grid::HEIGHT / 2, x0, x0 + Grid::WIDTH);
 
-    for (int x = x0; x < x0 + grid.Width(); x += Grid::SIZE_CELL)
+    for (int x = x0; x < x0 + Grid::Width(); x += Grid::SIZE_CELL)
     {
         painter.DrawVLine(x, y0, y0 + Grid::HEIGHT);
     }
@@ -179,9 +179,9 @@ void Display::DrawGrid()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::WriteLowPart()
 {
-    int x = WriteChannel(A, Grid::LEFT, grid.Bottom() + 1);
-    WriteChannel(B, Grid::LEFT, grid.Bottom() + 9);
-    WriteTBase(x, grid.Bottom() + 1);
+    int x = WriteChannel(A, Grid::LEFT, Grid::Bottom() + 1);
+    WriteChannel(B, Grid::LEFT, Grid::Bottom() + 9);
+    WriteTBase(x, Grid::Bottom() + 1);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -237,13 +237,13 @@ void Display::DrawRShift(Channel ch)
 
     int delta = (SET_RSHIFT(ch) - RShiftZero) / STEP_RSHIFT;
 
-    int y = (grid.Bottom() - grid.Top()) / 2 + grid.Top() - delta;
+    int y = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top() - delta;
 
-    painter.DrawChar(grid.Left() - 8, y - 4, SYMBOL_RSHIFT_MARKER);
+    painter.DrawChar(Grid::Left() - 8, y - 4, SYMBOL_RSHIFT_MARKER);
 
     painter.SetFont(TypeFont_5);
 
-    painter.DrawChar(grid.Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
+    painter.DrawChar(Grid::Left() - 7, y - 6, ch == A ? '1' : '2', Color::BACK);
 
     painter.SetFont(TypeFont_8);
 }

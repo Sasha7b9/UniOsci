@@ -1249,11 +1249,6 @@
               <FilePath>.\Device53\Hardware\Sound.h</FilePath>
             </File>
             <File>
-              <FileName>Timer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Hardware\Timer.h</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Hardware\FLASH.cpp</FilePath>
@@ -1276,7 +1271,12 @@
             <File>
               <FileName>Timer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device53\Hardware\Timer.cpp</FilePath>
+              <FilePath>..\common\Hardware\Timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Hardware\Timer.h</FilePath>
             </File>
           </Files>
         </Group>

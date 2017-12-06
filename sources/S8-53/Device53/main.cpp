@@ -45,7 +45,7 @@ int main()
     FPGA::Init();    
     HAL_Delay(250);
     FPGA::OnPressStartStop();
-    Ethernet_Init();
+    Ethernet::Init();
     Display::Init();
     if (gBF.tuneTime == 1)
     {
@@ -54,11 +54,11 @@ int main()
 
     while(1)
     {
-        Timer_StartMultiMeasurement();      // —брос таймера дл€ замера длительности временных интервалов в течение одной итерации цикла.
+        Timer::StartMultiMeasurement();      // —брос таймера дл€ замера длительности временных интервалов в течение одной итерации цикла.
         
-        drive.Update();
+        FDrive::Update();
 
-        Ethernet_Update(0);
+        Ethernet::Update(0);
 
         FPGA::Update();                      // ќбновл€ем аппаратную часть.
 

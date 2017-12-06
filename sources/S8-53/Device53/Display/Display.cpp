@@ -96,8 +96,8 @@ void Display::RotateRShift(Channel chan)
     if(TIME_SHOW_LEVELS)
     {
         (chan == A) ? (gBF.showLevelRShift0 = 1) : (gBF.showLevelRShift1 = 1);
-        Timer_Enable((chan == A) ? kShowLevelRShiftA : kShowLevelRShiftB, TIME_SHOW_LEVELS  * 1000, (chan == A) ? FuncOnTimerDisableShowLevelRShiftA :
-                     FuncOnTimerDisableShowLevelRShiftB);
+        Timer::SetAndStartOnce((chan == A) ? kShowLevelRShiftA : kShowLevelRShiftB, (chan == A) ? FuncOnTimerDisableShowLevelRShiftA :
+                     FuncOnTimerDisableShowLevelRShiftB, TIME_SHOW_LEVELS * 1000);
     };
     Display::Redraw();
 };
@@ -120,7 +120,7 @@ void Display::RotateTrigLev()
     if (TIME_SHOW_LEVELS)
     {
         gBF.showLevelTrigLev = 1;
-        Timer_Enable(kShowLevelTrigLev, TIME_SHOW_LEVELS * 1000, FuncOnTimerDisableShowLevelTrigLev);
+        Timer::SetAndStartOnce(kShowLevelTrigLev, FuncOnTimerDisableShowLevelTrigLev, TIME_SHOW_LEVELS * 1000);
     }
     Display::Redraw();
 }
@@ -761,7 +761,7 @@ void Display::DrawTime(int x, int y)
     int dField = 10;
     int dSeparator = 2;
 
-    PackedTime time = RTC_GetPackedTime();
+    PackedTime time = RTClock::GetPackedTime();
     
     char buffer[20];
     
@@ -1151,15 +1151,15 @@ void Display::DrawHiRightPart()
 
         x += 2;
         y = 1;
-        if (fpga.CurrentStateWork() == StateWorkFPGA_Work)
+        if (FPGA::CurrentStateWork() == StateWorkFPGA_Work)
         {
             Painter::Draw4SymbolsInRect(x, 1, SYMBOL_PLAY);
         }
-        else if (fpga.CurrentStateWork() == StateWorkFPGA_Stop)
+        else if (FPGA::CurrentStateWork() == StateWorkFPGA_Stop)
         {
             Painter::FillRegion(x + 3, y + 3, 10, 10);
         }
-        else if (fpga.CurrentStateWork() == StateWorkFPGA_Wait)
+        else if (FPGA::CurrentStateWork() == StateWorkFPGA_Wait)
         {
             int w = 4;
             int h = 14;
@@ -2193,21 +2193,21 @@ void Display::DrawTimeForFrame(uint timeTicks)
 void Display::DisableShowLevelRShiftA()
 {
     gBF.showLevelRShift0 = 0;
-    Timer_Disable(kShowLevelRShift0);
+    Timer::Disable(kShowLevelRShiftA);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DisableShowLevelRShiftB()
 {
     gBF.showLevelRShift1 = 0;
-    Timer_Disable(kShowLevelRShift1);
+    Timer::Disable(kShowLevelRShiftB);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DisableShowLevelTrigLev()
 {
     gBF.showLevelTrigLev = 0;
-    Timer_Disable(kShowLevelTrigLev);
+    Timer::Disable(kShowLevelTrigLev);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2286,7 +2286,7 @@ void Display::ShiftScreen(int delta)
 void Display::ChangedRShiftMarkers()
 {
     gBF.drawRShiftMarkers = ALT_MARKERS_HIDE ? 0 : 1;
-    Timer_Enable(kRShiftMarkersAutoHide, 5000, FuncOnTimerRShiftMarkersAutoHide);
+    Timer::SetAndEnable(kRShiftMarkersAutoHide, FuncOnTimerRShiftMarkersAutoHide, 5000);
 }
 
 static void FuncOnTimerRShiftMarkersAutoHide()
@@ -2298,7 +2298,7 @@ static void FuncOnTimerRShiftMarkersAutoHide()
 void Display::OnRShiftMarkersAutoHide()
 {
     gBF.drawRShiftMarkers = 0;
-    Timer_Disable(kRShiftMarkersAutoHide);
+    Timer::Disable(kRShiftMarkersAutoHide);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2480,7 +2480,7 @@ void Display::ShowWarn(const char *message)
 {
     if (warnings[0] == 0)
     {
-        Timer_Enable(kShowMessages, 100, OnTimerShowWarning);
+        Timer::SetAndEnable(kShowMessages, OnTimerShowWarning, 100);
     }
     bool alreadyStored = false;
     for (int i = 0; i < NUM_WARNINGS; i++)
@@ -2530,14 +2530,14 @@ static void OnTimerShowWarning()
 
     if (pointer == 0)
     {
-        Timer_Disable(kShowMessages);
+        Timer::Disable(kShowMessages);
     }
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::ClearFromWarnings()
 {
-    Timer_Disable(kShowMessages);
+    Timer::Disable(kShowMessages);
     for (int i = 0; i < NUM_WARNINGS; i++)
     {
         warnings[i] = 0;

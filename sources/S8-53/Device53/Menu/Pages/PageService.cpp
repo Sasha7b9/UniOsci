@@ -46,18 +46,18 @@ static void OnTimerDraw()
 
 static void OnPress_ResetSettings()
 {
-    Painter::Disable();
+    Panel::Disable();
     Display::SetDrawMode(DrawMode_Hand, FuncDraw);
-    Timer_Enable(kTimerDrawHandFunction, 100, OnTimerDraw);
+    Timer::SetAndEnable(kTimerDisplay, OnTimerDraw, 100);
 
-    if (Painter::WaitPressingButton() == B_Start)
+    if (Panel::WaitPressingButton() == B_Start)
     {
         Settings_Load(true);
     }
 
-    Timer_Disable(kTimerDrawHandFunction);
+    Timer::Disable(kTimerDisplay);
     Display::SetDrawMode(DrawMode_Auto, 0);
-    Painter::Enable();
+    Panel::Enable();
 }
 
 DEF_BUTTON(         bResetSettings,                                                                                  //--- СЕРВИС - Сброс настроек ---

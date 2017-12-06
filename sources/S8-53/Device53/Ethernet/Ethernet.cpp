@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "main.h"
 #include "ethernetif.h"
+#include "Ethernet.h"
 #include "VCP/SCPI/SCPI.h"
 #include "Log.h"
 #include <lwip/init.h>

@@ -85,7 +85,7 @@ private:
 
     static void DrawHiRightPart();
 
-    void DrawMath();
+    static void DrawMath();
 
     static void DrawSpectrum();
     /// Вывести текущее время.

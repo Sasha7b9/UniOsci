@@ -63,6 +63,9 @@ public:
     static uint LogPointUS(char *name);
 
     static uint LogPointMS(char *name);
+
+    //////////////////////////////////////// stub /////////////////////////////////
+    static void Update1ms();
 };
 
 

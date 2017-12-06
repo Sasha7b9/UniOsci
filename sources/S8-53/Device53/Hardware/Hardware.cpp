@@ -109,7 +109,7 @@ void Hardware_Init()
 
     adc.Init();
 
-    FDrive.Init();
+    FDrive::Init();
     
 // Analog and DAC programmable SPI ////////////////////////////////////////
 
@@ -131,7 +131,7 @@ void Hardware_Init()
     
     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_RESET);                   // PG1 - когда равен 1, чтение дисплея, в остальных случаях 0
 
-    RTC_Init();
+    RTClock::Init();
 
     crcHandle.Instance = CRC;
     if (HAL_CRC_Init(&crcHandle) != HAL_OK)
@@ -155,7 +155,7 @@ void TIM6_DAC_IRQHandler()
 {
     if (__HAL_TIM_GET_FLAG(&handleTIM6forTimer, TIM_FLAG_UPDATE) == SET && __HAL_TIM_GET_ITSTATUS(&handleTIM6forTimer, TIM_IT_UPDATE))
     {
-        Timer_Update1ms();
+        Timer::Update1ms();
         __HAL_TIM_CLEAR_FLAG(&handleTIM6forTimer, TIM_FLAG_UPDATE);
         __HAL_TIM_CLEAR_IT(&handleTIM6forTimer, TIM_IT_UPDATE);
     }

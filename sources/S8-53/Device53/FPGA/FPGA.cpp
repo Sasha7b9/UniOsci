@@ -57,7 +57,7 @@ void FPGA::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::SetNumSignalsInSec(int numSigInSec) 
 {
-    Timer_Enable(kNumSignalsInSec, (int)(1000.f / numSigInSec), OnTimerCanReadData);
+    Timer::SetAndEnable(kENumSignalsInSec, OnTimerCanReadData, (int)(1000.f / numSigInSec));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -72,11 +72,11 @@ void FPGA::Start()
     if(SET_TBASE >= MIN_TBASE_P2P)
     {
         Display::ResetP2Ppoints(false);
-        Timer_Enable(kP2P, 1, ReadPoint);
+        Timer::SetAndEnable(kTimerStartP2P, ReadPoint, 1);
     }
     else
     {
-        Timer_Disable(kP2P);
+        Timer::Disable(kTimerStartP2P);
         Display::ResetP2Ppoints(true);
     }
     FSMC_Write(WR_START, 1);
@@ -123,7 +123,7 @@ bool FPGA::ProcessingData()
                 char buffer[9];
                 LOG_WRITE("флаг готовности %s", Bin2String(flag, buffer));
             }
-            Painter::EnableLEDTrig(true);
+            Panel::EnableLEDTrig(true);
             FPGA::Stop(true);
             DataRead(_GET_BIT(flag, BIT_SIGN_SHIFT_POINT), (num == 1) || (i == num - 1));
             retValue = true;
@@ -148,7 +148,7 @@ bool FPGA::ProcessingData()
                 timeStart = gTimeMS;
             }
         }
-        Painter::EnableLEDTrig(_GET_BIT(flag, BIT_TRIG) ? true : false);
+        Panel::EnableLEDTrig(_GET_BIT(flag, BIT_TRIG) ? true : false);
     }
 
     return retValue;
@@ -213,7 +213,7 @@ void FPGA::OnPressStartStop()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::Stop(bool pause) 
 {
-    Timer_Disable(kP2P);
+    Timer::Disable(kTimerStartP2P);
     FSMC_Write(WR_STOP, 1);
     stateWork = pause ? StateWorkFPGA_Pause : StateWorkFPGA_Stop;
 }
@@ -428,7 +428,7 @@ void FPGA::ReadRealMode(bool necessaryShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::DataRead(bool necessaryShift, bool saveToStorage) 
 {
-    Painter::EnableLEDTrig(false);
+    Panel::EnableLEDTrig(false);
     gBF.FPGAinProcessingOfRead = 1;
     if((TBase)ds.tBase < TBase_100ns)
     {
@@ -1084,14 +1084,14 @@ void FPGA::AutoFind()
 void StopTemporaryPause()
 {
     gBF.FPGAtemporaryPause = 0;
-    Timer_Disable(kTemporaryPauseFPGA);
+    Timer::Disable(kTemporaryPauseFPGA);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::TemporaryPause()
 {
     gBF.FPGAtemporaryPause = 1;
-    Timer_Enable(kTemporaryPauseFPGA, 500, StopTemporaryPause);
+    Timer::SetAndStartOnce(kTemporaryPauseFPGA, StopTemporaryPause, 500);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

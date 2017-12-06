@@ -938,12 +938,12 @@ void SwitchSetLED()
     if (first)
     {
         first = false;
-        Painter::EnableLEDRegSet(state);
+        Panel::EnableLEDRegSet(state);
         prevState = state;
     }
     else if (prevState != state)
     {
-        Painter::EnableLEDRegSet(state);
+        Panel::EnableLEDRegSet(state);
         prevState = state;
     }
 }

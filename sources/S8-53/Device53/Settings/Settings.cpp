@@ -291,8 +291,8 @@ void Settings_Load(bool _default)
 
     FPGA::LoadSettings();
     FPGA::SetNumSignalsInSec(sDisplay_NumSignalsInS());
-    Painter::EnableLEDChannelA(sChannel_Enabled(A));
-    Painter::EnableLEDChannelB(sChannel_Enabled(B));
+    Panel::EnableLEDChannelA(sChannel_Enabled(A));
+    Panel::EnableLEDChannelB(sChannel_Enabled(B));
     FPGA::SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
     Menu::SetAutoHide(true);
     Display::ChangedRShiftMarkers();
@@ -312,32 +312,32 @@ bool Settings_DebugModeEnable()
 
 int8 MenuPosActItem(NamePage namePage)
 {
-    return set.Menu::posActItem[namePage];
+    return set.menu.posActItem[namePage];
 }
 
 void SetMenuPosActItem(NamePage namePage, int8 pos)
 {
-    set.Menu::posActItem[namePage] = pos;
+    set.menu.posActItem[namePage] = pos;
 }
 
 int8 MenuCurrentSubPage(NamePage namePage)
 {
-    return set.Menu::currentSubPage[namePage];
+    return set.menu.currentSubPage[namePage];
 }
 
 void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 {
-    set.Menu::currentSubPage[namePage] = posSubPage;
+    set.menu.currentSubPage[namePage] = posSubPage;
 }
 
 bool MenuIsShown()
 {
-    return set.Menu::isShown;
+    return set.menu.isShown;
 }
 
 void ShowMenu(bool show)
 {
-    set.Menu::isShown = show;
+    set.menu.isShown = show;
     Menu::SetAutoHide(true);
 }
 
@@ -348,12 +348,12 @@ bool MenuIsMinimize()
 
 bool MenuPageDebugIsActive()
 {
-    return set.Menu::pageDebugActive;
+    return set.menu.pageDebugActive;
 }
 
 void SetMenuPageDebugActive(bool active)
 {
-    set.Menu::pageDebugActive = active;
+    set.menu.pageDebugActive = active;
 }
 
 void CurrentPageSBregSet(int angle)

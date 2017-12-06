@@ -28,15 +28,15 @@ void PainterData::DrawData()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PainterData::DrawChannel(Channel ch, uint8 data[FPGA_MAX_NUM_POINTS])
 {
-    int bottom = grid.Bottom();
-    int left = grid.Left();
+    int bottom = Grid::Bottom();
+    int left = Grid::Left();
 
     if (!SET_ENABLED(ch))
     {
         return;
     }
     
-    float scale = (float)grid.Height() / 255.0f;
+    float scale = (float)Grid::Height() / 255.0f;
 
     if (VIEW_MODE_IS_LINES)
     {
