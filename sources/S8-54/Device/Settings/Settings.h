@@ -34,8 +34,9 @@
 
 #pragma pack(push, 1)
 
-typedef struct
+class Settings
 {
+public:
     uint16              size;                       ///< \brief В первом байте всегда размер структуры, чтобы при загрузке можно было определить 
                                                     /// изменение структуры Settings.
     // SettingsDisplay
@@ -249,7 +250,19 @@ typedef struct
     int8                rec_NumCursor;                              ///< Номер активного курсора
     int16               nrst_RShiftAddStable[NumChannels][3];       ///< Добавочное смещение для трёх самых чувствительных диапазонов. Задаётся единожды при настройке
     LinkingTShift       time_LinkingTShift;                         ///< Тип привязки смещения по горизонтали
-} Settings;
+
+    /// \brief Загрузить настройки. Если default == true, загружаются настройки по умолчанию, иначе пытается загрузить настройки из ПЗУ, а в случае 
+    /// неудачи - тоже настройки по умолчанию.
+    static void Load(bool _default);
+    /// Сохранить настройки во флеш-память.
+    static void Save(void);
+    /// Возвращает true, если включён режим отладки.
+    static bool DebugModeEnable(void);
+    /// Сохраняет текущие настройки в set_.
+    static void SaveState(Settings *set_);
+    /// Восстанавливает ранее записанные настройки в set_.
+    static void RestoreState(const Settings *set_);
+};
 
 #pragma pack(pop)
 
@@ -275,17 +288,6 @@ const SButton*  GetSmallButton(PanelButton button);
 /// Возвращает позицию активного пункта на странице namePage.
 #define MENU_POS_ACT_ITEM(namePage) (set.menu_PosActItem[namePage])
 
-/// \brief Загрузить настройки. Если default == true, загружаются настройки по умолчанию, иначе пытается загрузить настройки из ПЗУ, а в случае 
-/// неудачи - тоже настройки по умолчанию.
-void Settings_Load(bool _default);
-/// Сохранить настройки во флеш-память.
-void Settings_Save(void);
-/// Возвращает true, если включён режим отладки.
-bool Settings_DebugModeEnable(void);
-/// Сохраняет текущие настройки в set_.
-void Settings_SaveState(Settings *set_);
-/// Восстанавливает ранее записанные настройки в set_.
-void Settings_RestoreState(const Settings *set_);
 
 /** @}
  */

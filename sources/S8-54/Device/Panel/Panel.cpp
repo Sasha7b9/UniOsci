@@ -292,7 +292,7 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
                                 }
                                 else
                                 {
-                                    if (Settings_DebugModeEnable())
+                                    if (Settings::DebugModeEnable())
                                     {
                                         static int errRecData = 0;
                                         errRecData++;
@@ -323,7 +323,7 @@ static void ProcessingCommand(void)
 {
     if (recvCommand == C_Reset)
     {
-        Settings_Load(true);
+        Settings::Load(true);
         recvCommand = C_None;
     }
 }
@@ -568,7 +568,7 @@ void Panel::DisableIfNessessary(void)
 {
     if (NEED_DISABLE_POWER)
     {
-        Settings_Save();
+        Settings::Save();
         Log::DisconnectLoggerUSB();
         Panel::TransmitData(0x04);
         while (1)

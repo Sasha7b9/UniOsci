@@ -323,7 +323,7 @@ static void DrawParametersChannel(Channel ch, int eX, int eY, bool inProgress)
         ProgressBar_Draw(bar);
     }
 
-    if(Settings_DebugModeEnable())
+    if(Settings::DebugModeEnable())
     {
         int x = inProgress ? 5 : eX;
         int y = eY + (inProgress ? 110 : 0);
@@ -607,7 +607,7 @@ static void RestoreSettingsForCalibration(const Settings *savedSettings)
 
     StretchADCtype type = NRST_STRETCH_ADC_TYPE;
     
-    Settings_RestoreState(savedSettings);
+    Settings::RestoreState(savedSettings);
 
     for(int ch = 0; ch < 2; ++ch)
     {
@@ -638,7 +638,7 @@ void FPGA::ProcedureCalibration(void)
     
     cal->barA.fullTime = cal->barA.passedTime = cal->barB.fullTime = cal->barB.passedTime = 0;
     
-    Settings_SaveState(&storedSettings);    // Сохраняем текущее состояние.
+    Settings::SaveState(&storedSettings);    // Сохраняем текущее состояние.
     Panel::Disable();                        // Отлкючаем панель управления.
     
     volatile bool run = true;
@@ -713,7 +713,7 @@ void FPGA::BalanceChannel(Channel ch)
     Display::FuncOnWaitStart(DICT(ch == A ? DBalanceChA : DBalanceChB), false);
 
     Settings storedSettings;
-    Settings_SaveState(&storedSettings);
+    Settings::SaveState(&storedSettings);
     Panel::Disable();
 
     CalibrateAddRShift(ch);

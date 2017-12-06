@@ -244,7 +244,7 @@ void LoadDefaultColors(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings_Load(bool _default)
+void Settings::Load(bool _default)
 {
 
     if (_default)
@@ -283,14 +283,14 @@ void Settings_Load(bool _default)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings_Save(void)
+void Settings::Save(void)
 {
     flash.SaveSettings();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Settings_DebugModeEnable(void)
+bool Settings::DebugModeEnable(void)
 {
     return true;
 }
@@ -363,7 +363,7 @@ const SButton* GetSmallButton(PanelButton button)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings_SaveState(Settings *set_)
+void Settings::SaveState(Settings *set_)
 {
     gStateFPGA.stateWorkBeforeCalibration = fpgaStateWork;
     *set_ = set;
@@ -371,7 +371,7 @@ void Settings_SaveState(Settings *set_)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings_RestoreState(const Settings *set_)
+void Settings::RestoreState(const Settings *set_)
 {
     int16 rShiftAdd[2][RangeSize][2];
     for (int ch = 0; ch < 2; ch++)

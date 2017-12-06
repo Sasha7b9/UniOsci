@@ -34,7 +34,7 @@ void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
                                                                     //
     if (request.wLength == 0)                                       //
     {                                                               //
-//        if (CABLE_USB_IS_CONNECTED)                                 //
+//        if (CABLE_USB_IS_CONNECTED)                               //
         {                                                           //
             if (prevLength != 0)                                    //
             {                                                       //
@@ -44,9 +44,9 @@ void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
             else                                                    //
             {                                                       //
                 CONNECTED_TO_USB = false;                           //
-                Settings_Save();                                    // При отконнекчивании сохраняем настройки
+                Settings::Save();                                   // При отконнекчивании сохраняем настройки
             }                                                       /// \todo Возможно, это не нужно делать
-            //CONNECTED_TO_USB = prevLength != 0;                     // 
+            //CONNECTED_TO_USB = prevLength != 0;                   // 
         }                                                           //
     }                                                               //
     prevLength = request.wLength;                                   //

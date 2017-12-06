@@ -42,7 +42,7 @@ void OnPress_ResetSettings(void)
 
     if (Panel::WaitPressingButton() == B_Start)
     {
-        Settings_Load(true);
+        Settings::Load(true);
     }
 
     Display::SetDrawMode(DrawMode_Auto, 0);

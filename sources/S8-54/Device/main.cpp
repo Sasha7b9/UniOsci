@@ -25,7 +25,7 @@ int main(void)
     //main3();
     Hardware::Init();
     VCP::Init();
-    Settings_Load(false);
+    Settings::Load(false);
     FPGA::Init();
     FPGA::OnPressStartStop();
     Display::Init();
