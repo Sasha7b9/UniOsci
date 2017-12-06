@@ -174,7 +174,7 @@ void PressSB_MemLast_IntEnter()
 {
     Menu::OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     MODE_WORK = ModeWork_ROM;
-    FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+    FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     gMemory.exitFromIntToLast = 1;
 }
 
@@ -477,8 +477,8 @@ static void SaveSignalToIntMemory()
     {
         if  (gDSmemLast != 0)
         {
-            FLASH_SaveData(gMemory.currentNumIntSignal, gDSmemLast, gData0memLast, gData1memLast);
-            FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+            FLASHMem::SaveData(gMemory.currentNumIntSignal, gDSmemLast, gData0memLast, gData1memLast);
+            FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
             Display::ShowWarningGood(SignalIsSaved);
         }
     }
@@ -486,8 +486,8 @@ static void SaveSignalToIntMemory()
     {
         if (gDSet != 0)
         {
-            FLASH_SaveData(gMemory.currentNumIntSignal, gDSet, gData0, gData1);
-            FLASH_GetData(gMemory.currentNumIntSignal, &gDSet, &gData0memInt, &gData1memInt);
+            FLASHMem::SaveData(gMemory.currentNumIntSignal, gDSet, gData0, gData1);
+            FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSet, &gData0memInt, &gData1memInt);
             Display::ShowWarningGood(SignalIsSaved);
         }
     }
@@ -519,7 +519,7 @@ static void FuncAdditionDrawingSPageMemoryInt()
 
     bool exist[MAX_NUM_SAVED_WAVES] = {false};
 
-    FLASH_GetDataInfo(exist);
+    FLASHMem::GetDataInfo(exist);
 
     for (int i = 0; i < MAX_NUM_SAVED_WAVES; i++)
     {
@@ -538,7 +538,7 @@ static void FuncOnRegSetMemInt(int delta)
     {
         CircleIncrease<int8>(&gMemory.currentNumIntSignal, 0, MAX_NUM_SAVED_WAVES - 1);
     }
-    FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+    FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     Painter::ResetFlash();
 }
 
@@ -713,7 +713,7 @@ DEF_SMALL_BUTTON(   sbExitSetName,                                              
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void PressSB_MemInt_Exit()
 {
-    FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+    FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     if (gMemory.exitFromIntToLast == 1)
     {
         Menu::OpenPageAndSetItCurrent(PageSB_Memory_Last);
@@ -1110,7 +1110,7 @@ static void OnPressMemoryInt()
 {
     Menu::OpenPageAndSetItCurrent(PageSB_Memory_Internal);
     MODE_WORK = ModeWork_ROM;
-    FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+    FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
 }
 
 DEF_PAGE_SB(        mspMemInt,                                                                                                // œ¿Ãﬂ“‹ - ¬Õ”“– «” ///

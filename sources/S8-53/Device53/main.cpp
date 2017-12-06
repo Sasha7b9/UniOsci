@@ -102,7 +102,7 @@ void ProcessingSignal()
         data0 = &gData0memInt;
         data1 = &gData1memInt;
         ds = &gDSmemInt;
-        FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+        FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     }
 
     if (MODE_WORK_IS_ROM)

@@ -249,7 +249,7 @@ void Settings_Load(bool _default)
 {
     set = defaultSettings;
     
-    FLASH_LoadSettings();
+    FLASHMem::LoadSettings();
 
     if (_default)                                                               // Если нужно сбросить настройки
     {
@@ -302,7 +302,7 @@ void Settings_Load(bool _default)
 
 void Settings_Save()
 {
-    FLASH_SaveSettings();
+    FLASHMem::SaveSettings();
 }
 
 bool Settings_DebugModeEnable()
