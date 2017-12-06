@@ -273,9 +273,9 @@ void DrawItemsPage(Page *page, int layer, int yTop)
             TypeItem type = item->Type();
             int top = yTop + MI_HEIGHT * count;
             funcOfDraw[type](item, CalculateX(layer), top);
-            count++;
             itemUnderButton[GetFuncButtonFromY(top)] = item;
         }
+        count++;
     }
 }
 
