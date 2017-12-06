@@ -437,7 +437,7 @@ void Panel::EnableLEDTrig(bool enable)
     {
         enabled = enable;
         panel.TransmitData(enable ? LED_TRIG_ENABLE : LED_TRIG_DISABLE);
-        display.EnableTrigLabel(enable);
+        Display::EnableTrigLabel(enable);
     }
 }
 

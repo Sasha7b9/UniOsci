@@ -413,7 +413,7 @@ static void FuncAttScreen(void)
         startTime = gTimeMS;
     }
     int16 y = 10;
-    display.Clear();
+    Display::Clear();
 
     painter.SetColor(gColorFill);
 
@@ -650,7 +650,7 @@ void FPGA_ProcedureCalibration(void)
 
     SET_ENABLED_A = SET_ENABLED_B = true;
     
-    display.SetDrawMode(DrawMode_Hand, FuncAttScreen);
+    Display::SetDrawMode(DrawMode_Hand, FuncAttScreen);
     
     cal->barA.fullTime = cal->barA.passedTime = cal->barB.fullTime = cal->barB.passedTime = 0;
     
@@ -709,7 +709,7 @@ void FPGA_ProcedureCalibration(void)
     WriteAdditionRShifts(B);
     
     panel.Enable();
-    display.SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode_Auto, 0);
     
     SET_ENABLED_A = chanAenable;
     SET_ENABLED_B = chanBenable;
@@ -726,7 +726,7 @@ void FPGA_BalanceChannel(Channel ch)
 
     CreateCalibrationStruct();
 
-    display.FuncOnWaitStart(DICT(ch == A ? DBalanceChA : DBalanceChB), false);
+    Display::FuncOnWaitStart(DICT(ch == A ? DBalanceChA : DBalanceChB), false);
 
     Settings storedSettings;
     Settings_SaveState(&storedSettings);
@@ -745,7 +745,7 @@ void FPGA_BalanceChannel(Channel ch)
 
     panel.Enable();
 
-    display.FuncOnWaitStop();
+    Display::FuncOnWaitStop();
     
     FPGA_OnPressStartStop();
 
@@ -974,7 +974,7 @@ void FPGA_AutoFind(void)
     {
         if (!FindWave(B))
         {                                           // ≈сли не удалось найти сигнал, то:
-            display.ShowWarning(SignalNotFound);    // выводим соотвествующее сообщение,
+            Display::ShowWarning(SignalNotFound);    // выводим соотвествующее сообщение,
             set = p->settings;                      // восстанавливаем предыдущие настройки
             FPGA_LoadSettings();                    // и загружаем их в альтеру
         }
@@ -1141,7 +1141,7 @@ static void FuncDrawAutoFind(void)
     }
     painter.DrawStringInCenterRect(x, y + (height - 30), width, 20, buffer);
 
-    display.DrawConsole();
+    Display::DrawConsole();
 
     painter.EndScene();
 }

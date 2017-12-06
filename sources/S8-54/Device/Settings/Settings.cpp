@@ -275,7 +275,7 @@ void Settings_Load(bool _default)
     panel.EnableLEDChannel(B, SET_ENABLED_B);
     FPGA_SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
     menu.SetAutoHide(true);
-    display.ChangedRShiftMarkers(true);
+    Display::ChangedRShiftMarkers(true);
     OnChanged_ADC_Stretch_Mode(true);
     OnChanged_DisplayOrientation(true);
     painter.SetBrightnessDisplay(BRIGHTNESS_DISPLAY);

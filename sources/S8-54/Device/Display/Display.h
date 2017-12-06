@@ -55,39 +55,39 @@ class Display
 {
 public:
     /// Инициализация
-    void Init(void);
+    static void Init(void);
     /// Эту функцию нужно вызывать каждый кадр - отрисовка
-    void Update(void);
+    static void Update(void);
     /// Эту функцию нужно вызывать при вращении ручки смещения по вертикали для временной отрисовки вспомогательных маркеров
-    void RotateRShift(Channel ch);
+    static void RotateRShift(Channel ch);
     /// Эту функцию нужно вызывать при вращении ручки уровня синхронизации для временной отрисовки вспомогательных маркеров
-    void RotateTrigLev(void);
+    static void RotateTrigLev(void);
 
-    void EnableTrigLabel(bool enable);
+    static void EnableTrigLabel(bool enable);
 
-    void SetAddDrawFunction(pFuncVV func);
+    static void SetAddDrawFunction(pFuncVV func);
 
-    pFuncVV GetAddDrawFunction(void);
+    static pFuncVV GetAddDrawFunction(void);
 
-    void RemoveAddDrawFunction(void);
+    static void RemoveAddDrawFunction(void);
 
-    void Clear(void);
+    static void Clear(void);
 
-    void ShiftScreen(int delta);
+    static void ShiftScreen(int delta);
 
-    void ChangedRShiftMarkers(bool active);
+    static void ChangedRShiftMarkers(bool active);
 
-    void AddStringToIndicating(const char *string);
+    static void AddStringToIndicating(const char *string);
 
-    void OneStringUp(void);
+    static void OneStringUp(void);
 
-    void OneStringDown(void);
+    static void OneStringDown(void);
 
-    void SetPauseForConsole(bool pause);
+    static void SetPauseForConsole(bool pause);
 
-    void SetOrientation(DisplayOrientation orientation);
+    static void SetOrientation(DisplayOrientation orientation);
     /// Вывести сообщения отладочной консоли
-    void DrawConsole(void);
+    static void DrawConsole(void);
     /// @brief Установить функцию и режим отрисовки экрана.
     /// @details Возможны три варианта.
     /// 1. DrawMode_Hand - в этом случае будет вызываться функция func(), определяемая пользователем, с частотой 25 раз в секунду.
@@ -95,19 +95,18 @@ public:
     /// 2. DrawMode_Auto и func == 0 - в этом случае будет выполняться функция Update() в главном цикле.
     /// 3. DrawMode_Auto и func != 0 - в этом случае будет выполняться функция func(), определяемая пользователем, но в теле
     /// главного цикла, будучи вызываемой из Update() вместо Update().
-    void SetDrawMode(DrawMode mode, pFuncVV func);
+    static void SetDrawMode(DrawMode mode, pFuncVV func);
 
-    void ClearFromWarnings(void);
+    static void ClearFromWarnings(void);
 
-    void ShowWarning(Warning warning);
+    static void ShowWarning(Warning warning);
 
     // Группа функций для вывода сообщения о занятом приборе
-    void FuncOnWaitStart(const char *text, bool eraseBackground);
+    static void FuncOnWaitStart(const char *text, bool eraseBackground);
 
-    void FuncOnWaitStop(void);
+    static void FuncOnWaitStop(void);
 };
 
-extern Display display;
 
 /** @}
  */

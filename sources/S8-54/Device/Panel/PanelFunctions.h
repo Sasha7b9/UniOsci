@@ -291,7 +291,7 @@ void ChangeShiftScreen(int *prevTime, int16 relStep)
     {
         step = 1;
     }
-    display.ShiftScreen(step);
+    Display::ShiftScreen(step);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

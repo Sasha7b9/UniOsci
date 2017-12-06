@@ -735,7 +735,7 @@ DEF_CHOICE_2(       cStats,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_DisplayOrientation(bool)
 {
-    display.SetOrientation(DISPLAY_ORIENTATION);
+    Display::SetOrientation(DISPLAY_ORIENTATION);
 }
 
 DEF_CHOICE_2(       cDisplayOrientation,                                                                                //--- ОТЛАДКА - Ориентация ---
@@ -798,7 +798,7 @@ DEF_GOVERNOR(       mgPost,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Settings_Exit(void)
 {
-    display.SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode_Auto, 0);
 }
 
 DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                                                          //--- ОТЛАДКА - НАСТРОЙКИ - Выход ---
@@ -877,7 +877,7 @@ static void DebugShowSetInfo_Draw(void)
 
 static void OnPress_Settings(void)
 {
-    display.SetDrawMode(DrawMode_Auto, DebugShowSetInfo_Draw);
+    Display::SetDrawMode(DrawMode_Auto, DebugShowSetInfo_Draw);
 }
 
 DEF_PAGE_SB(        ppSettings,                                                                                             // ОТЛАДКА - НАСТРОЙКИ ///
@@ -901,7 +901,7 @@ static bool IsActive_SaveFirmware(void)
 
 static void OnPress_SaveFirmware(void)
 {
-    display.FuncOnWaitStart(DICT(DSaveFirmware), false);
+    Display::FuncOnWaitStart(DICT(DSaveFirmware), false);
 
     StructForWrite structForWrite;
 
@@ -920,9 +920,9 @@ static void OnPress_SaveFirmware(void)
 
     drive.CloseFile(&structForWrite);
 
-    display.FuncOnWaitStop();
+    Display::FuncOnWaitStop();
 
-    display.ShowWarning(FirmwareSaved);
+    Display::ShowWarning(FirmwareSaved);
 }
 
 DEF_BUTTON(         bSaveFirmware,                                                                                  //--- ОТЛАДКА - Сохр. прошивку ---
@@ -977,7 +977,7 @@ static void OnPress_SerialNumber_Save(void)
 
     if (!otp.SaveSerialNumber(stringSN))
     {
-        display.ShowWarning(FullyCompletedOTP);
+        Display::ShowWarning(FullyCompletedOTP);
     }
 }
 
@@ -1054,7 +1054,7 @@ static void Draw_EnterSerialNumber(void)
 
 static void OnPress_SerialNumber(void)
 {
-    display.SetAddDrawFunction(Draw_EnterSerialNumber);
+    Display::SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);
     s->number = 01;
     s->year = 2017;
@@ -1096,9 +1096,9 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_EraseData(void)
 {
-    display.FuncOnWaitStart(DICT(DDeleteFromMemory), false);
+    Display::FuncOnWaitStart(DICT(DDeleteFromMemory), false);
     flash.DeleteAllData();
-    display.FuncOnWaitStop();
+    Display::FuncOnWaitStop();
 }
 
 DEF_BUTTON(         bEraseData,                                                                                     //--- ОТЛАДКА - Стереть данные ---

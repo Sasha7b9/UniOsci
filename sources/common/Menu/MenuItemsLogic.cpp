@@ -349,7 +349,7 @@ void MACaddress::ChangeValue(int delta)
     uint8 *value = mac0 + gCurDigit;
     *value += delta > 0 ? 1 : -1;
     sound.GovernorChangedValue();
-    display.ShowWarning(NeedRebootDevice);
+    Display::ShowWarning(NeedRebootDevice);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -441,7 +441,7 @@ void IPaddress::ChangeValue(int delta)
             ip0[numByte] = (uint8)newValue;
         }
         sound.GovernorChangedValue();
-        display.ShowWarning(NeedRebootDevice);
+        Display::ShowWarning(NeedRebootDevice);
     }
 }
 

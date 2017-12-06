@@ -119,11 +119,11 @@ void FDrive::Update(void)
         uint timeStart = gTimeMS;
         NEED_MOUNT = 0;
 
-        display.FuncOnWaitStart(DICT(DDetectFlashDrive), false);
+        Display::FuncOnWaitStart(DICT(DDetectFlashDrive), false);
 
         if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 1) != FR_OK)
         {
-            display.ShowWarning(WrongFileSystem);
+            Display::ShowWarning(WrongFileSystem);
         }
         else
         {
@@ -135,7 +135,7 @@ void FDrive::Update(void)
         {
         };
 
-        display.FuncOnWaitStop();
+        Display::FuncOnWaitStop();
     }
     else
     {

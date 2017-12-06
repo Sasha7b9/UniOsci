@@ -269,7 +269,7 @@ void Menu::PressButton(PanelButton button)
         if (memcmp(bufferForButtons, sampleBufferForButtons, SIZE_BUFFER_FOR_BUTTONS) == 0)
         {
             SHOW_DEBUG_MENU = 1;
-            display.ShowWarning(MenuDebugEnabled);
+            Display::ShowWarning(MenuDebugEnabled);
         }
     }
     pressButton = button;
@@ -871,19 +871,19 @@ void Menu::ChangeStateFlashDrive()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::OpenItemTime(void)
 {
-    display.ShowWarning(TimeNotSet);
+    Display::ShowWarning(TimeNotSet);
     ShortPressureButton(B_Service);
     UpdateInput();
-    display.Update();
+    Display::Update();
     for (int i = 0; i < 2; i++)
     {
         RotateRegSetRight();
         UpdateInput();
-        display.Update();
+        Display::Update();
     }
     ShortPressureButton(B_F4);
     UpdateInput();
-    display.Update();
+    Display::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

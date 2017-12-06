@@ -54,15 +54,15 @@ void OnChanged_PeakDet(bool active)
     {
         if (FPGA_POINTS_32k)
         {
-            display.ShowWarning(NoPeakDet32k);
+            Display::ShowWarning(NoPeakDet32k);
         }
         else if (FPGA_POINTS_16k && SET_ENABLED_B)
         {
-            display.ShowWarning(NoPeakDet16k);
+            Display::ShowWarning(NoPeakDet16k);
         }
         else
         {
-            display.ShowWarning(TooSmallSweepForPeakDet);
+            Display::ShowWarning(TooSmallSweepForPeakDet);
         }
     }
 }

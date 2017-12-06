@@ -38,14 +38,14 @@ static void Draw_ResetSettings(void)
 void OnPress_ResetSettings(void)
 {
     panel.Disable();
-    display.SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
+    Display::SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
 
     if (panel.WaitPressingButton() == B_Start)
     {
         Settings_Load(true);
     }
 
-    display.SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode_Auto, 0);
     panel.Enable();
     //Func_Start(1);
 }
@@ -388,7 +388,7 @@ static void OnPress_FFT(void)
 {
     if (!IsActive_FFT())
     {
-        display.ShowWarning(ImpossibleEnableFFT);
+        Display::ShowWarning(ImpossibleEnableFFT);
     }
 }
 
@@ -415,7 +415,7 @@ static void OnPress_Function_Screen(void)
 {
     if (FFT_ENABLED)
     {
-        display.ShowWarning(ImpossibleEnableMathFunction);
+        Display::ShowWarning(ImpossibleEnableMathFunction);
     }
     else
     {
@@ -577,7 +577,7 @@ static void OnPress_Function(void)
 {
     if (FFT_ENABLED)
     {
-        display.ShowWarning(ImpossibleEnableMathFunction);
+        Display::ShowWarning(ImpossibleEnableMathFunction);
     }
 }
 
@@ -667,7 +667,7 @@ DEF_PAGE_SB(        ppFunction,                                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Ethernet_Settings(bool)
 {
-    display.ShowWarning(NeedRebootDevice);
+    Display::ShowWarning(NeedRebootDevice);
 }
 
 DEF_CHOICE_2(       cEthernet_Ethernet,                                                                         //--- —≈–¬»— - ETHERNET - Ethernet ---
@@ -855,12 +855,12 @@ static void Information_Draw(void)
 
 static void OnPress_Information(void)
 {
-    display.SetDrawMode(DrawMode_Auto, Information_Draw);
+    Display::SetDrawMode(DrawMode_Auto, Information_Draw);
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Information_Exit(void)
 {
-    display.SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode_Auto, 0);
 }
 
 DEF_SMALL_BUTTON_EXIT(  bInformation_Exit,                                                                       //--- —≈–¬»— - »Õ‘Œ–Ã¿÷»ﬂ - ¬˚ıÓ‰ ---

@@ -528,7 +528,7 @@ void FPGA_SetRange(Channel ch, Range range)
     }
     else
     {
-        display.ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
+        Display::ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
     }
 };
 
@@ -553,7 +553,7 @@ void FPGA_SetTBase(TBase tBase)
     }
     else
     {
-        display.ShowWarning(LimitSweep_Time);
+        Display::ShowWarning(LimitSweep_Time);
     }
 };
 
@@ -563,8 +563,8 @@ void FPGA_TBaseDecrease(void)
 {
     if (SET_PEAKDET && SET_TBASE <= MIN_TBASE_PEC_DEAT)
     {
-        display.ShowWarning(LimitSweep_Time);
-        display.ShowWarning(EnabledPeakDet);
+        Display::ShowWarning(LimitSweep_Time);
+        Display::ShowWarning(EnabledPeakDet);
         return;
     }
 
@@ -572,7 +572,7 @@ void FPGA_TBaseDecrease(void)
     {
         if (RECORDER_MODE && SET_TBASE == MIN_TBASE_P2P)
         {
-            display.ShowWarning(TooFastScanForRecorder);
+            Display::ShowWarning(TooFastScanForRecorder);
         }
         else
         {
@@ -582,7 +582,7 @@ void FPGA_TBaseDecrease(void)
     }
     else
     {
-        display.ShowWarning(LimitSweep_Time);
+        Display::ShowWarning(LimitSweep_Time);
     }
 
     if (SET_TBASE == TBase_20ns &&      // Если перешли в режим эквавалентного времени
@@ -603,7 +603,7 @@ void FPGA_TBaseIncrease(void)
     }
     else
     {
-        display.ShowWarning(LimitSweep_Time);
+        Display::ShowWarning(LimitSweep_Time);
     }
     
     if (SET_TBASE == TBase_50ns &&          // Если перешли в режим реального времени
@@ -621,11 +621,11 @@ void FPGA_SetRShift(Channel ch, uint16 rShift)
     {
         return;
     }
-    display.ChangedRShiftMarkers(true);
+    Display::ChangedRShiftMarkers(true);
 
     if (rShift > RShiftMax || rShift < RShiftMin)
     {
-        display.ShowWarning(ch == A ? LimitChan1_RShift : LimitChan2_RShift);
+        Display::ShowWarning(ch == A ? LimitChan1_RShift : LimitChan2_RShift);
     }
 
     LIMITATION(rShift, RShiftMin, RShiftMax);
@@ -633,7 +633,7 @@ void FPGA_SetRShift(Channel ch, uint16 rShift)
     uint16 oldRShift = SET_RSHIFT(ch);
     SET_RSHIFT(ch) = rShift;
     LoadRShift(ch);
-    display.RotateRShift(ch);
+    Display::RotateRShift(ch);
 
     if (oldRShift != rShift)
     {
@@ -644,14 +644,14 @@ void FPGA_SetRShift(Channel ch, uint16 rShift)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA_SetTrigLev(TrigSource ch, uint16 trigLev)
 {
-    display.ChangedRShiftMarkers(true);
+    Display::ChangedRShiftMarkers(true);
     if (trigLev < TrigLevMin || trigLev > TrigLevMax)
     {
-        display.ShowWarning(LimitSweep_Level);
+        Display::ShowWarning(LimitSweep_Level);
     }
     LIMITATION(trigLev, TrigLevMin, TrigLevMax);
 
-    display.RotateTrigLev();
+    Display::RotateTrigLev();
 
     if (SET_TRIGLEV(ch) != trigLev)
     {
@@ -677,7 +677,7 @@ static void SetTShift(int tShift, bool needFPGApause)
     if (tShift < sTime_TShiftMin() || tShift > TShiftMax)
     {
         LIMITATION(tShift, sTime_TShiftMin(), TShiftMax);
-        display.ShowWarning(LimitSweep_TShift);
+        Display::ShowWarning(LimitSweep_TShift);
     }
 
     int16 oldTShift = SET_TSHIFT;
@@ -760,7 +760,7 @@ bool FPGA_RangeIncrease(Channel ch)
     }
     else
     {
-       display.ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
+       Display::ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
     }
     NEED_FINISH_DRAW = 1;
     return retValue;
@@ -778,7 +778,7 @@ bool FPGA_RangeDecrease(Channel ch)
     }
     else
     {
-        display.ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
+        Display::ShowWarning(ch == A ? LimitChan1_Volts : LimitChan2_Volts);
     }
     NEED_FINISH_DRAW = 1;
     return retValue;

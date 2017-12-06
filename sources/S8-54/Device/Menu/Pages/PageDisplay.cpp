@@ -436,7 +436,7 @@ DEF_CHOICE_3(       cSettings_StringNavigation,                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_AltMarkers(bool active)
 {
-    display.ChangedRShiftMarkers(active);
+    Display::ChangedRShiftMarkers(active);
 }
 
 DEF_CHOICE_3(       cSettings_AltMarkers,                                                                 //--- ÄÈÑÏËÅÉ - ÍÀÑÒĞÎÉÊÈ - Äîï. ìàğêåğû ---

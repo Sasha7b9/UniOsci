@@ -47,14 +47,14 @@ void OnChanged_Points(bool active)
     // Если включен пиковый детектор, то не можем переключать память
     if (SET_PEAKDET_EN && !active)
     {
-        display.ShowWarning(WrongModePeackDet);
+        Display::ShowWarning(WrongModePeackDet);
         return;
     }
 
     // Блокируем включение 32к длины записи, если включен второй канал
     if (FPGA_POINTS_32k && SET_ENABLED_B)
     {
-        display.ShowWarning(DisableChannelB);
+        Display::ShowWarning(DisableChannelB);
         FPGA_ENUM_POINTS = FNP_16k;
     }
 
@@ -263,7 +263,7 @@ DEF_PAGE_SB(        ppLast,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Drive_Manager_Exit(void)
 {
-    display.SetDrawMode(DrawMode_Auto, 0);
+    Display::SetDrawMode(DrawMode_Auto, 0);
     OnPressSB_Exit();
 }
 
@@ -327,12 +327,12 @@ void OnPress_Drive_Manager(void)
     if (FDRIVE_IS_CONNECTED)
     {
         drive.Mount();
-        display.SetDrawMode(DrawMode_Auto, FM_Draw);
+        Display::SetDrawMode(DrawMode_Auto, FM_Draw);
         FM_NEED_REDRAW = FM_REDRAW_FULL;
     }
     else
     {
-        display.ShowWarning(WarnNeedForFlashDrive);
+        Display::ShowWarning(WarnNeedForFlashDrive);
     }
 }
 
@@ -506,7 +506,7 @@ static bool IsActive_Drive_Mask(void)
 
 static void OnPress_Drive_Mask(void)
 {
-    display.SetAddDrawFunction(DrawSetMask);
+    Display::SetAddDrawFunction(DrawSetMask);
 }
 
 static void DrawSetMask(void)
@@ -668,7 +668,7 @@ void Memory_SaveSignalToFlashDrive(void)
     {
         if (FILE_NAMING_MODE_MANUAL)
         {
-            display.SetAddDrawFunction(DrawSetName);
+            Display::SetAddDrawFunction(DrawSetName);
         }
         else
         {
@@ -858,9 +858,9 @@ DEF_SMALL_BUTTON_HINTS_3(   bInternal_ModeShow,                                 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Internal_Delete(void)
 {
-    display.FuncOnWaitStart(DICT(DDeleteFromMemory), false);
+    Display::FuncOnWaitStart(DICT(DDeleteFromMemory), false);
     flash.DeleteData(NUM_ROM_SIGNAL);
-    display.FuncOnWaitStop();
+    Display::FuncOnWaitStop();
 }
 
 static void Draw_Internal_Delete(int x, int y)
@@ -887,15 +887,15 @@ static void SaveSignalToIntMemory(void)
     if (DS)                                             // Если есть что сохранять
     {
         flash.SaveData(NUM_ROM_SIGNAL, DS, IN_A, IN_B);   // То сохраняем данные из DS, DATA_A, DATA_B на место NUM_ROM_SIGNAL в ППЗУ
-        display.ShowWarning(SignalIsSaved);
+        Display::ShowWarning(SignalIsSaved);
     }
 }
 
 static void OnPress_Internal_SaveToMemory(void)
 {
-    display.FuncOnWaitStart(DICT(DStoredInMemory), false);
+    Display::FuncOnWaitStart(DICT(DStoredInMemory), false);
     SaveSignalToIntMemory();
-    display.FuncOnWaitStop();
+    Display::FuncOnWaitStop();
 }
 
 static void Draw_Internal_SaveToMemory(int x, int y)
