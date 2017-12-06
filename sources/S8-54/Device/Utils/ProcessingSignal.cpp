@@ -554,7 +554,7 @@ float FindIntersectionWithHorLine(Channel ch, int numIntersection, bool downToUp
         return ERROR_VALUE_FLOAT;
     }
     
-    return math.GetIntersectionWithHorizontalLine(x, data[x], x + step, data[x + step], yLine);
+    return Math::GetIntersectionWithHorizontalLine(x, data[x], x + step, data[x + step], yLine);
 }
 
 
@@ -879,7 +879,7 @@ float CalculateMaxRel(Channel ch)
 
     if(!maxIsCalculating[ch])
     {
-        uint8 val = math.MaxFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
+        uint8 val = Math::MaxFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
         max[ch] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         maxIsCalculating[ch] = true;
     }
@@ -895,7 +895,7 @@ float CalculateMinRel(Channel ch)
 
     if (!minIsCalculating[ch])
     {
-        uint8 val = math.MinFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
+        uint8 val = Math::MinFromArrayWithErrorCode(CHOICE_BUFFER, firstByte, lastByte);
         min[ch] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         minIsCalculating[ch] = true;
     }
@@ -1082,12 +1082,12 @@ void Processing::SetData(bool needSmoothing)
 
     if (ENABLED_DS_A)
     {
-        math.CalculateFiltrArray(IN_A, OUT_A, length, needSmoothing ? NUM_SMOOTHING : 1);
+        Math::CalculateFiltrArray(IN_A, OUT_A, length, needSmoothing ? NUM_SMOOTHING : 1);
         memcpy(IN_A, OUT_A, length);
     };
     if (ENABLED_DS_B)
     {
-        math.CalculateFiltrArray(IN_B, OUT_B, length, needSmoothing ? NUM_SMOOTHING : 1);
+        Math::CalculateFiltrArray(IN_B, OUT_B, length, needSmoothing ? NUM_SMOOTHING : 1);
         memcpy(IN_B, OUT_B, length);
     };
   
@@ -1502,7 +1502,7 @@ void Processing::CountedTBase()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void LinearInterpolation(uint8 *data, int numPoints)
 {
-    int index = math.FindAnotherElement(data, NONE_VALUE, numPoints);                // Находим индекс первого непустого элемента
+    int index = Math::FindAnotherElement(data, NONE_VALUE, numPoints);                // Находим индекс первого непустого элемента
 
     if (index == -1)                                                            // Если такового элемента на нашлось - выходим
     {

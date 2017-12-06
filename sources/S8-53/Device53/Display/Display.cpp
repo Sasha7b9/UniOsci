@@ -223,7 +223,7 @@ static void DrawSignalLined(const uint8 *data, const DataSettings *ds, int start
             if (x0 >= gridLeft && x0 <= gridRight)
             {
                 int index = i - startPoint;
-                int y = calculateFiltr ? math.CalculateFiltr(data, i, numPoints, numSmoothing) : data[i];
+                int y = calculateFiltr ? Math::CalculateFiltr(data, i, numPoints, numSmoothing) : data[i];
                 CONVERT_DATA_TO_DISPLAY(dataCD[index], y);
             }
         }
@@ -299,7 +299,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
         for (int i = startPoint; i < endPoint; i++)
         {
             int index = i - startPoint;
-            CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, numSmoothing));
+            CONVERT_DATA_TO_DISPLAY(dataCD[index], Math::CalculateFiltr(data, i, numPoints, numSmoothing));
         }
         Painter::DrawSignal(Grid::Left(), dataCD, false);
 
@@ -312,7 +312,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
             for (int i = startPoint; i < endPoint; i++)
             {
                 int index = i - startPoint;
-                CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, numSmoothing));
+                CONVERT_DATA_TO_DISPLAY(dataCD[index], Math::CalculateFiltr(data, i, numPoints, numSmoothing));
             }
             Painter::DrawSignal(Grid::Left(), dataCD, false);
         }
@@ -323,7 +323,7 @@ static void DrawSignalPointed(const uint8 *data, const DataSettings *ds, int sta
         {
             int index = i - startPoint;
             int dat = 0;
-            CONVERT_DATA_TO_DISPLAY(dat, math.CalculateFiltr(data, i, numPoints, numSmoothing));
+            CONVERT_DATA_TO_DISPLAY(dat, Math::CalculateFiltr(data, i, numPoints, numSmoothing));
             Painter::SetPoint((int)(Grid::Left() + index * scaleX), dat);
         }
     }
@@ -414,7 +414,7 @@ void Display::DrawMath()
     mathFPGA.PointsRel2Voltage(dataRel0, ds->length1channel, ds->range[A], ds->rShiftCh0, dataAbs0);
     mathFPGA.PointsRel2Voltage(dataRel1, ds->length1channel, ds->range[B], ds->rShiftCh1, dataAbs1);
 
-    math.CalculateMathFunction(dataAbs0, dataAbs1, ds->length1channel);
+    Math::CalculateMathFunction(dataAbs0, dataAbs1, ds->length1channel);
     
     uint8 points[FPGA_MAX_POINTS];
     mathFPGA.PointsVoltage2Rel(dataAbs0, ds->length1channel, SET_RANGE_MATH, SET_RSHIFT_MATH, points);
@@ -1867,7 +1867,7 @@ void Display::DrawMeasures()
             {
                 Painter::FillRegion(x, y, dX, dY, Color::Back());
                 Painter::DrawRectangle(x, y, dX, dY, Color::Fill());
-                gBF.topMeasures = math.MinFrom2Int(gBF.topMeasures, y);
+                gBF.topMeasures = Math::MinFrom2Int(gBF.topMeasures, y);
             }
             if(active)
             {

@@ -112,8 +112,8 @@ void Display::DrawDataTester(int numStep, int x0, int y0)
 
     painter.SetColor(colors[numStep]);
     
-    math.Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
-    math.Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
+    Math::Smoothing(dataX, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
+    Math::Smoothing(dataY, TESTER_NUM_POINTS, TESTER_NUM_SMOOTH + 1);
 
     if (VIEW_MODE_IS_LINES)
     {

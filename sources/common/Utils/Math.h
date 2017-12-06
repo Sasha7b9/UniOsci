@@ -47,36 +47,34 @@ float RandFloat(float min, float max);
 class Math
 {
 public:
-    void Smoothing(uint8 *data, int numPoints, int numSmooth);
+    static void Smoothing(uint8 *data, int numPoints, int numSmooth);
     
-    int MinFrom2Int(int val0, int val1);
+    static int MinFrom2Int(int val0, int val1);
 
-    uint8 MaxFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint);
+    static uint8 MaxFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint);
 
-    uint8 MinFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint);
+    static uint8 MinFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint);
 
-    uint8 MaxFromArray(const uint8 *data, int firstPoint, int lastPoint);
+    static uint8 MaxFromArray(const uint8 *data, int firstPoint, int lastPoint);
 
-    uint8 MinFromArray(const uint8 *data, int firstPoint, int lastPoint);
+    static uint8 MinFromArray(const uint8 *data, int firstPoint, int lastPoint);
 
-    uint8 MaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
+    static uint8 MaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
 
-    uint8 MinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
+    static uint8 MinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint);
     /// \brief ¬озвращает координату x пересечени€ линии, проход€щей через (x0, y0), (x1, y1), с горизонтальной линией, проход€щей через точку с 
     /// ординатой yHorLine.
-    float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
+    static float GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, int yHorLine);
     
-    void CalculateMathFunction(float *dataAandResult, float *dataB, int numPoints);
+    static void CalculateMathFunction(float *dataAandResult, float *dataB, int numPoints);
 
-    uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
+    static uint8 CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoothing);
 
-    void CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);
+    static void CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoints, int numSmoothing);
     /// Ќайти первый элемент массива, не соотвествующий заданному
-    int FindAnotherElement(uint8 *data, uint8 value, int numElements);
+    static int FindAnotherElement(uint8 *data, uint8 value, int numElements);
 };
 
-
-extern class Math math;
 
 /// ¬ычисление 10**pow.
 int Pow10(int pow);

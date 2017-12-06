@@ -7,10 +7,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Math math;
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int LowSignedBit(uint value)
 {
     int verValue = 1;
@@ -195,7 +191,7 @@ float RandFloat(float min, float max)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 Math::MaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
 {
-    uint8 max = math.MaxFromArray(data, firstPoint, lastPoint);
+    uint8 max = Math::MaxFromArray(data, firstPoint, lastPoint);
     if (max >= MAX_VALUE)
     {
         max = ERROR_VALUE_UINT8;
@@ -206,7 +202,7 @@ uint8 Math::MaxFromArrayWithErrorCode(const uint8 *data, int firstPoint, int las
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint8 Math::MinFromArrayWithErrorCode(const uint8 *data, int firstPoint, int lastPoint)
 {
-    uint8 min = math.MinFromArray(data, firstPoint, lastPoint);
+    uint8 min = Math::MinFromArray(data, firstPoint, lastPoint);
     if (min < MIN_VALUE || min >= MAX_VALUE)
     {
         min = ERROR_VALUE_UINT8;

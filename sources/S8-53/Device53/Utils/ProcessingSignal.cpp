@@ -491,7 +491,7 @@ float FindIntersectionWithHorLine(Channel chan, int numIntersection, bool downTo
     {
         return ERROR_VALUE_FLOAT;
     }
-    return math.GetIntersectionWithHorizontalLine(x, data[x], x + 1, data[x + 1], yLine);
+    return Math::GetIntersectionWithHorizontalLine(x, data[x], x + 1, data[x + 1], yLine);
 }
 
 float CalculateDurationPlus(Channel chan)
@@ -780,7 +780,7 @@ float CalculateMaxRel(Channel chan)
 
     if(!maxIsCalculating[chan])
     {
-        uint8 val = math.MaxFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
+        uint8 val = Math::MaxFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
         max[chan] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         maxIsCalculating[chan] = true;
     }
@@ -794,7 +794,7 @@ float CalculateMinRel(Channel chan)
 
     if (!minIsCalculating[chan])
     {
-        uint8 val = math.MinFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
+        uint8 val = Math::MinFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
         min[chan] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         minIsCalculating[chan] = true;
     }
@@ -939,8 +939,8 @@ void Processing::SetSignal(uint8 *data0, uint8 *data1, DataSettings *ds, int _fi
 
     int length = ds->length1channel * (ds->peakDet == PeackDet_Disable ? 1 : 2);
 
-    math.CalculateFiltrArray(data0, &dataIn[A][0], length, numSmoothing);
-    math.CalculateFiltrArray(data1, &dataIn[B][0], length, numSmoothing);
+    Math::CalculateFiltrArray(data0, &dataIn[A][0], length, numSmoothing);
+    Math::CalculateFiltrArray(data1, &dataIn[B][0], length, numSmoothing);
 
     dataSet = ds;
 
