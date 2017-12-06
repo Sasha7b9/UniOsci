@@ -89,7 +89,7 @@ void Hardware_Init(void)
 
     RAM_Init();
 
-    FDrive_Init();
+    drive.Init();
     
 // Analog and DAC programmable SPI ////////////////////////////////////////
 

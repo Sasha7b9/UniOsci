@@ -51,11 +51,11 @@ typedef struct
     FIL file;
     int connection;
     int active;
-} FDrive;
+} FlashDrive;
 
 typedef struct
 {
-    FDrive drive;
+    FlashDrive drive;
     Display display;
     float percentUpdate;
     State state;

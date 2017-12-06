@@ -13,6 +13,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FDrive drive;
+
 #define NEED_MOUNT (bf.needToMoundFlash)
 
 static struct BitFieldFlashDrive
@@ -76,7 +78,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive_Mount(void)
+void FDrive::Mount(void)
 {
     FM_Init();
     menu.ChangeStateFlashDrive();
@@ -87,14 +89,14 @@ void FDrive_Mount(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_IsConnected(void)
+bool FDrive::IsConnected(void)
 {
     return gFlashDriveIsConnected;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive_Init(void)
+void FDrive::Init(void)
 {
     if(FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK) 
     {
@@ -110,7 +112,7 @@ void FDrive_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive_Update(void)
+void FDrive::Update(void)
 {
     if (NEED_MOUNT)      // Если обнаружено физическое подключение внешнего диска
     {
@@ -143,7 +145,7 @@ void FDrive_Update(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_AppendStringToFile(const char *)
+bool FDrive::AppendStringToFile(const char *)
 {
     return false;
 }
@@ -161,7 +163,7 @@ void WriteToFile(FIL *file, char *string)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive_GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles)
+void FDrive::GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles)
 {
     FILINFO fno;
     DIR dir;
@@ -212,7 +214,7 @@ void FDrive_GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s)
+bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s)
 {
     memcpy(s->nameDir, (void *)fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
@@ -257,7 +259,7 @@ bool FDrive_GetNameDir(const char *fullPath, int numDir, char *nameDirOut, Struc
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_GetNextNameDir(char *nameDirOut, StructForReadDir *s)
+bool FDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s)
 {
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -293,14 +295,14 @@ bool FDrive_GetNextNameDir(char *nameDirOut, StructForReadDir *s)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive_CloseCurrentDir(StructForReadDir *s)
+void FDrive::CloseCurrentDir(StructForReadDir *s)
 {
     f_closedir(&s->dir);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
+bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
     memcpy(s->nameDir, (void *)fullPath, strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
@@ -345,7 +347,7 @@ bool FDrive_GetNameFile(const char *fullPath, int numFile, char *nameFileOut, St
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_GetNextNameFile(char *nameFileOut, StructForReadDir *s)
+bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s)
 {
     FILINFO *pFNO = &s->fno;
     bool alreadyNull = false;
@@ -380,7 +382,7 @@ bool FDrive_GetNextNameFile(char *nameFileOut, StructForReadDir *s)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *structForWrite)
+bool FDrive::OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *structForWrite)
 {
     if (f_open(&structForWrite->fileObj, fullPathToFile, FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
     {
@@ -393,7 +395,7 @@ bool FDrive_OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *stru
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_WriteToFile(uint8 *data, int sizeData, StructForWrite *structForWrite)
+bool FDrive::WriteToFile(uint8 *data, int sizeData, StructForWrite *structForWrite)
 {
     while (sizeData > 0)
     {
@@ -422,7 +424,7 @@ bool FDrive_WriteToFile(uint8 *data, int sizeData, StructForWrite *structForWrit
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_CloseFile(StructForWrite *structForWrite)
+bool FDrive::CloseFile(StructForWrite *structForWrite)
 {
     if (structForWrite->sizeData != 0)
     {

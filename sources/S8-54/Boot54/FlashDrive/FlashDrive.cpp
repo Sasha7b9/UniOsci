@@ -12,6 +12,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+FDrive drive;
+
 typedef struct
 {
     char nameDir[_MAX_LFN + 1];
@@ -27,7 +29,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s);
 static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FDrive_Init(void)
+void FDrive::Init(void)
 {
     ms->drive.state = StateDisk_Idle;
     ms->drive.connection = 0;
@@ -74,7 +76,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_Update(void)
+bool FDrive::Update(void)
 {
     USBH_Process(&hUSB_Host);
     if (ms->drive.state == StateDisk_Start)
@@ -105,7 +107,7 @@ void ToLower(char *str)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive_FileExist(char *fileName)
+bool FDrive::FileExist(char *fileName)
 {
     char nameFile[255];
     char file[255];
@@ -215,7 +217,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int FDrive_OpenFileForRead(char *fileName)
+int FDrive::OpenFileForRead(char *fileName)
 {
     if (f_open(&ms->drive.file, fileName, FA_READ) == FR_OK)
     {
@@ -226,7 +228,7 @@ int FDrive_OpenFileForRead(char *fileName)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int FDrive_ReadFromFile(int numBytes, uint8 *buffer)
+int FDrive::ReadFromFile(int numBytes, uint8 *buffer)
 {
     uint readed = 0;
     if (f_read(&ms->drive.file, buffer, (UINT)numBytes, &readed) == FR_OK)
@@ -238,7 +240,7 @@ int FDrive_ReadFromFile(int numBytes, uint8 *buffer)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive_CloseOpenedFile(void)
+void FDrive::CloseOpenedFile(void)
 {
     f_close(&ms->drive.file);
 }

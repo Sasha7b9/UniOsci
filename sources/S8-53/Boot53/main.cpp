@@ -49,9 +49,9 @@ int main(void)
 
     uint timeStart = HAL_GetTick();
 
-    FDrive_Init();
+    drive.Init();
 
-    while (HAL_GetTick() - timeStart < TIME_WAIT && !FDrive_Update())
+    while (HAL_GetTick() - timeStart < TIME_WAIT && !drive.Update())
     {
     }
 
@@ -64,7 +64,7 @@ int main(void)
 
     if (ms->state == State_Mount)                           // Это означает, что диск удачно примонтирован
     {
-        if (FDrive_FileExist(FILE_NAME))                    // Если на диске обнаружена прошивка
+        if (drive.FileExist(FILE_NAME))                    // Если на диске обнаружена прошивка
         {
             ms->state = State_RequestAction;
 
@@ -128,13 +128,13 @@ void Upgrade(void)
 
     FLASH_Prepare();
 
-    int size = FDrive_OpenFileForRead(FILE_NAME);
+    int size = drive.OpenFileForRead(FILE_NAME);
     int fullSize = size;
     uint address = ADDR_SECTOR_PROGRAM_0;
 
     while (size)
     {
-        int readedBytes = FDrive_ReadFromFile(sizeSector, buffer);
+        int readedBytes = drive.ReadFromFile(sizeSector, buffer);
         FLASH_WriteData(address, buffer, readedBytes);
         size -= readedBytes;
         address += readedBytes;
@@ -142,7 +142,7 @@ void Upgrade(void)
         ms->percentUpdate = 1.0f - (float)size / fullSize;
     }
 
-    FDrive_CloseOpenedFile();
+    drive.CloseOpenedFile();
 }
 
 

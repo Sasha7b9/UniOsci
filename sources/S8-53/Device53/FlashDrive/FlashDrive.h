@@ -56,4 +56,4 @@ public:
 };
 
 
-extern FlashDrive flashDrive;
+extern FlashDrive drive;

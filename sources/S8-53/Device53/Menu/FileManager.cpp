@@ -75,16 +75,16 @@ static void DrawHat(int x, int y, char *string, int num1, int num2)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawDirs(int x, int y)
 {
-    flashDrive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+    drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
     DrawHat(x, y, "Каталог : %d/%d", numCurDir + ((numDirs == 0) ? 0 : 1), numDirs);
     char nameDir[255];
     StructForReadDir sfrd;
     y += 12;
-    if (flashDrive.GetNameDir(currentDir, numFirstDir, nameDir, &sfrd))
+    if (drive.GetNameDir(currentDir, numFirstDir, nameDir, &sfrd))
     {
         int  drawingDirs = 0;
         DrawLongString(x, y, nameDir, gBF.cursorInDirs == 1 && ( numFirstDir + drawingDirs == numCurDir));
-        while (drawingDirs < (RECS_ON_PAGE - 1) && flashDrive.GetNextNameDir(nameDir, &sfrd))
+        while (drawingDirs < (RECS_ON_PAGE - 1) && drive.GetNextNameDir(nameDir, &sfrd))
         {
             drawingDirs++;
             DrawLongString(x, y + drawingDirs * 9, nameDir, gBF.cursorInDirs == 1 && ( numFirstDir + drawingDirs == numCurDir));
@@ -99,11 +99,11 @@ static void DrawFiles(int x, int y)
     char nameFile[255];
     StructForReadDir sfrd;
     y += 12;
-    if (flashDrive.GetNameFile(currentDir, numFirstFile, nameFile, &sfrd))
+    if (drive.GetNameFile(currentDir, numFirstFile, nameFile, &sfrd))
     {
         int drawingFiles = 0;
         DrawLongString(x, y, nameFile, gBF.cursorInDirs == 0 && (numFirstFile + drawingFiles == numCurFile));
-        while (drawingFiles < (RECS_ON_PAGE - 1) && flashDrive.GetNextNameFile(nameFile, &sfrd))
+        while (drawingFiles < (RECS_ON_PAGE - 1) && drive.GetNextNameFile(nameFile, &sfrd))
         {
             drawingFiles++;
             DrawLongString(x, y + drawingFiles * 9, nameFile, gBF.cursorInDirs == 0 && (numFirstFile + drawingFiles == numCurFile));
@@ -158,7 +158,7 @@ void FM_Draw(void)
         menu.Draw();
         painter.DrawRectangle(0, 0, width, 239, Color::Fill());
         painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, Color::Back());
-        flashDrive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+        drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
         painter.DrawVLine(left2col, top + 16, 239, Color::Fill());
         painter.DrawHLine(top + 15, 0, width);
@@ -212,18 +212,18 @@ void PressSB_FM_LevelDown(void)
     }
     char nameDir[100];
     StructForReadDir sfrd;
-    if (flashDrive.GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
+    if (drive.GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
     {
         if (strlen(currentDir) + strlen(nameDir) < 250)
         {
-            flashDrive.CloseCurrentDir(&sfrd);
+            drive.CloseCurrentDir(&sfrd);
             strcat(currentDir, "\\");
             strcat(currentDir, nameDir);
             numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
         }
 
     }
-    flashDrive.CloseCurrentDir(&sfrd);
+    drive.CloseCurrentDir(&sfrd);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

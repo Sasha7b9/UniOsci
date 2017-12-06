@@ -6,9 +6,6 @@
 #define FPGA_SetTrigLev(x, y)               fpga.SetTrigLev(x, y)
 #define FPGA_SetRShift(x, y)                fpga.SetRShift(x, y)
 #define FPGA_OnPressStartStop()             fpga.OnPressStartStop()
-#define FDrive_OpenNewFileForWrite(x, y)    flashDrive.OpenNewFileForWrite(x, y)
-#define FDrive_WriteToFile(x, y, z)         flashDrive.WriteToFile(x, y, z)
-#define FDrive_CloseFile(x)                 flashDrive.CloseFile(x)
 #define FSMC_SET_MODE(x)
 #define FSMC_RESTORE_MODE()
 #define SHOW_STRING_NAVI_TEMP               false
