@@ -337,7 +337,7 @@ bool FM_GetNameForNewFile(char name[255])
     }
     else
     {
-        PackedTime time = RTC_GetPackedTime();
+        PackedTime time = RTClock::GetPackedTime();
                            //  1          2           3         4           5             6
         uint values[] = {0u, time.year, time.month, time.day, time.hours, time.minutes, time.seconds};
 

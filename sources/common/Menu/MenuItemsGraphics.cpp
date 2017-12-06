@@ -597,7 +597,7 @@ void Time::DrawClosed(int x, int y)
     int deltaSeparator = 2;
     int startX = 3;
     y += 21;
-    PackedTime time = RTC_GetPackedTime();
+    PackedTime time = RTClock::GetPackedTime();
     Painter::DrawText(x + startX, y, Int2String((int)time.hours, false, 2, buffer), shade ? Color::MenuItem(true) : Color::BLACK);
     Painter::DrawText(x + startX + deltaField, y, ":");
     Painter::DrawText(x + startX + deltaField + deltaSeparator, y, Int2String((int)time.minutes, false, 2, buffer));

@@ -1637,7 +1637,7 @@ static void DrawTime(int x, int y)
     int dField = 10;
     int dSeparator = 2;
 
-    PackedTime time = RTC_GetPackedTime();
+    PackedTime time = RTClock::GetPackedTime();
 
     char buffer[20];
 

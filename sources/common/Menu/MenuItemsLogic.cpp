@@ -303,7 +303,7 @@ NamePage Page::GetNamePage() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::SetOpened()
 {
-    PackedTime time = RTC_GetPackedTime();
+    PackedTime time = RTClock::GetPackedTime();
     *(seconds) = (int8)time.seconds;
     *(minutes) = (int8)time.minutes;
     *(hours) = (int8)time.hours;
@@ -333,7 +333,7 @@ void Time::IncCurrentPosition()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::SetNewTime()
 {
-    RTC_SetTimeAndData(*day, *month, *year, *hours, *minutes, *seconds);
+    RTClock::SetTimeAndData(*day, *month, *year, *hours, *minutes, *seconds);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

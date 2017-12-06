@@ -445,7 +445,7 @@ static void SetTimeForFile(char *name)
 {
     FILINFO info;
 
-    PackedTime time = RTC_GetPackedTime();
+    PackedTime time = RTClock::GetPackedTime();
 
     info.fdate = (WORD)(((time.year + 2000 - 1980) * 512) | time.month * 32 | time.day);
     info.ftime = (WORD)(time.hours * 2048 | time.minutes * 32 | time.seconds / 2);

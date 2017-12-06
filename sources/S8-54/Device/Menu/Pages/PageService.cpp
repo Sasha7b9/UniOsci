@@ -785,7 +785,7 @@ DEF_TIME(                                                                       
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Time_Correction()
 {
-    RTC_SetCorrection((int8)NRST_CORRECTION_TIME);
+    RTClock::SetCorrection((int8)NRST_CORRECTION_TIME);
 }
 
 DEF_GOVERNOR(       tRTC_Correction,                                                                              //--- ÑÅÐÂÈÑ - ÂÐÅÌß - Êîððåêöèÿ ---

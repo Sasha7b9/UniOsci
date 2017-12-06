@@ -44,7 +44,7 @@ static RTC_HandleTypeDef rtcHandle =
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RTC_Init()
+void RTClock::Init()
 {
     if (HAL_RTC_Init((RTC_HandleTypeDef*)(&rtcHandle)) != HAL_OK)
     {
@@ -53,18 +53,18 @@ void RTC_Init()
 
     if (HAL_RTCEx_BKUPRead((RTC_HandleTypeDef*)&rtcHandle, RTC_BKP_DR0) != VALUE_FOR_RTC)
     {
-        if(RTC_SetTimeAndData(11, 11, 11, 11, 11, 11))
+        if(RTClock::SetTimeAndData(11, 11, 11, 11, 11, 11))
         {
             HAL_RTCEx_BKUPWrite((RTC_HandleTypeDef*)&rtcHandle, RTC_BKP_DR0, VALUE_FOR_RTC);
         }
     }
 
-    RTC_SetCorrection((int8)NRST_CORRECTION_TIME);
+    RTClock::SetCorrection((int8)NRST_CORRECTION_TIME);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-PackedTime RTC_GetPackedTime()
+PackedTime RTClock::GetPackedTime()
 {
     PackedTime time;
 
@@ -89,7 +89,7 @@ PackedTime RTC_GetPackedTime()
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool RTC_SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minutes, int8 seconds)
+bool RTClock::SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minutes, int8 seconds)
 {
     RTC_DateTypeDef dateStruct;
     dateStruct.WeekDay = RTC_WEEKDAY_MONDAY;
@@ -118,7 +118,7 @@ bool RTC_SetTimeAndData(int8 day, int8 month, int8 year, int8 hours, int8 minute
     return true;
 }
 
-void RTC_SetCorrection(int8 correction)
+void RTClock::SetCorrection(int8 correction)
 {
     NRST_CORRECTION_TIME = correction;
     
