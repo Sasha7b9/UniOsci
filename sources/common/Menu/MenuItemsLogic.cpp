@@ -281,6 +281,10 @@ int Page::NumSubPages() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Page::NumItems() const
 {
+    if(name == Page_Main)
+    {
+        return SHOW_DEBUG_MENU ? num : (num - 1);
+    }
     return num;
 }
 
