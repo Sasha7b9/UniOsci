@@ -559,7 +559,7 @@ int DataStorage::NumElementsWithSameSettings(void)
 int DataStorage::NumElementsWithCurrentSettings(void)
 {
     DataSettings dp;
-    DataSettings_Fill(&dp);
+    dp.Fill();
     int retValue = 0;
     int numElements = NumElementsInStorage();
 
@@ -789,7 +789,7 @@ void DataStorage::AddPointsP2P(uint16 dataA, uint16 dataB)
 
     FSMC_SET_MODE(ModeFSMC_RAM);
 
-    int length = NUM_BYTES(&dsP2P);
+    int length = dsP2P.BytesInChannel();
 
     if (numPointsP2P >= length)                         // Если место во фрейме заполнено полностью
     {
@@ -835,7 +835,7 @@ int DataStorage::GetFrameP2P_RAM(DataSettings **ds, uint8 **dataA, uint8 **dataB
 
     *ds = &dsP2P;
     *dataA = frameP2P;
-    *dataB = frameP2P + NUM_BYTES(&dsP2P);
+    *dataB = frameP2P + dsP2P.BytesInChannel();
 
     return numPointsP2P;
 }

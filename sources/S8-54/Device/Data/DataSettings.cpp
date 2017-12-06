@@ -5,7 +5,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int BytesInChannel(DataSettings *ds)
+int DataSettings::BytesInChannel()
 {
     static const int numPoints[FPGA_ENUM_POINTS_SIZE][3] =
     {
@@ -18,29 +18,29 @@ int BytesInChannel(DataSettings *ds)
         {32768, 32768, 32768}
     };
 
-    return numPoints[ENUM_POINTS(ds)][PEAKDET(ds)];
+    return numPoints[ENUM_POINTS(this)][PEAKDET(this)];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataSettings_Fill(DataSettings *ds)
+void DataSettings::Fill()
 {
-    Lval_ENABLED_A(ds) = SET_ENABLED_A ? 1U : 0U;
-    Lval_ENABLED_B(ds) = SET_ENABLED_B ? 1U : 0U;
-    INVERSE_A(ds) = SET_INVERSE_A ? 1U : 0U;
-    INVERSE_B(ds) = SET_INVERSE_B ? 1U : 0U;
-    Lval_RANGE_A(ds) = (uint8)SET_RANGE_A;
-    Lval_RANGE_B(ds) = (uint8)SET_RANGE_B;
-    RSHIFT_A(ds) = SET_RSHIFT_A;
-    RSHIFT_B(ds) = SET_RSHIFT_B;
-    Lval_TBASE(ds) = SET_TBASE;
-    TSHIFT(ds) = SET_TSHIFT;
-    Lval_COUPLE_A(ds) = SET_COUPLE_A;
-    Lval_COUPLE_B(ds) = SET_COUPLE_B;
-    TRIGLEV_A(ds) = SET_TRIGLEV_A;
-    TRIGLEV_B(ds) = SET_TRIGLEV_A;
-    Lval_PEAKDET(ds) = SET_PEAKDET;
-    Lval_DIVIDER_A(ds) = SET_DIVIDER_A;
-    Lval_DIVIDER_B(ds) = SET_DIVIDER_B;
-    TIME_MS(ds) = 0;                        // Ёто важно дл€ режима поточеного вывода. ќзначает, что полный сигнал ещЄ не считан
-    ENUM_POINTS(ds) = FPGA_ENUM_POINTS;
+    Lval_ENABLED_A(this) = SET_ENABLED_A ? 1U : 0U;
+    Lval_ENABLED_B(this) = SET_ENABLED_B ? 1U : 0U;
+    INVERSE_A(this) = SET_INVERSE_A ? 1U : 0U;
+    INVERSE_B(this) = SET_INVERSE_B ? 1U : 0U;
+    Lval_RANGE_A(this) = (uint8)SET_RANGE_A;
+    Lval_RANGE_B(this) = (uint8)SET_RANGE_B;
+    RSHIFT_A(this) = SET_RSHIFT_A;
+    RSHIFT_B(this) = SET_RSHIFT_B;
+    Lval_TBASE(this) = SET_TBASE;
+    TSHIFT(this) = SET_TSHIFT;
+    Lval_COUPLE_A(this) = SET_COUPLE_A;
+    Lval_COUPLE_B(this) = SET_COUPLE_B;
+    TRIGLEV_A(this) = SET_TRIGLEV_A;
+    TRIGLEV_B(this) = SET_TRIGLEV_A;
+    Lval_PEAKDET(this) = SET_PEAKDET;
+    Lval_DIVIDER_A(this) = SET_DIVIDER_A;
+    Lval_DIVIDER_B(this) = SET_DIVIDER_B;
+    TIME_MS(this) = 0;                        // Ёто важно дл€ режима поточеного вывода. ќзначает, что полный сигнал ещЄ не считан
+    ENUM_POINTS(this) = FPGA_ENUM_POINTS;
 }

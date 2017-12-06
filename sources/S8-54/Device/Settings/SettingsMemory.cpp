@@ -24,8 +24,8 @@ int sMemory_NumPointsInChannel_(void)
 int sMemory_NumBytesInChannel_(void)
 {
     DataSettings ds;
-    DataSettings_Fill(&ds);
-    return NUM_BYTES(&ds);
+    ds.Fill();
+    return ds.BytesInChannel();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -43,10 +43,9 @@ typedef struct
     uint        multiplierB     : 1;
     uint        enumPoints      : 3;
     PackedTime  time;
+    int BytesInChannel();
+    void Fill();
 } DataSettings;
-
-int BytesInChannel(DataSettings *ds);
-void DataSettings_Fill(DataSettings *ds);
 
 #define RSHIFT(ds, ch)          ((ds)->rShift[ch])
 #define RSHIFT_A(ds)            (RSHIFT(ds, A))
@@ -106,7 +105,7 @@ void DataSettings_Fill(DataSettings *ds);
 
 #define ENUM_POINTS(ds)         ((ds)->enumPoints)
 #define ENUM_BYTES(ds)          (ENUM_POINTS(ds) + ((PEAKDET(ds) ? 1 : 0)))
-#define NUM_BYTES(ds)           (BytesInChannel(ds))
+#define NUM_BYTES(ds)           ((ds)->BytesInChannel())
 
 
 /** @}  @}

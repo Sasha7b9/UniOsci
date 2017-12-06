@@ -242,7 +242,7 @@ void FPGA_Start(void)
 
     timeCompletePredTrig = 0;
 
-    DataSettings_Fill(&ds);
+    ds.Fill();
 
     timeStart = gTimeMS;
 
@@ -449,7 +449,7 @@ static void ReadRandomizeChannel(Channel ch, uint16 addrFirstRead, uint8 *data, 
 // last - если true, это последний вызов из последовательности, нужно записать результаты в пам€ть.
 static bool ReadRandomizeModeSave(bool first, bool last, bool onlySave)
 {
-    int bytesInChannel = NUM_BYTES(&ds);
+    int bytesInChannel = ds.BytesInChannel();
 
     if (first)
     {
@@ -602,7 +602,7 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
 //  ажетс€, рассчитываем адрес последней записи
 uint16 ReadNStop(void)
 {
-    return (uint16)(*RD_ADDR_NSTOP + 16384 - (uint16)NUM_BYTES(&ds) / 2 - 1 - (uint16)gAddNStop);
+    return (uint16)(*RD_ADDR_NSTOP + 16384 - (uint16)ds.BytesInChannel() / 2 - 1 - (uint16)gAddNStop);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -624,9 +624,9 @@ static void ReadRealMode(uint8 *dataA, uint8 *dataB)
         balanceB = NRST_BALANCE_ADC_B;
     }
 
-    ReadChannel(dataA, A, NUM_BYTES(&ds), nStop, shift, balanceA);
+    ReadChannel(dataA, A, ds.BytesInChannel(), nStop, shift, balanceA);
     
-    ReadChannel(dataB, B, NUM_BYTES(&ds), nStop, shift, balanceB);
+    ReadChannel(dataB, B, ds.BytesInChannel(), nStop, shift, balanceB);
 
     RAM_MemCpy16(dataA, RAM8(FPGA_DATA_A), FPGA_MAX_POINTS);
     RAM_MemCpy16(dataB, RAM8(FPGA_DATA_B), FPGA_MAX_POINTS);
@@ -670,7 +670,7 @@ static void DataReadSave(bool first, bool saveToStorage, bool onlySave)
         ReadRealMode(OUT_A, OUT_B);
     }
 
-    int numBytes = NUM_BYTES(&ds);
+    int numBytes = ds.BytesInChannel();
 
     RAM_MemCpy16(RAM8(FPGA_DATA_A), OUT_A, numBytes);
     RAM_MemCpy16(RAM8(FPGA_DATA_B), OUT_B, numBytes);

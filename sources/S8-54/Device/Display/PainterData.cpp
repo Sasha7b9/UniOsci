@@ -603,7 +603,7 @@ static int FillDataP2P(uint8 *data, DataSettings **ds)
 
     int numPoints = dS.GetFrameP2P_RAM(ds, &dataA, &dataB); // Получаем фрейм поточечного вывода
 
-    int numPointsDS = NUM_BYTES(*ds);
+    int numPointsDS = (*ds)->BytesInChannel();
 
     uint8 *dat[] = {dataA, dataB};
 
