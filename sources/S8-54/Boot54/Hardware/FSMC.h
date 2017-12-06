@@ -18,21 +18,21 @@ typedef enum
 } ModeFSMC;
 
 
-void FSMC_Init(void);
+void FSMC_Init();
 
 void FSMC_SetMode(ModeFSMC mode);
 
 // Функция используется для обращения к шине из прерываний - если чтение/запись происходит во время инициализации, возникает ошибка
-bool FSMC_InSetStateMode(void);
+bool FSMC_InSetStateMode();
 
 // Функция используется в паре с предыдущей. Устанавливает функцию, которая должа быть выполнена после установки режима на шине
 void FSMC_SetFuncitonAfterSetMode(pFuncBV func);
-void FSMC_RemoveFunctionAfterSetMode(void);
+void FSMC_RemoveFunctionAfterSetMode();
 
 // DEPTRECATED Восстанавливает режим, который был установлен перед вызовом FSMC_SetMode()
-void FSMC_RestoreMode(void);
+void FSMC_RestoreMode();
     
-ModeFSMC FSMC_GetMode(void);
+ModeFSMC FSMC_GetMode();
 
 #define FSMC_READ(address) (*(address))
 #define FSMC_WRITE(address, data) (*(address) = data)

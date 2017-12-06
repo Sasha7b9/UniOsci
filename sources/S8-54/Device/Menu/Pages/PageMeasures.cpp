@@ -73,7 +73,7 @@ DEF_CHOICE_2(       cIsShow,                                                    
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Number(void)
+static bool IsActive_Number()
 {
     return SHOW_MEASURES;
 }
@@ -109,7 +109,7 @@ DEF_CHOICE_7(       cNumber,                                                    
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Channels(void)
+static bool IsActive_Channels()
 {
     return SHOW_MEASURES;
 }
@@ -125,7 +125,7 @@ DEF_CHOICE_3(       cChannels,                                                  
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Mode(void)
+static bool IsActive_Mode()
 {
     return SHOW_MEASURES;
 }
@@ -145,7 +145,7 @@ DEF_SMALL_BUTTON_EXIT(  bTune_Exit,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Tune_Markers(void)
+static void OnPress_Tune_Markers()
 {
     measures.ShortPressOnSmallButonMarker();
 }
@@ -165,7 +165,7 @@ DEF_SMALL_BUTTON(   bTune_Markers,                                              
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Tune_Settings(void)
+static void OnPress_Tune_Settings()
 {
     pageChoiceIsActive = !pageChoiceIsActive;
     if (pageChoiceIsActive)
@@ -189,7 +189,7 @@ DEF_SMALL_BUTTON(   bTune_Settings,                                             
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Tune(void)
+static bool IsActive_Tune()
 {
     return SHOW_MEASURES;
 }

@@ -48,7 +48,7 @@ static const uint startDataInfo = ADDR_SECTOR_DATA_MAIN;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void PrepareSectorForData(void)
+static void PrepareSectorForData()
 {
     EraseSector(ADDR_SECTOR_DATA_MAIN);
     for (int i = 0; i < MAX_NUM_SAVED_WAVES; i++)
@@ -58,7 +58,7 @@ static void PrepareSectorForData(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FLASH_LoadSettings(void)
+void FLASH_LoadSettings()
 {
     /*
         1. Проверка на первое включение. Выполняется тем, что в первом слове сектора настроек хранится MAX_UINT, если настройки ещё не сохранялись.
@@ -155,13 +155,13 @@ void FLASH_SaveSettings(bool verifyLoadede)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool TheFirstInclusion(void)
+bool TheFirstInclusion()
 {
     return READ_WORD(ADDR_SECTOR_SETTINGS) == MAX_UINT;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-RecordConfig* RecordConfigForRead(void)
+RecordConfig* RecordConfigForRead()
 {
     if (!TheFirstInclusion())
     {
@@ -173,19 +173,19 @@ RecordConfig* RecordConfigForRead(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-RecordConfig *FirstRecord(void)
+RecordConfig *FirstRecord()
 {
     return (RecordConfig*)ADDR_ARRAY_POINTERS;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool RecordExist(void)
+bool RecordExist()
 {
     return READ_WORD(ADDR_ARRAY_POINTERS) != MAX_UINT;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-RecordConfig *FirstEmptyRecord(void)
+RecordConfig *FirstEmptyRecord()
 {
     RecordConfig *record = FirstRecord();
     int numRecord = 0;
@@ -203,7 +203,7 @@ RecordConfig *FirstEmptyRecord(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint CalculatFreeMemory(void)
+uint CalculatFreeMemory()
 {
     if (!RecordExist())
     {
@@ -221,7 +221,7 @@ uint CalculatFreeMemory(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static uint FindAddressNextDataInfo(void)
+static uint FindAddressNextDataInfo()
 {
     uint addressNextInfo = startDataInfo + MAX_NUM_SAVED_WAVES * 4;
 
@@ -234,7 +234,7 @@ static uint FindAddressNextDataInfo(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static uint FindActualDataInfo(void)
+static uint FindActualDataInfo()
 {
     return FindAddressNextDataInfo() - MAX_NUM_SAVED_WAVES * 4;
 }
@@ -265,7 +265,7 @@ void FLASH_DeleteData(int num)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int CalculateSizeRecordConfig(void)
+int CalculateSizeRecordConfig()
 {
     int size = sizeof(RecordConfig);
     while (size % 4)
@@ -276,7 +276,7 @@ int CalculateSizeRecordConfig(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int CalculateSizeDataSettings(void)
+int CalculateSizeDataSettings()
 {
     int size = sizeof(DataSettings);
     while (size % 4)
@@ -302,13 +302,13 @@ int CalculateSizeData(DataSettings *ds)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static uint FreeMemory(void)
+static uint FreeMemory()
 {
     return ADDR_SECTOR_DATA_MAIN + 128 * 1024 - FindAddressNextDataInfo() - 1 - 4 * MAX_NUM_SAVED_WAVES - 3000;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void CompactMemory(void)
+static void CompactMemory()
 {
     display.ClearFromWarnings();
     display.ShowWarningGood(MovingData);

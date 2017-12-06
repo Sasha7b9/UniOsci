@@ -22,7 +22,7 @@ extern const PageBase pTime;
 extern const PageBase mainPage;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Sample(void)
+static bool IsActive_Sample()
 {
     return sTime_RandomizeModeEnabled();
 }
@@ -39,7 +39,7 @@ DEF_CHOICE_2(       mcSample,                                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_PeakDet(void)
+static bool IsActive_PeakDet()
 {
     return (SET_TBASE >= MIN_TBASE_PEC_DEAT);
 }
@@ -115,7 +115,7 @@ DEF_CHOICE_3(       mcTPos,                                                     
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_SelfRecorder(void)
+static bool IsActive_SelfRecorder()
 {
     return SET_TBASE >= MIN_TBASE_P2P;
 }

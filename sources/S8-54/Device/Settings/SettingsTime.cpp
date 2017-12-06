@@ -21,7 +21,7 @@ void sTime_SetTShift(int16 shift)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sTime_TPosInBytes(void)
+int sTime_TPosInBytes()
 {
     static const int m[][2][3] =
     {
@@ -38,7 +38,7 @@ int sTime_TPosInBytes(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sTime_TPosInPoints(void)
+int sTime_TPosInPoints()
 {
     static const int m[][2][3] =
     {
@@ -55,7 +55,7 @@ int sTime_TPosInPoints(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sTime_TShiftInPoints(void)
+int sTime_TShiftInPoints()
 {
     return SET_PEAKDET_EN ? SET_TSHIFT : (SET_TSHIFT * 2); 
 }
@@ -63,7 +63,7 @@ int sTime_TShiftInPoints(void)
 #define k 0
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int16 sTime_TShiftMin(void)
+int16 sTime_TShiftMin()
 {
     static const int16 m[FPGA_ENUM_POINTS_SIZE][3] =
     {
@@ -86,7 +86,7 @@ int16 sTime_TShiftMin(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int16 sTime_TShiftZero(void)
+int16 sTime_TShiftZero()
 {
     return -sTime_TShiftMin();
 }

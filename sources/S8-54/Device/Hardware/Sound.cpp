@@ -22,7 +22,7 @@ static bool isBeep = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Sound::Init(void)
+void Sound::Init()
 {
     DAC_ChannelConfTypeDef config =
     {
@@ -39,7 +39,7 @@ void Sound::Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Stop(void)
+static void Stop()
 {
     HAL_DAC_Stop_DMA(&handleDAC, DAC_CHANNEL_1);
     isBeep = false;
@@ -79,7 +79,7 @@ void TIM7_Config(uint16 prescaler, uint16 period)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 CalculatePeriodForTIM(void)
+uint16 CalculatePeriodForTIM()
 {
 #define MULTIPLIER_CALCPERFORTIM 30e6f
 
@@ -88,7 +88,7 @@ uint16 CalculatePeriodForTIM(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateSine(void)
+void CalculateSine()
 {
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
     {
@@ -115,7 +115,7 @@ void CalculateSine(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateMeandr(void)
+void CalculateMeandr()
 {
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND / 2; i++)
     {
@@ -129,7 +129,7 @@ void CalculateMeandr(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateTriangle(void)
+void CalculateTriangle()
 {
     float k = 255.0 / POINTS_IN_PERIOD_SOUND;
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
@@ -140,7 +140,7 @@ void CalculateTriangle(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SetWave(void)
+void SetWave()
 {
     TIM7_Config(0, CalculatePeriodForTIM());
 
@@ -191,7 +191,7 @@ static void Sound_Beep(const TypeWave newTypeWave, const float newFreq, const fl
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::ButtonPress(void)
+void Sound::ButtonPress()
 {
     Sound_Beep(TypeWave_Sine, 2000.0f, 0.75f, 50);
     buttonIsPressed = true;
@@ -199,7 +199,7 @@ void Sound::ButtonPress(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::ButtonRelease(void)
+void Sound::ButtonRelease()
 {
     if (buttonIsPressed)
     {
@@ -210,7 +210,7 @@ void Sound::ButtonRelease(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::GovernorChangedValue(void)
+void Sound::GovernorChangedValue()
 {
     Sound_Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
     buttonIsPressed = false;
@@ -218,7 +218,7 @@ void Sound::GovernorChangedValue(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::RegulatorShiftRotate(void)
+void Sound::RegulatorShiftRotate()
 {
     Sound_Beep(TypeWave_Sine, 1.0f, 0.2f, 3);
     buttonIsPressed = false;
@@ -226,7 +226,7 @@ void Sound::RegulatorShiftRotate(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::RegulatorSwitchRotate(void)
+void Sound::RegulatorSwitchRotate()
 {
     Sound_Beep(TypeWave_Sine, 500.0f, 0.5f, 75);
     buttonIsPressed = false;
@@ -234,7 +234,7 @@ void Sound::RegulatorSwitchRotate(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::WarnBeepBad(void)
+void Sound::WarnBeepBad()
 {
     Sound_Beep(TypeWave_Meandr, 500.0f, 1.0f, 500);
     soundWarnIsBeep = true;
@@ -243,7 +243,7 @@ void Sound::WarnBeepBad(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::WarnBeepGood(void)
+void Sound::WarnBeepGood()
 {
     Sound_Beep(TypeWave_Triangle, 1000.0f, 1.0f, 500);
     buttonIsPressed = false;
@@ -251,7 +251,7 @@ void Sound::WarnBeepGood(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::WaitCompletion(void)
+void Sound::WaitCompletion()
 {
     while (isBeep)
     {

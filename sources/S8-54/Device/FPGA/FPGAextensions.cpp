@@ -18,37 +18,37 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern bool ProcessingData(void);
+extern bool ProcessingData();
 extern TBase CalculateTBase(float freq);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool IsCalibrateChannel(Channel ch);
-static void CreateCalibrationStruct(void);
-static void DeleteCalibrationStruct(void);
+static void CreateCalibrationStruct();
+static void DeleteCalibrationStruct();
 static void LoadSettingsCalcAddRShift(Channel ch);
-static void ReadPeriod(void);
+static void ReadPeriod();
 /// \brief Чтение счётчика частоты производится после того, как бит 4 флага RD_FL установится в едицину. После чтения автоматически запускается 
 /// новый цикл счёта.
-static void ReadFreq(void);
+static void ReadFreq();
 static float PeriodSetToFreq(const BitSet32 *period);
 static float FreqSetToFreq(const BitSet32 *freq);
 static void RestoreSettingsForCalibration(const Settings *savedSettings);
 static void WriteAdditionRShifts(Channel ch);
 /// Функция обновления экрана в режиме калибровки.
-static void FuncAttScreen(void);
+static void FuncAttScreen();
 static void DrawMessageErrorCalibrate(Channel ch);
 static void WriteStretch(Channel ch, int x, int y);
 static void FuncDrawAdditionRShift(int x, int y, const int16 *addRShift);
 static void DrawParametersChannel(Channel ch, int eX, int eY, bool inProgress);
-static void AlignmentADC(void);
+static void AlignmentADC();
 static bool RunFuncAndWaitFlag(pFuncVV func, uint8 flag);
 
 
 /** @addtogroup AutoFind
  *  @{
  */
-static void FuncDrawAutoFind(void);
+static void FuncDrawAutoFind();
 
 /** @}
  */
@@ -117,7 +117,7 @@ static bool IsCalibrateChannel(Channel ch)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static void CreateCalibrationStruct(void)
+static void CreateCalibrationStruct()
 {
     /** @todo перенести cal в extraMEM */
     cal = (CalibrationStruct *)malloc(sizeof(CalibrationStruct));
@@ -125,7 +125,7 @@ static void CreateCalibrationStruct(void)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static void DeleteCalibrationStruct(void)
+static void DeleteCalibrationStruct()
 {
     free(cal);
 }
@@ -161,7 +161,7 @@ static bool RunFuncAndWaitFlag(pFuncVV func, uint8 fl)
     return true;
 }
 
-extern uint16 ReadNStop(void);
+extern uint16 ReadNStop();
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int16 FPGA::CalculateAdditionRShift(Channel ch, Range range)
@@ -300,7 +300,7 @@ float FPGA::CalculateStretchADC(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void AlignmentADC(void)
+static void AlignmentADC()
 {
     cal->shiftADCA = (cal->deltaADCold[0] > 0) ? (int8)(cal->deltaADCold[0] + 0.5f) : (int8)(cal->deltaADCold[0] - 0.5f);
     SET_BALANCE_ADC_A = cal->shiftADCA;
@@ -385,7 +385,7 @@ static void DrawMessageErrorCalibrate(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FuncAttScreen(void)
+static void FuncAttScreen()
 {
     Painter::BeginScene(Color::BLACK);
 
@@ -623,7 +623,7 @@ static void RestoreSettingsForCalibration(const Settings *savedSettings)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::ProcedureCalibration(void)
+void FPGA::ProcedureCalibration()
 {
     CreateCalibrationStruct();
     
@@ -739,7 +739,7 @@ void FPGA::BalanceChannel(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FPGA::FreqMeter_Init(void)
+bool FPGA::FreqMeter_Init()
 {
     drawFreq = false;
     drawPeriod = false;
@@ -839,13 +839,13 @@ void FPGA::FreqMeter_Draw(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float FPGA::FreqMeter_GetFreq(void)
+float FPGA::FreqMeter_GetFreq()
 {
     return frequency;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ReadFreq(void)
+static void ReadFreq()
 {
     freqSet.halfWord[0] = *RD_FREQ_LOW;
     freqSet.halfWord[1] = *RD_FREQ_HI;
@@ -870,7 +870,7 @@ static void ReadFreq(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ReadPeriod(void)
+static void ReadPeriod()
 {
     periodSet.halfWord[0] = *RD_PERIOD_LOW;
     periodSet.halfWord[1] = *RD_PERIOD_HI;
@@ -926,7 +926,7 @@ void FPGA::FreqMeter_Update(uint16 flag_)
  */
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::AutoFind(void)
+void FPGA::AutoFind()
 {
     /*
         Алгоритм поиска.
@@ -1102,7 +1102,7 @@ bool FPGA::AccurateFindParams(Channel ch)
 #undef NUM_MEASURES
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FuncDrawAutoFind(void)
+static void FuncDrawAutoFind()
 {
     ACCESS_EXTRAMEM(StrForAutoFind, s);
 

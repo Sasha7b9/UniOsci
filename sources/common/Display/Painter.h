@@ -22,19 +22,19 @@ public:
     /// \brief Заставляет дисплей вывполнить ранее засланные в него команды, не дожидаясь завершающей отрисовку команды EndScene(). 
     /// Нужно вызывать, если команды отрисовки кадра превышают размер буфера команд дисплея. Например, когда отрисовывается много сигналов на экране в 
     /// режиме накопления.
-    static void RunDisplay(void);
+    static void RunDisplay();
     /// Вызывается в конце отрисовки каждого кадра. Переносит содержимое буфера на экран
-    static void EndScene(void);
+    static void EndScene();
     /// Послать изображение во внешнее устройство через USB или LAN. Если first == true, то посылается шрифт
     static void SendFrame(bool first);
     /// Сброс таймера мигания. Нужно для того, чтобы мигающие значки при перемещении не исчезали с экрана
-    static void ResetFlash(void);
+    static void ResetFlash();
     /// Установить цвет рисования
     static void SetColor(Color color);
     /// Возвращает текущий цвет рисования
-    static Color GetColor(void);
+    static Color GetColor();
 
-    static void LoadPalette(void);
+    static void LoadPalette();
 
     static void SetPalette(Color color);
 
@@ -128,7 +128,7 @@ public:
 
 private:
 
-    static void CalculateCurrentColor(void);
+    static void CalculateCurrentColor();
 };
 
 

@@ -20,7 +20,7 @@ void Timer_PauseOnTicks(uint numTicks)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartMultiMeasurement(void)
+void Timer_StartMultiMeasurement()
 {
     TIM2->CR1 &= (uint16)~TIM_CR1_CEN;
     TIM2->CNT = 0;
@@ -32,7 +32,7 @@ static uint timeStartLogging = 0;
 static uint timePrevPoint = 0;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartLogging(void)
+void Timer_StartLogging()
 {
     timeStartLogging = gTimerTics;
     timePrevPoint = timeStartLogging;
@@ -90,7 +90,7 @@ bool Timer_IsRun(TypeTimer type)
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Update1ms(void)
+void Timer_Update1ms()
 {
     for(int num = 0; num < TypeTimerSize; num++)
     {
@@ -108,7 +108,7 @@ void Timer_Update1ms(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Update10ms(void)
+void Timer_Update10ms()
 {
     for(int num = 0; num < TypeTimerSize; num++)
     {

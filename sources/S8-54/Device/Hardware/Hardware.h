@@ -31,9 +31,9 @@
 class Hardware
 {
 public:
-    static void Init(void);
+    static void Init();
     /// Возвращает контрольную сумму содержимого трёх секторов (5, 6, 7), в которых хранится основная программа.
-    static uint CalculateCRC32(void);
+    static uint CalculateCRC32();
 };
 
 /** @}

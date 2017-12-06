@@ -55,7 +55,7 @@
  /// ѕолучить позицию курсора напр€жени€
 float sCursors_GetCursPosU(Channel ch, int numCur);
 /// ¬озвращает true,если нужно рисовать курсоры
-bool  sCursors_NecessaryDrawCursors(void);
+bool  sCursors_NecessaryDrawCursors();
 /// ѕолучить строку курсора напр€жени€
 const char *sCursors_GetCursVoltage(Channel source, int numCur, char buffer[20]);
 /// ѕолучить строку курсора времени

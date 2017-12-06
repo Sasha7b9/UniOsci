@@ -15,14 +15,14 @@ static const TIM_HandleTypeDef handleTIM6 =
     }
 };
 
-static void (*f[TypeTimerSize])(void) = {0};
+static void (*f[TypeTimerSize])() = {0};
 static uint reactionTimeMS[TypeTimerSize] = {0};
 static int timePrevExecuteMS[TypeTimerSize] = {0};
 static bool isRun[TypeTimerSize] = {false};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Timer_Init(void)
+void Timer_Init()
 {
     __TIM6_CLK_ENABLE();        // Для отсчёта миллисекунд
     __TIM2_CLK_ENABLE();        // Для тиков
@@ -81,7 +81,7 @@ void Timer_PauseOnTime(uint timeMS)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartMultiMeasurement(void)
+void Timer_StartMultiMeasurement()
 {
     TIM2->CR1 &= (uint)~TIM_CR1_CEN;
     TIM2->CNT = 0;
@@ -95,7 +95,7 @@ static uint timePrevPoint = 0;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_StartLogging(void)
+void Timer_StartLogging()
 {
     timeStartLogging = gTimerTics;
     timePrevPoint = timeStartLogging;
@@ -121,7 +121,7 @@ uint Timer_LogPointMS(char *)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer_Enable(TypeTimer type, int timeInMS, void(*eF)(void))
+void Timer_Enable(TypeTimer type, int timeInMS, void(*eF)())
 {
     f[type] = eF;
     reactionTimeMS[type] = (uint)timeInMS;
@@ -159,7 +159,7 @@ bool Timer_IsRun(TypeTimer type)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Timer_Update(void)
+static void Timer_Update()
 {
     uint curTimeMS = gTimeMS;
 
@@ -183,7 +183,7 @@ extern "C" {
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TIM6_DAC_IRQHandler(void)
+void TIM6_DAC_IRQHandler()
 {
     if (__HAL_TIM_GET_FLAG(&handleTIM6, TIM_FLAG_UPDATE) == SET && __HAL_TIM_GET_ITSTATUS(&handleTIM6, TIM_IT_UPDATE))
     {
@@ -194,7 +194,7 @@ void TIM6_DAC_IRQHandler(void)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void TIM2_IRQHandler(void)
+void TIM2_IRQHandler()
 {
 
 }

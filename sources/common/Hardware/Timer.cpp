@@ -29,8 +29,8 @@ static uint timePrevPoint = 0;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void StartTIM(uint timeStop);    // Завести таймр, который остановится в timeStop мс
-static void StopTIM(void);
-static uint NearestTime(void);          // Возвращает время срабатывания ближайщего таймера, либо 0, если таймеров нет
+static void StopTIM();
+static uint NearestTime();          // Возвращает время срабатывания ближайщего таймера, либо 0, если таймеров нет
 static void TuneTIM(TypeTimer2 type);   // Настроить систему на таймер
 
 
@@ -41,7 +41,7 @@ bool Timer::IsRun(TypeTimer2 type)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer::Init(void)
+void Timer::Init()
 {
     for(uint i = 0; i < NumTimers; i++)
     {
@@ -85,7 +85,7 @@ extern "C" {
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void TIM3_IRQHandler(void)
+void TIM3_IRQHandler()
 {
     HAL_TIM_IRQHandler(&handleTIM3);
 }
@@ -163,7 +163,7 @@ void Timer::Disable(TypeTimer2 type)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static uint NearestTime(void)
+static uint NearestTime()
 {
     uint time = UINT_MAX;
 
@@ -233,7 +233,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void StopTIM(void)
+static void StopTIM()
 {
     HAL_TIM_Base_Stop_IT(&handleTIM3);
 }
@@ -260,7 +260,7 @@ void Timer::PauseOnTicks(uint numTicks)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer::StartMultiMeasurement(void)
+void Timer::StartMultiMeasurement()
 {
     TIM2->CR1 &= (uint)~TIM_CR1_CEN;
     TIM2->CNT = 0;
@@ -269,7 +269,7 @@ void Timer::StartMultiMeasurement(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Timer::StartLogging(void)
+void Timer::StartLogging()
 {
     timeStartLogging = gTimerTics;
     timePrevPoint = timeStartLogging;

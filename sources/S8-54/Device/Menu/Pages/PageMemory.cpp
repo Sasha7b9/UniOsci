@@ -25,19 +25,19 @@ extern const PageBase pppDrive_Mask;
 extern const PageBase pSetName;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern void PressSB_FM_Tab(void);
+extern void PressSB_FM_Tab();
 
-static void DrawSetMask(void);  // Эта функция рисует, когда выбран режим задания маски.
+static void DrawSetMask();  // Эта функция рисует, когда выбран режим задания маски.
 static void DrawFileMask(int x, int y);
-static void DrawSetName(void);  // Эта функция рисует, когда нужно задать имя файла для сохранения
+static void DrawSetName();  // Эта функция рисует, когда нужно задать имя файла для сохранения
 
 static void DrawMemoryWave(int num, bool exist);
-static void SaveSignalToIntMemory(void);
+static void SaveSignalToIntMemory();
        void OnMemExtSetMaskNameRegSet(int angle, int maxIndex);
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Points(void)
+static bool IsActive_Points()
 {
     return SET_PEAKDET_DIS;
 }
@@ -103,7 +103,7 @@ DEF_CHOICE_6(       cPoints,                                                    
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Last_Exit(void)
+static void OnPress_Last_Exit()
 {
     MODE_WORK = ModeWork_Dir;
     if (RUN_FPGA_BEFORE_SB)
@@ -119,7 +119,7 @@ DEF_SMALL_BUTTON_EXIT(  bLast_Exit,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Last_Next(void)
+static void OnPress_Last_Next()
 {
     CircleIncrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
@@ -139,7 +139,7 @@ DEF_SMALL_BUTTON(   bLast_Next,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Last_Prev(void)
+static void OnPress_Last_Prev()
 {
     CircleDecrease<int16>(&NUM_RAM_SIGNAL, 0, (int16)(Storage::NumElementsInStorage() - 1));
 }
@@ -159,7 +159,7 @@ DEF_SMALL_BUTTON(   bLast_Prev,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Last_SaveToROM(void)
+static void OnPress_Last_SaveToROM()
 {
     ((Page *)&ppInternal)->SetCurrentSB();
     MODE_WORK = ModeWork_ROM;   // Находимся в режиме внутренного ЗУ
@@ -185,7 +185,7 @@ DEF_SMALL_BUTTON(   bLast_SaveToROM,                                            
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Last_SaveToDrive(void)
+static void OnPress_Last_SaveToDrive()
 {
     EXIT_FROM_SETNAME_TO = RETURN_TO_LAST_MEM;
     Memory_SaveSignalToFlashDrive();
@@ -210,7 +210,7 @@ DEF_SMALL_BUTTON(   bLast_SaveToDrive,                                          
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_Last(void)
+static void OnPress_Last()
 {
     NUM_RAM_SIGNAL = 0;
     RUN_FPGA_BEFORE_SB = FPGA_IS_RUNNING ? 1u : 0u;
@@ -218,7 +218,7 @@ static void OnPress_Last(void)
     MODE_WORK = ModeWork_RAM;
 }
 
-static void OnDraw_Last(void)
+static void OnDraw_Last()
 {
     char buffer[20];
 
@@ -261,7 +261,7 @@ DEF_PAGE_SB(        ppLast,                                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Drive_Manager_Exit(void)
+static void OnPress_Drive_Manager_Exit()
 {
     Display::SetDrawMode(DrawMode_Auto, 0);
     OnPressSB_Exit();
@@ -317,12 +317,12 @@ DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                   
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Drive_Manager(void)
+static bool IsActive_Drive_Manager()
 {
     return FDRIVE_IS_CONNECTED;
 }
 
-void OnPress_Drive_Manager(void)
+void OnPress_Drive_Manager()
 {
     if (FDRIVE_IS_CONNECTED)
     {
@@ -372,7 +372,7 @@ DEF_SMALL_BUTTON_EXIT(  bDrive_Mask_Exit,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Drive_Mask_Delete(void)
+static void OnPress_Drive_Mask_Delete()
 {
     FILE_NAME_MASK[0] = '\0';
 }
@@ -392,7 +392,7 @@ DEF_SMALL_BUTTON(   bDrive_Mask_Delete,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Drive_Mask_Backspace(void)
+static void OnPress_Drive_Mask_Backspace()
 {
     int size = strlen(FILE_NAME_MASK);
     if (size > 0)
@@ -423,7 +423,7 @@ DEF_SMALL_BUTTON(   bDrive_Mask_Backspace,                                      
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Drive_Mask_Insert(void)
+static void OnPress_Drive_Mask_Insert()
 {
     int index = INDEX_SYMBOL;
     int size = strlen(FILE_NAME_MASK);
@@ -499,17 +499,17 @@ DEF_CHOICE_2(       cDrive_ModeBtnMemory,                                       
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Drive_Mask(void)
+static bool IsActive_Drive_Mask()
 {
     return FILE_NAMING_MODE_MASK;
 }
 
-static void OnPress_Drive_Mask(void)
+static void OnPress_Drive_Mask()
 {
     Display::SetAddDrawFunction(DrawSetMask);
 }
 
-static void DrawSetMask(void)
+static void DrawSetMask()
 {
     int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 20;
@@ -662,7 +662,7 @@ DEF_PAGE_4(         pMemory,                                                    
     Page_Memory, &mainPage, FuncActive, EmptyPressPage
 );
 
-void Memory_SaveSignalToFlashDrive(void)
+void Memory_SaveSignalToFlashDrive()
 {
     if (FDRIVE_IS_CONNECTED)
     {
@@ -681,7 +681,7 @@ void Memory_SaveSignalToFlashDrive(void)
     }
 }
 
-static void DrawSetName(void)
+static void DrawSetName()
 {
     int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 60;
@@ -728,12 +728,12 @@ static void DrawSetName(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FuncForInternalExit(void)
+static void FuncForInternalExit()
 {
     ((Page *)&ppLast)->SetCurrentSB();
 }
 
-static void OnPress_Internal_Exit(void)
+static void OnPress_Internal_Exit()
 {
     if (EXIT_FROM_ROM_TO_RAM)
     {
@@ -759,7 +759,7 @@ DEF_SMALL_BUTTON_EXIT(  bInternal_Exit,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Internal_ShowAlways(void)
+static void OnPress_Internal_ShowAlways()
 {
     ALWAYS_SHOW_ROM_SIGNAL = ALWAYS_SHOW_ROM_SIGNAL ? 0u : 1u;
 }
@@ -802,7 +802,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bInternal_ShowAlways,                               
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Internal_ModeShow(void)
+static void OnPress_Internal_ModeShow()
 {
     CircleIncrease<int8>((int8 *)&SHOW_IN_INT, 0, 2);
 }
@@ -856,7 +856,7 @@ DEF_SMALL_BUTTON_HINTS_3(   bInternal_ModeShow,                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Internal_Delete(void)
+static void OnPress_Internal_Delete()
 {
     Display::FuncOnWaitStart(DICT(DDeleteFromMemory), false);
     flash.DeleteData(NUM_ROM_SIGNAL);
@@ -878,7 +878,7 @@ DEF_SMALL_BUTTON(   bInternal_Delete,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void SaveSignalToIntMemory(void)
+static void SaveSignalToIntMemory()
 {
     // Заносим в указатели DS, DATA_A, DATA_B данные из ОЗУ или последний считанный сигнал, в зависимости от того, из какого режима зашли в 
     // "ПАМЯТЬ-ВНУТР ЗУ"
@@ -891,7 +891,7 @@ static void SaveSignalToIntMemory(void)
     }
 }
 
-static void OnPress_Internal_SaveToMemory(void)
+static void OnPress_Internal_SaveToMemory()
 {
     Display::FuncOnWaitStart(DICT(DStoredInMemory), false);
     SaveSignalToIntMemory();
@@ -913,7 +913,7 @@ DEF_SMALL_BUTTON(   bInternal_SaveToMemory,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Internal_SaveToDrive(void)
+static void OnPress_Internal_SaveToDrive()
 {
     EXIT_FROM_SETNAME_TO = RETURN_TO_INT_MEM;
     Memory_SaveSignalToFlashDrive();
@@ -937,12 +937,12 @@ DEF_SMALL_BUTTON(   bInternal_SaveToDrive,                                      
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnPress_Internal(void)
+static void OnPress_Internal()
 {
     MODE_WORK = ModeWork_ROM;
 }
 
-static void OnDraw_Internal(void)
+static void OnDraw_Internal()
 {
     // Теперь нарисуем состояние памяти
 
@@ -1007,7 +1007,7 @@ DEF_PAGE_SB(        ppInternal,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SetName_Exit(void)
+static void OnPress_SetName_Exit()
 {
     OnPressSB_Exit();
     if (EXIT_FROM_SETNAME_TO == RETURN_TO_DISABLE_MENU)
@@ -1032,7 +1032,7 @@ DEF_SMALL_BUTTON(   bSetName_Exit,                                              
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SetName_Delete(void)
+static void OnPress_SetName_Delete()
 {
     FILE_NAME[0] = '\0';
 }
@@ -1052,7 +1052,7 @@ DEF_SMALL_BUTTON(   bSetName_Delete,                                            
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SetName_Backspace(void)
+static void OnPress_SetName_Backspace()
 {
     int size = strlen(FILE_NAME);
     if (size > 0)
@@ -1076,7 +1076,7 @@ DEF_SMALL_BUTTON(   bSetName_Backspace,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SetName_Insert(void)
+static void OnPress_SetName_Insert()
 {
     int size = strlen(FILE_NAME);
     if (size < MAX_SYMBOLS_IN_FILE_NAME - 1)
@@ -1101,7 +1101,7 @@ DEF_SMALL_BUTTON(   bSetName_Insert,                                            
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SetName_Save(void)
+static void OnPress_SetName_Save()
 {
     if (FDRIVE_IS_CONNECTED)
     {
@@ -1174,7 +1174,7 @@ void DrawSB_MemLastSelect(int x, int y)
     Painter::SetFont(TypeFont_8);
 }
 
-void PressSB_MemLastSelect(void)
+void PressSB_MemLastSelect()
 {
     set.memory.strMemoryLast.isActiveModeSelect = !set.memory.strMemoryLast.isActiveModeSelect;
 }
@@ -1213,7 +1213,7 @@ Draw_Internal_EraseAll,
 }
 };
 
-static void OnPress_Internal_EraseAll(void)
+static void OnPress_Internal_EraseAll()
 {
 display.FuncOnWaitStart("Стираю. Подождите", "Erase. Wait", false);
 FLASH_DeleteAllData();
@@ -1227,7 +1227,7 @@ Painter::DrawText(x + 5, y + 5, "E");
 */
 
 /*
-void OnPress_Internal_Scale(void)
+void OnPress_Internal_Scale()
 {
 CircleIncreaseInt8((int8 *)&MEM_DATA_SCALE, 0, 1);
 }

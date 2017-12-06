@@ -29,7 +29,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s);
 static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FDrive::Init(void)
+void FDrive::Init()
 {
     ms->drive.state = StateDisk_Idle;
     ms->drive.connection = 0;
@@ -76,7 +76,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive::Update(void)
+bool FDrive::Update()
 {
     USBH_Process(&hUSB_Host);
     if (ms->drive.state == StateDisk_Start)
@@ -240,7 +240,7 @@ int FDrive::ReadFromFile(int numBytes, uint8 *buffer)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive::CloseOpenedFile(void)
+void FDrive::CloseOpenedFile()
 {
     f_close(&ms->drive.file);
 }

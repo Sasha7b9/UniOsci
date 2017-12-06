@@ -51,13 +51,13 @@ static float koeffCalibrationOld[2];
 extern void LoadStretchADC(Channel chan);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnTimerDraw(void)
+static void OnTimerDraw()
 {
     display.Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::ProcedureCalibration(void)
+void FPGA::ProcedureCalibration()
 {
     bool chanAenable = SET_ENABLED_A;
     bool chanBenable = SET_ENABLED_B;
@@ -219,7 +219,7 @@ void FPGA::ProcedureCalibration(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FuncAttScreen(void)
+void FuncAttScreen()
 {
     painter.BeginScene(gColorBack);
 
@@ -404,7 +404,7 @@ float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *del
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void AlignmentADC(void)
+void AlignmentADC()
 {
     shiftADC0 = (int8)((deltaADCold[0] > 0) ? (deltaADCold[0] + 0.5f) : (deltaADCold[0] - 0.5f));
     SET_BALANCE_ADC_A = shiftADC0;

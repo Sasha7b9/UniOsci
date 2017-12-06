@@ -38,7 +38,7 @@ typedef enum
 
 
 /// Инициализация
-void RAM_Init(void);
+void RAM_Init();
 /// Число в названии функции указывает на количество байт, которым кратно numBytes
 void RAM_WriteRead_Sinch2(void *src, void *dest, int numBytes);
 /// Чем больше число, тем больше скорость
@@ -48,9 +48,9 @@ void RAM_WriteRead_Sinch8(void *src, void *dest, int numBytes);
 /// Для записи использует режим DMA. Не работает, если данные размещены в памяти CCM data RAM
 void RAM_WriteRead_Asinch(uint16 *src, uint16 *dest, int numHalfWords);
 
-bool RAM_WriteReadComplete(void);
+bool RAM_WriteReadComplete();
 
-void RAM_WaitWriteReadComplete(void);
+void RAM_WaitWriteReadComplete();
 
 void RAM_MemSet_Sinch(uint8 *dest, uint8 value, int numBytes);
 
@@ -70,7 +70,7 @@ void RAM_ReadBuffer1(void *src, void *dest, int numBytes);
 
 void RAM_MemClear(void *address, int numHalfWords);
 
-void RAM_Test(void);
+void RAM_Test();
 
 uint8 *RAM8(Address address);
 

@@ -28,13 +28,13 @@ typedef struct
 class FDrive
 {
 public:
-    static void Init(void);
+    static void Init();
     
-    static void Update(void);
+    static void Update();
     
-    static void Mount(void);
+    static void Mount();
     
-    static bool IsConnected(void);
+    static bool IsConnected();
     
     static void GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles);
     

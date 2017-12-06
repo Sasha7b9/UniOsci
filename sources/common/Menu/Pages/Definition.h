@@ -13,7 +13,7 @@ bool IsMainPage(const void *item);
 /// Функция отрисовки кнопки выхода из режима малого меню.
 void DrawSB_Exit(int x, int y);
 /// Универсальная функция отработки нажатия кнопки выхода из режима малого меню.
-void OnPressSB_Exit(void);
+void OnPressSB_Exit();
 
 void DrawMenuCursVoltage(int x, int y, bool top, bool bottom);
 

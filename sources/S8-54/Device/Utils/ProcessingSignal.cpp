@@ -128,7 +128,7 @@ static bool picIsCalculating[2] = {false, false};
 #define PI 3.141592653589793f
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Processing::CalculateMeasures(void)
+void Processing::CalculateMeasures()
 {
     if(!SHOW_MEASURES || !isSet)
     {
@@ -1326,7 +1326,7 @@ char* Processing::GetStringMeasure(Meas measure, Channel ch, char* buffer, int l
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Processing::CountedToCurrentSettings(void)
+void Processing::CountedToCurrentSettings()
 {
     int numBytes = NUM_BYTES_DS;
 

@@ -55,23 +55,23 @@ class Display
 {
 public:
     /// Инициализация
-    static void Init(void);
+    static void Init();
     /// Эту функцию нужно вызывать каждый кадр - отрисовка
-    static void Update(void);
+    static void Update();
     /// Эту функцию нужно вызывать при вращении ручки смещения по вертикали для временной отрисовки вспомогательных маркеров
     static void RotateRShift(Channel ch);
     /// Эту функцию нужно вызывать при вращении ручки уровня синхронизации для временной отрисовки вспомогательных маркеров
-    static void RotateTrigLev(void);
+    static void RotateTrigLev();
 
     static void EnableTrigLabel(bool enable);
 
     static void SetAddDrawFunction(pFuncVV func);
 
-    static pFuncVV GetAddDrawFunction(void);
+    static pFuncVV GetAddDrawFunction();
 
-    static void RemoveAddDrawFunction(void);
+    static void RemoveAddDrawFunction();
 
-    static void Clear(void);
+    static void Clear();
 
     static void ShiftScreen(int delta);
 
@@ -79,15 +79,15 @@ public:
 
     static void AddStringToIndicating(const char *string);
 
-    static void OneStringUp(void);
+    static void OneStringUp();
 
-    static void OneStringDown(void);
+    static void OneStringDown();
 
     static void SetPauseForConsole(bool pause);
 
     static void SetOrientation(DisplayOrientation orientation);
     /// Вывести сообщения отладочной консоли
-    static void DrawConsole(void);
+    static void DrawConsole();
     /// @brief Установить функцию и режим отрисовки экрана.
     /// @details Возможны три варианта.
     /// 1. DrawMode_Hand - в этом случае будет вызываться функция func(), определяемая пользователем, с частотой 25 раз в секунду.
@@ -97,14 +97,14 @@ public:
     /// главного цикла, будучи вызываемой из Update() вместо Update().
     static void SetDrawMode(DrawMode mode, pFuncVV func);
 
-    static void ClearFromWarnings(void);
+    static void ClearFromWarnings();
 
     static void ShowWarning(Warning warning);
 
     // Группа функций для вывода сообщения о занятом приборе
     static void FuncOnWaitStart(const char *text, bool eraseBackground);
 
-    static void FuncOnWaitStop(void);
+    static void FuncOnWaitStop();
 };
 
 

@@ -3,7 +3,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void HAL_MspInit(void)
+void HAL_MspInit()
 {
     /* USER CODE BEGIN MspInit 0 */
 
@@ -353,7 +353,7 @@ void HAL_PCD_MspDeInit(PCD_HandleTypeDef* hpcd)
 
 }
 
-static void HAL_FMC_MspInit(void)
+static void HAL_FMC_MspInit()
 {
 }
 
@@ -368,7 +368,7 @@ void HAL_SRAM_MspInit(SRAM_HandleTypeDef*)
   /* USER CODE END SRAM_MspInit 1 */
 }
 
-static void HAL_FMC_MspDeInit(void)\
+static void HAL_FMC_MspDeInit()\
 {
 
 }

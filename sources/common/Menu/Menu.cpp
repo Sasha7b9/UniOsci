@@ -19,7 +19,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern void OnChanged_InputA(bool active);
 extern void OnChanged_InputB(bool active);
-extern void Long_Help(void);
+extern void Long_Help();
 extern const PageBase * const pointerPageHelp;
 
 /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
@@ -39,14 +39,14 @@ static void *itemUnderKey = 0;
 /// Эта функция будет вызывана один раз после Menu::UpdateInput().
 static pFuncVV funcAterUpdate = 0;
                                                 
-static void ProcessingShortPressureButton(void);            ///< Обработка короткого нажатия кнопки.
-static void ProcessingLongPressureButton(void);             ///< Обработка длинного нажатия кнопки.
-static void ProcessingPressButton(void);                    ///< Обработка опускания кнопки вниз.
-static void ProcessingReleaseButton(void);                  ///< Обработка поднятия кнопки вверх.
-static void ProcessingRegulatorSetRotate(void);             ///< Обработка поворота ручки УСТАНОВКА.
-static void ProcessingRegulatorPress(void);                 ///< Обработка нажатия ручки.
-static void OnTimerAutoHide(void);                          ///< Обработка события таймера автоматического сокрытия меню.
-static void SwitchSetLED(void);                             ///< Включить/выключить светодиод ручки УСТАНОВКА, если необходимо.
+static void ProcessingShortPressureButton();            ///< Обработка короткого нажатия кнопки.
+static void ProcessingLongPressureButton();             ///< Обработка длинного нажатия кнопки.
+static void ProcessingPressButton();                    ///< Обработка опускания кнопки вниз.
+static void ProcessingReleaseButton();                  ///< Обработка поднятия кнопки вверх.
+static void ProcessingRegulatorSetRotate();             ///< Обработка поворота ручки УСТАНОВКА.
+static void ProcessingRegulatorPress();                 ///< Обработка нажатия ручки.
+static void OnTimerAutoHide();                          ///< Обработка события таймера автоматического сокрытия меню.
+static void SwitchSetLED();                             ///< Включить/выключить светодиод ручки УСТАНОВКА, если необходимо.
 static void ShortPress_Page(void *page);                    ///< Обработка короткого нажатия на элемент NamePage с адресом page.
 static void ShortPress_Choice(void *choice);                ///< Обработка короткого нажатия на элемент Choice с адресом choice.
 static void ShortPress_Time(void *time);
@@ -60,7 +60,7 @@ static void FuncOnLongPressItemButton(void *button);        ///< Обработка длинн
 static  pFuncVpV    FuncForShortPressOnItem(void *item);    ///< Возвращает функцию обработки короткого нажатия на элемент меню item.
 static  pFuncVpV    FuncForLongPressureOnItem(void *item);  ///< Возвращает функцию обработки длинного нажатия на элемент меню item.
 
-static void OnTimerStrNaviAutoHide(void);                   ///< Функция, которая отключит вывод строки навигации меню.
+static void OnTimerStrNaviAutoHide();                   ///< Функция, которая отключит вывод строки навигации меню.
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +70,7 @@ static const PanelButton sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_F5
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Menu::UpdateInput(void)
+void Menu::UpdateInput()
 {
     ProcessingShortPressureButton();
     ProcessingLongPressureButton();
@@ -293,7 +293,7 @@ void Menu::PressReg(PanelRegulator reg)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::RotateRegSetRight(void)
+void Menu::RotateRegSetRight()
 {   
     if (!HINT_MODE_ENABLE)
     {
@@ -303,7 +303,7 @@ void Menu::RotateRegSetRight(void)
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::RotateRegSetLeft(void)
+void Menu::RotateRegSetLeft()
 {
     if (!HINT_MODE_ENABLE)
     {
@@ -313,7 +313,7 @@ void Menu::RotateRegSetLeft(void)
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void *Menu::ItemUnderKey(void)
+void *Menu::ItemUnderKey()
 {
     return itemUnderKey;
 };
@@ -366,13 +366,13 @@ char *Menu::StringNavigation(char buffer[100])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnTimerAutoHide(void)
+void OnTimerAutoHide()
 {
     Menu::Show(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ProcessingShortPressureButton(void)
+static void ProcessingShortPressureButton()
 {
     if(shortPressureButton != B_Empty)
     {
@@ -453,7 +453,7 @@ static void ProcessingShortPressureButton(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingLongPressureButton(void)
+void ProcessingLongPressureButton()
 {
     PanelButton button = longPressureButton;
 
@@ -508,7 +508,7 @@ void ProcessingLongPressureButton(void)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingRegulatorPress(void)
+void ProcessingRegulatorPress()
 {
     if (pressRegulator != R_Empty)
     {
@@ -527,7 +527,7 @@ void ProcessingRegulatorPress(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingRegulatorSetRotate(void)
+void ProcessingRegulatorSetRotate()
 {
     if (angleRegSet == 0)
     {
@@ -579,7 +579,7 @@ void ProcessingRegulatorSetRotate(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingPressButton(void)
+void ProcessingPressButton()
 {
     if((pressButton >= B_F1 && pressButton <= B_F5) || pressButton == B_Menu)
     {
@@ -596,7 +596,7 @@ void ProcessingPressButton(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingReleaseButton(void)
+void ProcessingReleaseButton()
 {
     if(releaseButton >= B_F1 && releaseButton <= B_F5 || pressButton == B_Menu)
     {
@@ -618,7 +618,7 @@ void ShortPress_Page(void *item)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::TemporaryEnableStrNavi(void)
+void Menu::TemporaryEnableStrNavi()
 {
     if (SHOW_STRING_NAVI_TEMP)
     {
@@ -628,7 +628,7 @@ void Menu::TemporaryEnableStrNavi(void)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnTimerStrNaviAutoHide(void)
+static void OnTimerStrNaviAutoHide()
 {
     SHOW_STRING_NAVIGATION = 0;
 }
@@ -867,7 +867,7 @@ void Menu::ChangeStateFlashDrive()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::OpenItemTime(void)
+void Menu::OpenItemTime()
 {
     Display::ShowWarning(TimeNotSet);
     ShortPressureButton(B_Service);
@@ -886,7 +886,7 @@ void Menu::OpenItemTime(void)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 /// Возвращает true, если лампочка УСТАНОВКА должна гореть
-static bool NeedForFireSetLED(void)
+static bool NeedForFireSetLED()
 {
     if (!MENU_IS_SHOWN)
     {
@@ -928,7 +928,7 @@ static bool NeedForFireSetLED(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SwitchSetLED(void)
+void SwitchSetLED()
 {
     static bool first = true;
     static bool prevState = false;  // true - горит, false - не горит
@@ -960,7 +960,7 @@ void Menu::Show(bool show)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::Init(void)
+void Menu::Init()
 {
     PageDisplay_Init();
 }
@@ -972,20 +972,20 @@ void Menu::RunAfterUpdate(pFuncVV func)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Control *Menu::OpenedItem(void)
+Control *Menu::OpenedItem()
 {
     TypeItem type = Item_None;
     return (Control *)RetLastOpened((Page *)&mainPage, &type);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-TypeItem Menu::TypeOpenedItem(void)
+TypeItem Menu::TypeOpenedItem()
 {
     return OpenedItem()->Type();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-NamePage Menu::GetNameOpenedPage(void)
+NamePage Menu::GetNameOpenedPage()
 {
     return ((const Page *)OpenedItem())->GetNamePage();
 }
@@ -1012,7 +1012,7 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Control *Menu::CurrentItem(void)
+Control *Menu::CurrentItem()
 {
     TypeItem type = Item_None;
     void *lastOpened = RetLastOpened((Page *)&mainPage, &type);
@@ -1025,7 +1025,7 @@ Control *Menu::CurrentItem(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::CloseOpenedItem(void)
+void Menu::CloseOpenedItem()
 {
     Control *item = OpenedItem();
     if (TypeOpenedItem() == Item_Page)

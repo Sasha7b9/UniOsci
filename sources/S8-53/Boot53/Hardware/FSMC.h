@@ -10,7 +10,7 @@
 #define ADDR_NULL           ((uint8*)(ADDR_BANK + 0x00a00000))
 
 
-void    FSMC_Init(void);
+void    FSMC_Init();
 
 uint8   FSMC_Read(uint8* address);
 

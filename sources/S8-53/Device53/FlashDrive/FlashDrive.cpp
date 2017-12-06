@@ -18,7 +18,7 @@ static void USBH_UserProcess(USBH_HandleTypeDef *phost, uint8 id);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FlashDrive::Init(void)
+void FlashDrive::Init()
 {
     if(FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK) 
     {
@@ -33,7 +33,7 @@ void FlashDrive::Init(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashDrive::Update(void)
+void FlashDrive::Update()
 {
     USBH_Process(&handleUSBH);
 }

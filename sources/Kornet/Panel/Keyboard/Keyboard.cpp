@@ -279,7 +279,7 @@ uint Keyboard::TimeBetweenRepeats()
 #ifdef __cplusplus
 extern "C" {
 #endif
-void TIM3_IRQHandler(void)
+void TIM3_IRQHandler()
 {
     HAL_TIM_IRQHandler(&timHandle);
 }

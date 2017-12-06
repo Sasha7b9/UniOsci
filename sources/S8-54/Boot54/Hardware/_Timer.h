@@ -14,7 +14,7 @@ typedef enum
     kDelayTrig                  // Для СИНХР -> Удержание
 } TypePersonalTimer;
 
-void    Timer_Init(void);
+void    Timer_Init();
 void    Timer_PauseOnTime(uint timeMS);
 void    Timer_PauseOnTicks(uint numTicks);
 
@@ -24,9 +24,9 @@ void    Timer_Pause(TypeTimer type);            // Приостановить таймер. Запусти
 void    Timer_Continue(TypeTimer type);         // Продолжить работу таймера, ранее приостановленного функцией Timer_Pause()
 bool    Timer_IsRun(TypeTimer type);            // С помощью этой функции можно узнать, работает ли таймер
 
-void    Timer_StartMultiMeasurement(void);      // Запускает счётчик для измерения малых отрезков времени.
+void    Timer_StartMultiMeasurement();      // Запускает счётчик для измерения малых отрезков времени.
 
-void    Timer_StartLogging(void);               // Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки.
+void    Timer_StartLogging();               // Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки.
 uint    Timer_LogPointUS(char *name);
 uint    Timer_LogPointMS(char *name);
 

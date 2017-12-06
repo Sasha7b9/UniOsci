@@ -120,26 +120,26 @@ public:
     /// Возвращает установленное смещение по времени в текстовом виде, пригодном для вывода на экран
     static const char *GetTShiftString(int16 tShiftRel, char buffer[20]);
 
-    static void LoadTShift(void);
+    static void LoadTShift();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Функции калибровки
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /// Запуск функции калибровки
-    static void ProcedureCalibration(void);
+    static void ProcedureCalibration();
     /// Провести процедуру балансировки
     static void BalanceChannel(Channel ch);
 
-    static bool FreqMeter_Init(void);
+    static bool FreqMeter_Init();
 
     static void FreqMeter_Draw(int x, int y);
     /// Получить значение частоты для вывода в нижней части экрана
-    static float FreqMeter_GetFreq(void);
+    static float FreqMeter_GetFreq();
     /// Функция вызывается из FPGA
     static void FreqMeter_Update(uint16 flag);
     /// Запуск процесса поиска сигнала
-    static void  AutoFind(void);
+    static void  AutoFind();
 
 private:
     /// \brief first - если true, это первый вызов из последовательности, нужно подготовить память
@@ -151,13 +151,13 @@ private:
     /// \param onlySave       Только сохранить в хранилище.
     static void DataReadSave(bool first, bool saveToStorage, bool onlySave);
     /// Возвращает true, если считаны данные.
-    static bool ProcessingData(void);
+    static bool ProcessingData();
 
-    static void OnPressStartStopInP2P(void);
+    static void OnPressStartStopInP2P();
     /// Измерить добавочное смещение канала по напряжению.
     static int16 CalculateAdditionRShift(Channel ch, Range range);
     ///< Действия, которые нужно предпринять после успешного считывания данных.
-    static void ProcessingAfterReadData(void);
+    static void ProcessingAfterReadData();
 
     static void Write(TypeRecord type, uint16 *address, uint data, bool restart);
     ///< Запись в регистры и альтеру.
@@ -171,9 +171,9 @@ private:
 
     static void CalibrateChannel(Channel ch);
 
-    static void HardwareInit(void);
+    static void HardwareInit();
 
-    static uint16 ReadFlag(void);
+    static uint16 ReadFlag();
 
     static void ReadRealMode(uint8 *dataA, uint8 *dataB);
 
@@ -190,29 +190,29 @@ private:
 
     static void CalibrateStretch(Channel ch);
 
-    static void LoadTBase(void);
+    static void LoadTBase();
 
     static void LoadRShift(Channel ch);
 
     static void LoadRange(Channel ch);
 
-    static void LoadTrigLev(void);
+    static void LoadTrigLev();
 
-    static void WriteChipSelect2(void);
+    static void WriteChipSelect2();
 
-    static void WriteChipSelect3(void);
+    static void WriteChipSelect3();
 
-    static void WriteChipSelect4(void);
+    static void WriteChipSelect4();
 
     static void PrepareAndWriteDataToAnalogSPI(uint16 *addrAnalog);
 
-    static void LoadTrigPolarity(void);
+    static void LoadTrigPolarity();
     /// Загрузить регистр WR_UPR (пиковый детектор и калибратор).
-    static void LoadRegUPR(void);
+    static void LoadRegUPR();
     /// \todo временный костыль. При изменении tShift нужно временно останавливать альтеру, а при изменении развёртки не нужно
     static void SetTShift(int tShift, bool needFPGApause);
 
-    static bool ReadOnePoint(void);
+    static bool ReadOnePoint();
 };
 
 

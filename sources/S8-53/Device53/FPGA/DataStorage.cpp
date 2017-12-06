@@ -46,7 +46,7 @@ void DataStorage::PrintElement(DataSettings *dp)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::Clear(void)
+void DataStorage::Clear()
 {
     firstElem = 0;
     lastElem = (DataSettings*)beginPool;
@@ -55,7 +55,7 @@ void DataStorage::Clear(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::ClearLimitsAndSums(void)
+void DataStorage::ClearLimitsAndSums()
 {
     memset(limitUp[0], 0, FPGA_MAX_POINTS);
     memset(limitUp[1], 0, FPGA_MAX_POINTS);
@@ -121,7 +121,7 @@ void DataStorage::AddData(uint8 *data0, uint8 *data1, DataSettings dss)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::AllDatas(void)
+int DataStorage::AllDatas()
 {
     return allData;
 }
@@ -170,7 +170,7 @@ void DataStorage::CalculateLimits(uint8 *data0, uint8 *data1, DataSettings *dss)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::CalculateSums(void)
+void DataStorage::CalculateSums()
 {
     DataSettings *ds = 0;
     uint8 *data0 = 0;
@@ -218,7 +218,7 @@ void DataStorage::CalculateSums(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumElementsWithSameSettings(void)
+int DataStorage::NumElementsWithSameSettings()
 {
     int retValue = 0;
     int numElements = NumElementsInStorage();
@@ -233,7 +233,7 @@ int DataStorage::NumElementsWithSameSettings(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumElementsWithCurrentSettings(void)
+int DataStorage::NumElementsWithCurrentSettings()
 {
     DataSettings dp;
     fpga.FillDataPointer(&dp);
@@ -250,7 +250,7 @@ int DataStorage::NumElementsWithCurrentSettings(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumElementsInStorage(void)
+int DataStorage::NumElementsInStorage()
 {
     int retValue = 0;
     DataSettings *elem = firstElem;
@@ -403,7 +403,7 @@ uint8* DataStorage::GetLimitation(Channel chan, int direction)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::NumberAvailableEntries(void)
+int DataStorage::NumberAvailableEntries()
 {
     if(firstElem == 0)
     {
@@ -480,7 +480,7 @@ void DataStorage::PushData(DataSettings *dp, uint8 *data0, uint8 *data1)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int DataStorage::MemoryFree(void)
+int DataStorage::MemoryFree()
 {
     if (firstElem == 0)
     {
@@ -532,7 +532,7 @@ int DataStorage::SizeElem(DataSettings *dp)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DataStorage::RemoveFirstElement(void)
+void DataStorage::RemoveFirstElement()
 {
     firstElem = NextElem(firstElem);
     firstElem->addrPrev = 0;

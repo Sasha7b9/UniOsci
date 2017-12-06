@@ -76,7 +76,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive::Mount(void)
+void FDrive::Mount()
 {
     FM_Init();
     Menu::ChangeStateFlashDrive();
@@ -87,14 +87,14 @@ void FDrive::Mount(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FDrive::IsConnected(void)
+bool FDrive::IsConnected()
 {
     return gFlashDriveIsConnected;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive::Init(void)
+void FDrive::Init()
 {
     if(FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK) 
     {
@@ -110,7 +110,7 @@ void FDrive::Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FDrive::Update(void)
+void FDrive::Update()
 {
     if (NEED_MOUNT)      // Если обнаружено физическое подключение внешнего диска
     {

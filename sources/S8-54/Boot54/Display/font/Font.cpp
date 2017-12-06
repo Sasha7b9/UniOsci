@@ -10,7 +10,7 @@ typedef unsigned char BYTE;
 const Font *font = &font8;
 
 
-int Font_GetSize(void)
+int Font_GetSize()
 {
     return font->height;
 }

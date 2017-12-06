@@ -17,29 +17,29 @@ static const uint MIN_TIME = 500;
 static void ChangeRShift(int *prevTime, void(*f)(Channel, int16), Channel chan, int16 relStep);
 
 
-void Long_Help(void)
+void Long_Help()
 {
     gBF.showHelpHints++;
     gStringForHint = 0;
     gItemHint = 0;
 }
 
-void ChannelALong(void)
+void ChannelALong()
 {
     menu.LongPressureButton(B_ChannelA);
 }
 
-void ChannelBLong(void)
+void ChannelBLong()
 {
     menu.LongPressureButton(B_ChannelB);
 }
 
-void TimeLong(void)
+void TimeLong()
 {
     menu.LongPressureButton(B_Time);
 }
 
-void TrigLong(void)
+void TrigLong()
 {
     if (MODE_LONG_PRESS_TRIG_IS_LEVEL0)
     {

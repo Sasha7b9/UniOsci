@@ -24,7 +24,7 @@ typedef enum
 } TypeWriteAnalog;
 
 
-void Hardware_Init(void);
+void Hardware_Init();
 
 void Hardware_WriteToAnalog(TypeWriteAnalog type, uint data);
 

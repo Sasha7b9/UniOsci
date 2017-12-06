@@ -3,10 +3,10 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void HelpContent_Draw(void);
-void HelpContent_NextParagraph(void);
-void HelpContent_PrevParagraph(void);
-void HelpContent_EnterParagraph(void);
-void HelpContent_LeaveParagraph(void);
-bool HelpContent_LeaveParagraphIsActive(void);
-bool HelpContent_EnterParagraphIsActive(void);
+void HelpContent_Draw();
+void HelpContent_NextParagraph();
+void HelpContent_PrevParagraph();
+void HelpContent_EnterParagraph();
+void HelpContent_LeaveParagraph();
+bool HelpContent_LeaveParagraphIsActive();
+bool HelpContent_EnterParagraphIsActive();

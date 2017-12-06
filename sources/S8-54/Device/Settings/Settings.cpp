@@ -234,7 +234,7 @@ static void WriteNonResetSettings(Settings *src, Settings *dest);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void LoadDefaultColors(void)
+void LoadDefaultColors()
 {
     for(int color = 0; color < Color::NUMBER; color++) 
     {
@@ -283,14 +283,14 @@ void Settings::Load(bool _default)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings::Save(void)
+void Settings::Save()
 {
     flash.SaveSettings();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Settings::DebugModeEnable(void)
+bool Settings::DebugModeEnable()
 {
     return true;
 }
@@ -318,14 +318,14 @@ void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool MenuIsMinimize(void)
+bool MenuIsMinimize()
 {
     return Menu::OpenedItem()->IsPageSB();
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool MenuPageDebugIsActive(void)
+bool MenuPageDebugIsActive()
 {
     return set.menu_PageDebugActive;
 }

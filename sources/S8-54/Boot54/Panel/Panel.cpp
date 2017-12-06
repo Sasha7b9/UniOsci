@@ -82,7 +82,7 @@ void Panel_TransmitData(uint16 data)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 Panel_NextData(void)
+uint16 Panel_NextData()
 {
     if (lastPos > 0)
     {
@@ -98,14 +98,14 @@ uint16 Panel_NextData(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel_Disable(void)
+void Panel_Disable()
 {
     isRunning = false;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel_Enable(void)
+void Panel_Enable()
 {
     isRunning = true;
 }
@@ -122,7 +122,7 @@ void Panel_Enable(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel_Init(void)
+void Panel_Init()
 {
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -170,7 +170,7 @@ void Panel_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel_DeInit(void)
+void Panel_DeInit()
 {
     HAL_NVIC_DisableIRQ(SPI1_IRQn);
     HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
@@ -218,7 +218,7 @@ extern "C" {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // This interrupt call soft NSS for spi (see Hardware::SPIforPanel.c::
 // PanelInit() and HAL_GPIO_EXTI_Callback())
-void EXTI9_5_IRQHandler(void)
+void EXTI9_5_IRQHandler()
 {
     HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
 }
@@ -226,7 +226,7 @@ void EXTI9_5_IRQHandler(void)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // See Hardware::SPIforPanel.c::HAL_SPI_RxCpltCallback()
-void SPI1_IRQHandler(void)
+void SPI1_IRQHandler()
 {
     HAL_SPI_IRQHandler(&handleSPI);
 }
@@ -237,7 +237,7 @@ void SPI1_IRQHandler(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-PanelButton Panel_PressedButton(void)
+PanelButton Panel_PressedButton()
 {
     return pressedButton;
 }

@@ -28,7 +28,7 @@ uint8 *dataOUT[NumChannels] = {buffer[2], buffer[3]};
 
 void *extraMEM = 0;
 
-static void Clear(void);
+static void Clear();
 /// «аполн€ет структуру dataStruct данными дл€ отрисовки
 static void PrepareDataForDraw(StructDataDrawing *dataStruct);
 static void FillDataP2P(StructDataDrawing *dataStruct, Channel ch);
@@ -45,7 +45,7 @@ static int numPointsP2P = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Clear(void)
+void Clear()
 {
     DS = 0;
 }

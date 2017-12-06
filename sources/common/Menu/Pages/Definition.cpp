@@ -80,7 +80,7 @@ void DrawSB_Exit(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressSB_Exit(void)
+void OnPressSB_Exit()
 {
     Display::RemoveAddDrawFunction();
 }

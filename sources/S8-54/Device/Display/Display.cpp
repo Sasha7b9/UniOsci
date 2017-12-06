@@ -107,68 +107,68 @@ static bool drawRShiftMarkers = false;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void SendOrientationToDisplay(void);
+static void SendOrientationToDisplay();
 
-static bool NeedForClearScreen(void);
+static bool NeedForClearScreen();
 
-static void DrawFullGrid(void);
+static void DrawFullGrid();
 static void DrawGrid(int left, int top, int width, int height);
 static void DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY);
 static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY);
 static void DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX);
-static void DrawGridSpectrum(void);
+static void DrawGridSpectrum();
 
-static void DrawSpectrum(void);
+static void DrawSpectrum();
 static void DRAW_SPECTRUM(const uint8 *dataIn, int numPoints, Channel ch);
 static void DrawSpectrumChannel(const float *spectrum, Color color);
 static void WriteParametersFFT(Channel ch, float freq0, float density0, float freq1, float density1);
 
-static void DrawCursors(void);                          ///< Нарисовать курсоры курсорных измерений.
+static void DrawCursors();                          ///< Нарисовать курсоры курсорных измерений.
 static void DrawVerticalCursor(int x, int yTearing);    ///< \brief Нарисовать вертикальный курсор курсорных измерений. x - числовое значение курсора, 
                                                         ///< yTearing - координата места, в котором необходимо сделать разрыв для квадрата пересечения.
 static void DrawHorizontalCursor(int y, int xTearing);  ///< Нарисовать горизонтальный курсор курсорных измерений. y - числовое значение курсора, 
                                                     ///< xTearing - координата места, в котором необходимо сделать разрыв для квадрата пересечения.
 
-static void DrawCursorsWindow(void);                    ///< Нарисовать вспомогательные курсоры для смещения по напряжению.
+static void DrawCursorsWindow();                    ///< Нарисовать вспомогательные курсоры для смещения по напряжению.
 static void DrawScaleLine(int x, bool forTrigLev);      ///< Нарисовать сетку для вспомогательных курсоров по напряжению.
 
-static void DrawCursorTrigLevel(void);
-static void WriteValueTrigLevel(void);                  ///< Вывести значение уровня синхронизации.
-static void DrawCursorsRShift(void);
+static void DrawCursorTrigLevel();
+static void WriteValueTrigLevel();                  ///< Вывести значение уровня синхронизации.
+static void DrawCursorsRShift();
 static void DrawCursorRShift(Channel ch);
-static void DrawCursorTShift(void);
+static void DrawCursorTShift();
 
-static void DrawHiPart(void);                           ///< Нарисовать то, что находится над основной сеткой.
-static void WriteCursors(void);                         ///< Вывести значения курсоров курсорных измерений.
-static void DrawHiRightPart(void);                      ///< Вывести то, что находится в правой части верхней строки.
+static void DrawHiPart();                           ///< Нарисовать то, что находится над основной сеткой.
+static void WriteCursors();                         ///< Вывести значения курсоров курсорных измерений.
+static void DrawHiRightPart();                      ///< Вывести то, что находится в правой части верхней строки.
 
-static void DrawLowPart(void);                          ///< Нарисовать то, что находится под основной сеткой.
+static void DrawLowPart();                          ///< Нарисовать то, что находится под основной сеткой.
 static void DrawTime(int x, int y);
 static void WriteTextVoltage(Channel ch, int x, int y); ///< Написать в нижней строке параметры вертикального тракта.
 
-static void DrawMeasures(void);                         ///< Вывести значения автоматических измерений.
-static void DrawStringNavigation(void);                 ///< Вывести строку навигации по меню.
-static void DrawRandStat(void);                         ///< Нарисовать график статистики рандомизатора.
-static void DrawWarnings(void);                         ///< Вывести предупреждающие сообщения.
+static void DrawMeasures();                         ///< Вывести значения автоматических измерений.
+static void DrawStringNavigation();                 ///< Вывести строку навигации по меню.
+static void DrawRandStat();                         ///< Нарисовать график статистики рандомизатора.
+static void DrawWarnings();                         ///< Вывести предупреждающие сообщения.
 static void DrawTimeForFrame(uint timeTicks);
-static void DisableShowLevelRShiftA(void);              ///< Отключить вспомогательную линию маркера смещения по напряжению первого канала.
-static void DisableShowLevelRShiftB(void);              ///< Отключить вспомогательную линию маркера смещения по напряжению второго канала.
-static void DisableShowLevelTrigLev(void);
-static void OnRShiftMarkersAutoHide(void);
-static int  FirstEmptyString(void);
-static void DeleteFirstString(void);
+static void DisableShowLevelRShiftA();              ///< Отключить вспомогательную линию маркера смещения по напряжению первого канала.
+static void DisableShowLevelRShiftB();              ///< Отключить вспомогательную линию маркера смещения по напряжению второго канала.
+static void DisableShowLevelTrigLev();
+static void OnRShiftMarkersAutoHide();
+static int  FirstEmptyString();
+static void DeleteFirstString();
 static void AddString(const char *string);
 static void ShowWarn(const char *message);
 static void WriteStringAndNumber(const char *text, int16 x, int16 y, int number);
 static void DrawStringInRectangle(int x, int y, char const *text);
-static int  CalculateFreeSize(void);
-static void OnTimerShowWarning(void);
-static int  CalculateCountV(void);
-static int  CalculateCountH(void);
+static int  CalculateFreeSize();
+static void OnTimerShowWarning();
+static int  CalculateCountV();
+static int  CalculateCountH();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Display::Init(void)
+void Display::Init()
 {
     /*
     Проверка функций рисования 4-х битным цветом в памяти
@@ -197,7 +197,7 @@ void Display::Init(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::Update(void)
+void Display::Update()
 {
     uint timeStart = gTimerTics;
 
@@ -290,7 +290,7 @@ void Display::RotateRShift(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::RotateTrigLev(void)
+void Display::RotateTrigLev()
 {
     if(TIME_SHOW_LEVELS && TRIG_MODE_FIND_HAND)
     {
@@ -307,7 +307,7 @@ void Display::EnableTrigLabel(bool enable)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::ClearFromWarnings(void)
+void Display::ClearFromWarnings()
 {
     Timer::Disable(kShowMessages);
     for(int i = 0; i < NUM_WARNINGS; i++)
@@ -338,19 +338,19 @@ void Display::SetAddDrawFunction(pFuncVV func)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-pFuncVV Display::GetAddDrawFunction(void)
+pFuncVV Display::GetAddDrawFunction()
 {
     return funcAdditionDraw;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::RemoveAddDrawFunction(void)
+void Display::RemoveAddDrawFunction()
 {
     funcAdditionDraw = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::Clear(void)
+void Display::Clear()
 {
     Painter::FillRegion(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, gColorBack);
 }
@@ -395,7 +395,7 @@ void Display::AddStringToIndicating(const char *string)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::OneStringUp(void)
+void Display::OneStringUp()
 {
     if(!CONSOLE_IN_PAUSE)
     {
@@ -407,7 +407,7 @@ void Display::OneStringUp(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::OneStringDown(void)
+void Display::OneStringDown()
 {
     if(!CONSOLE_IN_PAUSE)
     {
@@ -461,7 +461,7 @@ void Display::ShowWarning(Warning warning)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool NeedForClearScreen(void)
+static bool NeedForClearScreen()
 {
     static bool first = true;
     if (first)
@@ -488,7 +488,7 @@ static bool NeedForClearScreen(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void SendOrientationToDisplay(void)
+static void SendOrientationToDisplay()
 {
     if(NEED_SET_ORIENTATION)
     {
@@ -500,7 +500,7 @@ static void SendOrientationToDisplay(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawFullGrid(void)
+static void DrawFullGrid()
 {
     if(sDisplay_IsSeparate())
     {
@@ -522,7 +522,7 @@ static void DrawFullGrid(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawSpectrum(void)
+static void DrawSpectrum()
 {
     if(!FFT_ENABLED)
     {
@@ -569,7 +569,7 @@ static void DrawSpectrum(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCursors(void)
+static void DrawCursors()
 {
     Channel source = CURS_SOURCE;
     Painter::SetColor(Color::Cursors(source));
@@ -609,14 +609,14 @@ static void DrawCursors(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawHiPart(void)
+static void DrawHiPart()
 {
     WriteCursors();
     DrawHiRightPart();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawLowPart(void)
+static void DrawLowPart()
 {
     int y0 = SCREEN_HEIGHT - 19;
     int y1 = SCREEN_HEIGHT - 10;
@@ -771,7 +771,7 @@ static void DrawLowPart(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCursorsWindow(void)
+static void DrawCursorsWindow()
 {
     if((!MenuIsMinimize() || !MENU_IS_SHOWN) && drawRShiftMarkers)
     {
@@ -780,7 +780,7 @@ static void DrawCursorsWindow(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCursorTrigLevel(void)
+static void DrawCursorTrigLevel()
 {
     if(TRIGSOURCE_IS_EXT)
     {
@@ -843,7 +843,7 @@ static void DrawCursorTrigLevel(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawMeasures(void)
+static void DrawMeasures()
 {
     TOP_MEASURES = GRID_BOTTOM;
 
@@ -928,7 +928,7 @@ static void DrawMeasures(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawStringNavigation(void)
+static void DrawStringNavigation()
 {
     if((SHOW_STRING_NAVIGATION || SHOW_STRING_NAVI_ALL) && (MENU_IS_SHOWN || (Menu::TypeOpenedItem()) != Item_Page))
     {
@@ -946,7 +946,7 @@ static void DrawStringNavigation(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCursorTShift(void)
+static void DrawCursorTShift()
 {
 #define FIRST_POINT (points.sword0)
 #define LAST_POINT  (points.sword1)
@@ -991,7 +991,7 @@ static void DrawCursorTShift(void)
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawRandStat(void)
+static void DrawRandStat()
 {
     extern int gRandStat[281];
 
@@ -1017,7 +1017,7 @@ static void DrawRandStat(void)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Написать предупреждения
-static void DrawWarnings(void)
+static void DrawWarnings()
 {
     int delta = 12;
     int y = Grid::BottomMessages();
@@ -1032,7 +1032,7 @@ static void DrawWarnings(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::DrawConsole(void)
+void Display::DrawConsole()
 {
     int count = 0;
     Painter::SetFont(CONSOLE_SIZE_FONT == 5 ? TypeFont_5 : TypeFont_8);
@@ -1076,7 +1076,7 @@ void Display::DrawConsole(void)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // Вывести значение уровян синхронизации
-static void WriteValueTrigLevel(void)
+static void WriteValueTrigLevel()
 {
     if(showLevelTrigLev && MODE_WORK_IS_DIR)
     {
@@ -1150,31 +1150,31 @@ static void DrawTimeForFrame(uint timeTicks)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DisableShowLevelRShiftA(void)
+static void DisableShowLevelRShiftA()
 {
     showLevelRShiftA = false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DisableShowLevelRShiftB(void)
+static void DisableShowLevelRShiftB()
 {
     showLevelRShiftB = false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DisableShowLevelTrigLev(void)
+static void DisableShowLevelTrigLev()
 {
     showLevelTrigLev = false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnRShiftMarkersAutoHide(void)
+static void OnRShiftMarkersAutoHide()
 {
     drawRShiftMarkers = false;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int FirstEmptyString(void)
+static int FirstEmptyString()
 {
     for(int i = 0; i < MAX_NUM_STRINGS; i++)
     {
@@ -1187,7 +1187,7 @@ static int FirstEmptyString(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DeleteFirstString(void)
+static void DeleteFirstString()
 {
     if(FirstEmptyString() < 2)
     {
@@ -1308,7 +1308,7 @@ static void DrawGrid(int left, int top, int width, int height)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawGridSpectrum(void)
+static void DrawGridSpectrum()
 {
     if(SCALE_FFT_IS_LOG)
     {
@@ -1431,7 +1431,7 @@ static void DrawHorizontalCursor(int y, int xTearing)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void WriteCursors(void)
+static void WriteCursors()
 {
     char buffer[20];
     int startX = 43;
@@ -1513,7 +1513,7 @@ static void WriteCursors(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawHiRightPart(void)
+static void DrawHiRightPart()
 {
     // Синхроимпульс
     int y = 2;
@@ -1701,7 +1701,7 @@ static void DrawScaleLine(int x, bool forTrigLev)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawCursorsRShift(void)
+static void DrawCursorsRShift()
 {
     if(FUNC_MODE_DRAW_IS_ENABLED)
     {
@@ -1726,7 +1726,7 @@ static void DrawStringInRectangle(int x, int y, char const *text)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int CalculateFreeSize(void)
+static int CalculateFreeSize()
 {
     int firstEmptyString = FirstEmptyString();
     if(firstEmptyString == 0)
@@ -1737,7 +1737,7 @@ static int CalculateFreeSize(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnTimerShowWarning(void)
+static void OnTimerShowWarning()
 {
     uint time = gTimeMS;
     for(int i = 0; i < NUM_WARNINGS; i++)
@@ -1946,7 +1946,7 @@ static void DrawCursorRShift(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int CalculateCountV(void)
+static int CalculateCountV()
 {
     if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -1968,7 +1968,7 @@ static int CalculateCountV(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int CalculateCountH(void)
+static int CalculateCountH()
 {
     if(MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -1989,7 +1989,7 @@ static const char *textWait = 0;
 static bool clearBackground = false;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FuncOnWait(void)
+static void FuncOnWait()
 {
     if (clearBackground)
     {
@@ -2031,7 +2031,7 @@ void Display::FuncOnWaitStart(const char *text, bool eraseBackground)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::FuncOnWaitStop(void)
+void Display::FuncOnWaitStop()
 {
     Display::SetDrawMode(DrawMode_Auto, 0);
 }

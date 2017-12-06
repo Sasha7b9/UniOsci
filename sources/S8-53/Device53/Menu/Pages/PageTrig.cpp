@@ -128,12 +128,12 @@ DEF_CHOICE_2(       mcAutoFind_Mode,                                            
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_AutoFind_Search(void)
+static bool IsActive_AutoFind_Search()
 {
     return TRIG_MODE_FIND_IS_HAND;
 }
 
-static void OnPress_AutoFind_Search(void)
+static void OnPress_AutoFind_Search()
 {
     fpga.FindAndSetTrigLevel();
 }

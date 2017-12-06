@@ -15,4 +15,4 @@ void FM_RotateRegSet(int angle);
 
 bool FM_GetNameForNewFile(char name[255]);
 
-void PressSB_FM_Tab(void);
+void PressSB_FM_Tab();

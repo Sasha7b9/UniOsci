@@ -50,7 +50,7 @@ class Log
 public:
     static void Trace(TypeTrace type, const char *module, const char *func, int numLine, char *format, ...);
     static void Write(TypeTrace type, char *format, ...);
-    static void DisconnectLoggerUSB(void);
+    static void DisconnectLoggerUSB();
     static void EnableLoggerUSB(bool enable);
-    static int GetNumStrings(void);
+    static int GetNumStrings();
 };

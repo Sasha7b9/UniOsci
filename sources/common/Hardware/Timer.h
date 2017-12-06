@@ -36,7 +36,7 @@ typedef enum
 class Timer
 {
 public:
-    static void Init(void);
+    static void Init();
     /// Назначает таймеру timer функцию и время срабатывания
     static void Set(TypeTimer2 type, pFuncVV func, uint dTms);
 
@@ -56,9 +56,9 @@ public:
 
     static void PauseOnTicks(uint numTicks);
     /// Запускает счётчик для измерения малых отрезков времени
-    static void StartMultiMeasurement(void);
+    static void StartMultiMeasurement();
     /// Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки
-    static void StartLogging(void);
+    static void StartLogging();
 
     static uint LogPointUS(char *name);
 

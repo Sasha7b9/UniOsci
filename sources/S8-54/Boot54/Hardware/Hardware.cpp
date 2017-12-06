@@ -15,7 +15,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void SystemClock_Config(void)
+static void SystemClock_Config()
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -44,7 +44,7 @@ static void SystemClock_Config(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Hardware_Init(void)
+void Hardware_Init()
 {
     HAL_Init();
 
@@ -88,13 +88,13 @@ extern "C" {
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OTG_FS_IRQHandler(void)
+void OTG_FS_IRQHandler()
 {
     HAL_HCD_IRQHandler(&handleHCD);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SysTick_Handler(void)
+void SysTick_Handler()
 {
     HAL_IncTick();
 }

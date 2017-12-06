@@ -15,15 +15,15 @@ class Storage
 {
 public:
     /// Удаление всех сохранённых измерений.
-    static void Clear(void);
+    static void Clear();
     /// Добавить считанные данные. При этом настройками считаются текущие настройки прибора.
     static void AddData(uint8 *dataA, uint8 *dataB, DataSettings dss);
     /// Возвращает число непрерывных измерений, начиная с последнего, с такими же настройками, как у последнего.
-    static int NumElementsWithSameSettings(void);
+    static int NumElementsWithSameSettings();
     /// Возвращает число непрерывных измерений, начиная с последнего, с текущими настройками прибора.
-    static int NumElementsWithCurrentSettings(void);
+    static int NumElementsWithCurrentSettings();
     /// Возвращает количество сохранённых измерений.
-    static int NumElementsInStorage(void);
+    static int NumElementsInStorage();
     /// Получить данные. Счёт идёт с конца. Даннные будут сохранены по адресам ds, dataA, dataB..
     static bool GetDataFromEnd(int fromEnd, DataSettings *ds, uint8 *dataA, uint8 *dataB);
     /// Получить указатели на сохранённые данные. Данные хранятся в ОЗУ.
@@ -37,7 +37,7 @@ public:
     /// Получить ограничивающую линию сигнала 0 - снизу, 1 - сверху
     static bool GetLimitation(Channel ch, uint8 *data, int direction);
     /// Сколько измерений может быть сохранено при такой же длине данных, как у последнего записанного
-    static int NumberAvailableEntries(void);
+    static int NumberAvailableEntries();
 
     //////////////////////////////// Функции для поточечного вывода ////////////////////////////////////////
 
@@ -57,7 +57,7 @@ private:
 
     static void CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss);
 
-    static void CalculateSums(void);
+    static void CalculateSums();
     /// Возвращает true, если настройки измерений с индексами elemFromEnd0 и elemFromEnd1 совпадают, и false в ином случае.
     static bool SettingsIsIdentical(int elemFromEnd0, int elemFromEnd1);
 };

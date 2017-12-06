@@ -70,7 +70,7 @@ void Display::Update()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::ToggleBuffers(void)
+void Display::ToggleBuffers()
 {
     uint destination = (uint)frontBuffer;
     uint source = (uint)backBuffer;
@@ -103,7 +103,7 @@ void Display::ToggleBuffers(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint8 *Display::GetBuffer(void)
+uint8 *Display::GetBuffer()
 {
     return backBuffer;
 }

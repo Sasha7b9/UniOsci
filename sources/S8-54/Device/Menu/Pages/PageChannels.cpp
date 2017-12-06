@@ -128,7 +128,7 @@ DEF_CHOICE_2(       cChanA_Divider,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_ChanA_Balance(void)
+static void OnPress_ChanA_Balance()
 {
     FPGA::BalanceChannel(A);
 };
@@ -156,7 +156,7 @@ DEF_PAGE_7(         pChanA,                                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_ChanB_Input(void)
+static bool IsActive_ChanB_Input()
 {
     return !FPGA_POINTS_32k;
 }
@@ -260,7 +260,7 @@ DEF_CHOICE_2(       cChanB_Divider,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_ChanB_Balance(void)
+static void OnPress_ChanB_Balance()
 {
     FPGA::BalanceChannel(B);
 }

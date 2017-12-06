@@ -7,7 +7,7 @@ ADConverter adc;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void ADConverter::Init(void)
+void ADConverter::Init()
 {
     /*
     АЦП для рандомизатора
@@ -88,7 +88,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 ADConverter::GetValue(void)
+uint16 ADConverter::GetValue()
 {
     return adcValue;
 }

@@ -11,7 +11,7 @@ PCD_HandleTypeDef handlePCD;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void VCP::Init(void)
+void VCP::Init()
 {
     USBD_Init(&handleUSBD, &VCP_Desc, 0);
     USBD_RegisterClass(&handleUSBD, &USBD_CDC);
@@ -21,7 +21,7 @@ void VCP::Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool PrevSendingComplete(void)
+static bool PrevSendingComplete()
 {
     USBD_CDC_HandleTypeDef *pCDC = (USBD_CDC_HandleTypeDef *)handleUSBD.pClassData;
     return pCDC->TxState == 0;
@@ -50,7 +50,7 @@ static int sizeBuffer = 0;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void VCP::Flush(void)
+void VCP::Flush()
 {
     if (sizeBuffer)
     {
@@ -158,7 +158,7 @@ extern "C" {
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OTG_HS_IRQHandler(void)
+void OTG_HS_IRQHandler()
 {
     HAL_PCD_IRQHandler(&handlePCD);
 }

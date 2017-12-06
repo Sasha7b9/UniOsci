@@ -76,7 +76,7 @@ static void Process_MAPPING(uint8 *buffer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Process_ACCUM(uint8 *buffer)
 {
-    extern void OnPress_Accum_Clear(void);
+    extern void OnPress_Accum_Clear();
     
     static const MapElement map[] =
     {
@@ -221,7 +221,7 @@ static void Process_FPS(uint8 *buffer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Process_GRID(uint8 *buffer)
 {
-    extern void OnChanged_Grid_Brightness(void);
+    extern void OnChanged_Grid_Brightness();
     
     static const MapElement map[] =
     {

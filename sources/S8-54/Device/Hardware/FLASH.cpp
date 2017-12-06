@@ -90,7 +90,7 @@ typedef struct
 // Для настроек
 
 // Для данных
-static ArrayDatas* CurrentArray(void);              // Возвращает адрес актуального массива с адресами данных
+static ArrayDatas* CurrentArray();              // Возвращает адрес актуального массива с адресами данных
 static uint AddressSectorForData(int num);          // Возвращает адрес сектора, в котором сохранены данные с номером num
 static uint AddressForData(int num);                // Возвращает адрес, по которому должны быть сохранены данные num
 static void SaveArrayDatas(ArrayDatas array);       // Перезаписать текущий ArrayDatas
@@ -106,7 +106,7 @@ static uint GetSector(uint startAddress);
  
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FlashEEPROM::LoadSettings(void)
+void FlashEEPROM::LoadSettings()
 {
     if (READ_HALF_WORD(ADDR_SECTOR_SETTINGS) != 0xffff) // Выполнение этого условия означает, что настройки уже сохранялись
     {
@@ -127,7 +127,7 @@ void FlashEEPROM::LoadSettings(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashEEPROM::SaveSettings(void)
+void FlashEEPROM::SaveSettings()
 {
     // Записываем в Settings.size текущий размер структуры Settings
     set.size = sizeof(Settings);
@@ -280,7 +280,7 @@ bool FlashEEPROM::ExistData(int num)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FlashEEPROM::DeleteAllData(void)
+void FlashEEPROM::DeleteAllData()
 {
     EraseSector(ADDR_DATA_DATA);
     EraseSector(ADDR_DATA_0);
@@ -458,7 +458,7 @@ void FlashEEPROM::SaveData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ArrayDatas* CurrentArray(void)
+static ArrayDatas* CurrentArray()
 {
     ArrayDatas *array = (ArrayDatas*)ADDR_DATA_DATA;
 

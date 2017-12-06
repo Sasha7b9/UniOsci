@@ -4,7 +4,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int sDisplay_NumSignalsInS(void)
+int sDisplay_NumSignalsInS()
 {
     return Tables_ENUMtoENumSignalsInSec(ENUM_SIGNALS_IN_SEC);
 }
@@ -18,7 +18,7 @@ void sDisplay_SetNumSignalsInS(int numSignalsInS)
  
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sDisplay_NumPointSmoothing(void)
+int sDisplay_NumPointSmoothing()
 {
     if(MODE_EMS && (ENUM_SMOOTHING < ENumSmooth_4points))
     {
@@ -48,7 +48,7 @@ int sDisplay_NumPointSmoothing(void)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-int sDisplay_NumAverage(void)
+int sDisplay_NumAverage()
 {
     if (MODE_EMS && (ENUM_AVE < ENumAverages_8))
     {
@@ -69,7 +69,7 @@ int sDisplay_NumAverage(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-BitSet64 sDisplay_PointsOnDisplay(void)
+BitSet64 sDisplay_PointsOnDisplay()
 {
     BitSet64 retValue;
 
@@ -80,7 +80,7 @@ BitSet64 sDisplay_PointsOnDisplay(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-BitSet64 sDisplay_BytesOnDisplay(void)
+BitSet64 sDisplay_BytesOnDisplay()
 {
     BitSet64 retValue;
 
@@ -92,7 +92,7 @@ BitSet64 sDisplay_BytesOnDisplay(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sDisplay_ShiftInMemoryInPoints(void)
+int sDisplay_ShiftInMemoryInPoints()
 {
     if (SET_PEAKDET_DIS)
     {
@@ -103,7 +103,7 @@ int sDisplay_ShiftInMemoryInPoints(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sDisplay_TimeMenuAutoHide(void)
+int sDisplay_TimeMenuAutoHide()
 {
     static const int times[] =
     {
@@ -114,7 +114,7 @@ int sDisplay_TimeMenuAutoHide(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool sDisplay_IsSeparate(void)
+bool sDisplay_IsSeparate()
 {
     return FUNC_MODE_DRAW_IS_SEPARATE || FFT_ENABLED;
 }
@@ -128,7 +128,7 @@ void sDisplay_SetBrightness(int16 brightness)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-ModeAveraging sDisplay_GetModeAveraging(void)
+ModeAveraging sDisplay_GetModeAveraging()
 {
     if (IN_RANDOM_MODE)
     {

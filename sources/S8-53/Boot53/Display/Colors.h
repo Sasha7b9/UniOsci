@@ -5,7 +5,7 @@
 
 
 /// Возвращает цвет синхронизации.
-Color ColorTrig(void);
+Color ColorTrig();
 /// Цвет заголовка страницы, inShade - затенена ли страница.
 Color ColorMenuTitle(bool inShade);
 /// Цвет элемента меню.
@@ -15,7 +15,7 @@ Color ColorBorderMenu(bool inShade);
 /// Возвращает цвет, контрастный к color. Может быть белым или чёрным.
 Color ColorContrast(Color color);
 /// Светлый цвет в тени.
-Color LightShadingTextColor(void);
+Color LightShadingTextColor();
 
 
 #define ColorMenuField()            COLOR_MENU_FIELD

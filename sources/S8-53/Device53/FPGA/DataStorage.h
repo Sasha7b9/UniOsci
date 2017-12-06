@@ -28,7 +28,7 @@ public:
     int NumberAvailableEntries();
 private:
 
-    void CalculateSums(void);
+    void CalculateSums();
     /// ¬озвращает количество свободной пам€ти в байтах
     int MemoryFree();
     /// ¬ычисл€ет, сколько пам€ти трубуетс€, чтобы сохранить измерени€ с настройками dp

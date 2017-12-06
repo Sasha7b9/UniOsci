@@ -144,12 +144,12 @@ static const ChoiceBase cSearch_Mode =
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Search_Search(void)
+static bool IsActive_Search_Search()
 {
     return TRIG_MODE_FIND_HAND;
 }
 
-static void OnPress_Search_Search(void)
+static void OnPress_Search_Search()
 {
     FPGA::FindAndSetTrigLevel();
 }

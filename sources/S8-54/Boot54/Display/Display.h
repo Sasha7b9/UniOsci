@@ -1,6 +1,6 @@
 #pragma once
 #include "defines.h"
 
-void    Display_Init(void);
-void    Display_Update(void);
-bool    Display_IsRun(void);
+void    Display_Init();
+void    Display_Update();
+bool    Display_IsRun();

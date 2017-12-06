@@ -7,7 +7,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern void OnPress_ResetSettings(void);
+extern void OnPress_ResetSettings();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +52,7 @@ static void EnableLEDChannelB(bool enable);
 typedef struct
 {
     void(*funcOnKey)(int);          ///< Функция вызывается при нажатии(1) / отпускании(-1) кнопки.
-    void(*funcLongPressure)(void);  ///< Функция выывается при длительном удержании кнопки.
+    void(*funcLongPressure)();  ///< Функция выывается при длительном удержании кнопки.
 } StructButton;
 
 
@@ -84,7 +84,7 @@ typedef struct
 {
     void(*rotate)(int delta);       ///< Эта функция вызывается при повороте ручки.
     void(*press)(int delta);        ///< Функция вызывается при нажатии/отпускании ручки.
-    void(*longPress)(void);         ///< Эта функция вызывается при длительном нажатии ручки.
+    void(*longPress)();         ///< Эта функция вызывается при длительном нажатии ручки.
 } StructReg;
 
 /** @todo Убрать дублирование*/
@@ -205,11 +205,11 @@ static PanelRegulator RegulatorRight(uint16 command)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnTimerPressedKey(void)
+void OnTimerPressedKey()
 {
     if(pressedKey != B_Empty)
     {
-        void (*func)(void) = funcButton[pressedKey].funcLongPressure;
+        void (*func)() = funcButton[pressedKey].funcLongPressure;
         if(func)
         {
             func();
@@ -319,7 +319,7 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ProcessingCommand(void)
+static void ProcessingCommand()
 {
     if (recvCommand == C_Reset)
     {
@@ -330,7 +330,7 @@ static void ProcessingCommand(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel::Update(void)
+void Panel::Update()
 {
     if (isRunning)
     {
@@ -456,7 +456,7 @@ void Panel::TransmitData(uint16 data)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 Panel::NextData(void)
+uint16 Panel::NextData()
 {
     if (lastPos > 0)
     {
@@ -472,14 +472,14 @@ uint16 Panel::NextData(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel::Disable(void)
+void Panel::Disable()
 {
     isRunning = false;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel::Enable(void)
+void Panel::Enable()
 {
     isRunning = true;
 }
@@ -496,7 +496,7 @@ void Panel::Enable(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel::Init(void)
+void Panel::Init()
 {
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -555,7 +555,7 @@ void Panel::EnableLEDRegSet(bool enable)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-PanelButton Panel::WaitPressingButton(void)
+PanelButton Panel::WaitPressingButton()
 {
     releasedButton = B_Empty;
     while (releasedButton == B_Empty) {};
@@ -564,7 +564,7 @@ PanelButton Panel::WaitPressingButton(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Panel::DisableIfNessessary(void)
+void Panel::DisableIfNessessary()
 {
     if (NEED_DISABLE_POWER)
     {

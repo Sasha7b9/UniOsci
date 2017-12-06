@@ -10,7 +10,7 @@ extern const PageBase pTime;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Sample(void)
+static bool IsActive_Sample()
 {
     return IN_RANDOM_MODE && !START_MODE_SINGLE;
 }
@@ -27,7 +27,7 @@ DEF_CHOICE_2(       cSample,                                                    
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_PeakDet(void)
+static bool IsActive_PeakDet()
 {
     if (FPGA_POINTS_32k)                       // При 32к точек на канал мы не можем включать пиковый детектор
     {

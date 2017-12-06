@@ -11,13 +11,13 @@
  */
 
 /// Вызывается один раз при обнаружении новой флешки
-void FM_Init(void);
+void FM_Init();
 /// Нарисовать файловый менеджер
-void FM_Draw(void);
+void FM_Draw();
 
-void PressSB_FM_LevelUp(void);
+void PressSB_FM_LevelUp();
 
-void PressSB_FM_LevelDown(void);
+void PressSB_FM_LevelDown();
 
 void FM_RotateRegSet(int angle);
 

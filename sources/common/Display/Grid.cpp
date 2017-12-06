@@ -4,87 +4,87 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int Grid::Left(void)
+int Grid::Left()
 {
     return (MenuIsMinimize() && MENU_IS_SHOWN ? 9 : 20) + measures.GetDeltaGridLeft();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::Right(void)
+int Grid::Right()
 {
     return ((MenuIsMinimize() && MENU_IS_SHOWN) ? 9 : 20) + 280;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::ChannelBottom(void)
+int Grid::ChannelBottom()
 {
     return (sDisplay_IsSeparate()) ? (GRID_TOP + GRID_HEIGHT / 2) : FullBottom();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::ChannelHeight(void)
+int Grid::ChannelHeight()
 {
     return (sDisplay_IsSeparate()) ? Grid::FullHeight() / 2 : Grid::FullHeight();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::ChannelCenterHeight(void)
+int Grid::ChannelCenterHeight()
 {
     return (GRID_TOP + Grid::ChannelBottom()) / 2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::FullBottom(void)
+int Grid::FullBottom()
 {
     return GRID_BOTTOM - measures.GetDeltaGridBottom();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::FullHeight(void)
+int Grid::FullHeight()
 {
     return Grid::FullBottom() - GRID_TOP;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::Width(void)
+int Grid::Width()
 {
     return Grid::Right() - Grid::Left();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::FullCenterHeight(void)
+int Grid::FullCenterHeight()
 {
     return (Grid::FullBottom() + GRID_TOP) / 2;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::WidthInCells(void)
+int Grid::WidthInCells()
 {
     return MENU_IS_SHOWN ? 10 : 14;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Grid::DeltaY(void)
+float Grid::DeltaY()
 {
     float delta = (Grid::FullBottom() - GRID_TOP) / 10.0f;
     return sDisplay_IsSeparate() ? (delta / 2.0f) : delta;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-float Grid::DeltaX(void)
+float Grid::DeltaX()
 {
     float delta = (Grid::Right() - Grid::Left()) / 14.0f;
     return delta;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::MathTop(void)
+int Grid::MathTop()
 {
     return Grid::MathBottom() - Grid::MathHeight();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::MathHeight(void)
+int Grid::MathHeight()
 {
     if (FFT_ENABLED || FUNC_MODE_DRAW_IS_SEPARATE)
     {
@@ -94,13 +94,13 @@ int Grid::MathHeight(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::MathBottom(void)
+int Grid::MathBottom()
 {
     return Grid::FullBottom();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Grid::BottomMessages(void)
+int Grid::BottomMessages()
 {
     int retValue = Grid::FullBottom();
     if (MODE_WORK_IS_ROM)

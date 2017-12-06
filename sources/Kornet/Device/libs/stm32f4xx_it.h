@@ -5,17 +5,17 @@
  extern "C" {
 #endif 
 
-void NMI_Handler(void);
-void HardFault_Handler(void);
-void MemManage_Handler(void);
-void BusFault_Handler(void);
-void UsageFault_Handler(void);
-void SVC_Handler(void);
-void DebugMon_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
-void EXTI9_5_IRQHandler(void);
-void ADC_IRQHandler(void);
+void NMI_Handler();
+void HardFault_Handler();
+void MemManage_Handler();
+void BusFault_Handler();
+void UsageFault_Handler();
+void SVC_Handler();
+void DebugMon_Handler();
+void PendSV_Handler();
+void SysTick_Handler();
+void EXTI9_5_IRQHandler();
+void ADC_IRQHandler();
 
 #ifdef __cplusplus
 }

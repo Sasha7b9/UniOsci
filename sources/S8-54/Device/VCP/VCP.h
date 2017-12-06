@@ -12,7 +12,7 @@
 class VCP
 {
 public:
-    static void Init(void);
+    static void Init();
 
     static void SendDataAsynch(uint8 *data, int size);
 
@@ -28,7 +28,7 @@ public:
 
     static void SendByte(uint8 data);
 
-    static void Flush(void);
+    static void Flush();
 };
 
 

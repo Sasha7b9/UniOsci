@@ -11,24 +11,24 @@ extern "C" {
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void LTDC_IRQHandler(void)
+void LTDC_IRQHandler()
 {
     //HAL_LTDC_IRQHandler(&hltdc);
 }
 
-void SysTick_Handler(void)
+void SysTick_Handler()
 {
     HAL_IncTick();
     HAL_SYSTICK_IRQHandler();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void NMI_Handler(void)
+void NMI_Handler()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HardFault_Handler(void)
+void HardFault_Handler()
 {
     /* Go to infinite loop when Hard Fault exception occurs */
     while (1)
@@ -37,7 +37,7 @@ void HardFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void MemManage_Handler(void)
+void MemManage_Handler()
 {
     /* Go to infinite loop when Memory Manage exception occurs */
     while (1)
@@ -46,7 +46,7 @@ void MemManage_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void BusFault_Handler(void)
+void BusFault_Handler()
 {
     /* Go to infinite loop when Bus Fault exception occurs */
     while (1)
@@ -55,7 +55,7 @@ void BusFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void UsageFault_Handler(void)
+void UsageFault_Handler()
 {
     /* Go to infinite loop when Usage Fault exception occurs */
     while (1)
@@ -64,17 +64,17 @@ void UsageFault_Handler(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SVC_Handler(void)
+void SVC_Handler()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DebugMon_Handler(void)
+void DebugMon_Handler()
 {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PendSV_Handler(void)
+void PendSV_Handler()
 {
 }
 

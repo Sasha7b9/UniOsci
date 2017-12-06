@@ -165,7 +165,7 @@ Settings set;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void LoadDefaultColors(void)
+void LoadDefaultColors()
 {
     for (int color = 0; color < NUM_COLORS; color++)
     {
@@ -175,7 +175,7 @@ void LoadDefaultColors(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Settings_Load(void)
+void Settings_Load()
 {
     set = defaultSettings;
 }

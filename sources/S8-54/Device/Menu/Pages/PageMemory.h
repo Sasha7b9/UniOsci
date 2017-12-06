@@ -13,8 +13,8 @@
  */
 
 void OnChanged_Points(bool active);
-void OnPress_Drive_Manager(void);
-void Memory_SaveSignalToFlashDrive(void);
+void OnPress_Drive_Manager();
+void Memory_SaveSignalToFlashDrive();
 
 
 extern pString namesLengthMemory[];

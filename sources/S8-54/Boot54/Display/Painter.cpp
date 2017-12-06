@@ -36,7 +36,7 @@ void Painter_SendFrame(bool first)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateCurrentColor(void)
+void CalculateCurrentColor()
 {
     if (currentColor == COLOR_FLASH_10)
     {
@@ -72,14 +72,14 @@ void InverseColor(Color *color)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnTimerFlashDisplay(void)
+static void OnTimerFlashDisplay()
 {
     inverseColors = !inverseColors;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter_ResetFlash(void)
+void Painter_ResetFlash()
 {
     Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 400);
     inverseColors = false;
@@ -348,7 +348,7 @@ void Painter_SetBrightnessDisplay(int16 brightness)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int NumberColorsInSceneCol(void)
+int NumberColorsInSceneCol()
 {
     return numberColorsUsed;
 }
@@ -438,7 +438,7 @@ void Painter_BeginScene(Color color)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Painter_RunDisplay(void)
+static void Painter_RunDisplay()
 {
     uint8 command[4];
     command[0] = RUN_BUFFER;
@@ -447,7 +447,7 @@ static void Painter_RunDisplay(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter_EndScene(void)
+void Painter_EndScene()
 {
     if (!framesElapsed)
     {

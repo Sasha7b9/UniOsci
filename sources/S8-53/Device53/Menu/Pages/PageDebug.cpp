@@ -55,7 +55,7 @@ DEF_CHOICE_2(       mcConsole_Registers_ShowAll,                                
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Console_Registers(void)
+static bool IsActive_Console_Registers()
 {
     return !IS_SHOW_REGISTERS_ALL;
 }
@@ -225,13 +225,13 @@ DEF_CHOICE_3(       mcADC_Balance_Mode,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Balance_ShiftA(void)
+static void OnChanged_ADC_Balance_ShiftA()
 {
     BALANCE_ADC_A = shiftADCA;
     fpga.WriteToHardware(WR_ADD_RSHIFT_DAC1, (uint8)BALANCE_ADC_A, false);
 }
 
-static bool IsActive_ADC_Balance_Shift(void)
+static bool IsActive_ADC_Balance_Shift()
 {
     return BALANCE_ADC_TYPE_IS_HAND;
 }
@@ -244,7 +244,7 @@ DEF_GOVERNOR(       mgADC_Balance_ShiftA,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Balance_ShiftB(void)
+static void OnChanged_ADC_Balance_ShiftB()
 {
     BALANCE_ADC_B = shiftADCB;
     fpga.WriteToHardware(WR_ADD_RSHIFT_DAC2, (uint8)BALANCE_ADC_B, false);
@@ -305,12 +305,12 @@ DEF_CHOICE_3(       mcADC_Stretch_Mode,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_ADC_Stretch_ADC(void)
+static bool IsActive_ADC_Stretch_ADC()
 {
     return DEBUG_STRETCH_ADC_TYPE_IS_HAND;
 }
 
-static void OnChanged_ADC_Stretch_ADC_A(void)
+static void OnChanged_ADC_Stretch_ADC_A()
 {
     fpga.WriteToHardware(WR_CAL_A, (uint8)DEBUG_STRETCH_ADC_A, true);
 }
@@ -323,7 +323,7 @@ DEF_GOVERNOR(       mgADC_Stretch_ADC_A,                                        
 )
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Stretch_ADC_B(void)
+static void OnChanged_ADC_Stretch_ADC_B()
 {
     fpga.WriteToHardware(WR_CAL_B, (uint8)DEBUG_STRETCH_ADC_B, true);
 }
@@ -348,7 +348,7 @@ DEF_PAGE_3(         mpADC_Stretch,                                              
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_ADC_AltRShift_Reset(void)
+static void OnPress_ADC_AltRShift_Reset()
 {
     for (int chan = 0; chan < 2; chan++)
     {
@@ -371,7 +371,7 @@ DEF_BUTTON(         mbADC_AltRShift_Reset,                                      
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_AltRShift_A(void)
+static void OnChanged_ADC_AltRShift_A()
 {
     fpga.SetRShift(A, SET_RSHIFT_A);
 }
@@ -384,7 +384,7 @@ DEF_GOVERNOR(       mbADC_AltRShift_2mV_DC_A,                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_AltRShift_B(void)
+static void OnChanged_ADC_AltRShift_B()
 {
     fpga.SetRShift(B, SET_RSHIFT_B);
 }
@@ -457,7 +457,7 @@ DEF_PAGE_3(         mpADC,                                                      
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Randomizer_SamplesForGates(void)
+static void OnChanged_Randomizer_SamplesForGates()
 {
     fpga.SetNumberMeasuresForGates(NUM_MEAS_FOR_GATES);
 }
@@ -470,7 +470,7 @@ DEF_GOVERNOR(       mgRandomizer_SamplesForGates,                               
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Randomizer_AltTShift0(void)
+static void OnChanged_Randomizer_AltTShift0()
 {
     fpga.SetDeltaTShift(ADD_SHIFT_T0);
 }
@@ -520,12 +520,12 @@ DEF_CHOICE_2(       mcSizeSettings,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_SaveFirmware(void)
+static bool IsActive_SaveFirmware()
 {
     return gBF.flashDriveIsConnected;
 }
 
-static void OnPress_SaveFirmware(void)
+static void OnPress_SaveFirmware()
 {
     StructForWrite structForWrite;
 
@@ -555,7 +555,7 @@ DEF_BUTTON(         mbSaveFirmware,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Exit(void)
+static void OnPress_SerialNumber_Exit()
 {
     display.RemoveAddDrawFunction();
     FREE_EXTRAMEM();
@@ -566,7 +566,7 @@ DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Change(void)
+static void OnPress_SerialNumber_Change()
 {
     ACCESS_EXTRAMEM(StructForSN, s);
     ++s->curDigt;
@@ -589,7 +589,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Change,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Save(void)
+static void OnPress_SerialNumber_Save()
 {
     ACCESS_EXTRAMEM(StructForSN, s);
 
@@ -619,7 +619,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Save,                                         
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void Draw_EnterSerialNumber(void)
+static void Draw_EnterSerialNumber()
 {
     int x0 = grid.Left() + 40;
     int y0 = GRID_TOP + 20;

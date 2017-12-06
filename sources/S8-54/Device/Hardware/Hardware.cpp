@@ -18,7 +18,7 @@ static CRC_HandleTypeDef crcHandle;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void SystemClock_Config(void)
+static void SystemClock_Config()
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -47,7 +47,7 @@ static void SystemClock_Config(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Hardware::Init(void)
+void Hardware::Init()
 {
     HAL_Init();
 
@@ -120,7 +120,7 @@ void Hardware::Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint Hardware::CalculateCRC32(void)
+uint Hardware::CalculateCRC32()
 {
     return HAL_CRC_Calculate(&crcHandle, (uint *)0x08020000, 128 * 1024 * 3 / 4);
 }

@@ -37,21 +37,21 @@ static SRAM_HandleTypeDef gSramHandle =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FSMC_RestoreMode(void)
+void FSMC_RestoreMode()
 {
     FSMC_SetMode(prevMode);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ModeFSMC FSMC_GetMode(void)
+ModeFSMC FSMC_GetMode()
 {
     return curMode;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_Init(void)
+void FSMC_Init()
 {
 //    int i = rand();
     /// \todo Это костыль для устранения глюка, что при некоторой величине программы (>206150) в рандомизаторе неправильно работает (см FPGA::DataReadSave())
@@ -203,7 +203,7 @@ void FSMC_SetMode(ModeFSMC mode)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FSMC_InSetStateMode(void)
+bool FSMC_InSetStateMode()
 {
     return inSetStateMode;
 }
@@ -215,7 +215,7 @@ void FSMC_SetFuncitonAfterSetMode(pFuncBV func)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_RemoveFunctionAfterSetMode(void)
+void FSMC_RemoveFunctionAfterSetMode()
 {
     funcAfterSetMode = 0;
 }

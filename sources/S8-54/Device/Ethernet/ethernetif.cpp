@@ -402,7 +402,7 @@ extern "C" {
   *         when LWIP_TIMERS == 1 and NO_SYS == 1
   * @retval Current Time value
   */
-u32_t sys_now(void)
+u32_t sys_now()
 {
   return HAL_GetTick();
 }

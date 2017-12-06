@@ -27,7 +27,7 @@ static TypeWave typeWave = TypeWave_Sine;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Sound::Init(void)
+void Sound::Init()
 {
     DAC_ChannelConfTypeDef config =
     {
@@ -43,7 +43,7 @@ void Sound::Init(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Stop(void)
+static void Stop()
 {
     HAL_DAC_Stop_DMA(&handleDAC, DAC_CHANNEL_1);
     gBF.soundIsBeep = 0;
@@ -80,14 +80,14 @@ void Sound_Beep(TypeWave typeWave_, float frequency_, float amplitude_, int dura
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::ButtonPress(void)
+void Sound::ButtonPress()
 {
     Sound_Beep(TypeWave_Sine, 2000.0f, 0.5f, 50);
     gBF.buttonIsPressed = 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::ButtonRelease(void)
+void Sound::ButtonRelease()
 {
     if (gBF.buttonIsPressed == 1)
     {
@@ -97,28 +97,28 @@ void Sound::ButtonRelease(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::GovernorChangedValue(void)
+void Sound::GovernorChangedValue()
 {
     Sound_Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::RegulatorShiftRotate(void)
+void Sound::RegulatorShiftRotate()
 {
     Sound_Beep(TypeWave_Sine, 1.0f, 0.35f, 3);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::RegulatorSwitchRotate(void)
+void Sound::RegulatorSwitchRotate()
 {
     Sound_Beep(TypeWave_Triangle, 2500.0f, 0.5f, 25);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::WarnBeepBad(void)
+void Sound::WarnBeepBad()
 {
     Sound_Beep(TypeWave_Meandr, 250.0f, 1.0f, 500);
     gBF.soundWarnIsBeep = 1;
@@ -126,14 +126,14 @@ void Sound::WarnBeepBad(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound::WarnBeepGood(void)
+void Sound::WarnBeepGood()
 {
     Sound_Beep(TypeWave_Triangle, 1000.0f, 0.5f, 250);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SetWave(void)
+void SetWave()
 {
     TIM7_Config(0, CalculatePeriodForTIM());
 
@@ -182,13 +182,13 @@ void TIM7_Config(uint16 prescaler, uint16 period)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-uint16 CalculatePeriodForTIM(void)
+uint16 CalculatePeriodForTIM()
 {
     return (uint16)(120e6f / frequency / POINTS_IN_PERIOD);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateSine(void)
+void CalculateSine()
 {
     for (int i = 0; i < POINTS_IN_PERIOD; i++)
     {
@@ -199,7 +199,7 @@ void CalculateSine(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateMeandr(void)
+void CalculateMeandr()
 {
     for (int i = 0; i < POINTS_IN_PERIOD / 2; i++)
     {
@@ -212,7 +212,7 @@ void CalculateMeandr(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void CalculateTriangle(void)
+void CalculateTriangle()
 {
     float k = 255.0 / POINTS_IN_PERIOD;
     for (int i = 0; i < POINTS_IN_PERIOD; i++)

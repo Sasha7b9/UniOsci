@@ -44,7 +44,7 @@ static RTC_HandleTypeDef rtcHandle =
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RTC_Init(void)
+void RTC_Init()
 {
     if (HAL_RTC_Init((RTC_HandleTypeDef*)(&rtcHandle)) != HAL_OK)
     {
@@ -64,7 +64,7 @@ void RTC_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-PackedTime RTC_GetPackedTime(void)
+PackedTime RTC_GetPackedTime()
 {
     PackedTime time;
 

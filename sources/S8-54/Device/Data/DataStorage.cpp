@@ -44,7 +44,7 @@ static uint8 gDataAve[NumChannels][FPGA_MAX_POINTS];
 #define ADDRESS_DATA(ds)        ((ds)->addr)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void ClearLimitsAndSums(void)
+void ClearLimitsAndSums()
 {
     int numBytesA = RequestBytesForChannel(A, 0);
     int numBytesB = RequestBytesForChannel(B, 0);
@@ -59,7 +59,7 @@ void ClearLimitsAndSums(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Storage::Clear(void)
+void Storage::Clear()
 {
     SIZE_POOL = RAM8(DS_POOL_END) - RAM8(DS_POOL_BEGIN);
 
@@ -171,7 +171,7 @@ static int SizeData(DataSettings *ds)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DeleteFirst(void)
+static void DeleteFirst()
 {
     ADDRESS_DATA(&datas[iFirst]) = 0;
     iFirst++;
@@ -409,7 +409,7 @@ void Storage::CalculateLimits(uint8 *dataA, uint8 *dataB, DataSettings *dss)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Storage::CalculateSums(void)
+void Storage::CalculateSums()
 {
     DataSettings *ds = 0;
     uint16 *dataA = 0;
@@ -538,7 +538,7 @@ bool Storage::SettingsIsIdentical(int elemFromEnd0, int elemFromEnd1)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Storage::NumElementsWithSameSettings(void)
+int Storage::NumElementsWithSameSettings()
 {
     int retValue = 0;
     for(retValue = 1; retValue < numElementsInStorage; retValue++)
@@ -553,7 +553,7 @@ int Storage::NumElementsWithSameSettings(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Storage::NumElementsWithCurrentSettings(void)
+int Storage::NumElementsWithCurrentSettings()
 {
     DataSettings dp;
     dp.Fill();
@@ -573,7 +573,7 @@ int Storage::NumElementsWithCurrentSettings(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Storage::NumElementsInStorage(void)
+int Storage::NumElementsInStorage()
 {
     return numElementsInStorage;
 }
@@ -746,7 +746,7 @@ uint8 *Storage::GetAverageData(Channel ch)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Storage::NumberAvailableEntries(void)
+int Storage::NumberAvailableEntries()
 {
     if(ADDRESS_DATA(&datas[iFirst]) == 0)
     {

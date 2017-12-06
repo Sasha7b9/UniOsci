@@ -25,7 +25,7 @@ extern const PageBase ppInformation;
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Draw_ResetSettings(void)
+static void Draw_ResetSettings()
 {
     Painter::BeginScene(gColorBack);
 
@@ -35,7 +35,7 @@ static void Draw_ResetSettings(void)
     Painter::EndScene();
 }
 
-void OnPress_ResetSettings(void)
+void OnPress_ResetSettings()
 {
     Panel::Disable();
     Display::SetDrawMode(DrawMode_Hand, Draw_ResetSettings);
@@ -59,7 +59,7 @@ DEF_BUTTON(         bResetSettings,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_AutoSearch(void)
+static void OnPress_AutoSearch()
 {
     FPGA_NEED_AUTO_FIND = 1;
 };
@@ -88,12 +88,12 @@ DEF_CHOICE_3(       cCalibrator_Calibrator,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Calibrator_Calibrate(void)
+static bool IsActive_Calibrator_Calibrate()
 {
     return !(SET_CALIBR_MODE_A == CalibrationMode_Disable && CALIBR_MODE_B == CalibrationMode_Disable);
 }
 
-static void OnPress_Calibrator_Calibrate(void)
+static void OnPress_Calibrator_Calibrate()
 {
     gStateFPGA.needCalibration = true;
 }
@@ -183,12 +183,12 @@ static const SButton bRecorder_SaveTo =
     }
 };
 
-static bool IsActive_Recorder_SaveTo(void)
+static bool IsActive_Recorder_SaveTo()
 {
     return FDRIVE_IS_CONNECTED;
 }
 
-static void OnPress_Recorder_SaveTo(void)
+static void OnPress_Recorder_SaveTo()
 {
     CircleIncreaseInt8((int8*)(&REC_PLACE_OF_SAVING), 0, PlaceOfSaving_Number - 1);
 }
@@ -230,7 +230,7 @@ static const SButton bRecorder_Choice =
     Draw_Recorder_Choice
 };
 
-static void OnPress_Recorder_Choice(void)
+static void OnPress_Recorder_Choice()
 {
 
 }
@@ -255,7 +255,7 @@ static const SButton bRecorder_Cursor =
     Draw_Recorder_Cursor
 };
 
-static void OnPress_Recorder_Cursor(void)
+static void OnPress_Recorder_Cursor()
 {
     CircleIncreaseInt8(&REC_NUM_CURSOR, 0, 1);
 }
@@ -320,7 +320,7 @@ DEF_SMALL_BUTTON_EXIT(  bFFT_Cursors_Exit,                                      
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_FFT_Cursors_Source(void)
+static void OnPress_FFT_Cursors_Source()
 {
     MATH_CURRENT_CUR = (uint8)((MATH_CURRENT_CUR + 1) % 2);
 }
@@ -338,7 +338,7 @@ DEF_SMALL_BUTTON(   bFFT_Cursors_Source,                                        
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_FFT_Cursors(void)
+static bool IsActive_FFT_Cursors()
 {
     return FFT_ENABLED;
 }
@@ -363,7 +363,7 @@ DEF_PAGE_SB(        pppFFT_Cursors,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_FFT_Range(void)
+static bool IsActive_FFT_Range()
 {
     return SCALE_FFT_IS_LOG;
 }
@@ -379,12 +379,12 @@ DEF_CHOICE_3(       cFFT_Range,                                                 
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_FFT(void)
+static bool IsActive_FFT()
 {
     return !FUNC_MODE_DRAW_IS_ENABLED;
 }
 
-static void OnPress_FFT(void)
+static void OnPress_FFT()
 {
     if (!IsActive_FFT())
     {
@@ -411,7 +411,7 @@ DEF_SMALL_BUTTON_EXIT(  bFunction_Exit,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Function_Screen(void)
+static void OnPress_Function_Screen()
 {
     if (FFT_ENABLED)
     {
@@ -465,7 +465,7 @@ DEF_SMALL_BUTTON_HINTS_3(   bFunction_Screen,                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Function_Type(void)
+static void OnPress_Function_Type()
 {
     CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
 }
@@ -499,7 +499,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bFunction_Type,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Function_ModeRegSet(void)
+static void OnPress_Function_ModeRegSet()
 {
     CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
 }
@@ -530,7 +530,7 @@ DEF_SMALL_BUTTON_HINTS_2(   bFunction_ModeRegSet,                               
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Function_RangeA(void)
+static void OnPress_Function_RangeA()
 {
     SET_RANGE_MATH = SET_RANGE_A;
     MATH_DIVIDER = SET_DIVIDER_A;
@@ -549,7 +549,7 @@ DEF_SMALL_BUTTON(   bFunction_RangeA,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Function_RangeB(void)
+static void OnPress_Function_RangeB()
 {
     SET_RANGE_MATH = SET_RANGE_B;
     MATH_DIVIDER = SET_DIVIDER_B;
@@ -568,12 +568,12 @@ DEF_SMALL_BUTTON(   bFunction_RangeB,                                           
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Function(void)
+static bool IsActive_Function()
 {
     return !FFT_ENABLED;
 }
 
-static void OnPress_Function(void)
+static void OnPress_Function()
 {
     if (FFT_ENABLED)
     {
@@ -783,7 +783,7 @@ DEF_TIME(                                                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Time_Correction(void)
+static void OnChanged_Time_Correction()
 {
     RTC_SetCorrection((int8)NRST_CORRECTION_TIME);
 }
@@ -816,7 +816,7 @@ DEF_CHOICE_2(       cLanguage,                                                  
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void Information_Draw(void)
+static void Information_Draw()
 {
     Painter::BeginScene(gColorBack);
     int x = 100;
@@ -853,12 +853,12 @@ static void Information_Draw(void)
     Painter::EndScene();
 }
 
-static void OnPress_Information(void)
+static void OnPress_Information()
 {
     Display::SetDrawMode(DrawMode_Auto, Information_Draw);
 }
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Information_Exit(void)
+static void OnPress_Information_Exit()
 {
     Display::SetDrawMode(DrawMode_Auto, 0);
 }
@@ -954,13 +954,13 @@ DEF_PAGE_11_GLOBAL(pService,                                                    
 
 /*
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressPrevSettings(void)
+void OnPressPrevSettings()
 {
 
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnChangedColorMenuTitle(void)
+void OnChangedColorMenuTitle()
 {
     uint16 newColor1 = Painter::ReduceBrightness(COLOR(COLOR_MENU_TITLE), 0.50f);
     uint16 newColor2 = Painter::ReduceBrightness(COLOR(COLOR_MENU_TITLE), 1.50f);
@@ -972,7 +972,7 @@ void OnChangedColorMenuTitle(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnChangedColorMenu2Item(void)
+void OnChangedColorMenu2Item()
 {
     uint16 newColor1 = Painter::ReduceBrightness(COLOR(COLOR_MENU_ITEM), 0.50f);
     uint16 newColor2 = Painter::ReduceBrightness(COLOR(COLOR_MENU_ITEM), 1.50f);
@@ -999,12 +999,12 @@ const Button mbServicePreviousSettings =
     OnPressPrevSettings
 };
 
-static bool ActiveF_MathFormula(void)
+static bool ActiveF_MathFormula()
 {
     return MATH_FUNC_IS_MUL || MATH_FUNC_IS_SUM;
 }
 
-static void ChangeF_MathFormula(void)
+static void ChangeF_MathFormula()
 {
 
 }

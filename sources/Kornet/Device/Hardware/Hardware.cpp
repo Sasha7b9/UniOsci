@@ -50,7 +50,7 @@ void Hardware::Init()
 
 /** System Clock Configuration
 */
-void Hardware::SystemClock_Config(void)
+void Hardware::SystemClock_Config()
 {
 
     RCC_OscInitTypeDef RCC_OscInitStruct;
@@ -105,7 +105,7 @@ void Hardware::SystemClock_Config(void)
 
 
 /* ADC3 init function */
-void Hardware::MX_ADC3_Init(void)
+void Hardware::MX_ADC3_Init()
 {
 
     ADC_ChannelConfTypeDef sConfig;
@@ -142,7 +142,7 @@ void Hardware::MX_ADC3_Init(void)
 }
 
 /* DAC init function */
-void Hardware::MX_DAC_Init(void)
+void Hardware::MX_DAC_Init()
 {
 
     DAC_ChannelConfTypeDef sConfig;
@@ -174,7 +174,7 @@ void Hardware::MX_DAC_Init(void)
 }
 
 /* SPI4 init function */
-void Hardware::MX_SPI4_Init(void)
+void Hardware::MX_SPI4_Init()
 {
     hspi4.Instance = SPI4;
     hspi4.Init.Mode = SPI_MODE_MASTER;
@@ -195,7 +195,7 @@ void Hardware::MX_SPI4_Init(void)
 
 }
 
-void Hardware::MX_USART3_UART_Init(void)
+void Hardware::MX_USART3_UART_Init()
 {
     huart3.Instance = USART3;
     huart3.Init.BaudRate = 115200;
@@ -211,7 +211,7 @@ void Hardware::MX_USART3_UART_Init(void)
     }
 }
 
-void Hardware::MX_USB_OTG_FS_PCD_Init(void)
+void Hardware::MX_USB_OTG_FS_PCD_Init()
 {
     hpcd_USB_OTG_FS.Instance = USB_OTG_FS;
     hpcd_USB_OTG_FS.Init.dev_endpoints = 4;
@@ -232,7 +232,7 @@ void Hardware::MX_USB_OTG_FS_PCD_Init(void)
 }
 
 
-void Hardware::MX_USB_OTG_HS_PCD_Init(void)
+void Hardware::MX_USB_OTG_HS_PCD_Init()
 {
     hpcd_USB_OTG_HS.Instance = USB_OTG_HS;
     hpcd_USB_OTG_HS.Init.dev_endpoints = 6;
@@ -254,7 +254,7 @@ void Hardware::MX_USB_OTG_HS_PCD_Init(void)
 }
 
 
-void Hardware::MX_GPIO_Init(void)
+void Hardware::MX_GPIO_Init()
 {
 
     GPIO_InitTypeDef GPIO_InitStruct;

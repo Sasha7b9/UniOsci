@@ -76,12 +76,12 @@ DEF_CHOICE_2(       mcAccumulation_Mode,                                        
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Accumulation_Clear(void)
+static bool IsActive_Accumulation_Clear()
 {
     return ENUM_ACCUM_IS_INFINITY;
 }
 
-void OnPress_Accumulation_Clear(void)
+void OnPress_Accumulation_Clear()
 {
     display.Redraw();
 }
@@ -94,7 +94,7 @@ DEF_BUTTON(mcAccumulation_Clear,                                                
 )
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Accumulation(void)
+static bool IsActive_Accumulation()
 {
     return SET_TBASE > TBase_50ns;
 }
@@ -145,7 +145,7 @@ DEF_CHOICE_2(       mcAveraging_Mode,                                           
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Averaging(void)
+static bool IsActive_Averaging()
 {
     return true;
 }
@@ -160,7 +160,7 @@ DEF_PAGE_2(         mspAveraging,                                               
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_MinMax(void)
+static bool IsActive_MinMax()
 {
     return SET_TBASE > TBase_50ns;
 }
@@ -237,12 +237,12 @@ DEF_CHOICE_4(       mcGrid_Type,                                                
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Grid()};
 
-void OnChanged_Grid_Brightness(void)
+void OnChanged_Grid_Brightness()
 {
     colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 1e2f);
 }
 
-static void BeforeDraw_Grid_Brightness(void)
+static void BeforeDraw_Grid_Brightness()
 {
     colorTypeGrid.Init(false);
     BRIGHTNESS_GRID = (int16)(colorTypeGrid.brightness * 100.0f);
@@ -328,7 +328,7 @@ DEF_PAGE_4(         mspSettings_Colors,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Settings_Brightness(void)
+static void OnChanged_Settings_Brightness()
 {
     painter.SetBrightnessDisplay(BRIGHTNESS);
 }

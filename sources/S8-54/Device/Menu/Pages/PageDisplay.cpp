@@ -16,7 +16,7 @@ extern const PageBase ppAverage;
 extern const PageBase ppGrid;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void PageService_InitGlobalColors(void)
+void PageService_InitGlobalColors()
 {
     gColorBack = BACKGROUND_BLACK ? Color::BLACK : Color::WHITE;
     gColorFill = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
@@ -109,7 +109,7 @@ DEF_PAGE_5(         pppSettings_Colors,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PageDisplay_Init(void)
+void PageDisplay_Init()
 {
     OnChanged_Settings_Colors_Background(true);   // Заносим значения в гувернёры цветов
 }
@@ -167,12 +167,12 @@ DEF_CHOICE_2(       cAccum_Mode,                                                
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Accum_Clear(void)
+static bool IsActive_Accum_Clear()
 {
     return ENUM_ACCUM != ENumAccum_1 && !MODE_ACCUM_NO_RESET;
 }
 
-void OnPress_Accum_Clear(void)
+void OnPress_Accum_Clear()
 {
     NEED_FINISH_DRAW = 1;
 }
@@ -185,7 +185,7 @@ DEF_BUTTON(         bAccum_Clear,                                               
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Accum(void)
+static bool IsActive_Accum()
 {
     return SET_TBASE > TBase_20ns;
 }
@@ -236,7 +236,7 @@ DEF_CHOICE_2(       cAverage_Mode,                                              
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Average(void)
+static bool IsActive_Average()
 {
     return true;
 }
@@ -251,7 +251,7 @@ DEF_PAGE_2(         ppAverage,                                                  
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_MinMax(void)
+static bool IsActive_MinMax()
 {
     return !IN_RANDOM_MODE && !IN_P2P_MODE;
 }
@@ -336,12 +336,12 @@ DEF_CHOICE_4(       cGrid_Type,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnChanged_Grid_Brightness(void)
+void OnChanged_Grid_Brightness()
 {
     colorTypeGrid.SetBrightness(BRIGHTNESS_GRID / 100.0f);
 }
 
-static void BeforeDraw_Grid_Brightness(void)
+static void BeforeDraw_Grid_Brightness()
 {
     colorTypeGrid.Init(false);
     BRIGHTNESS_GRID = (int16)(colorTypeGrid.brightness * 100.0f);
@@ -394,7 +394,7 @@ DEF_PAGE_9(         pDisplay,                                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Settings_Brightness(void)
+static void OnChanged_Settings_Brightness()
 {
     Painter::SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
 }

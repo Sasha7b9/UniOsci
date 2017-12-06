@@ -73,7 +73,7 @@ void FSMC_Write(uint8 *address, uint8 value)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_Init(void)
+void FSMC_Init()
 {
     static const FSMC_NORSRAM_TimingTypeDef sramTiming =
     {

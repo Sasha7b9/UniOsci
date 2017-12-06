@@ -71,7 +71,7 @@ void Log::Trace(TypeTrace type, const char *module, const char *func, int numLin
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Log::DisconnectLoggerUSB(void)
+void Log::DisconnectLoggerUSB()
 {
     //static uint8 data = 20;
     //Log_Write("посылаю %d", data);

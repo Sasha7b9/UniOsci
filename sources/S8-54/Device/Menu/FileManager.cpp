@@ -31,7 +31,7 @@ static int numFiles = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FM_Init(void)
+void FM_Init()
 {
     strcpy(currentDir, "\\");
     numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
@@ -136,7 +136,7 @@ static void DrawNameCurrentDir(int left, int top)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FM_Draw(void)
+void FM_Draw()
 {
     if (!FM_NEED_REDRAW)
     {
@@ -180,7 +180,7 @@ void FM_Draw(void)
     FSMC_SetMode(mode);
 }
 
-void PressSB_FM_LevelDown(void)
+void PressSB_FM_LevelDown()
 {
     FM_NEED_REDRAW = FM_REDRAW_FULL;
     if (!FM_CURSOR_IN_DIRS)
@@ -204,7 +204,7 @@ void PressSB_FM_LevelDown(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_LevelUp(void)
+void PressSB_FM_LevelUp()
 {
     FM_NEED_REDRAW = FM_REDRAW_FULL;
     if (strlen(currentDir) == 1)
@@ -222,7 +222,7 @@ void PressSB_FM_LevelUp(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void IncCurrentDir(void)
+static void IncCurrentDir()
 {
     if (numDirs > 1)
     {
@@ -240,7 +240,7 @@ static void IncCurrentDir(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DecCurrentDir(void)
+static void DecCurrentDir()
 {
     if (numDirs > 1)
     {
@@ -259,7 +259,7 @@ static void DecCurrentDir(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void IncCurrentFile(void)
+static void IncCurrentFile()
 {
     if (numFiles > 1)
     {
@@ -277,7 +277,7 @@ static void IncCurrentFile(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DecCurrentFile(void)
+static void DecCurrentFile()
 {
     if (numFiles > 1)
     {
@@ -387,7 +387,7 @@ bool FM_GetNameForNewFile(char name[255])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_Tab(void)
+void PressSB_FM_Tab()
 {
     FM_NEED_REDRAW = FM_REDRAW_FOLDERS;
 

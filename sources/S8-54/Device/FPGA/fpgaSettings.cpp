@@ -119,7 +119,7 @@ int gAddNStop = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FPGA::LoadTBase(void)
+void FPGA::LoadTBase()
 {
     TBase tBase = SET_TBASE;
     uint8 mask = SET_PEAKDET ? masksTBase[tBase].maskPeackDet : masksTBase[tBase].maskNorm;
@@ -143,7 +143,7 @@ void FPGA::LoadTBase(void)
 int addShiftForFPGA = 0;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::LoadTShift(void)
+void FPGA::LoadTShift()
 {
     TBase tBase = SET_TBASE;
     int tShift = SET_TSHIFT - sTime_TShiftMin() + timeCompensation[tBase];
@@ -271,7 +271,7 @@ void FPGA::LoadRShift(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::LoadTrigLev(void)
+void FPGA::LoadTrigLev()
 {
     uint data = 0x3200000;
     uint trigLev = SET_TRIGLEV(TRIGSOURCE);
@@ -299,14 +299,14 @@ void FPGA::LoadTrigLev(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void WriteChipSelect1(void)
+void WriteChipSelect1()
 {
 
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::WriteChipSelect2(void)
+void FPGA::WriteChipSelect2()
 {
     uint data = 0;
 
@@ -392,14 +392,14 @@ uint PrepareChannel(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::WriteChipSelect3(void)
+void FPGA::WriteChipSelect3()
 {
     Write(RecordAnalog, CS3, PrepareChannel(A), true);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::WriteChipSelect4(void)
+void FPGA::WriteChipSelect4()
 {
     Write(RecordAnalog, CS4, PrepareChannel(B), true);
 }
@@ -428,14 +428,14 @@ void FPGA::LoadRange(Channel ch)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::LoadTrigPolarity(void)
+void FPGA::LoadTrigPolarity()
 {
     Write(RecordFPGA, WR_TRIG, TRIG_POLARITY_FRONT ? 1u : 0u, true);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::LoadRegUPR(void)
+void FPGA::LoadRegUPR()
 {
     uint16 data = 0;
     if(IN_RANDOM_MODE)
@@ -467,7 +467,7 @@ void FPGA::LoadRegUPR(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::LoadSettings(void) 
+void FPGA::LoadSettings() 
 {
     LoadTBase();
     LoadTShift();
@@ -554,7 +554,7 @@ void FPGA::SetTBase(TBase tBase)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::TBaseDecrease(void)
+void FPGA::TBaseDecrease()
 {
     if (SET_PEAKDET && SET_TBASE <= MIN_TBASE_PEC_DEAT)
     {
@@ -589,7 +589,7 @@ void FPGA::TBaseDecrease(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FPGA::TBaseIncrease(void)
+void FPGA::TBaseIncrease()
 {
     if (SET_TBASE < (TBaseSize - 1))
     {

@@ -22,14 +22,14 @@ Vector array[SIZE_ARRAY];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void DrawProgressBar(uint dT);
-static void DrawBigMNIPI(void);
-static void InitPoints(void);
-//static void DrawSeconds(void);
-//static void DrawFrames(void);
+static void DrawBigMNIPI();
+static void InitPoints();
+//static void DrawSeconds();
+//static void DrawFrames();
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void InitHardware(void)
+void InitHardware()
 {
     GPIO_InitTypeDef isGPIO_ =
     {
@@ -44,7 +44,7 @@ void InitHardware(void)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-void Display_Init(void)
+void Display_Init()
 {
     ms->display.value = 0.0f;
     ms->display.isRun = false;
@@ -85,7 +85,7 @@ void DrawButton(int x, int y, char *text)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Display_Update1(void)
+void Display_Update1()
 {
     static uint min = 1000;
     static uint max = 0;
@@ -116,7 +116,7 @@ void Display_Update1(void)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-void Display_Update(void)
+void Display_Update()
 {
     ms->display.isRun = true;
 
@@ -210,13 +210,13 @@ void DrawProgressBar(uint dT)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-bool Display_IsRun(void)
+bool Display_IsRun()
 {
     return ms->display.isRun;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawBigMNIPI(void)
+static void DrawBigMNIPI()
 {
     static uint startTime = 0;
     static bool first = true;
@@ -260,7 +260,7 @@ static void DrawBigMNIPI(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void InitPoints(void)
+static void InitPoints()
 {
     uint8 buffer[320][240];
 
@@ -282,13 +282,13 @@ static void InitPoints(void)
 
 /*
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawSeconds(void)
+static void DrawSeconds()
 {
     Painter_DrawTextFormatting(5, 200, COLOR_WHITE, "%f секунд", HAL_GetTick() / 1000.0f);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawFrames(void)
+static void DrawFrames()
 {
     static int numFrames = 0;
 

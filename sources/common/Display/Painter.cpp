@@ -32,7 +32,7 @@ static enum StateTransmit
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void OnTimerFlashDisplay(void);
+static void OnTimerFlashDisplay();
 static void CalculateColor(uint8 *color);
 static uint8 Read2points(int x, int y);
 
@@ -71,7 +71,7 @@ void Painter::BeginScene(Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::EndScene(void)
+void Painter::EndScene()
 {
     if (!framesElapsed)
     {
@@ -100,7 +100,7 @@ void Painter::SendFrame(bool first)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::ResetFlash(void)
+void Painter::ResetFlash()
 {
     Timer::SetAndEnable(kFlashDisplay, OnTimerFlashDisplay, 400);
     inverseColors = false;
@@ -123,13 +123,13 @@ void Painter::SetColor(Color color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-Color Painter::GetColor(void)
+Color Painter::GetColor()
 {
     return currentColor;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::LoadPalette(void)
+void Painter::LoadPalette()
 {
     for (uint8 i = 0; i < Color::NUMBER; i++)
     {
@@ -657,7 +657,7 @@ void Painter::SendToInterfaces(uint8 *pointer, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::RunDisplay(void)
+void Painter::RunDisplay()
 {
     uint8 command[4] = {RUN_BUFFER};
 
@@ -665,7 +665,7 @@ void Painter::RunDisplay(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnTimerFlashDisplay(void)
+static void OnTimerFlashDisplay()
 {
     inverseColors = !inverseColors;
 }
@@ -685,7 +685,7 @@ static void CalculateColor(uint8 *color)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Painter::CalculateCurrentColor(void)
+void Painter::CalculateCurrentColor()
 {
     if (currentColor == Color::FLASH_10)
     {

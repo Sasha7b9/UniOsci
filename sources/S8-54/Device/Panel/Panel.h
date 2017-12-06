@@ -15,9 +15,9 @@ class Panel
 {
 public:
     /// Инициализация аппартаного обеспечения
-    static void Init(void);
+    static void Init();
     /// Функцию нужно вызывать каждый кадр для обработки полученных в данном кадре событий клавиатуры
-    static void Update(void);
+    static void Update();
     /// Включить/выключить лампочку одного из каналов
     static void EnableLEDChannel(Channel ch, bool enable);
     /// Включить/выключить лампочку УСТАНОВКА
@@ -28,17 +28,17 @@ public:
     static void TransmitData(uint16 data);
     /// Отлючить панель управления
     /** Когда панель отключена, то происходит лишь обновление состояния переменной releasedButton */
-    static void Disable(void);
+    static void Disable();
     /// Включить панель управления
-    static void Enable(void);
+    static void Enable();
     /// Обработать полученную команду
     static bool ProcessingCommandFromPIC(uint16 command);
     /// Возвращает следующие данные, подготовленные для отправки в панель, из буфера
-    static uint16 NextData(void);
+    static uint16 NextData();
     /// Ожидание нажатия клавиши
-    static PanelButton WaitPressingButton(void);
+    static PanelButton WaitPressingButton();
     /// Отлкючает прибор, если была нажата кнопка ПИТАНИЕ
-    static void DisableIfNessessary(void);
+    static void DisableIfNessessary();
 };
 
 

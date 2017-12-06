@@ -154,14 +154,14 @@ void RAM_MemSet_Sinch(uint8 *dest, uint8 value_, int numBytes)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool RAM_WriteReadComplete(void)
+bool RAM_WriteReadComplete()
 {
     return transferComplete;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_WaitWriteReadComplete(void)
+void RAM_WaitWriteReadComplete()
 {
     while (!transferComplete) {};
 }
@@ -180,7 +180,7 @@ static void TransferError(DMA_HandleTypeDef *)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void RAM_Init(void)
+void RAM_Init()
 {
     __HAL_RCC_DMA2_CLK_ENABLE();
 

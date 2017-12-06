@@ -12,11 +12,11 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Ќарисовать данные, которые рисовались бы, если б был установлен режим ModeWork_Dir.
-static void DrawData_ModeDir(void);
+static void DrawData_ModeDir();
 /// Ќарисовать данные, которые рисовались бы, если б был установлен режим ModeWork_RAM.
-static void DrawData_ModeRAM(void);
+static void DrawData_ModeRAM();
 /// Ќарисовать данные, которые рисовались бы, если б был установлен режим ModeWork_ROM.
-static void DrawData_ModeROM(void);
+static void DrawData_ModeROM();
 /// Ќарисовать данные из outA, outB.
 static void DrawData(bool forAccum);
 /// Ќарисовать данные из outA или outB.
@@ -58,9 +58,9 @@ static int Ordinate(uint8 x, float scale);
 /// ¬озвращает точку в экранной координате. ≈сли точка не считана (NONE_VALUE), возвращает -1.
 static void SendToDisplayDataInRect(Channel chan, int x, int *min, int *max, int width);
 /// Ќарисовать данные в окне пам€ти
-static void DrawMemoryWindow(void);
+static void DrawMemoryWindow();
 
-static void IncreaseNumDrawingSignals(void);
+static void IncreaseNumDrawingSignals();
 
 #define CONVERT_DATA_TO_DISPLAY(out, inVal)                     \
     int in = inVal;                                             \
@@ -80,13 +80,13 @@ static StructDataDrawing *dataStruct = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void PainterData::InterruptDrawing(void)
+void PainterData::InterruptDrawing()
 {
     interruptDrawing = true;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawData(void)
+void PainterData::DrawData()
 {
     dataStruct = (StructDataDrawing *)malloc(sizeof(StructDataDrawing));
 
@@ -134,7 +134,7 @@ void PainterData::DrawData(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawData_ModeDir(void)
+static void DrawData_ModeDir()
 {  
     Reader::ReadFromRAM(0, dataStruct, true);
     DrawMemoryWindow();
@@ -178,7 +178,7 @@ static void DrawData_ModeDir(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void IncreaseNumDrawingSignals(void)
+static void IncreaseNumDrawingSignals()
 {
     static uint8 *addr = 0;
 
@@ -194,14 +194,14 @@ static void IncreaseNumDrawingSignals(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawData_ModeRAM(void)
+static void DrawData_ModeRAM()
 {
     Reader::ReadFromRAM(NUM_RAM_SIGNAL, dataStruct, false);
     DrawData(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawData_ModeROM(void)
+static void DrawData_ModeROM()
 {
     Reader::ReadFromROM(dataStruct);
 
@@ -495,7 +495,7 @@ static void DrawLimitLabel(int delta)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PainterData::DrawMath(void)
+void PainterData::DrawMath()
 {
     if (!FUNC_MODE_DRAW_IS_ENABLED || Storage::GetData_RAM(A, 0) == 0 || Storage::GetData_RAM(B, 0) == 0)
     {
@@ -812,7 +812,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawMemoryWindow(void)
+static void DrawMemoryWindow()
 {
     static const int rightXses[3] = {276, 285, 247};
     int rightX = rightXses[MODE_WORK];

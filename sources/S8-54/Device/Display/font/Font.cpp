@@ -18,7 +18,7 @@ const Font *fonts[TypeFont_Number] = {&font5, &font8, &fontUGO, &fontUGO2};
 const Font *font = &font8;
 
 
-int Font_GetSize(void)
+int Font_GetSize()
 {
     return font->height;
 }

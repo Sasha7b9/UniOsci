@@ -94,7 +94,7 @@ void Hardware::ConfigSystemClock()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ConfigSystemClock1(void)
+void ConfigSystemClock1()
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;

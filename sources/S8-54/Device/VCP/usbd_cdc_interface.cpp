@@ -22,8 +22,8 @@ static USBD_CDC_LineCodingTypeDef LineCoding =
 static uint8_t UserRxBuffer[APP_RX_DATA_SIZE];/* Received Data over USB are stored in this buffer */
 
 
-static int8_t CDC_Itf_Init     (void);
-static int8_t CDC_Itf_DeInit   (void);
+static int8_t CDC_Itf_Init     ();
+static int8_t CDC_Itf_DeInit   ();
 static int8_t CDC_Itf_Control  (uint8_t cmd, uint8_t* pbuf, uint16_t length);
 static int8_t CDC_Itf_Receive  (uint8_t* pbuf, uint32_t *Len);
 
@@ -38,7 +38,7 @@ USBD_CDC_ItfTypeDef USBD_CDC_fops =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void SetAttributeConnected(void)
+static void SetAttributeConnected()
 {
     CABLE_USB_IS_CONNECTED = true;
     CONNECTED_TO_USB = false;
@@ -46,7 +46,7 @@ static void SetAttributeConnected(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int8_t CDC_Itf_Init(void)
+static int8_t CDC_Itf_Init()
 {
     USBD_CDC_SetRxBuffer(&handleUSBD, UserRxBuffer);
     Timer::SetAndStartOnce(kUSB, SetAttributeConnected, 100);   /** \todo Задержка введена для того, чтобы не было ложных срабатываний в 
@@ -56,7 +56,7 @@ static int8_t CDC_Itf_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static int8_t CDC_Itf_DeInit(void)
+static int8_t CDC_Itf_DeInit()
 {
     CABLE_USB_IS_CONNECTED = false;
     CONNECTED_TO_USB = false;

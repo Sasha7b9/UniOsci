@@ -255,9 +255,9 @@ public:
     /// неудачи - тоже настройки по умолчанию.
     static void Load(bool _default);
     /// Сохранить настройки во флеш-память.
-    static void Save(void);
+    static void Save();
     /// Возвращает true, если включён режим отладки.
-    static bool DebugModeEnable(void);
+    static bool DebugModeEnable();
     /// Сохраняет текущие настройки в set_.
     static void SaveState(Settings *set_);
     /// Восстанавливает ранее записанные настройки в set_.
@@ -275,9 +275,9 @@ int8 MenuCurrentSubPage(NamePage namePage);
 /// Устанавливает номер текущей подстраницы в странице namePage.
 void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage);
 /// Если true - меню находится в дополнительном режиме.
-bool MenuIsMinimize(void);
+bool MenuIsMinimize();
 /// Активна ли страница отладки.
-bool MenuPageDebugIsActive(void);
+bool MenuPageDebugIsActive();
 /// Сделать/разделать активной страницу отладки.
 void SetMenuPageDebugActive(bool active);
 /// Повернуть ручку УСТАНОВКА на текущей странице малых кнопок.

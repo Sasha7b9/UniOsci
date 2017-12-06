@@ -132,7 +132,7 @@ static void FuncOnTimerDisableShowLevelTrigLev()
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void Display::Redraw(void)
+void Display::Redraw()
 {
     gBF.needFinishDraw = 1;
 }
@@ -922,7 +922,7 @@ void DrawChannelInWindowMemory(int timeWindowRectWidth, int xVert0, int xVert1, 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 // Нарисовать окно памяти
-void DrawMemoryWindow(void)
+void DrawMemoryWindow()
 {
     uint8 *dat0 = gData0memInt;
     uint8 *dat1 = gData1memInt;
@@ -1388,7 +1388,7 @@ void Display::DrawFullGrid()
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static int CalculateCountV(void)
+static int CalculateCountV()
 {
     if (MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -1411,7 +1411,7 @@ static int CalculateCountV(void)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static int CalculateCountH(void)
+static int CalculateCountH()
 {
     if (MODE_VIEW_SIGNALS_IS_COMPRESS)
     {

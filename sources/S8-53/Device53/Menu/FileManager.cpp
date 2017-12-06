@@ -34,7 +34,7 @@ static int numFiles = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FM_Init(void)
+void FM_Init()
 {
     strcpy(currentDir, "\\");
     numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
@@ -140,7 +140,7 @@ static void DrawNameCurrentDir(int left, int top)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FM_Draw(void)
+void FM_Draw()
 {
     if (gBF.needRedrawFileManager == 0)
     {
@@ -182,7 +182,7 @@ void FM_Draw(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_Tab(void)
+void PressSB_FM_Tab()
 {
     gBF.needRedrawFileManager = 1;
 
@@ -203,7 +203,7 @@ void PressSB_FM_Tab(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_LevelDown(void)
+void PressSB_FM_LevelDown()
 {
     gBF.needRedrawFileManager = 1;
     if (gBF.cursorInDirs == 0)
@@ -227,7 +227,7 @@ void PressSB_FM_LevelDown(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_LevelUp(void)
+void PressSB_FM_LevelUp()
 {
     gBF.needRedrawFileManager = 1;
     if (strlen(currentDir) == 1)
@@ -245,7 +245,7 @@ void PressSB_FM_LevelUp(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void IncCurrentDir(void)
+static void IncCurrentDir()
 {
     if (numDirs > 1)
     {
@@ -263,7 +263,7 @@ static void IncCurrentDir(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DecCurrentDir(void)
+static void DecCurrentDir()
 {
     if (numDirs > 1)
     {
@@ -282,7 +282,7 @@ static void DecCurrentDir(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void IncCurrentFile(void)
+static void IncCurrentFile()
 {
     if (numFiles > 1)
     {
@@ -300,7 +300,7 @@ static void IncCurrentFile(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DecCurrentFile(void)
+static void DecCurrentFile()
 {
     if (numFiles > 1)
     {

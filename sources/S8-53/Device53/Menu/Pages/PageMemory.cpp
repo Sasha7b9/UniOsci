@@ -471,7 +471,7 @@ DEF_SMALL_BUTTON(   sbFileManagerLevelUp,                                       
     mspFileManager, FuncActive, PressSB_FM_LevelUp, DrawSB_FM_LevelUp
 );
 
-static void SaveSignalToIntMemory(void)
+static void SaveSignalToIntMemory()
 {
     if (gMemory.exitFromIntToLast == 1)
     {
@@ -731,14 +731,14 @@ DEF_SMALL_BUTTON_EXIT(  sbExitMemInt,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressMemoryExtMask(void)
+void OnPressMemoryExtMask()
 {
     menu.OpenPageAndSetItCurrent(PageSB_Memory_Drive_Mask);
     display.SetAddDrawFunction(DrawSetMask);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool FuncActiveMemoryNumPoinst(void)
+static bool FuncActiveMemoryNumPoinst()
 {
     return PEAKDET_IS_DISABLE;
 }

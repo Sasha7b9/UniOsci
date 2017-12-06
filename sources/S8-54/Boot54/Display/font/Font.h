@@ -18,7 +18,7 @@ typedef struct
 
 extern const Font *font;
 
-int Font_GetSize(void);
+int Font_GetSize();
 int Font_GetLengthText(const char *text);
 int Font_GetHeightSymbol(char symbol);
 int Font_GetLengthSymbol(char symbol);

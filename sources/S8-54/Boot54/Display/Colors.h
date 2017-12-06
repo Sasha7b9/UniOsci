@@ -1,14 +1,14 @@
 #pragma once
 #include "defines.h"
 
-Color ColorTrig(void);                  // Возвращает цвет синхронизации.
+Color ColorTrig();                  // Возвращает цвет синхронизации.
 Color ColorMenuTitle                    // Цвет заголовка страницы.
                     (bool inShade       // Затенена ли страница.
                     );
 Color ColorMenuItem(bool inShade);      // Цвет элемента меню.
 Color ColorBorderMenu(bool inShade);    // Цвет окантовки меню.
 Color ColorContrast(Color color);       // Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-Color LightShadingTextColor(void);      // Светлый цвет в тени.
+Color LightShadingTextColor();      // Светлый цвет в тени.
 
 
 #define COLOR_MENU_FIELD COLOR_MENU_FIELD

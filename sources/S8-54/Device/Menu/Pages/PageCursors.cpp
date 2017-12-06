@@ -119,7 +119,7 @@ static void Draw_Set_ChannelB(int x, int y)
     Painter::DrawText(x + 7, y + 5, "2");
 }
 
-static void OnPress_Set_Channel(void)
+static void OnPress_Set_Channel()
 {
     Channel source = CURS_SOURCE_A ? B : A;
     SetCursSource(source);
@@ -166,7 +166,7 @@ static void Draw_Set_U_enableBoth(int x, int y)
     DrawMenuCursVoltage(x + 7, y + 5, true, true);
 }
 
-static void OnPress_Set_U(void)
+static void OnPress_Set_U()
 {
     if (CURS_ACTIVE_U || CURsU_DISABLED)
     {
@@ -252,7 +252,7 @@ static void Draw_Set_T_enableBoth(int x, int y)
     DrawMenuCursTime(x, y, true, true);
 }
 
-static void OnPress_Set_T(void)
+static void OnPress_Set_T()
 {
     if (CURS_ACTIVE_T || CURsT_DISABLED)
     {
@@ -307,7 +307,7 @@ DEF_SMALL_BUTTON_HINTS_5(   bSet_T,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Set_100(void)
+static void OnPress_Set_100()
 {
     SetCursPos100(CURS_SOURCE);
 }
@@ -340,7 +340,7 @@ static void Draw_Set_Movement_Points(int x, int y)
     Painter::SetFont(TypeFont_8);
 }
 
-static void OnPress_Set_Movement(void)
+static void OnPress_Set_Movement()
 {
     CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
 }
@@ -492,7 +492,7 @@ static void IncCursCntrlT(Channel ch)
     CircleIncrease<int8>((int8 *)&CURsT_CNTRL_CH(ch), 0, 3);
 }
 
-void CursorsUpdate(void)
+void CursorsUpdate()
 {
     Channel source = CURS_SOURCE;
 
@@ -562,7 +562,7 @@ static void MoveCursTonPercentsOrPoints(int delta)
     CursorsUpdate();
 }
 
-bool IsRegSetActiveOnCursors(void)
+bool IsRegSetActiveOnCursors()
 {
     return ((Menu::GetNameOpenedPage() == PageSB_Cursors_Set) &&
         ((CURS_ACTIVE_U && CURsU_ENABLED) || (CURS_ACTIVE_T && CURsT_ENABLED)));

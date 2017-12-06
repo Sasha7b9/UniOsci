@@ -12,7 +12,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void ResetItemsUnderButton(void);
+static void ResetItemsUnderButton();
 static void DrawOpenedPage(Page *page, int layer, int yTop);
 static void DrawTitlePage(Page *page, int layer, int yTop);
 static void DrawItemsPage(Page *page, int layer, int yTop);
@@ -366,7 +366,7 @@ int ItemOpenedPosY(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::Draw(void)
+void Menu::Draw()
 {
     if (MENU_IS_SHOWN || TypeOpenedItem() != Item_Page)
     {
@@ -424,7 +424,7 @@ void Menu::Draw(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ResetItemsUnderButton(void)
+void ResetItemsUnderButton()
 {
     for (int i = 0; i < B_NumButtons; i++)
     {

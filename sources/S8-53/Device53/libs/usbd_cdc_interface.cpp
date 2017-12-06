@@ -49,7 +49,7 @@ static void SetAttributeConnected()
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static int8_t CDC_Itf_Init(void)
+static int8_t CDC_Itf_Init()
 {
     USBD_CDC_SetRxBuffer(&handleUSBD, UserRxBuffer);
     Timer_Enable(kTemp, 100, SetAttributeConnected);    // GOVNOCODE Задержка введена для того, чтобы не было ложных срабатываний в 
@@ -58,7 +58,7 @@ static int8_t CDC_Itf_Init(void)
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static int8_t CDC_Itf_DeInit(void)
+static int8_t CDC_Itf_DeInit()
 {
     gBF.cableVCPisConnected = 0;
     gBF.connectToHost = 0;

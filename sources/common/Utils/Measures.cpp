@@ -81,7 +81,7 @@ char Measures::GetChar(Meas measure)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDY(void)
+int Measures::GetDY()
 {
     if(SOURCE_MEASURE_IS_A_B && SET_ENABLED_A && SET_ENABLED_B)
     {
@@ -92,7 +92,7 @@ int Measures::GetDY(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDX(void)
+int Measures::GetDX()
 {
     return GRID_WIDTH / 5; 
 }
@@ -113,7 +113,7 @@ Meas Measures::Type(int row, int col)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetTopTable(void)
+int Measures::GetTopTable()
 {
     if(NUM_MEASURES_IS_6_1 || NUM_MEASURES_IS_6_2)
     {
@@ -124,7 +124,7 @@ int Measures::GetTopTable(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::NumCols(void)
+int Measures::NumCols()
 {
     const int cols[] = {1, 2, 5, 5, 5, 1, 2};
     return cols[NUM_MEASURES];
@@ -132,7 +132,7 @@ int Measures::NumCols(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::NumRows(void)
+int Measures::NumRows()
 {
     int rows[] = {1, 1, 1, 2, 3, 6, 6};
     return rows[NUM_MEASURES];
@@ -140,7 +140,7 @@ int Measures::NumRows(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDeltaGridLeft(void)
+int Measures::GetDeltaGridLeft()
 {
     if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -158,7 +158,7 @@ int Measures::GetDeltaGridLeft(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Measures::GetDeltaGridBottom(void)
+int Measures::GetDeltaGridBottom()
 {
     if(SHOW_MEASURES && MODE_VIEW_SIGNALS_IS_COMPRESS)
     {
@@ -180,7 +180,7 @@ int Measures::GetDeltaGridBottom(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::ShortPressOnSmallButonMarker(void)
+void Measures::ShortPressOnSmallButonMarker()
 {
     if(MEASURE(posActive) == MEAS_MARKED)
     {
@@ -194,7 +194,7 @@ void Measures::ShortPressOnSmallButonMarker(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Measures::DrawPageChoice(void)
+void Measures::DrawPageChoice()
 {
     if(!pageChoiceIsActive)
     {

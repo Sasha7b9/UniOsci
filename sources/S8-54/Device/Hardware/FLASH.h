@@ -20,15 +20,15 @@
 class FlashEEPROM
 {
 public:
-    void LoadSettings(void);  ///< Если onlyNonReset == true, загружаются только несбрасываемые настройки.
-    void SaveSettings(void);
+    void LoadSettings();  ///< Если onlyNonReset == true, загружаются только несбрасываемые настройки.
+    void SaveSettings();
     
     void GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES]);    ///< Если даннные есть, соответствующий элемент массива равен true.
     bool ExistData(int num);
     void SaveData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB);
     bool GetData(int num, DataSettings *ds, uint8 *dataA, uint8 *dataB);
     void DeleteData(int num);
-    void DeleteAllData(void);
+    void DeleteAllData();
 };
 
 extern FlashEEPROM flash;

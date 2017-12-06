@@ -52,27 +52,27 @@ public:
 
     void SetActive(int row, int col);
 
-    int GetDY(void);
+    int GetDY();
 
-    int GetDX(void);
+    int GetDX();
 
     const char *Name(int row, int col);
 
     Meas Type(int row, int col);
 
-    int NumRows(void);
+    int NumRows();
 
-    int NumCols(void);
+    int NumCols();
 
-    int GetTopTable(void);
+    int GetTopTable();
 
-    int GetDeltaGridLeft(void);
+    int GetDeltaGridLeft();
 
-    int GetDeltaGridBottom(void);
+    int GetDeltaGridBottom();
 
-    void ShortPressOnSmallButonMarker(void);
+    void ShortPressOnSmallButonMarker();
     /// Нарисовать страницу выбора измерений
-    void DrawPageChoice(void);
+    void DrawPageChoice();
 };
 
 

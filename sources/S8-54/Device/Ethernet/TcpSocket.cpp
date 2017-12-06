@@ -21,7 +21,7 @@ struct State
     int numPort;
 };
 
-static void(*SocketFuncConnect)(void) = 0;                                 // this function will be called every time a new connection
+static void(*SocketFuncConnect)() = 0;                                 // this function will be called every time a new connection
 static void(*SocketFuncReceiver)(const char *buffer, uint length) = 0;     // this function will be called when a message is received from any client
 
 bool gEthIsConnected = false;                                       // Если true, то подсоединён клиент
@@ -31,7 +31,7 @@ static void Send(struct tcp_pcb *tpcb, struct State *ss);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool TCPSocket_Init(void(*funcConnect)(void), void(*funcReceiver)(const char *buffer, uint length))
+bool TCPSocket_Init(void(*funcConnect)(), void(*funcReceiver)(const char *buffer, uint length))
 {
     struct tcp_pcb *pcb = tcp_new();
     if (pcb != NULL)

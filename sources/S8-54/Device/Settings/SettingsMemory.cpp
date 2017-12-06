@@ -4,7 +4,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int sMemory_NumPointsInChannel_(void)
+int sMemory_NumPointsInChannel_()
 {
     static const int numPoints[FPGA_ENUM_POINTS_SIZE] =
     {
@@ -21,7 +21,7 @@ int sMemory_NumPointsInChannel_(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int sMemory_NumBytesInChannel_(void)
+int sMemory_NumBytesInChannel_()
 {
     DataSettings ds;
     ds.Fill();

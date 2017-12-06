@@ -52,8 +52,8 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-int sMemory_NumPointsInChannel_(void);
-int sMemory_NumBytesInChannel_(void);
+int sMemory_NumPointsInChannel_();
+int sMemory_NumBytesInChannel_();
 
 ENumPointsFPGA NumPoints_2_ENumPoints(int numPoints);
 int ENumPoints_2_NumPoints(ENumPointsFPGA numPoints);

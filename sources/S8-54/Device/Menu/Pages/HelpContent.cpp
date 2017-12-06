@@ -18,7 +18,7 @@ static const int WIDTH = 295;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void DrawPageContent(void)
+static void DrawPageContent()
 {
     int y = 50;
     Painter::DrawStringInCenterRect(0, y, WIDTH, 10, currentPage->titleHint[LANG]);
@@ -45,14 +45,14 @@ static void DrawPageContent(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawPageDescription(void)
+static void DrawPageDescription()
 {
     Painter::DrawStringInCenterRect(0, 3, WIDTH, 10, currentPage->titleHint[LANG]);
     Painter::DrawTextInRectWithTransfers(2, 15, WIDTH - 5, 240, currentPage->titleHint[2 + LANG]);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HelpContent_Draw(void)
+void HelpContent_Draw()
 {
     Painter::FillRegion(Grid::Right(), 0, 319 - Grid::Right(), 20, gColorBack);
     Painter::FillRegion(Grid::Right(), 219, 319 - Grid::Right(), 21);
@@ -95,7 +95,7 @@ static int NumParagraphs(const PageHelp *page)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HelpContent_NextParagraph(void)
+void HelpContent_NextParagraph()
 {
     if(currentPage->type == TypePage_Content)
     {
@@ -104,7 +104,7 @@ void HelpContent_NextParagraph(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HelpContent_PrevParagraph(void)
+void HelpContent_PrevParagraph()
 {
     if(currentPage->type == TypePage_Content)
     {
@@ -113,7 +113,7 @@ void HelpContent_PrevParagraph(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HelpContent_EnterParagraph(void)
+void HelpContent_EnterParagraph()
 {
     if(currentPage->type == TypePage_Content)
     {
@@ -123,7 +123,7 @@ void HelpContent_EnterParagraph(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void HelpContent_LeaveParagraph(void)
+void HelpContent_LeaveParagraph()
 {
     currentParagraph = 0;
     if(currentPage->parent)
@@ -133,13 +133,13 @@ void HelpContent_LeaveParagraph(void)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool HelpContent_LeaveParagraphIsActive(void)
+bool HelpContent_LeaveParagraphIsActive()
 {
     return currentPage->parent != 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool HelpContent_EnterParagraphIsActive(void)
+bool HelpContent_EnterParagraphIsActive()
 {
     return currentPage->type == TypePage_Content;
 }

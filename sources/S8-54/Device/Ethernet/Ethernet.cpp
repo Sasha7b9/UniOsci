@@ -12,12 +12,12 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void Netif_Config(void);
+static void Netif_Config();
 
 static struct netif gnetif;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void FuncConnect(void)
+static void FuncConnect()
 {
 }
 
@@ -55,7 +55,7 @@ static void FuncReceiver(const char *buffer, uint length)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Ethernet::Init(void)
+void Ethernet::Init()
 {
     // Initilaize the LwIP stack
     lwip_init();
@@ -83,7 +83,7 @@ void Ethernet::Update(uint timeMS)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Netif_Config(void)
+void Netif_Config()
 {
     ip_addr_t ipaddr;
     ip_addr_t netmask;

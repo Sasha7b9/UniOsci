@@ -29,7 +29,7 @@ extern const PageBase ppEthernet;
 extern const PageBase ppInformation;
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void FuncDraw(void)
+static void FuncDraw()
 {
     painter.BeginScene(Color::Back());
 
@@ -39,12 +39,12 @@ static void FuncDraw(void)
     painter.EndScene();
 }
 
-static void OnTimerDraw(void)
+static void OnTimerDraw()
 {
     display.Update();
 }
 
-static void OnPress_ResetSettings(void)
+static void OnPress_ResetSettings()
 {
     panel.Disable();
     display.SetDrawMode(DrawMode_Hand, FuncDraw);
@@ -68,7 +68,7 @@ DEF_BUTTON(         bResetSettings,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_AutoSearch(void)
+static void OnPress_AutoSearch()
 {
     fpga.StartAutoFind();
 };
@@ -97,7 +97,7 @@ DEF_CHOICE_3(       cCalibrator_Mode,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Calibrator_Calibrate(void)
+static void OnPress_Calibrator_Calibrate()
 {
     gStateFPGA.needCalibration = true;
 }
@@ -142,7 +142,7 @@ static void Draw_Math_Function_ModeDraw_Together(int x, int y)
     painter.DrawRectangle(x + 3, y + 5, 13, 9);
 }
 
-static void OnPress_Math_Function_ModeDraw(void)
+static void OnPress_Math_Function_ModeDraw()
 {
     if (FFT_ENABLED)
     {
@@ -192,7 +192,7 @@ static void Draw_Math_Function_Type_Mul(int x, int y)
     painter.SetFont(TypeFont_8);
 }
 
-static void OnPress_Math_Function_Type(void)
+static void OnPress_Math_Function_Type()
 {
     CircleIncrease<int8>((int8 *)&MATH_FUNC, 0, 1);
 }
@@ -229,7 +229,7 @@ static void Draw_Math_Function_ModeRegSet(int x, int y)
     funcs[MATH_MODE_REG_SET](x, y);
 }
 
-static void OnPress_Math_Function_ModeRegSet(void)
+static void OnPress_Math_Function_ModeRegSet()
 {
     CircleIncrease<int8>((int8 *)&MATH_MODE_REG_SET, 0, 1);
 }
@@ -244,7 +244,7 @@ DEF_SMALL_BUTTON_HINTS_2(   sbMath_Function_ModeRegSet,                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Math_Function_RangeA(void)
+static void OnPress_Math_Function_RangeA()
 {
     SET_RANGE_MATH = SET_RANGE_A;
     MATH_MULTIPLIER = SET_DIVIDER_A;
@@ -263,7 +263,7 @@ DEF_SMALL_BUTTON(   sbMath_Function_RangeA,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Math_Function_RangeB(void)
+static void OnPress_Math_Function_RangeB()
 {
     SET_RANGE_MATH = SET_RANGE_B;
     MATH_MULTIPLIER = SET_DIVIDER_B;
@@ -282,12 +282,12 @@ DEF_SMALL_BUTTON(   sbMath_Function_RangeB,                                     
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Math_Function(void)
+static bool IsActive_Math_Function()
 {
     return !FFT_ENABLED;
 }
 
-static void OnPress_Math_Function(void)
+static void OnPress_Math_Function()
 {
     if (FFT_ENABLED)
     {
@@ -422,7 +422,7 @@ DEF_CHOICE_4(       cMath_FFT_Window,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Math_FFT_Cursors_Exit(void)
+static void OnPress_Math_FFT_Cursors_Exit()
 {
     display.RemoveAddDrawFunction();
 }
@@ -433,7 +433,7 @@ DEF_SMALL_BUTTON_EXIT(  cMath_FFT_Cursors_Exit,                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Math_FFT_Cursors_Source(void)
+static void OnPress_Math_FFT_Cursors_Source()
 {
     FFT_CUR_CURSOR = (FFT_CUR_CURSOR + 1) % 2;
 }
@@ -451,7 +451,7 @@ DEF_SMALL_BUTTON(   cMath_FFT_Cursors_Source,                                   
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Math_FFT_Cursors(void)
+static bool IsActive_Math_FFT_Cursors()
 {
     return FFT_ENABLED;
 }
@@ -476,7 +476,7 @@ DEF_PAGE_SB(        ppppMath_FFT_Cursors,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Math_FFT_Limit(void)
+static bool IsActive_Math_FFT_Limit()
 {
     return SCALE_FFT_IS_LOG;
 }
@@ -492,12 +492,12 @@ DEF_CHOICE_3(       cMath_FFT_Limit,                                            
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static bool IsActive_Math_FFT(void)
+static bool IsActive_Math_FFT()
 {
     return FUNC_MODE_DRAW_IS_DISABLED;
 }
 
-static void OnPress_Math_FFT(void)
+static void OnPress_Math_FFT()
 {
     if (!IsActive_Math_FFT())
     {
@@ -655,7 +655,7 @@ DEF_CHOICE_2(       cModeLongPressButtonTrig,                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Information_Exit(void)
+static void OnPress_Information_Exit()
 {
     display.SetDrawMode(DrawMode_Auto, 0);
     display.RemoveAddDrawFunction();
@@ -666,7 +666,7 @@ DEF_SMALL_BUTTON_EXIT(  sbInformation_Exit,                                     
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void Information_Draw(void)
+static void Information_Draw()
 {
     Language lang = LANG;
 
@@ -700,7 +700,7 @@ static void Information_Draw(void)
     painter.EndScene();
 }
 
-static void OnPress_Information(void)
+static void OnPress_Information()
 {
     menu.OpenPageAndSetItCurrent(PageSB_Service_Information);
     display.SetDrawMode(DrawMode_Hand, Information_Draw);

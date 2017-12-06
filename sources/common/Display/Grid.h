@@ -13,37 +13,37 @@
 class Grid
 {
 public:
-    static int Left(void);
+    static int Left();
 
-    static int Right(void);
+    static int Right();
 
-    static int Width(void);
+    static int Width();
 
-    static float DeltaY(void);
+    static float DeltaY();
 
-    static float DeltaX(void);
+    static float DeltaX();
 
-    static int WidthInCells(void);
+    static int WidthInCells();
 
-    static int FullBottom(void);
+    static int FullBottom();
 
-    static int FullHeight(void);
+    static int FullHeight();
 
-    static int FullCenterHeight(void);
+    static int FullCenterHeight();
 
-    static int ChannelBottom(void);
+    static int ChannelBottom();
 
-    static int ChannelHeight(void);
+    static int ChannelHeight();
 
-    static int ChannelCenterHeight(void);
+    static int ChannelCenterHeight();
 
-    static int MathHeight(void);
+    static int MathHeight();
 
-    static int MathBottom(void);
+    static int MathBottom();
 
-    static int MathTop(void);
+    static int MathTop();
 
-    static int BottomMessages(void);
+    static int BottomMessages();
 
     static void CoordTrigLevel(int *left, int *top, int width);
 };

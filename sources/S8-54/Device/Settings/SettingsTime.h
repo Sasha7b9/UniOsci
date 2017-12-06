@@ -43,15 +43,15 @@ void sTime_SetTBase(TBase tBase);
 /// Сохранить смещение по времени в относительных единицах
 void sTime_SetTShift(int16 shift);
 /// Узнать привязку отсительно уровня синхронизации в байтах
-int sTime_TPosInBytes(void);
+int sTime_TPosInBytes();
 /// Минимальное смещение по времени, которое может быть записано в аппаратную часть
-int16 sTime_TShiftMin(void);
+int16 sTime_TShiftMin();
 /// Смещение по времени, соответствующее позиции TPos
-int16 sTime_TShiftZero(void);
+int16 sTime_TShiftZero();
 
-int sTime_TShiftInPoints(void);
+int sTime_TShiftInPoints();
 
-int sTime_TPosInPoints(void);
+int sTime_TPosInPoints();
 
 
 /** @}  @}

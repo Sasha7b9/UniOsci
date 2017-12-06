@@ -31,9 +31,9 @@ typedef unsigned long  long int uint64;
 typedef unsigned char           BYTE;
 
 
-typedef void    (*pFuncVV)(void);
+typedef void    (*pFuncVV)();
 typedef void    (*pFuncVpV)(void*);
-typedef bool    (*pFuncBV)(void);
+typedef bool    (*pFuncBV)();
 typedef void    (*pFuncVB)(bool);
 typedef void    (*pFuncVI)(int);
 typedef void    (*pFuncVII)(int, int);

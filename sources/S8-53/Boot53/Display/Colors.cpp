@@ -50,7 +50,7 @@ Color ColorContrast(Color color)
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-Color LightShadingTextColor(void)
+Color LightShadingTextColor()
 {
     return ColorMenuTitle(false);
 }

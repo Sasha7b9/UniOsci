@@ -150,7 +150,7 @@ static void DrawCharHardCol(int x, int y, char symbol)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-extern void CalculateCurrentColor(void);
+extern void CalculateCurrentColor();
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Painter::DrawChar(int x, int y, char symbol, Color color)

@@ -34,10 +34,10 @@ public:
     /// ¬озвращает строку автоматического измерени€
     char* GetStringMeasure(Meas measure, Channel ch, char *buffer, int lenBuf);
     /// –асчитать все измерени€
-    void CalculateMeasures(void);
+    void CalculateMeasures();
 private:
     /// ѕриведение сигнала к установленным в приборе настройкам
-    void CountedToCurrentSettings(void);
+    void CountedToCurrentSettings();
     /// ѕриведение сигнала к установленному в приборе Range
     void CountedRange(Channel ch);
     /// ѕриведение сигнала в канале к установленному в приборе TBase

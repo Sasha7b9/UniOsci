@@ -76,7 +76,7 @@ DEF_CHOICE_2(   cConsole_Registers_ShowAll,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_Console_Registers(void)
+static bool IsActive_Console_Registers()
 {
     return DBG_SHOW_ALL;
 }
@@ -270,12 +270,12 @@ DEF_CHOICE_3(       cADC_Balance_Mode,                                          
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_ADC_Balance_ShiftAB(void)
+static bool IsActive_ADC_Balance_ShiftAB()
 {
     return NRST_BALANCE_ADC_TYPE_IS_HAND;
 }
 
-static void OnChanged_ADC_Balance_ShiftA(void)
+static void OnChanged_ADC_Balance_ShiftA()
 {
     NRST_BALANCE_ADC_A = shiftADCA;
 }
@@ -288,7 +288,7 @@ DEF_GOVERNOR(       gADC_Balance_ShiftA,                                        
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Balance_ShiftB(void)
+static void OnChanged_ADC_Balance_ShiftB()
 {
     NRST_BALANCE_ADC_B = shiftADCB;
 }
@@ -340,12 +340,12 @@ DEF_CHOICE_3(       cADC_Stretch_Mode,                                          
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_ADC_StretchAB(void)
+static bool IsActive_ADC_StretchAB()
 {
     return NRST_STRETCH_ADC_TYPE_IS_HAND;
 }
 
-static void OnChanged_ADC_Stretch_A(void)
+static void OnChanged_ADC_Stretch_A()
 {
     NRST_STRETCH_ADC_A(NRST_STRETCH_ADC_TYPE) = stretchA;
 }
@@ -358,7 +358,7 @@ DEF_GOVERNOR(       gADC_Stretch_A,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Stretch_B(void)
+static void OnChanged_ADC_Stretch_B()
 {
     NRST_STRETCH_ADC_B(NRST_STRETCH_ADC_TYPE) = stretchB;
 }
@@ -460,7 +460,7 @@ DEF_PAGE_15(        pppADC_Stretch,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_ADC_Shift_Reset(void)
+static void OnPress_ADC_Shift_Reset()
 {
     for (int ch = 0; ch < 2; ch++)
     {
@@ -481,7 +481,7 @@ DEF_BUTTON(         bADC_Shift_Reset,                                           
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Shift_A(void)
+static void OnChanged_ADC_Shift_A()
 {
     FPGA::SetRShift(A, SET_RSHIFT_A);
 }
@@ -494,7 +494,7 @@ DEF_GOVERNOR(       gADC_Shift_A2mV,                                            
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_ADC_Shift_B(void)
+static void OnChanged_ADC_Shift_B()
 {
     FPGA::SetRShift(B, SET_RSHIFT_B);
 }
@@ -580,7 +580,7 @@ DEF_GOVERNOR(       gRand_NumSmooth,                                            
     NRST_NUM_SMOOTH_FOR_RAND, 1, 10, ppRand, FuncActive, FuncChanged, FuncBeforeDraw
 );
 
-static void OnChanged_Rand_NumMeasures(void)
+static void OnChanged_Rand_NumMeasures()
 {
     FPGA::SetNumberMeasuresForGates(NUM_MEASURES_FOR_GATES);
 }
@@ -613,7 +613,7 @@ DEF_CHOICE_2(       gRand_ShowStat,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Rand_TimeCompensation(void)
+static void OnChanged_Rand_TimeCompensation()
 {
     FPGA::SetDeltaTShift(TIME_COMPENSATION);
 }
@@ -626,7 +626,7 @@ DEF_GOVERNOR(   gRand_TimeCompensation,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Rand_AddTimeShift(void)
+static void OnChanged_Rand_AddTimeShift()
 {
     FPGA::SetTShift(SET_TSHIFT);
 }
@@ -641,7 +641,7 @@ DEF_GOVERNOR(       gRand_AddTimeShift,                                         
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Rand_Pretriggered(void)
+static void OnChanged_Rand_Pretriggered()
 {
     FPGA::LoadTShift();
 }
@@ -764,7 +764,7 @@ DEF_CHOICE_2(       cEMS,                                                       
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 pred;
 
-static void OnChanged_Pred(void)
+static void OnChanged_Pred()
 {
     gPred = ~pred;
     static char buffer[30];
@@ -780,7 +780,7 @@ DEF_GOVERNOR(       mgPred,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static int16 post;
 
-static void OnChanged_Post(void)
+static void OnChanged_Post()
 {
     gPost = (uint16)~post;
     static char buffer[30];
@@ -794,7 +794,7 @@ DEF_GOVERNOR(       mgPost,                                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_Settings_Exit(void)
+static void OnPress_Settings_Exit()
 {
     Display::SetDrawMode(DrawMode_Auto, 0);
 }
@@ -804,7 +804,7 @@ DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                         
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void DebugShowSetInfo_Draw(void)
+static void DebugShowSetInfo_Draw()
 {
     Painter::BeginScene(gColorBack);
     Painter::DrawRectangle(0, 0, 319, 239, gColorFill);
@@ -873,7 +873,7 @@ static void DebugShowSetInfo_Draw(void)
     Painter::EndScene();
 }
 
-static void OnPress_Settings(void)
+static void OnPress_Settings()
 {
     Display::SetDrawMode(DrawMode_Auto, DebugShowSetInfo_Draw);
 }
@@ -892,12 +892,12 @@ DEF_PAGE_SB(        ppSettings,                                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static bool IsActive_SaveFirmware(void)
+static bool IsActive_SaveFirmware()
 {
     return FDRIVE_IS_CONNECTED;
 }
 
-static void OnPress_SaveFirmware(void)
+static void OnPress_SaveFirmware()
 {
     Display::FuncOnWaitStart(DICT(DSaveFirmware), false);
 
@@ -931,7 +931,7 @@ DEF_BUTTON(         bSaveFirmware,                                              
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Exit(void)
+static void OnPress_SerialNumber_Exit()
 {
     OnPressSB_Exit();
     FREE_EXTRAMEM();
@@ -942,7 +942,7 @@ DEF_SMALL_BUTTON_EXIT(  bSerialNumber_Exit,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Change(void)
+static void OnPress_SerialNumber_Change()
 {
     ACCESS_EXTRAMEM(StructForSN, s);
     ++s->curDigt;
@@ -965,7 +965,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Change,                                       
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_SerialNumber_Save(void)
+static void OnPress_SerialNumber_Save()
 {
     ACCESS_EXTRAMEM(StructForSN, s);
 
@@ -994,7 +994,7 @@ DEF_SMALL_BUTTON(   bSerialNumber_Save,                                         
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void Draw_EnterSerialNumber(void)
+static void Draw_EnterSerialNumber()
 {
     int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 20;
@@ -1050,7 +1050,7 @@ static void Draw_EnterSerialNumber(void)
     Painter::DrawFormText(x0 + deltaX, y0 + 100, gColorFill, "Осталось места для %d попыток", allShots);
 }
 
-static void OnPress_SerialNumber(void)
+static void OnPress_SerialNumber()
 {
     Display::SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);
@@ -1092,7 +1092,7 @@ DEF_PAGE_SB(        ppSerialNumber,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnPress_EraseData(void)
+static void OnPress_EraseData()
 {
     Display::FuncOnWaitStart(DICT(DDeleteFromMemory), false);
     flash.DeleteAllData();
@@ -1166,7 +1166,7 @@ DEF_PAGE_13(        pDebug,                                                     
 
 
 /*
-void OnPressDebugDisable(void)
+void OnPressDebugDisable()
 {
     ShowMenu(false);
     SetMenuPageDebugActive(false);
@@ -1182,14 +1182,14 @@ void OnDegubConsoleViewChanged(bool active)
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressDebugConsoleUp(void)
+void OnPressDebugConsoleUp()
 {
     display.OneStringUp();
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-void OnPressDebugConsoleDown(void)
+void OnPressDebugConsoleDown()
 {
     display.OneStringDown();
 }
@@ -1209,14 +1209,14 @@ void OnPressDebugConsoleDown(void)
             &set.debug.altShift, -2, 2, 0
         };
 
-bool sIsShowReg_RShift1(void)
+bool sIsShowReg_RShift1()
 {
     return set.debug.showRegisters.rShiftB || set.debug.showRegisters.all;
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TrigLev(void)
+bool sIsShowReg_TrigLev()
 {
     return set.debug.showRegisters.trigLev || set.debug.showRegisters.all;
 }
@@ -1230,7 +1230,7 @@ bool sIsShowReg_Range(Channel ch)
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TrigParam(void)
+bool sIsShowReg_TrigParam()
 {
     return set.debug.showRegisters.trigParam || set.debug.showRegisters.all;
 }
@@ -1244,14 +1244,14 @@ bool sIsShowReg_ChanParam(Channel ch)
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TShift(void)
+bool sIsShowReg_TShift()
 {
     return set.debug.showRegisters.tShift || set.debug.showRegisters.all;
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
-bool sIsShowReg_TBase(void)
+bool sIsShowReg_TBase()
 {
     return set.debug.showRegisters.tBase || set.debug.showRegisters.all;
 }

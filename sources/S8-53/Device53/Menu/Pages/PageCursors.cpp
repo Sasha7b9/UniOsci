@@ -132,7 +132,7 @@ DEF_SMALL_BUTTON_EXIT(  sbSetExit,                                              
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void PressSB_Cursors_Source(void)
+static void PressSB_Cursors_Source()
 {
     Channel source = CURS_SOURCE_A ? B : A;
     SetCursSource(source);
@@ -163,7 +163,7 @@ DEF_SMALL_BUTTON_HINTS_2(   sbSetSource,                                        
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void PressSB_Cursors_U(void)
+static void PressSB_Cursors_U()
 {
     if (CURS_ACTIVE_IS_U || CURS_CNTRL_U_IS_DISABLE(CURS_SOURCE))
     {
@@ -249,7 +249,7 @@ DEF_SMALL_BUTTON_HINTS_5(   sbSetU,                                             
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void PressSB_Cursors_T(void)
+static void PressSB_Cursors_T()
 {
     if (CURS_ACTIVE_IS_T || CURS_CNTRL_T_IS_DISABLE(CURS_SOURCE))
     {
@@ -341,7 +341,7 @@ static void SetCursPos100(Channel chan)
     DELTA_T100(chan) = fabsf(CURS_POS_T0(chan) - CURS_POS_T1(chan));
 }
 
-static void PressSB_Cursors_100(void)
+static void PressSB_Cursors_100()
 {
     SetCursPos100(CURS_SOURCE);
 }
@@ -361,7 +361,7 @@ DEF_SMALL_BUTTON(   sbSet100,                                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void PressSB_Cursors_PointsPercents(void)
+static void PressSB_Cursors_PointsPercents()
 {
     CircleIncrease<int8>((int8 *)&CURS_MOVEMENT, 0, 1);
 }
