@@ -597,7 +597,7 @@ static void OnPress_SerialNumber_Save()
 
     snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
 
-    if (!OTP_SaveSerialNumber(stringSN))
+    if (!OTPMem::SaveSerialNumber(stringSN))
     {
         Display::ShowWarningBad(FullyCompletedOTP);
     }
@@ -668,7 +668,7 @@ static void Draw_EnterSerialNumber()
 
     // Теперь выведем информацию об оставшемся месте в OTP-памяти для записи
 
-    int allShots = OTP_GetSerialNumber(buffer);
+    int allShots = OTPMem::GetSerialNumber(buffer);
 
     Painter::SetColor(Color::Fill());
 

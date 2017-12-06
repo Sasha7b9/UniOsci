@@ -532,7 +532,7 @@ void WriteBufferBytes(uint address, uint8 *buffer, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool OTP_SaveSerialNumber(char *serialNumber)
+bool OTPMem::SaveSerialNumber(char *serialNumber)
 {
     // Ќаходим первую пустую строку длиной 16 байт в области OPT, начина€ с начала.
     uint8 *address = (uint8*)FLASH_OTP_BASE;
@@ -553,7 +553,7 @@ bool OTP_SaveSerialNumber(char *serialNumber)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int OTP_GetSerialNumber(char buffer[17])
+int OTPMem::GetSerialNumber(char buffer[17])
 {
     /// \todo улучшить - нельз€ разбрасыватьс€ байтами.  ажда€ запись должна занимать столько места, сколько в ней символов, а не 16, как сейчас.
 

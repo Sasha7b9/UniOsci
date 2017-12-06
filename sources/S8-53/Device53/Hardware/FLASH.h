@@ -39,5 +39,10 @@ public:
     static void DeleteData(int num);
 };
 
-bool OTP_SaveSerialNumber(char *serialNumber);  ///< 
-int OTP_GetSerialNumber(char buffer[17]);       ///< \brief Функция возвращает число свободных мест для записи. Если 0, то места в OTP уже не осталось. 
+
+class OTPMem
+{
+public:
+    static bool SaveSerialNumber(char *serialNumber);  ///< 
+    static int GetSerialNumber(char buffer[17]);       ///< \brief Функция возвращает число свободных мест для записи. Если 0, то места в OTP уже не осталось. 
+};
