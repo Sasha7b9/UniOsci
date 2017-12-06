@@ -2,6 +2,7 @@
 #include "ethernetif.h"
 #include "Log.h"
 #include "main.h"
+#include "Ethernet.h"
 #include "VCP/SCPI/SCPI.h"
 #include <lwip/init.h>
 #include <lwip/ip_addr.h>
@@ -54,7 +55,7 @@ static void FuncReceiver(const char *buffer, uint length)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Ethernet_Init(void)
+void Ethernet::Init(void)
 {
     // Initilaize the LwIP stack
     lwip_init();
@@ -67,7 +68,7 @@ void Ethernet_Init(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Ethernet_Update(uint timeMS)
+void Ethernet::Update(uint timeMS)
 {
     uint time = HAL_GetTick();
 

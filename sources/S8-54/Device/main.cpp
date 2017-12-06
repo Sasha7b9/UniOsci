@@ -1,4 +1,3 @@
-//#include "Display/Colors.h"
 #include "Log.h"
 #include "Ethernet/Ethernet.h"
 #include "FlashDrive/FlashDrive.h"
@@ -30,13 +29,13 @@ int main(void)
     FPGA::Init();
     FPGA::OnPressStartStop();
     Display::Init();
-    Ethernet_Init();
+    Ethernet::Init();
     Menu::Init();
 
     while(1)
     {
         Timer::StartMultiMeasurement();  // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
-        Ethernet_Update(0);             // Обрабатываем LAN
+        Ethernet::Update(0);             // Обрабатываем LAN
         FDrive::Update();                // Обрабатываем флешку
         FPGA::Update();                  // Обновляем аппаратную часть.
         Panel::Update();                 // Обрабатываем панель

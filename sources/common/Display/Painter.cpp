@@ -54,16 +54,16 @@ void Painter::BeginScene(Color color)
             Painter::LoadPalette();
             Painter::LoadFont(TypeFont_5);
 #define dT 100
-            Ethernet_Update(dT);            /// \todo Говнокод. Доработать метод посылки в TCPSocket
+            Ethernet::Update(dT);            /// \todo Говнокод. Доработать метод посылки в TCPSocket
 
             Painter::LoadFont(TypeFont_8);
-            Ethernet_Update(dT);
+            Ethernet::Update(dT);
 
             Painter::LoadFont(TypeFont_UGO);
-            Ethernet_Update(dT);
+            Ethernet::Update(dT);
 
             Painter::LoadFont(TypeFont_UGO2);
-            Ethernet_Update(dT);
+            Ethernet::Update(dT);
         }
     }
 
