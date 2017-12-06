@@ -535,7 +535,7 @@ bool FPGA::CalculateGate(uint16 rand, uint16 *eMin, uint16 *eMax)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int FPGA::CalculateShift()            // \todo Не забыть восстановить функцию
 {
-    uint16 rand = adc.GetValue();
+    uint16 rand = ADConverter::GetValue();
     //LOG_WRITE("rand = %d", (int)rand);
     uint16 min = 0;
     uint16 max = 0;

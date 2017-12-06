@@ -107,7 +107,7 @@ void Hardware_Init()
 
     FSMC_Init();
 
-    adc.Init();
+    ADConverter::Init();
 
     FDrive::Init();
     
