@@ -1,7 +1,6 @@
 #pragma once
 #include "Display/Painter.h"
 #include "Tables.h"
-#include "Display/DisplayTypes.h"
 
 
 class Display

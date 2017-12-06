@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include "../defines.h"
-
-
 #define ADDR_BANK           0x60000000
 #define ADDR_DISPLAY_A0     ((uint8*)(ADDR_BANK + 0x00910000))
 #define ADDR_DISPLAY_D7_D0  ((uint8*)(ADDR_BANK + 0x00900000))

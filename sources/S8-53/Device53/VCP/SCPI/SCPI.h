@@ -1,8 +1,6 @@
 #pragma once
-#include "Globals.h"
 #include "VCP/VCP.h"
 #include "Ethernet/TcpSocket.h"
-#include "Utils/StringUtils.h"
 
 
 /** @defgroup SCPI

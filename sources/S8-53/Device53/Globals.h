@@ -1,7 +1,6 @@
 #pragma once
 #include "Panel/Controls.h"
 #include "Settings/SettingsTypes.h"
-#include "Settings/SettingsChannel.h"
 #include "Settings/SettingsTime.h"
 #include <stm32f2xx_hal_def.h>
 #include "stm32f2xx_hal_conf.h"

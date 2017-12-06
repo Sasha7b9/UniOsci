@@ -1,7 +1,5 @@
 #pragma once
-//#include "defines.h"
 #include "FPGATypes.h"
-#include "Panel/Controls.h"
 #include "DataStorage.h"
 #include "Settings/SettingsTrig.h"
 #include "Settings/SettingsService.h"

@@ -52,9 +52,7 @@
   // Слова BUG означает ошибку в коде.
 
 #pragma once
-
 #include "Settings/Settings.h"
-
 #include <stm32f2xx_hal.h>
 #include <usbd_desc.h>
 #include <usbd_cdc.h>

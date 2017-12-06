@@ -1,12 +1,6 @@
 #pragma once
-#include "SettingsTypes.h"
-#include "Utils/Measures.h"
 #include "Menu/MenuItems.h"
-#include "Panel/Controls.h"
 #include "SettingsChannel.h"
-#include "SettingsDisplay.h"
-#include "SettingsMemory.h"
-#include "SettingsTime.h"
 #include "SettingsTrig.h"
 #include "SettingsService.h"
 #include "SettingsCursors.h"
