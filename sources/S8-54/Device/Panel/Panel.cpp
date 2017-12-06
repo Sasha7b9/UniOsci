@@ -573,7 +573,7 @@ void Panel::DisableIfNessessary(void)
     if (NEED_DISABLE_POWER)
     {
         Settings_Save();
-        Log_DisconnectLoggerUSB();
+        Log::DisconnectLoggerUSB();
         Panel::TransmitData(0x04);
         while (1)
         {

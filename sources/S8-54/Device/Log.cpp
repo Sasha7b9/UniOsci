@@ -13,7 +13,7 @@ static bool loggerUSB = false;
 #define SIZE_BUFFER_LOG 200
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Log_Write(TypeTrace type, char *format, ...)
+void Log::Write(TypeTrace type, char *format, ...)
 {
     char buffer[SIZE_BUFFER_LOG];
     char *pointer = buffer;
@@ -37,7 +37,7 @@ void Log_Write(TypeTrace type, char *format, ...)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Log_Trace(TypeTrace type, const char *module, const char *func, int numLine, char *format, ...)
+void Log::Trace(TypeTrace type, const char *module, const char *func, int numLine, char *format, ...)
 {
     char buffer[SIZE_BUFFER_LOG];
     char message[SIZE_BUFFER_LOG];
@@ -71,7 +71,7 @@ void Log_Trace(TypeTrace type, const char *module, const char *func, int numLine
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Log_DisconnectLoggerUSB(void)
+void Log::DisconnectLoggerUSB(void)
 {
     //static uint8 data = 20;
     //Log_Write("посылаю %d", data);
@@ -80,7 +80,7 @@ void Log_DisconnectLoggerUSB(void)
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Log_EnableLoggerUSB(bool enable)
+void Log::EnableLoggerUSB(bool enable)
 {
     loggerUSB = enable;
 }
