@@ -505,7 +505,7 @@ DEF_PAGE_3(         mpRandomizer,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnDraw_SizeSettings(int x, int y)
 {
-    painter.DrawFormatText(x + 5, y + 21, Color::BLACK, "Размер %d", sizeof(Settings));
+    Painter::DrawFormatText(x + 5, y + 21, Color::BLACK, "Размер %d", sizeof(Settings));
 }
 
 static int8 temp = 0;
@@ -529,7 +529,7 @@ static void OnPress_SaveFirmware()
 {
     StructForWrite structForWrite;
 
-    drive.OpenNewFileForWrite("S8-53.bin", &structForWrite);
+    FDrive::OpenNewFileForWrite("S8-53.bin", &structForWrite);
 
     uint8 *address = (uint8*)0x08020000;
     uint8 *endAddress = address + 128 * 1024 * 3;
@@ -538,13 +538,13 @@ static void OnPress_SaveFirmware()
 
     while (address < endAddress)
     {
-        drive.WriteToFile(address, sizeBlock, &structForWrite);
+        FDrive::WriteToFile(address, sizeBlock, &structForWrite);
         address += sizeBlock;
     }
 
-    drive.CloseFile(&structForWrite);
+    FDrive::CloseFile(&structForWrite);
 
-    display.ShowWarningGood(FirmwareSaved);
+    Display::ShowWarningGood(FirmwareSaved);
 }
 
 DEF_BUTTON(         mbSaveFirmware,                                                                                    // ОТЛАДКА - Сохр. прошивку ---
@@ -557,7 +557,7 @@ DEF_BUTTON(         mbSaveFirmware,                                             
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_SerialNumber_Exit()
 {
-    display.RemoveAddDrawFunction();
+    Display::RemoveAddDrawFunction();
     FREE_EXTRAMEM();
 }
 
@@ -571,14 +571,14 @@ static void OnPress_SerialNumber_Change()
     ACCESS_EXTRAMEM(StructForSN, s);
     ++s->curDigt;
     s->curDigt %= 2;
-    painter.ResetFlash();
+    Painter::ResetFlash();
 }
 
 static void Draw_SerialNumber_Change(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 2, SYMBOL_TAB);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSerialNumber_Change,                                                                           //--- ОТЛАДКА - С/Н - Вставить ---
@@ -597,17 +597,17 @@ static void OnPress_SerialNumber_Save()
 
     snprintf(stringSN, 19, "%02d %04d", s->number, s->year);
 
-    if (!OTP_SaveSerialNumber(stringSN))
+    if (!OTPMem::SaveSerialNumber(stringSN))
     {
-        display.ShowWarningBad(FullyCompletedOTP);
+        Display::ShowWarningBad(FullyCompletedOTP);
     }
 }
 
 static void Draw_SerialNumber_Save(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 2, y + 1, SYMBOL_SAVE_TO_MEM);
+    Painter::SetFont(TypeFont_8);
 }
 
 DEF_SMALL_BUTTON(   bSerialNumber_Save,                                                                               // ОТЛАДКА - С/Н - Сохранить ---
@@ -621,13 +621,13 @@ DEF_SMALL_BUTTON(   bSerialNumber_Save,                                         
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void Draw_EnterSerialNumber()
 {
-    int x0 = grid.Left() + 40;
+    int x0 = Grid::Left() + 40;
     int y0 = GRID_TOP + 20;
-    int width = grid.Width() - 80;
+    int width = Grid::Width() - 80;
     int height = 160;
 
-    painter.DrawRectangle(x0, y0, width, height, Color::Fill());
-    painter.FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
+    Painter::DrawRectangle(x0, y0, width, height, Color::Fill());
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int deltaX = 10;
 
@@ -649,8 +649,8 @@ static void Draw_EnterSerialNumber()
 
     int y = y0 + 50;
 
-    painter.SetColor(colorText);
-    int x = painter.DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
+    Painter::SetColor(colorText);
+    int x = Painter::DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
 
     colorText = Color::FLASH_01;
     colorBackground = Color::FLASH_10;
@@ -663,24 +663,24 @@ static void Draw_EnterSerialNumber()
 
     snprintf(buffer, 19, "%04d", s->year);
 
-    painter.SetColor(colorText);
-    painter.DrawTextOnBackground(x + 5, y, buffer, colorBackground);
+    Painter::SetColor(colorText);
+    Painter::DrawTextOnBackground(x + 5, y, buffer, colorBackground);
 
     // Теперь выведем информацию об оставшемся месте в OTP-памяти для записи
 
-    int allShots = OTP_GetSerialNumber(buffer);
+    int allShots = OTPMem::GetSerialNumber(buffer);
 
-    painter.SetColor(Color::Fill());
+    Painter::SetColor(Color::Fill());
 
-    painter.DrawFormatText(x0 + deltaX, y0 + 130, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
+    Painter::DrawFormatText(x0 + deltaX, y0 + 130, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
 
-    painter.DrawFormatText(x0 + deltaX, y0 + 100, "Осталось места для %d попыток", allShots);
+    Painter::DrawFormatText(x0 + deltaX, y0 + 100, "Осталось места для %d попыток", allShots);
 }
 
 static void OnPress_SerialNumber()
 {
     Menu::OpenPageAndSetItCurrent(PageSB_Debug_SerialNumber);
-    display.SetAddDrawFunction(Draw_EnterSerialNumber);
+    Display::SetAddDrawFunction(Draw_EnterSerialNumber);
     MALLOC_EXTRAMEM(StructForSN, s);
     s->number = 01;
     s->year = 2017;
@@ -705,7 +705,7 @@ static void OnRegSet_SerialNumber(int angle)
     {
         p(&s->year, 2014, 2050);
     }
-    sound.GovernorChangedValue();
+    Sound::GovernorChangedValue();
 }
 
 DEF_PAGE_SB(        ppSerialNumber,                                                                                               // ОТЛАДКА - С/Н ///

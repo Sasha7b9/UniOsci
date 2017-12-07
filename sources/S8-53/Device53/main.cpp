@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void FuncOfDraw() 
 {
-    painter.BeginScene(Color::Fill());
+    Painter::BeginScene(Color::Fill());
 }
 
 
@@ -45,8 +45,8 @@ int main()
     FPGA::Init();    
     HAL_Delay(250);
     FPGA::OnPressStartStop();
-    Ethernet_Init();
-    display.Init();
+    Ethernet::Init();
+    Display::Init();
     if (gBF.tuneTime == 1)
     {
         //Menu::OpenItemTime();
@@ -54,17 +54,17 @@ int main()
 
     while(1)
     {
-        Timer_StartMultiMeasurement();      // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
+        Timer::StartMultiMeasurement();      // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
         
-        drive.Update();
+        FDrive::Update();
 
-        Ethernet_Update(0);
+        Ethernet::Update(0);
 
         FPGA::Update();                      // Обновляем аппаратную часть.
 
         ProcessingSignal();
 
-        display.Update();               // Рисуем экран.
+        Display::Update();               // Рисуем экран.
 
         Menu::UpdateInput();                 // Обновляем состояние меню
     }
@@ -102,19 +102,19 @@ void ProcessingSignal()
         data0 = &gData0memInt;
         data1 = &gData1memInt;
         ds = &gDSmemInt;
-        FLASH_GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
+        FLASHMem::GetData(gMemory.currentNumIntSignal, &gDSmemInt, &gData0memInt, &gData1memInt);
     }
 
     if (MODE_WORK_IS_ROM)
     { 
         if (!MODE_SHOW_MEMINT_IS_SAVED)
         {
-            Processing_SetSignal(gData0, gData1, gDSet, first, last);
+            Processing::SetSignal(gData0, gData1, gDSet, first, last);
         }
     }
     else
     {
-        Processing_SetSignal(*data0, *data1, *ds, first, last);
+        Processing::SetSignal(*data0, *data1, *ds, first, last);
     }
 
     Cursors_Update();    // В случае, если находимся в режиме курсорных измерений, обновляем их положение, если нужно.
@@ -123,6 +123,6 @@ void ProcessingSignal()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Init() 
 {
-    vcp.Init();
+    VCP::Init();
 }
 

@@ -1,8 +1,4 @@
 #pragma once
-#include "defines.h"
-#include "Settings/SettingsTypes.h"
-#include "Display/Display.h"
-#include "FPGA/DataStorage.h"
 
 
 /// Программа и константные данные
@@ -29,14 +25,24 @@
 
 #define MAX_NUM_SAVED_WAVES 23  ///< Пока ограничено количеством квадратиков, которые можно вывести в одну линию внизу сетки
 
-void FLASH_LoadSettings();
-void FLASH_SaveSettings(bool verifyLoaded = false);
-     
-void FLASH_GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES]);                    ///< Если даннные есть, соответствующий элемент массива равен true/.
-bool FLASH_ExistData(int num);
-void FLASH_SaveData(int num, DataSettings *ds, uint8 *data0, uint8 *data1);
-bool FLASH_GetData(int num, DataSettings **ds, uint8 **data0, uint8 **data1);
-void FLASH_DeleteData(int num);
 
-bool OTP_SaveSerialNumber(char *serialNumber);  ///< 
-int OTP_GetSerialNumber(char buffer[17]);       ///< \brief Функция возвращает число свободных мест для записи. Если 0, то места в OTP уже не осталось. 
+class FLASHMem
+{
+public:
+    static void LoadSettings();
+    static void SaveSettings(bool verifyLoaded = false);
+
+    static void GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES]);                    ///< Если даннные есть, соответствующий элемент массива равен true/.
+    static bool ExistData(int num);
+    static void SaveData(int num, DataSettings *ds, uint8 *data0, uint8 *data1);
+    static bool GetData(int num, DataSettings **ds, uint8 **data0, uint8 **data1);
+    static void DeleteData(int num);
+};
+
+
+class OTPMem
+{
+public:
+    static bool SaveSerialNumber(char *serialNumber);  ///< 
+    static int GetSerialNumber(char buffer[17]);       ///< \brief Функция возвращает число свободных мест для записи. Если 0, то места в OTP уже не осталось. 
+};

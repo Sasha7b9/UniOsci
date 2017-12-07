@@ -264,16 +264,14 @@ void DrawItemsPage(Page *page, int layer, int yTop)
     int posFirstItem = page->PosItemOnTop();
     int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
     LIMITATION(posLastItem, 0, page->NumItems() - 1);
-    int count = 0;
     for(int posItem = posFirstItem; posItem <= posLastItem; posItem++)
     {
         Control *item = page->Item(posItem);
         if(item)
         {
             TypeItem type = item->Type();
-            int top = yTop + MI_HEIGHT * count;
+            int top = yTop + MI_HEIGHT * (posItem - posFirstItem);
             funcOfDraw[type](item, CalculateX(layer), top);
-            count++;
             itemUnderButton[GetFuncButtonFromY(top)] = item;
         }
     }

@@ -76,8 +76,8 @@ void Process_AUTOSEND(uint8 *buffer)
         {0}
     };
     ENTER_ANALYSIS
-        if (1 == value)         { painter.SendFrame(true); }
-        else if (2 == value)    { painter.SendFrame(false); } 
+        if (1 == value)         { Painter::SendFrame(true); }
+        else if (2 == value)    { Painter::SendFrame(false); } 
     LEAVE_ANALYSIS
 }
 
@@ -321,7 +321,7 @@ static void Process_GRID_BRIGHTNESS(uint8 *buffer)
     if (SCPI_FirstIsInt(buffer, &intVal, 0, 100))
     {
         BRIGHTNESS_GRID = intVal;
-        display.RunAfterDraw(OnChanged_Grid_Brightness);
+        Display::RunAfterDraw(OnChanged_Grid_Brightness);
     }
     else
     {

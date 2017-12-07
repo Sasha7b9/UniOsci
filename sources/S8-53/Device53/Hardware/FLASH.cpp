@@ -58,7 +58,7 @@ static void PrepareSectorForData()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FLASH_LoadSettings()
+void FLASHMem::LoadSettings()
 {
     /*
         1. Проверка на первое включение. Выполняется тем, что в первом слове сектора настроек хранится MAX_UINT, если настройки ещё не сохранялись.
@@ -96,7 +96,7 @@ void FLASH_LoadSettings()
         }
         memcpy(&set, (const void *)(record->addrData - 4), record->sizeData);               // Считываем их
         EraseSector(ADDR_SECTOR_SETTINGS);                                                  // Стираем сектор настроек
-        FLASH_SaveSettings(true);                                                           // И сохраняем настройки в новом формате
+        FLASHMem::SaveSettings(true);                                                           // И сохраняем настройки в новом формате
     }
     else
     {
@@ -126,7 +126,7 @@ void WriteAddressDataInRecord(RecordConfig *record)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FLASH_SaveSettings(bool verifyLoadede)
+void FLASHMem::SaveSettings(bool verifyLoadede)
 {
     if (!verifyLoadede && !SETTINGS_IS_LOADED)
     {
@@ -240,7 +240,7 @@ static uint FindActualDataInfo()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FLASH_GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES])
+void FLASHMem::GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES])
 {
     uint address = FindActualDataInfo();
 
@@ -251,14 +251,14 @@ void FLASH_GetDataInfo(bool existData[MAX_NUM_SAVED_WAVES])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FLASH_ExistData(int num)
+bool FLASHMem::ExistData(int num)
 {
     uint address = FindActualDataInfo();
     return READ_WORD(address + num * 4) != 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FLASH_DeleteData(int num)
+void FLASHMem::DeleteData(int num)
 {
     uint address = FindActualDataInfo();
     WriteWord(address + num * 4, 0);
@@ -310,9 +310,9 @@ static uint FreeMemory()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void CompactMemory()
 {
-    display.ClearFromWarnings();
-    display.ShowWarningGood(MovingData);
-    display.Update();
+    Display::ClearFromWarnings();
+    Display::ShowWarningGood(MovingData);
+    Display::Update();
     uint dataInfoRel = FindActualDataInfo() - ADDR_SECTOR_DATA_MAIN;
 
     EraseSector(ADDR_SECTOR_DATA_HELP);
@@ -340,14 +340,14 @@ static void CompactMemory()
             {
                 data1 = (uint8*)addrDataNew;
             }
-            FLASH_SaveData(i, ds, data0, data1);
+            FLASHMem::SaveData(i, ds, data0, data1);
         }
     }
-    display.ClearFromWarnings();
+    Display::ClearFromWarnings();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FLASH_SaveData(int num, DataSettings *ds, uint8 *data0, uint8 *data1)
+void FLASHMem::SaveData(int num, DataSettings *ds, uint8 *data0, uint8 *data1)
 {
     /*
         1. Узнаём количество оставшейся памяти.
@@ -370,9 +370,9 @@ void FLASH_SaveData(int num, DataSettings *ds, uint8 *data0, uint8 *data1)
         uint - адрес первой свободной ячейки памяти (следующего массива адресов). В неё будет записан адрес первого сигнала.
     */
 
-    if (FLASH_ExistData(num))
+    if (ExistData(num))
     {
-        FLASH_DeleteData(num);
+        DeleteData(num);
     }
 
     int size = CalculateSizeData(ds);
@@ -425,7 +425,7 @@ void FLASH_SaveData(int num, DataSettings *ds, uint8 *data0, uint8 *data1)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FLASH_GetData(int num, DataSettings **ds, uint8 **data0, uint8 **data1)
+bool FLASHMem::GetData(int num, DataSettings **ds, uint8 **data0, uint8 **data1)
 {
     uint addrDataInfo = FindActualDataInfo();
     if (READ_WORD(addrDataInfo + 4 * num) == 0)
@@ -532,7 +532,7 @@ void WriteBufferBytes(uint address, uint8 *buffer, int size)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool OTP_SaveSerialNumber(char *serialNumber)
+bool OTPMem::SaveSerialNumber(char *serialNumber)
 {
     // Находим первую пустую строку длиной 16 байт в области OPT, начиная с начала.
     uint8 *address = (uint8*)FLASH_OTP_BASE;
@@ -553,7 +553,7 @@ bool OTP_SaveSerialNumber(char *serialNumber)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int OTP_GetSerialNumber(char buffer[17])
+int OTPMem::GetSerialNumber(char buffer[17])
 {
     /// \todo улучшить - нельзя разбрасываться байтами. Каждая запись должна занимать столько места, сколько в ней символов, а не 16, как сейчас.
 

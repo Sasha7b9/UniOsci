@@ -121,7 +121,7 @@ static bool picIsCalculating[2] = {false, false};
 //#define EXIT_IF_ERRORS_UINT8(x, y)  if((x) == ERROR_VALUE_UINT8 || (y) == ERROR_VALUE_UINT8)    return ERROR_VALUE_FLOAT;
 #define EXIT_IF_ERROR_INT(x)        if((x) == ERROR_VALUE_INT)                                  return ERROR_VALUE_FLOAT;
 
-void Processing_CalculateMeasures()
+void Processing::CalculateMeasures()
 {
     if(!SHOW_MEASURES || !dataSet)
     {
@@ -135,11 +135,11 @@ void Processing_CalculateMeasures()
     periodAccurateIsCalculating[0] = periodAccurateIsCalculating[1] = false;
     picIsCalculating[0] = picIsCalculating[1] = false;
 
-    for(int str = 0; str < measures.NumRows(); str++)
+    for(int str = 0; str < Measures::NumRows(); str++)
     {
-        for(int elem = 0; elem < measures.NumCols(); elem++)
+        for(int elem = 0; elem < Measures::NumCols(); elem++)
         {
-            Meas meas = measures.Type(str, elem);
+            Meas meas = Measures::Type(str, elem);
             if (meas == Meas_TimeNarastaniya)
             {
                 meas = meas;
@@ -491,7 +491,7 @@ float FindIntersectionWithHorLine(Channel chan, int numIntersection, bool downTo
     {
         return ERROR_VALUE_FLOAT;
     }
-    return math.GetIntersectionWithHorizontalLine(x, data[x], x + 1, data[x + 1], yLine);
+    return Math::GetIntersectionWithHorizontalLine(x, data[x], x + 1, data[x + 1], yLine);
 }
 
 float CalculateDurationPlus(Channel chan)
@@ -780,7 +780,7 @@ float CalculateMaxRel(Channel chan)
 
     if(!maxIsCalculating[chan])
     {
-        uint8 val = math.MaxFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
+        uint8 val = Math::MaxFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
         max[chan] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         maxIsCalculating[chan] = true;
     }
@@ -794,7 +794,7 @@ float CalculateMinRel(Channel chan)
 
     if (!minIsCalculating[chan])
     {
-        uint8 val = math.MinFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
+        uint8 val = Math::MinFromArrayWithErrorCode(dataIn[chan], firstPoint, lastPoint);
         min[chan] = val == ERROR_VALUE_UINT8 ? ERROR_VALUE_FLOAT : val;
         minIsCalculating[chan] = true;
     }
@@ -929,7 +929,7 @@ float CalculatePhazaMinus(Channel chan)
     return delay / period * 360.0f; 
 }
 
-void Processing_SetSignal(uint8 *data0, uint8 *data1, DataSettings *ds, int _firstPoint, int _lastPoint)
+void Processing::SetSignal(uint8 *data0, uint8 *data1, DataSettings *ds, int _firstPoint, int _lastPoint)
 {
     firstPoint = _firstPoint;
     lastPoint = _lastPoint;
@@ -939,15 +939,15 @@ void Processing_SetSignal(uint8 *data0, uint8 *data1, DataSettings *ds, int _fir
 
     int length = ds->length1channel * (ds->peakDet == PeackDet_Disable ? 1 : 2);
 
-    math.CalculateFiltrArray(data0, &dataIn[A][0], length, numSmoothing);
-    math.CalculateFiltrArray(data1, &dataIn[B][0], length, numSmoothing);
+    Math::CalculateFiltrArray(data0, &dataIn[A][0], length, numSmoothing);
+    Math::CalculateFiltrArray(data1, &dataIn[B][0], length, numSmoothing);
 
     dataSet = ds;
 
     CountedToCurrentSettings();
 }
 
-void Processing_GetData(uint8 **data0, uint8 **data1, DataSettings **ds)
+void Processing::GetData(uint8 **data0, uint8 **data1, DataSettings **ds)
 {
     if (data0)
     {
@@ -960,7 +960,7 @@ void Processing_GetData(uint8 **data0, uint8 **data1, DataSettings **ds)
     *ds = dataSet;
 }
 
-float Processing_GetCursU(Channel chan, float posCurT)
+float Processing::GetCursU(Channel chan, float posCurT)
 {
     if(!dataIn[chan])
     {
@@ -976,7 +976,7 @@ float Processing_GetCursU(Channel chan, float posCurT)
     return retValue;
 }
 
-float Processing_GetCursT(Channel chan, float posCurU, int numCur)
+float Processing::GetCursT(Channel chan, float posCurU, int numCur)
 {
     if(!dataIn[chan])
     {
@@ -1037,7 +1037,7 @@ float Processing_GetCursT(Channel chan, float posCurU, int numCur)
     return 0;
 }
 
-void Processing_InterpolationSinX_X(uint8 data[FPGA_MAX_POINTS], TBase tBase)
+void Processing::InterpolationSinX_X(uint8 data[FPGA_MAX_POINTS], TBase tBase)
 {
 /*
      Последовательности x в sin(x)
@@ -1135,7 +1135,7 @@ void Processing_InterpolationSinX_X(uint8 data[FPGA_MAX_POINTS], TBase tBase)
     }
 }
 
-char* Processing_GetStringMeasure(Meas measure, Channel chan, char buffer[20])
+char* Processing::GetStringMeasure(Meas measure, Channel chan, char buffer[20])
 {
     if (!SET_ENABLED(chan))
     {
@@ -1165,12 +1165,12 @@ char* Processing_GetStringMeasure(Meas measure, Channel chan, char buffer[20])
     return buffer;
 }
 
-int Processing_GetMarkerHorizontal(Channel chan, int numMarker)
+int Processing::GetMarkerHorizontal(Channel chan, int numMarker)
 {
     return markerHor[chan][numMarker] - MIN_VALUE;
 }
 
-int Processing_GetMarkerVertical(Channel chan, int numMarker)
+int Processing::GetMarkerVertical(Channel chan, int numMarker)
 {
     return markerVert[chan][numMarker];
 }

@@ -510,7 +510,7 @@ void PainterData::DrawMath()
     mathFPGA.PointsRel2Voltage(OUT_A, numPoints, RANGE_DS_A, (int16)RSHIFT_DS_A, dataAbsA);
     mathFPGA.PointsRel2Voltage(OUT_B, numPoints, RANGE_DS_B, (int16)RSHIFT_DS_B, dataAbsB);
 
-    math.CalculateMathFunction(dataAbsA, dataAbsB, numPoints);
+    Math::CalculateMathFunction(dataAbsA, dataAbsB, numPoints);
 
     uint8 points[FPGA_MAX_POINTS];
 
@@ -720,7 +720,7 @@ static void DrawSignalLined(const uint8 *data, int startPoint, int endPoint, int
             if (x0 >= gridLeft && x0 <= gridRight)
             {
                 int index = i - startPoint;
-                int y = calculateFiltr ? math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING) : data[i];
+                int y = calculateFiltr ? Math::CalculateFiltr(data, i, numPoints, NUM_SMOOTHING) : data[i];
                 int newY = 0;
                 CONVERT_DATA_TO_DISPLAY(newY, y);
                 dataCD[index] = (uint8)newY;
@@ -795,7 +795,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
         for (int i = startPoint; i < endPoint; i++)
         {
             int index = i - startPoint;
-            CONVERT_DATA_TO_DISPLAY(dataCD[index], math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
+            CONVERT_DATA_TO_DISPLAY(dataCD[index], Math::CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
         }
         Painter::DrawSignal(Grid::Left(), dataCD, false);
     }
@@ -805,7 +805,7 @@ static void DrawSignalPointed(const uint8 *data, int startPoint, int endPoint, i
         {
             int index = i - startPoint;
             int dat = 0;
-            CONVERT_DATA_TO_DISPLAY(dat, math.CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
+            CONVERT_DATA_TO_DISPLAY(dat, Math::CalculateFiltr(data, i, numPoints, NUM_SMOOTHING));
             Painter::SetPoint(Grid::Left() + (int)(index * scaleX), dat);
         }
     }

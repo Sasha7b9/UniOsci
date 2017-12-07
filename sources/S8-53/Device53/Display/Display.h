@@ -1,7 +1,6 @@
 #pragma once
 #include "Display/Painter.h"
 #include "Tables.h"
-#include "Display/DisplayTypes.h"
 
 
 class Display
@@ -85,7 +84,7 @@ private:
 
     static void DrawHiRightPart();
 
-    void DrawMath();
+    static void DrawMath();
 
     static void DrawSpectrum();
     /// Вывести текущее время.

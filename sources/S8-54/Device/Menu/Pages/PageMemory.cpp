@@ -252,9 +252,9 @@ DEF_PAGE_SB(        ppLast,                                                     
     "ѕереход в режим работы с последними полученными сигналами",
     "Transition to an operating mode with the last received signals",
     &bLast_Exit,            // ѕјћя“№ - ѕќ—Ћ≈ƒЌ»≈ - ¬ыход
-    0,
     &bLast_Next,            // ѕјћя“№ - ѕќ—Ћ≈ƒЌ»≈ - —ледующий
     &bLast_Prev,            // ѕјћя“№ - ѕќ—Ћ≈ƒЌ»≈ - ѕредыдущий
+    0,
     &bLast_SaveToROM,       // ѕјћя“№ - ѕќ—Ћ≈ƒЌ»≈ - ¬нутр «”
     &bLast_SaveToDrive,     // ѕјћя“№ - ѕќ—Ћ≈ƒЌ»≈ - —охранить
     PageSB_Memory_Last, &pMemory, FuncActive, OnPress_Last, OnDraw_Last, OnRegSet_Last

@@ -191,7 +191,7 @@ void OnTimerPressedKey()
         }
         pressedKey = B_Empty;
     }
-    Timer_Disable(kPressKey);
+    Timer::Disable(kPressKey);
 }
 
 bool Panel::ProcessingCommandFromPIC(uint16 command)
@@ -238,7 +238,7 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
         funcOnKeyDown[pressButton]();
         Menu::PressButton(pressButton);
         pressedKey = pressButton;
-        Timer_Enable(kPressKey, 500, OnTimerPressedKey);
+        Timer::SetAndEnable(kPressKey, OnTimerPressedKey, 500);
     }
     else if(regLeft)
     {
@@ -279,12 +279,12 @@ bool Panel::ProcessingCommandFromPIC(uint16 command)
 
 void Panel::EnableLEDChannelA(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
+    TransmitData(enable ? LED_CHANA_ENABLE : LED_CHANA_DISABLE);
 }
 
 void Panel::EnableLEDChannelB(bool enable)
 {
-    panel.TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
+    TransmitData(enable ? LED_CHANB_ENABLE : LED_CHANB_DISABLE);
 }
 
 void Panel::EnableLEDTrig(bool enable)
@@ -294,8 +294,8 @@ void Panel::EnableLEDTrig(bool enable)
     static bool fired = false;
     if(first)
     {
-        panel.TransmitData(LED_TRIG_DISABLE);
-        display.EnableTrigLabel(false);
+        TransmitData(LED_TRIG_DISABLE);
+        Display::EnableTrigLabel(false);
         timeEnable = gTimeMS;
         first = false;
     }
@@ -309,14 +309,14 @@ void Panel::EnableLEDTrig(bool enable)
     {
         if(enable)
         {
-            panel.TransmitData(LED_TRIG_ENABLE);
-            display.EnableTrigLabel(true);
+            TransmitData(LED_TRIG_ENABLE);
+            Display::EnableTrigLabel(true);
             fired = true;
         }
         else if(gTimeMS - timeEnable > 100)
         {
-            panel.TransmitData(LED_TRIG_DISABLE);
-            display.EnableTrigLabel(false);
+            TransmitData(LED_TRIG_DISABLE);
+            Display::EnableTrigLabel(false);
             fired = false;
         }
     }
@@ -410,7 +410,7 @@ void Panel::Init()
     isGPIOG.Alternate = GPIO_AF0_MCO;
     HAL_GPIO_Init(GPIOG, &isGPIOG);
 
-    panel.EnableLEDRegSet(false);
+    EnableLEDRegSet(false);
 }
 
 void Panel::EnableLEDRegSet(bool enable)
@@ -438,11 +438,11 @@ void HAL_GPIO_EXTI_Callback(uint16_t pin)
 
 void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* handleSPI)
 {
-    if (!panel.ProcessingCommandFromPIC(dataSPIfromPanel))
+    if (!Panel::ProcessingCommandFromPIC(dataSPIfromPanel))
     {
         HAL_SPI_DeInit(handleSPI);
         HAL_SPI_Init(handleSPI);
     }
-    uint16 data = panel.NextData();
+    uint16 data = Panel::NextData();
     SPI1->DR = data;
 }

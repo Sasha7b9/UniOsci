@@ -66,7 +66,7 @@ DEF_CHOICE_2(       mcAccumulation_Mode,                                        
     "2. \"Не сбрасывать\" - на дисплей всегда выводится заданное или меньшее (в случае нехватки памяти) количество измерений. Недостатком является "
     "меньшее быстродействие и невозможность накопления заданного количества измерений при недостатке памяти."
     ,
-    "1. \"Dump\" - after accumulation of the set number of measurement there is a cleaning of the display. This mode is convenient when memory "
+    "1. \"Dump\" - after accumulation of the set number of measurement there is a cleaning of the Display:: This mode is convenient when memory "
     "isn't enough for preservation of the necessary number of measurements.\n"
     "2. \"Not to dump\" - the number of measurements is always output to the display set or smaller (in case of shortage of memory). Shortcoming "
     "is smaller speed and impossibility of accumulation of the set number of measurements at a lack of memory.",
@@ -83,7 +83,7 @@ static bool IsActive_Accumulation_Clear()
 
 void OnPress_Accumulation_Clear()
 {
-    display.Redraw();
+    Display::Redraw();
 }
 
 DEF_BUTTON(mcAccumulation_Clear,                                                                       // ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить ///
@@ -226,7 +226,7 @@ DEF_CHOICE_5(       mcRefreshFPS,                                               
 DEF_CHOICE_4(       mcGrid_Type,                                                                                          // ДИСПЛЕЙ - СЕТКА - Тип ---
     "Тип", "Type",
     "Выбор типа сетки.",
-    "Choice like grid.",
+    "Choice like Grid::",
     "Тип 1", "Type 1",
     "Тип 2", "Type 2",
     "Тип 3", "Type 3",
@@ -251,7 +251,7 @@ static void BeforeDraw_Grid_Brightness()
 DEF_GOVERNOR(       mgGrid_Brightness,                                                                                // ДИСПЛЕЙ - СЕТКА - Яркость ---
     "Яркость", "Brightness",
     "Устанавливает яркость сетки.",
-    "Adjust the brightness of the grid.",
+    "Adjust the brightness of the Grid::",
     BRIGHTNESS_GRID, 0, 100, mspGrid, FuncActive, OnChanged_Grid_Brightness, BeforeDraw_Grid_Brightness
 );
 
@@ -260,7 +260,7 @@ DEF_GOVERNOR(       mgGrid_Brightness,                                          
 DEF_PAGE_2(         mspGrid,                                                                                                    // ДИСПЛЕЙ - СЕТКА ///
     "СЕТКА", "GRID",
     "Содержит настройки отображения координатной сетки.",
-    "Contains settings of display of a coordinate grid.",
+    "Contains settings of display of a coordinate Grid::",
     mcGrid_Type,        // ДИСПЛЕЙ - СЕТКА - Тип
     mgGrid_Brightness,  // ДИСПЛЕЙ - СЕТКА - Яркость
     Page_Display_Grid, &pDisplay, FuncActive, EmptyPressPage
@@ -330,7 +330,7 @@ DEF_PAGE_4(         mspSettings_Colors,                                         
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_Brightness()
 {
-    painter.SetBrightnessDisplay(BRIGHTNESS);
+    Painter::SetBrightnessDisplay(BRIGHTNESS);
 }
 
 DEF_GOVERNOR(       mgSettings_Brightness,                                                                        // ДИСПЛЕЙ - НАСТРОЙКИ - Яркость ---
@@ -369,7 +369,7 @@ DEF_CHOICE_2(       mcSettings_ShowStringNavigation,                            
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_ShowAltMarkers(bool)
 {
-    display.ChangedRShiftMarkers();
+    Display::ChangedRShiftMarkers();
 }
 
 DEF_CHOICE_3(       mcSettings_ShowAltMarkers,                                                            //--- ДИСПЛЕЙ - НАСТРОЙКИ - Доп. маркеры ---
@@ -430,7 +430,7 @@ DEF_PAGE_7(         mspSettings,                                                
 DEF_PAGE_9(         pDisplay,                                                                                                           // ДИСПЛЕЙ ///
     "ДИСПЛЕЙ", "DISPLAY",
     "Содержит настройки отображения дисплея.",
-    "Contains settings of display of the display.",
+    "Contains settings of display of the Display::",
     mcMapping,       // ДИСПЛЕЙ - Отображение
     mspAccumulation, // ДИСПЛЕЙ - НАКОПЛЕНИЕ
     mspAveraging,    // ДИСПЛЕЙ - УСРЕДНЕНИЕ

@@ -48,7 +48,7 @@ extern const char chanMultiplierEn[] = "Attenuation: \n\"x1\" - the signal is no
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_InputA(bool active)
 {
-    panel.EnableLEDChannelA(sChannel_Enabled(A));
+    Panel::EnableLEDChannelA(sChannel_Enabled(A));
 }
 
 DEF_CHOICE_2(       mcInputA,                                                                                                 //---  ¿Õ¿À 1 - ¬ıÓ‰ ---
@@ -132,7 +132,7 @@ DEF_PAGE_5(         pChanA,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void OnChanged_InputB(bool active)
 {
-    panel.EnableLEDChannelB(sChannel_Enabled(B));
+    Panel::EnableLEDChannelB(sChannel_Enabled(B));
 }
 
 DEF_CHOICE_2(       mcInputB,                                                                                                 //---  ¿Õ¿À 2 - ¬ıÓ‰ ---

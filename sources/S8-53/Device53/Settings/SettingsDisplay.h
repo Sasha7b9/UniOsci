@@ -1,7 +1,4 @@
 #pragma once
-#include "defines.h"
-#include "SettingsTypes.h"
-#include "Display/Colors.h"
 
 
 /** @addtogroup Settings

@@ -48,43 +48,43 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
     Color color = Color::Fill();
     if (hightlight)
     {
-        painter.FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
+        Painter::FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
         color = Color::Back();
     }
 
     if (length <= WIDTH_COL)
     {
-        painter.DrawText(x, y, string, color);
+        Painter::DrawText(x, y, string, color);
     }
     else
     {
-        painter.DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
-        painter.DrawText(x + WIDTH_COL + 3, y, "...");
+        Painter::DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
+        Painter::DrawText(x + WIDTH_COL + 3, y, "...");
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawHat(int x, int y, char *string, int num1, int num2)
 {
-    painter.FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::Back());
-    painter.SetColor(Color::Fill());
-    painter.DrawFormatText(x + 60, y, string, num1, num2);
-    painter.DrawHLine(y + 10, x + 2, x + 140);
+    Painter::FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::Back());
+    Painter::SetColor(Color::Fill());
+    Painter::DrawFormatText(x + 60, y, string, num1, num2);
+    Painter::DrawHLine(y + 10, x + 2, x + 140);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawDirs(int x, int y)
 {
-    drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+    FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
     DrawHat(x, y, "Каталог : %d/%d", numCurDir + ((numDirs == 0) ? 0 : 1), numDirs);
     char nameDir[255];
     StructForReadDir sfrd;
     y += 12;
-    if (drive.GetNameDir(currentDir, numFirstDir, nameDir, &sfrd))
+    if (FDrive::GetNameDir(currentDir, numFirstDir, nameDir, &sfrd))
     {
         int  drawingDirs = 0;
         DrawLongString(x, y, nameDir, gBF.cursorInDirs == 1 && ( numFirstDir + drawingDirs == numCurDir));
-        while (drawingDirs < (RECS_ON_PAGE - 1) && drive.GetNextNameDir(nameDir, &sfrd))
+        while (drawingDirs < (RECS_ON_PAGE - 1) && FDrive::GetNextNameDir(nameDir, &sfrd))
         {
             drawingDirs++;
             DrawLongString(x, y + drawingDirs * 9, nameDir, gBF.cursorInDirs == 1 && ( numFirstDir + drawingDirs == numCurDir));
@@ -99,11 +99,11 @@ static void DrawFiles(int x, int y)
     char nameFile[255];
     StructForReadDir sfrd;
     y += 12;
-    if (drive.GetNameFile(currentDir, numFirstFile, nameFile, &sfrd))
+    if (FDrive::GetNameFile(currentDir, numFirstFile, nameFile, &sfrd))
     {
         int drawingFiles = 0;
         DrawLongString(x, y, nameFile, gBF.cursorInDirs == 0 && (numFirstFile + drawingFiles == numCurFile));
-        while (drawingFiles < (RECS_ON_PAGE - 1) && drive.GetNextNameFile(nameFile, &sfrd))
+        while (drawingFiles < (RECS_ON_PAGE - 1) && FDrive::GetNextNameFile(nameFile, &sfrd))
         {
             drawingFiles++;
             DrawLongString(x, y + drawingFiles * 9, nameFile, gBF.cursorInDirs == 0 && (numFirstFile + drawingFiles == numCurFile));
@@ -114,11 +114,11 @@ static void DrawFiles(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawNameCurrentDir(int left, int top)
 {
-    painter.SetColor(Color::Fill());
+    Painter::SetColor(Color::Fill());
     int length = Font_GetLengthText(currentDir);
     if (length < 277)
     {
-        painter.DrawText(left + 1, top + 1, currentDir);
+        Painter::DrawText(left + 1, top + 1, currentDir);
     }
     else
     {
@@ -135,7 +135,7 @@ static void DrawNameCurrentDir(int left, int top)
             }
             length = Font_GetLengthText(++pointer);
         }
-        painter.DrawText(left + 1, top + 1, pointer);
+        Painter::DrawText(left + 1, top + 1, pointer);
     }
 }
 
@@ -154,14 +154,14 @@ void FM_Draw()
 
     if (gBF.needRedrawFileManager == 1)
     {
-        painter.BeginScene(Color::Back());
+        Painter::BeginScene(Color::Back());
         Menu::Draw();
-        painter.DrawRectangle(0, 0, width, 239, Color::Fill());
-        painter.FillRegion(left, top, grid.Width() - 2, grid.FullHeight() - 2, Color::Back());
-        drive.GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+        Painter::DrawRectangle(0, 0, width, 239, Color::Fill());
+        Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, Color::Back());
+        FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
-        painter.DrawVLine(left2col, top + 16, 239, Color::Fill());
-        painter.DrawHLine(top + 15, 0, width);
+        Painter::DrawVLine(left2col, top + 16, 239, Color::Fill());
+        Painter::DrawHLine(top + 15, 0, width);
     }
 
     if (gBF.needRedrawFileManager != 3)
@@ -174,9 +174,9 @@ void FM_Draw()
         DrawFiles(left2col + 3, top + 18);
     }
 
-    painter.EndScene();
+    Painter::EndScene();
 
-    //painter.SaveScreenToFlashDrive();
+    //Painter::SaveScreenToFlashDrive();
 
     gBF.needRedrawFileManager = 0;
 }
@@ -212,18 +212,18 @@ void PressSB_FM_LevelDown()
     }
     char nameDir[100];
     StructForReadDir sfrd;
-    if (drive.GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
+    if (FDrive::GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
     {
         if (strlen(currentDir) + strlen(nameDir) < 250)
         {
-            drive.CloseCurrentDir(&sfrd);
+            FDrive::CloseCurrentDir(&sfrd);
             strcat(currentDir, "\\");
             strcat(currentDir, nameDir);
             numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
         }
 
     }
-    drive.CloseCurrentDir(&sfrd);
+    FDrive::CloseCurrentDir(&sfrd);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -321,7 +321,7 @@ static void DecCurrentFile()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FM_RotateRegSet(int angle)
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     if (gBF.cursorInDirs == 1)
     {
         angle > 0 ? DecCurrentDir() : IncCurrentDir();
@@ -360,7 +360,7 @@ bool FM_GetNameForNewFile(char name[255])
     }
     else
     {
-        PackedTime time = RTC_GetPackedTime();
+        PackedTime time = RTClock::GetPackedTime();
                            //  1          2           3         4           5             6
         uint values[] = {0, time.year, time.month, time.day, time.hours, time.minutes, time.seconds};
 

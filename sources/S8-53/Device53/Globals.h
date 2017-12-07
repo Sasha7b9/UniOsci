@@ -1,7 +1,6 @@
 #pragma once
 #include "Panel/Controls.h"
 #include "Settings/SettingsTypes.h"
-#include "Settings/SettingsChannel.h"
 #include "Settings/SettingsTime.h"
 #include <stm32f2xx_hal_def.h>
 #include "stm32f2xx_hal_conf.h"
@@ -38,7 +37,7 @@ typedef struct
     uint cableEthIsConnected        : 1;    // Если 1, значит, просто подключён кабель
     uint ethIsConnected             : 1;    // Если 1, то подсоединён клиент
 
-    // Для рисования : display.c
+    // Для рисования : Display::c
     uint showLevelRShift0           : 1;    // Нужно ли рисовать горизонтальную линию уровня смещения первого канала
     uint showLevelRShift1           : 1;
     uint showLevelTrigLev           : 1;    // Нужно ли рисовать горизонтальную линию уровня смещения уровня синхронизации

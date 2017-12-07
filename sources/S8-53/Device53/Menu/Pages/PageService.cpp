@@ -31,33 +31,33 @@ extern const PageBase ppInformation;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncDraw()
 {
-    painter.BeginScene(Color::Back());
+    Painter::BeginScene(Color::Back());
 
-    painter.DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
+    Painter::DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
                                          "Нажмите любую другую кнопку, если сброс не нужен.", Color::Fill());
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 static void OnTimerDraw()
 {
-    display.Update();
+    Display::Update();
 }
 
 static void OnPress_ResetSettings()
 {
-    panel.Disable();
-    display.SetDrawMode(DrawMode_Hand, FuncDraw);
-    Timer_Enable(kTimerDrawHandFunction, 100, OnTimerDraw);
+    Panel::Disable();
+    Display::SetDrawMode(DrawMode_Hand, FuncDraw);
+    Timer::SetAndEnable(kTimerDisplay, OnTimerDraw, 100);
 
-    if (panel.WaitPressingButton() == B_Start)
+    if (Panel::WaitPressingButton() == B_Start)
     {
         Settings_Load(true);
     }
 
-    Timer_Disable(kTimerDrawHandFunction);
-    display.SetDrawMode(DrawMode_Auto, 0);
-    panel.Enable();
+    Timer::Disable(kTimerDisplay);
+    Display::SetDrawMode(DrawMode_Auto, 0);
+    Panel::Enable();
 }
 
 DEF_BUTTON(         bResetSettings,                                                                                  //--- СЕРВИС - Сброс настроек ---
@@ -127,26 +127,26 @@ DEF_SMALL_BUTTON_EXIT(  sbMath_Function_Exit,                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Math_Function_ModeDraw_Disable(int x, int y)
 {
-    painter.DrawText(x + 2 + (set.common.lang == English ? 2 : 0), y + 5, set.common.lang == Russian ? "Вык" : "Dis");
+    Painter::DrawText(x + 2 + (set.common.lang == English ? 2 : 0), y + 5, set.common.lang == Russian ? "Вык" : "Dis");
 }
 
 static void Draw_Math_Function_ModeDraw_Separate(int x, int y)
 {
-    painter.DrawRectangle(x + 3, y + 5, 13, 9);
-    painter.DrawHLine(y + 9, x + 3, x + 16);
-    painter.DrawHLine(y + 10, x + 3, x + 16);
+    Painter::DrawRectangle(x + 3, y + 5, 13, 9);
+    Painter::DrawHLine(y + 9, x + 3, x + 16);
+    Painter::DrawHLine(y + 10, x + 3, x + 16);
 }
 
 static void Draw_Math_Function_ModeDraw_Together(int x, int y)
 {
-    painter.DrawRectangle(x + 3, y + 5, 13, 9);
+    Painter::DrawRectangle(x + 3, y + 5, 13, 9);
 }
 
 static void OnPress_Math_Function_ModeDraw()
 {
     if (FFT_ENABLED)
     {
-        display.ShowWarningBad(ImpossibleEnableMathFunction);
+        Display::ShowWarningBad(ImpossibleEnableMathFunction);
     }
     else
     {
@@ -181,15 +181,15 @@ DEF_SMALL_BUTTON_HINTS_3(   sbMath_Function_ModeDraw,                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Math_Function_Type_Sum(int x, int y)
 {
-    painter.DrawHLine(y + 9, x + 4, x + 14);
-    painter.DrawVLine(x + 9, y + 4, y + 14);
+    Painter::DrawHLine(y + 9, x + 4, x + 14);
+    Painter::DrawVLine(x + 9, y + 4, y + 14);
 }
 
 static void Draw_Math_Function_Type_Mul(int x, int y)
 {
-    painter.SetFont(TypeFont_UGO2);
-    painter.Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
-    painter.SetFont(TypeFont_8);
+    Painter::SetFont(TypeFont_UGO2);
+    Painter::Draw4SymbolsInRect(x + 4, y + 3, SYMBOL_MATH_FUNC_MUL);
+    Painter::SetFont(TypeFont_8);
 }
 
 static void OnPress_Math_Function_Type()
@@ -215,12 +215,12 @@ DEF_SMALL_BUTTON_HINTS_2(   sbMath_Function_Type,                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_Math_Function_ModeRegSet_Range(int x, int y)
 {
-    painter.DrawChar(x + 7, y + 5, set.common.lang == Russian ? 'M' : 'S');
+    Painter::DrawChar(x + 7, y + 5, set.common.lang == Russian ? 'M' : 'S');
 }
 
 static void Draw_Math_Function_ModeRegSet_RShift(int x, int y)
 {
-    painter.DrawText(x + 5 - (set.common.lang == English ? 3 : 0), y + 5, set.common.lang == Russian ? "См" : "Shif");
+    Painter::DrawText(x + 5 - (set.common.lang == English ? 3 : 0), y + 5, set.common.lang == Russian ? "См" : "Shif");
 }
 
 static void Draw_Math_Function_ModeRegSet(int x, int y)
@@ -252,7 +252,7 @@ static void OnPress_Math_Function_RangeA()
 
 static void Draw_Math_Function_RangeA(int x, int y)
 {
-    painter.DrawChar(x + 8, y + 5, '1');
+    Painter::DrawChar(x + 8, y + 5, '1');
 }
 
 DEF_SMALL_BUTTON(   sbMath_Function_RangeA,                                              //--- СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 1-го канала ---
@@ -271,7 +271,7 @@ static void OnPress_Math_Function_RangeB()
 
 static void Draw_Math_Function_RangeB(int x, int y)
 {
-    painter.DrawChar(x + 8, y + 5, '2');
+    Painter::DrawChar(x + 8, y + 5, '2');
 }
 
 DEF_SMALL_BUTTON(   sbMath_Function_RangeB,                                              //--- СЕРВИС - МАТЕМАТИКА - ФУНКЦИЯ - Масштаб 2-го канала ---
@@ -291,7 +291,7 @@ static void OnPress_Math_Function()
 {
     if (FFT_ENABLED)
     {
-        display.ShowWarningBad(ImpossibleEnableMathFunction);
+        Display::ShowWarningBad(ImpossibleEnableMathFunction);
     }
 }
 
@@ -316,7 +316,7 @@ static void OnRegSet_Math_Function(int delta)
                 {
                     rShift = RShiftZero;
                 }
-                sound.RegulatorShiftRotate();
+                Sound::RegulatorShiftRotate();
                 SET_RSHIFT_MATH = rShift;
             }
         }
@@ -330,7 +330,7 @@ static void OnRegSet_Math_Function(int delta)
                 {
                     rShift = RShiftZero;
                 }
-                sound.RegulatorShiftRotate();
+                Sound::RegulatorShiftRotate();
                 SET_RSHIFT_MATH = rShift;
             }
         }
@@ -348,7 +348,7 @@ static void OnRegSet_Math_Function(int delta)
             {
                 ++SET_RANGE_MATH;
                 SET_RSHIFT_MATH = RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
-                sound.RegulatorSwitchRotate();
+                Sound::RegulatorSwitchRotate();
             }
             sum = 0;
         }
@@ -358,7 +358,7 @@ static void OnRegSet_Math_Function(int delta)
             {
                 --SET_RANGE_MATH;
                 SET_RSHIFT_MATH = RSHIFT_2_REL(rShiftAbs, SET_RANGE_MATH);
-                sound.RegulatorSwitchRotate();
+                Sound::RegulatorSwitchRotate();
             }
             sum = 0;
         }
@@ -424,7 +424,7 @@ DEF_CHOICE_4(       cMath_FFT_Window,                                           
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Math_FFT_Cursors_Exit()
 {
-    display.RemoveAddDrawFunction();
+    Display::RemoveAddDrawFunction();
 }
 
 DEF_SMALL_BUTTON_EXIT(  cMath_FFT_Cursors_Exit,                                               //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ - Выход ---
@@ -440,7 +440,7 @@ static void OnPress_Math_FFT_Cursors_Source()
 
 static void Draw_Math_FFT_Cursors_Source(int x, int y)
 {
-    painter.DrawText(x + 7, y + 5, FFT_CUR_CURSOR_IS_0 ? "1" : "2");
+    Painter::DrawText(x + 7, y + 5, FFT_CUR_CURSOR_IS_0 ? "1" : "2");
 }
 
 DEF_SMALL_BUTTON(   cMath_FFT_Cursors_Source,                                              //--- СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ - Источник ---
@@ -459,7 +459,7 @@ static bool IsActive_Math_FFT_Cursors()
 static void OnRegSet_Math_FFT_Cursors(int angle)
 {
     FFT_POS_CURSOR(FFT_CUR_CURSOR) += angle;
-    sound.RegulatorShiftRotate();
+    Sound::RegulatorShiftRotate();
 }
 
 DEF_PAGE_SB(        ppppMath_FFT_Cursors,                                                                // СЕРВИС - МАТЕМАТИКА - СПЕКТР - КУРСОРЫ ///
@@ -501,7 +501,7 @@ static void OnPress_Math_FFT()
 {
     if (!IsActive_Math_FFT())
     {
-        display.ShowWarningBad(ImpossibleEnableFFT);
+        Display::ShowWarningBad(ImpossibleEnableFFT);
     }
 }
 
@@ -531,8 +531,8 @@ DEF_PAGE_2(         ppMath,                                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Ethernet_Enable(bool active)
 {
-    display.ShowWarningGood(NeedRebootDevice2);
-    display.ShowWarningGood(NeedRebootDevice1);
+    Display::ShowWarningGood(NeedRebootDevice2);
+    Display::ShowWarningGood(NeedRebootDevice1);
 };
 
 DEF_CHOICE_2(       cEthernet_Enable,                                                                           //--- СЕРВИС - ETHERNET - Ethernet ---
@@ -657,8 +657,8 @@ DEF_CHOICE_2(       cModeLongPressButtonTrig,                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnPress_Information_Exit()
 {
-    display.SetDrawMode(DrawMode_Auto, 0);
-    display.RemoveAddDrawFunction();
+    Display::SetDrawMode(DrawMode_Auto, 0);
+    Display::RemoveAddDrawFunction();
 }
 
 DEF_SMALL_BUTTON_EXIT(  sbInformation_Exit,                                                                      //--- СЕРВИС - ИНФОРМАЦИЯ - Выход ---
@@ -670,40 +670,40 @@ static void Information_Draw()
 {
     Language lang = LANG;
 
-    painter.BeginScene(Color::BLACK);
+    Painter::BeginScene(Color::BLACK);
     int x = 100;
     int dY = 20;
     int y = 20;
-    painter.DrawRectangle(0, 0, 319, 239, Color::Fill());
+    Painter::DrawRectangle(0, 0, 319, 239, Color::Fill());
     y += dY;
-    painter.DrawText(x, y, lang == Russian ? "ИНФОРМАЦИЯ" : "INFORMATION");
+    Painter::DrawText(x, y, lang == Russian ? "ИНФОРМАЦИЯ" : "INFORMATION");
     y += dY;
-    painter.DrawText(x, y, lang == Russian ? "Модель : С8-53/1" : "Model : S8-53/1");
+    Painter::DrawText(x, y, lang == Russian ? "Модель : С8-53/1" : "Model : S8-53/1");
     y += dY;
 
     char buffer[100];
-    painter.DrawText(x, y, lang == Russian ? "Программное обеспечение:" : "Software:");
+    Painter::DrawText(x, y, lang == Russian ? "Программное обеспечение:" : "Software:");
     y += dY;
     sprintf(buffer, (const char*)((lang == Russian) ? "версия %s" : "version %s"), NUM_VER);
-    painter.DrawText(x, y, buffer);
+    Painter::DrawText(x, y, buffer);
     y += dY;
 
-    painter.SetColor(Color::Fill());
-    painter.DrawFormatText(x, y, "CRC32 : %X", Hardware_CalculateCRC32());
+    Painter::SetColor(Color::Fill());
+    Painter::DrawFormatText(x, y, "CRC32 : %X", Hardware_CalculateCRC32());
 
     dY = -10;
-    painter.DrawStringInCenterRect(0, 190 + dY, 320, 20, "Для получения помощи нажмите и удерживайте кнопку ПОМОЩЬ");
-    painter.DrawStringInCenterRect(0, 205 + dY, 320, 20, "Отдел маркетинга: тел./факс. 8-017-262-57-50");
-    painter.DrawStringInCenterRect(0, 220 + dY, 320, 20, "Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-262-57-51");
+    Painter::DrawStringInCenterRect(0, 190 + dY, 320, 20, "Для получения помощи нажмите и удерживайте кнопку ПОМОЩЬ");
+    Painter::DrawStringInCenterRect(0, 205 + dY, 320, 20, "Отдел маркетинга: тел./факс. 8-017-262-57-50");
+    Painter::DrawStringInCenterRect(0, 220 + dY, 320, 20, "Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-262-57-51");
 
     Menu::Draw();
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 static void OnPress_Information()
 {
     Menu::OpenPageAndSetItCurrent(PageSB_Service_Information);
-    display.SetDrawMode(DrawMode_Hand, Information_Draw);
+    Display::SetDrawMode(DrawMode_Hand, Information_Draw);
 }
 
 DEF_PAGE_SB(        ppInformation,                                                                                          // СЕРВИС - ИНФОРМАЦИЯ ///

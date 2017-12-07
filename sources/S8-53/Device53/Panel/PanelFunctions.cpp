@@ -64,7 +64,7 @@ void PowerDown()                        // B_Power
     Menu::ShortPressOnPageItem((Page *)Menu::OpenedItem(), 0);
     Settings_Save();
     Log_DisconnectLoggerUSB();
-    panel.TransmitData(0x04);           // Посылаем команду выключения
+    Panel::TransmitData(0x04);           // Посылаем команду выключения
 }
 
 void MenuLong() 
@@ -174,7 +174,7 @@ void ChangeRShift(int *prevTime, void(*f)(Channel, int16), Channel chan, int16 r
     }
     if (CanChangeRShiftOrTrigLev((TrigSource)chan, rShift))
     {
-        sound.RegulatorShiftRotate();
+        Sound::RegulatorShiftRotate();
         f(chan, rShift);
     }
 }
@@ -190,7 +190,7 @@ void ChangeTrigLev(int *prevTime, void(*f)(TrigSource, int16), TrigSource trigSo
     }
     if (CanChangeRShiftOrTrigLev(trigSource, trigLev))
     {
-        sound.RegulatorShiftRotate();
+        Sound::RegulatorShiftRotate();
         f(trigSource, trigLev);
     }
 }
@@ -222,7 +222,7 @@ void ChangeTShift(int *prevTime, void(*f)(int), int16 relStep)
     }
     if (CanChangeTShift(tShift))
     {
-        sound.RegulatorShiftRotate();
+        Sound::RegulatorShiftRotate();
         f(tShift);
     }
 }
@@ -293,7 +293,7 @@ void TrigLevRight()
 
 static void ShiftScreen(int shift)
 {
-    display.ShiftScreen(shift);
+    Display::ShiftScreen(shift);
 }
 
 static void SetTShift(int tShift)
@@ -304,7 +304,7 @@ static void SetTShift(int tShift)
 void XShift(int delta)
 {
     static int prevTime = 0;
-    if (!fpga.IsRunning() || TIME_DIV_XPOS_IS_SHIFT_IN_MEMORY)
+    if (!FPGA::IsRunning() || TIME_DIV_XPOS_IS_SHIFT_IN_MEMORY)
     {
         if (!ENUM_POINTS_IS_281)
         {
@@ -329,37 +329,37 @@ void TShiftRight()
 
 void RangeALeft()
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     FPGA::RangeIncrease(A);
 }
 
 void RangeARight()
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     FPGA::RangeDecrease(A);
 }
 
 void RangeBLeft()
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     FPGA::RangeIncrease(B);
 }
 
 void RangeBRight()
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     FPGA::RangeDecrease(B);
 }
 
 void TBaseLeft()
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     FPGA::TBaseIncrease();
 }
 
 void TBaseRight()
 {
-    sound.RegulatorSwitchRotate();
+    Sound::RegulatorSwitchRotate();
     FPGA::TBaseDecrease();
 }
 

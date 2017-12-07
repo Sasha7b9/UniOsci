@@ -53,7 +53,7 @@ extern void LoadStretchADC(Channel chan);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void OnTimerDraw()
 {
-    display.Update();
+    Display::Update();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -64,8 +64,8 @@ void FPGA::ProcedureCalibration()
 
     SET_ENABLED_A = SET_ENABLED_B = true;
 
-    display.SetDrawMode(DrawMode_Hand, FuncAttScreen);
-    Timer_Enable(kTimerDrawHandFunction, 100, OnTimerDraw);
+    Display::SetDrawMode(DrawMode_Hand, FuncAttScreen);
+    Timer::SetAndEnable(kTimerDisplay, OnTimerDraw, 100);
 
     koeffCalibrationOld[A] = STRETCH_ADC_A;
     koeffCalibrationOld[B] = STRETCH_ADC_B;
@@ -73,7 +73,7 @@ void FPGA::ProcedureCalibration()
     bar0.fullTime = bar0.passedTime = bar1.fullTime = bar1.passedTime = 0;
 
     FPGA::SaveState();                               // Сохраняем текущее состояние.
-    panel.Disable();                                // Отлкючаем панель управления.
+    Panel::Disable();                                // Отлкючаем панель управления.
 
     while(1)
     {
@@ -91,8 +91,8 @@ void FPGA::ProcedureCalibration()
         FPGA::SetRShift(B, RShiftZero);
         FPGA::SetModeCouple(A, ModeCouple_GND);
         FPGA::SetModeCouple(B, ModeCouple_GND);
-        FSMC_Write(WR_ADD_RSHIFT_DAC1, 0);
-        FSMC_Write(WR_ADD_RSHIFT_DAC2, 0);
+        FSMC::Write(WR_ADD_RSHIFT_DAC1, 0);
+        FSMC::Write(WR_ADD_RSHIFT_DAC2, 0);
 
         deltaADCPercentsOld[0] = CalculateDeltaADC(A, &avrADC1old[A], &avrADC2old[A], &deltaADCold[A]);
         deltaADCPercentsOld[1] = CalculateDeltaADC(B, &avrADC1old[B], &avrADC2old[B], &deltaADCold[B]);
@@ -106,7 +106,7 @@ void FPGA::ProcedureCalibration()
 
         koeffCal0 = koeffCal1 = ERROR_VALUE_FLOAT;
 
-		if(panel.WaitPressingButton() == B_Start)             // Ожидаем подтверждения или отмены процедуры калибровки первого канала.
+		if(Panel::WaitPressingButton() == B_Start)             // Ожидаем подтверждения или отмены процедуры калибровки первого канала.
         {
 			gStateFPGA.stateCalibration = StateCalibration_RShift0inProgress;
 
@@ -114,7 +114,7 @@ void FPGA::ProcedureCalibration()
 			if(koeffCal0 == ERROR_VALUE_FLOAT)
             {
 				gStateFPGA.stateCalibration = StateCalibration_ErrorCalibration0;
-				panel.WaitPressingButton();
+				Panel::WaitPressingButton();
                 DEBUG_STRETCH_ADC_TYPE = StretchADC_Hand;
                 LoadStretchADC(A);
             }
@@ -143,7 +143,7 @@ void FPGA::ProcedureCalibration()
 
         HAL_Delay(500);
 
-		if(panel.WaitPressingButton() == B_Start)                 // Ожидаем подтверждения или отмены процедуры калибровки второго канала.
+		if(Panel::WaitPressingButton() == B_Start)                 // Ожидаем подтверждения или отмены процедуры калибровки второго канала.
         {
 			gStateFPGA.stateCalibration = StateCalibration_RShift1inProgress;
 
@@ -151,7 +151,7 @@ void FPGA::ProcedureCalibration()
 			if(koeffCal1 == ERROR_VALUE_FLOAT)
             {
 				gStateFPGA.stateCalibration = StateCalibration_ErrorCalibration1;
-				panel.WaitPressingButton();
+				Panel::WaitPressingButton();
                 DEBUG_STRETCH_ADC_TYPE = StretchADC_Hand;
                 LoadStretchADC(B);
 			}
@@ -192,8 +192,8 @@ void FPGA::ProcedureCalibration()
 
     SET_BALANCE_ADC_A = shiftADC0;
     SET_BALANCE_ADC_B = shiftADC1;
-    FSMC_Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
-    FSMC_Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
+    FSMC::Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
+    FSMC::Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
 
     FPGA::SetRShift(A, SET_RSHIFT_A);
     FPGA::SetRShift(B, SET_RSHIFT_B);
@@ -206,10 +206,10 @@ void FPGA::ProcedureCalibration()
     FPGA::LoadKoeffCalibration(B);
 
     gStateFPGA.stateCalibration = StateCalibration_None;
-    panel.WaitPressingButton();
-    panel.Enable();
-    Timer_Disable(kTimerDrawHandFunction);
-    display.SetDrawMode(DrawMode_Auto, 0);
+    Panel::WaitPressingButton();
+    Panel::Enable();
+    Timer::Disable(kTimerDisplay);
+    Display::SetDrawMode(DrawMode_Auto, 0);
     gStateFPGA.stateCalibration = StateCalibration_None;
 
     SET_ENABLED_A = chanAenable;
@@ -221,7 +221,7 @@ void FPGA::ProcedureCalibration()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncAttScreen()
 {
-    painter.BeginScene(gColorBack);
+    Painter::BeginScene(gColorBack);
 
     static bool first = true;
     static uint startTime = 0;
@@ -231,9 +231,9 @@ void FuncAttScreen()
         startTime = gTimeMS;
     }
     int16 y = 10;
-    display.Clear();
+    Display::Clear();
     
-    painter.SetColor(gColorFill);
+    Painter::SetColor(gColorFill);
     
 #define dX 20
 #define dY -15
@@ -242,21 +242,21 @@ void FuncAttScreen()
     {
         case StateCalibration_None:
         {
-                painter.DrawTextInRect(40 + dX, y + 25 + dY, SCREEN_WIDTH - 100, "Калибровка завершена. Нажмите любую кнопку, чтобы выйти из режима калибровки.");
+                Painter::DrawTextInRect(40 + dX, y + 25 + dY, SCREEN_WIDTH - 100, "Калибровка завершена. Нажмите любую кнопку, чтобы выйти из режима калибровки.");
 
-                painter.DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :");
-                painter.DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :");
-                painter.SetColor(Color::Fill());
+                Painter::DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :");
+                Painter::DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :");
+                Painter::SetColor(Color::Fill());
                 for (int i = 0; i < RangeSize; i++)
                 {
-                    painter.DrawFormatText(95 + i * 16 + dX, 55 + dY, "%d", set.chan[A].rShiftAdd[i][0]);
-                    painter.DrawFormatText(95 + i * 16 + dX, 65 + dY, "%d", set.chan[A].rShiftAdd[i][1]);
-                    painter.DrawFormatText(95 + i * 16 + dX, 80 + dY, "%d", set.chan[B].rShiftAdd[i][0]);
-                    painter.DrawFormatText(95 + i * 16 + dX, 90 + dY, "%d", set.chan[B].rShiftAdd[i][1]);
+                    Painter::DrawFormatText(95 + i * 16 + dX, 55 + dY, "%d", set.chan[A].rShiftAdd[i][0]);
+                    Painter::DrawFormatText(95 + i * 16 + dX, 65 + dY, "%d", set.chan[A].rShiftAdd[i][1]);
+                    Painter::DrawFormatText(95 + i * 16 + dX, 80 + dY, "%d", set.chan[B].rShiftAdd[i][0]);
+                    Painter::DrawFormatText(95 + i * 16 + dX, 90 + dY, "%d", set.chan[B].rShiftAdd[i][1]);
                 }
                 
-                painter.DrawFormatText(10 + dX, 110 + dY, "Коэффициент калибровки 1к : %f, %d", STRETCH_ADC_A, (int)(STRETCH_ADC_A * 0x80));
-                painter.DrawFormatText(10 + dX, 130 + dY, "Коэфффициент калибровки 2к : %f, %d", STRETCH_ADC_B, (int)(STRETCH_ADC_B * 0x80));
+                Painter::DrawFormatText(10 + dX, 110 + dY, "Коэффициент калибровки 1к : %f, %d", STRETCH_ADC_A, (int)(STRETCH_ADC_A * 0x80));
+                Painter::DrawFormatText(10 + dX, 130 + dY, "Коэфффициент калибровки 2к : %f, %d", STRETCH_ADC_B, (int)(STRETCH_ADC_B * 0x80));
 
                 DrawParametersChannel(A, 10 + dX, 150 + dY, false);
                 DrawParametersChannel(B, 10 + dX, 200 + dY, false);
@@ -269,7 +269,7 @@ void FuncAttScreen()
             break;
 
         case StateCalibration_RShift0start:
-            painter.DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 1 выход калибратора и нажмите кнопку ПУСК/СТОП. \
+            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 1 выход калибратора и нажмите кнопку ПУСК/СТОП. \
 Если вы не хотите калибровать первый канала, нажмите любую другую кнопку.");
             break;
 
@@ -277,7 +277,7 @@ void FuncAttScreen()
             break;
 
         case StateCalibration_RShift1start:
-            painter.DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 2 выход калибратора и нажмите кнопку ПУСК/СТОП. \
+            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Подключите ко входу канала 2 выход калибратора и нажмите кнопку ПУСК/СТОП. \
 Если вы не хотите калибровать второй канал, нажмите любую другую кнопку.");
             break;
 
@@ -285,11 +285,11 @@ void FuncAttScreen()
             break;
 
         case StateCalibration_ErrorCalibration0:
-            painter.DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Внимание !!! Канал 1 не скалиброван.");
+            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Внимание !!! Канал 1 не скалиброван.");
             break;
 
         case StateCalibration_ErrorCalibration1:
-            painter.DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Внимание !!! Канал 2 не скалиброван.");
+            Painter::DrawTextInRect(50, y + 25, SCREEN_WIDTH - 100, "Внимание !!! Канал 2 не скалиброван.");
             break;
     }
 
@@ -308,18 +308,18 @@ void FuncAttScreen()
     */
     char buffer[100];
     sprintf(buffer, "%.1f", (gTimeMS - startTime) / 1000.0f);
-    painter.DrawText(0, 0, buffer, Color::BLACK);
+    Painter::DrawText(0, 0, buffer, Color::BLACK);
 
-    painter.EndScene();
+    Painter::EndScene();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void DrawParametersChannel(Channel chan, int eX, int eY, bool inProgress)
 {
-    painter.SetColor(Color::Fill());
+    Painter::SetColor(Color::Fill());
     if(inProgress)
     {
-        painter.DrawText(eX, eY + 4, chan == 0 ? "КАНАЛ 1" : "КАНАЛ 2");
+        Painter::DrawText(eX, eY + 4, chan == 0 ? "КАНАЛ 1" : "КАНАЛ 2");
         ProgressBar *bar = (chan == A) ? &bar0 : &bar1;
         bar->width = 240;
         bar->height = 15;
@@ -332,19 +332,19 @@ void DrawParametersChannel(Channel chan, int eX, int eY, bool inProgress)
     {
         int x = inProgress ? 5 : eX;
         int y = eY + (inProgress ? 110 : 0);
-        painter.DrawText(x, y, "Отклонение от нуля:");
+        Painter::DrawText(x, y, "Отклонение от нуля:");
         char buffer[100] = {0};
         sprintf(buffer, "АЦП1 = %.2f/%.2f, АЦП2 = %.2f/%.2f, d = %.2f/%.2f", avrADC1old[chan] - AVE_VALUE, avrADC1[chan] - AVE_VALUE, 
                                                                              avrADC2old[chan] - AVE_VALUE, avrADC2[chan] - AVE_VALUE,
                                                                              deltaADCold[chan], deltaADC[chan]);
         y += 10;
-        painter.DrawText(x, y, buffer);
+        Painter::DrawText(x, y, buffer);
         buffer[0] = 0;
         sprintf(buffer, "Расхождение AЦП = %.2f/%.2f %%", deltaADCPercentsOld[chan], deltaADCPercents[chan]);
-        painter.DrawText(x, y + 11, buffer);
+        Painter::DrawText(x, y + 11, buffer);
         buffer[0] = 0;
         sprintf(buffer, "Записано %d", SET_BALANCE_ADC(chan));
-        painter.DrawText(x, y + 19, buffer);
+        Painter::DrawText(x, y + 19, buffer);
     }
 }
 
@@ -367,27 +367,27 @@ float CalculateDeltaADC(Channel chan, float *avgADC1, float *avgADC2, float *del
     static const int numCicles = 10;
     for(int cicle = 0; cicle < numCicles; cicle++)
     {
-        FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0) {};
+        FSMC::Write(WR_START, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 2) == 0) {};
         FPGA::SwitchingTrig();
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0) {};
-        FSMC_Write(WR_STOP, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 0) == 0) {};
+        FSMC::Write(WR_STOP, 1);
 
         for(int i = 0; i < FPGA_MAX_POINTS; i++)
         {
             if(chan == A)
             {
-                *avgADC1 += FSMC_Read(address1);
-                *avgADC2 += FSMC_Read(address2);
-                FSMC_Read(RD_ADC_B1);
-                FSMC_Read(RD_ADC_B2);
+                *avgADC1 += FSMC::Read(address1);
+                *avgADC2 += FSMC::Read(address2);
+                FSMC::Read(RD_ADC_B1);
+                FSMC::Read(RD_ADC_B2);
             }
             else
             {
-                FSMC_Read(RD_ADC_A1);
-                FSMC_Read(RD_ADC_A2);
-                *avgADC1 += FSMC_Read(address1);
-                *avgADC2 += FSMC_Read(address2);
+                FSMC::Read(RD_ADC_A1);
+                FSMC::Read(RD_ADC_A2);
+                *avgADC1 += FSMC::Read(address1);
+                *avgADC2 += FSMC::Read(address2);
             }
         }
         
@@ -410,8 +410,8 @@ void AlignmentADC()
     SET_BALANCE_ADC_A = shiftADC0;
     shiftADC1 = (int8)((deltaADCold[1] > 0) ? (deltaADCold[1] + 0.5f) : (deltaADCold[1] - 0.5f));
     SET_BALANCE_ADC_B = shiftADC1;
-    FSMC_Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
-    FSMC_Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
+    FSMC::Write(WR_ADD_RSHIFT_DAC1, SET_BALANCE_ADC_A);
+    FSMC::Write(WR_ADD_RSHIFT_DAC2, SET_BALANCE_ADC_B);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -439,8 +439,8 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
         uint startTime = gTimeMS;
         const uint timeWait = 100;
 
-        FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimeMS - startTime < timeWait)) {}; 
+        FSMC::Write(WR_START, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 2) == 0 && (gTimeMS - startTime < timeWait)) {}; 
         if(gTimeMS - startTime > timeWait)                 // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;                       // выход с ошибкой.
@@ -450,21 +450,21 @@ int16 CalculateAdditionRShift(Channel chan, Range range)
 
         startTime = gTimeMS;
 
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimeMS - startTime < timeWait)) {};
+        while(_GET_BIT(FSMC::Read(RD_FL), 0) == 0 && (gTimeMS - startTime < timeWait)) {};
         if(gTimeMS - startTime > timeWait)                 // Если прошло слишком много времени - 
         {
             return ERROR_VALUE_INT16;                       // выход с ошибкой.
         }
 
-        FSMC_Write(WR_STOP, 1);
+        FSMC::Write(WR_STOP, 1);
 
         uint8 *addressRead1 = chan == A ? RD_ADC_A1 : RD_ADC_B1;
         uint8 *addressRead2 = chan == A ? RD_ADC_A2 : RD_ADC_B2;
 
         for(int i = 0; i < FPGA_MAX_POINTS; i += 2)
         {
-            sum += FSMC_Read(addressRead1);
-            sum += FSMC_Read(addressRead2);
+            sum += FSMC::Read(addressRead1);
+            sum += FSMC::Read(addressRead2);
             numPoints += 2;
         }
     }
@@ -503,8 +503,8 @@ float CalculateKoeffCalibration(Channel chan)
         while(gTimeMS - startTime < 20) {}
         startTime = gTimeMS;
 
-        FSMC_Write(WR_START, 1);
-        while(_GET_BIT(FSMC_Read(RD_FL), 2) == 0 && (gTimeMS - startTime > timeWait)) {};
+        FSMC::Write(WR_START, 1);
+        while(_GET_BIT(FSMC::Read(RD_FL), 2) == 0 && (gTimeMS - startTime > timeWait)) {};
         if(gTimeMS - startTime > timeWait)
         {
             return ERROR_VALUE_FLOAT;
@@ -513,20 +513,20 @@ float CalculateKoeffCalibration(Channel chan)
         FPGA::SwitchingTrig();
         startTime = gTimeMS;
 
-        while(_GET_BIT(FSMC_Read(RD_FL), 0) == 0 && (gTimeMS - startTime > timeWait)) {};
+        while(_GET_BIT(FSMC::Read(RD_FL), 0) == 0 && (gTimeMS - startTime > timeWait)) {};
         if(gTimeMS - startTime > timeWait)
         {
             return ERROR_VALUE_FLOAT;
         }
 
-        FSMC_Write(WR_STOP, 1);
+        FSMC::Write(WR_STOP, 1);
 
         uint8 *addressRead1 = chan == A ? RD_ADC_A1 : RD_ADC_B1;
         uint8 *addressRead2 = chan == A ? RD_ADC_A2 : RD_ADC_B2;
 
         for(int i = 0; i < FPGA_MAX_POINTS; i += 2)
         {
-            uint8 val0 = FSMC_Read(addressRead1);
+            uint8 val0 = FSMC::Read(addressRead1);
             if(val0 > AVE_VALUE + 60)
             {
                 numMAX++;
@@ -538,7 +538,7 @@ float CalculateKoeffCalibration(Channel chan)
                 sumMIN += val0;
             }
 
-            uint8 val1 = FSMC_Read(addressRead2);
+            uint8 val1 = FSMC::Read(addressRead2);
             if(val1 > AVE_VALUE + 60)
             {
                 numMAX++;

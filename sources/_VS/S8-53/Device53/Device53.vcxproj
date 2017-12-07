@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\..\common\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\common\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\..\common\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuFunctions.cpp" />

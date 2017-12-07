@@ -37,7 +37,7 @@ void VCP::SendDataAsinch(uint8 *buffer, int size)
     const int SIZE_BUFFER = 64;
     static uint8 trBuf[SIZE_BUFFER];
 
-    size = math.MinFrom2Int(size, SIZE_BUFFER);
+    size = Math::MinFrom2Int(size, SIZE_BUFFER);
     while (!PrevSendingComplete())  {};
     memcpy(trBuf, buffer, size);
 
