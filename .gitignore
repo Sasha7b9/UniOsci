@@ -23,6 +23,9 @@ sources/S8-54/DebugConfig/*
 sources/S8-54/S8-54/DebugConfig/*
 sources/S8-54/obj/*
 sources/S8-54/lst/*
+sources/S8-54/_obj/*
+sources/S8-54/_lst/*
+
 
 sources/S8-53/DebugConfig/*
 sources/S8-53/_obj/*
