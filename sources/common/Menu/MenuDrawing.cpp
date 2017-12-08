@@ -21,9 +21,7 @@ static void DrawNestingPage(Page *page, int left, int bottom);
 static int CalculateX(int layer);
 static int ItemOpenedPosY(void *item);
 
-static void *itemUnderButton[B_NumButtons] = {0};
-
-//extern const PageBase mainPage;
+void *itemUnderButton[B_NumButtons] = {0};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PanelButton GetFuncButtonFromY(int _y)
@@ -330,12 +328,6 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
 int CalculateX(int layer)
 {
     return MP_X - layer * GRID_DELTA / 4;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void *ItemUnderButton(PanelButton button)
-{
-    return itemUnderButton[button];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

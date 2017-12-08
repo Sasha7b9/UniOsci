@@ -1,6 +1,5 @@
 #include "Log.h"
 #include "Menu.h" 
-#include "MenuDrawing.h"
 #include "Menu/MenuFunctions.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
@@ -21,6 +20,7 @@ extern void OnChanged_InputA(bool active);
 extern void OnChanged_InputB(bool active);
 extern void Long_Help();
 extern const PageBase * const pointerPageHelp;
+extern void *itemUnderButton[B_NumButtons];
 
 /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
 static PanelButton shortPressureButton = B_Empty;
@@ -411,7 +411,7 @@ static void ProcessingShortPressureButton()
             }
             else if (MENU_IS_SHOWN && IsFunctionalButton(button))       // Если меню показано и нажата функциональная клавиша
             {
-                void *item = ItemUnderButton(button);
+                void *item = itemUnderButton[button];
                 if (HINT_MODE_ENABLE)
                 {
                     SetItemForHint(item);
@@ -496,7 +496,7 @@ void ProcessingLongPressureButton()
         }
         else if(MENU_IS_SHOWN && IsFunctionalButton(button))
         {
-            void *item = ItemUnderButton(button);
+            void *item = itemUnderButton[button];
             FuncForLongPressureOnItem(item)(item);
             if (Menu::TypeOpenedItem() != Item_Page)
             {
@@ -585,7 +585,7 @@ void ProcessingPressButton()
     {
         if (pressButton != B_Menu)
         {
-            itemUnderKey = ItemUnderButton(pressButton);
+            itemUnderKey = itemUnderButton[pressButton];
         }
     }
     if (pressButton == B_Start && !MODE_WORK_IS_RAM)

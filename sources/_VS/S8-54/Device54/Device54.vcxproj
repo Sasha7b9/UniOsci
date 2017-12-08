@@ -142,7 +142,6 @@
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
     <ClInclude Include="..\..\..\common\Hardware\Timer.h" />
     <ClInclude Include="..\..\..\common\Menu\Menu.h" />
-    <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItems.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h" />

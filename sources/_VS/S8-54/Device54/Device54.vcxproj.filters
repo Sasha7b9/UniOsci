@@ -447,9 +447,6 @@
     <ClInclude Include="..\..\..\common\Menu\Menu.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h">
       <Filter>Menu</Filter>
     </ClInclude>

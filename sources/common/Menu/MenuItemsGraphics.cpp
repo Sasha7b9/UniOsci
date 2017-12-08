@@ -4,7 +4,6 @@
 #include "Menu/MenuFunctions.h"
 #include "Settings/Settings.h"
 #include "Utils/StringUtils.h"
-#include "Menu/MenuDrawing.h"
 #include "Hardware/RTC.h"
 #include "stub.h"
 #include <string.h>
