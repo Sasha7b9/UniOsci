@@ -151,7 +151,7 @@ int Control::HeightOpened() const
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Control::IsShade() const
 {
-    return CurrentItemIsOpened(((Page *)keeper)->GetNamePage()) && (this != Menu::OpenedItem());
+    return keeper->CurrentItemIsOpened() && (this != Menu::OpenedItem());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ bool Control::IsOpened() const
 {
     if (type == Item_Page)
     {
-        return CurrentItemIsOpened(((Page *)(keeper))->GetNamePage());
+        return keeper->CurrentItemIsOpened();
     }
     return (MENU_POS_ACT_ITEM(keeper->name) & 0x80) != 0;
 }
@@ -234,4 +234,19 @@ bool Control::ChangeOpened(int delta)
     }
 
     return true;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+#define CURRENT_ITEM_IS_OPENED return _GET_BIT(MENU_POS_ACT_ITEM(name), 7) == 1
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool PageBase::CurrentItemIsOpened() const
+{
+    CURRENT_ITEM_IS_OPENED;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Page::CurrentItemIsOpened() const
+{
+    CURRENT_ITEM_IS_OPENED;
 }

@@ -12,9 +12,6 @@
  *  @{
  */
 
-/// Возвращает true, если текущий элемент страницы с именем namePage открыт
-bool CurrentItemIsOpened(NamePage namePage);
-
 void CallFuncOnPressButton(void *button);
 
 /** @}

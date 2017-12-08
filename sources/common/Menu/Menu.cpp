@@ -997,7 +997,7 @@ NamePage Menu::GetNameOpenedPage()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void *Menu::RetLastOpened(Page *page, TypeItem *type)
 {
-    if (CurrentItemIsOpened(page->GetNamePage()))
+    if (page->CurrentItemIsOpened())
     {
         int8 posActItem = page->PosCurrentItem();
         void *item = page->Item(posActItem);

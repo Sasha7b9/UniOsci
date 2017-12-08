@@ -89,11 +89,14 @@ public:
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу
     pFuncVV  funcOnDraw;                    ///< Будет вызываться после отрисовки кнопок
     pFuncVI  funcRegSetSB;                  ///< В странице малых кнопок вызывается при повороте ручки установка
+    bool CurrentItemIsOpened() const;
 };
 
 class Page : public Control
 {
 public:
+    /// Возвращает true, если текущий элемент страницы открыт
+    bool CurrentItemIsOpened() const;
     const Control * const *items;           ///< Здесь указатели на пункты этой страницы (в обычной странице)
                                             ///< для страницы малых кнопок  здесь хранятся 6 указателей на SButton : 0 - B_Menu, 1...5 - B_F1...B_F5
     pFuncVV  funcOnPress;                   ///< Будет вызываться при нажатии на свёрнутую страницу

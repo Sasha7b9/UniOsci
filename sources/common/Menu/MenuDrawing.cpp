@@ -94,7 +94,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
         return;
     }
     int height = page->HeightOpened();
-    bool shade = CurrentItemIsOpened(page->GetNamePage());
+    bool shade = page->CurrentItemIsOpened();
     Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, gColorBack);
     Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
 
@@ -280,7 +280,7 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
 {
     DrawTitlePage(page, layer, yTop);
     DrawItemsPage(page, layer, yTop + MP_TITLE_HEIGHT);
-    if (CurrentItemIsOpened(page->GetNamePage()))
+    if (page->CurrentItemIsOpened())
     {
         int8 posCurItem = page->PosCurrentItem();
         Control *item = page->Item(posCurItem);
