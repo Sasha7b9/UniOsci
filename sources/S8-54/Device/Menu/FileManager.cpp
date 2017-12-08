@@ -143,7 +143,7 @@ void FM_Draw()
         return;
     }
 
-    ModeFSMC mode = FSMC_GetMode();
+    ModeFSMC mode = FSMC::GetMode();
     //FSMC_SetMode(ModeFSMC_Display);
 
     int left = 1;
@@ -177,7 +177,7 @@ void FM_Draw()
 
     FM_NEED_REDRAW = 0;
 
-    FSMC_SetMode(mode);
+    FSMC::SetMode(mode);
 }
 
 void PressSB_FM_LevelDown()

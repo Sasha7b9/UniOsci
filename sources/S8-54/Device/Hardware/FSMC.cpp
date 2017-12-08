@@ -37,21 +37,21 @@ static SRAM_HandleTypeDef gSramHandle =
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FSMC_RestoreMode()
+void FSMC::RestoreMode()
 {
-    FSMC_SetMode(prevMode);
+    SetMode(prevMode);
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ModeFSMC FSMC_GetMode()
+ModeFSMC FSMC::GetMode()
 {
     return curMode;
 }
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_Init()
+void FSMC::Init()
 {
 //    int i = rand();
     /// \todo Это костыль для устранения глюка, что при некоторой величине программы (>206150) в рандомизаторе неправильно работает (см FPGA::DataReadSave())
@@ -71,7 +71,7 @@ i *= rand(); i *= rand(); i *= rand(); i *= rand(); i *= rand(); i *= rand(); i 
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_SetMode(ModeFSMC mode)
+void FSMC::SetMode(ModeFSMC mode)
 {
     if (mode != curMode)
     {
@@ -203,19 +203,19 @@ void FSMC_SetMode(ModeFSMC mode)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FSMC_InSetStateMode()
+bool FSMC::InSetStateMode()
 {
     return inSetStateMode;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_SetFuncitonAfterSetMode(pFuncBV func)
+void FSMC::SetFuncitonAfterSetMode(pFuncBV func)
 {
     funcAfterSetMode = func;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FSMC_RemoveFunctionAfterSetMode()
+void FSMC::RemoveFunctionAfterSetMode()
 {
     funcAfterSetMode = 0;
 }

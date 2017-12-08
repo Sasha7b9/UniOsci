@@ -161,16 +161,16 @@ bool FPGA::ReadOnePoint()
 {
     if (readingPointP2P)
     {
-        FSMC_RemoveFunctionAfterSetMode();
+        FSMC::RemoveFunctionAfterSetMode();
     }
-    else if (FSMC_InSetStateMode()                  // Если шина находится в состоянии смены режима
-             || FSMC_GetMode() == ModeFSMC_Display) // Или в режиме работы с дисплеем
+    else if (FSMC::InSetStateMode()                  // Если шина находится в состоянии смены режима
+             || FSMC::GetMode() == ModeFSMC_Display) // Или в режиме работы с дисплеем
     {
-        FSMC_SetFuncitonAfterSetMode(FPGA::ReadOnePoint);    // То назначаем вызов этой функции при следющей смене режима шины
+        FSMC::SetFuncitonAfterSetMode(FPGA::ReadOnePoint);    // То назначаем вызов этой функции при следющей смене режима шины
     }
     else
     {
-        FSMC_RemoveFunctionAfterSetMode();
+        FSMC::RemoveFunctionAfterSetMode();
 
         FSMC_SET_MODE(ModeFSMC_FPGA);
 
@@ -1018,11 +1018,11 @@ void FPGA::FindAndSetTrigLevel()
 void FPGA::Write(TypeRecord type, uint16 *address, uint data, bool restart)
 {
     // Если необходимо, сохраняем установленный режим на шине, чтобы затем его восстановить
-    ModeFSMC modePrev = FSMC_GetMode();
+    ModeFSMC modePrev = FSMC::GetMode();
     bool needRestore = modePrev != ModeFSMC_FPGA;
     if (type == RecordFPGA && needRestore)
     {
-        FSMC_SetMode(ModeFSMC_FPGA);
+        FSMC::SetMode(ModeFSMC_FPGA);
     }
 
     
@@ -1059,7 +1059,7 @@ void FPGA::Write(TypeRecord type, uint16 *address, uint data, bool restart)
     // Восстанавливаем предыдущий режим на шине, если необходимо.
     if (type == RecordFPGA && needRestore)
     {
-        FSMC_SetMode(modePrev);
+        FSMC::SetMode(modePrev);
     }
 
     Panel::EnableLEDTrig(false); // После каждой засылки выключаем лампочку синхронизации

@@ -21,14 +21,14 @@ void RAM::WriteRead_Sinch2(void *src_, void *dest_, int numBytes)
     uint16 *end = src + numBytes / 2;
     uint16 *dest = (uint16 *)dest_;
 
-    FSMC_SetMode(ModeFSMC_RAM);
+    FSMC::SetMode(ModeFSMC_RAM);
 
     while (src < end)
     {
         *dest++ = *src++;
     }
 
-    FSMC_RestoreMode();
+    FSMC::RestoreMode();
 }
 
 
@@ -39,7 +39,7 @@ void RAM::WriteRead_Sinch4(void *src_, void *dest_, int numBytes)
     uint16 *end = src + numBytes / 2;
     uint16 *dest = (uint16 *)dest_;
 
-    FSMC_SetMode(ModeFSMC_RAM);
+    FSMC::SetMode(ModeFSMC_RAM);
 
     while (src < end)
     {
@@ -47,7 +47,7 @@ void RAM::WriteRead_Sinch4(void *src_, void *dest_, int numBytes)
         *dest++ = *src++;
     }
 
-    FSMC_RestoreMode();
+    FSMC::RestoreMode();
 }
 
 
@@ -58,7 +58,7 @@ void RAM::WriteRead_Sinch8(void *src_, void *dest_, int numBytes)
     uint16 *end = src + numBytes / 2;
     uint16 *dest = (uint16 *)dest_;
 
-    FSMC_SetMode(ModeFSMC_RAM);
+    FSMC::SetMode(ModeFSMC_RAM);
 
     while (src < end)
     {
@@ -68,7 +68,7 @@ void RAM::WriteRead_Sinch8(void *src_, void *dest_, int numBytes)
         *dest++ = *src++;
     }
 
-    FSMC_RestoreMode();
+    FSMC::RestoreMode();
 }
 
 

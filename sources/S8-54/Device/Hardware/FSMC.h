@@ -28,37 +28,37 @@ typedef enum
 } ModeFSMC;
 
 
-void FSMC_Init();
+class FSMC
+{
+public:
+    static void Init();
+    static void SetMode(ModeFSMC mode);
+    /// Функция используется для обращения к шине из прерываний - если чтение/запись происходит во время инициализации, возникает ошибка
+    static bool InSetStateMode();
+    /// Функция используется в паре с предыдущей. Устанавливает функцию, которая должа быть выполнена после установки режима на шине
+    static void SetFuncitonAfterSetMode(pFuncBV func);
+    static void RemoveFunctionAfterSetMode();
+    /// DEPTRECATED Восстанавливает режим, который был установлен перед вызовом FSMC_SetMode()
+    static void RestoreMode();
+    static ModeFSMC GetMode();
+};
 
-void FSMC_SetMode(ModeFSMC mode);
-
-// Функция используется для обращения к шине из прерываний - если чтение/запись происходит во время инициализации, возникает ошибка
-bool FSMC_InSetStateMode();
-
-// Функция используется в паре с предыдущей. Устанавливает функцию, которая должа быть выполнена после установки режима на шине
-void FSMC_SetFuncitonAfterSetMode(pFuncBV func);
-void FSMC_RemoveFunctionAfterSetMode();
-
-// DEPTRECATED Восстанавливает режим, который был установлен перед вызовом FSMC_SetMode()
-void FSMC_RestoreMode();
-    
-ModeFSMC FSMC_GetMode();
 
 #define FSMC_READ(address) (*(address))
 #define FSMC_WRITE(address, data) (*(address) = data)
 
 #define FSMC_SET_MODE(mode)                     \
-    ModeFSMC modePrev = FSMC_GetMode();         \
+    ModeFSMC modePrev = FSMC::GetMode();         \
     bool needRestoreMode = mode != modePrev;    \
     if(needRestoreMode)                         \
     {                                           \
-        FSMC_SetMode(mode);                     \
+        FSMC::SetMode(mode);                     \
     }
 
 #define FSMC_RESTORE_MODE()                     \
     if(needRestoreMode)                         \
     {                                           \
-        FSMC_SetMode(modePrev);                 \
+        FSMC::SetMode(modePrev);                 \
     }
 
 /** @}  @}

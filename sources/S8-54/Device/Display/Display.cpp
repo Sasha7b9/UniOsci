@@ -206,7 +206,7 @@ void Display::Update()
         return;
     }
 
-    ModeFSMC mode = FSMC_GetMode();
+    ModeFSMC mode = FSMC::GetMode();
 
     bool needClear = NeedForClearScreen();
 
@@ -272,7 +272,7 @@ void Display::Update()
         NEED_SAVE_TO_FLASHDRIVE = 0;
     }
 
-    FSMC_SetMode(mode);
+    FSMC::SetMode(mode);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

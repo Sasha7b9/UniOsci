@@ -1,4 +1,3 @@
-#include "Log.h"
 #include "Menu.h" 
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
@@ -10,8 +9,6 @@
 #include "Menu/Pages/PageMemory.h"
 #include "Panel/Panel.h"
 #include "Utils/Math.h"
-#include "Utils/CommonFunctions.h"
-#include "stub.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

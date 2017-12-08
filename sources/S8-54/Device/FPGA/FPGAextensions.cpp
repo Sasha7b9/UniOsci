@@ -744,9 +744,9 @@ bool FPGA::FreqMeter_Init()
     drawFreq = false;
     drawPeriod = false;
 
-    if (FSMC_InSetStateMode() || FSMC_GetMode() == ModeFSMC_Display)
+    if (FSMC::InSetStateMode() || FSMC::GetMode() == ModeFSMC_Display)
     {
-        FSMC_SetFuncitonAfterSetMode(FreqMeter_Init);
+        FSMC::SetFuncitonAfterSetMode(FreqMeter_Init);
     }
     else
     {
