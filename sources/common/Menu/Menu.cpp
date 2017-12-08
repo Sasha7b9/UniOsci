@@ -441,7 +441,7 @@ static void ProcessingShortPressureButton()
                 if(page && page != (Page *)pointerPageHelp)
                 {
                     page->SetCurrent(true);
-                    OpenItem(page, true);
+                    page->Open(true);
                     Menu::TemporaryEnableStrNavi();
                     Menu::Show(true);
                 }
@@ -694,7 +694,7 @@ void FuncOnLongPressItem(void *item)
     {
         control->SetCurrent(true);
     }
-    OpenItem(item, !control->IsOpened());
+    control->Open(!control->IsOpened());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -709,7 +709,7 @@ void FuncOnLongPressItemTime(void *item)
     {
         time->SetNewTime();
     }
-    OpenItem(time, !time->IsOpened());
+    time->Open(!time->IsOpened());
     time->SetOpened();
 }
 
@@ -721,7 +721,7 @@ void ShortPress_Time(void *item)
     {
         time->SetCurrent(true);
         time->SetOpened();
-        OpenItem(time, true);
+        time->Open(true);
     }
     else
     {
@@ -1047,7 +1047,7 @@ void Menu::CloseOpenedItem()
     }
     else
     {
-        OpenItem(item, false);
+        item->Open(false);
     }
 }
 

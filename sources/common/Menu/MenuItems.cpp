@@ -190,3 +190,10 @@ bool Control::IsOpened() const
     }
     return (MENU_POS_ACT_ITEM(keeper->name) & 0x80) != 0;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Control::Open(bool open)
+{
+    Page *parent = (Page *)keeper;
+    SetMenuPosActItem(parent->GetNamePage(), open ? (parent->PosCurrentItem() | 0x80) : (parent->PosCurrentItem() & 0x7f));
+}

@@ -26,16 +26,6 @@ bool IsFunctionalButton(PanelButton button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OpenItem(const void *item, bool open)
-{
-    if(item)
-    {
-        Page *page = (Page *)((Control *)item)->Keeper();
-        SetMenuPosActItem(page->GetNamePage(), open ? (page->PosCurrentItem() | 0x80) : (page->PosCurrentItem() & 0x7f));
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ChangeOpenedItem(Control *item, int delta)
 {
     if (delta < 2 && delta > -2)

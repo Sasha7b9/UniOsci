@@ -71,6 +71,7 @@ public:
     void SetCurrent(bool active);
     /// Возвращает true, если элемент меню по адрему item открыт
     bool IsOpened() const;
+    void Open(bool open);
 };
 
 

@@ -20,8 +20,6 @@ bool ChangeOpenedItem(Control *item, int delta);
 const char *TitleItem(void *item);
 /// Возвращает true, если button - функциональная клавиша [1..5]
 bool IsFunctionalButton(PanelButton button);
-/// Открыть/закрыть элемент меню по адрему item
-void OpenItem(const void *item, bool open);
 
 void CallFuncOnPressButton(void *button);
 
