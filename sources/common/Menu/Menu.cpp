@@ -437,10 +437,10 @@ static void ProcessingShortPressureButton()
                     break;
                 }
 
-                const void *page = PageForButton(button);
-                if(page && page != pointerPageHelp)
+                Page *page = (Page *)PageForButton(button);
+                if(page && page != (Page *)pointerPageHelp)
                 {
-                    SetCurrentItem(page, true);
+                    page->SetCurrent(true);
                     OpenItem(page, true);
                     Menu::TemporaryEnableStrNavi();
                     Menu::Show(true);
@@ -644,7 +644,7 @@ void ShortPress_Choice(void *choice_)
     }
     else if (!ItemIsOpened(choice))
     {
-        SetCurrentItem(choice, Menu::CurrentItem() != choice);
+        choice->SetCurrent(Menu::CurrentItem() != choice);
         choice->StartChange(1);
     }
     else
@@ -664,7 +664,7 @@ void ShortPress_ChoiceReg(void *choice_)
     } 
     else if(Menu::OpenedItem() != choice) 
     {
-        SetCurrentItem(choice, Menu::CurrentItem() != choice);
+        choice->SetCurrent(Menu::CurrentItem() != choice);
     }
 }
 
@@ -675,48 +675,52 @@ void FuncOnLongPressItemButton(void *button)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Button(void *button)
+void ShortPress_Button(void *item)
 {
-    if(!((Button *)button)->IsActive())
+    Button *button = (Button *)item;
+    if(!button->IsActive())
     {
         return;
     }
-    SetCurrentItem(button, true);
+    button->SetCurrent(true);
     CallFuncOnPressButton(button);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncOnLongPressItem(void *item)
 {
-    if (Menu::CurrentItem() != item)
+    Control *control = (Control *)item;
+    if (Menu::CurrentItem() != control)
     {
-        SetCurrentItem(item, true);
+        control->SetCurrent(true);
     }
-    OpenItem(item, !ItemIsOpened((Control *)item));
+    OpenItem(item, !ItemIsOpened(control));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FuncOnLongPressItemTime(void *time)
+void FuncOnLongPressItemTime(void *item)
 {
+    Time *time = (Time *)item;
     if (Menu::CurrentItem() != time)
     {
-        SetCurrentItem(time, true);
+        time->SetCurrent(true);
     }
-    if(ItemIsOpened((Control *)time) && *((Time*)time)->curField == iSET)
+    if(ItemIsOpened(time) && (*time->curField == iSET))
     {
-        ((Time *)time)->SetNewTime();
+        time->SetNewTime();
     }
-    OpenItem(time, !ItemIsOpened((Control *)time));
-    ((Time *)time)->SetOpened();
+    OpenItem(time, !ItemIsOpened(time));
+    time->SetOpened();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Time(void *time)
+void ShortPress_Time(void *item)
 {
-    if(!ItemIsOpened((const Control *)time))
+    Time *time = (Time *)item;
+    if(!ItemIsOpened(time))
     {
-        SetCurrentItem(time, true);
-        ((Time *)time)->SetOpened();
+        time->SetCurrent(true);
+        time->SetOpened();
         OpenItem(time, true);
     }
     else
@@ -728,7 +732,7 @@ void ShortPress_Time(void *time)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_Governor(void *governor)
 {
-    Governor *gov = (Governor*)governor;
+    Governor *gov = (Governor *)governor;
     if(!gov->IsActive())
     {
         return;
@@ -739,7 +743,7 @@ void ShortPress_Governor(void *governor)
     }
     else
     {
-        SetCurrentItem(gov, Menu::CurrentItem() != gov);
+        gov->SetCurrent(Menu::CurrentItem() != gov);
     }
 }
 

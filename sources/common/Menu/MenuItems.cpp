@@ -159,3 +159,24 @@ bool Control::IsPressed() const
 {
     return this == Menu::ItemUnderKey();
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Control::SetCurrent(bool active)
+{
+    Page *page = (Page *)keeper;
+    if (!active)
+    {
+        SetMenuPosActItem(page->name, 0x7f);
+    }
+    else
+    {
+        for (int i = 0; i < page->NumItems(); i++)
+        {
+            if (page->Item(i) == this)
+            {
+                SetMenuPosActItem(page->name, (int8)i);
+                return;
+            }
+        }
+    }
+}

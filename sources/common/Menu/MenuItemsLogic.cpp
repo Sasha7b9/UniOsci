@@ -371,7 +371,7 @@ void Time::DecCurrentPosition()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Page::SetCurrentSB() const
+void Page::SetCurrentSB()
 {
     if (funcOfActive())
     {
@@ -379,7 +379,7 @@ void Page::SetCurrentSB() const
         {
             Menu::TemporaryEnableStrNavi();
         }
-        SetCurrentItem(this, true);
+        SetCurrent(true);
         OpenItem(this, !ItemIsOpened(this));
     }
 }

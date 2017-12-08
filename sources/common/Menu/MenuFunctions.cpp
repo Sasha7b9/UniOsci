@@ -7,34 +7,10 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool    CurrentItemIsOpened(NamePage namePage)
+bool CurrentItemIsOpened(NamePage namePage)
 {
     bool retValue = _GET_BIT(MENU_POS_ACT_ITEM(namePage), 7) == 1;
     return retValue;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void    SetCurrentItem(const void *item, bool active)
-{
-    if(item != 0)
-    {
-        Page *page = (Page *)((Control *)item)->Keeper();
-        if(!active)
-        {
-            SetMenuPosActItem(page->name, 0x7f);
-        }
-        else
-        {
-            for(int i = 0; i < page->NumItems(); i++)
-            {
-                if(page->Item(i) == item)
-                {
-                    SetMenuPosActItem(page->name, (int8)i);
-                    return;
-                }
-            }
-        }
-    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

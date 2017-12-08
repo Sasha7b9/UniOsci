@@ -67,6 +67,8 @@ public:
     bool IsShade() const;
     /// Возвращает true, если кнопка, соответствующая элементу меню item, находится в нажатом положении
     bool IsPressed() const;
+    /// Сделать/разделать текущим
+    void SetCurrent(bool active);
 };
 
 
@@ -95,7 +97,7 @@ public:
     int NumItems() const;                   ///< Возвращает количество элементов в странице по адресу page
     int NumCurrentSubPage();                ///< Возвращает номер текущей подстранцы элемента по адресу page
     NamePage GetNamePage() const;           ///< Возвращает имя страницы page
-    void SetCurrentSB() const;              ///< Установить текущей данную страницу с мылыми кнопками.
+    void SetCurrentSB();                    ///< Установить текущей данную страницу с мылыми кнопками.
     
     Control *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы
     SButton* SmallButonFromPage(int numButton);

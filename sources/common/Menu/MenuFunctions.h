@@ -14,10 +14,7 @@
 
 /// ¬озвращает true, если текущий элемент страницы с именем namePage открыт
 bool CurrentItemIsOpened(NamePage namePage);
-/// —делать/разделать текущим пункт страницы
-void SetCurrentItem(const void *item,               ///< адрес элемента, активность которого нужно установить/сн€ть
-                    bool active                     ///< true - сделать элемент текущим, false - расделать элемент текущим. ¬ этом случае текущим становитс€ заголовок страницы
-                    );
+
 bool ChangeOpenedItem(Control *item, int delta);
 /// ¬озвращает название элемента по адресу item, как оно выгл€дит на дисплее прибора
 const char *TitleItem(void *item);
