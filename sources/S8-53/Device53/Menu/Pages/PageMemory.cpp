@@ -452,7 +452,7 @@ DEF_SMALL_BUTTON(   sbFileManagerTab,                                           
     "Tab", "Tab",
     "Переход между каталогами и файлами",
     "The transition between the directories and files",
-    mspFileManager, FuncActive, PressSB_FM_Tab, DrawSB_FM_Tab
+    mspFileManager, FuncActive, FileManager::PressSB_Tab, DrawSB_FM_Tab
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -460,7 +460,7 @@ DEF_SMALL_BUTTON(   sbFileManagerLevelDown,                                     
     "Войти", "Enter",
     "Переход в выбранный каталог",
     "Transition to the chosen catalog",
-    mspFileManager, FuncActive, PressSB_FM_LevelDown, DrawSB_FM_LevelDown
+    mspFileManager, FuncActive, FileManager::PressSB_LevelDown, DrawSB_FM_LevelDown
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -468,7 +468,7 @@ DEF_SMALL_BUTTON(   sbFileManagerLevelUp,                                       
     "Выйти", "Leave",
     "Переход в родительский каталог",
     "Transition to the parental catalog",
-    mspFileManager, FuncActive, PressSB_FM_LevelUp, DrawSB_FM_LevelUp
+    mspFileManager, FuncActive, FileManager::PressSB_LevelUp, DrawSB_FM_LevelUp
 );
 
 static void SaveSignalToIntMemory()
@@ -1069,7 +1069,7 @@ DEF_SMALL_BUTTON(   sbExitFileManager,                                          
 void OnPress_Drive_Manager()
 {
     Menu::OpenPageAndSetItCurrent(PageSB_Memory_Drive_Manager);
-    Display::SetDrawMode(DrawMode_Hand, FM_Draw);
+    Display::SetDrawMode(DrawMode_Hand, FileManager::Draw);
     gBF.needRedrawFileManager = 1;
 }
 
@@ -1088,7 +1088,7 @@ DEF_PAGE_SB(        mspFileManager,                                             
     0,
     &sbFileManagerLevelUp,
     &sbFileManagerLevelDown,
-    PageSB_Memory_Drive_Manager, &mspMemoryExt, FuncOfActiveExtMemFolder, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet
+    PageSB_Memory_Drive_Manager, &mspMemoryExt, FuncOfActiveExtMemFolder, OnPress_Drive_Manager, FuncDrawPage, FileManager::RotateRegSet
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -34,7 +34,7 @@ static int numFiles = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FM_Init()
+void FileManager::Init()
 {
     strcpy(currentDir, "\\");
     numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
@@ -140,7 +140,7 @@ static void DrawNameCurrentDir(int left, int top)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FM_Draw()
+void FileManager::Draw()
 {
     if (gBF.needRedrawFileManager == 0)
     {
@@ -182,7 +182,7 @@ void FM_Draw()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_Tab()
+void FileManager::PressSB_Tab()
 {
     gBF.needRedrawFileManager = 1;
 
@@ -203,7 +203,7 @@ void PressSB_FM_Tab()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_LevelDown()
+void FileManager::PressSB_LevelDown()
 {
     gBF.needRedrawFileManager = 1;
     if (gBF.cursorInDirs == 0)
@@ -227,7 +227,7 @@ void PressSB_FM_LevelDown()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_LevelUp()
+void FileManager::PressSB_LevelUp()
 {
     gBF.needRedrawFileManager = 1;
     if (strlen(currentDir) == 1)
@@ -319,7 +319,7 @@ static void DecCurrentFile()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FM_RotateRegSet(int angle)
+void FileManager::RotateRegSet(int angle)
 {
     Sound::RegulatorSwitchRotate();
     if (gBF.cursorInDirs == 1)
@@ -335,7 +335,7 @@ void FM_RotateRegSet(int angle)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FM_GetNameForNewFile(char name[255])
+bool FileManager::GetNameForNewFile(char name[255])
 {
     char buffer[20];
 

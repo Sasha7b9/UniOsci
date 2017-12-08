@@ -78,7 +78,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FDrive::Mount()
 {
-    FM_Init();
+    FileManager::Init();
     Menu::ChangeStateFlashDrive();
     if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 0) != FR_OK)
     {
@@ -126,7 +126,7 @@ void FDrive::Update()
         else
         {
             gFlashDriveIsConnected = true;
-            FM_Init();
+            FileManager::Init();
             Menu::ChangeStateFlashDrive();
         }
         while (gTimeMS - timeStart < 3000)

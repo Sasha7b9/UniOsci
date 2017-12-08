@@ -1,4 +1,5 @@
 #include "Globals.h"
+#include "FileManager.h"
 #include "Display/Grid.h"
 #include "Display/font/Font.h"
 #include "FlashDrive/FlashDrive.h"
@@ -31,7 +32,7 @@ static int numFiles = 0;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void FM_Init()
+void FileManager::Init()
 {
     strcpy(currentDir, "\\");
     numFirstDir = numFirstFile = numCurDir = numCurFile = 0;
@@ -136,7 +137,7 @@ static void DrawNameCurrentDir(int left, int top)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FM_Draw()
+void FileManager::Draw()
 {
     if (!FM_NEED_REDRAW)
     {
@@ -180,7 +181,7 @@ void FM_Draw()
     FSMC::SetMode(mode);
 }
 
-void PressSB_FM_LevelDown()
+void FileManager::PressSB_LevelDown()
 {
     FM_NEED_REDRAW = FM_REDRAW_FULL;
     if (!FM_CURSOR_IN_DIRS)
@@ -204,7 +205,7 @@ void PressSB_FM_LevelDown()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_LevelUp()
+void FileManager::PressSB_LevelUp()
 {
     FM_NEED_REDRAW = FM_REDRAW_FULL;
     if (strlen(currentDir) == 1)
@@ -296,7 +297,7 @@ static void DecCurrentFile()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FM_RotateRegSet(int angle)
+void FileManager::RotateRegSet(int angle)
 {
     Sound::RegulatorSwitchRotate();
     if (FM_CURSOR_IN_DIRS)
@@ -312,7 +313,7 @@ void FM_RotateRegSet(int angle)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool FM_GetNameForNewFile(char name[255])
+bool FileManager::GetNameForNewFile(char name[255])
 {
     char buffer[20];
 
@@ -387,7 +388,7 @@ bool FM_GetNameForNewFile(char name[255])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void PressSB_FM_Tab()
+void FileManager::PressSB_Tab()
 {
     FM_NEED_REDRAW = FM_REDRAW_FOLDERS;
 

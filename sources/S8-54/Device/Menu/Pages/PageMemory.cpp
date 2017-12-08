@@ -24,8 +24,6 @@ extern const PageBase pppDrive_Mask;
 extern const PageBase pSetName;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern void PressSB_FM_Tab();
-
 static void DrawSetMask();  // Эта функция рисует, когда выбран режим задания маски.
 static void DrawFileMask(int x, int y);
 static void DrawSetName();  // Эта функция рисует, когда нужно задать имя файла для сохранения
@@ -282,7 +280,7 @@ DEF_SMALL_BUTTON(   bDrive_Manager_Tab,                                         
     "Tab", "Tab",
     "Переход между каталогами и файлами",
     "The transition between the directories and files",
-    pppDrive_Manager, FuncActive, PressSB_FM_Tab, Draw_Drive_Manager_Tab
+    pppDrive_Manager, FuncActive, FileManager::PressSB_Tab, Draw_Drive_Manager_Tab
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -297,7 +295,7 @@ DEF_SMALL_BUTTON(   bDrive_Manager_LevelUp,                                     
     "Выйти из каталого", "Leave from directory",
     "Переход в родительский каталог",
     "Transition to the parental catalog",
-    pppDrive_Manager, FuncActive, PressSB_FM_LevelUp, Draw_Drive_Manager_LevelUp
+    pppDrive_Manager, FuncActive, FileManager::PressSB_LevelUp, Draw_Drive_Manager_LevelUp
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -312,7 +310,7 @@ DEF_SMALL_BUTTON(   bDrive_Manager_LevelDown,                                   
     "Войти в каталог", "Enter in directory",
     "Переход в выбранный каталог",
     "Transition to the chosen catalog",
-    pppDrive_Manager, FuncActive, PressSB_FM_LevelDown, Draw_Drive_Manager_LevelDown
+    pppDrive_Manager, FuncActive, FileManager::PressSB_LevelDown, Draw_Drive_Manager_LevelDown
 );
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -326,7 +324,7 @@ void OnPress_Drive_Manager()
     if (FDRIVE_IS_CONNECTED)
     {
         FDrive::Mount();
-        Display::SetDrawMode(DrawMode_Auto, FM_Draw);
+        Display::SetDrawMode(DrawMode_Auto, FileManager::Draw);
         FM_NEED_REDRAW = FM_REDRAW_FULL;
     }
     else
@@ -345,7 +343,7 @@ DEF_PAGE_SB(        pppDrive_Manager,                                           
     0,
     &bDrive_Manager_LevelUp,    // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Выйти из каталога
     &bDrive_Manager_LevelDown,  // ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ - Войти в каталог
-    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FM_RotateRegSet
+    PageSB_Memory_Drive_Manager, &ppDrive, IsActive_Drive_Manager, OnPress_Drive_Manager, FuncDrawPage, FileManager::RotateRegSet
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
