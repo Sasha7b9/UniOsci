@@ -1281,6 +1281,16 @@
               <FileType>8</FileType>
               <FilePath>.\Device\FlashDrive\FlashDrive.cpp</FilePath>
             </File>
+            <File>
+              <FileName>FileManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Device\FlashDrive\FileManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FileManager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Device\FlashDrive\FileManager.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1411,16 +1421,6 @@
         <Group>
           <GroupName>Menu</GroupName>
           <Files>
-            <File>
-              <FileName>FileManager.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device\Menu\FileManager.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FileManager.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device\Menu\FileManager.h</FilePath>
-            </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>

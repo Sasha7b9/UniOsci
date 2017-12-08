@@ -168,6 +168,7 @@
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\ethernetif.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\lwipopts.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.h" />
+    <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FileManager.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGA.h" />
     <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.h" />
@@ -187,7 +188,6 @@
     <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_diskio.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Log.h" />
     <ClInclude Include="..\..\..\S8-54\Device\main.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\FileManager.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuPagesNames.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContentPages.h" />
@@ -397,6 +397,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FileManager.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGA.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.cpp" />
@@ -420,7 +421,6 @@
     <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Log.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\main.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\FileManager.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.cpp" />

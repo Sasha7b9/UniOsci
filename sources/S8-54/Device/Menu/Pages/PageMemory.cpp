@@ -6,7 +6,7 @@
 #include "FPGA/FPGA.h"
 #include "Hardware/FLASH.h"
 #include "Hardware/Sound.h"
-#include "Menu/FileManager.h"
+#include "FlashDrive/FileManager.h"
 #include "Menu/Menu.h"
 #include "Menu/Pages/Definition.h"
 #include "Utils/Dictionary.h"

@@ -146,6 +146,7 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Display\PainterMem.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.cpp" />
+    <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FileManager.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\DataStorage.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\FPGA\FPGA.cpp" />
@@ -174,7 +175,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\libs\usbh_conf.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Log.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\main.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageChannels.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Menu\Pages\PageCursors.cpp" />
@@ -474,6 +474,7 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Display\Symbols.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\Ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Ethernet\TcpSocket.h" />
+    <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FileManager.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FlashDrive.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\DataStorage.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\FPGA\FPGA.h" />
@@ -497,7 +498,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\libs\usbh_conf.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Log.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\main.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\MenuPagesNames.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContentPages.h" />

@@ -1,6 +1,6 @@
 #include "FileManager.h"
 #include "Menu/Menu.h"
-#include "Pages/PageMemory.h"
+#include "Menu/Pages/PageMemory.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsMemory.h"
 #include "Display/Colors.h"

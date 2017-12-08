@@ -513,9 +513,6 @@
     <ClCompile Include="..\..\..\common\Menu\MenuItemsLogic.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Menu\FileManager.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Display\Display.cpp">
       <Filter>Display</Filter>
     </ClCompile>
@@ -548,6 +545,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\common\Hardware\Timer.cpp">
       <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FileManager.cpp">
+      <Filter>FlashDrive</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -830,9 +830,6 @@
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Menu\FileManager.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\PageDisplay.h">
       <Filter>Menu\Pages</Filter>
     </ClInclude>
@@ -874,6 +871,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\common\Hardware\Timer.h">
       <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FileManager.h">
+      <Filter>FlashDrive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

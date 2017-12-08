@@ -48,17 +48,17 @@ public:
 #define FSMC_WRITE(address, data) (*(address) = data)
 
 #define FSMC_SET_MODE(mode)                     \
-    ModeFSMC modePrev = FSMC::GetMode();         \
+    ModeFSMC modePrev = FSMC::GetMode();        \
     bool needRestoreMode = mode != modePrev;    \
     if(needRestoreMode)                         \
     {                                           \
-        FSMC::SetMode(mode);                     \
+        FSMC::SetMode(mode);                    \
     }
 
 #define FSMC_RESTORE_MODE()                     \
     if(needRestoreMode)                         \
     {                                           \
-        FSMC::SetMode(modePrev);                 \
+        FSMC::SetMode(modePrev);                \
     }
 
 /** @}  @}
