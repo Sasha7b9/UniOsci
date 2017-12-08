@@ -1437,16 +1437,6 @@
               <FilePath>..\common\Menu\MenuItemsLogic.cpp</FilePath>
             </File>
             <File>
-              <FileName>MenuFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Menu\MenuFunctions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MenuFunctions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Menu\MenuFunctions.h</FilePath>
-            </File>
-            <File>
               <FileName>MenuItemsDefs.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Menu\MenuItemsDefs.h</FilePath>

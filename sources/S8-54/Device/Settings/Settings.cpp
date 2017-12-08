@@ -6,7 +6,6 @@
 #include "FPGA/FPGAtypes.h"
 #include "Display/Display.h"
 #include "Menu/Menu.h"
-#include "Menu/MenuFunctions.h"
 #include "Log.h"
 #include <string.h>
 

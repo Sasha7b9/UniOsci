@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Menu/MenuFunctions.h"
 #include "Settings/Settings.h"
 #include "Utils/StringUtils.h"
 #include "Hardware/RTC.h"

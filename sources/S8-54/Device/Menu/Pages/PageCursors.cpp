@@ -11,7 +11,6 @@
 #include "Display/Painter.h"
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
-#include "Menu/MenuFunctions.h"
 #include "Utils/Math.h"
 #include "Utils/CommonFunctions.h"
 #include "Utils/Dictionary.h"

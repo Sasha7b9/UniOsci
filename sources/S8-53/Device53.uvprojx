@@ -1309,16 +1309,6 @@
               <FilePath>..\common\Menu\MenuDrawing.cpp</FilePath>
             </File>
             <File>
-              <FileName>MenuFunctions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Menu\MenuFunctions.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MenuFunctions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Menu\MenuFunctions.h</FilePath>
-            </File>
-            <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Menu\MenuItems.cpp</FilePath>

@@ -3,7 +3,6 @@
 #include "Hardware/Sound.h"
 #include "Hardware/Timer.h"
 #include "Menu/Menu.h"
-#include "Menu/MenuFunctions.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsDebug.h"
 

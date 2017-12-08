@@ -1,6 +1,5 @@
 #include "Log.h"
 #include "Menu.h" 
-#include "Menu/MenuFunctions.h"
 #include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Sound.h"
@@ -683,7 +682,7 @@ void ShortPress_Button(void *item)
         return;
     }
     button->SetCurrent(true);
-    CallFuncOnPressButton(button);
+    button->funcOnPress();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -789,12 +788,8 @@ static void ShortPress_SmallButton(void *smallButton)
     SButton *sb = (SButton *)smallButton;
     if (sb)
     {
-        pFuncVV func = sb->funcOnPress;
-        if (func)
-        {
-            func();
-            itemUnderKey = smallButton;
-        }
+        sb->funcOnPress();
+        itemUnderKey = smallButton;
     }
 }
 
@@ -1036,7 +1031,7 @@ void Menu::CloseOpenedItem()
     {
         if (item->IsPageSB())
         {
-            CallFuncOnPressButton(((Page *)item)->SmallButonFromPage(0));
+            ((Page *)item)->SmallButonFromPage(0)->funcOnPress();
         }
         NamePage name = ((Control *)item)->Keeper()->name;
         SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);

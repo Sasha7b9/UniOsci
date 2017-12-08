@@ -1,6 +1,5 @@
 #include "MenuItems.h"
 #include "Menu.h"
-#include "Menu/MenuFunctions.h"
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
@@ -84,7 +83,7 @@ const char *Choice::NameSubItem(int i)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::ShortPressOnItem(int numItem)
 {
-    CallFuncOnPressButton((void *)items[numItem]);
+    ((Button *)items[numItem])->funcOnPress();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

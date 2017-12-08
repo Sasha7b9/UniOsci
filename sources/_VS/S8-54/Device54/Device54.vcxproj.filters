@@ -447,9 +447,6 @@
     <ClInclude Include="..\..\..\common\Menu\Menu.h">
       <Filter>Menu</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\common\Menu\MenuFunctions.h">
-      <Filter>Menu</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\common\Menu\MenuItemsDefs.h">
       <Filter>Menu</Filter>
     </ClInclude>
@@ -900,9 +897,6 @@
       <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\common\Menu\MenuFunctions.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp">
