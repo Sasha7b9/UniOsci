@@ -634,15 +634,15 @@ static void OnTimerStrNaviAutoHide()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Choice(void *choice_)
+void ShortPress_Choice(void *item)
 {
-    Choice *choice = (Choice*)choice_;
+    Choice *choice = (Choice*)item;
 
     if (!choice->IsActive())
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     }
-    else if (!ItemIsOpened(choice))
+    else if (!choice->IsOpened())
     {
         choice->SetCurrent(Menu::CurrentItem() != choice);
         choice->StartChange(1);
@@ -694,7 +694,7 @@ void FuncOnLongPressItem(void *item)
     {
         control->SetCurrent(true);
     }
-    OpenItem(item, !ItemIsOpened(control));
+    OpenItem(item, !control->IsOpened());
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -705,11 +705,11 @@ void FuncOnLongPressItemTime(void *item)
     {
         time->SetCurrent(true);
     }
-    if(ItemIsOpened(time) && (*time->curField == iSET))
+    if(time->IsOpened() && (*time->curField == iSET))
     {
         time->SetNewTime();
     }
-    OpenItem(time, !ItemIsOpened(time));
+    OpenItem(time, !time->IsOpened());
     time->SetOpened();
 }
 
@@ -717,7 +717,7 @@ void FuncOnLongPressItemTime(void *item)
 void ShortPress_Time(void *item)
 {
     Time *time = (Time *)item;
-    if(!ItemIsOpened(time))
+    if(!time->IsOpened())
     {
         time->SetCurrent(true);
         time->SetOpened();

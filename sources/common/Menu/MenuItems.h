@@ -69,6 +69,8 @@ public:
     bool IsPressed() const;
     /// Сделать/разделать текущим
     void SetCurrent(bool active);
+    /// Возвращает true, если элемент меню по адрему item открыт
+    bool IsOpened() const;
 };
 
 

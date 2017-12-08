@@ -180,3 +180,13 @@ void Control::SetCurrent(bool active)
         }
     }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Control::IsOpened() const
+{
+    if (type == Item_Page)
+    {
+        return CurrentItemIsOpened(((Page *)(keeper))->GetNamePage());
+    }
+    return (MENU_POS_ACT_ITEM(name) & 0x80) != 0;
+}

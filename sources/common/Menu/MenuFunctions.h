@@ -22,8 +22,6 @@ const char *TitleItem(void *item);
 bool IsFunctionalButton(PanelButton button);
 /// Открыть/закрыть элемент меню по адрему item
 void OpenItem(const void *item, bool open);
-/// Возвращает true, если элемент меню по адрему item открыт
-bool ItemIsOpened(const Control *item);
 
 void CallFuncOnPressButton(void *button);
 

@@ -806,7 +806,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
 
     Painter::DrawText(x + 6 + delta, y + 6 + delta, TitleItem(item), color);
     
-    TypeItem type = ((Control *)item)->Type();
+    TypeItem type = control->Type();
 
     if(Menu::CurrentItem() == item)
     {
@@ -816,7 +816,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
         {
             symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
-        else if (type == Item_Governor || type == Item_ChoiceReg ||  (ItemIsOpened(control) && type == Item_Choice))
+        else if (type == Item_Governor || type == Item_ChoiceReg ||  (control->IsOpened() && type == Item_Choice))
         {
             symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
@@ -839,7 +839,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
             }
         }
 
-        Painter::Draw4SymbolsInRect(x + MI_WIDTH - 13, y + 5 + (ItemIsOpened(control) ? 0 : 15), symbol, shade ? color : Color::BLACK);
+        Painter::Draw4SymbolsInRect(x + MI_WIDTH - 13, y + 5 + (control->IsOpened() ? 0 : 15), symbol, shade ? color : Color::BLACK);
     }
 }
 

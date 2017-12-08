@@ -36,18 +36,6 @@ void OpenItem(const void *item, bool open)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ItemIsOpened(const Control *item)
-{
-    TypeItem type = item->Type();
-    Page *page = (Page *)((Control *)item)->Keeper();
-    if(type == Item_Page)
-    {
-        return CurrentItemIsOpened(((Page *)(((Control *)item)->Keeper()))->GetNamePage());
-    }
-    return (MENU_POS_ACT_ITEM(page->name) & 0x80) != 0;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool ChangeOpenedItem(Control *item, int delta)
 {
     if (delta < 2 && delta > -2)

@@ -380,7 +380,7 @@ void Page::SetCurrentSB()
             Menu::TemporaryEnableStrNavi();
         }
         SetCurrent(true);
-        OpenItem(this, !ItemIsOpened(this));
+        OpenItem(this, !IsOpened());
     }
 }
 
