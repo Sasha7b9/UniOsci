@@ -188,5 +188,5 @@ bool Control::IsOpened() const
     {
         return CurrentItemIsOpened(((Page *)(keeper))->GetNamePage());
     }
-    return (MENU_POS_ACT_ITEM(name) & 0x80) != 0;
+    return (MENU_POS_ACT_ITEM(keeper->name) & 0x80) != 0;
 }
