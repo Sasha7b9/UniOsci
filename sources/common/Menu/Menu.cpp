@@ -409,7 +409,7 @@ static void ProcessingShortPressureButton()
                     Menu::CloseOpenedItem();
                 }
             }
-            else if (MENU_IS_SHOWN && IsFunctionalButton(button))       // Если меню показано и нажата функциональная клавиша
+            else if (MENU_IS_SHOWN && Panel::IsFunctionalButton(button))       // Если меню показано и нажата функциональная клавиша
             {
                 void *item = itemUnderButton[button];
                 if (HINT_MODE_ENABLE)
@@ -494,7 +494,7 @@ void ProcessingLongPressureButton()
                 }
             }
         }
-        else if(MENU_IS_SHOWN && IsFunctionalButton(button))
+        else if(MENU_IS_SHOWN && Panel::IsFunctionalButton(button))
         {
             void *item = itemUnderButton[button];
             FuncForLongPressureOnItem(item)(item);

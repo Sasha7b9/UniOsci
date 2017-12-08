@@ -18,8 +18,6 @@ bool CurrentItemIsOpened(NamePage namePage);
 bool ChangeOpenedItem(Control *item, int delta);
 /// Возвращает название элемента по адресу item, как оно выглядит на дисплее прибора
 const char *TitleItem(void *item);
-/// Возвращает true, если button - функциональная клавиша [1..5]
-bool IsFunctionalButton(PanelButton button);
 
 void CallFuncOnPressButton(void *button);
 
