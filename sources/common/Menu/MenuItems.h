@@ -72,6 +72,9 @@ public:
     /// Возвращает true, если элемент меню по адрему item открыт
     bool IsOpened() const;
     void Open(bool open);
+    /// Возвращает название элемента, как оно выглядит на дисплее прибора
+    const char *Title() const;
+    bool ChangeOpened(int delta);
 };
 
 

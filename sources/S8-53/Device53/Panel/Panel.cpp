@@ -446,3 +446,9 @@ void HAL_SPI_RxCpltCallback(SPI_HandleTypeDef* handleSPI)
     uint16 data = Panel::NextData();
     SPI1->DR = data;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Panel::IsFunctionalButton(PanelButton button)
+{
+    return button >= B_F1 && button <= B_F5;
+}

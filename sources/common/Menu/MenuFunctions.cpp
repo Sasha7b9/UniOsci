@@ -14,46 +14,6 @@ bool CurrentItemIsOpened(NamePage namePage)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-const char *TitleItem(void *item) 
-{
-    return ((Page *)item)->titleHint[LANG];
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-bool ChangeOpenedItem(Control *item, int delta)
-{
-    if (delta < 2 && delta > -2)
-    {
-        return false;
-    }
-
-    TypeItem type = item->Type();
-
-    if (type == Item_Page)
-    {
-        ((const Page *)item)->ChangeSubPage(delta);
-    }
-    else if (type == Item_IP)
-    {
-        ((IPaddress *)item)->ChangeValue(delta);
-    }
-    else if (type == Item_MAC)
-    {
-        ((MACaddress *)item)->ChangeValue(delta);
-    }
-    else if (type == Item_ChoiceReg || type == Item_Choice)
-    {
-        ((Choice *)item)->ChangeIndex(MENU_IS_SHOWN ? delta : -delta);
-    }
-    else if (type == Item_Governor)
-    {
-        ((Governor *)item)->ChangeValue(delta);
-    }
-    
-    return true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void CallFuncOnPressButton(void *button)
 {
     if (button)

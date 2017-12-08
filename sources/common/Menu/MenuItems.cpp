@@ -197,3 +197,41 @@ void Control::Open(bool open)
     Page *parent = (Page *)keeper;
     SetMenuPosActItem(parent->GetNamePage(), open ? (parent->PosCurrentItem() | 0x80) : (parent->PosCurrentItem() & 0x7f));
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+const char *Control::Title() const
+{
+    return titleHint[LANG];
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Control::ChangeOpened(int delta)
+{
+    if (delta < 2 && delta > -2)
+    {
+        return false;
+    }
+
+    if (type == Item_Page)
+    {
+        ((const Page *)this)->ChangeSubPage(delta);
+    }
+    else if (type == Item_IP)
+    {
+        ((IPaddress *)this)->ChangeValue(delta);
+    }
+    else if (type == Item_MAC)
+    {
+        ((MACaddress *)this)->ChangeValue(delta);
+    }
+    else if (type == Item_ChoiceReg || type == Item_Choice)
+    {
+        ((Choice *)this)->ChangeIndex(MENU_IS_SHOWN ? delta : -delta);
+    }
+    else if (type == Item_Governor)
+    {
+        ((Governor *)this)->ChangeValue(delta);
+    }
+
+    return true;
+}

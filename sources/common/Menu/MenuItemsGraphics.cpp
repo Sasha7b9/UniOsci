@@ -39,7 +39,7 @@ void GovernorColor::DrawOpened(int x, int y)
     Painter::DrawVolumeButton(x + 1, y + 1, MI_WIDTH_VALUE + 2 + delta, MI_HEIGHT_VALUE + 3, 2, Color::MenuItem(false),
                              Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, IsPressed(), IsShade());
     Painter::DrawHLine(y + MI_HEIGHT / 2 + 2, x, x + MI_WIDTH + delta, Color::MenuTitle(false));
-    Painter::DrawStringInCenterRect(x + (IsPressed() ? 2 : 1), y + (IsPressed() ? 2 : 1), MI_WIDTH + delta, MI_HEIGHT / 2 + 2, TitleItem(this),
+    Painter::DrawStringInCenterRect(x + (IsPressed() ? 2 : 1), y + (IsPressed() ? 2 : 1), MI_WIDTH + delta, MI_HEIGHT / 2 + 2, Title(),
                                     Color::WHITE);
     DrawValue(x + 1, y + 19, delta);
 }
@@ -520,7 +520,7 @@ void Button::Draw(int x, int y)
 
     int delta = (pressed && (!shade)) ? 2 : 1;
 
-    Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, TitleItem(this), color);
+    Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, Title(), color);
 
     CallFuncOnDraw(x, y);
 }
@@ -564,7 +564,7 @@ void Page::Draw(int x, int y)
         colorText = Color::WHITE;
         delta = 1;
     }
-    Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, TitleItem(this), colorText);
+    Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, Title(), colorText);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -804,7 +804,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
     Painter::DrawVolumeButton(x + 1, y + 2, width + 2, MI_HEIGHT_VALUE + 3, 1, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, 
         pressed, shade);
 
-    Painter::DrawText(x + 6 + delta, y + 6 + delta, TitleItem(item), color);
+    Painter::DrawText(x + 6 + delta, y + 6 + delta, control->Title(), color);
     
     TypeItem type = control->Type();
 

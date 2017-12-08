@@ -113,7 +113,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
         Menu::CurrentItem()->Type() != Item_Governor && Menu::TypeOpenedItem() == Item_Page;
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
-    x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, TitleItem(page), colorText);
+    x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, page->Title(), colorText);
     if(condDrawRSet)
     {
         Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(page->NumCurrentSubPage()), colorText);

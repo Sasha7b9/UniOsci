@@ -341,15 +341,15 @@ char *Menu::StringNavigation(char buffer[100])
     buffer[0] = 0;
     const char * titles[10] = {0};
     int numTitle = 0;
-    void *item = OpenedItem();
+    Control *item = OpenedItem();
     if(IsMainPage(item))
     {
         return 0;
     }
     while(!IsMainPage(item))
     {
-        titles[numTitle++] = TitleItem(item);
-        item = ((Control *)item)->Keeper();
+        titles[numTitle++] = item->Title();
+        item = (Control *)item->keeper;
     }
     for(int i = 9; i >= 0; i--)
     {
@@ -558,7 +558,7 @@ void ProcessingRegulatorSetRotate()
             }
             else if (type == Item_Page || type == Item_IP || type == Item_MAC || type == Item_Choice || type == Item_ChoiceReg || type == Item_Governor)
             {
-                if (ChangeOpenedItem(item, angleRegSet))
+                if (item->ChangeOpened(angleRegSet))
                 {
                     angleRegSet = 0;
                 }
