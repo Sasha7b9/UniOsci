@@ -75,6 +75,8 @@ public:
     /// Возвращает название элемента, как оно выглядит на дисплее прибора
     const char *Title() const;
     bool ChangeOpened(int delta);
+    /// Вызывается при "коротком" нажатии
+    void ShortPress();
 };
 
 

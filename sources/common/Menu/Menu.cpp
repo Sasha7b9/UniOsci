@@ -34,7 +34,7 @@ static PanelRegulator pressRegulator = R_Empty;
 static int angleRegSet = 0;
 ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, если ни одна 
 /// кнопка не нажата.
-static void *itemUnderKey = 0;
+void *itemUnderKey = 0;
 /// Эта функция будет вызывана один раз после Menu::UpdateInput().
 static pFuncVV funcAterUpdate = 0;
                                                 
@@ -46,17 +46,10 @@ static void ProcessingRegulatorSetRotate();             ///< Обработка поворота 
 static void ProcessingRegulatorPress();                 ///< Обработка нажатия ручки.
 static void OnTimerAutoHide();                          ///< Обработка события таймера автоматического сокрытия меню.
 static void SwitchSetLED();                             ///< Включить/выключить светодиод ручки УСТАНОВКА, если необходимо.
-static void ShortPress_Page(void *page);                    ///< Обработка короткого нажатия на элемент NamePage с адресом page.
-static void ShortPress_Choice(void *choice);                ///< Обработка короткого нажатия на элемент Choice с адресом choice.
-static void ShortPress_Time(void *time);
-static void ShortPress_Button(void *button);                ///< Обработка короткого нажатия на элемент Button с адресом button.
-static void ShortPress_Governor(void *governor);            ///< Обработка короткого нажатия на элемент Governor с адресом governor.
-static void ShortPress_GovernorColor(void *governorColor);  ///< Обработка короткого нажатия на элемент GovernorColor с адресом governorColor.
-static void FuncOnLongPressItem(void *item);                ///< Обработка длинного нажатия на элемент меню item.
+       void FuncOnLongPressItem(void *item);                ///< Обработка длинного нажатия на элемент меню item.
 static void FuncOnLongPressItemTime(void *item);
 static void FuncOnLongPressItemButton(void *button);        ///< Обработка длинного нажатия на элемент Button с адресом button.
 
-static  pFuncVpV    FuncForShortPressOnItem(void *item);    ///< Возвращает функцию обработки короткого нажатия на элемент меню item.
 static  pFuncVpV    FuncForLongPressureOnItem(void *item);  ///< Возвращает функцию обработки длинного нажатия на элемент меню item.
 
 static void OnTimerStrNaviAutoHide();                   ///< Функция, которая отключит вывод строки навигации меню.
@@ -417,7 +410,10 @@ static void ProcessingShortPressureButton()
                 }
                 else
                 {
-                    FuncForShortPressOnItem(item)(item);
+                    if(item)
+                    {
+                        ((Control *)item)->ShortPress();
+                    }
                 }
             }
             else                                                        // Если меню не показано.
@@ -604,18 +600,6 @@ void ProcessingReleaseButton()
     }
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Page(void *item)
-{
-    Page *page = (Page *)item;
-    if (page->funcOnPress)
-    {
-        page->funcOnPress();
-    }
-
-    page->SetCurrentSB();
-}
-
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::TemporaryEnableStrNavi()
 {
@@ -630,26 +614,6 @@ void Menu::TemporaryEnableStrNavi()
 static void OnTimerStrNaviAutoHide()
 {
     SHOW_STRING_NAVIGATION = 0;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Choice(void *item)
-{
-    Choice *choice = (Choice*)item;
-
-    if (!choice->IsActive())
-    {
-        CHOICE_RUN_FUNC_CHANGED(choice, false);
-    }
-    else if (!choice->IsOpened())
-    {
-        choice->SetCurrent(Menu::CurrentItem() != choice);
-        choice->StartChange(1);
-    }
-    else
-    {
-        choice->ChangeIndex(-1);
-    }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -670,19 +634,7 @@ void ShortPress_ChoiceReg(void *choice_)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncOnLongPressItemButton(void *button)
 {
-    ShortPress_Button(button);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Button(void *item)
-{
-    Button *button = (Button *)item;
-    if(!button->IsActive())
-    {
-        return;
-    }
-    button->SetCurrent(true);
-    button->funcOnPress();
+    ((Control *)button)->ShortPress();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -713,40 +665,6 @@ void FuncOnLongPressItemTime(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Time(void *item)
-{
-    Time *time = (Time *)item;
-    if(!time->IsOpened())
-    {
-        time->SetCurrent(true);
-        time->SetOpened();
-        time->Open(true);
-    }
-    else
-    {
-        ((Time *)time)->SelectNextPosition();
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_Governor(void *governor)
-{
-    Governor *gov = (Governor *)governor;
-    if(!gov->IsActive())
-    {
-        return;
-    }
-    if(Menu::OpenedItem() == gov)
-    {
-        gov->NextPosition();
-    }
-    else
-    {
-        gov->SetCurrent(Menu::CurrentItem() != gov);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_IP(void *item)
 {
     if (Menu::OpenedItem() == item)
@@ -765,24 +683,6 @@ void ShortPress_MAC(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_GovernorColor(void *governorColor)
-{
-    GovernorColor *governor = (GovernorColor*)governorColor;
-    if(!governor->IsActive())
-    {
-        return;
-    }
-    if(Menu::OpenedItem() == governor)
-    {
-        CircleIncrease<int8>(&(governor->ct->currentField), 0, 3);
-    }
-    else
-    {
-        FuncOnLongPressItem(governorColor);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 static void ShortPress_SmallButton(void *smallButton)
 {
     SButton *sb = (SButton *)smallButton;
@@ -791,33 +691,6 @@ static void ShortPress_SmallButton(void *smallButton)
         sb->funcOnPress();
         itemUnderKey = smallButton;
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-pFuncVpV FuncForShortPressOnItem(void *item)
-{
-    static const pFuncVpV shortFunction[Item_NumberItems] =
-    {
-        EmptyFuncVpV,               // Item_None
-        ShortPress_Choice,          // Item_Choice
-        ShortPress_Button,          // Item_Button
-        ShortPress_Page,            // Item_Page
-        ShortPress_Governor,        // Item_Governor
-        ShortPress_Time,            // Item_Time
-        ShortPress_IP,              // Item_IP
-        ShortPress_GovernorColor,   // Item_GovernorColor
-        EmptyFuncVpV,               // Item_Formula
-        ShortPress_MAC,             // Item_MAC
-        ShortPress_ChoiceReg,       // Item_ChoiceReg
-        ShortPress_SmallButton      // Item_SmallButton
-    };
-
-    if(!item)
-    {
-        return EmptyFuncVpV;
-    }
-
-    return shortFunction[((Control *)item)->Type()];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

@@ -5,8 +5,14 @@
 #include "Utils/Math.h"
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+extern void FuncOnLongPressItem(void *item);
+extern int8 gCurDigit;
+extern void *itemUnderKey;
+
+
 #define NAME_FROM_INDEX(index) (names[index * 2 + LANG])
-//#define ITEM_FROM_INDEX(index) (items[(index + LANG) * 2])
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const char *Choice::NameCurrentSubItem()
@@ -248,4 +254,116 @@ bool PageBase::CurrentItemIsOpened() const
 bool Page::CurrentItemIsOpened() const
 {
     CURRENT_ITEM_IS_OPENED;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Control::ShortPress()
+{
+    if(type == Item_Choice)
+    {
+        Choice *choice = (Choice *)this;
+        if(!IsActive())
+        {
+            choice->funcOnChanged(false);
+        }
+        else if(!IsOpened())
+        {
+            choice->SetCurrent(Menu::CurrentItem() != this);
+            choice->StartChange(1);
+        }
+        else
+        {
+            choice->ChangeIndex(-1);
+        }
+    }
+    else if(type == Item_Button)
+    {
+        if(IsActive())
+        {
+            SetCurrent(true);
+            ((Button *)this)->funcOnPress();
+        }
+    }
+    else if(type == Item_Page)
+    {
+        Page *page = (Page *)this;
+        page->funcOnPress();
+        page->SetCurrentSB();
+    }
+    else if(type == Item_Governor)
+    {
+        if(IsActive())
+        {
+            Governor *governor = (Governor *)this;
+            if(Menu::OpenedItem() == this)
+            {
+                governor->NextPosition();
+            }
+            else
+            {
+                governor->SetCurrent(Menu::CurrentItem() != this);
+            }
+        }
+    }
+    else if(type == Item_Time)
+    {
+        Time *time = (Time *)this;
+        if(!IsOpened())
+        {
+            SetCurrent(true);
+            time->SetOpened();
+            Open(true);
+        }
+        else
+        {
+            time->SelectNextPosition();
+        }
+    }
+    else if(type == Item_IP)
+    {
+        if(Menu::OpenedItem() == this)
+        {
+            ((IPaddress *)this)->NextPosition();
+        }
+    }
+    else if(type == Item_GovernorColor)
+    {
+        if(IsActive())
+        {
+            GovernorColor *governor = (GovernorColor *)this;
+            if(Menu::OpenedItem() == this)
+            {
+                CircleIncrease<int8>(&governor->ct->currentField, 0, 3);
+            }
+            else
+            {
+                FuncOnLongPressItem(this);
+            }
+        }
+    }
+    else if(type == Item_MAC)
+    {
+        if(Menu::OpenedItem() == this)
+        {
+            CircleIncrease<int8>(&gCurDigit, 0, 5);
+        }
+    }
+    else if(type == Item_ChoiceReg)
+    {
+        Choice *choice = (Choice *)this;
+        if(IsActive())
+        {
+            choice->SetCurrent(Menu::CurrentItem() != this);
+        }
+        else
+        {
+            choice->funcOnChanged(false);
+        }
+    }
+    else if(type == Item_SmallButton)
+    {
+        SButton *button = (SButton *)this;
+        button->funcOnPress();
+        itemUnderKey = this;
+    }
 }
