@@ -398,7 +398,7 @@ void DrawDataChannel(uint8 *data, Channel chan, DataSettings *ds, int minY, int 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::DrawMath()
 {
-    if (FUNC_MODE_DRAW_IS_DISABLED || dataStorage.GetData(A, 0) == 0 || dataStorage.GetData(B, 0) == 0)
+    if (FUNC_MODE_DRAW_IS_DISABLED || Storage::GetData(A, 0) == 0 || Storage::GetData(B, 0) == 0)
     {
         return;
     }
@@ -604,7 +604,7 @@ static void DrawDataInModePoint2Point()
 
     if (LAST_AFFECTED_CHANNEL_IS_B)
     {
-        if (SELFRECORDER || !dataStorage.NumElementsWithCurrentSettings())
+        if (SELFRECORDER || !Storage::NumElementsWithCurrentSettings())
         {
             DrawDataChannel(dataP2P_0, A, ds, GRID_TOP, Grid::ChannelBottom());
             DrawDataChannel(dataP2P_1, B, ds, GRID_TOP, Grid::ChannelBottom());
@@ -617,7 +617,7 @@ static void DrawDataInModePoint2Point()
     }
     else
     {
-        if (SELFRECORDER || !dataStorage.NumElementsWithCurrentSettings())
+        if (SELFRECORDER || !Storage::NumElementsWithCurrentSettings())
         {
             DrawDataChannel(dataP2P_1, B, ds, GRID_TOP, Grid::ChannelBottom());
             DrawDataChannel(dataP2P_0, A, ds, GRID_TOP, Grid::ChannelBottom());
@@ -649,7 +649,7 @@ bool DrawDataInModeNormal()
     DataSettings *ds = 0;
     Processing::GetData(&data0, &data1, &ds);
 
-    int16 numSignals = dataStorage.NumElementsWithSameSettings();
+    int16 numSignals = Storage::NumElementsWithSameSettings();
     Limitation<int16>(&numSignals, 1, NUM_ACCUM);
     if (numSignals == 1 || ENUM_ACCUM_IS_INFINITY || MODE_ACCUM_IS_RESET || sTime_RandomizeModeEnabled())
     {
@@ -664,7 +664,7 @@ bool DrawDataInModeNormal()
     {
         for (int i = 0; i < numSignals; i++)
         {
-            DrawBothChannels(dataStorage.GetData(A, i), dataStorage.GetData(B, i));
+            DrawBothChannels(Storage::GetData(A, i), Storage::GetData(B, i));
         }
     }
 
@@ -679,17 +679,17 @@ void DrawDataMinMax()
     MODE_DRAW_SIGNAL = ModeDrawSignal_Lines;
     if (LAST_AFFECTED_CHANNEL_IS_B)
     {
-        DrawDataChannel(dataStorage.GetLimitation(A, 0), A, gDSet, GRID_TOP, Grid::ChannelBottom());
-        DrawDataChannel(dataStorage.GetLimitation(A, 1), A, gDSet, GRID_TOP, Grid::ChannelBottom());
-        DrawDataChannel(dataStorage.GetLimitation(B, 0), B, gDSet, GRID_TOP, Grid::ChannelBottom());
-        DrawDataChannel(dataStorage.GetLimitation(B, 1), B, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(A, 0), A, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(A, 1), A, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(B, 0), B, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(B, 1), B, gDSet, GRID_TOP, Grid::ChannelBottom());
     }
     else
     {
-        DrawDataChannel(dataStorage.GetLimitation(B, 0), B, gDSet, GRID_TOP, Grid::ChannelBottom());
-        DrawDataChannel(dataStorage.GetLimitation(B, 1), B, gDSet, GRID_TOP, Grid::ChannelBottom());
-        DrawDataChannel(dataStorage.GetLimitation(A, 0), A, gDSet, GRID_TOP, Grid::ChannelBottom());
-        DrawDataChannel(dataStorage.GetLimitation(A, 1), A, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(B, 0), B, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(B, 1), B, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(A, 0), A, gDSet, GRID_TOP, Grid::ChannelBottom());
+        DrawDataChannel(Storage::GetLimitation(A, 1), A, gDSet, GRID_TOP, Grid::ChannelBottom());
     }
     MODE_DRAW_SIGNAL = modeDrawSignalOld;
 }
@@ -717,7 +717,7 @@ bool DrawData()
 {
     bool retValue = true;
 
-    if (dataStorage.AllDatas())
+    if (Storage::AllDatas())
     {
 
         if (MODE_WORK_IS_ROM)
@@ -2181,10 +2181,10 @@ void Display::DrawTimeForFrame(uint timeTicks)
     Painter::DrawText(Grid::Left() + 2, Grid::FullBottom() - 9, buffer, Color::Fill());
 
     char message[20] = {0};
-    sprintf(message, "%d", dataStorage.NumElementsWithSameSettings());
+    sprintf(message, "%d", Storage::NumElementsWithSameSettings());
     strcat(message, "/");
     char numAvail[10] = {0};
-    sprintf(numAvail, "%d", dataStorage.NumberAvailableEntries());
+    sprintf(numAvail, "%d", Storage::NumberAvailableEntries());
     strcat(message, numAvail);
     Painter::DrawText(Grid::Left() + 50, Grid::FullBottom() - 9, message);
 }

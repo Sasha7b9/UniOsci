@@ -11,28 +11,28 @@
  *  @{
  */
 
-#define ENTER_ANALYSIS                                  \
-    Word parameter;                                     \
-    if (su.GetWord((const char *)buffer, &parameter, 0)) {               \
-        uint8 value = GetValueFromMap(map, &parameter); \
+#define ENTER_ANALYSIS                                      \
+    Word parameter;                                         \
+    if (su.GetWord((const char *)buffer, &parameter, 0)) {  \
+        uint8 value = GetValueFromMap(map, &parameter);     \
         if (value < 255) {
 
-#define LEAVE_ANALYSIS   }              \
-    else                                \
-    {                                  \
-        SCPI_SEND("COMMAND ERROR");    \
-    }                                    \
+#define LEAVE_ANALYSIS   }          \
+    else                            \
+    {                               \
+        SCPI_SEND("COMMAND ERROR"); \
+    }                               \
     }
 
 
 #define SCPI_SEND(...)                              \
     if(CONNECTED_TO_USB)                            \
     {                                               \
-        VCP::SendFormatStringAsynch(__VA_ARGS__);    \
+        VCP::SendFormatStringAsynch(__VA_ARGS__);   \
     };                                              \
     if (gEthIsConnected)                            \
     {                                               \
-        TCPSocket_SendFormatString(__VA_ARGS__);    \
+        SocketTCP::SendFormatString(__VA_ARGS__);   \
     }
 
 

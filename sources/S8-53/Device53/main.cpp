@@ -83,11 +83,11 @@ void ProcessingSignal()
 
     if (MODE_WORK_IS_DIR)
     {
-        dataStorage.GetDataFromEnd(0, &gDSet, &gData0, &gData1);
+        Storage::GetDataFromEnd(0, &gDSet, &gData0, &gData1);
         if (sDisplay_NumAverage() != 1 || sTime_RandomizeModeEnabled())
         {
-            gData0 = dataStorage.GetAverageData(A);
-            gData1 = dataStorage.GetAverageData(B);
+            gData0 = Storage::GetAverageData(A);
+            gData1 = Storage::GetAverageData(B);
         }
     }
     else if (MODE_WORK_IS_RAM)
@@ -95,7 +95,7 @@ void ProcessingSignal()
         data0 = &gData0memLast;
         data1 = &gData1memLast;
         ds = &gDSmemLast;
-        dataStorage.GetDataFromEnd(gMemory.currentNumLatestSignal, &gDSmemLast, &gData0memLast, &gData1memLast);
+        Storage::GetDataFromEnd(gMemory.currentNumLatestSignal, &gDSmemLast, &gData0memLast, &gData1memLast);
     }
     else if (MODE_WORK_IS_ROM)
     {

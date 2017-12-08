@@ -27,11 +27,11 @@ static void(*SocketFuncReceiver)(const char *buffer, uint length) = 0;     // th
 bool gEthIsConnected = false;                                       // Если true, то подсоединён клиент
 
 static err_t CallbackOnAccept(void *arg, struct tcp_pcb *newPCB, err_t err);
-static void Send(struct tcp_pcb *tpcb, struct State *ss);
+static void SendPCB(struct tcp_pcb *tpcb, struct State *ss);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool TCPSocket_Init(void(*funcConnect)(), void(*funcReceiver)(const char *buffer, uint length))
+bool SocketTCP::Init(void(*funcConnect)(), void(*funcReceiver)(const char *buffer, uint length))
 {
     struct tcp_pcb *pcb = tcp_new();
     if (pcb != NULL)
@@ -60,62 +60,7 @@ bool TCPSocket_Init(void(*funcConnect)(), void(*funcReceiver)(const char *buffer
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool TCPSocket_Send(const char *buffer, int length)
-{
-    if (pcbClient)
-    {
-        struct pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, (u16_t)length, PBUF_POOL);
-        tcpBuffer->flags = 1;
-        pbuf_take(tcpBuffer, buffer, (u16_t)length);
-        struct State *ss = (struct State*)mem_malloc(sizeof(struct State));
-        ss->p = tcpBuffer;
-        Send(pcbClient, ss);
-        mem_free(ss);
-    }
-    return pcbClient != 0;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TCPSocket_SendFormatString(char *format, ...)
-{
-#undef SIZE_BUFFER
-#define SIZE_BUFFER 200
-    static char buffer[SIZE_BUFFER];
-    va_list args;
-    va_start(args, format);
-    vsprintf(buffer, format, args);
-    va_end(args);
-    strcat(buffer, "\r\n");
-    TCPSocket_Send(buffer, strlen(buffer));
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void ETH_SendFormatString(char *, ...)
-{
-
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void CloseConnection(struct tcp_pcb *tpcb, struct State *ss)
-{
-    gEthIsConnected = false;
-    tcp_arg(tpcb, NULL);
-    tcp_sent(tpcb, NULL);
-    tcp_recv(tpcb, NULL);
-    tcp_err(tpcb, NULL);
-    tcp_poll(tpcb, NULL, 0);
-
-    pcbClient = 0;
-
-    if (ss)
-    {
-        mem_free(ss);
-    }
-    tcp_close(tpcb);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void Send(struct tcp_pcb *tpcb, struct State *ss)
+static void SendPCB(struct tcp_pcb *tpcb, struct State *ss)
 {
     struct pbuf *ptr;
     err_t wr_err = ERR_OK;
@@ -160,6 +105,61 @@ static void Send(struct tcp_pcb *tpcb, struct State *ss)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+bool SocketTCP::Send(const char *buffer, int length)
+{
+    if (pcbClient)
+    {
+        struct pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, (u16_t)length, PBUF_POOL);
+        tcpBuffer->flags = 1;
+        pbuf_take(tcpBuffer, buffer, (u16_t)length);
+        struct State *ss = (struct State*)mem_malloc(sizeof(struct State));
+        ss->p = tcpBuffer;
+        SendPCB(pcbClient, ss);
+        mem_free(ss);
+    }
+    return pcbClient != 0;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void SocketTCP::SendFormatString(char *format, ...)
+{
+#undef SIZE_BUFFER
+#define SIZE_BUFFER 200
+    static char buffer[SIZE_BUFFER];
+    va_list args;
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    va_end(args);
+    strcat(buffer, "\r\n");
+    Send(buffer, strlen(buffer));
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void ETH_SendFormatString(char *, ...)
+{
+
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void CloseConnection(struct tcp_pcb *tpcb, struct State *ss)
+{
+    gEthIsConnected = false;
+    tcp_arg(tpcb, NULL);
+    tcp_sent(tpcb, NULL);
+    tcp_recv(tpcb, NULL);
+    tcp_err(tpcb, NULL);
+    tcp_poll(tpcb, NULL, 0);
+
+    pcbClient = 0;
+
+    if (ss)
+    {
+        mem_free(ss);
+    }
+    tcp_close(tpcb);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 static err_t CallbackOnSent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
     struct State *ss;
@@ -168,7 +168,7 @@ static err_t CallbackOnSent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 
     if (ss->p != NULL)
     {
-        Send(tpcb, ss);
+        SendPCB(tpcb, ss);
     }
     else
     {
@@ -195,7 +195,7 @@ static void SendAnswer(void *arg, struct tcp_pcb *tpcb)
     pbuf_take(tcpBuffer, policy, (u16_t)strlen(policy));
     struct State *s = (struct State *)arg;
     s->p = tcpBuffer;
-    Send(tpcb, s);
+    SendPCB(tpcb, s);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -256,7 +256,7 @@ static err_t CallbackOnReceive(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, 
             ss->state = S_RECEIVED;
             // store reference to incoming pbuf (chain)
             ss->p = p;
-            Send(tpcb, ss);
+            SendPCB(tpcb, ss);
             ret_err = ERR_OK;
         }
     }
@@ -330,7 +330,7 @@ static err_t CallbackOnPoll(void *arg, struct tcp_pcb *tpcb)
         {
             // there is a remaining pbuf (chain)
             //tcp_sent(tpcb, CallbackOnSent);
-            Send(tpcb, ss);
+            SendPCB(tpcb, ss);
         }
         else
         {

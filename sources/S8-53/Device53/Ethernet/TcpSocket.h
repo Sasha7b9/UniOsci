@@ -1,16 +1,18 @@
 #pragma once
 
-struct tcp_pcb;
-
 static const int    DEFAULT_PORT = 7,
                     POLICY_PORT = 843;
 
-bool TCPSocket_Init(void (*funcConnect)(), void (*funcReciever)(const char *buffer, uint length));
 
-bool TCPSocket_Send(const char *buffer, uint length);
+class SocketTCP
+{
+public:
+    static bool Init(void (*funcConnect)(), void (*funcReciever)(const char *buffer, uint length));
 
-void TCPSocket_SendFormatString(char *format, ...);
+    static bool Send(const char *buffer, uint length);
 
+    static void SendFormatString(char *format, ...);
+};
 
 void ETH_SendFormatString(char *format, ...);
 

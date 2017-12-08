@@ -109,17 +109,17 @@ void PressSB_MemLastSelect()
 
 void PressSB_MemLast_Next()
 {
-    CircleIncrease<int16>(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
+    CircleIncrease<int16>(&gMemory.currentNumLatestSignal, 0, Storage::AllDatas() - 1);
 }
 
 void PressSB_MemLast_Prev()
 {
-    CircleDecrease<int16>(&gMemory.currentNumLatestSignal, 0, dataStorage.AllDatas() - 1);
+    CircleDecrease<int16>(&gMemory.currentNumLatestSignal, 0, Storage::AllDatas() - 1);
 }
 
 static void RotateSB_MemLast(int angle)
 {
-    if (dataStorage.AllDatas() > 1)
+    if (Storage::AllDatas() > 1)
     {
         Sound::RegulatorSwitchRotate();
     }
@@ -1010,7 +1010,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
     Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, Color::Fill());
     Painter::DrawText(Grid::Right() - width + 2, GRID_TOP + 1, Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     Painter::DrawText(Grid::Right() - width + 17, GRID_TOP + 1, "/");
-    Painter::DrawText(Grid::Right() - width + 23, GRID_TOP + 1, Int2String(dataStorage.AllDatas(), false, 3, buffer));
+    Painter::DrawText(Grid::Right() - width + 23, GRID_TOP + 1, Int2String(Storage::AllDatas(), false, 3, buffer));
 }
 
 DEF_PAGE_SB(        mspMemLast,                                                                                              // œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ ///
