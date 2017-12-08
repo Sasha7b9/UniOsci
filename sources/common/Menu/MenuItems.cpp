@@ -6,7 +6,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-extern void FuncOnLongPressItem(void *item);
 extern int8 gCurDigit;
 extern void *itemUnderKey;
 
@@ -337,7 +336,11 @@ void Control::ShortPress()
             }
             else
             {
-                FuncOnLongPressItem(this);
+                if(Menu::CurrentItem() != this)
+                {
+                    SetCurrent(true);
+                }
+                Open(!IsOpened());
             }
         }
     }
@@ -365,5 +368,45 @@ void Control::ShortPress()
         SButton *button = (SButton *)this;
         button->funcOnPress();
         itemUnderKey = this;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Control::LongPress()
+{
+    if(type == Item_Button)
+    {
+        ((Button *)this)->ShortPress();
+    }
+    else if(type == Item_Time)
+    {
+        if(Menu::CurrentItem() != this)
+        {
+            SetCurrent(true);
+        }
+        Time *time = (Time *)this;
+        if(IsOpened() && (*time->curField == iSET))
+        {
+            time->SetNewTime();
+        }
+        Open(!IsOpened());
+        time->SetOpened();
+    }
+    else if(type == Item_Formula)
+    {
+    }
+    else if(type == Item_SmallButton)
+    {
+        SButton *button = (SButton *)this;
+        button->funcOnPress();
+        itemUnderKey = this;
+    }
+    else
+    {
+        if(Menu::CurrentItem() != this)
+        {
+            SetCurrent(true);
+        }
+        Open(!IsOpened());
     }
 }

@@ -77,6 +77,8 @@ public:
     bool ChangeOpened(int delta);
     /// Вызывается при "коротком" нажатии
     void ShortPress();
+    /// Вызывается при "длинном" нажатии
+    void LongPress();
 };
 
 

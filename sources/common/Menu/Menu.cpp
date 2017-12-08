@@ -46,12 +46,6 @@ static void ProcessingRegulatorSetRotate();             ///< Обработка поворота 
 static void ProcessingRegulatorPress();                 ///< Обработка нажатия ручки.
 static void OnTimerAutoHide();                          ///< Обработка события таймера автоматического сокрытия меню.
 static void SwitchSetLED();                             ///< Включить/выключить светодиод ручки УСТАНОВКА, если необходимо.
-       void FuncOnLongPressItem(void *item);                ///< Обработка длинного нажатия на элемент меню item.
-static void FuncOnLongPressItemTime(void *item);
-static void FuncOnLongPressItemButton(void *button);        ///< Обработка длинного нажатия на элемент Button с адресом button.
-
-static  pFuncVpV    FuncForLongPressureOnItem(void *item);  ///< Возвращает функцию обработки длинного нажатия на элемент меню item.
-
 static void OnTimerStrNaviAutoHide();                   ///< Функция, которая отключит вывод строки навигации меню.
 
 
@@ -491,8 +485,11 @@ void ProcessingLongPressureButton()
         }
         else if(MENU_IS_SHOWN && Panel::IsFunctionalButton(button))
         {
-            void *item = itemUnderButton[button];
-            FuncForLongPressureOnItem(item)(item);
+            Control *item = (Control *)itemUnderButton[button];
+            if(item)
+            {
+                item->LongPress();
+            }
             if (Menu::TypeOpenedItem() != Item_Page)
             {
                 Menu::TemporaryEnableStrNavi();
@@ -632,39 +629,6 @@ void ShortPress_ChoiceReg(void *choice_)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void FuncOnLongPressItemButton(void *button)
-{
-    ((Control *)button)->ShortPress();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void FuncOnLongPressItem(void *item)
-{
-    Control *control = (Control *)item;
-    if (Menu::CurrentItem() != control)
-    {
-        control->SetCurrent(true);
-    }
-    control->Open(!control->IsOpened());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void FuncOnLongPressItemTime(void *item)
-{
-    Time *time = (Time *)item;
-    if (Menu::CurrentItem() != time)
-    {
-        time->SetCurrent(true);
-    }
-    if(time->IsOpened() && (*time->curField == iSET))
-    {
-        time->SetNewTime();
-    }
-    time->Open(!time->IsOpened());
-    time->SetOpened();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void ShortPress_IP(void *item)
 {
     if (Menu::OpenedItem() == item)
@@ -680,46 +644,6 @@ void ShortPress_MAC(void *item)
     {
         CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ShortPress_SmallButton(void *smallButton)
-{
-    SButton *sb = (SButton *)smallButton;
-    if (sb)
-    {
-        sb->funcOnPress();
-        itemUnderKey = smallButton;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-pFuncVpV FuncForLongPressureOnItem(void *item)
-{
-    static const pFuncVpV longFunction[Item_NumberItems] =
-    {
-        EmptyFuncVpV,               // Item_None
-        FuncOnLongPressItem,        // Item_Choice
-        FuncOnLongPressItemButton,  // Item_Button
-        FuncOnLongPressItem,        // Item_Page
-        FuncOnLongPressItem,        // Item_Governor
-        FuncOnLongPressItemTime,    // Item_Time
-        FuncOnLongPressItem,        // Item_IP
-        FuncOnLongPressItem,        // Item_GovernorColor
-        EmptyFuncVpV,               // Item_Formula
-        FuncOnLongPressItem,        // Item_MAC
-        FuncOnLongPressItem,        // Item_ChoiceReg
-        ShortPress_SmallButton      // Item_SmallButton
-    };
-
-    if(!item)
-    {
-        return EmptyFuncVpV;
-    }
-
-    Control *control = (Control *)item;
-
-    return control->IsActive() ? longFunction[control->Type()] : EmptyFuncVpV;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
