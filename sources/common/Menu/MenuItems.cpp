@@ -153,3 +153,9 @@ bool Control::IsShade() const
 {
     return CurrentItemIsOpened(((Page *)keeper)->GetNamePage()) && (this != Menu::OpenedItem());
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Control::IsPressed() const
+{
+    return this == Menu::ItemUnderKey();
+}

@@ -65,6 +65,8 @@ public:
     /// @brief Возвращает true, если элемент меню item затенён (находится не на самом верхнем слое. Как правило, это означает, что раскрыт раскрывающийся элемент 
     /// меню вроде Choice или Governor
     bool IsShade() const;
+    /// Возвращает true, если кнопка, соответствующая элементу меню item, находится в нажатом положении
+    bool IsPressed() const;
 };
 
 
@@ -136,10 +138,20 @@ typedef struct
 
 
 /// Описывает кнопку для дополнительного режима меню.
-class SButton
+class SButtonBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
+    pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
+    const StructHelpSmallButton    *hintUGO;
+    int                             numHints;
+};
+
+
+class SButton : public Control
+{
+public:
     pFuncVV                         funcOnPress;    ///< Эта функция вызвается для обработки нажатия кнопки.
     pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
     const StructHelpSmallButton    *hintUGO; 
