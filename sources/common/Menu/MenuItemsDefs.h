@@ -18,7 +18,7 @@ static const ButtonBase name = { Item_Button, 0, false, Page_NoPage, &keeper, fu
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define DEF_TIME(name, titleRU, titleEN, hintRU, hintEN, keeper, funcActive, cur, h, mi, s, mo, d, y)                           \
-static const Time name = { Item_Time, 0, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},           \
+static const TimeBase name = { Item_Time, 0, false, Page_NoPage, &keeper, funcActive, {titleRU, titleEN, hintRU, hintEN},       \
     &cur, &h, &mi, &s, &mo, &d, &y };
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

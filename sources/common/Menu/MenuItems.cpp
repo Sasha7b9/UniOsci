@@ -1,31 +1,9 @@
 #include "MenuItems.h"
+#include "Menu.h"
 #include "Menu/MenuFunctions.h"
 #include "Hardware/Sound.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
-
-
-/*
-template <typename T>
-struct Base
-{
-    const int var0;
-    const int var1;
-    const T *t;
-};
-
-struct A
-{
-    A(int var0, int var1, int var2, int var3) : b({var0, var1, this}), var2(var2), var3(var3)
-    {
-    }
-    const Base<A> b;
-    int var2;
-    int var3;
-};
-
-struct A a = {1, 2, 3, 4};
-*/
 
 
 #define NAME_FROM_INDEX(index) (names[index * 2 + LANG])
@@ -168,4 +146,10 @@ int Control::HeightOpened() const
         return MOI_HEIGHT_TITLE + ((Choice *)this)->NumSubItems() * MOSI_HEIGHT - 1;
     }
     return MI_HEIGHT;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+bool Control::IsShade() const
+{
+    return CurrentItemIsOpened(((Page *)keeper)->GetNamePage()) && (this != Menu::OpenedItem());
 }

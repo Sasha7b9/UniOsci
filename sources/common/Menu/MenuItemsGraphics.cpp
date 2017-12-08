@@ -38,7 +38,7 @@ void GovernorColor::DrawOpened(int x, int y)
     Painter::DrawRectangle(x - 1, y - 1, MI_WIDTH + delta + 2, MI_HEIGHT + 2, Color::BLACK);
     Painter::DrawRectangle(x, y, MI_WIDTH + delta, MI_HEIGHT, Color::MenuTitle(false));
     Painter::DrawVolumeButton(x + 1, y + 1, MI_WIDTH_VALUE + 2 + delta, MI_HEIGHT_VALUE + 3, 2, Color::MenuItem(false),
-                             Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, IsPressed(this), IsShade(this));
+                             Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, IsPressed(this), IsShade());
     Painter::DrawHLine(y + MI_HEIGHT / 2 + 2, x, x + MI_WIDTH + delta, Color::MenuTitle(false));
     Painter::DrawStringInCenterRect(x + (IsPressed(this) ? 2 : 1), y + (IsPressed(this) ? 2 : 1), MI_WIDTH + delta, MI_HEIGHT / 2 + 2, TitleItem(this),
                                     Color::WHITE);
@@ -49,7 +49,7 @@ void GovernorColor::DrawOpened(int x, int y)
 void GovernorColor::DrawClosed(int x, int y)
 {
     ct->Init(false);
-    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(this), IsShade(this) || !IsActive(), true);
+    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(this), IsShade() || !IsActive(), true);
     Painter::FillRegion(x + 2, y + 20, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1, ct->color);
 }
 
@@ -111,7 +111,7 @@ void Governor::DrawOpened(int x, int y)
 void Governor::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !IsActive();
+    bool shade = IsShade() || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -218,7 +218,7 @@ void IPaddress::DrawOpened(int x, int y)
 void IPaddress::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !IsActive();
+    bool shade = IsShade() || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -310,7 +310,7 @@ void MACaddress::DrawOpened(int x, int y)
 void MACaddress::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !IsActive();
+    bool shade = IsShade() || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -385,7 +385,7 @@ void Formula::Draw(int x, int y, bool opened)
 void Formula::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !IsActive();
+    bool shade = IsShade() || !IsActive();
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -460,7 +460,7 @@ void Choice::DrawOpened(int x, int y)
 
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH);
     Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, 1, Color::BLACK, Color::MENU_TITLE_BRIGHT,
-                             Color::MENU_TITLE_DARK, false, IsShade(this));
+                             Color::MENU_TITLE_DARK, false, IsShade());
     int8 index = *cell;
     for (int i = 0; i < NumSubItems(); i++)
     {
@@ -469,7 +469,7 @@ void Choice::DrawOpened(int x, int y)
         if (pressed)
         {
             Painter::DrawVolumeButton(x + 1, yItem, MOI_WIDTH - 2, MOSI_HEIGHT - 2, 2, Color::MENU_FIELD, Color::MENU_TITLE_BRIGHT,
-                                     Color::MENU_TITLE_DARK, pressed, IsShade(this));
+                                     Color::MENU_TITLE_DARK, pressed, IsShade());
         }
         Painter::DrawText(x + 4, yItem + 2, NameSubItem(i), pressed ? Color::BLACK : Color::MENU_FIELD);
     }
@@ -479,7 +479,7 @@ void Choice::DrawOpened(int x, int y)
 void Choice::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !funcOfActive();
+    bool shade = IsShade() || !funcOfActive();
 
     Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 1, Color::MENU_FIELD, Color::MENU_ITEM_BRIGHT,
                              Color::MENU_ITEM_DARK, true, shade);
@@ -511,7 +511,7 @@ void Choice::DrawClosed(int x, int y)
 void Button::Draw(int x, int y)
 {
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this) || !funcOfActive();
+    bool shade = IsShade() || !funcOfActive();
 
     Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::MenuTitle(shade));
     Color color = shade ? Color::MenuItem(true) : Color::WHITE;
@@ -551,7 +551,7 @@ void SButton::Draw(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::Draw(int x, int y)
 {
-    bool isShade = IsShade(this) || !funcOfActive();
+    bool isShade = IsShade() || !funcOfActive();
     bool isPressed = IsPressed(this);
     Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
 
@@ -587,7 +587,7 @@ void Time::DrawClosed(int x, int y)
     char buffer[20];
 
     bool pressed = IsPressed(this);
-    bool shade = IsShade(this);
+    bool shade = IsShade();
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 
     Painter::DrawVolumeButton(x + 1, y + 17, MI_WIDTH_VALUE + 2, MI_HEIGHT_VALUE + 3, 1, Color::MENU_FIELD, Color::MENU_ITEM_BRIGHT,
@@ -626,7 +626,7 @@ void Time::DrawOpened(int x, int y)
 
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH);
     Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1, height - MOI_HEIGHT_TITLE, 1, Color::BLACK, Color::MENU_TITLE_BRIGHT,
-                             Color::MENU_TITLE_DARK, false, IsShade(this));
+                             Color::MENU_TITLE_DARK, false, IsShade());
 
     int y0 = 21;
     int y1 = 31;
@@ -883,5 +883,5 @@ static void GovernorIpCommon_DrawOpened(void *item, int x, int y, int dWidth)
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH + dWidth);
     DrawGovernorChoiceColorFormulaHiPart(item, x - 1, y - 1, IsPressed(item), false, true);
     Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1 + dWidth, height - MOI_HEIGHT_TITLE, 1, Color::BLACK, Color::MENU_TITLE_BRIGHT,
-                             Color::MENU_TITLE_DARK, false, IsShade(item));
+                             Color::MENU_TITLE_DARK, false, ((Control *)item)->IsShade());
 }

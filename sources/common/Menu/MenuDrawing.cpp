@@ -333,15 +333,6 @@ int CalculateX(int layer)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool IsShade(void *item)
-{
-    Control *control = (Control *)item;
-    Page *keeper = (Page *)control->Keeper();
-
-    return CurrentItemIsOpened(keeper->GetNamePage()) && (item != Menu::OpenedItem());
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 bool IsPressed(void *item)
 {
     return item == Menu::ItemUnderKey();

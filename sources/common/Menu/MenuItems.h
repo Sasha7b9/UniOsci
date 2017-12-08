@@ -62,6 +62,9 @@ public:
     bool IsPageSB() const;
     /// ¬озвращает высоту в пиксел€х открытого элемента Choice или NamePage
     int HeightOpened() const;
+    /// @brief ¬озвращает true, если элемент меню item затенЄн (находитс€ не на самом верхнем слое.  ак правило, это означает, что раскрыт раскрывающийс€ элемент 
+    /// меню вроде Choice или Governor
+    bool IsShade() const;
 };
 
 
@@ -363,11 +366,23 @@ private:
 #define iSEC    6
 #define iSET    7
 
-/// ”станавливает и показывает врем€.
-class Time
+class TimeBase
 {
 public:
     COMMON_PART_MENU_ITEM;
+    int8 *curField;   ///< “екущее поле установки. 0 - выход, 1 - сек, 2 - мин, 3 - часы, 4 - день, 5 - мес€ц, 6 - год, 7 - установить.
+    int8 *hours;
+    int8 *minutes;
+    int8 *seconds;
+    int8 *month;
+    int8 *day;
+    int8 *year;
+};
+
+/// ”станавливает и показывает врем€.
+class Time : public Control
+{
+public:
     int8 *curField;   ///< “екущее поле установки. 0 - выход, 1 - сек, 2 - мин, 3 - часы, 4 - день, 5 - мес€ц, 6 - год, 7 - установить.
     int8 *hours;
     int8 *minutes;
