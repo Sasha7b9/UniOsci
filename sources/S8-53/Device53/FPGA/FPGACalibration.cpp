@@ -141,7 +141,7 @@ void FPGA::ProcedureCalibration()
 
         gStateFPGA.stateCalibration = StateCalibration_RShift1start;
 
-        HAL_Delay(500);
+        Timer::PauseOnTime(500);
 
 		if(Panel::WaitPressingButton() == B_Start)                 // ќжидаем подтверждени€ или отмены процедуры калибровки второго канала.
         {

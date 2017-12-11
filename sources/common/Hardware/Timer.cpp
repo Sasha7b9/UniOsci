@@ -243,10 +243,7 @@ static void StopTIM()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer::PauseOnTime(uint timeMS)
 {
-    uint time = gTimeMS;
-    while (gTimeMS - time < timeMS)
-    {
-    };
+    HAL_Delay(timeMS);
 }
 
 

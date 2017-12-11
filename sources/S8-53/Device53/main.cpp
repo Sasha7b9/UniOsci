@@ -43,7 +43,7 @@ int main()
     Init();
     Settings_Load(false);
     FPGA::Init();    
-    HAL_Delay(250);
+    Timer::PauseOnTime(250);
     FPGA::OnPressStartStop();
     Ethernet::Init();
     Display::Init();
