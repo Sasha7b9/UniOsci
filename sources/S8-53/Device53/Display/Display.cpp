@@ -4,7 +4,6 @@
 #include "FPGA/FPGA.h"
 #include "FPGA/FPGAMath.h"
 #include "font/Font.h"
-#include "Hardware/DisplayHardware.inc"
 #include "Hardware/RTC.h"
 #include "Hardware/Sound.h"
 #include "Menu/Menu.h"
@@ -61,7 +60,16 @@ void Display::Init()
 
     Painter::ResetFlash();
 
-    InitHardware();
+    GPIO_InitTypeDef isGPIO =
+    {
+        GPIO_PIN_11,
+        GPIO_MODE_INPUT,
+        GPIO_NOPULL,
+        GPIO_SPEED_HIGH,
+        GPIO_AF0_MCO,
+    };
+    // Сигнал готовности дисплея  к приёму команды
+    HAL_GPIO_Init(GPIOG, &isGPIO);
 
     Painter::LoadFont(TypeFont_5);
     Painter::LoadFont(TypeFont_8);
@@ -1221,6 +1229,25 @@ extern uint8 *pool;
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
+    /*
+    Painter::BeginScene(Color::Back());
+
+    static int x = 0;
+
+    Painter::FillRegion(x, x, 100, 100, Color::Fill());
+
+    x++;
+
+    if(x > 100)
+    {
+        x = 0;
+    }
+
+    Painter::EndScene();
+
+    return;
+    */
+
 	uint timeStart = gTimerTics;
     if (funcOnHand != 0)
     {

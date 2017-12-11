@@ -689,6 +689,7 @@ void Painter::SendToDisplay(uint8 *bytes, int numBytes)
         {
         };
         Timer::PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
+
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;

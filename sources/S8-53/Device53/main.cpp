@@ -47,10 +47,6 @@ int main()
     FPGA::OnPressStartStop();
     Ethernet::Init();
     Display::Init();
-    if (gBF.tuneTime == 1)
-    {
-        //Menu::OpenItemTime();
-    }
 
     while(1)
     {
