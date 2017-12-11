@@ -76,17 +76,13 @@ typedef enum
     DRAW_VLINES_ARRAY       = 13, // 13 x0:2 numLines:1 lines:numLines * 2
     DRAW_SIGNAL_POINTS      = 14, // 14 x:2 points:281
     SET_BRIGHTNESS          = 15, //
-    DRAW_MULTI_HPOINT_LINES = 16, //
     DRAW_MULTI_HPOINT_LINE  = 17, // 17 numLines:1 x:2 numPoints:1 dx:1 lines:numLines
     DRAW_MULTI_VPOINT_LINE  = 18, // 18 numLines:1 y:1 numPoints:1 dy:1 empty:1 lines:numLines*2
     LOAD_FONT               = 19, // 19 typeFont:1 height:4 symbols:9 * 256 . Описание symbols смотри в Font.h
     LOAD_IMAGE              = 20, // 
     GET_PIXEL               = 21, // 
-    RUN_BUFFER              = 22,
     SET_REINIT              = 23,
-    SET_ORIENTATION         = 24, // Установить ориентацию экрана. 0 - нормальная, 1 - обратная. Действительна только в С8-54
-    NUM_COMMANDS            = 25,
-    DRAW_LINE               = 26  // Рисование произвольной линии. Функция работает только на С8-54. В С8-53 эмулируется программно
+    NUM_COMMANDS            = 25
 } Command;
 
 #endif

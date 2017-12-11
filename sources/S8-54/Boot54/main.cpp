@@ -44,7 +44,6 @@ void Upgrade();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int main()
 {
-    /*
     ms = (MainStruct *)malloc(sizeof(MainStruct));
     ms->percentUpdate = 0.0f;
     
@@ -55,6 +54,8 @@ int main()
     Settings_Load();
 
     Timer::PauseOnTime(250);
+    /* 
+    
 
     Display_Init();
 

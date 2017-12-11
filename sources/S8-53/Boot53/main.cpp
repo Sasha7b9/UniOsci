@@ -40,7 +40,7 @@ int main()
     Settings_Load();
 
     Timer_PauseOnTime(250);
-
+    /*
     ms->state = State_Start;
 
     Display_Init();
@@ -109,6 +109,7 @@ int main()
     HAL_DeInit();
 
     free(ms);
+    */
 
     __disable_irq();
     // Теперь переходим на основную программу

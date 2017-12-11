@@ -289,6 +289,7 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2, Color color)
     }
     else
     {
+#ifdef S8_54
         uint8 command[8] = {DRAW_LINE};
         WRITE_SHORT(1, x1);
         WRITE_BYTE(3, y1);
@@ -297,6 +298,55 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2, Color color)
 
         SendToDisplay(command, 8);
         SendToInterfaces(command, 7);
+#endif
+#ifdef S8_53
+        if ((x2 - x1) == 0 && (y2 - y1) == 0)
+        {
+            ++x1;
+        }
+        int x = x1;
+        int y = y1;
+        int dx = Abs(x2 - x1);
+        int dy = Abs(y2 - y1);
+        int s1 = Sign(x2 - x1);
+        int s2 = Sign(y2 - y1);
+        int temp;
+        int exchange = 0;
+        if (dy > dx)
+        {
+            temp = dx;
+            dx = dy;
+            dy = temp;
+            exchange = 1;
+        }
+        int e = 2 * dy - dx;
+        int i = 0;
+        for (; i <= dx; i++)
+        {
+            SetPoint(x, y);
+            while (e >= 0)
+            {
+                if (exchange)
+                {
+                    x += s1;
+                }
+                else
+                {
+                    y += s2;
+                }
+                e = e - 2 * dx;
+            }
+            if (exchange)
+            {
+                y += s2;
+            }
+            else
+            {
+                x += s1;
+            }
+            e = e + 2 * dy;
+        }
+#endif
     }
 }
 
@@ -659,9 +709,11 @@ void Painter::SendToInterfaces(uint8 *pointer, int size)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::RunDisplay()
 {
+#ifdef S8_54
     uint8 command[4] = {RUN_BUFFER};
 
     SendToDisplay(command, 4);
+#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
