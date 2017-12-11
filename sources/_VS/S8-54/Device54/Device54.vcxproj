@@ -77,7 +77,7 @@
     <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\S8-54\Device;C:\My\Work\UniOsci\sources\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;C:\My\Work\UniOsci\sources\S8-54\Device\libs;C:\My\Work\UniOsci\sources\S8-54\Device\VCP</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\system;..\..\..\common;..\..\..\S8-54\Device;..\..\..\S8-54\Device\libs;..\..\..\S8-54\Device\VCP;..\..\..\_libs;D:\Projects\UniOsci\sources\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\_libs\forVS;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\..\..\_libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\src\include;..\..\..\_libs\STM32Cube_F4\Middlewares\Third_Party\LwIP\system;..\..\..\common;..\..\..\S8-54\Device54;..\..\..\S8-54\Device54\libs;..\..\..\S8-54\Device54\VCP;..\..\..\_libs;..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;$(IncludePath)</IncludePath>
     <OutDir>..\Debug\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -132,7 +132,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\common\commonDefines.h" />
     <ClInclude Include="..\..\..\common\Display\Colors.h" />
     <ClInclude Include="..\..\..\common\Display\DisplayPrimitives.h" />
     <ClInclude Include="..\..\..\common\Display\DisplayTypes.h" />
@@ -147,80 +146,80 @@
     <ClInclude Include="..\..\..\common\Menu\Pages\Definition.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIO.h" />
     <ClInclude Include="..\..\..\common\STM32F437lib\GPIOdefs.h" />
-    <ClInclude Include="..\..\..\common\structs.h" />
     <ClInclude Include="..\..\..\common\Utils\CommonFunctions.h" />
     <ClInclude Include="..\..\..\common\Utils\Dictionary.h" />
     <ClInclude Include="..\..\..\common\Utils\Map.h" />
     <ClInclude Include="..\..\..\common\Utils\Math.h" />
     <ClInclude Include="..\..\..\common\Utils\Measures.h" />
     <ClInclude Include="..\..\..\common\Utils\StringUtils.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\cmsis_gcc.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Data\Reader.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Data\DataSettings.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Data\DataStorage.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\defines.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\Display.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\font\Font.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterData.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Display\PainterMem.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\Ethernet.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\ethernetif.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\lwipopts.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FileManager.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGA.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\FPGA\FPGATypes.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Globals.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\FLASH.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\FSMC.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\Hardware.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\RAM.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\RTC.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Hardware\Sound.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\libs\ffconf.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_conf.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\libs\usbd_conf.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_conf.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\libs\usbh_diskio.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Log.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\main.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\MenuPagesNames.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\HelpContentPages.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageDisplay.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageHelp.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Menu\Pages\PageMemory.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Panel\Controls.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Panel\Panel.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Panel\PanelFunctions.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\SelfRecorder\SelfRecorder.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\Settings.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsChannel.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsCursors.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsDebug.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsDisplay.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsMath.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsMeasures.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsMemory.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsNRST.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsService.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTime.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTrig.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Settings\SettingsTypes.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\stub.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Tables.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\VCP\usbd_desc.h" />
-    <ClInclude Include="..\..\..\S8-54\Device\VCP\VCP.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\cmsis_gcc.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Data\DataSettings.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Data\DataStorage.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Data\Reader.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\defines.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Display\Display.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Display\Font\Font.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Display\PainterData.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Display\PainterMem.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Ethernet\app_ethernet.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Ethernet\Ethernet.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Ethernet\ethernetif.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Ethernet\lwipopts.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Ethernet\TcpSocket.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\FlashDrive\FileManager.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\FlashDrive\FlashDrive.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\FPGA\FPGA.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\FPGA\FPGAextensions.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\FPGA\FPGATypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Globals.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\FLASH.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\FSMC.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\Hardware.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\RAM.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\RTC.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\Sound.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\libs\ffconf.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\libs\stm32f4xx_hal_conf.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\libs\stm32f4xx_it.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\libs\usbd_conf.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\libs\usbh_conf.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\libs\usbh_diskio.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Log.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\main.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\MenuPagesNames.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\Pages\HelpContent.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\Pages\HelpContentPages.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\Pages\PageCursors.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\Pages\PageDisplay.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\Pages\PageHelp.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Menu\Pages\PageMemory.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Panel\Controls.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Panel\Panel.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Panel\PanelFunctions.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\SelfRecorder\SelfRecorder.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\Settings.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsChannel.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsCursors.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsDebug.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsDisplay.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsMath.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsMeasures.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsMemory.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsNew_.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsNRST.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsService.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsTime.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsTrig.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Settings\SettingsTypes.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\stub.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Tables.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\Utils\ProcessingSignal.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\VCP\SCPI\commonSCPI.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\VCP\SCPI\controlSCPI.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\VCP\SCPI\SCPI.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\VCP\usbd_cdc_interface.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\VCP\usbd_desc.h" />
+    <ClInclude Include="..\..\..\S8-54\Device54\VCP\VCP.h" />
     <ClInclude Include="..\..\..\_libs\forVS\core_cm4.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ctype.h" />
     <ClInclude Include="..\..\..\_libs\forVS\ff.h" />
@@ -384,77 +383,79 @@
     <ClCompile Include="..\..\..\common\Utils\Math.cpp" />
     <ClCompile Include="..\..\..\common\Utils\Measures.cpp" />
     <ClCompile Include="..\..\..\common\Utils\StringUtils.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Data\Reader.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Data\DataSettings.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Data\DataStorage.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\Display.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\font\Font.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterData.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Display\PainterMem.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\app_ethernet.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\Ethernet.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\ethernetif.cpp">
+    <ClCompile Include="..\..\..\S8-54\Device54\Data\DataSettings.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Data\DataStorage.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Data\Reader.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Display\Display.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Display\Font\Font.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Display\PainterData.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Display\PainterMem.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Ethernet\app_ethernet.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Ethernet\Ethernet.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Ethernet\ethernetif.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\Ethernet\TcpSocket.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FileManager.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\FlashDrive\FlashDrive.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGA.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGAextensions.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\FPGA\fpgaSettings.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\FPGA\FPGATypes.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Globals.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\FLASH.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\FSMC.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\Hardware.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\RAM.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\RTC.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Hardware\Sound.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_hal_msp.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\stm32f4xx_it.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\system_stm32f4xx.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    <ClCompile Include="..\..\..\S8-54\Device54\Ethernet\TcpSocket.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\FlashDrive\FileManager.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\FlashDrive\FlashDrive.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\FPGA\FPGA.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\FPGA\FPGAextensions.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\FPGA\fpgaSettings.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\FPGA\FPGATypes.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Globals.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\FLASH.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\FSMC.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\Hardware.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\RAM.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\RTC.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\Sound.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\libs\stm32f4xx_hal_msp.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\libs\stm32f4xx_it.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\libs\system_stm32f4xx.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbd_conf.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_conf.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\libs\usbh_diskio.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Log.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\main.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\HelpContent.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageChannels.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageCursors.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageDebug.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageDisplay.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageHelp.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageMeasures.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageMemory.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageService.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTime.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Menu\Pages\PageTrig.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Panel\Controls.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Panel\Panel.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\Settings.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsChannel.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsCursors.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsDebug.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsDisplay.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsMemory.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Settings\SettingsTime.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\stub54.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Tables.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\Utils\ProcessingSignal.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\channelSCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\commonSCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\controlSCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\displaySCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\SCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\tbaseSCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\SCPI\trigSCPI.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_cdc_interface.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_core.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\usbd_desc.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device\VCP\VCP.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\libs\usbd_conf.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\libs\usbh_conf.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\libs\usbh_diskio.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Log.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\main.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\HelpContent.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageChannels.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageCursors.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageDebug.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageDisplay.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageHelp.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageMeasures.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageMemory.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageService.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageTime.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Menu\Pages\PageTrig.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Panel\Controls.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Panel\Panel.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\SelfRecorder\SelfRecorder.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\Settings.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\SettingsChannel.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\SettingsCursors.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\SettingsDebug.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\SettingsDisplay.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\SettingsMemory.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Settings\SettingsTime.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\stub54.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Tables.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\Utils\ProcessingSignal.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\channelSCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\commonSCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\controlSCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\displaySCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\SCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\tbaseSCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\SCPI\trigSCPI.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\usbd_cdc_interface.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\usbd_core.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\usbd_desc.cpp" />
+    <ClCompile Include="..\..\..\S8-54\Device54\VCP\VCP.cpp" />
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -552,18 +553,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Src\usbd_cdc.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ctlreq.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\_libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Src\usbd_ioreq.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -713,20 +702,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\S8-54\Device\Device54.sct" />
-    <None Include="..\..\..\S8-54\Device\Display\font\font5.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\font5display.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\font8.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\font8display.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\fontUGO.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\fontUGO2.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\fontUGO2display.inc" />
-    <None Include="..\..\..\S8-54\Device\Display\font\fontUGOdisplay.inc" />
-    <None Include="..\..\..\S8-54\Device\libs\startup_stm32f437xx.s" />
-    <None Include="..\..\..\S8-54\Device\main2.s" />
+    <None Include="..\..\..\S8-54\Device54\Device54.sct" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\font5.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\font5display.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\font8.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\font8display.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\fontUGO.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\fontUGO2.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\fontUGO2display.inc" />
+    <None Include="..\..\..\S8-54\Device54\Display\Font\fontUGOdisplay.inc" />
+    <None Include="..\..\..\S8-54\Device54\libs\startup_stm32f437xx.s" />
+    <None Include="..\..\..\S8-54\Device54\main2.s" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\S8-54\Device\FileTree.txt" />
+    <Text Include="..\..\..\S8-54\Device54\FileTree.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
