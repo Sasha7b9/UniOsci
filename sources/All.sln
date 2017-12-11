@@ -26,6 +26,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "S8-53", "S8-53", "{A22717DC
 		S8-53\doxy\RelatedPages.h = S8-53\doxy\RelatedPages.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "S8-54", "S8-54", "{B3A76764-0230-4522-8772-0E8E85A631DA}"
+	ProjectSection(SolutionItems) = preProject
+		S8-54\doxy\MainPage.h = S8-54\doxy\MainPage.h
+		S8-54\doxy\Page01 Хранение настроек.h = S8-54\doxy\Page01 Хранение настроек.h
+		S8-54\doxy\Page02 Алгоритм.h = S8-54\doxy\Page02 Алгоритм.h
+		S8-54\doxy\Page03 Принцип хранения программы в контроллере.h = S8-54\doxy\Page03 Принцип хранения программы в контроллере.h
+		S8-54\doxy\Page04 Хранение серийного номера.h = S8-54\doxy\Page04 Хранение серийного номера.h
+		S8-54\doxy\Page05 Меню.h = S8-54\doxy\Page05 Меню.h
+		S8-54\doxy\Page06 Краткие пояснения.h = S8-54\doxy\Page06 Краткие пояснения.h
+		S8-54\doxy\Page07 Хранение и обработка данных.h = S8-54\doxy\Page07 Хранение и обработка данных.h
+		S8-54\doxy\Page08 Серийный номер.h = S8-54\doxy\Page08 Серийный номер.h
+		S8-54\doxy\Page09 История изменений.h = S8-54\doxy\Page09 История изменений.h
+		S8-54\doxy\Page10 Изменения в стандартных библиотеках.h = S8-54\doxy\Page10 Изменения в стандартных библиотеках.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -70,6 +85,7 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A22717DC-018E-47B7-82BF-7E4CB6A28EF1} = {0A3A7863-F8A1-4A2C-A579-849F48297ED4}
+		{B3A76764-0230-4522-8772-0E8E85A631DA} = {0A3A7863-F8A1-4A2C-A579-849F48297ED4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25787A4B-FFB6-4881-A92A-36094377F70B}
