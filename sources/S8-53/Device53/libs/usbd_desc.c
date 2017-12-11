@@ -253,8 +253,6 @@ uint8_t *USBD_VCP_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *leng
 
 /**
   * @brief  Create the serial number string descriptor 
-  * @param  None 
-  * @retval None
   */
 static void Get_SerialNum()
 {

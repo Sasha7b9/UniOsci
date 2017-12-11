@@ -19,6 +19,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Boot54", "_VS\S8-54\Boot54\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Device54", "_VS\S8-54\Device54\Device54.vcxproj", "{59181B39-92F6-4D62-BDF0-76995F754E25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doxygen", "doxygen", "{0A3A7863-F8A1-4A2C-A579-849F48297ED4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "S8-53", "S8-53", "{A22717DC-018E-47B7-82BF-7E4CB6A28EF1}"
+	ProjectSection(SolutionItems) = preProject
+		S8-53\doxy\RelatedPages.h = S8-53\doxy\RelatedPages.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -60,6 +67,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A22717DC-018E-47B7-82BF-7E4CB6A28EF1} = {0A3A7863-F8A1-4A2C-A579-849F48297ED4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25787A4B-FFB6-4881-A92A-36094377F70B}
