@@ -3,7 +3,6 @@
 #include "Settings/SettingsTypes.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
-#include "Display/Colors.h"
 #include "Display/Painter.h"
 #include "Display/Grid.h"
 #include "Hardware/Sound.h"

@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "Display/Painter.h"
 #include "Display/Grid.h"
 #include "Display/font/Font.h"
 #include "HelpContentPages.h"
