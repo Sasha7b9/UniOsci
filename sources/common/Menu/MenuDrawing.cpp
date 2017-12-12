@@ -95,7 +95,7 @@ void Menu::DrawTitlePage(Page *page, int layer, int yTop)
     }
     
     Painter::DrawVLine(x, yTop, yTop + page->HeightOpened(), Color::BorderMenu(false));
-    bool condDrawRSet = page->NumSubPages() > 1 && !Menu::CurrentItem()->IsChoiceReg() && 
+    bool condDrawRSet = page->NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) && 
         !CurrentItem()->IsGovernor() && IS_PAGE(OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
@@ -276,7 +276,7 @@ void Menu::DrawOpenedPage(Page *page, int layer, int yTop)
                 itemUnderButton[i + B_F1] = 0;
             }
         }
-        if (IS_CHOICE(item) || item->IsChoiceReg())
+        if (IS_CHOICE(item) || IS_CHOICE_REG(item))
         {
             ((Choice *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
@@ -340,7 +340,7 @@ void Menu::Draw()
         }
         else
         {
-            if (IS_CHOICE(item) || item->IsChoiceReg())
+            if (IS_CHOICE(item) || IS_CHOICE_REG(item))
             {
                 ((Choice *)item)->Draw(CalculateX(0), GRID_TOP, false);
                 Painter::DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));

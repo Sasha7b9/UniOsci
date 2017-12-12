@@ -508,7 +508,7 @@ void Menu::ProcessingRegulatorSetRotate()
     {
         Control *item = CurrentItem();
         static const int step = 2;
-        if (IS_PAGE(OpenedItem()) && (item->IsChoiceReg() || item->IsGovernor() || item->IsIP() || item->IsMAC()))
+        if (IS_PAGE(OpenedItem()) && (IS_CHOICE_REG(item) || item->IsGovernor() || item->IsIP() || item->IsMAC()))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
@@ -524,7 +524,7 @@ void Menu::ProcessingRegulatorSetRotate()
             {
                 CurrentPageSBregSet(angleRegSet);
             }
-            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || IS_CHOICE(item) || item->IsChoiceReg() || item->IsGovernor())
+            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || IS_CHOICE(item) || IS_CHOICE_REG(item) || item->IsGovernor())
             {
                 if (item->ChangeOpened(angleRegSet))
                 {
@@ -663,7 +663,7 @@ bool Menu::NeedForFireSetLED()
     
     if (!MENU_IS_SHOWN)
     {
-        return item->IsChoiceReg() || IS_CHOICE(item) || item->IsGovernor();
+        return IS_CHOICE_REG(item) || IS_CHOICE(item) || item->IsGovernor();
     }
 
     NamePage name = GetNameOpenedPage();
@@ -680,9 +680,11 @@ bool Menu::NeedForFireSetLED()
         return true;
     }
     
-    if (CurrentItem()->IsGovernor() ||
-        CurrentItem()->IsChoiceReg()||
-        CurrentItem()->IsGovernorColor())
+    item = CurrentItem();
+    
+    if (item->IsGovernor()  ||
+        IS_CHOICE_REG(item) ||
+        item->IsGovernorColor())
     {
         return true;
     }
@@ -815,7 +817,7 @@ void Menu::CloseOpenedItem()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ChangeItem(Control *item, int delta)
 {
-    if (IS_CHOICE(item) || item->IsChoiceReg())
+    if (IS_CHOICE(item) || IS_CHOICE_REG(item))
     {
         ((Choice *)item)->StartChange(delta);
     }
