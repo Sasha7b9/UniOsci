@@ -315,7 +315,7 @@ int Menu::CalculateX(int layer)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int Menu::ItemOpenedPosY(void *item)
+int Menu::ItemOpenedPosY(Control *item)
 {
     Page *page = (Page *)KEEPER(item);
     int8 posCurItem = page->PosCurrentItem();
@@ -336,7 +336,7 @@ void Menu::Draw()
         Control *item = OpenedItem();
         if (MENU_IS_SHOWN)
         {
-            DrawOpenedPage(IS_PAGE(item) ? (Page *)item : (Page *)((Control *)item)->Keeper(), 0, GRID_TOP);
+            DrawOpenedPage(IS_PAGE(item) ? (Page *)item : (Page *)KEEPER(item), 0, GRID_TOP);
         }
         else
         {

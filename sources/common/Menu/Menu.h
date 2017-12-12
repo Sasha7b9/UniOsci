@@ -121,7 +121,7 @@ private:
     
     static int CalculateX(int layer);
     
-    static int ItemOpenedPosY(void *item);
+    static int ItemOpenedPosY(Control *item);
     
     /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
     static PanelButton shortPressureButton;

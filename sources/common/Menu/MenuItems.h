@@ -65,13 +65,13 @@ class PageBase;
 #define IS_TIME(item)           (item->type == Item_Time)
     
 #define KEEPER(item)            ((PageBase *)item->keeper)
+#define IS_ACTIVE(item)         (item->funcOfActive())
     
 
 class Control
 {
 public:
     COMMON_PART_MENU_ITEM;
-    bool IsActive() const;
     /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
     int HeightOpened() const;
     /// @brief Возвращает true, если элемент меню item затенён (находится не на самом верхнем слое. Как правило, это означает, что раскрыт раскрывающийся элемент 

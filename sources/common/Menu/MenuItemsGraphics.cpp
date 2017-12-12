@@ -47,7 +47,7 @@ void GovernorColor::DrawOpened(int x, int y)
 void GovernorColor::DrawClosed(int x, int y)
 {
     ct->Init(false);
-    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(), IsShade() || !IsActive(), true);
+    DrawGovernorChoiceColorFormulaHiPart(this, x, y, IsPressed(), IsShade() || !IS_ACTIVE(this), true);
     Painter::FillRegion(x + 2, y + 20, MI_WIDTH_VALUE, MI_HEIGHT_VALUE - 1, ct->color);
 }
 
@@ -109,7 +109,7 @@ void Governor::DrawOpened(int x, int y)
 void Governor::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed();
-    bool shade = IsShade() || !IsActive();
+    bool shade = IsShade() || !IS_ACTIVE(this);
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -216,7 +216,7 @@ void IPaddress::DrawOpened(int x, int y)
 void IPaddress::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed();
-    bool shade = IsShade() || !IsActive();
+    bool shade = IsShade() || !IS_ACTIVE(this);
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }
@@ -308,7 +308,7 @@ void MACaddress::DrawOpened(int x, int y)
 void MACaddress::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed();
-    bool shade = IsShade() || !IsActive();
+    bool shade = IsShade() || !IS_ACTIVE(this);
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }

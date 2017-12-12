@@ -97,12 +97,6 @@ void Page::ChangeSubPage(int delta) const
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-bool Control::IsActive() const
-{
-    return funcOfActive ? funcOfActive() : true;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Control::HeightOpened() const
 {
     if (type == Item_Page)
@@ -227,7 +221,7 @@ void Control::ShortPress()
     if(type == Item_Choice)
     {
         Choice *choice = (Choice *)this;
-        if(!IsActive())
+        if(!IS_ACTIVE(this))
         {
             choice->funcOnChanged(false);
         }
@@ -243,7 +237,7 @@ void Control::ShortPress()
     }
     else if(type == Item_Button)
     {
-        if(IsActive())
+        if(IS_ACTIVE(this))
         {
             SetCurrent(true);
             ((Button *)this)->funcOnPress();
@@ -257,7 +251,7 @@ void Control::ShortPress()
     }
     else if(type == Item_Governor)
     {
-        if(IsActive())
+        if(IS_ACTIVE(this))
         {
             Governor *governor = (Governor *)this;
             if(Menu::OpenedItem() == this)
@@ -293,7 +287,7 @@ void Control::ShortPress()
     }
     else if(type == Item_GovernorColor)
     {
-        if(IsActive())
+        if(IS_ACTIVE(this))
         {
             GovernorColor *governor = (GovernorColor *)this;
             if(Menu::OpenedItem() == this)
@@ -320,7 +314,7 @@ void Control::ShortPress()
     else if(type == Item_ChoiceReg)
     {
         Choice *choice = (Choice *)this;
-        if(IsActive())
+        if(IS_ACTIVE(this))
         {
             choice->SetCurrent(Menu::CurrentItem() != this);
         }
