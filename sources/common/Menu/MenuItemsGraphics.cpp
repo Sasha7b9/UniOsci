@@ -35,66 +35,6 @@ PanelButton GetFuncButtonFromY(int _y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawGovernor(void *item, int x, int y)
-{
-    ((Governor *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawIPaddress(void *item, int x, int y)
-{
-    ((IPaddress *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawMACaddress(void *item, int x, int y)
-{
-    ((MACaddress *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawFormula(void *item, int x, int y)
-{
-    ((Formula *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawSmallButton(void *item, int, int y)
-{
-    ((SButton *)item)->Draw(LEFT_SB, y + 7);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawTime(void *item, int x, int y)
-{
-    ((Time *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawGovernorColor(void *item, int x, int y)
-{
-    ((GovernorColor *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawPage(void *item, int x, int y)
-{
-    ((Page *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawButton(void *item, int x, int y)
-{
-    ((Button *)item)->Draw(x, y);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawChoice(void *item, int x, int y)
-{
-    ((Choice *)item)->Draw(x, y, false);
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorColor::Draw(int x, int y, bool opened)
 {
     if (opened)
@@ -586,7 +526,7 @@ void Choice::DrawClosed(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Button::Draw(int x, int y)
+void Button::Draw(int x, int y, bool)
 {
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
@@ -605,7 +545,7 @@ void Button::Draw(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SButton::Draw(int x, int y)
+void SButton::Draw(int x, int y, bool)
 {
     if (funcOfActive())
     {
@@ -699,7 +639,7 @@ void Page::DrawTitle(int x, int yTop)
 
     if (isPageSB)
     {
-        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3);
+        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3, false);
         return;
     }
     int height = HeightOpened();
@@ -740,21 +680,6 @@ void Page::DrawTitle(int x, int yTop)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::DrawItems(int x, int yTop)
 {
-    void(*funcOfDraw[Item_NumberItems])(void *, int, int) =
-    {
-        EmptyFuncpVII,      // Item_None
-        DrawChoice,         // Item_Choice
-        DrawButton,         // Item_Button
-        DrawPage,           // Item_Page
-        DrawGovernor,       // Item_Governor
-        DrawTime,           // Item_Time
-        DrawIPaddress,      // Item_IP
-        DrawGovernorColor,  // Item_GovernorColor
-        DrawFormula,        // Item_Formula
-        DrawMACaddress,     // TypeItem_Mac
-        DrawChoice,         // Item_ChoiceReg
-        DrawSmallButton     // Item_SmallButton
-    };
     int posFirstItem = PosItemOnTop();
     int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
     LIMITATION(posLastItem, 0, NumItems() - 1);
@@ -764,12 +689,56 @@ void Page::DrawItems(int x, int yTop)
         if (item)
         {
             int top = yTop + MI_HEIGHT * (posItem - posFirstItem);
-            funcOfDraw[item->type](item, x, top);
+            item->Draw(x, top, false);
             Menu::itemUnderButton[GetFuncButtonFromY(top)] = item;
         }
     }
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Control::Draw(int x, int y, bool opened)
+{
+    if (type == Item_Choice || type == Item_ChoiceReg)
+    {
+        ((Choice *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_Button)
+    {
+        ((Button *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_Page)
+    {
+        ((Page *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_Governor)
+    {
+        ((Governor *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_Time)
+    {
+        ((Time *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_IP)
+    {
+        ((IPaddress *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_GovernorColor)
+    {
+        ((GovernorColor *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_Formula)
+    {
+        ((Formula *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_MAC)
+    {
+        ((MACaddress *)this)->Draw(x, y, opened);
+    }
+    else if (type == Item_SmallButton)
+    {
+        ((SButton *)this)->Draw(x, y, opened);
+    }
+}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::Draw(int x, int y, bool opened)
