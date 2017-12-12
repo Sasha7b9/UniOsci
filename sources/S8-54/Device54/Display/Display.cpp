@@ -904,16 +904,17 @@ static void DrawMeasures()
                 }
                 if(SOURCE_MEASURE_IS_A && SET_ENABLED_A)
                 {
-                    Painter::DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, A, buffer, SIZE_BUFFER), gColorChan[A]);
+                    Painter::DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, A, buffer, SIZE_BUFFER), Color::CHAN[A]);
                 }
                 else if(SOURCE_MEASURE_IS_B && SET_ENABLED_B)
                 {
-                    Painter::DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, B, buffer, SIZE_BUFFER), gColorChan[B]);
+                    Painter::DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, B, buffer, SIZE_BUFFER), Color::CHAN[B]);
                 }
                 else
                 {
-                    Painter::DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, A, buffer, SIZE_BUFFER), gColorChan[A]);
-                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), processing.GetStringMeasure(measure, B, buffer, SIZE_BUFFER), gColorChan[B]);
+                    Painter::DrawText(x + 2, y + 11, processing.GetStringMeasure(measure, A, buffer, SIZE_BUFFER), Color::CHAN[A]);
+                    Painter::DrawText(x + 2, y + (SET_ENABLED_A ? 20 : 11), processing.GetStringMeasure(measure, B, buffer, SIZE_BUFFER), 
+                                      Color::CHAN[B]);
                 }
 #undef SIZE_BUFFER
             }
@@ -1380,7 +1381,7 @@ static void DRAW_SPECTRUM(const uint8 *dataIn, int numPoints, Channel ch)
 
     mathFPGA.PointsRel2Voltage(data, numPoints, RANGE_DS(ch), (int16)RSHIFT_DS(ch), dataR);
     mathFPGA.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
-    DrawSpectrumChannel(spectrum, gColorChan[ch]);
+    DrawSpectrumChannel(spectrum, Color::CHAN[ch]);
     if(!MENU_IS_SHOWN || MenuIsMinimize())
     {
         Color color = Color::FILL;
@@ -1446,7 +1447,7 @@ static void WriteCursors()
         Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
         x += 3;
         Channel source = CURS_SOURCE;
-        Color colorText = gColorChan[source];
+        Color colorText = Color::CHAN[source];
         if (CURsU_ENABLED)
         {
             Painter::DrawText(x, y1, "1:", colorText);
@@ -1591,7 +1592,7 @@ static void WriteTextVoltage(Channel ch, int x, int y)
 
     static pString couple[] = {"\x92", "\x91", "\x90" };
 
-    Color color = gColorChan[ch];
+    Color color = Color::CHAN[ch];
 
     bool inverse = SET_INVERSE(ch);
     Divider divider = SET_DIVIDER(ch);
@@ -1877,7 +1878,7 @@ static void WriteParametersFFT(Channel ch, float freq0, float density0, float fr
     {
         y += dY * 3 + 4;
     }
-    Painter::SetColor(gColorChan[ch]);
+    Painter::SetColor(Color::CHAN[ch]);
     Painter::DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : Float2String(density0, false, 7, buffer));
     y += dY;
     Painter::DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : Float2String(density1, false, 7, buffer));
@@ -1911,21 +1912,21 @@ static void DrawCursorRShift(Channel ch)
 
     if(y > Grid::ChannelBottom())
     {
-        Painter::DrawChar(x - 7, Grid::ChannelBottom() - 11, SYMBOL_RSHIFT_LOWER, gColorChan[ch]);
+        Painter::DrawChar(x - 7, Grid::ChannelBottom() - 11, SYMBOL_RSHIFT_LOWER, Color::CHAN[ch]);
         Painter::SetPoint(x - 5, Grid::ChannelBottom() - 2);
         y = Grid::ChannelBottom() - 7;
         x++;
     }
     else if(y < GRID_TOP)
     {
-        Painter::DrawChar(x - 7, GRID_TOP + 2, SYMBOL_RSHIFT_ABOVE, gColorChan[ch]);
+        Painter::DrawChar(x - 7, GRID_TOP + 2, SYMBOL_RSHIFT_ABOVE, Color::CHAN[ch]);
         Painter::SetPoint(x - 5, GRID_TOP + 2);
         y = GRID_TOP + 7;
         x++;
     }
     else
     {
-        Painter::DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, gColorChan[ch]);
+        Painter::DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, Color::CHAN[ch]);
         if(((ch == A) ? showLevelRShiftA : showLevelRShiftB) && MODE_WORK_IS_DIR)
         {
             Painter::DrawDashedHLine(y, Grid::Left(), Grid::Right(), 7, 3, 0);
@@ -1937,7 +1938,7 @@ static void DrawCursorRShift(Channel ch)
 
     if((!MenuIsMinimize() || !MENU_IS_SHOWN) && drawRShiftMarkers)
     {
-        Painter::FillRegion(4, yFull - 3, 4, 6, gColorChan[ch]);
+        Painter::FillRegion(4, yFull - 3, 4, 6, Color::CHAN[ch]);
         Painter::DrawChar(5, yFull - 9 + dY, ch == A ? '1' : '2', Color::BACK);
     }
     Painter::DrawChar(x - 7, y - 9 + dY, ch == A ? '1' : '2', Color::BACK);

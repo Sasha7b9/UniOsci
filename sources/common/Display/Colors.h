@@ -27,7 +27,6 @@ class Color;
 #define COLOR_FLASH_01           (uint8)18
 #define COLOR_INVERSE            (uint8)19
 
-extern Color gColorChan[4];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color
@@ -36,6 +35,7 @@ public:
     static Color FILL;
     static Color BACK;
     static Color GRID;
+    static Color CHAN[4];
 
     Color(uint8 val) : value(val) { };
 
@@ -47,7 +47,6 @@ public:
     static Color BorderMenu(bool shade);    ///< Цвет окантовки меню
     static Color LightShadingText();        ///< Светлый цвет в тени.
     static Color Contrast(Color color);     ///< Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-    inline static Color Chan(Channel ch) { return gColorChan[ch]; }
     
     uint8 value;
 };

@@ -243,11 +243,11 @@ static void DrawData(bool forAccum)
 
         Channel ch = order[LAST_AFFECTED_CH][0];
 
-        DrawChannel(ch, forAccum ? Color::ChanAccum(ch) : gColorChan[ch]);
+        DrawChannel(ch, forAccum ? Color::ChanAccum(ch) : Color::CHAN[ch]);
 
         ch = order[LAST_AFFECTED_CH][1];
 
-        DrawChannel(ch, forAccum ? Color::ChanAccum(ch) : gColorChan[ch]);
+        DrawChannel(ch, forAccum ? Color::ChanAccum(ch) : Color::CHAN[ch]);
     }
 
     Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), Color::FILL);
@@ -570,7 +570,7 @@ static void DrawChannel_Math(uint8 *dataIn)
     float scaleY = (float)(maxY - minY) / (MAX_VALUE - MIN_VALUE);
     float scaleX = (float)Grid::Width() / 280.0f;
 
-    Painter::SetColor(gColorChan[MathCh]);
+    Painter::SetColor(Color::CHAN[MathCh]);
 
     //    if (!DataBeyondTheBorders(dataIn, firstPoint, lastPoint))   // Если сигнал не выходит за пределы экрана
     {
@@ -1014,5 +1014,5 @@ static void SendToDisplayDataInRect(Channel ch, int x, int *min, int *max, int w
         points[i * 2 + 1] = (uint8)(min[i] < 0 ? 0 : min[i]);
     }
 
-    Painter::DrawVLineArray(x, (int)width, points, gColorChan[ch]);
+    Painter::DrawVLineArray(x, (int)width, points, Color::CHAN[ch]);
 }

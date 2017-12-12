@@ -384,7 +384,7 @@ void DrawDataChannel(uint8 *data, Channel chan, DataSettings *ds, int minY, int 
         }
     }
 
-    Painter::SetColor(Color::Chan(chan));
+    Painter::SetColor(Color::CHAN[chan]);
     if(MODE_DRAW_IS_SIGNAL_LINES)
     {
         /*
@@ -478,7 +478,7 @@ static void WriteParametersFFT(Channel chan, float freq0, float density0, float 
     {
         y += dY * 3 + 4;
     }
-    Painter::SetColor(Color::Chan(chan));
+    Painter::SetColor(Color::CHAN[chan]);
     Painter::DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density0, 4, buffer) : Float2String(density0, false, 7, buffer));
     y += dY;
     Painter::DrawText(x, y, SCALE_FFT_IS_LOG ? Db2String(density1, 4, buffer) : Float2String(density1, false, 7, buffer));
@@ -505,7 +505,7 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
 
     mathFPGA.PointsRel2Voltage(data, numPoints, gDSet->range[channel], channel == A ? gDSet->rShiftCh0 : gDSet->rShiftCh1, dataR);
     mathFPGA.CalculateFFT(dataR, numPoints, spectrum, &freq0, &density0, &freq1, &density1, &y0, &y1);
-    DrawSpectrumChannel(spectrum, Color::Chan(channel));
+    DrawSpectrumChannel(spectrum, Color::CHAN[channel]);
     if (!MenuIsShown() || MenuIsMinimize())
     {
         Color color = Color::FILL;
@@ -901,12 +901,12 @@ void DrawDataInRect(int x, int width, const uint8 *data, int numElems, Channel c
     }
 	if(width < 256)
     {
-		Painter::DrawVLineArray(x, width, points, Color::Chan(chan));
+		Painter::DrawVLineArray(x, width, points, Color::CHAN[chan]);
 	}
     else
     {
-		Painter::DrawVLineArray(x, 255, points, Color::Chan(chan));
-		Painter::DrawVLineArray(x + 255, width - 255, points + 255 * 2, Color::Chan(chan));
+		Painter::DrawVLineArray(x, 255, points, Color::CHAN[chan]);
+		Painter::DrawVLineArray(x + 255, width - 255, points + 255 * 2, Color::CHAN[chan]);
 	}
 }
 
@@ -1055,7 +1055,7 @@ void Display::WriteCursors()
         Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
         x += 3;
         Channel source = CURS_SOURCE;
-        Color colorText = Color::Chan(source);
+        Color colorText = Color::CHAN[source];
         if(!CURS_CNTRL_U_IS_DISABLE(source))
         {
             Painter::DrawText(x, y1, "1:", colorText);
@@ -1708,21 +1708,21 @@ void Display::DrawCursorRShift(Channel chan)
 
     if(y > Grid::ChannelBottom())
     {
-        Painter::DrawChar(x - 7, Grid::ChannelBottom() - 11, SYMBOL_RSHIFT_LOWER, Color::Chan(chan));
+        Painter::DrawChar(x - 7, Grid::ChannelBottom() - 11, SYMBOL_RSHIFT_LOWER, Color::CHAN[chan]);
         Painter::SetPoint(x - 5, Grid::ChannelBottom() - 2);
         y = Grid::ChannelBottom() - 7;
         x++;
     }
     else if(y < GRID_TOP)
     {
-        Painter::DrawChar(x - 7, GRID_TOP + 2, SYMBOL_RSHIFT_ABOVE, Color::Chan(chan));
+        Painter::DrawChar(x - 7, GRID_TOP + 2, SYMBOL_RSHIFT_ABOVE, Color::CHAN[chan]);
         Painter::SetPoint(x - 5, GRID_TOP + 2);
         y = GRID_TOP + 7;
         x++;
     }
     else
     {
-        Painter::DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, Color::Chan(chan));
+        Painter::DrawChar(x - 8, y - 4, SYMBOL_RSHIFT_NORMAL, Color::CHAN[chan]);
         if(((chan == A) ? (gBF.showLevelRShift0 == 1) : (gBF.showLevelRShift1 == 1)) && MODE_WORK_IS_DIR)
         {
             Painter::DrawDashedHLine(y, Grid::Left(), Grid::Right(), 7, 3, 0);
@@ -1734,7 +1734,7 @@ void Display::DrawCursorRShift(Channel chan)
 
     if((!MenuIsMinimize() || !MenuIsShown()) && gBF.drawRShiftMarkers == 1)
     {
-        Painter::FillRegion(4, yFull - 3, 4, 6, Color::Chan(chan));
+        Painter::FillRegion(4, yFull - 3, 4, 6, Color::CHAN[chan]);
         Painter::DrawChar(5, yFull - 9 + dY, chan == A ? '1' : '2', Color::BACK);
     }
     Painter::DrawChar((int)(x - 7), (int)(y - 9 + dY), chan == A ? '1' : '2', Color::BACK);
@@ -1911,16 +1911,16 @@ void Display::DrawMeasures()
                 }
                 if(SOURCE_MEASURE_IS_A)
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(meas, A, buffer), Color::Chan(A));
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(meas, A, buffer), Color::CHAN[A]);
                 }
                 else if(SOURCE_MEASURE_IS_B)
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(meas, B, buffer), Color::Chan(B));
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(meas, B, buffer), Color::CHAN[B]);
                 }
                 else
                 {
-                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(meas, A, buffer), Color::Chan(A));
-                    Painter::DrawText(x + 2, y + 20, Processing::GetStringMeasure(meas, B, buffer), Color::Chan(B));
+                    Painter::DrawText(x + 2, y + 11, Processing::GetStringMeasure(meas, A, buffer), Color::CHAN[A]);
+                    Painter::DrawText(x + 2, y + 20, Processing::GetStringMeasure(meas, B, buffer), Color::CHAN[B]);
                 }
             }
         }
@@ -1942,7 +1942,7 @@ void WriteTextVoltage(Channel chan, int x, int y)
         "\x91",
         "\x90"
     };
-    Color color = Color::Chan(chan);
+    Color color = Color::CHAN[chan];
 
     bool inverse = SET_INVERSE(chan);
     ModeCouple modeCouple = SET_COUPLE(chan);

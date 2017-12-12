@@ -21,9 +21,9 @@ void PageService_InitGlobalColors()
     Color::BACK = BACKGROUND_BLACK ? COLOR_BLACK : COLOR_WHITE;
     Color::FILL = BACKGROUND_BLACK ? COLOR_WHITE : COLOR_BLACK;
     Color::GRID = BACKGROUND_BLACK ? COLOR_GRID : COLOR_GRID_WHITE;
-    gColorChan[A] = BACKGROUND_BLACK ? COLOR_DATA_A : COLOR_DATA_WHITE_ACCUM_A;
-    gColorChan[B] = BACKGROUND_BLACK ? COLOR_DATA_B : COLOR_DATA_WHITE_ACCUM_B;
-    gColorChan[A_B] = gColorChan[MathCh] = BACKGROUND_BLACK ? COLOR_WHITE : COLOR_BLACK;
+    Color::CHAN[A] = BACKGROUND_BLACK ? COLOR_DATA_A : COLOR_DATA_WHITE_ACCUM_A;
+    Color::CHAN[B] = BACKGROUND_BLACK ? COLOR_DATA_B : COLOR_DATA_WHITE_ACCUM_B;
+    Color::CHAN[A_B] = Color::CHAN[MathCh] = BACKGROUND_BLACK ? COLOR_WHITE : COLOR_BLACK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -68,8 +68,8 @@ static void OnChanged_Settings_Colors_Background(bool)
 {
     PageService_InitGlobalColors();
 
-    gcSettings_Colors_ChannelA.ct->color = gColorChan[A];
-    gcSettings_Colors_ChannelB.ct->color = gColorChan[B];
+    gcSettings_Colors_ChannelA.ct->color = Color::CHAN[A];
+    gcSettings_Colors_ChannelB.ct->color = Color::CHAN[B];
     gcSettings_Colors_Grid.ct->color = Color::GRID;
 
     gcSettings_Colors_ChannelA.ct->Init(true);

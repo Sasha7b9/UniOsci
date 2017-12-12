@@ -3,8 +3,7 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Color gColorChan[4] = {COLOR_DATA_A, COLOR_DATA_B, COLOR_WHITE, COLOR_WHITE};
-
+Color Color::CHAN[4] = {COLOR_DATA_A, COLOR_DATA_B, COLOR_WHITE, COLOR_WHITE};
 Color Color::FILL(COLOR_WHITE);
 Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
@@ -13,7 +12,7 @@ Color Color::GRID(COLOR_GRID);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Color Color::Cursors(Channel ch)
 {
-    return gColorChan[ch];
+    return CHAN[ch];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -23,7 +22,7 @@ Color Color::Trig()
     {
         return FILL;
     }
-    return gColorChan[(Channel)TRIGSOURCE];
+    return CHAN[(Channel)TRIGSOURCE];
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
