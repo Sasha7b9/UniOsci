@@ -1,7 +1,9 @@
 #include "defines.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
+#include "Menu/Pages/Definition.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Hardware/RTC.h"
 #include "stub.h"
@@ -15,6 +17,84 @@ static void DrawValueWithSelectedPosition(int x, int y, int value, int numDigits
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+PanelButton GetFuncButtonFromY(int _y)
+{
+    int y = GRID_TOP + GRID_HEIGHT / 12;
+    int step = GRID_HEIGHT / 6;
+    PanelButton button = B_Menu;
+    for (int i = 0; i < 6; i++)
+    {
+        if (_y < y)
+        {
+            return button;
+        }
+        button = (PanelButton)((int)button + 1);    // button++;
+        y += step;
+    }
+    return  B_F5;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawGovernor(void *item, int x, int y)
+{
+    ((Governor *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawIPaddress(void *item, int x, int y)
+{
+    ((IPaddress *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawMACaddress(void *item, int x, int y)
+{
+    ((MACaddress *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawFormula(void *item, int x, int y)
+{
+    ((Formula *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawSmallButton(void *item, int, int y)
+{
+    ((SButton *)item)->Draw(LEFT_SB, y + 7);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawTime(void *item, int x, int y)
+{
+    ((Time *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawGovernorColor(void *item, int x, int y)
+{
+    ((GovernorColor *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawPage(void *item, int x, int y)
+{
+    ((Page *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawButton(void *item, int x, int y)
+{
+    ((Button *)item)->Draw(x, y);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+static void DrawChoice(void *item, int x, int y)
+{
+    ((Choice *)item)->Draw(x, y, false);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 void GovernorColor::Draw(int x, int y, bool opened)
 {
     if (opened)
@@ -549,22 +629,147 @@ void SButton::Draw(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::Draw(int x, int y, bool opened)
 {
-    bool isShade = IsShade() || !funcOfActive();
-    bool isPressed = IsPressed();
-    Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
-
-    Painter::DrawVolumeButton(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, 1, Color::MenuItem(false), COLOR_MENU_ITEM_BRIGHT, COLOR_MENU_ITEM_DARK,
-                             isPressed, isShade);
-
-    Color colorText = isShade ? Color::MenuItem(true) : COLOR_BLACK;
-    int delta = 0;
-    if (isPressed && (!isShade))
+    if(opened)
     {
-        colorText = COLOR_WHITE;
-        delta = 1;
+        DrawTitle(x, y);
+        DrawItems(x, y + MP_TITLE_HEIGHT);
+        if (CurrentItemIsOpened())
+        {
+            int8 posCurItem = PosCurrentItem();
+            Control *item = Item(posCurItem);
+            for (int i = 0; i < 5; i++)
+            {
+                if (Menu::itemUnderButton[i + B_F1] != item)
+                {
+                    Menu::itemUnderButton[i + B_F1] = 0;
+                }
+            }
+            if (IS_CHOICE(item) || IS_CHOICE_REG(item))
+            {
+                ((Choice *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+            }
+            else if (IS_GOVERNOR(item))
+            {
+                ((Governor *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+            }
+            else if (IS_GOVERNOR_COLOR(item))
+            {
+                ((GovernorColor *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+            }
+            else if (IS_TIME(item))
+            {
+                ((Time *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+            }
+            else if (IS_IP(item))
+            {
+                ((IPaddress *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+            }
+            else if (IS_MAC(item))
+            {
+                ((MACaddress *)item)->Draw(Menu::CalculateX(1), ItemOpenedPosY(item), true);
+            }
+        }
+
+        funcOnDraw();
     }
-    Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, Title(), colorText);
+    else
+    {
+        bool isShade = IsShade() || !funcOfActive();
+        bool isPressed = IsPressed();
+        Painter::DrawHLine(y + 1, x, x + MI_WIDTH, Color::BorderMenu(false));
+
+        Painter::DrawVolumeButton(x + 1, y + 2, MI_WIDTH - 2, MI_HEIGHT - 2, 1, Color::MenuItem(false), COLOR_MENU_ITEM_BRIGHT, COLOR_MENU_ITEM_DARK,
+                                 isPressed, isShade);
+
+        Color colorText = isShade ? Color::MenuItem(true) : COLOR_BLACK;
+        int delta = 0;
+        if (isPressed && (!isShade))
+        {
+            colorText = COLOR_WHITE;
+            delta = 1;
+        }
+        Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, Title(), colorText);
+    }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Page::DrawTitle(int x, int yTop)
+{
+    int eX = x;
+
+    if (isPageSB)
+    {
+        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3);
+        return;
+    }
+    int height = HeightOpened();
+    bool shade = CurrentItemIsOpened();
+    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, Color::BACK);
+    Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
+
+    if (shade)
+    {
+        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, COLOR_MENU_TITLE_DARK);
+        Painter::FillRegion(x + 4, yTop + 4, MP_TITLE_WIDTH - 7, MP_TITLE_HEIGHT - 7, COLOR_MENU_TITLE_DARK);
+    }
+    else
+    {
+        Painter::DrawVolumeButton(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, 2, Color::MenuTitle(false),
+                                  COLOR_MENU_TITLE_BRIGHT, COLOR_MENU_TITLE_DARK, shade, shade);
+    }
+
+    Painter::DrawVLine(x, yTop, yTop + HeightOpened(), Color::BorderMenu(false));
+    bool condDrawRSet = NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) &&
+        NOT_GOVERNOR(Menu::CurrentItem()) && IS_PAGE(Menu::OpenedItem());
+    int delta = condDrawRSet ? -10 : 0;
+    Color colorText = shade ? Color::LightShadingText() : COLOR_BLACK;
+    x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, Title(), colorText);
+    if (condDrawRSet)
+    {
+        Painter::Draw4SymbolsInRect(x + 4, yTop + 11, Governor::GetSymbol(NumCurrentSubPage()), colorText);
+    }
+
+    Menu::itemUnderButton[GetFuncButtonFromY(yTop)] = this;
+
+    delta = 0;
+
+    Painter::SetColor(colorText);
+    DrawPagesUGO(eX + MP_TITLE_WIDTH - 3 + delta, yTop + MP_TITLE_HEIGHT - 2 + delta);
+    DrawNestingPage(eX + 5, yTop + MP_TITLE_HEIGHT - 8);
+}
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Page::DrawItems(int x, int yTop)
+{
+    void(*funcOfDraw[Item_NumberItems])(void *, int, int) =
+    {
+        EmptyFuncpVII,      // Item_None
+        DrawChoice,         // Item_Choice
+        DrawButton,         // Item_Button
+        DrawPage,           // Item_Page
+        DrawGovernor,       // Item_Governor
+        DrawTime,           // Item_Time
+        DrawIPaddress,      // Item_IP
+        DrawGovernorColor,  // Item_GovernorColor
+        DrawFormula,        // Item_Formula
+        DrawMACaddress,     // TypeItem_Mac
+        DrawChoice,         // Item_ChoiceReg
+        DrawSmallButton     // Item_SmallButton
+    };
+    int posFirstItem = PosItemOnTop();
+    int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
+    LIMITATION(posLastItem, 0, NumItems() - 1);
+    for (int posItem = posFirstItem; posItem <= posLastItem; posItem++)
+    {
+        Control *item = Item(posItem);
+        if (item)
+        {
+            int top = yTop + MI_HEIGHT * (posItem - posFirstItem);
+            funcOfDraw[item->type](item, x, top);
+            Menu::itemUnderButton[GetFuncButtonFromY(top)] = item;
+        }
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Time::Draw(int x, int y, bool opened)
@@ -771,4 +976,72 @@ static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth)
     DrawGovernorChoiceColorFormulaHiPart(item, x - 1, y - 1, control->IsPressed(), false, true);
     Painter::DrawVolumeButton(x, y + MOI_HEIGHT_TITLE, MOI_WIDTH - 1 + dWidth, height - MOI_HEIGHT_TITLE, 1, COLOR_BLACK, COLOR_MENU_TITLE_BRIGHT,
                              COLOR_MENU_TITLE_DARK, false, control->IsShade());
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+int Page::ItemOpenedPosY(Control *item)
+{
+    Page *page = (Page *)KEEPER(item);
+    int8 posCurItem = page->PosCurrentItem();
+    int y = GRID_TOP + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
+    if (y + ((Control *)item)->HeightOpened() > GRID_BOTTOM)
+    {
+        y = GRID_BOTTOM - ((Control *)item)->HeightOpened() - 2;
+    }
+    return y + 1;
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Page::DrawPagesUGO(int right, int bottom)
+{
+    int size = 4;
+    int delta = 2;
+
+    int allPages = (NumItems() - 1) / MENU_ITEMS_ON_DISPLAY + 1;
+    int currentPage = NumCurrentSubPage();
+
+    int left = right - (size + 1) * allPages - delta + (3 - allPages);
+    int top = bottom - size - delta;
+
+    for (int p = 0; p < allPages; p++)
+    {
+        int x = left + p * (size + 2);
+        if (p == currentPage)
+        {
+            Painter::FillRegion(x, top, size, size);
+        }
+        else
+        {
+            Painter::DrawRectangle(x, top, size, size);
+        }
+    }
+}
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+void Page::DrawNestingPage(int left, int bottom)
+{
+    if (this != (Page *)&mainPage)
+    {
+        int nesting = 0;
+
+        Page *page = this;
+
+        PageBase *parent = KEEPER(page);
+
+        while (parent != &mainPage)
+        {
+            page = (Page *)parent;
+            parent = KEEPER(page);
+            nesting++;
+        }
+
+        int size = 4;
+        int delta = 2;
+
+        for (int i = 0; i <= nesting; i++)
+        {
+            int x = left + i * (size + delta);
+            Painter::DrawRectangle(x, bottom, size, size);
+        }
+    }
 }

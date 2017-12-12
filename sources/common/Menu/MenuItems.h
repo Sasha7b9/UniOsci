@@ -137,6 +137,11 @@ public:
     int8 PosCurrentItem() const;
     void ChangeSubPage(int delta) const;
     void Draw(int x, int y, bool opened);
+    void DrawTitle(int x, int y);
+    void DrawItems(int x, int y);
+    static int ItemOpenedPosY(Control *item);
+    void DrawPagesUGO(int right, int bottom);
+    void DrawNestingPage(int left, int bottom);
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button ///

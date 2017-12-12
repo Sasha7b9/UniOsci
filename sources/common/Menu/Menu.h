@@ -63,9 +63,14 @@ public:
     static void CloseOpenedItem();
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     static void ChangeItem(Control *item, int delta);
+
+    static int CalculateX(int layer);
+
     ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
     /// если ни одна кнопка не нажата.
     static void *itemUnderKey;
+
+    static void *itemUnderButton[B_NumButtons];
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
     static void OpenPageAndSetItCurrent(NamePage namePage);
@@ -105,22 +110,8 @@ private:
     
     static void ShortPress_MAC(void *item);
     
-    static void DrawTitlePage(Page *page, int layer, int yTop);
-    
-    static void DrawItemsPage(Page *page, int layer, int yTop);
-    
-    static void DrawOpenedPage(Page *page, int layer, int yTop);
-    
     static void ResetItemsUnderButton();
-    
-    static void DrawPagesUGO(Page *page, int right, int bottom);
-    
-    static void DrawNestingPage(Page *page, int left, int bottom);
-    
-    static int CalculateX(int layer);
-    
-    static int ItemOpenedPosY(Control *item);
-    
+          
     /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
     static PanelButton shortPressureButton;
     /// Если произошло длинное нажатие кнопки, то здесь хранится имя этой кнопки до обработки этого нажатия.
@@ -135,9 +126,7 @@ private:
     static int angleRegSet;
     /// Эта функция будет вызывана один раз после Menu::UpdateInput().
     static pFuncVV funcAterUpdate;
-
-    static void *itemUnderButton[B_NumButtons];
-    
+  
     static const int SIZE_BUFFER_FOR_BUTTONS = 10;
     static PanelButton bufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
     
