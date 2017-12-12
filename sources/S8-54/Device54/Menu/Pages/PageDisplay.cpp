@@ -16,17 +16,6 @@ extern const PageBase ppAverage;
 extern const PageBase ppGrid;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void PageService_InitGlobalColors()
-{
-    Color::BACK = BACKGROUND_BLACK ? Color::BLACK : Color::WHITE;
-    Color::FILL = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
-    Color::GRID = BACKGROUND_BLACK ? Color(COLOR_GRID) : Color(COLOR_GRID_WHITE);
-    Color::CHAN[A] = BACKGROUND_BLACK ? Color::CHAN[A] : Color::DATA_WHITE_ACCUM_A;
-    Color::CHAN[B] = BACKGROUND_BLACK ? Color::CHAN[B] : Color::DATA_WHITE_ACCUM_B;
-    Color::CHAN[A_B] = Color::CHAN[MathCh] = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSettings_Colors_Scheme,                                                    //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Öâåòîâàÿ ñõåìà ---
     "Öâåòîâàÿ ñõåìà", "Color scheme",
     "Ðåæèì ðàáîòû êàëèáðàòîðà",
@@ -55,7 +44,7 @@ DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color(COLOR_GRID)};
+ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::GRID};
 DEF_GOVERNOR_COLOR( gcSettings_Colors_Grid,                                                              //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Ñåòêà ---
     "Ñåòêà", "Grid",
     "Óñòàíàâëèâàåò öâåò ñåòêè",
@@ -66,7 +55,7 @@ DEF_GOVERNOR_COLOR( gcSettings_Colors_Grid,                                     
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnChanged_Settings_Colors_Background(bool)
 {
-    PageService_InitGlobalColors();
+    Color::InitGlobalColors();
 
     gcSettings_Colors_ChannelA.ct->color = Color::CHAN[A];
     gcSettings_Colors_ChannelB.ct->color = Color::CHAN[B];

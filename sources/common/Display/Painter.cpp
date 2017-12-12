@@ -131,7 +131,7 @@ Color Painter::GetColor()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::LoadPalette()
 {
-    for (uint8 i = 0; i < COLOR_NUMBER; i++)
+    for (uint8 i = 0; i < Color::NUMBER.Value(); i++)
     {
         SetPalette((Color)i);
     }
@@ -727,11 +727,11 @@ static void OnTimerFlashDisplay()
 static void CalculateColor(uint8 *color)
 {
     currentColor = (Color)*color;
-    if (*color == COLOR_FLASH_10)
+    if (*color == Color::FLASH_10.Value())
     {
         *color = inverseColors ? Color::BACK.value : Color::FILL.value;
     }
-    else if (*color == COLOR_FLASH_01)
+    else if (*color == Color::FLASH_01.Value())
     {
         *color = inverseColors ? Color::FILL.value : Color::BACK.value;
     }

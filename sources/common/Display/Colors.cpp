@@ -1,5 +1,28 @@
 #include "Settings/Settings.h"
+#include "Settings/SettingsDisplay.h"
 #include "Utils/Math.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const uint8 Color::COLOR_BLACK              = 0;
+const uint8 Color::COLOR_WHITE              = 1;
+const uint8 Color::COLOR_GRID               = 2;
+const uint8 Color::COLOR_DATA_A             = 3;
+const uint8 Color::COLOR_DATA_B             = 4;
+const uint8 Color::COLOR_MENU_FIELD         = 5;
+const uint8 Color::COLOR_MENU_TITLE         = 6;
+const uint8 Color::COLOR_MENU_TITLE_DARK    = 7;
+const uint8 Color::COLOR_MENU_TITLE_BRIGHT  = 8;
+const uint8 Color::COLOR_MENU_ITEM          = 9;
+const uint8 Color::COLOR_MENU_ITEM_DARK     = 10;
+const uint8 Color::COLOR_MENU_ITEM_BRIGHT   = 11;
+const uint8 Color::COLOR_DATA_WHITE_ACCUM_A = 12;
+const uint8 Color::COLOR_DATA_WHITE_ACCUM_B = 13;
+const uint8 Color::COLOR_GRID_WHITE         = 14;
+const uint8 Color::COLOR_EMPTY              = 15;
+const uint8 Color::COLOR_NUMBER             = 16;
+const uint8 Color::COLOR_FLASH_10           = 17;
+const uint8 Color::COLOR_FLASH_01           = 18;
+const uint8 Color::COLOR_INVERSE            = 19;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,6 +46,19 @@ Color Color::GRID(COLOR_GRID);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Color::InitGlobalColors()
+{
+#ifdef S8_54
+    Color::BACK = BACKGROUND_BLACK ? Color::BLACK : Color::WHITE;
+    Color::FILL = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
+    Color::GRID = BACKGROUND_BLACK ? Color(COLOR_GRID) : Color(COLOR_GRID_WHITE);
+    Color::CHAN[A] = BACKGROUND_BLACK ? Color::CHAN[A] : Color::DATA_WHITE_ACCUM_A;
+    Color::CHAN[B] = BACKGROUND_BLACK ? Color::CHAN[B] : Color::DATA_WHITE_ACCUM_B;
+    Color::CHAN[A_B] = Color::CHAN[MathCh] = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
+#endif
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::Cursors(Channel ch)
 {
     return CHAN[ch];

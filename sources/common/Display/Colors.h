@@ -4,29 +4,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define COLOR_BLACK               (uint8)0
-#define COLOR_WHITE               (uint8)1
-#define COLOR_GRID                (uint8)2
-#define COLOR_DATA_A              (uint8)3
-#define COLOR_DATA_B              (uint8)4
-#define COLOR_MENU_FIELD          (uint8)5
-#define COLOR_MENU_TITLE          (uint8)6
-#define COLOR_MENU_TITLE_DARK     (uint8)7
-#define COLOR_MENU_TITLE_BRIGHT   (uint8)8
-#define COLOR_MENU_ITEM           (uint8)9
-#define COLOR_MENU_ITEM_DARK     (uint8)10
-#define COLOR_MENU_ITEM_BRIGHT   (uint8)11
-#define COLOR_DATA_WHITE_ACCUM_A (uint8)12   ///< »спользуетс€ как дл€ отрисовки канала на белом фоне, так и дл€ отрисовки накопленных сигналов
-#define COLOR_DATA_WHITE_ACCUM_B (uint8)13
-#define COLOR_GRID_WHITE         (uint8)14
-#define COLOR_EMPTY              (uint8)15
-#define COLOR_NUMBER             (uint8)16
-#define COLOR_FLASH_10           (uint8)17
-#define COLOR_FLASH_01           (uint8)18
-#define COLOR_INVERSE            (uint8)19
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color
 {
 public:
@@ -60,6 +37,32 @@ public:
     static Color Contrast(Color color);     ///< ¬озвращает цвет, контрастный к color. ћожет быть белым или чЄрным.
     
     uint8 value;
+
+    uint8 Value() { return value; };
+
+    static void InitGlobalColors();
+
+private:
+    static const uint8 COLOR_BLACK;
+    static const uint8 COLOR_WHITE;
+    static const uint8 COLOR_GRID;
+    static const uint8 COLOR_DATA_A;
+    static const uint8 COLOR_DATA_B;
+    static const uint8 COLOR_MENU_FIELD;
+    static const uint8 COLOR_MENU_TITLE;
+    static const uint8 COLOR_MENU_TITLE_DARK;
+    static const uint8 COLOR_MENU_TITLE_BRIGHT;
+    static const uint8 COLOR_MENU_ITEM;
+    static const uint8 COLOR_MENU_ITEM_DARK;
+    static const uint8 COLOR_MENU_ITEM_BRIGHT;
+    static const uint8 COLOR_DATA_WHITE_ACCUM_A;   ///< »спользуетс€ как дл€ отрисовки канала на белом фоне, так и дл€ отрисовки накопленных сигналов
+    static const uint8 COLOR_DATA_WHITE_ACCUM_B;
+    static const uint8 COLOR_GRID_WHITE;
+    static const uint8 COLOR_EMPTY;
+    static const uint8 COLOR_NUMBER;
+    static const uint8 COLOR_FLASH_10;
+    static const uint8 COLOR_FLASH_01;
+    static const uint8 COLOR_INVERSE;
 };
 
 bool operator!=(const Color &left, const Color &right);

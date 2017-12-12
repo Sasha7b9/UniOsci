@@ -397,7 +397,7 @@ void GovernorColor::ChangeValue(int delta)
         Sound::GovernorChangedValue();
     }
 
-    PageService_InitGlobalColors();
+    Color::InitGlobalColors();
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

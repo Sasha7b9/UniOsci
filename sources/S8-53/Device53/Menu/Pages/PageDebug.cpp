@@ -505,7 +505,7 @@ DEF_PAGE_3(         mpRandomizer,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnDraw_SizeSettings(int x, int y)
 {
-    Painter::DrawFormatText(x + 5, y + 21, COLOR_BLACK, "Размер %d", sizeof(Settings));
+    Painter::DrawFormatText(x + 5, y + 21, "Размер %d", sizeof(Settings));
 }
 
 static int8 temp = 0;
