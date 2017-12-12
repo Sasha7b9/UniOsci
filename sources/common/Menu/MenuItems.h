@@ -107,6 +107,9 @@ public:
     bool CurrentItemIsOpened() const;
 };
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+#define SMALL_BUTTON_FROM_PAGE(page, numButton)     ((SButton *)((Page *)page)->items[numButton])
+
 class Page : public Control
 {
 public:
@@ -124,7 +127,6 @@ public:
     void SetCurrentSB();                    ///< Установить текущей данную страницу с мылыми кнопками.
     
     Control *Item(int numElement) const;       ///< Возвращает адрес элемента меню заданной страницы
-    SButton* SmallButonFromPage(int numButton);
     /// \todo Возвращает позицию первого элемента страницы по адресу page на экране. Если текущая подстраница 0, это будет 0, если текущая 
     /// подстраница 1, это будет 5 и т.д.
     int PosItemOnTop();

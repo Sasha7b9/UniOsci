@@ -56,11 +56,6 @@ Control *Page::Item(int numElement) const
 {
     return (Control *)items[numElement + (isPageSB ? 1 : 0)];
 }
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-SButton* Page::SmallButonFromPage(int numButton)
-{
-    return (SButton *)items[numButton];
-}
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Page::PosItemOnTop()
