@@ -276,7 +276,7 @@ void Menu::DrawOpenedPage(Page *page, int layer, int yTop)
                 itemUnderButton[i + B_F1] = 0;
             }
         }
-        if (item->IsChoice() || item->IsChoiceReg())
+        if (IS_CHOICE(item) || item->IsChoiceReg())
         {
             ((Choice *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
@@ -340,7 +340,7 @@ void Menu::Draw()
         }
         else
         {
-            if (item->IsChoice() || item->IsChoiceReg())
+            if (IS_CHOICE(item) || item->IsChoiceReg())
             {
                 ((Choice *)item)->Draw(CalculateX(0), GRID_TOP, false);
                 Painter::DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));

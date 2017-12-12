@@ -524,7 +524,7 @@ void Menu::ProcessingRegulatorSetRotate()
             {
                 CurrentPageSBregSet(angleRegSet);
             }
-            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || item->IsChoice() || item->IsChoiceReg() || item->IsGovernor())
+            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || IS_CHOICE(item) || item->IsChoiceReg() || item->IsGovernor())
             {
                 if (item->ChangeOpened(angleRegSet))
                 {
@@ -663,7 +663,7 @@ bool Menu::NeedForFireSetLED()
     
     if (!MENU_IS_SHOWN)
     {
-        return item->IsChoiceReg() || item->IsChoice() || item->IsGovernor();
+        return item->IsChoiceReg() || IS_CHOICE(item) || item->IsGovernor();
     }
 
     NamePage name = GetNameOpenedPage();
@@ -689,7 +689,7 @@ bool Menu::NeedForFireSetLED()
     
     item = OpenedItem();
 
-    if (item->IsChoice()  ||
+    if (IS_CHOICE(item)  ||
         (IS_PAGE(item) && ((const Page *)OpenedItem())->NumSubPages() > 1)
         )
     {
@@ -815,7 +815,7 @@ void Menu::CloseOpenedItem()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ChangeItem(Control *item, int delta)
 {
-    if (item->IsChoice() || item->IsChoiceReg())
+    if (IS_CHOICE(item) || item->IsChoiceReg())
     {
         ((Choice *)item)->StartChange(delta);
     }

@@ -54,6 +54,7 @@ class PageBase;
 #define IS_PAGE(item)    (item->type == Item_Page)
 #define NOT_PAGE(item)   (item->type != Item_Page)
 #define IS_PAGE_SB(item) (item->isPageSB)
+#define IS_CHOICE(item)  (item->type == Item_Choice)
 
 class Control
 {
@@ -61,7 +62,6 @@ public:
     COMMON_PART_MENU_ITEM;
     PageBase *Keeper() const;
     bool IsActive() const;
-    inline bool IsChoice() const { return type == Item_Choice; };
     bool IsChoiceReg() const;
     bool IsGovernor() const;
     bool IsGovernorColor() const;

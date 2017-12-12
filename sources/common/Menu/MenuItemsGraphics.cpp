@@ -813,7 +813,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
         {
             symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
-        else if (control->IsGovernor() || control->IsChoiceReg() ||  (control->IsOpened() && control->IsChoice()))
+        else if (control->IsGovernor() || control->IsChoiceReg() ||  (control->IsOpened() && IS_CHOICE(control)))
         {
             symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
