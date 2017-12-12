@@ -26,11 +26,11 @@ extern const PageBase * const pointerPageHelp;
       PanelButton Menu::releaseButton = B_Empty;
    PanelRegulator Menu::pressRegulator = R_Empty;
               int Menu::angleRegSet = 0;
-            void *Menu::itemUnderKey = 0;
+         Control *Menu::itemUnderKey = 0;
           pFuncVV Menu::funcAterUpdate = 0;
       PanelButton Menu::bufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_Empty};
 const PanelButton Menu::sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_F5, B_F5, B_F4, B_F4, B_F3, B_F3, B_F2, B_F2, B_F1, B_F1};
-            void *Menu::itemUnderButton[B_NumButtons] = {0};
+         Control *Menu::itemUnderButton[B_NumButtons] = {0};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

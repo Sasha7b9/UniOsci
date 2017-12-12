@@ -68,9 +68,9 @@ public:
 
     ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
     /// если ни одна кнопка не нажата.
-    static void *itemUnderKey;
+    static Control *itemUnderKey;
 
-    static void *itemUnderButton[B_NumButtons];
+    static Control *itemUnderButton[B_NumButtons];
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
     static void OpenPageAndSetItCurrent(NamePage namePage);
