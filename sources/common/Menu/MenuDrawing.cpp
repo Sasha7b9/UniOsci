@@ -96,7 +96,7 @@ void Menu::DrawTitlePage(Page *page, int layer, int yTop)
     
     Painter::DrawVLine(x, yTop, yTop + page->HeightOpened(), Color::BorderMenu(false));
     bool condDrawRSet = page->NumSubPages() > 1 && !Menu::CurrentItem()->IsChoiceReg() && 
-        !CurrentItem()->IsGovernor() && OpenedItem()->IsPage();
+        !CurrentItem()->IsGovernor() && IS_PAGE(OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
     x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, page->Title(), colorText);
@@ -330,13 +330,13 @@ int Menu::ItemOpenedPosY(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::Draw()
 {
-    if (MENU_IS_SHOWN || !OpenedItem()->IsPage())
+    if (MENU_IS_SHOWN || NOT_PAGE(OpenedItem()))
     {
         ResetItemsUnderButton();
         Control *item = OpenedItem();
         if (MENU_IS_SHOWN)
         {
-            DrawOpenedPage(item->IsPage() ? (Page *)item : (Page *)((Control *)item)->Keeper(), 0, GRID_TOP);
+            DrawOpenedPage(IS_PAGE(item) ? (Page *)item : (Page *)((Control *)item)->Keeper(), 0, GRID_TOP);
         }
         else
         {

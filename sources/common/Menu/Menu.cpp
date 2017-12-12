@@ -364,7 +364,7 @@ void Menu::ProcessingShortPressureButton()
                 }
                 else
                 {
-                    if (OpenedItem()->IsPage())
+                    if (IS_PAGE(OpenedItem()))
                     {
                         Menu::TemporaryEnableStrNavi();
                     }
@@ -424,6 +424,8 @@ void Menu::ProcessingLongPressureButton()
 
     if(button != B_Empty)
     {
+        Control *item = OpenedItem();
+        
         Sound::ButtonRelease();
         NEED_FINISH_DRAW = 1;
         SetAutoHide(true);
@@ -453,7 +455,7 @@ void Menu::ProcessingLongPressureButton()
             else
             {
                 Show(!MENU_IS_SHOWN);
-                if (!OpenedItem()->IsPage())
+                if (NOT_PAGE(item))
                 {
                     TemporaryEnableStrNavi();
                 }
@@ -466,7 +468,7 @@ void Menu::ProcessingLongPressureButton()
             {
                 item->LongPress();
             }
-            if (!OpenedItem()->IsPage())
+            if (NOT_PAGE(item))
             {
                 TemporaryEnableStrNavi();
             }
@@ -484,7 +486,7 @@ void Menu::ProcessingRegulatorPress()
         if (pressRegulator == R_Set)
         {
             Show(!MENU_IS_SHOWN);
-            if (!OpenedItem()->IsPage())
+            if (NOT_PAGE(OpenedItem()))
             {
                 TemporaryEnableStrNavi();
             }
@@ -502,11 +504,11 @@ void Menu::ProcessingRegulatorSetRotate()
         return;
     }
 
-    if (MENU_IS_SHOWN || !OpenedItem()->IsPage())
+    if (MENU_IS_SHOWN || NOT_PAGE(OpenedItem()))
     {
         Control *item = CurrentItem();
         static const int step = 2;
-        if (OpenedItem()->IsPage() && (item->IsChoiceReg() || item->IsGovernor() || item->IsIP() || item->IsMAC()))
+        if (IS_PAGE(OpenedItem()) && (item->IsChoiceReg() || item->IsGovernor() || item->IsIP() || item->IsMAC()))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
@@ -522,7 +524,7 @@ void Menu::ProcessingRegulatorSetRotate()
             {
                 CurrentPageSBregSet(angleRegSet);
             }
-            else if (item->IsPage() || item->IsIP() || item->IsMAC() || item->IsChoice() || item->IsChoiceReg() || item->IsGovernor())
+            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || item->IsChoice() || item->IsChoiceReg() || item->IsGovernor())
             {
                 if (item->ChangeOpened(angleRegSet))
                 {
@@ -657,9 +659,11 @@ void Menu::OpenItemTime()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool Menu::NeedForFireSetLED()
 {
+    Control *item = OpenedItem();
+    
     if (!MENU_IS_SHOWN)
     {
-        return OpenedItem()->IsChoiceReg() || OpenedItem()->IsChoice() || OpenedItem()->IsGovernor();
+        return item->IsChoiceReg() || item->IsChoice() || item->IsGovernor();
     }
 
     NamePage name = GetNameOpenedPage();
@@ -682,9 +686,11 @@ bool Menu::NeedForFireSetLED()
     {
         return true;
     }
+    
+    item = OpenedItem();
 
-    if (OpenedItem()->IsChoice()  ||
-        (OpenedItem()->IsPage() && ((const Page *)OpenedItem())->NumSubPages() > 1)
+    if (item->IsChoice()  ||
+        (IS_PAGE(item) && ((const Page *)OpenedItem())->NumSubPages() > 1)
         )
     {
         return true;
@@ -757,7 +763,7 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
     {
         int8 posActItem = page->PosCurrentItem();
         void *item = page->Item(posActItem);
-        if (page->Item(posActItem)->IsPage())
+        if (IS_PAGE(page->Item(posActItem)))
         {
             return RetLastOpened((Page *)item, type);
         }
@@ -787,7 +793,7 @@ Control *Menu::CurrentItem()
 void Menu::CloseOpenedItem()
 {
     Control *item = OpenedItem();
-    if (item->IsPage())
+    if (IS_PAGE(item))
     {
         if (item->IsPageSB())
         {

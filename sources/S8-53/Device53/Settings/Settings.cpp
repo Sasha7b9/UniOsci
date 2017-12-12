@@ -343,7 +343,7 @@ void ShowMenu(bool show)
 
 bool MenuIsMinimize()
 {
-    return Menu::TypeOpenedItem() == Item_Page && Menu::GetNamePage((const Page *)Menu::OpenedItem()) >= PageSB_Cursors_Set;
+    return IS_PAGE(Menu::OpenedItem()) && Menu::GetNamePage((const Page *)Menu::OpenedItem()) >= PageSB_Cursors_Set;
 }
 
 bool MenuPageDebugIsActive()

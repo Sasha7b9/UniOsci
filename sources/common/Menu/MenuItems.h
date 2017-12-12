@@ -51,6 +51,8 @@ class SButton;
 class Page;
 class PageBase;
 
+#define IS_PAGE(item)  (item->type == Item_Page)
+#define NOT_PAGE(item) (item->type != Item_Page)
 
 class Control
 {
@@ -59,14 +61,14 @@ public:
     PageBase *Keeper() const;
     bool IsActive() const;
     bool IsPageSB() const;
-    bool IsPage() const;
-    bool IsChoice() const;
+    //inline bool IsPage() const   { return type == Item_Page; };
+    inline bool IsChoice() const { return type == Item_Choice; };
     bool IsChoiceReg() const;
     bool IsGovernor() const;
     bool IsGovernorColor() const;
     bool IsIP() const;
     bool IsMAC() const;
-    bool IsTime() const;
+    inline bool IsTime() const   { return type == Item_Time; };
     /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
     int HeightOpened() const;
     /// @brief Возвращает true, если элемент меню item затенён (находится не на самом верхнем слое. Как правило, это означает, что раскрыт раскрывающийся элемент 
