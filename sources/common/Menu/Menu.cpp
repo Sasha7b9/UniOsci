@@ -508,7 +508,7 @@ void Menu::ProcessingRegulatorSetRotate()
     {
         Control *item = CurrentItem();
         static const int step = 2;
-        if (IS_PAGE(OpenedItem()) && (IS_CHOICE_REG(item) || item->IsGovernor() || item->IsIP() || item->IsMAC()))
+        if (IS_PAGE(OpenedItem()) && (IS_CHOICE_REG(item) || IS_GOVERNOR(item) || item->IsIP() || item->IsMAC()))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
@@ -524,7 +524,7 @@ void Menu::ProcessingRegulatorSetRotate()
             {
                 CurrentPageSBregSet(angleRegSet);
             }
-            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || IS_CHOICE(item) || IS_CHOICE_REG(item) || item->IsGovernor())
+            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || IS_CHOICE(item) || IS_CHOICE_REG(item) || IS_GOVERNOR(item))
             {
                 if (item->ChangeOpened(angleRegSet))
                 {
@@ -532,7 +532,7 @@ void Menu::ProcessingRegulatorSetRotate()
                 }
                 return;
             }
-            else if (item->IsGovernorColor())
+            else if (IS_GOVERNOR_COLOR(item))
             {
                 ChangeItem(item, angleRegSet);
             }
@@ -663,7 +663,7 @@ bool Menu::NeedForFireSetLED()
     
     if (!MENU_IS_SHOWN)
     {
-        return IS_CHOICE_REG(item) || IS_CHOICE(item) || item->IsGovernor();
+        return IS_CHOICE_REG(item) || IS_CHOICE(item) || IS_GOVERNOR(item);
     }
 
     NamePage name = GetNameOpenedPage();
@@ -682,9 +682,9 @@ bool Menu::NeedForFireSetLED()
     
     item = CurrentItem();
     
-    if (item->IsGovernor()  ||
-        IS_CHOICE_REG(item) ||
-        item->IsGovernorColor())
+    if (IS_GOVERNOR(item)       ||
+        IS_CHOICE_REG(item)     ||
+        IS_GOVERNOR_COLOR(item))
     {
         return true;
     }
@@ -821,7 +821,7 @@ void Menu::ChangeItem(Control *item, int delta)
     {
         ((Choice *)item)->StartChange(delta);
     }
-    else if (item->IsGovernor())
+    else if (IS_GOVERNOR(item))
     {
         Governor *governor = (Governor*)item;
         if (OpenedItem() != governor)
@@ -833,7 +833,7 @@ void Menu::ChangeItem(Control *item, int delta)
             governor->ChangeValue(delta);
         }
     }
-    else if (item->IsGovernorColor())
+    else if (IS_GOVERNOR_COLOR(item))
     {
         ((GovernorColor *)item)->ChangeValue(delta);
     }

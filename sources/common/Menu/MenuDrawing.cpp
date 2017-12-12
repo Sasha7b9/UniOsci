@@ -96,7 +96,7 @@ void Menu::DrawTitlePage(Page *page, int layer, int yTop)
     
     Painter::DrawVLine(x, yTop, yTop + page->HeightOpened(), Color::BorderMenu(false));
     bool condDrawRSet = page->NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) && 
-        !CurrentItem()->IsGovernor() && IS_PAGE(OpenedItem());
+        NOT_GOVERNOR(CurrentItem()) && IS_PAGE(OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
     Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
     x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, page->Title(), colorText);
@@ -280,11 +280,11 @@ void Menu::DrawOpenedPage(Page *page, int layer, int yTop)
         {
             ((Choice *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
-        else if (item->IsGovernor())
+        else if (IS_GOVERNOR(item))
         {
             ((Governor *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
-        else if (item->IsGovernorColor())
+        else if (IS_GOVERNOR_COLOR(item))
         {
             ((GovernorColor *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
@@ -349,7 +349,7 @@ void Menu::Draw()
                 Painter::DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, gColorBack);
                 Painter::DrawHLine(GRID_TOP + 35, CalculateX(0) - 1, GRID_RIGHT - 1);
             }
-            else if (item->IsGovernor())
+            else if (IS_GOVERNOR(item))
             {
                 ((Governor *)item)->Draw(CalculateX(0), GRID_TOP, true);
                 Painter::DrawHLine(GRID_TOP, CalculateX(0) - 2, GRID_RIGHT, gColorFill);

@@ -809,11 +809,11 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
     {
         char symbol = 0;
 
-        if (control->IsGovernor())
+        if (IS_GOVERNOR(control))
         {
             symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
-        else if (control->IsGovernor() || IS_CHOICE_REG(control) ||  (control->IsOpened() && IS_CHOICE(control)))
+        else if (IS_GOVERNOR(control) || IS_CHOICE_REG(control) ||  (control->IsOpened() && IS_CHOICE(control)))
         {
             symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
