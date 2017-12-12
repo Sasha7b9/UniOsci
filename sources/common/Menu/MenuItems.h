@@ -66,7 +66,7 @@ class PageBase;
     
 #define KEEPER(item)            ((PageBase *)item->keeper)
 #define IS_ACTIVE(item)         (item->funcOfActive())
-    
+
 
 class Control
 {

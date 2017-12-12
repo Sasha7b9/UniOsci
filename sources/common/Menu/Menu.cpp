@@ -457,7 +457,7 @@ void Menu::ProcessingLongPressureButton()
         }
         else if(MENU_IS_SHOWN && Panel::IsFunctionalButton(button))
         {
-            Control *item = (Control *)itemUnderButton[button];
+            item = (Control *)itemUnderButton[button];
             if(item)
             {
                 item->LongPress();
