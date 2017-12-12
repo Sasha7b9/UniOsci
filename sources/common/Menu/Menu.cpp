@@ -18,38 +18,17 @@ extern void Long_Help();
 extern const PageBase * const pointerPageHelp;
 extern void *itemUnderButton[B_NumButtons];
 
-/// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
-static PanelButton shortPressureButton = B_Empty;
-/// Если произошло длинное нажатие кнопки, то здесь хранится имя этой кнопки до обработки этого нажатия.
-static PanelButton longPressureButton = B_Empty;
-/// При нажатии кнопки её имя записывается в эту переменную и хранится там до обратоки события нажатия кнопки.
-static PanelButton pressButton = B_Empty;
-/// При отпускании кнопки её имя записывается в эту переменную и хранится там до обработки события отпускания кнопки.
-static PanelButton releaseButton = B_Empty;
-static PanelRegulator pressRegulator = R_Empty;
-/// Угол, на который нужно повернуть ручку УСТАНОВКА - величина означает количество щелчков, знак - направление - "-" - влево, "+" - вправо.
-static int angleRegSet = 0;
-///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, если ни одна 
-/// кнопка не нажата.
-void *itemUnderKey = 0;
-/// Эта функция будет вызывана один раз после Menu::UpdateInput().
-static pFuncVV funcAterUpdate = 0;
-                                                
-static void ProcessingShortPressureButton();            ///< Обработка короткого нажатия кнопки.
-static void ProcessingLongPressureButton();             ///< Обработка длинного нажатия кнопки.
-static void ProcessingPressButton();                    ///< Обработка опускания кнопки вниз.
-static void ProcessingReleaseButton();                  ///< Обработка поднятия кнопки вверх.
-static void ProcessingRegulatorSetRotate();             ///< Обработка поворота ручки УСТАНОВКА.
-static void ProcessingRegulatorPress();                 ///< Обработка нажатия ручки.
-static void OnTimerAutoHide();                          ///< Обработка события таймера автоматического сокрытия меню.
-static void SwitchSetLED();                             ///< Включить/выключить светодиод ручки УСТАНОВКА, если необходимо.
-static void OnTimerStrNaviAutoHide();                   ///< Функция, которая отключит вывод строки навигации меню.
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#define SIZE_BUFFER_FOR_BUTTONS 10
-static PanelButton bufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_Empty};
-static const PanelButton sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_F5, B_F5, B_F4, B_F4, B_F3, B_F3, B_F2, B_F2, B_F1, B_F1};
+PanelButton Menu::shortPressureButton = B_Empty;
+PanelButton Menu::longPressureButton = B_Empty;
+PanelButton Menu::pressButton = B_Empty;
+PanelButton Menu::releaseButton = B_Empty;
+PanelRegulator Menu::pressRegulator = R_Empty;
+int Menu::angleRegSet = 0;
+void *Menu::itemUnderKey = 0;
+pFuncVV Menu::funcAterUpdate = 0;
+PanelButton Menu::bufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_Empty};
+const PanelButton Menu::sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS] = {B_F5, B_F5, B_F4, B_F4, B_F3, B_F3, B_F2, B_F2, B_F1, B_F1};
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +74,7 @@ void Menu::LongPressureButton(PanelButton button)
 };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ProcessButtonForHint(PanelButton button)
+void Menu::ProcessButtonForHint(PanelButton button)
 {
     if (button == B_Menu)
     {
@@ -349,13 +328,13 @@ char *Menu::StringNavigation(char buffer[100])
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void OnTimerAutoHide()
+void Menu::OnTimerAutoHide()
 {
     Menu::Show(false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void ProcessingShortPressureButton()
+void Menu::ProcessingShortPressureButton()
 {
     if(shortPressureButton != B_Empty)
     {
@@ -439,7 +418,7 @@ static void ProcessingShortPressureButton()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingLongPressureButton()
+void Menu::ProcessingLongPressureButton()
 {
     PanelButton button = longPressureButton;
 
@@ -497,7 +476,7 @@ void ProcessingLongPressureButton()
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingRegulatorPress()
+void Menu::ProcessingRegulatorPress()
 {
     if (pressRegulator != R_Empty)
     {
@@ -516,7 +495,7 @@ void ProcessingRegulatorPress()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingRegulatorSetRotate()
+void Menu::ProcessingRegulatorSetRotate()
 {
     if (angleRegSet == 0)
     {
@@ -568,7 +547,7 @@ void ProcessingRegulatorSetRotate()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingPressButton()
+void Menu::ProcessingPressButton()
 {
     if((pressButton >= B_F1 && pressButton <= B_F5) || pressButton == B_Menu)
     {
@@ -585,7 +564,7 @@ void ProcessingPressButton()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ProcessingReleaseButton()
+void Menu::ProcessingReleaseButton()
 {
     if(releaseButton >= B_F1 && releaseButton <= B_F5 || pressButton == B_Menu)
     {
@@ -605,13 +584,13 @@ void Menu::TemporaryEnableStrNavi()
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnTimerStrNaviAutoHide()
+void Menu::OnTimerStrNaviAutoHide()
 {
     SHOW_STRING_NAVIGATION = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_ChoiceReg(void *choice_)
+void Menu::ShortPress_ChoiceReg(void *choice_)
 {
     Choice *choice = (Choice*)choice_;
 
@@ -626,7 +605,7 @@ void ShortPress_ChoiceReg(void *choice_)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_IP(void *item)
+void Menu::ShortPress_IP(void *item)
 {
     if (Menu::OpenedItem() == item)
     {
@@ -635,7 +614,7 @@ void ShortPress_IP(void *item)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ShortPress_MAC(void *item)
+void Menu::ShortPress_MAC(void *item)
 {
     if (Menu::OpenedItem() == item)
     {
@@ -678,8 +657,7 @@ void Menu::OpenItemTime()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-/// Возвращает true, если лампочка УСТАНОВКА должна гореть
-static bool NeedForFireSetLED()
+bool Menu::NeedForFireSetLED()
 {
     if (!MENU_IS_SHOWN)
     {
@@ -721,7 +699,7 @@ static bool NeedForFireSetLED()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SwitchSetLED()
+void Menu::SwitchSetLED()
 {
     static bool first = true;
     static bool prevState = false;  // true - горит, false - не горит

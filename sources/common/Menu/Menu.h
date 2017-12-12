@@ -67,7 +67,9 @@ public:
     static void CloseOpenedItem();
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
     static void ChangeItem(void *item, int delta);
-
+    ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
+    /// если ни одна кнопка не нажата.
+    static void *itemUnderKey;
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// \todo STUB
     static void OpenPageAndSetItCurrent(NamePage namePage);
@@ -78,6 +80,54 @@ public:
 
 private:
     static void *RetLastOpened(Page *_page, TypeItem *_type);
+    /// Обработка короткого нажатия кнопки
+    static void ProcessingShortPressureButton();
+    /// Обработка длинного нажатия кнопки
+    static void ProcessingLongPressureButton();
+    /// Обработка опускания кнопки вниз
+    static void ProcessingPressButton();
+    /// Обработка поднятия кнопки вверх
+    static void ProcessingReleaseButton();
+    ///< Обработка поворота ручки УСТАНОВКА
+    static void ProcessingRegulatorSetRotate();
+    /// Обработка нажатия ручки
+    static void ProcessingRegulatorPress();
+    /// Обработка события таймера автоматического сокрытия меню
+    static void OnTimerAutoHide();
+    /// Включить/выключить светодиод ручки УСТАНОВКА, если необходимо
+    static void SwitchSetLED();
+    /// Функция, которая отключит вывод строки навигации меню
+    static void OnTimerStrNaviAutoHide();
+    /// Возвращает true, если лампочка УСТАНОВКА должна гореть
+    static bool NeedForFireSetLED();
+    
+    static void ProcessButtonForHint(PanelButton button);
+    
+    static void ShortPress_ChoiceReg(void *choice);
+    
+    static void ShortPress_IP(void *item);
+    
+    static void ShortPress_MAC(void *item);
+    /// Если произошло короткое нажатие кнопки, то здесь хранится имя этой кнопки до обработки  этого нажатия.
+    static PanelButton shortPressureButton;
+    /// Если произошло длинное нажатие кнопки, то здесь хранится имя этой кнопки до обработки этого нажатия.
+    static PanelButton longPressureButton;
+    /// При нажатии кнопки её имя записывается в эту переменную и хранится там до обратоки события нажатия кнопки.
+    static PanelButton pressButton;
+    /// При отпускании кнопки её имя записывается в эту переменную и хранится там до обработки события отпускания кнопки.
+    static PanelButton releaseButton;
+    
+    static PanelRegulator pressRegulator;
+    /// Угол, на который нужно повернуть ручку УСТАНОВКА - величина означает количество щелчков, знак - направление - "-" - влево, "+" - вправо.
+    static int angleRegSet;
+    /// Эта функция будет вызывана один раз после Menu::UpdateInput().
+    static pFuncVV funcAterUpdate;
+    //#define SIZE_BUFFER_FOR_BUTTONS 10
+    
+    static const int SIZE_BUFFER_FOR_BUTTONS = 10;
+    
+    static PanelButton bufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
+    static const PanelButton sampleBufferForButtons[SIZE_BUFFER_FOR_BUTTONS];
 };
 
 

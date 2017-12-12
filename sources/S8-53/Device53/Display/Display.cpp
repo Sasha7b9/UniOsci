@@ -1281,7 +1281,7 @@ void Display::Update()
         DrawCursorTShift();
     }
     
-    Menu::Draw();
+    //Menu::Draw();
 
     if (needClear)
     {

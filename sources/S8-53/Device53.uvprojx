@@ -1219,11 +1219,6 @@
               <FilePath>.\Device53\Hardware\ADC.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayHardware.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Hardware\DisplayHardware.inc</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Device53\Hardware\FLASH.h</FilePath>

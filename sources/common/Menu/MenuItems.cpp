@@ -7,8 +7,6 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern int8 gCurDigit;
-extern void *itemUnderKey;
-
 
 #define NAME_FROM_INDEX(index) (names[index * 2 + LANG])
 
@@ -367,7 +365,7 @@ void Control::ShortPress()
     {
         SButton *button = (SButton *)this;
         button->funcOnPress();
-        itemUnderKey = this;
+        Menu::itemUnderKey = this;
     }
 }
 
@@ -399,7 +397,7 @@ void Control::LongPress()
     {
         SButton *button = (SButton *)this;
         button->funcOnPress();
-        itemUnderKey = this;
+        Menu::itemUnderKey = this;
     }
     else
     {

@@ -29,6 +29,7 @@ static TypeWave typeWave = TypeWave_Sine;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Sound::Init()
 {
+    return;
     DAC_ChannelConfTypeDef config =
     {
         DAC_TRIGGER_T7_TRGO,
@@ -51,7 +52,7 @@ static void Stop()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Sound_Beep(TypeWave typeWave_, float frequency_, float amplitude_, int duration)
+static void Beep(TypeWave typeWave_, float frequency_, float amplitude_, int duration)
 {
     if (gBF.soundWarnIsBeep == 1)
     {
@@ -82,16 +83,18 @@ void Sound_Beep(TypeWave typeWave_, float frequency_, float amplitude_, int dura
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::ButtonPress()
 {
-    Sound_Beep(TypeWave_Sine, 2000.0f, 0.5f, 50);
+    return;
+    Beep(TypeWave_Sine, 2000.0f, 0.5f, 50);
     gBF.buttonIsPressed = 1;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::ButtonRelease()
 {
+    return;
     if (gBF.buttonIsPressed == 1)
     {
-        Sound_Beep(TypeWave_Sine, 1000.0f, 0.25f, 50);
+        Beep(TypeWave_Sine, 1000.0f, 0.25f, 50);
         gBF.buttonIsPressed = 0;
     }
 }
@@ -99,28 +102,32 @@ void Sound::ButtonRelease()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::GovernorChangedValue()
 {
-    Sound_Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
+    return;
+    Beep(TypeWave_Sine, 1000.0f, 0.5f, 50);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::RegulatorShiftRotate()
 {
-    Sound_Beep(TypeWave_Sine, 1.0f, 0.35f, 3);
+    return;
+    Beep(TypeWave_Sine, 1.0f, 0.35f, 3);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::RegulatorSwitchRotate()
 {
-    Sound_Beep(TypeWave_Triangle, 2500.0f, 0.5f, 25);
+    return;
+    Beep(TypeWave_Triangle, 2500.0f, 0.5f, 25);
     gBF.buttonIsPressed = 0;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::WarnBeepBad()
 {
-    Sound_Beep(TypeWave_Meandr, 250.0f, 1.0f, 500);
+    return;
+    Beep(TypeWave_Meandr, 250.0f, 1.0f, 500);
     gBF.soundWarnIsBeep = 1;
     gBF.buttonIsPressed = 0;
 }
@@ -128,7 +135,8 @@ void Sound::WarnBeepBad()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Sound::WarnBeepGood()
 {
-    Sound_Beep(TypeWave_Triangle, 1000.0f, 0.5f, 250);
+    return;
+    Beep(TypeWave_Triangle, 1000.0f, 0.5f, 250);
     gBF.buttonIsPressed = 0;
 }
 
