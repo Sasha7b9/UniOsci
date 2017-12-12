@@ -39,8 +39,6 @@ public:
     static void RotateRegSetLeft();
     /// ”становить врем€ автоматического сокрыти€ меню в соответствии с установками.
     static void SetAutoHide(bool active);
-    /// ¬озвращает адрес пункта меню, наход€щегос€ под нажатой в данный момент кнопкой.
-    static void *ItemUnderKey();
     /// ¬озвращает путь к текущему пункту меню в текстовом виде, готовом к выводу на экран.
     static char *StringNavigation(char buffer[100]);
 
