@@ -1,12 +1,4 @@
-#include "defines.h"
-#include "Data/Reader.h"
-#include "Display/Display.h"
 #include "FPGA/FPGA.h"
-#include "Hardware/FSMC.h"
-#include "Hardware/Timer.h"
-#include "Utils/Debug.h"
-#include "stm32f4xx_it.h"
-#include <stm32f4xx_hal.h>
 
 
 #ifdef __cplusplus
