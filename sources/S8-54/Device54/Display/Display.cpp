@@ -745,12 +745,12 @@ static void DrawLowPart()
     // Ethernet
     if((gEthIsConnected || CABLE_LAN_IS_CONNECTED) && gTimeMS > 2000)
     {
-        Painter::Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gEthIsConnected ? COLOR_WHITE : COLOR_FLASH_01);
+        Painter::Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gEthIsConnected ? Color::WHITE : Color::FLASH_01);
     }
 
     if(CONNECTED_TO_USB || CABLE_USB_IS_CONNECTED)
     {
-        Painter::Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, CONNECTED_TO_USB ? COLOR_WHITE : COLOR_FLASH_01);
+        Painter::Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, CONNECTED_TO_USB ? Color::WHITE : Color::FLASH_01);
     }
 
     Painter::SetColor(Color::FILL);
@@ -1007,7 +1007,7 @@ static void DrawRandStat()
 
     float scale = (float)Grid::FullHeight() / (float)max;
 
-    Painter::SetColor(COLOR_WHITE);
+    Painter::SetColor(Color::WHITE);
 
     for(int i = 0; i < 281; i++)
     {
@@ -1600,7 +1600,7 @@ static void WriteTextVoltage(Channel ch, int x, int y)
 
     const int widthField = 91;
     const int heightField = 8;
-    Color colorDraw = inverse ? COLOR_WHITE : color;
+    Color colorDraw = inverse ? Color::WHITE : color;
     if(inverse)
     {
         Painter::FillRegion(x, y, widthField, heightField, color);
@@ -1721,8 +1721,8 @@ static void DrawStringInRectangle(int x, int y, char const *text)
     int height = 8;
     Painter::DrawRectangle(x, y, width + 4, height + 4, Color::FILL);
     Painter::DrawRectangle(x + 1, y + 1, width + 2, height + 2, Color::BACK);
-    Painter::FillRegion(x + 2, y + 2, width, height, COLOR_FLASH_10);
-    Painter::DrawText(x + 3, y + 2, text, COLOR_FLASH_01);
+    Painter::FillRegion(x + 2, y + 2, width, height, Color::FLASH_10);
+    Painter::DrawText(x + 3, y + 2, text, Color::FLASH_01);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

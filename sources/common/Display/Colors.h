@@ -30,12 +30,25 @@
 class Color
 {
 public:
+    static Color BLACK;
+    static Color WHITE;
+    static Color MENU_FIELD;
+    static Color MENU_TITLE_DARK;
+    static Color MENU_TITLE_BRIGHT;
+    static Color MENU_ITEM_DARK;
+    static Color MENU_ITEM_BRIGHT;
+    static Color DATA_WHITE_ACCUM_A;
+    static Color DATA_WHITE_ACCUM_B;
+    static Color NUMBER;
+    static Color FLASH_10;
+    static Color FLASH_01;
+
     static Color FILL;
     static Color BACK;
     static Color GRID;
     static Color CHAN[4];
 
-    Color(uint8 val) : value(val) { };
+    explicit Color(uint8 val) : value(val) { };
 
     static Color Cursors(Channel ch);
     static Color Trig();

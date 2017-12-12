@@ -3,7 +3,20 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Color Color::CHAN[4] = {COLOR_DATA_A, COLOR_DATA_B, COLOR_WHITE, COLOR_WHITE};
+Color Color::BLACK(COLOR_BLACK);
+Color Color::WHITE(COLOR_WHITE);
+Color Color::MENU_FIELD(COLOR_MENU_FIELD);
+Color Color::MENU_TITLE_DARK(COLOR_MENU_TITLE_DARK);
+Color Color::MENU_TITLE_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
+Color Color::MENU_ITEM_DARK(COLOR_MENU_ITEM_DARK);
+Color Color::MENU_ITEM_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
+Color Color::DATA_WHITE_ACCUM_A(COLOR_DATA_WHITE_ACCUM_A);
+Color Color::DATA_WHITE_ACCUM_B(COLOR_DATA_WHITE_ACCUM_B);
+Color Color::NUMBER(COLOR_NUMBER);
+Color Color::FLASH_10(COLOR_FLASH_10);
+Color Color::FLASH_01(COLOR_FLASH_01);
+
+Color Color::CHAN[4] = {Color(COLOR_DATA_A), Color(COLOR_DATA_B), Color(COLOR_WHITE), Color(COLOR_WHITE)};
 Color Color::FILL(COLOR_WHITE);
 Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
@@ -28,7 +41,7 @@ Color Color::Trig()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::ChanAccum(Channel ch)
 {
-    return (ch == A) ? COLOR_DATA_WHITE_ACCUM_A : COLOR_DATA_WHITE_ACCUM_B;
+    return (ch == A) ? Color(COLOR_DATA_WHITE_ACCUM_A) : Color(COLOR_DATA_WHITE_ACCUM_B);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,7 +53,7 @@ Color Color::BorderMenu(bool shade)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::MenuTitle(bool shade)
 {
-    return shade ? COLOR_MENU_ITEM : COLOR_MENU_TITLE;
+    return shade ? Color(COLOR_MENU_ITEM) : Color(COLOR_MENU_TITLE);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -52,7 +65,7 @@ Color Color::LightShadingText()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 Color Color::MenuItem(bool shade)
 {
-    return shade ? COLOR_MENU_ITEM_DARK : COLOR_MENU_ITEM;
+    return shade ? Color(COLOR_MENU_ITEM_DARK) : Color(COLOR_MENU_ITEM);
 }
 
 Color Color::Contrast(Color color)
@@ -60,9 +73,9 @@ Color Color::Contrast(Color color)
     uint16 colorValue = COLOR(color.value);
     if (R_FROM_COLOR(colorValue) > 16 || G_FROM_COLOR(colorValue) > 32 || B_FROM_COLOR(colorValue) > 16)
     {
-        return COLOR_BLACK;
+        return Color(COLOR_BLACK);
     }
-    return COLOR_WHITE;
+    return Color(COLOR_WHITE);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

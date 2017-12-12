@@ -100,7 +100,6 @@ static void CalculateAroundAverage(uint8 *data0, uint8 *data1, DataSettings *dss
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Storage::AddData(uint8 *data0, uint8 *data1, DataSettings dss)
 {
-    uint time = gTimerTics;
     dss.time = RTClock::GetPackedTime();
 
     if(dss.enableCh0 == 0 && dss.enableCh1 == 0)

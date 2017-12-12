@@ -308,7 +308,7 @@ void FuncAttScreen()
     */
     char buffer[100];
     sprintf(buffer, "%.1f", (gTimeMS - startTime) / 1000.0f);
-    Painter::DrawText(0, 0, buffer, COLOR_BLACK);
+    Painter::DrawText(0, 0, buffer, Color::BLACK);
 
     Painter::EndScene();
 }

@@ -12,7 +12,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static bool inverseColors = false;
-static Color currentColor = COLOR_NUMBER;
+static Color currentColor = Color::NUMBER;
 static bool framesElapsed = false;
 
 
@@ -109,10 +109,10 @@ void Painter::ResetFlash()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SetColor(Color color)
 {
-    if (color != currentColor && color != COLOR_NUMBER)
+    if (color != currentColor && color != Color::NUMBER)
     {
         currentColor = color;
-        if (currentColor > COLOR_NUMBER)
+        if (currentColor > Color::NUMBER)
         {
             CalculateColor((uint8 *)(&(color)));
         }
@@ -162,7 +162,7 @@ void Painter::SetPoint(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawHLine(int y, int x0, int x1, Color color)
 {
-    if (color != COLOR_NUMBER)
+    if (color != Color::NUMBER)
     {
         SetColor(color);
     }
@@ -181,7 +181,7 @@ void Painter::DrawHLine(int y, int x0, int x1, Color color)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::DrawVLine(int x, int y0, int y1, Color color)
 {
-    if (color != COLOR_NUMBER)
+    if (color != Color::NUMBER)
     {
         SetColor(color);
     }
@@ -416,7 +416,7 @@ void Painter::DrawRectangle(int x, int y, int width, int height, Color color)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::FillRegion(int x, int y, int width, int height, Color color)
 {
-    if (color != COLOR_NUMBER)
+    if (color != Color::NUMBER)
     {
         SetColor(color);
     }
@@ -740,11 +740,11 @@ static void CalculateColor(uint8 *color)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::CalculateCurrentColor()
 {
-    if (currentColor == COLOR_FLASH_10)
+    if (currentColor == Color::FLASH_10)
     {
         SetColor(inverseColors ? Color::BACK : Color::FILL);
     }
-    else if (currentColor == COLOR_FLASH_01)
+    else if (currentColor == Color::FLASH_01)
     {
         SetColor(inverseColors ? Color::FILL : Color::BACK);
     }

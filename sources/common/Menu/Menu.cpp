@@ -946,7 +946,7 @@ void Menu::Draw()
         y += LANG_RU ? 49 : 40;
         if (gStringForHint)
         {
-            Painter::DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, Color::BACK, COLOR_WHITE);
+            Painter::DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, Color::BACK, Color::WHITE);
         }
         else if (gItemHint)
         {
