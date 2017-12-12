@@ -695,7 +695,7 @@ void Painter::DrawHintsForSmallButton(int x, int y, int width, void *smallButton
         return;
     }
     FillRegion(x, y, width, 239 - y, gColorBack);
-    DrawRectangle(x, y, width, 239 - y, gColorFill);
+    DrawRectangle(x, y, width, 239 - y, Color::FILL);
     const StructHelpSmallButton *structHelp = &sb->hintUGO[0];
     x += 3;
     y += 3;

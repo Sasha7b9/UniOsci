@@ -626,7 +626,7 @@ static void Draw_EnterSerialNumber()
     int width = Grid::Width() - 80;
     int height = 160;
 
-    Painter::DrawRectangle(x0, y0, width, height, Color::Fill());
+    Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
     Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int deltaX = 10;
@@ -638,7 +638,7 @@ static void Draw_EnterSerialNumber()
     char buffer[20];
     snprintf(buffer, 19, "%02d", s->number);
 
-    Color colorText = Color::Fill();
+    Color colorText = Color::FILL;
     Color colorBackground = Color::Back();
 
     if (selNumber)
@@ -657,7 +657,7 @@ static void Draw_EnterSerialNumber()
 
     if (selNumber)
     {
-        colorText = Color::Fill();
+        colorText = Color::FILL;
         colorBackground = Color::Back();
     }
 
@@ -670,7 +670,7 @@ static void Draw_EnterSerialNumber()
 
     int allShots = OTPMem::GetSerialNumber(buffer);
 
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
 
     Painter::DrawFormatText(x0 + deltaX, y0 + 130, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
 

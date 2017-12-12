@@ -52,10 +52,10 @@ void Display::Init()
     /*
     PainterMem_SetBuffer(buffer, 100, 100);
     PainterMem_FillRect(0, 0, 99, 99, ColorChannel(A));
-    PainterMem_DrawRectangle(10, 10, 10, 30, Color::Fill());
+    PainterMem_DrawRectangle(10, 10, 10, 30, Color::FILL);
     PainterMem_DrawHLine(90, 10, 90, ColorChannel(B));
     PainterMem_DrawVLine(90, 10, 90, Color::Back());
-    PainterMem_DrawRectangle(0, 0, 99, 99, Color::Fill());
+    PainterMem_DrawRectangle(0, 0, 99, 99, Color::FILL);
     */
 
     Painter::ResetFlash();
@@ -90,9 +90,9 @@ void DrawStringNavigation()
     {
         int length = Font_GetLengthText(string);
         int height = 10;
-        Painter::DrawRectangle(Grid::Left(), GRID_TOP, length + 2, height, Color::Fill());
+        Painter::DrawRectangle(Grid::Left(), GRID_TOP, length + 2, height, Color::FILL);
         Painter::FillRegion(Grid::Left() + 1, GRID_TOP + 1, length, height - 2, Color::Back());
-        Painter::DrawText(Grid::Left() + 2, GRID_TOP + 1, string, Color::Fill());
+        Painter::DrawText(Grid::Left() + 2, GRID_TOP + 1, string, Color::FILL);
     }
 }
 
@@ -432,10 +432,10 @@ void Display::DrawMath()
     static const int WIDTH = 71;
     static const int HEIGHT = 10;
     int delta = (SHOW_STRING_NAVIGATION && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
-    Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, Color::Fill());
+    Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, Color::FILL);
     Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, Color::Back());
     Divider multiplier = MATH_MULTIPLIER;
-    Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, multiplier), Color::Fill());
+    Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, multiplier), Color::FILL);
     Painter::DrawText(Grid::Left() + 25, Grid::MathTop() + 1 + delta, ":");
     char buffer[20];
     Painter::DrawText(Grid::Left() + 27, Grid::MathTop() + 1 + delta, sChannel_RShift2String(SET_RSHIFT_MATH, SET_RANGE_MATH, multiplier, buffer));
@@ -466,7 +466,7 @@ static void WriteParametersFFT(Channel chan, float freq0, float density0, float 
     int dY = 10;
 
     char buffer[20];
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     Painter::DrawText(x, y, Freq2String(freq0, false, buffer));
     y += dY;
     Painter::DrawText(x, y, Freq2String(freq1, false, buffer));
@@ -508,7 +508,7 @@ static void DRAW_SPECTRUM(const uint8 *data, int numPoints, Channel channel)
     DrawSpectrumChannel(spectrum, Color::Chan(channel));
     if (!MenuIsShown() || MenuIsMinimize())
     {
-        Color color = Color::Fill();
+        Color color = Color::FILL;
         WriteParametersFFT(channel, freq0, density0, freq1, density1);
         Painter::DrawRectangle(FFT_POS_CURSOR_0 + Grid::Left() - s, y0 - s, s * 2, s * 2, color);
         Painter::DrawRectangle(FFT_POS_CURSOR_1 + Grid::Left() - s, y1 - s, s * 2, s * 2);
@@ -559,7 +559,7 @@ void Display::DrawSpectrum()
         }
     }
 
-    Painter::DrawHLine(Grid::ChannelBottom(), Grid::Left(), Grid::Right(), Color::Fill());
+    Painter::DrawHLine(Grid::ChannelBottom(), Grid::Left(), Grid::Right(), Color::FILL);
     Painter::DrawHLine(Grid::MathBottom(), Grid::Left(), Grid::Right());
 }
 
@@ -758,7 +758,7 @@ bool DrawData()
         }
     }
 
-    Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), Color::Fill());
+    Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), Color::FILL);
 
     return retValue;
 }
@@ -773,7 +773,7 @@ void Display::DrawTime(int x, int y)
     
     char buffer[20];
     
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     
     if (MODE_WORK_IS_ROM || MODE_WORK_IS_RAM)
     {
@@ -966,7 +966,7 @@ void DrawMemoryWindow()
     const int xVert0 = (int)(leftX + shiftInMemory * scaleX);
     const int xVert1 = (int)(leftX + shiftInMemory * scaleX + timeWindowRectWidth);
     bool showFull = set.display.showFullMemoryWindow;
-    Painter::DrawRectangle(xVert0, top + (showFull ? 0 : 1), xVert1 - xVert0, bottom - top - (showFull ? 0 : 2), Color::Fill());
+    Painter::DrawRectangle(xVert0, top + (showFull ? 0 : 1), xVert1 - xVert0, bottom - top - (showFull ? 0 : 2), Color::FILL);
 
     if(!dataP2PIsEmpty)
     {
@@ -997,7 +997,7 @@ void DrawMemoryWindow()
     }
     else
     {
-        Painter::DrawVLine(leftX - 2, top, bottom, Color::Fill());
+        Painter::DrawVLine(leftX - 2, top, bottom, Color::FILL);
         Painter::DrawVLine(rightX + 2, top, bottom);
         Painter::DrawHLine((bottom + top) / 2 - 3, leftX, xVert0 - 2);
         Painter::DrawHLine((bottom + top) / 2 + 3, leftX, xVert0 - 2);
@@ -1010,14 +1010,14 @@ void DrawMemoryWindow()
 
     // Маркер TPos
     Painter::FillRegion(x0 - 3, 9, 6, 6, Color::Back());
-    Painter::DrawChar(x0 - 3, 9, SYMBOL_TPOS_1, Color::Fill());
+    Painter::DrawChar(x0 - 3, 9, SYMBOL_TPOS_1, Color::FILL);
 
     // Маркер tShift
     float scale = (float)(rightX - leftX + 1) / ((float)sMemory_GetNumPoints(false) - (sMemory_GetNumPoints(false) == 281 ? 1 : 0));
     float xShift = 1 + (sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, (int)gDSet->length1channel, TPOS) - sTime_TShiftInPoints((PeackDetMode)gDSet->peakDet)) * scale;
 
     Painter::FillRegion((int)xShift - 1, 3, 6, 6, Color::Back());
-    Painter::FillRegion((int)xShift, 4, 4, 4, Color::Fill());
+    Painter::FillRegion((int)xShift, 4, 4, 4, Color::FILL);
     Painter::SetColor(Color::Back());
     if(xShift < leftX - 2)
     {
@@ -1052,7 +1052,7 @@ void Display::WriteCursors()
     int y2 = 9;
     if(sCursors_NecessaryDrawCursors())
     {
-        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::Fill());
+        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
         x += 3;
         Channel source = CURS_SOURCE;
         Color colorText = Color::Chan(source);
@@ -1074,7 +1074,7 @@ void Display::WriteCursors()
         }
 
         x = startX + 101;
-        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::Fill());
+        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
         x += 3;
         if(!CURS_CNTRL_T_IS_DISABLE(source))
         {
@@ -1098,7 +1098,7 @@ void Display::WriteCursors()
             {
                 int width = 65;
                 int x = Grid::Right() - width;
-                Painter::DrawRectangle(x, GRID_TOP, width, 12, Color::Fill());
+                Painter::DrawRectangle(x, GRID_TOP, width, 12, Color::FILL);
                 Painter::FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, Color::Back());
                 Painter::DrawText(x + 1, GRID_TOP + 2, "1/dT=", colorText);
                 char buffer[20];
@@ -1119,7 +1119,7 @@ void Display::DrawHiRightPart()
 
     if (!MODE_WORK_IS_RAM)
     {
-        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::Fill());
+        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
 
         x += 2;
 
@@ -1141,7 +1141,7 @@ void Display::DrawHiRightPart()
     if(!MODE_WORK_IS_DIR)
     {
         x += 18;
-        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::Fill());
+        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
         x += 2;
         Painter::DrawText(set.common.lang == Russian ? x : x + 3, -1, set.common.lang == Russian ? "режим" : "mode");
         Painter::DrawStringInCenterRect(x + 1, 9, 25, 8, strings[MODE_WORK][set.common.lang]);
@@ -1155,7 +1155,7 @@ void Display::DrawHiRightPart()
     {
 
         x += 27;
-        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::Fill());
+        Painter::DrawVLine(x, 1, GRID_TOP - 2, Color::FILL);
 
         x += 2;
         y = 1;
@@ -1234,7 +1234,7 @@ void Display::Update()
 
     static int x = 0;
 
-    Painter::FillRegion(x, x, 100, 100, Color::Fill());
+    Painter::FillRegion(x, x, 100, 100, Color::FILL);
 
     x++;
 
@@ -1302,7 +1302,7 @@ void Display::Update()
 
     DrawTimeForFrame(gTimerTics - timeStart);
 
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
 
     Painter::EndScene();
 
@@ -1342,9 +1342,9 @@ void Display::WriteValueTrigLevel()
         int width = 96;
         int x = (Grid::Width() - width) / 2 + Grid::Left();
         int y = Grid::BottomMessages() - 20;
-        Painter::DrawRectangle(x, y, width, 10, Color::Fill());
+        Painter::DrawRectangle(x, y, width, 10, Color::FILL);
         Painter::FillRegion(x + 1, y + 1, width - 2, 8, Color::Back());
-        Painter::DrawText(x + 2, y + 1, buffer, Color::Fill());
+        Painter::DrawText(x + 2, y + 1, buffer, Color::FILL);
     }
 }
 
@@ -1363,13 +1363,13 @@ void DrawGridSpectrum()
             Painter::DrawHLine(y, Grid::Left(), Grid::Left() + 256, Color::GRID);
             if (!MenuIsMinimize())
             {
-                Painter::SetColor(Color::Fill());
+                Painter::SetColor(Color::FILL);
                 Painter::DrawText(3, y - 4, strs[i]);
             }
         }
         if (!MenuIsMinimize())
         {
-            Painter::SetColor(Color::Fill());
+            Painter::SetColor(Color::FILL);
             Painter::DrawText(5, Grid::MathTop() + 1, "дБ");
         }
     }
@@ -1383,11 +1383,11 @@ void DrawGridSpectrum()
             Painter::DrawHLine(y, Grid::Left(), Grid::Left() + 256, Color::GRID);
             if (!MenuIsMinimize())
             {
-                Painter::DrawText(5, y - 4, strs[i], Color::Fill());
+                Painter::DrawText(5, y - 4, strs[i], Color::FILL);
             }
         }
     }
-    Painter::DrawVLine(Grid::Left() + 256, Grid::MathTop(), Grid::MathBottom(), Color::Fill());
+    Painter::DrawVLine(Grid::Left() + 256, Grid::MathTop(), Grid::MathBottom(), Color::FILL);
 }
 
 
@@ -1405,7 +1405,7 @@ void Display::DrawFullGrid()
         {
             DrawGrid(Grid::Left(), GRID_TOP + Grid::FullHeight() / 2, Grid::Width(), Grid::FullHeight() / 2);
         }
-        Painter::DrawHLine(GRID_TOP + Grid::FullHeight() / 2, Grid::Left(), Grid::Left() + Grid::Width(), Color::Fill());
+        Painter::DrawHLine(GRID_TOP + Grid::FullHeight() / 2, Grid::Left(), Grid::Left() + Grid::Width(), Color::FILL);
     }
     else
     {
@@ -1540,7 +1540,7 @@ void Display::DrawGrid(int left, int top, int width, int height)
     int right = left + width;
     int bottom = top + height;
 
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
 
     if (top == GRID_TOP)
     {
@@ -1603,7 +1603,7 @@ void DrawScaleLine(int x, bool forTrigLev)
     };
     for(int i = 0; i < 5; i++)
     {
-        Painter::DrawLine(x + 1, levels[i], x2 - 1, levels[i], Color::Fill());
+        Painter::DrawLine(x + 1, levels[i], x2 - 1, levels[i], Color::FILL);
     }
 }
 
@@ -1689,7 +1689,7 @@ void Display::DrawCursorRShift(Channel chan)
         int rShift = SET_RSHIFT_MATH;
         float scale = (float)Grid::MathHeight() / 960;
         int y = (int)((Grid::MathTop() + Grid::MathBottom()) / 2 - scale * (rShift - RShiftZero));
-        Painter::DrawChar(x - 9, y - 4, SYMBOL_RSHIFT_NORMAL, Color::Fill());
+        Painter::DrawChar(x - 9, y - 4, SYMBOL_RSHIFT_NORMAL, Color::FILL);
         Painter::DrawChar(x - 8, y - 5, 'm', Color::Back());
         return;
     }
@@ -1755,7 +1755,7 @@ void Display::DrawCursorTShift()
     int x = (int)(gridLeft + shiftTPos * scale - 3);
     if (IntInRange(x + 3, gridLeft, Grid::Right() + 1))
     {
-        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, Color::Back(), Color::Fill());
+        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, Color::Back(), Color::FILL);
     };
 
     // Рисуем tShift
@@ -1763,16 +1763,16 @@ void Display::DrawCursorTShift()
     if(IntInRange(shiftTShift, firstPoint, lastPoint))
     {
         int x = gridLeft + shiftTShift - firstPoint - 3;
-        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, Color::Back(), Color::Fill());
+        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, Color::Back(), Color::FILL);
     }
     else if(shiftTShift < firstPoint)
     {
-        Painter::Draw2SymbolsC(gridLeft + 1, GRID_TOP, SYMBOL_TSHIFT_LEFT_1, SYMBOL_TSHIFT_LEFT_2, Color::Back(), Color::Fill());
+        Painter::Draw2SymbolsC(gridLeft + 1, GRID_TOP, SYMBOL_TSHIFT_LEFT_1, SYMBOL_TSHIFT_LEFT_2, Color::Back(), Color::FILL);
         Painter::DrawLine(Grid::Left() + 9, GRID_TOP + 1, Grid::Left() + 9, GRID_TOP + 7, Color::Back());
     }
     else if(shiftTShift > lastPoint)
     {
-        Painter::Draw2SymbolsC(Grid::Right() - 8, GRID_TOP, SYMBOL_TSHIFT_RIGHT_1, SYMBOL_TSHIFT_RIGHT_2, Color::Back(), Color::Fill());
+        Painter::Draw2SymbolsC(Grid::Right() - 8, GRID_TOP, SYMBOL_TSHIFT_RIGHT_1, SYMBOL_TSHIFT_RIGHT_2, Color::Back(), Color::FILL);
         Painter::DrawLine(Grid::Right() - 9, GRID_TOP + 1, Grid::Right() - 9, GRID_TOP + 7, Color::Back());
     }
 }
@@ -1870,7 +1870,7 @@ void Display::DrawMeasures()
         int y1 = MEAS_POS_CUR_U1 + GRID_TOP;
         SortInt(&x0, &x1);
         SortInt(&y0, &y1);
-        Painter::DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::Fill());
+        Painter::DrawRectangle(x0, y0, x1 - x0, y1 - y0, Color::FILL);
     }
 
     int x0 = Grid::Left() - Measures::GetDeltaGridLeft();
@@ -1888,17 +1888,17 @@ void Display::DrawMeasures()
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
             bool active = Measures::IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
-            Color color = active ? Color::Back() : Color::Fill();
+            Color color = active ? Color::Back() : Color::FILL;
             Meas meas = Measures::Type(str, elem);
             if(meas != Meas_None)
             {
                 Painter::FillRegion(x, y, dX, dY, Color::Back());
-                Painter::DrawRectangle(x, y, dX, dY, Color::Fill());
+                Painter::DrawRectangle(x, y, dX, dY, Color::FILL);
                 gBF.topMeasures = Math::MinFrom2Int(gBF.topMeasures, y);
             }
             if(active)
             {
-                Painter::FillRegion(x + 2, y + 2, dX - 4, dY - 4, Color::Fill());
+                Painter::FillRegion(x + 2, y + 2, dX - 4, dY - 4, Color::FILL);
             }
             if(meas != Meas_None)
             {
@@ -1906,8 +1906,8 @@ void Display::DrawMeasures()
                 Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), color);
                 if(meas == MEAS_MARKED)
                 {
-                    Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::Back() : Color::Fill());
-                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::Fill() : Color::Back());
+                    Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::Back() : Color::FILL);
+                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::FILL : Color::Back());
                 }
                 if(SOURCE_MEASURE_IS_A)
                 {
@@ -1994,7 +1994,7 @@ void WriteTextVoltage(Channel chan, int x, int y)
 void WriteStringAndNumber(char *text, int16 x, int16 y, int number)
 {
     char buffer[100];
-    Painter::DrawText(x, y, text, Color::Fill());
+    Painter::DrawText(x, y, text, Color::FILL);
     if(number == 0)
     {
         sprintf(buffer, "-");
@@ -2014,14 +2014,14 @@ void Display::DrawLowPart()
     int y1 = SCREEN_HEIGHT - 10;
     int x = -1;
 
-    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::Fill());
+    Painter::DrawHLine(Grid::ChannelBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2, Color::FILL);
     Painter::DrawHLine(Grid::FullBottom(), 1, Grid::Left() - Measures::GetDeltaGridLeft() - 2);
 
     WriteTextVoltage(A, x + 2, y0);
 
     WriteTextVoltage(B, x + 2, y1);
 
-    Painter::DrawVLine(x + 95, GRID_BOTTOM + 2, SCREEN_HEIGHT - 2, Color::Fill());
+    Painter::DrawVLine(x + 95, GRID_BOTTOM + 2, SCREEN_HEIGHT - 2, Color::FILL);
 
     x += 98;
     char buffer[100] = {0};
@@ -2097,7 +2097,7 @@ void Display::DrawLowPart()
         Painter::DrawText(x + 63, y1, buffer);
     }
     
-    Painter::DrawVLine(x + 79, GRID_BOTTOM + 2, SCREEN_HEIGHT - 2, Color::Fill());
+    Painter::DrawVLine(x + 79, GRID_BOTTOM + 2, SCREEN_HEIGHT - 2, Color::FILL);
 
     Painter::DrawHLine(GRID_BOTTOM, GRID_RIGHT + 2, SCREEN_WIDTH - 2);
     Painter::DrawHLine(Grid::ChannelBottom(), GRID_RIGHT + 2, SCREEN_WIDTH - 2);
@@ -2151,15 +2151,15 @@ void Display::DrawLowPart()
     // Ethernet
     if ((gBF.ethIsConnected == 1 || gBF.cableEthIsConnected == 1) && gTimeMS > 2000)
     {
-        Painter::Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::Fill() : Color::FLASH_01);
+        Painter::Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::FILL : Color::FLASH_01);
     }
 
     if (gBF.connectToHost == 1 || gBF.cableVCPisConnected == 1)
     {
-        Painter::Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::Fill() : Color::FLASH_01);
+        Painter::Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::FILL : Color::FLASH_01);
     }
     
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     // Пиковый детектор
     if(!PEAKDET_IS_DISABLE)
     {
@@ -2203,9 +2203,9 @@ void Display::DrawTimeForFrame(uint timeTicks)
         numFrames = 0;
     }
 
-    Painter::DrawRectangle(Grid::Left(), Grid::FullBottom() - 10, 84, 10, Color::Fill());
+    Painter::DrawRectangle(Grid::Left(), Grid::FullBottom() - 10, 84, 10, Color::FILL);
     Painter::FillRegion(Grid::Left() + 1, Grid::FullBottom() - 9, 82, 8, Color::Back());
-    Painter::DrawText(Grid::Left() + 2, Grid::FullBottom() - 9, buffer, Color::Fill());
+    Painter::DrawText(Grid::Left() + 2, Grid::FullBottom() - 9, buffer, Color::FILL);
 
     char message[20] = {0};
     sprintf(message, "%d", Storage::NumElementsWithSameSettings());
@@ -2495,7 +2495,7 @@ void Display::DrawConsole()
         {
             y -= 3;
         }
-        Painter::DrawText(Grid::Left() + 2, y + dY + delta, strings[numString], Color::Fill());
+        Painter::DrawText(Grid::Left() + 2, y + dY + delta, strings[numString], Color::FILL);
         count++;
     }
 
@@ -2595,7 +2595,7 @@ void DrawStringInRectangle(int x, int y, char const *text)
 {
     int width = Font_GetLengthText(text);
     int height = 8;
-    Painter::DrawRectangle(Grid::Left(), y, width + 4, height + 4, Color::Fill());
+    Painter::DrawRectangle(Grid::Left(), y, width + 4, height + 4, Color::FILL);
     Painter::DrawRectangle(Grid::Left() + 1, y + 1, width + 2, height + 2, Color::Back());
     Painter::FillRegion(Grid::Left() + 2, y + 2, width, height, Color::FLASH_10);
     Painter::DrawText(Grid::Left() + 3, y + 2, text, Color::FLASH_01);

@@ -501,8 +501,8 @@ static void DrawMemoryWave(int num, bool exist)
     int y = Grid::FullBottom() - 10;
     int width = 12;
     Painter::FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? Color::FLASH_10 : Color::Back());
-    Painter::DrawRectangle(x, y, width, 10, Color::Fill());
-    Painter::SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : Color::Fill());
+    Painter::DrawRectangle(x, y, width, 10, Color::FILL);
+    Painter::SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : Color::FILL);
     if (exist)
     {
         Painter::DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));
@@ -817,7 +817,7 @@ void DrawSetName()
     int width = Grid::Width() - 80;
     int height = 80;
 
-    Painter::DrawRectangle(x0, y0, width, height, Color::Fill());
+    Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
     Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int index = 0;
@@ -852,7 +852,7 @@ void DrawSetName()
         position++;
     }
 
-    int x = Painter::DrawText(x0 + deltaX, y0 + 65, FILE_NAME, Color::Fill());
+    int x = Painter::DrawText(x0 + deltaX, y0 + 65, FILE_NAME, Color::FILL);
     Painter::FillRegion(x, y0 + 65, 5, 8, Color::FLASH_10);
 }
 
@@ -860,7 +860,7 @@ static void DrawFileMask(int x, int y)
 {
     char *ch = FILE_NAME_MASK;
 
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     while (*ch != '\0')
     {
         if (*ch >= 32)
@@ -893,7 +893,7 @@ void DrawSetMask()
     int width = Grid::Width() - 80;
     int height = 160;
 
-    Painter::DrawRectangle(x0, y0, width, height, Color::Fill());
+    Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
     Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
 
     int index = 0;
@@ -948,7 +948,7 @@ void DrawSetMask()
     };
 
     deltaY--;
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     for(int i = 0; i < sizeof(strings) / 4; i++)
     {
         Painter::DrawText(x0 + deltaX, y0 + 100 + deltaY * i, strings[i]);
@@ -1007,7 +1007,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
     int width = 40;
     int height = 10;
     Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, Color::Back());
-    Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, Color::Fill());
+    Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, Color::FILL);
     Painter::DrawText(Grid::Right() - width + 2, GRID_TOP + 1, Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     Painter::DrawText(Grid::Right() - width + 17, GRID_TOP + 1, "/");
     Painter::DrawText(Grid::Right() - width + 23, GRID_TOP + 1, Int2String(Storage::AllDatas(), false, 3, buffer));

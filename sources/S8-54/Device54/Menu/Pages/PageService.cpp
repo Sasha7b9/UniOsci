@@ -30,7 +30,7 @@ static void Draw_ResetSettings()
     Painter::BeginScene(gColorBack);
 
     Painter::DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
-                                         "Нажмите любую другую кнопку, если сброс не нужен.", gColorFill);
+                                         "Нажмите любую другую кнопку, если сброс не нужен.", Color::FILL);
 
     Painter::EndScene();
 }
@@ -822,7 +822,7 @@ static void Information_Draw()
     int x = 100;
     int dY = 20;
     int y = 20;
-    Painter::DrawRectangle(0, 0, 319, 239, gColorFill);
+    Painter::DrawRectangle(0, 0, 319, 239, Color::FILL);
     y += dY;
     Painter::DrawText(x, y, DICT(DInformation));
     y += dY;
@@ -840,7 +840,7 @@ static void Information_Draw()
     Painter::DrawText(x, y, buffer);
     y += dY;
 
-    Painter::DrawFormText(x, y, gColorFill, "CRC32 : %X", Hardware::CalculateCRC32());
+    Painter::DrawFormText(x, y, Color::FILL, "CRC32 : %X", Hardware::CalculateCRC32());
 
     dY = -10;
     Painter::DrawStringInCenterRect(0, 190 + dY, 320, 20, "Для получения помощи нажмите и удерживайте кнопку ПОМОЩЬ");

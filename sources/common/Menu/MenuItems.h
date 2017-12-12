@@ -136,7 +136,7 @@ public:
     /// Возвращает позицию текущего элемента странцы page
     int8 PosCurrentItem() const;
     void ChangeSubPage(int delta) const;
-    void Draw(int x, int y);
+    void Draw(int x, int y, bool opened);
 };
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Button ///

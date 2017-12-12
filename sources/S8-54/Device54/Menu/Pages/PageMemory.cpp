@@ -222,7 +222,7 @@ static void OnDraw_Last()
     int width = 40;
     int height = 10;
     Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, gColorBack);
-    Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, gColorFill);
+    Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, Color::FILL);
     Painter::DrawText(Grid::Right() - width + 2, GRID_TOP + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
     Painter::DrawText(Grid::Right() - width + 17, GRID_TOP + 1, "/");
     Painter::DrawText(Grid::Right() - width + 23, GRID_TOP + 1, Int2String(Storage::NumElementsInStorage(), false, 3, buffer));
@@ -513,7 +513,7 @@ static void DrawSetMask()
     int width = Grid::Width() - 80;
     int height = 160;
 
-    Painter::DrawRectangle(x0, y0, width, height, gColorFill);
+    Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
     Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
 
     int index = 0;
@@ -568,7 +568,7 @@ static void DrawSetMask()
     };
 
     deltaY--;
-    Painter::SetColor(gColorFill);
+    Painter::SetColor(Color::FILL);
     for (int i = 0; i < sizeof(strings) / 4; i++)
     {
         Painter::DrawText(x0 + deltaX, y0 + 100 + deltaY * i, strings[i]);
@@ -579,7 +579,7 @@ static void DrawFileMask(int x, int y)
 {
     char *ch = FILE_NAME_MASK;
 
-    Painter::SetColor(gColorFill);
+    Painter::SetColor(Color::FILL);
     while (*ch != '\0')
     {
         if (*ch >= 32)
@@ -685,7 +685,7 @@ static void DrawSetName()
     int width = Grid::Width() - 80;
     int height = 80;
 
-    Painter::DrawRectangle(x0, y0, width, height, gColorFill);
+    Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
     Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
 
     int index = 0;
@@ -720,7 +720,7 @@ static void DrawSetName()
         position++;
     }
 
-    int x = Painter::DrawText(x0 + deltaX, y0 + 65, FILE_NAME, gColorFill);
+    int x = Painter::DrawText(x0 + deltaX, y0 + 65, FILE_NAME, Color::FILL);
     Painter::FillRegion(x, y0 + 65, 5, 8, Color::FLASH_10);
 }
 
@@ -823,7 +823,7 @@ static void Draw_Internal_ModeShow_Both(int x, int y)
 {
     Painter::DrawText(x + 1, y + 5, "наю");
     Painter::DrawVLine(x + 1, y + 2, y + 14, gColorBack);
-    Painter::DrawVLine(x + 2, y + 6, y + 11, gColorFill);
+    Painter::DrawVLine(x + 2, y + 6, y + 11, Color::FILL);
 }
 
 static void Draw_Internal_ModeShow(int x, int y)
@@ -961,8 +961,8 @@ static void DrawMemoryWave(int num, bool exist)
     int y = Grid::FullBottom() - 10;
     int width = 12;
     Painter::FillRegion(x, y, width, 10, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : gColorBack);
-    Painter::DrawRectangle(x, y, width, 10, gColorFill);
-    Painter::SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : gColorFill);
+    Painter::DrawRectangle(x, y, width, 10, Color::FILL);
+    Painter::SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : Color::FILL);
     if (exist)
     {
         Painter::DrawText(x + 2, y + 1, Int2String(num + 1, false, 2, buffer));

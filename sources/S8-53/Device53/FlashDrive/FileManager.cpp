@@ -45,7 +45,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
 {
     int length = Font_GetLengthText(string);
 
-    Color color = Color::Fill();
+    Color color = Color::FILL;
     if (hightlight)
     {
         Painter::FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
@@ -67,7 +67,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
 static void DrawHat(int x, int y, char *string, int num1, int num2)
 {
     Painter::FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::Back());
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     Painter::DrawFormatText(x + 60, y, string, num1, num2);
     Painter::DrawHLine(y + 10, x + 2, x + 140);
 }
@@ -114,7 +114,7 @@ static void DrawFiles(int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawNameCurrentDir(int left, int top)
 {
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     int length = Font_GetLengthText(currentDir);
     if (length < 277)
     {
@@ -156,11 +156,11 @@ void FileManager::Draw()
     {
         Painter::BeginScene(Color::Back());
         Menu::Draw();
-        Painter::DrawRectangle(0, 0, width, 239, Color::Fill());
+        Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
         Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, Color::Back());
         FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
-        Painter::DrawVLine(left2col, top + 16, 239, Color::Fill());
+        Painter::DrawVLine(left2col, top + 16, 239, Color::FILL);
         Painter::DrawHLine(top + 15, 0, width);
     }
 

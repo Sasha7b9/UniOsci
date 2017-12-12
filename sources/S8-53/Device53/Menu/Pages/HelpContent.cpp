@@ -31,11 +31,11 @@ static void DrawPageContent()
         const char *title = TITLE(page);
         if(currentParagraph == numPage)
         {
-            Painter::DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, Color::Back(), 2, Color::Fill());
+            Painter::DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, Color::Back(), 2, Color::FILL);
         }
         else
         {
-            Painter::DrawStringInCenterRect(0, y, WIDTH, 10, title, Color::Fill());
+            Painter::DrawStringInCenterRect(0, y, WIDTH, 10, title, Color::FILL);
         }
         y += 16;
         numPage++;
@@ -55,13 +55,13 @@ void HelpContent_Draw()
     Painter::FillRegion(Grid::Right(), 0, 319 - Grid::Right(), 20, Color::Back());
     Painter::FillRegion(Grid::Right(), 219, 319 - Grid::Right(), 21);
     Painter::FillRegion(1, 1, WIDTH, 237);
-    Painter::DrawRectangle(0, 0, WIDTH + 2, 239, Color::Fill());
+    Painter::DrawRectangle(0, 0, WIDTH + 2, 239, Color::FILL);
 
     /*
     uint16 *addr1 = (uint16*)(0x08000000 + (rand() % 65535));
     uint8 *addr2 = (uint8*)(0x08000000 + (rand() % 65535));
 
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     for (int i = 0; i < 10000; i++)
     {
         Painter::SetPoint((*addr1) % WIDTH, Math_LimitationInt(*addr2, 0, 239));
@@ -78,7 +78,7 @@ void HelpContent_Draw()
     {
         DrawPageDescription();
     }
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     Painter::DrawFormatText(2, 230, "%d", gTimeMS - startTime);
 }
 

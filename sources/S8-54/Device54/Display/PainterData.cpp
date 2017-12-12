@@ -224,13 +224,13 @@ static void DrawData_ModeROM()
         int y0 = y + 3;
 
         Painter::FillRegion(x, y, width, height, gColorBack);
-        Painter::DrawBigText(x0 + 2, y0 + 2, 2, str1[LANG], gColorFill);
+        Painter::DrawBigText(x0 + 2, y0 + 2, 2, str1[LANG], Color::FILL);
         Painter::DrawBigText(x0 + 2, y0 + 20, 2, str2[LANG]);
         char buffer[100];
         sprintf(buffer, (char *)str3[LANG], namesLengthMemory[ENUM_POINTS_DS]);
         Painter::DrawBigText(x0 + 2, y0 + 38, 2, buffer);
 
-        Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), gColorFill);
+        Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), Color::FILL);
     }
 }
 
@@ -250,7 +250,7 @@ static void DrawData(bool forAccum)
         DrawChannel(ch, forAccum ? Color::ChanAccum(ch) : gColorChan[ch]);
     }
 
-    Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), gColorFill);
+    Painter::DrawRectangle(Grid::Left(), GRID_TOP, Grid::Width(), Grid::FullHeight(), Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -521,10 +521,10 @@ void PainterData::DrawMath()
     static const int WIDTH = 71;
     static const int HEIGHT = 10;
     int delta = (SHOW_STRING_NAVI_ALL && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
-    Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, gColorFill);
+    Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, Color::FILL);
     Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, gColorBack);
     Divider divider = set.math_Divider;
-    Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, divider), gColorFill);
+    Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, divider), Color::FILL);
     Painter::DrawText(Grid::Left() + 25, Grid::MathTop() + 1 + delta, ":");
     char buffer[20];
     Painter::DrawText(Grid::Left() + 27, Grid::MathTop() + 1 + delta, sChannel_RShift2String(SET_RSHIFT_MATH, SET_RANGE_MATH, divider, buffer));
@@ -831,7 +831,7 @@ static void DrawMemoryWindow()
     float scaleX = (float)(rightX - leftX + 1) / SET_POINTS_IN_CHANNEL;
     const int xVert0 = leftX + (int)(SHIFT_IN_MEMORY_IN_POINTS * scaleX);
     int width = (int)((rightX - leftX) * (282.0f / SET_POINTS_IN_CHANNEL));
-    Painter::DrawRectangle(xVert0, 0, width - (FPGA_POINTS_8k ? 1 : 0), GRID_TOP - 2, gColorFill);
+    Painter::DrawRectangle(xVert0, 0, width - (FPGA_POINTS_8k ? 1 : 0), GRID_TOP - 2, Color::FILL);
 
     DrawTPos(leftX, rightX);
 
@@ -942,7 +942,7 @@ static void DrawTPos(int leftX, int rightX)
     int x[] = {leftX, (rightX - leftX) / 2 + leftX, rightX};
     int x0 = x[TPOS];
     Painter::FillRegion(x0 - 3, 10, 6, 6, gColorBack);
-    Painter::DrawChar(x0 - 3, 10, SYMBOL_TPOS_1, gColorFill);
+    Painter::DrawChar(x0 - 3, 10, SYMBOL_TPOS_1, Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -978,7 +978,7 @@ static void DrawTShift(int leftX, int rightX, int numBytes)
     }
 
     Painter::FillRegion((int)xShift - 1, 1, 6, 6, gColorBack);
-    Painter::FillRegion((int)xShift, 2, 4, 4, gColorFill);
+    Painter::FillRegion((int)xShift, 2, 4, 4, Color::FILL);
     Painter::DrawLine((int)xShift + dX01, 3, (int)xShift + dX11, dY11 - 2, gColorBack);
     Painter::DrawLine((int)xShift + dX02, 4, (int)xShift + 2, dY12 - 2);
 }

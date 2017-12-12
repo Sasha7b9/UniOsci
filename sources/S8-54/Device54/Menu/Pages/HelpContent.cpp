@@ -33,11 +33,11 @@ static void DrawPageContent()
         const char *title = page->titleHint[LANG];
         if(currentParagraph == numPage)
         {
-            Painter::DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, gColorBack, 2, gColorFill);
+            Painter::DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, gColorBack, 2, Color::FILL);
         }
         else
         {
-            Painter::DrawStringInCenterRect(0, y, WIDTH, 10, title, gColorFill);
+            Painter::DrawStringInCenterRect(0, y, WIDTH, 10, title, Color::FILL);
         }
         y += 16;
         numPage++;
@@ -57,14 +57,14 @@ void HelpContent_Draw()
     Painter::FillRegion(Grid::Right(), 0, 319 - Grid::Right(), 20, gColorBack);
     Painter::FillRegion(Grid::Right(), 219, 319 - Grid::Right(), 21);
     Painter::FillRegion(1, 1, WIDTH, 237);
-    Painter::DrawRectangle(1, 0, WIDTH + 1, 239, gColorFill);   /** \todo «десь непон€тно, почему так.  оординаты верхнего левого угла должны быть 
+    Painter::DrawRectangle(1, 0, WIDTH + 1, 239, Color::FILL);   /** \todo «десь непон€тно, почему так.  оординаты верхнего левого угла должны быть 
                                                                 0, 0, но в таком случае левой вертикальной полосы не видно */
 
     /*
     uint16 *addr1 = (uint16 *)(0x08000000 + (rand() % 65535));
     uint8 *addr2 = (uint8 *)(0x08000000 + (rand() % 65535));
 
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     for (int i = 0; i < 10000; i++)
     {
         Painter::SetPoint((*addr1) % WIDTH, Math_LimitationInt(*addr2, 0, 239));

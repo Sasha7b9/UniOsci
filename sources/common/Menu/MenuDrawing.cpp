@@ -61,8 +61,8 @@ static void DrawHintItem(int x, int y, int width)
     {
         y -= 9;
     }
-    Painter::DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, gColorBack, gColorFill);
-    y = Painter::DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], gColorBack, gColorFill);
+    Painter::DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, gColorBack, Color::FILL);
+    y = Painter::DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], gColorBack, Color::FILL);
     if (item->type == Item_SmallButton)
     {
         Painter::DrawHintsForSmallButton(x, y, width, (SButton*)item);
@@ -224,7 +224,7 @@ static void DrawButton(void *item, int x, int y)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawPage(void *item, int x, int y)
 {
-    ((Page *)item)->Draw(x, y);
+    ((Page *)item)->Draw(x, y, false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -345,14 +345,14 @@ void Menu::Draw()
                 ((Choice *)item)->Draw(CalculateX(0), GRID_TOP, false);
                 Painter::DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));
                 Painter::DrawVLine(CalculateX(0) + 1, GRID_TOP + 1, GRID_TOP + 34);
-                Painter::DrawVLine(GRID_RIGHT, GRID_TOP + 30, GRID_TOP + 40, gColorFill);
+                Painter::DrawVLine(GRID_RIGHT, GRID_TOP + 30, GRID_TOP + 40, Color::FILL);
                 Painter::DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, gColorBack);
                 Painter::DrawHLine(GRID_TOP + 35, CalculateX(0) - 1, GRID_RIGHT - 1);
             }
             else if (IS_GOVERNOR(item))
             {
                 ((Governor *)item)->Draw(CalculateX(0), GRID_TOP, true);
-                Painter::DrawHLine(GRID_TOP, CalculateX(0) - 2, GRID_RIGHT, gColorFill);
+                Painter::DrawHLine(GRID_TOP, CalculateX(0) - 2, GRID_RIGHT, Color::FILL);
                 Painter::DrawVLine(GRID_RIGHT, GRID_TOP, GRID_TOP + 40);
             }
         }
@@ -372,7 +372,7 @@ void Menu::Draw()
                                                    "„тобы выключить этот режим, нажмите кнопку ѕќћќў№ и удерживайте еЄ в течение 0.5с." :
                                                    "Mode is activated hints. In this mode, pressing the button displays the information on its purpose. "
                                                    "To disable this mode, press the button HELP and hold it for 0.5s.",
-                                                   gColorBack, gColorFill);
+                                                   gColorBack, Color::FILL);
         y += LANG_RU ? 49 : 40;
         if (gStringForHint)
         {

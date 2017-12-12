@@ -233,7 +233,7 @@ void FuncAttScreen()
     int16 y = 10;
     Display::Clear();
     
-    Painter::SetColor(gColorFill);
+    Painter::SetColor(Color::FILL);
     
 #define dX 20
 #define dY -15
@@ -246,7 +246,7 @@ void FuncAttScreen()
 
                 Painter::DrawText(10 + dX, 55 + dY, "Поправка нуля 1к :");
                 Painter::DrawText(10 + dX, 80 + dY, "Поправка нуля 2к :");
-                Painter::SetColor(Color::Fill());
+                Painter::SetColor(Color::FILL);
                 for (int i = 0; i < RangeSize; i++)
                 {
                     Painter::DrawFormatText(95 + i * 16 + dX, 55 + dY, "%d", set.chan[A].rShiftAdd[i][0]);
@@ -316,7 +316,7 @@ void FuncAttScreen()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void DrawParametersChannel(Channel chan, int eX, int eY, bool inProgress)
 {
-    Painter::SetColor(Color::Fill());
+    Painter::SetColor(Color::FILL);
     if(inProgress)
     {
         Painter::DrawText(eX, eY + 4, chan == 0 ? "КАНАЛ 1" : "КАНАЛ 2");

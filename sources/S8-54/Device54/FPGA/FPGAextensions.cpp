@@ -311,7 +311,7 @@ static void AlignmentADC()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawParametersChannel(Channel ch, int eX, int eY, bool inProgress)
 {
-    Painter::SetColor(gColorFill);
+    Painter::SetColor(Color::FILL);
     if(inProgress)
     {
         Painter::DrawText(eX, eY + 4, ch == 0 ? "КАНАЛ 1" : "КАНАЛ 2");
@@ -349,11 +349,11 @@ static void FuncDrawAdditionRShift(int x, int y, const int16 *addRShift)
 {
     if (*addRShift == ERROR_VALUE_INT16)
     {
-        Painter::DrawFormText(x, y, gColorFill, "Err");
+        Painter::DrawFormText(x, y, Color::FILL, "Err");
     }
     else
     {
-        Painter::DrawFormText(x, y, gColorFill, "%d", *addRShift);
+        Painter::DrawFormText(x, y, Color::FILL, "%d", *addRShift);
     }
 }
 
@@ -362,7 +362,7 @@ static void WriteStretch(Channel ch, int x, int y)
 {
     if (cal->isCalculateStretch[ch])
     {
-        Painter::DrawFormText(x, y, gColorFill, "Коэффициент калибровки %dк : %f", (int)ch + 1, GetStretchADC(ch));
+        Painter::DrawFormText(x, y, Color::FILL, "Коэффициент калибровки %dк : %f", (int)ch + 1, GetStretchADC(ch));
     }
     else
     {
@@ -381,7 +381,7 @@ static void DrawMessageErrorCalibrate(Channel ch)
     snprintf(buffer, SIZE, "Канал %d не скалиброван.", (int)ch + 1);
     Painter::DrawBigText(50, 70, 2, buffer);
 
-    Painter::DrawStringInCenterRect(0, 200, 319, 40, "Для продолжения нажмите кнопку ПУСК/СТОП", gColorFill);
+    Painter::DrawStringInCenterRect(0, 200, 319, 40, "Для продолжения нажмите кнопку ПУСК/СТОП", Color::FILL);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -399,7 +399,7 @@ static void FuncAttScreen()
     int16 y = 10;
     Display::Clear();
 
-    Painter::SetColor(gColorFill);
+    Painter::SetColor(Color::FILL);
 
 #define dX 20
 #define dY -15
@@ -1112,7 +1112,7 @@ static void FuncDrawAutoFind()
     int y = 120 - height / 2;
     Painter::BeginScene(gColorBack);
     Painter::FillRegion(x, y, width, height, gColorBack);
-    Painter::DrawRectangle(x, y, width, height, gColorFill);
+    Painter::DrawRectangle(x, y, width, height, Color::FILL);
     Painter::DrawStringInCenterRect(x, y, width, height - 20, "Идёт поиск сигнала. Подождите");
     
     char buffer[101] = "";

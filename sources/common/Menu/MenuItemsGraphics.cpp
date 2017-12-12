@@ -531,23 +531,23 @@ void SButton::Draw(int x, int y)
     {
         if (IsPressed())
         {
-            Painter::FillRegion(x, y, WIDTH_SB, WIDTH_SB, gColorFill);
+            Painter::FillRegion(x, y, WIDTH_SB, WIDTH_SB, Color::FILL);
             Painter::SetColor(Color::BLACK);
         }
         else
         {
-            Painter::DrawRectangle(x, y, WIDTH_SB, WIDTH_SB, gColorFill);
+            Painter::DrawRectangle(x, y, WIDTH_SB, WIDTH_SB, Color::FILL);
         }
         funcForDraw(x, y);
     }
     else
     {
-        Painter::DrawRectangle(x, y, WIDTH_SB, WIDTH_SB, gColorFill);
+        Painter::DrawRectangle(x, y, WIDTH_SB, WIDTH_SB, Color::FILL);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Page::Draw(int x, int y)
+void Page::Draw(int x, int y, bool opened)
 {
     bool isShade = IsShade() || !funcOfActive();
     bool isPressed = IsPressed();
@@ -742,7 +742,7 @@ static void DrawValueWithSelectedPosition(int x, int y, int value, int numDigits
         value /= 10;
         if (selPos == i)
         {
-            Painter::FillRegion(x - 1, y, 5, height, gColorFill);
+            Painter::FillRegion(x - 1, y, 5, height, Color::FILL);
         }
         if (!(rest == 0 && value == 0) || (firstValue == 0 && i == 0))
         {

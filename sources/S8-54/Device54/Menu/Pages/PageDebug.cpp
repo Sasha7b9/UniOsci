@@ -807,7 +807,7 @@ DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                         
 static void DebugShowSetInfo_Draw()
 {
     Painter::BeginScene(gColorBack);
-    Painter::DrawRectangle(0, 0, 319, 239, gColorFill);
+    Painter::DrawRectangle(0, 0, 319, 239, Color::FILL);
 
     int x0 = 30;
     int y0 = 25;
@@ -1001,7 +1001,7 @@ static void Draw_EnterSerialNumber()
     int width = Grid::Width() - 80;
     int height = 160;
 
-    Painter::DrawRectangle(x0, y0, width, height, gColorFill);
+    Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
     Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
 
     int deltaX = 10;
@@ -1013,7 +1013,7 @@ static void Draw_EnterSerialNumber()
     char buffer[20];
     snprintf(buffer, 19, "%02d", s->number);
 
-    Color colorText = gColorFill;
+    Color colorText = Color::FILL;
     Color colorBackground = gColorBack;
 
     if (selNumber)
@@ -1032,7 +1032,7 @@ static void Draw_EnterSerialNumber()
 
     if (selNumber)
     {
-        colorText = gColorFill;
+        colorText = Color::FILL;
         colorBackground = gColorBack;
     }
 
@@ -1045,9 +1045,9 @@ static void Draw_EnterSerialNumber()
 
     int allShots = otp.GetSerialNumber(buffer);
 
-    Painter::DrawFormText(x0 + deltaX, y0 + 130, gColorFill, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
+    Painter::DrawFormText(x0 + deltaX, y0 + 130, Color::FILL, "Текущий сохранённый номер %s", buffer[0] == 0 ? "-- ----" : buffer);
 
-    Painter::DrawFormText(x0 + deltaX, y0 + 100, gColorFill, "Осталось места для %d попыток", allShots);
+    Painter::DrawFormText(x0 + deltaX, y0 + 100, Color::FILL, "Осталось места для %d попыток", allShots);
 }
 
 static void OnPress_SerialNumber()

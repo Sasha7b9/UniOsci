@@ -3,10 +3,11 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Color gColorFill(Color::WHITE);
 Color gColorBack(Color::BLACK);
-Color gColorGrid(Color::Grid());
+Color gColorGrid(Color::GRID);
 Color gColorChan[4] = {Color::DATA_A, Color::DATA_B, Color::WHITE, Color::WHITE};
+
+Color Color::FILL(Color::WHITE);
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,7 +21,7 @@ Color Color::Trig()
 {
     if (TRIGSOURCE_IS_EXT)
     {
-        return gColorFill;
+        return FILL;
     }
     return gColorChan[(Channel)TRIGSOURCE];
 }
