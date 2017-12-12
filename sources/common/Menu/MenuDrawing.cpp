@@ -288,15 +288,15 @@ void Menu::DrawOpenedPage(Page *page, int layer, int yTop)
         {
             ((GovernorColor *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
-        else if (item->IsTime())
+        else if (IS_TIME(item))
         {
             ((Time *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
-        else if (item->IsIP())
+        else if (IS_IP(item))
         {
             ((IPaddress *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }
-        else if (item->IsMAC())
+        else if (IS_MAC(item))
         {
             ((MACaddress *)item)->Draw(CalculateX(1), ItemOpenedPosY(item), true);
         }

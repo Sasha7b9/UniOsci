@@ -9,8 +9,8 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool pressed, bool shade, bool opened);
-static void GovernorIpCommon_DrawOpened(void *item, int x, int y, int dWidth);
+static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bool pressed, bool shade, bool opened);
+static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth);
 static void DrawValueWithSelectedPosition(int x, int y, int value, int numDigits, int selPos, bool hLine, bool fillNull);
 
 
@@ -676,123 +676,13 @@ void Time::DrawOpened(int x, int y)
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool pressed, bool shade, bool opened)
+static void DrawGovernorChoiceColorFormulaHiPart(Control *item, int x, int y, bool pressed, bool shade, bool opened)
 {
     int delta = pressed && !shade ? 1 : 0;
     int width = MI_WIDTH_VALUE;
 
-    Control *control = (Control *)item;
-
-    if (control->IsIP() && opened && ((IPaddress*)item)->port != 0)
+    if (IS_IP(item) && opened && ((IPaddress*)item)->port != 0)
     {
         width += MOI_WIDTH_D_IP;
     }
@@ -803,21 +693,21 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
     Painter::DrawVolumeButton(x + 1, y + 2, width + 2, MI_HEIGHT_VALUE + 3, 1, Color::MenuItem(false), Color::MENU_ITEM_BRIGHT, Color::MENU_ITEM_DARK, 
         pressed, shade);
 
-    Painter::DrawText(x + 6 + delta, y + 6 + delta, control->Title(), color);
+    Painter::DrawText(x + 6 + delta, y + 6 + delta, item->Title(), color);
     
     if(Menu::CurrentItem() == item)
     {
         char symbol = 0;
 
-        if (IS_GOVERNOR(control))
+        if (IS_GOVERNOR(item))
         {
             symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
-        else if (IS_GOVERNOR(control) || IS_CHOICE_REG(control) ||  (control->IsOpened() && IS_CHOICE(control)))
+        else if (IS_GOVERNOR(item) || IS_CHOICE_REG(item) ||  (item->IsOpened() && IS_CHOICE(item)))
         {
             symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
-        else if (control->IsTime())
+        else if (IS_TIME(item))
         {
             Time *time = (Time*)item;
             if ((Menu::OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))
@@ -836,7 +726,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
             }
         }
 
-        Painter::Draw4SymbolsInRect(x + MI_WIDTH - 13, y + 5 + (control->IsOpened() ? 0 : 15), symbol, shade ? color : Color::BLACK);
+        Painter::Draw4SymbolsInRect(x + MI_WIDTH - 13, y + 5 + (item->IsOpened() ? 0 : 15), symbol, shade ? color : Color::BLACK);
     }
 }
 
@@ -871,7 +761,7 @@ static void DrawValueWithSelectedPosition(int x, int y, int value, int numDigits
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void GovernorIpCommon_DrawOpened(void *item, int x, int y, int dWidth)
+static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth)
 {
     int height = 34;
     Control *control = (Control *)item;

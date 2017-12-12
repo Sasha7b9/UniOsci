@@ -508,7 +508,7 @@ void Menu::ProcessingRegulatorSetRotate()
     {
         Control *item = CurrentItem();
         static const int step = 2;
-        if (IS_PAGE(OpenedItem()) && (IS_CHOICE_REG(item) || IS_GOVERNOR(item) || item->IsIP() || item->IsMAC()))
+        if (IS_PAGE(OpenedItem()) && (IS_CHOICE_REG(item) || IS_GOVERNOR(item) || IS_IP(item) || IS_MAC(item)))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
@@ -524,7 +524,7 @@ void Menu::ProcessingRegulatorSetRotate()
             {
                 CurrentPageSBregSet(angleRegSet);
             }
-            else if (IS_PAGE(item) || item->IsIP() || item->IsMAC() || IS_CHOICE(item) || IS_CHOICE_REG(item) || IS_GOVERNOR(item))
+            else if (IS_PAGE(item) || IS_IP(item) || IS_MAC(item) || IS_CHOICE(item) || IS_CHOICE_REG(item) || IS_GOVERNOR(item))
             {
                 if (item->ChangeOpened(angleRegSet))
                 {
@@ -536,7 +536,7 @@ void Menu::ProcessingRegulatorSetRotate()
             {
                 ChangeItem(item, angleRegSet);
             }
-            else if (item->IsTime())
+            else if (IS_TIME(item))
             {
                 angleRegSet > 0 ? ((Time *)item)->IncCurrentPosition() : ((Time *)item)->DecCurrentPosition();
             }

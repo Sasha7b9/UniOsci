@@ -60,6 +60,10 @@ class PageBase;
 #define IS_GOVERNOR(item)       (item->type == Item_Governor)
 #define NOT_GOVERNOR(item)      (item->type != Item_Governor)
 #define IS_GOVERNOR_COLOR(item) (item->type == Item_GovernorColor)
+#define IS_IP(item)             (item->type == Item_IP)
+#define IS_MAC(item)            (item->type == Item_MAC)
+#define IS_TIME(item)           (item->type == Item_Time)
+    
 
 class Control
 {
@@ -67,9 +71,6 @@ public:
     COMMON_PART_MENU_ITEM;
     PageBase *Keeper() const;
     bool IsActive() const;
-    bool IsIP() const;
-    bool IsMAC() const;
-    inline bool IsTime() const   { return type == Item_Time; };
     /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
     int HeightOpened() const;
     /// @brief Возвращает true, если элемент меню item затенён (находится не на самом верхнем слое. Как правило, это означает, что раскрыт раскрывающийся элемент 
