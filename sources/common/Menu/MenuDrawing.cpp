@@ -10,18 +10,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static void ResetItemsUnderButton();
-static void DrawOpenedPage(Page *page, int layer, int yTop);
-static void DrawTitlePage(Page *page, int layer, int yTop);
-static void DrawItemsPage(Page *page, int layer, int yTop);
-static void DrawPagesUGO(Page *page, int right, int bottom);
-static void DrawNestingPage(Page *page, int left, int bottom);
-static int CalculateX(int layer);
-static int ItemOpenedPosY(void *item);
-
-void *itemUnderButton[B_NumButtons] = {0};
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 PanelButton GetFuncButtonFromY(int _y)
 {
     int y = GRID_TOP + GRID_HEIGHT / 12;
@@ -83,7 +71,7 @@ static void DrawHintItem(int x, int y, int width)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DrawTitlePage(Page *page, int layer, int yTop)
+void Menu::DrawTitlePage(Page *page, int layer, int yTop)
 {
     int x = CalculateX(layer);
     if (page->IsPageSB())
@@ -127,7 +115,7 @@ void DrawTitlePage(Page *page, int layer, int yTop)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawPagesUGO(Page *page, int right, int bottom)
+void Menu::DrawPagesUGO(Page *page, int right, int bottom)
 {
     int size = 4;
     int delta = 2;
@@ -153,7 +141,7 @@ static void DrawPagesUGO(Page *page, int right, int bottom)
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
-static void DrawNestingPage(Page *page, int left, int bottom)
+void Menu::DrawNestingPage(Page *page, int left, int bottom)
 {
     if (page != (Page *)&mainPage)
     {
@@ -240,7 +228,7 @@ static void DrawPage(void *item, int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DrawItemsPage(Page *page, int layer, int yTop)
+void Menu::DrawItemsPage(Page *page, int layer, int yTop)
 {
     void (*funcOfDraw[Item_NumberItems])(void *, int, int) = 
     {  
@@ -274,7 +262,7 @@ void DrawItemsPage(Page *page, int layer, int yTop)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void DrawOpenedPage(Page *page, int layer, int yTop)
+void Menu::DrawOpenedPage(Page *page, int layer, int yTop)
 {
     DrawTitlePage(page, layer, yTop);
     DrawItemsPage(page, layer, yTop + MP_TITLE_HEIGHT);
@@ -323,13 +311,13 @@ void DrawOpenedPage(Page *page, int layer, int yTop)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int CalculateX(int layer)
+int Menu::CalculateX(int layer)
 {
     return MP_X - layer * GRID_DELTA / 4;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-int ItemOpenedPosY(void *item)
+int Menu::ItemOpenedPosY(void *item)
 {
     Page *page = (Page *)((Control *)item)->Keeper();
     int8 posCurItem = page->PosCurrentItem();
@@ -400,7 +388,7 @@ void Menu::Draw()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void ResetItemsUnderButton()
+void Menu::ResetItemsUnderButton()
 {
     for (int i = 0; i < B_NumButtons; i++)
     {
