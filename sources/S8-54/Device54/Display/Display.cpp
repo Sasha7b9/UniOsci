@@ -929,7 +929,7 @@ static void DrawMeasures()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawStringNavigation()
 {
-    if((SHOW_STRING_NAVIGATION || SHOW_STRING_NAVI_ALL) && (MENU_IS_SHOWN || (Menu::TypeOpenedItem()) != Item_Page))
+    if((SHOW_STRING_NAVIGATION || SHOW_STRING_NAVI_ALL) && (MENU_IS_SHOWN || !Menu::OpenedItem()->IsPage()))
     {
         char buffer[100];
         char *string = Menu::StringNavigation(buffer);

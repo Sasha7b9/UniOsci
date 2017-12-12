@@ -792,7 +792,7 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
 
     Control *control = (Control *)item;
 
-    if (control->Type() == Item_IP && opened && ((IPaddress*)item)->port != 0)
+    if (control->IsIP() && opened && ((IPaddress*)item)->port != 0)
     {
         width += MOI_WIDTH_D_IP;
     }
@@ -805,21 +805,19 @@ static void DrawGovernorChoiceColorFormulaHiPart(void *item, int x, int y, bool 
 
     Painter::DrawText(x + 6 + delta, y + 6 + delta, control->Title(), color);
     
-    TypeItem type = control->Type();
-
     if(Menu::CurrentItem() == item)
     {
         char symbol = 0;
 
-        if (type == Item_Governor)
+        if (control->IsGovernor())
         {
             symbol = Governor::GetSymbol(*((Governor*)item)->cell);
         }
-        else if (type == Item_Governor || type == Item_ChoiceReg ||  (control->IsOpened() && type == Item_Choice))
+        else if (control->IsGovernor() || control->IsChoiceReg() ||  (control->IsOpened() && control->IsChoice()))
         {
             symbol = Governor::GetSymbol(*((Choice*)item)->cell);
         }
-        else if (type == Item_Time)
+        else if (control->IsTime())
         {
             Time *time = (Time*)item;
             if ((Menu::OpenedItem() == item) && (*time->curField != iEXIT) && (*time->curField != iSET))

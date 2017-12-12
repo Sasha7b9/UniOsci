@@ -55,8 +55,6 @@ public:
     static void Draw();
     /// Возвращает адрес открытого элемента меню
     static Control *OpenedItem();
-    /// Возвращает тип открытого элемента меню
-    static TypeItem TypeOpenedItem();
 
     static NamePage GetNameOpenedPage();
 
@@ -66,7 +64,7 @@ public:
     /// Закрыть открытый элемент меню
     static void CloseOpenedItem();
     /// Уменьшает или увеличивает значение Governor, GovernorColor или Choice по адресу item в зависимости от знака delta
-    static void ChangeItem(void *item, int delta);
+    static void ChangeItem(Control *item, int delta);
     ///\brief  Здесь хранится адрес элемента меню, соответствующего функциональной клавише [1..5], если она находится в нижнем положении, и 0, 
     /// если ни одна кнопка не нажата.
     static void *itemUnderKey;

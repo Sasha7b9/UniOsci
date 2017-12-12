@@ -57,9 +57,16 @@ class Control
 public:
     COMMON_PART_MENU_ITEM;
     PageBase *Keeper() const;
-    TypeItem  Type() const;
     bool IsActive() const;
     bool IsPageSB() const;
+    bool IsPage() const;
+    bool IsChoice() const;
+    bool IsChoiceReg() const;
+    bool IsGovernor() const;
+    bool IsGovernorColor() const;
+    bool IsIP() const;
+    bool IsMAC() const;
+    bool IsTime() const;
     /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
     int HeightOpened() const;
     /// @brief Возвращает true, если элемент меню item затенён (находится не на самом верхнем слое. Как правило, это означает, что раскрыт раскрывающийся элемент 

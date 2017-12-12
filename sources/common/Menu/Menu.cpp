@@ -364,7 +364,7 @@ void Menu::ProcessingShortPressureButton()
                 }
                 else
                 {
-                    if (Menu::TypeOpenedItem() == Item_Page)
+                    if (OpenedItem()->IsPage())
                     {
                         Menu::TemporaryEnableStrNavi();
                     }
@@ -388,7 +388,7 @@ void Menu::ProcessingShortPressureButton()
             }
             else                                                        // Если меню не показано.
             {
-                NamePage name = ((const Page *)Menu::OpenedItem())->GetNamePage();
+                NamePage name = ((const Page *)OpenedItem())->GetNamePage();
                 if(button == B_ChannelA && name == Page_ChannelA && MENU_IS_SHOWN)
                 {
                     SET_ENABLED_A = !SET_ENABLED_A;
@@ -426,7 +426,7 @@ void Menu::ProcessingLongPressureButton()
     {
         Sound::ButtonRelease();
         NEED_FINISH_DRAW = 1;
-        Menu::SetAutoHide(true);
+        SetAutoHide(true);
 
         if(button == B_Time)
         {
@@ -446,16 +446,16 @@ void Menu::ProcessingLongPressureButton()
         }
         else if(button == B_Menu)
         {
-            if (Menu::OpenedItem()->IsPageSB())
+            if (OpenedItem()->IsPageSB())
             {
-                Menu::CloseOpenedItem();
+                CloseOpenedItem();
             }
             else
             {
-                Menu::Show(!MENU_IS_SHOWN);
-                if (Menu::TypeOpenedItem() != Item_Page)
+                Show(!MENU_IS_SHOWN);
+                if (!OpenedItem()->IsPage())
                 {
-                    Menu::TemporaryEnableStrNavi();
+                    TemporaryEnableStrNavi();
                 }
             }
         }
@@ -466,9 +466,9 @@ void Menu::ProcessingLongPressureButton()
             {
                 item->LongPress();
             }
-            if (Menu::TypeOpenedItem() != Item_Page)
+            if (!OpenedItem()->IsPage())
             {
-                Menu::TemporaryEnableStrNavi();
+                TemporaryEnableStrNavi();
             }
         }
         longPressureButton = B_Empty;
@@ -480,13 +480,13 @@ void Menu::ProcessingRegulatorPress()
 {
     if (pressRegulator != R_Empty)
     {
-        Menu::SetAutoHide(true);
+        SetAutoHide(true);
         if (pressRegulator == R_Set)
         {
-            Menu::Show(!MENU_IS_SHOWN);
-            if (Menu::TypeOpenedItem() != Item_Page)
+            Show(!MENU_IS_SHOWN);
+            if (!OpenedItem()->IsPage())
             {
-                Menu::TemporaryEnableStrNavi();
+                TemporaryEnableStrNavi();
             }
         }
 
@@ -502,29 +502,27 @@ void Menu::ProcessingRegulatorSetRotate()
         return;
     }
 
-    if (MENU_IS_SHOWN || Menu::TypeOpenedItem() != Item_Page)
+    if (MENU_IS_SHOWN || !OpenedItem()->IsPage())
     {
-        Control *item = Menu::CurrentItem();
-        TypeItem type = item->Type();
+        Control *item = CurrentItem();
         static const int step = 2;
-        if (Menu::TypeOpenedItem() == Item_Page && (type == Item_ChoiceReg || type == Item_Governor || type == Item_IP || type == Item_MAC))
+        if (OpenedItem()->IsPage() && (item->IsChoiceReg() || item->IsGovernor() || item->IsIP() || item->IsMAC()))
         {
             if (angleRegSet > step || angleRegSet < -step)
             {
-                Menu::ChangeItem(item, angleRegSet);
+                ChangeItem(item, angleRegSet);
                 angleRegSet = 0;
             }
             return;
         }
         else
         {
-            item = Menu::OpenedItem();
-            type = item->Type();
+            item = OpenedItem();
             if (MenuIsMinimize())
             {
                 CurrentPageSBregSet(angleRegSet);
             }
-            else if (type == Item_Page || type == Item_IP || type == Item_MAC || type == Item_Choice || type == Item_ChoiceReg || type == Item_Governor)
+            else if (item->IsPage() || item->IsIP() || item->IsMAC() || item->IsChoice() || item->IsChoiceReg() || item->IsGovernor())
             {
                 if (item->ChangeOpened(angleRegSet))
                 {
@@ -532,11 +530,11 @@ void Menu::ProcessingRegulatorSetRotate()
                 }
                 return;
             }
-            else if (type == Item_GovernorColor)
+            else if (item->IsGovernorColor())
             {
-                Menu::ChangeItem(item, angleRegSet);
+                ChangeItem(item, angleRegSet);
             }
-            else if (type == Item_Time)
+            else if (item->IsTime())
             {
                 angleRegSet > 0 ? ((Time *)item)->IncCurrentPosition() : ((Time *)item)->DecCurrentPosition();
             }
@@ -598,16 +596,16 @@ void Menu::ShortPress_ChoiceReg(void *choice_)
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     } 
-    else if(Menu::OpenedItem() != choice) 
+    else if(OpenedItem() != choice) 
     {
-        choice->SetCurrent(Menu::CurrentItem() != choice);
+        choice->SetCurrent(CurrentItem() != choice);
     }
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ShortPress_IP(void *item)
 {
-    if (Menu::OpenedItem() == item)
+    if (OpenedItem() == item)
     {
         ((IPaddress*)item)->NextPosition();
     }
@@ -616,7 +614,7 @@ void Menu::ShortPress_IP(void *item)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Menu::ShortPress_MAC(void *item)
 {
-    if (Menu::OpenedItem() == item)
+    if (OpenedItem() == item)
     {
         CircleIncrease<int8>(&gCurDigit, 0, 5);
     }
@@ -661,11 +659,10 @@ bool Menu::NeedForFireSetLED()
 {
     if (!MENU_IS_SHOWN)
     {
-        TypeItem type = Menu::TypeOpenedItem();
-        return (type == Item_ChoiceReg) || (type == Item_Choice) || (type == Item_Governor);
+        return OpenedItem()->IsChoiceReg() || OpenedItem()->IsChoice() || OpenedItem()->IsGovernor();
     }
 
-    NamePage name = Menu::GetNameOpenedPage();
+    NamePage name = GetNameOpenedPage();
     if (
             name == PageSB_Debug_SerialNumber   ||
             name == PageSB_Service_FFT_Cursors  || 
@@ -679,17 +676,15 @@ bool Menu::NeedForFireSetLED()
         return true;
     }
     
-    TypeItem type = Menu::CurrentItem()->Type();
-    if (type == Item_Governor    ||
-        type == Item_ChoiceReg   ||
-        type == Item_GovernorColor)
+    if (CurrentItem()->IsGovernor() ||
+        CurrentItem()->IsChoiceReg()||
+        CurrentItem()->IsGovernorColor())
     {
         return true;
     }
 
-    type = Menu::TypeOpenedItem();
-    if (type == Item_Choice       ||
-        (type == Item_Page && ((const Page *)Menu::OpenedItem())->NumSubPages() > 1)
+    if (OpenedItem()->IsChoice()  ||
+        (OpenedItem()->IsPage() && ((const Page *)OpenedItem())->NumSubPages() > 1)
         )
     {
         return true;
@@ -750,12 +745,6 @@ Control *Menu::OpenedItem()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-TypeItem Menu::TypeOpenedItem()
-{
-    return OpenedItem()->Type();
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 NamePage Menu::GetNameOpenedPage()
 {
     return ((const Page *)OpenedItem())->GetNamePage();
@@ -768,8 +757,7 @@ void *Menu::RetLastOpened(Page *page, TypeItem *type)
     {
         int8 posActItem = page->PosCurrentItem();
         void *item = page->Item(posActItem);
-        TypeItem typeLocal = page->Item(posActItem)->Type();
-        if (typeLocal == Item_Page)
+        if (page->Item(posActItem)->IsPage())
         {
             return RetLastOpened((Page *)item, type);
         }
@@ -799,7 +787,7 @@ Control *Menu::CurrentItem()
 void Menu::CloseOpenedItem()
 {
     Control *item = OpenedItem();
-    if (TypeOpenedItem() == Item_Page)
+    if (item->IsPage())
     {
         if (item->IsPageSB())
         {
@@ -819,14 +807,13 @@ void Menu::CloseOpenedItem()
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Menu::ChangeItem(void *item, int delta)
+void Menu::ChangeItem(Control *item, int delta)
 {
-    TypeItem type = ((Control *)item)->Type();
-    if (type == Item_Choice || type == Item_ChoiceReg)
+    if (item->IsChoice() || item->IsChoiceReg())
     {
         ((Choice *)item)->StartChange(delta);
     }
-    else if (type == Item_Governor)
+    else if (item->IsGovernor())
     {
         Governor *governor = (Governor*)item;
         if (OpenedItem() != governor)
@@ -838,7 +825,7 @@ void Menu::ChangeItem(void *item, int delta)
             governor->ChangeValue(delta);
         }
     }
-    else if (type == Item_GovernorColor)
+    else if (item->IsGovernorColor())
     {
         ((GovernorColor *)item)->ChangeValue(delta);
     }
