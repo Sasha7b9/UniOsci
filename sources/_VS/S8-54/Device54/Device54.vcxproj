@@ -372,7 +372,6 @@
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
     <ClCompile Include="..\..\..\common\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
-    <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItemsGraphics.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItemsLogic.cpp" />

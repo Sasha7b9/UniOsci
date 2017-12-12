@@ -701,9 +701,6 @@
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp">
       <Filter>Menu</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\common\Menu\MenuDrawing.cpp">
-      <Filter>Menu</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp">
       <Filter>Menu</Filter>
     </ClCompile>

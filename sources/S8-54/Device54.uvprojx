@@ -1366,11 +1366,6 @@
               <FilePath>..\common\Menu\Menu.h</FilePath>
             </File>
             <File>
-              <FileName>MenuDrawing.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Menu\MenuDrawing.cpp</FilePath>
-            </File>
-            <File>
               <FileName>MenuItemsGraphics.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Menu\MenuItemsGraphics.cpp</FilePath>
