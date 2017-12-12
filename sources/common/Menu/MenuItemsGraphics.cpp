@@ -451,7 +451,7 @@ void Choice::DrawOpened(int x, int y)
 {
     int height = HeightOpened();
 
-    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3, gColorBack);
+    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3, height + 3, Color::BACK);
 
     DrawGovernorChoiceColorFormulaHiPart(this, x - 1, y - 1, IsPressed(), false, true);
     Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1, height + 1, Color::MenuTitle(false));
@@ -617,7 +617,7 @@ void Time::DrawOpened(int x, int y)
 
     int width = MI_WIDTH_VALUE + 3;
     int height = 61;
-    Painter::DrawRectangle(x - 1, y - 1, width + 2, height + 3, gColorBack);
+    Painter::DrawRectangle(x - 1, y - 1, width + 2, height + 3, Color::BACK);
     DrawGovernorChoiceColorFormulaHiPart(this, x - 1, y - 1, IsPressed(), false, true);
 
     Painter::DrawRectangle(x - 1, y, width + 1, height + 1, Color::MenuTitle(false));
@@ -765,7 +765,7 @@ static void GovernorIpCommon_DrawOpened(Control *item, int x, int y, int dWidth)
 {
     int height = 34;
     Control *control = (Control *)item;
-    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3 + dWidth, height + 3, gColorBack);
+    Painter::DrawRectangle(x - 2, y - 1, MP_TITLE_WIDTH + 3 + dWidth, height + 3, Color::BACK);
     Painter::DrawRectangle(x - 1, y, MP_TITLE_WIDTH + 1 + dWidth, height + 1, Color::MenuTitle(false));
     Painter::DrawHLine(y + MOI_HEIGHT_TITLE - 1, x, x + MOI_WIDTH + dWidth);
     DrawGovernorChoiceColorFormulaHiPart(item, x - 1, y - 1, control->IsPressed(), false, true);

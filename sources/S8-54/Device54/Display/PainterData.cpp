@@ -223,7 +223,7 @@ static void DrawData_ModeROM()
         int x0 = x + 3;
         int y0 = y + 3;
 
-        Painter::FillRegion(x, y, width, height, gColorBack);
+        Painter::FillRegion(x, y, width, height, Color::BACK);
         Painter::DrawBigText(x0 + 2, y0 + 2, 2, str1[LANG], Color::FILL);
         Painter::DrawBigText(x0 + 2, y0 + 20, 2, str2[LANG]);
         char buffer[100];
@@ -489,7 +489,7 @@ static void DrawLimitLabel(int delta)
         y = GRID_TOP + delta;
     }
 
-    Painter::FillRegion(x, y, width, height, gColorBack);
+    Painter::FillRegion(x, y, width, height, Color::BACK);
     Painter::DrawRectangle(x, y, width, height, color);
     Painter::DrawStringInCenterRect(x, y, width, height, "Сигнал за пределами экрана");
 }
@@ -522,7 +522,7 @@ void PainterData::DrawMath()
     static const int HEIGHT = 10;
     int delta = (SHOW_STRING_NAVI_ALL && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
     Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, Color::FILL);
-    Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, gColorBack);
+    Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, Color::BACK);
     Divider divider = set.math_Divider;
     Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, divider), Color::FILL);
     Painter::DrawText(Grid::Left() + 25, Grid::MathTop() + 1 + delta, ":");
@@ -941,7 +941,7 @@ static void DrawTPos(int leftX, int rightX)
 {
     int x[] = {leftX, (rightX - leftX) / 2 + leftX, rightX};
     int x0 = x[TPOS];
-    Painter::FillRegion(x0 - 3, 10, 6, 6, gColorBack);
+    Painter::FillRegion(x0 - 3, 10, 6, 6, Color::BACK);
     Painter::DrawChar(x0 - 3, 10, SYMBOL_TPOS_1, Color::FILL);
 }
 
@@ -977,9 +977,9 @@ static void DrawTShift(int leftX, int rightX, int numBytes)
         dY11 = 5; dY12 = 7;
     }
 
-    Painter::FillRegion((int)xShift - 1, 1, 6, 6, gColorBack);
+    Painter::FillRegion((int)xShift - 1, 1, 6, 6, Color::BACK);
     Painter::FillRegion((int)xShift, 2, 4, 4, Color::FILL);
-    Painter::DrawLine((int)xShift + dX01, 3, (int)xShift + dX11, dY11 - 2, gColorBack);
+    Painter::DrawLine((int)xShift + dX01, 3, (int)xShift + dX11, dY11 - 2, Color::BACK);
     Painter::DrawLine((int)xShift + dX02, 4, (int)xShift + 2, dY12 - 2);
 }
 

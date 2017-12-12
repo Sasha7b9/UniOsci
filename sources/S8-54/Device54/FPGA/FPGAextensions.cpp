@@ -813,7 +813,7 @@ void FPGA::FreqMeter_Draw(int x, int y)
     int width = 68;
     int height = 19;
 
-    Painter::FillRegion(x + 1, y + 1, width - 2, height - 2, gColorBack);
+    Painter::FillRegion(x + 1, y + 1, width - 2, height - 2, Color::BACK);
     Painter::DrawRectangle(x, y, width, height, Color::Trig());
 
     Painter::DrawText(x + 2, y + 1, "F =");
@@ -1110,8 +1110,8 @@ static void FuncDrawAutoFind()
     int height = 60;
     int x = 160 - width / 2;
     int y = 120 - height / 2;
-    Painter::BeginScene(gColorBack);
-    Painter::FillRegion(x, y, width, height, gColorBack);
+    Painter::BeginScene(Color::BACK);
+    Painter::FillRegion(x, y, width, height, Color::BACK);
     Painter::DrawRectangle(x, y, width, height, Color::FILL);
     Painter::DrawStringInCenterRect(x, y, width, height - 20, "Идёт поиск сигнала. Подождите");
     

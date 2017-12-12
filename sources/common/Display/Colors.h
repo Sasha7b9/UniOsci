@@ -6,13 +6,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color;
 
-extern Color gColorBack;
 extern Color gColorGrid;
 extern Color gColorChan[4];
-
-#define COLOR_BACK gColorBack
-#define COLOR_GRID gColorGrid
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color
@@ -40,6 +35,7 @@ public:
     static const uint8 INVERSE              = 19;
 
     static Color FILL;
+    static Color BACK;
 
     Color(uint8 val) : value(val) { };
 
@@ -51,7 +47,6 @@ public:
     static Color BorderMenu(bool shade);    ///< Цвет окантовки меню
     static Color LightShadingText();        ///< Светлый цвет в тени.
     static Color Contrast(Color color);     ///< Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-    inline static Color Back() { return gColorBack; };
     inline static Color Grid() { return gColorGrid; };
     inline static Color Chan(Channel ch) { return gColorChan[ch]; }
     

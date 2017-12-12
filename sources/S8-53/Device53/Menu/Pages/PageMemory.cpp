@@ -500,7 +500,7 @@ static void DrawMemoryWave(int num, bool exist)
     int x = Grid::Left() + 2 + num * 12;
     int y = Grid::FullBottom() - 10;
     int width = 12;
-    Painter::FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? Color::FLASH_10 : Color::Back());
+    Painter::FillRegion(x, y, width, 10, num == gMemory.currentNumIntSignal ? Color::FLASH_10 : Color::BACK);
     Painter::DrawRectangle(x, y, width, 10, Color::FILL);
     Painter::SetColor(num == gMemory.currentNumIntSignal ? Color::FLASH_01 : Color::FILL);
     if (exist)
@@ -818,7 +818,7 @@ void DrawSetName()
     int height = 80;
 
     Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
-    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::BACK);
 
     int index = 0;
     int position = 0;
@@ -894,7 +894,7 @@ void DrawSetMask()
     int height = 160;
 
     Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
-    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::Back());
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::BACK);
 
     int index = 0;
     int position = 0;
@@ -1006,7 +1006,7 @@ static void FuncDrawingAdditionSPageMemoryLast()
 
     int width = 40;
     int height = 10;
-    Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, Color::Back());
+    Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, Color::BACK);
     Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, Color::FILL);
     Painter::DrawText(Grid::Right() - width + 2, GRID_TOP + 1, Int2String(gMemory.currentNumLatestSignal + 1, false, 3, buffer));
     Painter::DrawText(Grid::Right() - width + 17, GRID_TOP + 1, "/");

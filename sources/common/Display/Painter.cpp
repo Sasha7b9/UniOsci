@@ -729,11 +729,11 @@ static void CalculateColor(uint8 *color)
     currentColor = (Color)*color;
     if (*color == Color::FLASH_10)
     {
-        *color = inverseColors ? gColorBack.value : Color::FILL.value;
+        *color = inverseColors ? Color::BACK.value : Color::FILL.value;
     }
     else if (*color == Color::FLASH_01)
     {
-        *color = inverseColors ? Color::FILL.value : gColorBack.value;
+        *color = inverseColors ? Color::FILL.value : Color::BACK.value;
     }
 }
 
@@ -742,11 +742,11 @@ void Painter::CalculateCurrentColor()
 {
     if (currentColor == Color::FLASH_10)
     {
-        SetColor(inverseColors ? gColorBack : Color::FILL);
+        SetColor(inverseColors ? Color::BACK : Color::FILL);
     }
     else if (currentColor == Color::FLASH_01)
     {
-        SetColor(inverseColors ? Color::FILL : gColorBack);
+        SetColor(inverseColors ? Color::FILL : Color::BACK);
     }
 }
 

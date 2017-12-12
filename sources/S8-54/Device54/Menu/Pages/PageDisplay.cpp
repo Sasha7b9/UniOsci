@@ -18,7 +18,7 @@ extern const PageBase ppGrid;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PageService_InitGlobalColors()
 {
-    gColorBack = BACKGROUND_BLACK ? Color::BLACK : Color::WHITE;
+    Color::BACK = BACKGROUND_BLACK ? Color::BLACK : Color::WHITE;
     Color::FILL = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
     gColorGrid = BACKGROUND_BLACK ? Color::GRID : Color::GRID_WHITE;
     gColorChan[A] = BACKGROUND_BLACK ? Color::DATA_A : Color::DATA_WHITE_ACCUM_A;

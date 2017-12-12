@@ -61,8 +61,8 @@ static void DrawHintItem(int x, int y, int width)
     {
         y -= 9;
     }
-    Painter::DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, gColorBack, Color::FILL);
-    y = Painter::DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], gColorBack, Color::FILL);
+    Painter::DrawStringInCenterRectAndBoundItC(x, y, width, 15, title, Color::BACK, Color::FILL);
+    y = Painter::DrawTextInBoundedRectWithTransfers(x, y + 15, width, item->titleHint[2 + lang], Color::BACK, Color::FILL);
     if (item->type == Item_SmallButton)
     {
         Painter::DrawHintsForSmallButton(x, y, width, (SButton*)item);
@@ -80,7 +80,7 @@ void Menu::DrawTitlePage(Page *page, int layer, int yTop)
     }
     int height = page->HeightOpened();
     bool shade = page->CurrentItemIsOpened();
-    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, gColorBack);
+    Painter::FillRegion(x - 1, yTop, MP_TITLE_WIDTH + 2, height + 2, Color::BACK);
     Painter::DrawRectangle(x, yTop, MP_TITLE_WIDTH + 1, height + 1, Color::BorderMenu(shade));
 
     if (shade)
@@ -346,7 +346,7 @@ void Menu::Draw()
                 Painter::DrawVLine(CalculateX(0), GRID_TOP + 1, GRID_TOP + 34, Color::BorderMenu(false));
                 Painter::DrawVLine(CalculateX(0) + 1, GRID_TOP + 1, GRID_TOP + 34);
                 Painter::DrawVLine(GRID_RIGHT, GRID_TOP + 30, GRID_TOP + 40, Color::FILL);
-                Painter::DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, gColorBack);
+                Painter::DrawVLine(CalculateX(0) - 1, GRID_TOP + 1, GRID_TOP + 35, Color::BACK);
                 Painter::DrawHLine(GRID_TOP + 35, CalculateX(0) - 1, GRID_RIGHT - 1);
             }
             else if (IS_GOVERNOR(item))
@@ -372,11 +372,11 @@ void Menu::Draw()
                                                    "„тобы выключить этот режим, нажмите кнопку ѕќћќў№ и удерживайте еЄ в течение 0.5с." :
                                                    "Mode is activated hints. In this mode, pressing the button displays the information on its purpose. "
                                                    "To disable this mode, press the button HELP and hold it for 0.5s.",
-                                                   gColorBack, Color::FILL);
+                                                   Color::BACK, Color::FILL);
         y += LANG_RU ? 49 : 40;
         if (gStringForHint)
         {
-            Painter::DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, gColorBack, Color::WHITE);
+            Painter::DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, Color::BACK, Color::WHITE);
         }
         else if (gItemHint)
         {

@@ -54,7 +54,7 @@ void Display::Init()
     PainterMem_FillRect(0, 0, 99, 99, ColorChannel(A));
     PainterMem_DrawRectangle(10, 10, 10, 30, Color::FILL);
     PainterMem_DrawHLine(90, 10, 90, ColorChannel(B));
-    PainterMem_DrawVLine(90, 10, 90, Color::Back());
+    PainterMem_DrawVLine(90, 10, 90, Color::BACK);
     PainterMem_DrawRectangle(0, 0, 99, 99, Color::FILL);
     */
 
@@ -91,7 +91,7 @@ void DrawStringNavigation()
         int length = Font_GetLengthText(string);
         int height = 10;
         Painter::DrawRectangle(Grid::Left(), GRID_TOP, length + 2, height, Color::FILL);
-        Painter::FillRegion(Grid::Left() + 1, GRID_TOP + 1, length, height - 2, Color::Back());
+        Painter::FillRegion(Grid::Left() + 1, GRID_TOP + 1, length, height - 2, Color::BACK);
         Painter::DrawText(Grid::Left() + 2, GRID_TOP + 1, string, Color::FILL);
     }
 }
@@ -433,7 +433,7 @@ void Display::DrawMath()
     static const int HEIGHT = 10;
     int delta = (SHOW_STRING_NAVIGATION && FUNC_MODE_DRAW_IS_TOGETHER) ? 10 : 0;
     Painter::DrawRectangle(Grid::Left(), Grid::MathTop() + delta, WIDTH, HEIGHT, Color::FILL);
-    Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, Color::Back());
+    Painter::FillRegion(Grid::Left() + 1, Grid::MathTop() + 1 + delta, WIDTH - 2, HEIGHT - 2, Color::BACK);
     Divider multiplier = MATH_MULTIPLIER;
     Painter::DrawText(Grid::Left() + 2, Grid::MathTop() + 1 + delta, sChannel_Range2String(SET_RANGE_MATH, multiplier), Color::FILL);
     Painter::DrawText(Grid::Left() + 25, Grid::MathTop() + 1 + delta, ":");
@@ -526,7 +526,7 @@ void Display::DrawSpectrum()
         return;
     }
 
-    Painter::DrawVLine(Grid::Right(), Grid::ChannelBottom() + 1, Grid::MathBottom() - 1, Color::Back());
+    Painter::DrawVLine(Grid::Right(), Grid::ChannelBottom() + 1, Grid::MathBottom() - 1, Color::BACK);
 
     if (MODE_WORK_IS_DIR)
     {
@@ -1009,16 +1009,16 @@ void DrawMemoryWindow()
     int x0 = x[TPOS];
 
     // Маркер TPos
-    Painter::FillRegion(x0 - 3, 9, 6, 6, Color::Back());
+    Painter::FillRegion(x0 - 3, 9, 6, 6, Color::BACK);
     Painter::DrawChar(x0 - 3, 9, SYMBOL_TPOS_1, Color::FILL);
 
     // Маркер tShift
     float scale = (float)(rightX - leftX + 1) / ((float)sMemory_GetNumPoints(false) - (sMemory_GetNumPoints(false) == 281 ? 1 : 0));
     float xShift = 1 + (sTime_TPosInPoints((PeackDetMode)gDSet->peakDet, (int)gDSet->length1channel, TPOS) - sTime_TShiftInPoints((PeackDetMode)gDSet->peakDet)) * scale;
 
-    Painter::FillRegion((int)xShift - 1, 3, 6, 6, Color::Back());
+    Painter::FillRegion((int)xShift - 1, 3, 6, 6, Color::BACK);
     Painter::FillRegion((int)xShift, 4, 4, 4, Color::FILL);
-    Painter::SetColor(Color::Back());
+    Painter::SetColor(Color::BACK);
     if(xShift < leftX - 2)
     {
         xShift = (float)(leftX - 2);
@@ -1099,7 +1099,7 @@ void Display::WriteCursors()
                 int width = 65;
                 int x = Grid::Right() - width;
                 Painter::DrawRectangle(x, GRID_TOP, width, 12, Color::FILL);
-                Painter::FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, Color::Back());
+                Painter::FillRegion(x + 1, GRID_TOP + 1, width - 2, 10, Color::BACK);
                 Painter::DrawText(x + 1, GRID_TOP + 2, "1/dT=", colorText);
                 char buffer[20];
                 Painter::DrawText(x + 25, GRID_TOP + 2, Freq2String(1.0f / delta, false, buffer));
@@ -1126,7 +1126,7 @@ void Display::DrawHiRightPart()
         if (gBF.trigEnable == 1)
         {
             Painter::FillRegion(x, 1 + y, GRID_TOP - 3, GRID_TOP - 7);
-            Painter::DrawText(x + 3, 3 + y, set.common.lang == Russian ? "СИ" : "Tr", Color::Back());
+            Painter::DrawText(x + 3, 3 + y, set.common.lang == Russian ? "СИ" : "Tr", Color::BACK);
         }
     }
 
@@ -1230,7 +1230,7 @@ extern uint8 *pool;
 void Display::Update()
 {
     /*
-    Painter::BeginScene(Color::Back());
+    Painter::BeginScene(Color::BACK);
 
     static int x = 0;
 
@@ -1259,7 +1259,7 @@ void Display::Update()
 
     if (needClear)
     {
-        Painter::BeginScene(Color::Back());
+        Painter::BeginScene(Color::BACK);
         DrawMemoryWindow();
         DrawFullGrid();
     }
@@ -1343,7 +1343,7 @@ void Display::WriteValueTrigLevel()
         int x = (Grid::Width() - width) / 2 + Grid::Left();
         int y = Grid::BottomMessages() - 20;
         Painter::DrawRectangle(x, y, width, 10, Color::FILL);
-        Painter::FillRegion(x + 1, y + 1, width - 2, 8, Color::Back());
+        Painter::FillRegion(x + 1, y + 1, width - 2, 8, Color::BACK);
         Painter::DrawText(x + 2, y + 1, buffer, Color::FILL);
     }
 }
@@ -1659,7 +1659,7 @@ void Display::DrawCursorTrigLevel()
     const char simbols[3] = {'1', '2', 'В'};
     int dY = 0;
     
-    Painter::DrawChar(x + 5, y - 9 + dY, simbols[TRIGSOURCE], Color::Back());
+    Painter::DrawChar(x + 5, y - 9 + dY, simbols[TRIGSOURCE], Color::BACK);
     Painter::SetFont(TypeFont_8);
 
     if (gBF.drawRShiftMarkers == 1 && !MenuIsMinimize())
@@ -1674,7 +1674,7 @@ void Display::DrawCursorTrigLevel()
         int yFull = (int)(GRID_TOP + DELTA + height - scale * (shiftFull - RShiftMin - TrigLevMin) - 4);
         Painter::FillRegion(left + 2, yFull + 1, 4, 6, Color::Trig());
         Painter::SetFont(TypeFont_5);
-        Painter::DrawChar(left + 3, yFull - 5 + dY, simbols[TRIGSOURCE], Color::Back());
+        Painter::DrawChar(left + 3, yFull - 5 + dY, simbols[TRIGSOURCE], Color::BACK);
         Painter::SetFont(TypeFont_8);
     }
 }
@@ -1690,7 +1690,7 @@ void Display::DrawCursorRShift(Channel chan)
         float scale = (float)Grid::MathHeight() / 960;
         int y = (int)((Grid::MathTop() + Grid::MathBottom()) / 2 - scale * (rShift - RShiftZero));
         Painter::DrawChar(x - 9, y - 4, SYMBOL_RSHIFT_NORMAL, Color::FILL);
-        Painter::DrawChar(x - 8, y - 5, 'm', Color::Back());
+        Painter::DrawChar(x - 8, y - 5, 'm', Color::BACK);
         return;
     }
     if(!sChannel_Enabled(chan))
@@ -1735,9 +1735,9 @@ void Display::DrawCursorRShift(Channel chan)
     if((!MenuIsMinimize() || !MenuIsShown()) && gBF.drawRShiftMarkers == 1)
     {
         Painter::FillRegion(4, yFull - 3, 4, 6, Color::Chan(chan));
-        Painter::DrawChar(5, yFull - 9 + dY, chan == A ? '1' : '2', Color::Back());
+        Painter::DrawChar(5, yFull - 9 + dY, chan == A ? '1' : '2', Color::BACK);
     }
-    Painter::DrawChar((int)(x - 7), (int)(y - 9 + dY), chan == A ? '1' : '2', Color::Back());
+    Painter::DrawChar((int)(x - 7), (int)(y - 9 + dY), chan == A ? '1' : '2', Color::BACK);
     Painter::SetFont(TypeFont_8);
 }
 
@@ -1755,7 +1755,7 @@ void Display::DrawCursorTShift()
     int x = (int)(gridLeft + shiftTPos * scale - 3);
     if (IntInRange(x + 3, gridLeft, Grid::Right() + 1))
     {
-        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, Color::Back(), Color::FILL);
+        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TPOS_2, SYMBOL_TPOS_3, Color::BACK, Color::FILL);
     };
 
     // Рисуем tShift
@@ -1763,17 +1763,17 @@ void Display::DrawCursorTShift()
     if(IntInRange(shiftTShift, firstPoint, lastPoint))
     {
         int x = gridLeft + shiftTShift - firstPoint - 3;
-        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, Color::Back(), Color::FILL);
+        Painter::Draw2SymbolsC(x, GRID_TOP - 1, SYMBOL_TSHIFT_NORM_1, SYMBOL_TSHIFT_NORM_2, Color::BACK, Color::FILL);
     }
     else if(shiftTShift < firstPoint)
     {
-        Painter::Draw2SymbolsC(gridLeft + 1, GRID_TOP, SYMBOL_TSHIFT_LEFT_1, SYMBOL_TSHIFT_LEFT_2, Color::Back(), Color::FILL);
-        Painter::DrawLine(Grid::Left() + 9, GRID_TOP + 1, Grid::Left() + 9, GRID_TOP + 7, Color::Back());
+        Painter::Draw2SymbolsC(gridLeft + 1, GRID_TOP, SYMBOL_TSHIFT_LEFT_1, SYMBOL_TSHIFT_LEFT_2, Color::BACK, Color::FILL);
+        Painter::DrawLine(Grid::Left() + 9, GRID_TOP + 1, Grid::Left() + 9, GRID_TOP + 7, Color::BACK);
     }
     else if(shiftTShift > lastPoint)
     {
-        Painter::Draw2SymbolsC(Grid::Right() - 8, GRID_TOP, SYMBOL_TSHIFT_RIGHT_1, SYMBOL_TSHIFT_RIGHT_2, Color::Back(), Color::FILL);
-        Painter::DrawLine(Grid::Right() - 9, GRID_TOP + 1, Grid::Right() - 9, GRID_TOP + 7, Color::Back());
+        Painter::Draw2SymbolsC(Grid::Right() - 8, GRID_TOP, SYMBOL_TSHIFT_RIGHT_1, SYMBOL_TSHIFT_RIGHT_2, Color::BACK, Color::FILL);
+        Painter::DrawLine(Grid::Right() - 9, GRID_TOP + 1, Grid::Right() - 9, GRID_TOP + 7, Color::BACK);
     }
 }
 
@@ -1888,11 +1888,11 @@ void Display::DrawMeasures()
             int x = x0 + dX * elem;
             int y = y0 + str * dY;
             bool active = Measures::IsActive(str, elem) && Menu::GetNameOpenedPage() == PageSB_Measures_Tune;
-            Color color = active ? Color::Back() : Color::FILL;
+            Color color = active ? Color::BACK : Color::FILL;
             Meas meas = Measures::Type(str, elem);
             if(meas != Meas_None)
             {
-                Painter::FillRegion(x, y, dX, dY, Color::Back());
+                Painter::FillRegion(x, y, dX, dY, Color::BACK);
                 Painter::DrawRectangle(x, y, dX, dY, Color::FILL);
                 gBF.topMeasures = Math::MinFrom2Int(gBF.topMeasures, y);
             }
@@ -1906,8 +1906,8 @@ void Display::DrawMeasures()
                 Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), color);
                 if(meas == MEAS_MARKED)
                 {
-                    Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::Back() : Color::FILL);
-                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::FILL : Color::Back());
+                    Painter::FillRegion(x + 1, y + 1, dX - 2, 9, active ? Color::BACK : Color::FILL);
+                    Painter::DrawText(x + 4, y + 2, Measures::Name(str, elem), active ? Color::FILL : Color::BACK);
                 }
                 if(SOURCE_MEASURE_IS_A)
                 {
@@ -2204,7 +2204,7 @@ void Display::DrawTimeForFrame(uint timeTicks)
     }
 
     Painter::DrawRectangle(Grid::Left(), Grid::FullBottom() - 10, 84, 10, Color::FILL);
-    Painter::FillRegion(Grid::Left() + 1, Grid::FullBottom() - 9, 82, 8, Color::Back());
+    Painter::FillRegion(Grid::Left() + 1, Grid::FullBottom() - 9, 82, 8, Color::BACK);
     Painter::DrawText(Grid::Left() + 2, Grid::FullBottom() - 9, buffer, Color::FILL);
 
     char message[20] = {0};
@@ -2299,7 +2299,7 @@ void Display::RemoveAddDrawFunction()
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Clear()
 {
-    Painter::FillRegion(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, Color::Back());
+    Painter::FillRegion(0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 2, Color::BACK);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -2489,7 +2489,7 @@ void Display::DrawConsole()
     for(int numString = firstString; numString <= lastString; numString++)
     {
         int width = Font_GetLengthText(strings[numString]);
-        Painter::FillRegion(Grid::Left() + 1, GRID_TOP + 1 + count * (height + 1) + delta, width, height + 1, Color::Back());
+        Painter::FillRegion(Grid::Left() + 1, GRID_TOP + 1 + count * (height + 1) + delta, width, height + 1, Color::BACK);
         int y = GRID_TOP + 5 + count * (height + 1) - 4;
         if(Font_GetSize() == 5)
         {
@@ -2596,7 +2596,7 @@ void DrawStringInRectangle(int x, int y, char const *text)
     int width = Font_GetLengthText(text);
     int height = 8;
     Painter::DrawRectangle(Grid::Left(), y, width + 4, height + 4, Color::FILL);
-    Painter::DrawRectangle(Grid::Left() + 1, y + 1, width + 2, height + 2, Color::Back());
+    Painter::DrawRectangle(Grid::Left() + 1, y + 1, width + 2, height + 2, Color::BACK);
     Painter::FillRegion(Grid::Left() + 2, y + 2, width, height, Color::FLASH_10);
     Painter::DrawText(Grid::Left() + 3, y + 2, text, Color::FLASH_01);
 }

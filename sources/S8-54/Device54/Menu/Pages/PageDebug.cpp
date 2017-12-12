@@ -215,7 +215,7 @@ static void Draw_Console_SizeSettings(int x, int y)
 {
     char buffer[30];
     sprintf(buffer, "Ğàçì.íàñòğ. %d", sizeof(Settings));
-    Painter::DrawText(x + 6, y + 13, buffer, gColorBack);
+    Painter::DrawText(x + 6, y + 13, buffer, Color::BACK);
 }
 
 DEF_BUTTON(     bConsole_SizeSettings,                                                                   //--- ÎÒËÀÄÊÀ - ÊÎÍÑÎËÜ - Ğàçìåğ íàñòğîåê ---
@@ -806,7 +806,7 @@ DEF_SMALL_BUTTON_EXIT(  bSettings_Exit,                                         
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void DebugShowSetInfo_Draw()
 {
-    Painter::BeginScene(gColorBack);
+    Painter::BeginScene(Color::BACK);
     Painter::DrawRectangle(0, 0, 319, 239, Color::FILL);
 
     int x0 = 30;
@@ -1002,7 +1002,7 @@ static void Draw_EnterSerialNumber()
     int height = 160;
 
     Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
-    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::BACK);
 
     int deltaX = 10;
 
@@ -1014,7 +1014,7 @@ static void Draw_EnterSerialNumber()
     snprintf(buffer, 19, "%02d", s->number);
 
     Color colorText = Color::FILL;
-    Color colorBackground = gColorBack;
+    Color colorBackground = Color::BACK;
 
     if (selNumber)
     {
@@ -1033,7 +1033,7 @@ static void Draw_EnterSerialNumber()
     if (selNumber)
     {
         colorText = Color::FILL;
-        colorBackground = gColorBack;
+        colorBackground = Color::BACK;
     }
 
     snprintf(buffer, 19, "%04d", s->year);

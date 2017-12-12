@@ -221,7 +221,7 @@ void FPGA::ProcedureCalibration()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FuncAttScreen()
 {
-    Painter::BeginScene(gColorBack);
+    Painter::BeginScene(Color::BACK);
 
     static bool first = true;
     static uint startTime = 0;

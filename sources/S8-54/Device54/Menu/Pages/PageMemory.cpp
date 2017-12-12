@@ -221,7 +221,7 @@ static void OnDraw_Last()
 
     int width = 40;
     int height = 10;
-    Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, gColorBack);
+    Painter::FillRegion(Grid::Right() - width, GRID_TOP, width, height, Color::BACK);
     Painter::DrawRectangle(Grid::Right() - width, GRID_TOP, width, height, Color::FILL);
     Painter::DrawText(Grid::Right() - width + 2, GRID_TOP + 1, Int2String(NUM_RAM_SIGNAL + 1, false, 3, buffer));
     Painter::DrawText(Grid::Right() - width + 17, GRID_TOP + 1, "/");
@@ -514,7 +514,7 @@ static void DrawSetMask()
     int height = 160;
 
     Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
-    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::BACK);
 
     int index = 0;
     int position = 0;
@@ -686,7 +686,7 @@ static void DrawSetName()
     int height = 80;
 
     Painter::DrawRectangle(x0, y0, width, height, Color::FILL);
-    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, gColorBack);
+    Painter::FillRegion(x0 + 1, y0 + 1, width - 2, height - 2, Color::BACK);
 
     int index = 0;
     int position = 0;
@@ -822,7 +822,7 @@ static void Draw_Internal_ModeShow_Saved(int x, int y)
 static void Draw_Internal_ModeShow_Both(int x, int y)
 {
     Painter::DrawText(x + 1, y + 5, "наю");
-    Painter::DrawVLine(x + 1, y + 2, y + 14, gColorBack);
+    Painter::DrawVLine(x + 1, y + 2, y + 14, Color::BACK);
     Painter::DrawVLine(x + 2, y + 6, y + 11, Color::FILL);
 }
 
@@ -960,7 +960,7 @@ static void DrawMemoryWave(int num, bool exist)
     int x = Grid::Left() + 2 + num * 12;
     int y = Grid::FullBottom() - 10;
     int width = 12;
-    Painter::FillRegion(x, y, width, 10, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : gColorBack);
+    Painter::FillRegion(x, y, width, 10, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : Color::BACK);
     Painter::DrawRectangle(x, y, width, 10, Color::FILL);
     Painter::SetColor(num == NUM_ROM_SIGNAL ? Color::FLASH_01 : Color::FILL);
     if (exist)

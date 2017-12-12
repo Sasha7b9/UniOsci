@@ -33,7 +33,7 @@ static void DrawPageContent()
         const char *title = page->titleHint[LANG];
         if(currentParagraph == numPage)
         {
-            Painter::DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, gColorBack, 2, Color::FILL);
+            Painter::DrawStringInCenterRectOnBackgroundC(0, y, WIDTH, 10, title, Color::BACK, 2, Color::FILL);
         }
         else
         {
@@ -54,7 +54,7 @@ static void DrawPageDescription()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HelpContent_Draw()
 {
-    Painter::FillRegion(Grid::Right(), 0, 319 - Grid::Right(), 20, gColorBack);
+    Painter::FillRegion(Grid::Right(), 0, 319 - Grid::Right(), 20, Color::BACK);
     Painter::FillRegion(Grid::Right(), 219, 319 - Grid::Right(), 21);
     Painter::FillRegion(1, 1, WIDTH, 237);
     Painter::DrawRectangle(1, 0, WIDTH + 1, 239, Color::FILL);   /** \todo Здесь непонятно, почему так. Координаты верхнего левого угла должны быть 

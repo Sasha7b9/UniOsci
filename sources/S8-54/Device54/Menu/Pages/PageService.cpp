@@ -27,7 +27,7 @@ extern const PageBase ppInformation;
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Draw_ResetSettings()
 {
-    Painter::BeginScene(gColorBack);
+    Painter::BeginScene(Color::BACK);
 
     Painter::DrawTextInRectWithTransfersC(30, 110, 300, 200, "Подтвердите сброс настроек нажатием кнопки ПУСК/СТОП.\n"
                                          "Нажмите любую другую кнопку, если сброс не нужен.", Color::FILL);
@@ -818,7 +818,7 @@ DEF_CHOICE_2(       cLanguage,                                                  
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void Information_Draw()
 {
-    Painter::BeginScene(gColorBack);
+    Painter::BeginScene(Color::BACK);
     int x = 100;
     int dY = 20;
     int y = 20;
