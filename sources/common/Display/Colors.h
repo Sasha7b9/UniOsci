@@ -6,36 +6,36 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color;
 
-extern Color gColorGrid;
+#define COLOR_BLACK               (uint8)0
+#define COLOR_WHITE               (uint8)1
+#define COLOR_GRID                (uint8)2
+#define COLOR_DATA_A              (uint8)3
+#define COLOR_DATA_B              (uint8)4
+#define COLOR_MENU_FIELD          (uint8)5
+#define COLOR_MENU_TITLE          (uint8)6
+#define COLOR_MENU_TITLE_DARK     (uint8)7
+#define COLOR_MENU_TITLE_BRIGHT   (uint8)8
+#define COLOR_MENU_ITEM           (uint8)9
+#define COLOR_MENU_ITEM_DARK     (uint8)10
+#define COLOR_MENU_ITEM_BRIGHT   (uint8)11
+#define COLOR_DATA_WHITE_ACCUM_A (uint8)12   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
+#define COLOR_DATA_WHITE_ACCUM_B (uint8)13
+#define COLOR_GRID_WHITE         (uint8)14
+#define COLOR_EMPTY              (uint8)15
+#define COLOR_NUMBER             (uint8)16
+#define COLOR_FLASH_10           (uint8)17
+#define COLOR_FLASH_01           (uint8)18
+#define COLOR_INVERSE            (uint8)19
+
 extern Color gColorChan[4];
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Color
 {
 public:
-    static const uint8 BLACK                = 0;
-    static const uint8 WHITE                = 1;
-    static const uint8 GRID                 = 2;
-    static const uint8 DATA_A               = 3;
-    static const uint8 DATA_B               = 4;
-    static const uint8 MENU_FIELD           = 5;
-    static const uint8 MENU_TITLE           = 6;
-    static const uint8 MENU_TITLE_DARK      = 7;
-    static const uint8 MENU_TITLE_BRIGHT    = 8;
-    static const uint8 MENU_ITEM            = 9;
-    static const uint8 MENU_ITEM_DARK       = 10;
-    static const uint8 MENU_ITEM_BRIGHT     = 11;
-    static const uint8 DATA_WHITE_ACCUM_A   = 12;   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
-    static const uint8 DATA_WHITE_ACCUM_B   = 13;
-    static const uint8 GRID_WHITE           = 14;
-    static const uint8 EMPTY                = 15;
-    static const uint8 NUMBER               = 16;
-    static const uint8 FLASH_10             = 17;
-    static const uint8 FLASH_01             = 18;
-    static const uint8 INVERSE              = 19;
-
     static Color FILL;
     static Color BACK;
+    static Color GRID;
 
     Color(uint8 val) : value(val) { };
 
@@ -47,7 +47,6 @@ public:
     static Color BorderMenu(bool shade);    ///< Цвет окантовки меню
     static Color LightShadingText();        ///< Светлый цвет в тени.
     static Color Contrast(Color color);     ///< Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-    inline static Color Grid() { return gColorGrid; };
     inline static Color Chan(Channel ch) { return gColorChan[ch]; }
     
     uint8 value;

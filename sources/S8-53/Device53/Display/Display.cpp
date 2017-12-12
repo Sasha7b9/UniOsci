@@ -1360,7 +1360,7 @@ void DrawGridSpectrum()
         for (int i = 1; i < numParts; i++)
         {
             int y = (int)(Grid::MathTop() + i * scale);
-            Painter::DrawHLine(y, Grid::Left(), Grid::Left() + 256, Color::GRID);
+            Painter::DrawHLine(y, Grid::Left(), Grid::Left() + 256, COLOR_GRID);
             if (!MenuIsMinimize())
             {
                 Painter::SetColor(Color::FILL);
@@ -1380,7 +1380,7 @@ void DrawGridSpectrum()
         for (int i = 1; i < 5; i++)
         {
             int y = (int)(Grid::MathTop() + i * scale);
-            Painter::DrawHLine(y, Grid::Left(), Grid::Left() + 256, Color::GRID);
+            Painter::DrawHLine(y, Grid::Left(), Grid::Left() + 256, COLOR_GRID);
             if (!MenuIsMinimize())
             {
                 Painter::DrawText(5, y - 4, strs[i], Color::FILL);
@@ -1474,7 +1474,7 @@ static void DrawGridType1(int left, int top, int right, int bottom, float center
     }
     masX[16] = right - 1;
 
-    Painter::DrawMultiVPointLine(17, (int)(top + stepY), masX, (int)stepY, CalculateCountV(), Color::GRID);
+    Painter::DrawMultiVPointLine(17, (int)(top + stepY), masX, (int)stepY, CalculateCountV(), COLOR_GRID);
 
     uint8 mas[13];
     mas[0] = top + 1;
@@ -1492,7 +1492,7 @@ static void DrawGridType1(int left, int top, int right, int bottom, float center
     }
     mas[12] = bottom - 1;
 
-    Painter::DrawMultiHPointLine(13, (int)(left + stepX), mas, (int)stepX, CalculateCountH(), Color::GRID);
+    Painter::DrawMultiHPointLine(13, (int)(left + stepX), mas, (int)stepX, CalculateCountH(), COLOR_GRID);
 }
 
 
@@ -1506,7 +1506,7 @@ static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, 
         masX[i] = left + deltaX * i;
     }
     masX[14] = right - 1;
-    Painter::DrawMultiVPointLine(15, top + stepY, masX, stepY, CalculateCountV(), Color::GRID);
+    Painter::DrawMultiVPointLine(15, top + stepY, masX, stepY, CalculateCountV(), COLOR_GRID);
 
     uint8 mas[11];
     mas[0] = top + 1;
@@ -1515,7 +1515,7 @@ static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, 
         mas[i] = top + deltaY * i;
     }
     mas[10] = bottom - 1;
-    Painter::DrawMultiHPointLine(11, left + stepX, mas, stepX, CalculateCountH(), Color::GRID);
+    Painter::DrawMultiHPointLine(11, left + stepX, mas, stepX, CalculateCountH(), COLOR_GRID);
 }
 
 
@@ -1525,11 +1525,11 @@ static void DrawGridType3(int left, int top, int right, int bottom, int centerX,
     Painter::DrawHPointLine(centerY, left + stepX, right, (float)stepX);
     uint8 masY[6] = {(uint8)(top + 1), (uint8)(top + 2), (uint8)(centerY - 1), (uint8)(centerY + 1), 
         (uint8)(bottom - 2), (uint8)(bottom - 1)};
-    Painter::DrawMultiHPointLine(6, left + deltaX, masY, deltaX, (right - top) / deltaX, Color::GRID);
+    Painter::DrawMultiHPointLine(6, left + deltaX, masY, deltaX, (right - top) / deltaX, COLOR_GRID);
     Painter::DrawVPointLine(centerX, top + stepY, bottom, (float)stepY);
     uint16 masX[6] = {(uint16)(left + 1), (uint16)(left + 2), (uint16)(centerX - 1), (uint16)(centerX + 1), 
         (uint16)(right - 2), (uint16)(right - 1)};
-    Painter::DrawMultiVPointLine(6, top + deltaY, masX, deltaY, (bottom - top) / deltaY, Color::GRID);
+    Painter::DrawMultiVPointLine(6, top + deltaY, masX, deltaY, (bottom - top) / deltaY, COLOR_GRID);
 
 }
 
@@ -1562,7 +1562,7 @@ void Display::DrawGrid(int left, int top, int width, int height)
     int centerX = left + width / 2;
     int centerY = top + height / 2;
 
-    Painter::SetColor(Color::GRID);
+    Painter::SetColor(COLOR_GRID);
     if (TYPE_GRID_IS_1)
     {
         DrawGridType1(left, top, right, bottom, (float)centerX, (float)centerY, deltaX, deltaY, stepX, stepY);
@@ -1970,7 +1970,7 @@ void WriteTextVoltage(Channel chan, int x, int y)
         const int widthField = 91;
         const int heightField = 8;
 
-        Color colorDraw = inverse ? Color::WHITE : color;
+        Color colorDraw = inverse ? COLOR_WHITE : color;
         if(inverse)
         {
             Painter::FillRegion(x, y, widthField, heightField, color);
@@ -2151,12 +2151,12 @@ void Display::DrawLowPart()
     // Ethernet
     if ((gBF.ethIsConnected == 1 || gBF.cableEthIsConnected == 1) && gTimeMS > 2000)
     {
-        Painter::Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::FILL : Color::FLASH_01);
+        Painter::Draw4SymbolsInRect(x + 87, GRID_BOTTOM + 2, SYMBOL_ETHERNET, gBF.ethIsConnected ? Color::FILL : COLOR_FLASH_01);
     }
 
     if (gBF.connectToHost == 1 || gBF.cableVCPisConnected == 1)
     {
-        Painter::Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::FILL : Color::FLASH_01);
+        Painter::Draw4SymbolsInRect(x + 72, GRID_BOTTOM + 2, SYMBOL_USB, gBF.connectToHost ? Color::FILL : COLOR_FLASH_01);
     }
     
     Painter::SetColor(Color::FILL);
@@ -2597,8 +2597,8 @@ void DrawStringInRectangle(int x, int y, char const *text)
     int height = 8;
     Painter::DrawRectangle(Grid::Left(), y, width + 4, height + 4, Color::FILL);
     Painter::DrawRectangle(Grid::Left() + 1, y + 1, width + 2, height + 2, Color::BACK);
-    Painter::FillRegion(Grid::Left() + 2, y + 2, width, height, Color::FLASH_10);
-    Painter::DrawText(Grid::Left() + 3, y + 2, text, Color::FLASH_01);
+    Painter::FillRegion(Grid::Left() + 2, y + 2, width, height, COLOR_FLASH_10);
+    Painter::DrawText(Grid::Left() + 3, y + 2, text, COLOR_FLASH_01);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------

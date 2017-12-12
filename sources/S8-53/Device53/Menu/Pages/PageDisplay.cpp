@@ -235,7 +235,7 @@ DEF_CHOICE_4(       mcGrid_Type,                                                
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::Grid()};
+ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::GRID};
 
 void OnChanged_Grid_Brightness()
 {
@@ -291,7 +291,7 @@ DEF_CHOICE_2(       mcSettings_Colors_Scheme,                                   
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_A};
+static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, COLOR_DATA_A};
 DEF_GOVERNOR_COLOR( mgcSettings_Colors_ChannelA,                                                       //--- ƒ»—œÀ≈… - Õ¿—“–Œ… » - ÷¬≈“¿ -  ‡Ì‡Î 1 ---
     " ‡Ì‡Î 1", "Channel 1",
     "",  "",
@@ -299,7 +299,7 @@ DEF_GOVERNOR_COLOR( mgcSettings_Colors_ChannelA,                                
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ColorType colorT2 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_B};
+static ColorType colorT2 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, COLOR_DATA_B};
 DEF_GOVERNOR_COLOR( mgcSettings_Colors_ChannelB,                                                       //--- ƒ»—œÀ≈… - Õ¿—“–Œ… » - ÷¬≈“¿ -  ‡Ì‡Î 2 ---
     " ‡Ì‡Î 2", "Channel 2",
     "",

@@ -366,14 +366,14 @@ static void WriteStretch(Channel ch, int x, int y)
     }
     else
     {
-        Painter::DrawFormText(x, y, Color::FLASH_01, "Калибровка %dк не прошла. Старый коэффициент %f", (int)ch + 1, GetStretchADC(ch));
+        Painter::DrawFormText(x, y, COLOR_FLASH_01, "Калибровка %dк не прошла. Старый коэффициент %f", (int)ch + 1, GetStretchADC(ch));
     }
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 static void DrawMessageErrorCalibrate(Channel ch)
 {
-    Painter::SetColor(Color::FLASH_01);
+    Painter::SetColor(COLOR_FLASH_01);
     Painter::DrawBigText(100, 30, 2, "ВНИМАНИЕ !!!");
 
     const int SIZE = 100;
@@ -387,7 +387,7 @@ static void DrawMessageErrorCalibrate(Channel ch)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void FuncAttScreen()
 {
-    Painter::BeginScene(Color::BLACK);
+    Painter::BeginScene(COLOR_BLACK);
 
     static bool first = true;
     static uint startTime = 0;
@@ -484,16 +484,16 @@ static void FuncAttScreen()
     int delta = 32;
     width = 80;
     height = 25;
-    DrawRectangle(x, y, width, height, Color::BLACK);
-    DrawStringInCenterRect(x, y, width, height, "ПРОДОЛЖИТЬ", Color::BLACK, false);
-    DrawRectangle(x, y - delta, width, height, Color::BLACK);
-    DrawStringInCenterRect(x, y - delta, width, height, "ОТМЕНИТЬ", Color::BLACK, false);
+    DrawRectangle(x, y, width, height, COLOR_BLACK);
+    DrawStringInCenterRect(x, y, width, height, "ПРОДОЛЖИТЬ", COLOR_BLACK, false);
+    DrawRectangle(x, y - delta, width, height, COLOR_BLACK);
+    DrawStringInCenterRect(x, y - delta, width, height, "ОТМЕНИТЬ", COLOR_BLACK, false);
     }
     */
     const int SIZE = 100;
     char buffer[SIZE];
     snprintf(buffer, SIZE, "%.1f", (gTimeMS - startTime) / 1000.0f);
-    Painter::DrawText(0, 0, buffer, Color::BLACK);
+    Painter::DrawText(0, 0, buffer, COLOR_BLACK);
 
     Painter::EndScene();
 }

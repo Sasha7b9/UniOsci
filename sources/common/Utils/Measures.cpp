@@ -217,14 +217,14 @@ void Measures::DrawPageChoice()
             int x0 = x + col * dX;
             int y0 = y + row * dY;
             bool active = meas == posOnPageChoice;
-            Painter::DrawRectangle(x0, y0, dX, dY, Color::WHITE);
-            Painter::FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, active ? Color::FLASH_10 : Color::BACK);
-            Painter::SetColor(active ? Color::FLASH_01 : Color::FILL);
+            Painter::DrawRectangle(x0, y0, dX, dY, COLOR_WHITE);
+            Painter::FillRegion(x0 + 1, y0 + 1, dX - 2, dY - 2, active ? COLOR_FLASH_10 : Color::BACK);
+            Painter::SetColor(active ? COLOR_FLASH_01 : Color::FILL);
             Painter::Draw10SymbolsInRect(x0 + 2, y0 + 1, GetChar(meas));
             if(meas < Meas_NumMeasures)
             {
                 Painter::SetFont(TypeFont_5);
-                Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? Color::FLASH_01 : Color::FILL);
+                Painter::DrawTextRelativelyRight(x0 + dX, y0 + 12, sMeas[meas].name, active ? COLOR_FLASH_01 : Color::FILL);
                 Painter::SetFont(TypeFont_UGO);
             }
             meas = (Meas)((int)meas + 1);    // meas++;

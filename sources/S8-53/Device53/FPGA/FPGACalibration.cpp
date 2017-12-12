@@ -300,15 +300,15 @@ void FuncAttScreen()
         int delta = 32;
         width = 80;
         height = 25;
-        DrawRectangle(x, y, width, height, Color::BLACK);
-        DrawStringInCenterRect(x, y, width, height, "опнднкфхрэ", Color::BLACK, false);
-        DrawRectangle(x, y - delta, width, height, Color::BLACK);
-        DrawStringInCenterRect(x, y - delta, width, height, "нрлемхрэ", Color::BLACK, false);
+        DrawRectangle(x, y, width, height, COLOR_BLACK);
+        DrawStringInCenterRect(x, y, width, height, "опнднкфхрэ", COLOR_BLACK, false);
+        DrawRectangle(x, y - delta, width, height, COLOR_BLACK);
+        DrawStringInCenterRect(x, y - delta, width, height, "нрлемхрэ", COLOR_BLACK, false);
     }
     */
     char buffer[100];
     sprintf(buffer, "%.1f", (gTimeMS - startTime) / 1000.0f);
-    Painter::DrawText(0, 0, buffer, Color::BLACK);
+    Painter::DrawText(0, 0, buffer, COLOR_BLACK);
 
     Painter::EndScene();
 }

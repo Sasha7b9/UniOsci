@@ -34,11 +34,11 @@ static const Settings defaultSettings =
     100,                        // Brightness
     20,                         // BrightnessGrid
     {
-        MAKE_COLOR(0, 0, 0),    // Color::BLACK
-        MAKE_COLOR(31, 63, 31), // Color::WHITE
-        MAKE_COLOR(15, 31, 15), // Color::GRID
-        MAKE_COLOR(1, 50, 31),  // Color::DATA_A
-        MAKE_COLOR(0, 63, 0),   // Color::DATA_B
+        MAKE_COLOR(0, 0, 0),    // COLOR_BLACK
+        MAKE_COLOR(31, 63, 31), // COLOR_WHITE
+        MAKE_COLOR(15, 31, 15), // COLOR_GRID
+        MAKE_COLOR(1, 50, 31),  // COLOR_DATA_A
+        MAKE_COLOR(0, 63, 0),   // COLOR_DATA_B
         MAKE_COLOR(26, 54, 26), // Color::MENU_FIELD
         MAKE_COLOR(31, 44, 0),  // COLOR_MENU_TITLE
         MAKE_COLOR(15, 22, 0),  // Color::MENU_TITLE_DARK
@@ -46,9 +46,9 @@ static const Settings defaultSettings =
         MAKE_COLOR(26, 34, 0),  // COLOR_MENU_ITEM
         MAKE_COLOR(13, 17, 0),  // COLOR_MENU_ITEM_DARK
         MAKE_COLOR(31, 51, 0),  // COLOR_MENU_ITEM_BRIGHT
-        MAKE_COLOR(0, 25, 15),  // Color::DATA_WHITE_ACCUM_A
-        MAKE_COLOR(0, 31, 0),   // Color::DATA_WHITE_ACCUM_B
-        MAKE_COLOR(1, 40, 25),  // Color::GRID_WHITE
+        MAKE_COLOR(0, 25, 15),  // COLOR_DATA_WHITE_ACCUM_A
+        MAKE_COLOR(0, 31, 0),   // COLOR_DATA_WHITE_ACCUM_B
+        MAKE_COLOR(1, 40, 25),  // COLOR_GRID_WHITE
         MAKE_COLOR(0, 51, 0)
     },
     ModeDrawSignal_Lines,       // ModeDrawSignal
@@ -235,7 +235,7 @@ static void WriteNonResetSettings(Settings *src, Settings *dest);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void LoadDefaultColors()
 {
-    for(int color = 0; color < Color::NUMBER; color++) 
+    for(int color = 0; color < COLOR_NUMBER; color++) 
     {
         COLOR(color) = defaultSettings.disp_Colors[color];
     }

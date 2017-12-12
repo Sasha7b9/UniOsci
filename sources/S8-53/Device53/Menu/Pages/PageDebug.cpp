@@ -505,7 +505,7 @@ DEF_PAGE_3(         mpRandomizer,                                               
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void OnDraw_SizeSettings(int x, int y)
 {
-    Painter::DrawFormatText(x + 5, y + 21, Color::BLACK, "Размер %d", sizeof(Settings));
+    Painter::DrawFormatText(x + 5, y + 21, COLOR_BLACK, "Размер %d", sizeof(Settings));
 }
 
 static int8 temp = 0;
@@ -643,8 +643,8 @@ static void Draw_EnterSerialNumber()
 
     if (selNumber)
     {
-        colorText = Color::FLASH_01;
-        colorBackground = Color::FLASH_10;
+        colorText = COLOR_FLASH_01;
+        colorBackground = COLOR_FLASH_10;
     }
 
     int y = y0 + 50;
@@ -652,8 +652,8 @@ static void Draw_EnterSerialNumber()
     Painter::SetColor(colorText);
     int x = Painter::DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
 
-    colorText = Color::FLASH_01;
-    colorBackground = Color::FLASH_10;
+    colorText = COLOR_FLASH_01;
+    colorBackground = COLOR_FLASH_10;
 
     if (selNumber)
     {

@@ -1018,8 +1018,8 @@ static void Draw_EnterSerialNumber()
 
     if (selNumber)
     {
-        colorText = Color::FLASH_01;
-        colorBackground = Color::FLASH_10;
+        colorText = COLOR_FLASH_01;
+        colorBackground = COLOR_FLASH_10;
     }
 
     int y = y0 + 50;
@@ -1027,8 +1027,8 @@ static void Draw_EnterSerialNumber()
     Painter::SetColor(colorText);
     int x = Painter::DrawTextOnBackground(x0 + deltaX, y, buffer, colorBackground);
 
-    colorText = Color::FLASH_01;
-    colorBackground = Color::FLASH_10;
+    colorText = COLOR_FLASH_01;
+    colorBackground = COLOR_FLASH_10;
 
     if (selNumber)
     {

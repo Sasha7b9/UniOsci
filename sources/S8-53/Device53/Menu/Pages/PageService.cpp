@@ -670,7 +670,7 @@ static void Information_Draw()
 {
     Language lang = LANG;
 
-    Painter::BeginScene(Color::BLACK);
+    Painter::BeginScene(COLOR_BLACK);
     int x = 100;
     int dY = 20;
     int y = 20;

@@ -85,20 +85,20 @@ void Menu::DrawTitlePage(Page *page, int layer, int yTop)
 
     if (shade)
     {
-        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, Color::MENU_TITLE_DARK);
-        Painter::FillRegion(x + 4, yTop + 4, MP_TITLE_WIDTH - 7, MP_TITLE_HEIGHT - 7, Color::MENU_TITLE_DARK);
+        Painter::FillRegion(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, COLOR_MENU_TITLE_DARK);
+        Painter::FillRegion(x + 4, yTop + 4, MP_TITLE_WIDTH - 7, MP_TITLE_HEIGHT - 7, COLOR_MENU_TITLE_DARK);
     }
     else
     {
         Painter::DrawVolumeButton(x + 1, yTop + 1, MP_TITLE_WIDTH - 1, MP_TITLE_HEIGHT - 1, 2, Color::MenuTitle(false), 
-            Color::MENU_TITLE_BRIGHT, Color::MENU_TITLE_DARK, shade, shade);
+            COLOR_MENU_TITLE_BRIGHT, COLOR_MENU_TITLE_DARK, shade, shade);
     }
     
     Painter::DrawVLine(x, yTop, yTop + page->HeightOpened(), Color::BorderMenu(false));
     bool condDrawRSet = page->NumSubPages() > 1 && NOT_CHOICE_REG(Menu::CurrentItem()) && 
         NOT_GOVERNOR(CurrentItem()) && IS_PAGE(OpenedItem());
     int delta = condDrawRSet ? -10 : 0;
-    Color colorText = shade ? Color::LightShadingText() : Color::BLACK;
+    Color colorText = shade ? Color::LightShadingText() : COLOR_BLACK;
     x = Painter::DrawStringInCenterRect(x, yTop, MP_TITLE_WIDTH + 2 + delta, MP_TITLE_HEIGHT, page->Title(), colorText);
     if(condDrawRSet)
     {
@@ -376,7 +376,7 @@ void Menu::Draw()
         y += LANG_RU ? 49 : 40;
         if (gStringForHint)
         {
-            Painter::DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, Color::BACK, Color::WHITE);
+            Painter::DrawTextInBoundedRectWithTransfers(x, y, width, gStringForHint, Color::BACK, COLOR_WHITE);
         }
         else if (gItemHint)
         {

@@ -18,12 +18,12 @@ extern const PageBase ppGrid;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void PageService_InitGlobalColors()
 {
-    Color::BACK = BACKGROUND_BLACK ? Color::BLACK : Color::WHITE;
-    Color::FILL = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
-    gColorGrid = BACKGROUND_BLACK ? Color::GRID : Color::GRID_WHITE;
-    gColorChan[A] = BACKGROUND_BLACK ? Color::DATA_A : Color::DATA_WHITE_ACCUM_A;
-    gColorChan[B] = BACKGROUND_BLACK ? Color::DATA_B : Color::DATA_WHITE_ACCUM_B;
-    gColorChan[A_B] = gColorChan[MathCh] = BACKGROUND_BLACK ? Color::WHITE : Color::BLACK;
+    Color::BACK = BACKGROUND_BLACK ? COLOR_BLACK : COLOR_WHITE;
+    Color::FILL = BACKGROUND_BLACK ? COLOR_WHITE : COLOR_BLACK;
+    Color::GRID = BACKGROUND_BLACK ? COLOR_GRID : COLOR_GRID_WHITE;
+    gColorChan[A] = BACKGROUND_BLACK ? COLOR_DATA_A : COLOR_DATA_WHITE_ACCUM_A;
+    gColorChan[B] = BACKGROUND_BLACK ? COLOR_DATA_B : COLOR_DATA_WHITE_ACCUM_B;
+    gColorChan[A_B] = gColorChan[MathCh] = BACKGROUND_BLACK ? COLOR_WHITE : COLOR_BLACK;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ DEF_CHOICE_2(       cSettings_Colors_Scheme,                                    
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_A};
+static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, COLOR_DATA_A};
 DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                                        //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 1 ---
     "Êàíàë 1", "Channel 1",
     "",
@@ -46,7 +46,7 @@ DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ColorType colorT2 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::DATA_B};
+static ColorType colorT2 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, COLOR_DATA_B};
 DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                                        //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Êàíàë 2 ---
     "Êàíàë 2", "Channel 2",
     "",
@@ -55,7 +55,7 @@ DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                 
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::GRID};
+ColorType colorTypeGrid = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, COLOR_GRID};
 DEF_GOVERNOR_COLOR( gcSettings_Colors_Grid,                                                              //--- ÄÈÑÏËÅÉ - ÍÀÑÒÐÎÉÊÈ - ÖÂÅÒÀ - Ñåòêà ---
     "Ñåòêà", "Grid",
     "Óñòàíàâëèâàåò öâåò ñåòêè",
@@ -70,7 +70,7 @@ static void OnChanged_Settings_Colors_Background(bool)
 
     gcSettings_Colors_ChannelA.ct->color = gColorChan[A];
     gcSettings_Colors_ChannelB.ct->color = gColorChan[B];
-    gcSettings_Colors_Grid.ct->color = gColorGrid;
+    gcSettings_Colors_Grid.ct->color = Color::GRID;
 
     gcSettings_Colors_ChannelA.ct->Init(true);
     gcSettings_Colors_ChannelB.ct->Init(true);
