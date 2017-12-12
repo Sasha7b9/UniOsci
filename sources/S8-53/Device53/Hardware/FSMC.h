@@ -15,3 +15,7 @@ public:
     static uint8 Read(uint8* address);
     static void Write(uint8 *address, uint8 value);
 };
+
+
+#define FSMC_SET_MODE(x)
+#define FSMC_RESTORE_MODE()
