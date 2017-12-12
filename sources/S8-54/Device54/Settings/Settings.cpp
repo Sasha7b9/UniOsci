@@ -319,7 +319,7 @@ void SetMenuCurrentSubPage(NamePage namePage, int8 posSubPage)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 bool MenuIsMinimize()
 {
-    return Menu::OpenedItem()->IsPageSB();
+    return IS_PAGE_SB(Menu::OpenedItem());
 }
 
 

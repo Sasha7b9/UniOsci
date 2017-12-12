@@ -85,9 +85,9 @@ void EFB(int)
 void Func_Power(int)                // B_Power
 {
     NEED_DISABLE_POWER = 1;
-    if (Menu::OpenedItem()->IsPageSB())     // Если открата страница малых кнопок,
+    if (IS_PAGE_SB(Menu::OpenedItem()))     // Если открата страница малых кнопок,
     {
-        Menu::CloseOpenedItem();          // то закрываем её
+        Menu::CloseOpenedItem();            // то закрываем её
     }
 }
 

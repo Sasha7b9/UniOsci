@@ -51,8 +51,9 @@ class SButton;
 class Page;
 class PageBase;
 
-#define IS_PAGE(item)  (item->type == Item_Page)
-#define NOT_PAGE(item) (item->type != Item_Page)
+#define IS_PAGE(item)    (item->type == Item_Page)
+#define NOT_PAGE(item)   (item->type != Item_Page)
+#define IS_PAGE_SB(item) (item->isPageSB)
 
 class Control
 {
@@ -60,8 +61,6 @@ public:
     COMMON_PART_MENU_ITEM;
     PageBase *Keeper() const;
     bool IsActive() const;
-    bool IsPageSB() const;
-    //inline bool IsPage() const   { return type == Item_Page; };
     inline bool IsChoice() const { return type == Item_Choice; };
     bool IsChoiceReg() const;
     bool IsGovernor() const;
