@@ -63,15 +63,6 @@ SButton* Page::SmallButonFromPage(int numButton)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Button::CallFuncOnDraw(int x, int y)
-{
-    if (funcForDraw)
-    {
-        funcForDraw(x, y);
-    }
-}
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 int Page::PosItemOnTop()
 {
     return NumCurrentSubPage() * MENU_ITEMS_ON_DISPLAY;

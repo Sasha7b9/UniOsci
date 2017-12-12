@@ -521,7 +521,7 @@ void Button::Draw(int x, int y)
 
     Painter::DrawStringInCenterRect(x + delta, y + delta, MI_WIDTH, MI_HEIGHT, Title(), color);
 
-    CallFuncOnDraw(x, y);
+    funcForDraw(x, y);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
