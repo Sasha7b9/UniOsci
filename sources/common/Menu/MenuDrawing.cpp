@@ -147,12 +147,12 @@ void Menu::DrawNestingPage(Page *page, int left, int bottom)
     {
         int nesting = 0;
 
-        PageBase *parent = page->Keeper();
+        PageBase *parent = KEEPER(page);
 
         while (parent != &mainPage)
         {
             page = (Page *)parent;
-            parent = page->Keeper();
+            parent = KEEPER(page);
             nesting++;
         }
 
@@ -317,7 +317,7 @@ int Menu::CalculateX(int layer)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int Menu::ItemOpenedPosY(void *item)
 {
-    Page *page = (Page *)((Control *)item)->Keeper();
+    Page *page = (Page *)KEEPER(item);
     int8 posCurItem = page->PosCurrentItem();
     int y = GRID_TOP + (posCurItem % MENU_ITEMS_ON_DISPLAY) * MI_HEIGHT + MP_TITLE_HEIGHT;
     if(y + ((Control *)item)->HeightOpened() > GRID_BOTTOM)

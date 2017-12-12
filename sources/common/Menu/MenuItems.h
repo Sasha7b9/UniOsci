@@ -64,12 +64,13 @@ class PageBase;
 #define IS_MAC(item)            (item->type == Item_MAC)
 #define IS_TIME(item)           (item->type == Item_Time)
     
+#define KEEPER(item)            ((PageBase *)item->keeper)
+    
 
 class Control
 {
 public:
     COMMON_PART_MENU_ITEM;
-    PageBase *Keeper() const;
     bool IsActive() const;
     /// Возвращает высоту в пикселях открытого элемента Choice или NamePage
     int HeightOpened() const;

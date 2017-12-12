@@ -802,7 +802,7 @@ void Menu::CloseOpenedItem()
             //((Page *)item)->SmallButonFromPage(0)->funcOnPress();
             SMALL_BUTTON_FROM_PAGE(item, 0)->funcOnPress();
         }
-        NamePage name = ((Control *)item)->Keeper()->name;
+        NamePage name = KEEPER(item)->name;
         SetMenuPosActItem(name, MENU_POS_ACT_ITEM(name) & 0x7f);
         if (item == (Control *)&mainPage)
         {
