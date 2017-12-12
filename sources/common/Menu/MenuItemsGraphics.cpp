@@ -383,7 +383,7 @@ void Formula::Draw(int x, int y, bool opened)
 void Formula::DrawClosed(int x, int y)
 {
     bool pressed = IsPressed();
-    bool shade = IsShade() || !IsActive();
+    bool shade = IsShade() || !IS_ACTIVE(this);
     DrawLowPart(x, y, pressed, shade);
     DrawGovernorChoiceColorFormulaHiPart(this, x, y, pressed, shade, false);
 }

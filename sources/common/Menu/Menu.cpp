@@ -594,7 +594,7 @@ void Menu::ShortPress_ChoiceReg(void *choice_)
 {
     Choice *choice = (Choice*)choice_;
 
-    if(!choice->IsActive()) 
+    if(!IS_ACTIVE(choice)) 
     {
         CHOICE_RUN_FUNC_CHANGED(choice, false);
     } 
