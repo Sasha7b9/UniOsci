@@ -526,7 +526,7 @@ void Choice::DrawClosed(int x, int y)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void Button::Draw(int x, int y, bool)
+void Button::Draw(int x, int y)
 {
     bool pressed = IsPressed();
     bool shade = IsShade() || !funcOfActive();
@@ -545,7 +545,7 @@ void Button::Draw(int x, int y, bool)
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-void SButton::Draw(int x, int y, bool)
+void SButton::Draw(int x, int y)
 {
     if (funcOfActive())
     {
@@ -639,7 +639,7 @@ void Page::DrawTitle(int x, int yTop)
 
     if (isPageSB)
     {
-        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3, false);
+        SMALL_BUTTON_FROM_PAGE(this, 0)->Draw(LEFT_SB, yTop + 3);
         return;
     }
     int height = HeightOpened();
@@ -704,7 +704,7 @@ void Control::Draw(int x, int y, bool opened)
     }
     else if (type == Item_Button)
     {
-        ((Button *)this)->Draw(x, y, opened);
+        ((Button *)this)->Draw(x, y);
     }
     else if (type == Item_Page)
     {
@@ -736,7 +736,7 @@ void Control::Draw(int x, int y, bool opened)
     }
     else if (type == Item_SmallButton)
     {
-        ((SButton *)this)->Draw(x, y, opened);
+        ((SButton *)this)->Draw(x, y);
     }
 }
 

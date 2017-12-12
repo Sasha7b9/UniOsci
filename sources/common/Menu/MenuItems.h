@@ -160,7 +160,7 @@ class Button : public Control
 public:
     pFuncVV     funcOnPress;        ///< Функция, которая вызывается при нажатии на кнопку.
     pFuncVII    funcForDraw;        ///< Функция будет вызываться во время отрисовки кнопки.
-    void Draw(int x, int y, bool opened);
+    void Draw(int x, int y);
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// SButton ///
@@ -190,7 +190,7 @@ public:
     pFuncVII                        funcForDraw;    ///< Эта функция вызывается для отрисовки кнопки в месте с координатами x, y.
     const StructHelpSmallButton    *hintUGO; 
     int                             numHints;
-    void Draw(int x, int y, bool opened);
+    void Draw(int x, int y);
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Governor ///
