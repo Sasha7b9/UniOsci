@@ -232,8 +232,8 @@ void Timer::PauseOnTime(uint timeMS)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer::PauseOnTicks(uint numTicks)
 {
-    uint startTicks = gTimerTics;
-    while (gTimerTics - startTicks < numTicks)
+    uint startTicks = gTimeTics;
+    while (gTimeTics - startTicks < numTicks)
     {
     };
 }
@@ -249,15 +249,15 @@ void Timer::StartMultiMeasurement()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Timer::StartLogging()
 {
-    timeStartLogging = gTimerTics;
+    timeStartLogging = gTimeTics;
     timePrevPoint = timeStartLogging;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint Timer::LogPointUS(char *name)
 {
-    uint interval = gTimerTics - timePrevPoint;
-    timePrevPoint = gTimerTics;
+    uint interval = gTimeTics - timePrevPoint;
+    timePrevPoint = gTimeTics;
     LOG_WRITE("%s %.2f us", name, interval / 120.0f);
     return interval;
 }
@@ -265,8 +265,8 @@ uint Timer::LogPointUS(char *name)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 uint Timer::LogPointMS(char *name)
 {
-    uint interval = gTimerTics - timePrevPoint;
-    timePrevPoint = gTimerTics;
+    uint interval = gTimeTics - timePrevPoint;
+    timePrevPoint = gTimeTics;
     LOG_WRITE("%s %.2f ms", name, interval / 120e3f);
     return interval;
 }

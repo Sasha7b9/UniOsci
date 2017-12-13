@@ -69,9 +69,8 @@ public:
 /// @brief Количество тиков, прошедших с момента последнего вызова функции Timer_StartMultiMeasurement(). Не более (1 << 32)
 /// В одной секунде 120.000.000 тиков для С8-53 и 90.000.000 тиков для С8-54.
 /// Максимальный отрезок времени, который можно отсчитать с её помощью - 35 сек.
-#define gTimerTics (TIM2->CNT)
-#define gTimerUS (TIM2->CNT / 90)
-    
+#define gTimeTics (TIM2->CNT)
+#define gTimeUS (TIM2->CNT / 90)
 #define gTimeMS HAL_GetTick()
 
 /** @}  @}

@@ -14,9 +14,6 @@
 #include <limits.h>
 
 
-Display display;
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #define NUM_P2P_POINTS (FPGA_MAX_POINTS)
 static uint8 dataP2P_0[NUM_P2P_POINTS];
@@ -1229,26 +1226,7 @@ extern uint8 *pool;
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
-    /*
-    Painter::BeginScene(Color::BACK);
-
-    static int x = 0;
-
-    Painter::FillRegion(x, x, 100, 100, Color::FILL);
-
-    x++;
-
-    if(x > 100)
-    {
-        x = 0;
-    }
-
-    Painter::EndScene();
-
-    return;
-    */
-
-	uint timeStart = gTimerTics;
+	uint timeStart = gTimeTics;
     if (funcOnHand != 0)
     {
         funcOnHand();
@@ -1300,7 +1278,7 @@ void Display::Update()
         WriteValueTrigLevel();
     }
 
-    DrawTimeForFrame(gTimerTics - timeStart);
+    DrawTimeForFrame(gTimeTics - timeStart);
 
     Painter::SetColor(Color::FILL);
 

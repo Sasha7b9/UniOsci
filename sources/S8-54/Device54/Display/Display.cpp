@@ -198,7 +198,7 @@ void Display::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Display::Update()
 {
-    uint timeStart = gTimerTics;
+    uint timeStart = gTimeTics;
 
     if (funcOnHand)
     {
@@ -259,7 +259,7 @@ void Display::Update()
         WriteValueTrigLevel();
     }
 
-    DrawTimeForFrame(gTimerTics - timeStart);
+    DrawTimeForFrame(gTimeTics - timeStart);
 
     Painter::EndScene();
 
