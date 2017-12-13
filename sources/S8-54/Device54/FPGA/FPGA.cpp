@@ -75,6 +75,16 @@ static uint16 READ_DATA_ADC_16(const uint16 *address, Channel ch )
     return point.halfWord;
 }
 
+static uint8 READ_DATA_ADC_8(const uint16 *address, Channel ch)
+{
+    float delta = AVE_VALUE - (RShiftZero - SET_RSHIFT(ch)) / (RSHIFT_IN_CELL / 20.0f);
+    BitSet16 point;
+    point.halfWord = *address;
+    int byte0 = (int)(((float)point.byte[0] - delta) * GetStretchADC(ch) + delta + 0.5f);
+    LIMITATION(byte0, 0, 255);
+    return (uint8)byte0;
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void FPGA::HardwareInit()
 {
@@ -512,7 +522,7 @@ bool FPGA::ReadRandomizeModeSave(bool first, bool last, bool onlySave)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // balance - свдиг точки вверх/вниз для балансировки
-static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool shift, int balance)
+static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool, int balance)
 {
     if (length == 0)
     {
@@ -521,59 +531,22 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
     *WR_PRED = nStop;
     *WR_ADDR_NSTOP = 0xffff;
 
-    uint16 *p = (uint16 *)data;
-    uint16 *endP = (uint16 *)&data[length];
+    uint8 *p = (uint8 *)data;
+    uint8 *endP = (uint8 *)&data[length];
 
     uint16 *address = ADDRESS_READ(ch);
 
-    nStop = *address;
-
-    if (shift)
-    {
-        *((uint8 *)p) = (uint8)((*address) >> 8);
-
-        p = (uint16 *)(((uint8 *)p) + 1);
-        endP -= 8;                          // Это нужно, чтбы не выйти за границу буфера - ведь мы сдвигаем данные на один байт
-    }
-
     while (p < endP && FPGA_IN_PROCESS_OF_READ)
     {
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
-        *p++ = READ_DATA_ADC_16(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
+        *p++ = READ_DATA_ADC_8(address, ch);
     }
-
-    if (shift)                              ///  \todo Во-первых, теряется один байт. Во-вторых, не очень-то красиво выглядит
-    {
-        while (p < (uint16 *)&data[length - 1])
-        {
-            *p++ = READ_DATA_ADC_16(address, ch);
-        }
-    }
-
-    if (balance != 0)
-    {
-        for (int i = shift ? 1 : 0; i < length; i += 2)
-        {
-            int newData = (int)data[i] + balance;
-            if (newData < 0)
-            {
-                newData = 0;
-            }
-            if (newData > 255)
-            {
-                newData = 255;
-            }
-            data[i] = (uint8)newData;
-        }
-    }
-
-    ShiftOnePoint2Right(data, length);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
