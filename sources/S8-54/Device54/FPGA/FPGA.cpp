@@ -522,45 +522,87 @@ bool FPGA::ReadRandomizeModeSave(bool first, bool last, bool onlySave)
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 // balance - свдиг точки вверх/вниз для балансировки
-static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool, int balance)
+static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool shift, int balance)
 {
-    uint8 storage[1024];
+    if (length == 0)
+    {
+        return;
+    }
+
+    static uint8 storage[1024];
 
     if (ch == A)
     {
-        if (length == 0)
-        {
-            return;
-        }
         *WR_PRED = nStop;
         *WR_ADDR_NSTOP = 0xffff;
 
-        uint8 *p = (uint8 *)data;
-        uint8 *endP = (uint8 *)&data[length];
+        uint16 *p = (uint16 *)data;
+        uint16 *endP = (uint16 *)&data[length];
 
         uint16 *address = ADDRESS_READ(ch);
 
-        BitSet16 point;
+        nStop = *address;
 
-        uint8 *pStorage = storage;
+        int index = 0;
+
+        if (shift)
+        {
+            *((uint8 *)p) = (uint8)(*address);
+
+            storage[0] = *((uint8 *)p);
+
+            p = (uint16 *)(((uint8 *)p) + 1);
+            --endP;                          // Это нужно, чтбы не выйти за границу буфера - ведь мы сдвигаем данные на один байт
+
+            index = 1;
+        }
+
+
 
         while (p < endP && FPGA_IN_PROCESS_OF_READ)
         {
-            point.halfWord = READ_DATA_ADC_16(address, ch);
-            *p++ = point.byte0;
-            *pStorage++ = point.byte1;
+            *p = READ_DATA_ADC_16(address, ch);
+
+            storage[index++] = (uint8)(*p);
+            storage[index++] = (uint8)(*p);
+
+            ++p;
+        }
+
+        if (shift)                              ///  \todo Во-первых, теряется один байт. Во-вторых, не очень-то красиво выглядит
+        {
+            while (p < (uint16 *)&data[length - 1])
+            {
+                *p++ = READ_DATA_ADC_16(address, ch);
+            }
         }
     }
     else
     {
-        uint8 *p = (uint8 *)data;
-        uint8 *endP = (uint8 *)&data[length];
-        uint8 *pStorage = storage;
-        while (p < endP && FPGA_IN_PROCESS_OF_READ)
+        for (int i = 0; i < length; i++)
         {
-            *p++ = *pStorage++;
+            data[i] = storage[i];
         }
     }
+
+    if (balance != 0)
+    {
+        for (int i = shift ? 1 : 0; i < length; i += 2)
+        {
+            int newData = (int)data[i] + balance;
+            if (newData < 0)
+            {
+                newData = 0;
+            }
+            if (newData > 255)
+            {
+                newData = 255;
+            }
+            data[i] = (uint8)newData;
+        }
+    }
+
+    ShiftOnePoint2Right(data, length);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
