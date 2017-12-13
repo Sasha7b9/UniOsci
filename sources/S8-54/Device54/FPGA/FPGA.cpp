@@ -524,28 +524,42 @@ bool FPGA::ReadRandomizeModeSave(bool first, bool last, bool onlySave)
 // balance - свдиг точки вверх/вниз дл€ балансировки
 static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool, int balance)
 {
-    if (length == 0)
+    uint8 storage[1024];
+
+    if (ch == A)
     {
-        return;
+        if (length == 0)
+        {
+            return;
+        }
+        *WR_PRED = nStop;
+        *WR_ADDR_NSTOP = 0xffff;
+
+        uint8 *p = (uint8 *)data;
+        uint8 *endP = (uint8 *)&data[length];
+
+        uint16 *address = ADDRESS_READ(ch);
+
+        BitSet16 point;
+
+        uint8 *pStorage = storage;
+
+        while (p < endP && FPGA_IN_PROCESS_OF_READ)
+        {
+            point.halfWord = READ_DATA_ADC_16(address, ch);
+            *p++ = point.byte0;
+            *pStorage++ = point.byte1;
+        }
     }
-    *WR_PRED = nStop;
-    *WR_ADDR_NSTOP = 0xffff;
-
-    uint8 *p = (uint8 *)data;
-    uint8 *endP = (uint8 *)&data[length];
-
-    uint16 *address = ADDRESS_READ(ch);
-
-    while (p < endP && FPGA_IN_PROCESS_OF_READ)
+    else
     {
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
-        *p++ = READ_DATA_ADC_8(address, ch);
+        uint8 *p = (uint8 *)data;
+        uint8 *endP = (uint8 *)&data[length];
+        uint8 *pStorage = storage;
+        while (p < endP && FPGA_IN_PROCESS_OF_READ)
+        {
+            *p++ = *pStorage++;
+        }
     }
 }
 
@@ -564,6 +578,8 @@ void FPGA::ReadRealMode(uint8 *dataA, uint8 *dataB)
     uint16 nStop = ReadNStop();
 
     bool shift = _GET_BIT(ReadFlag(), FL_LAST_RECOR) == 0;    // ≈сли true, будем сдвигать точки на одну
+
+    LOG_WRITE("%d", shift ? 1 : 0);
 
     int balanceA = 0;
     int balanceB = 0;
