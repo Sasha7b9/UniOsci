@@ -65,14 +65,15 @@ static uint16 READ_DATA_ADC_16(const uint16 *address, Channel ch )
 {
     float delta = AVE_VALUE - (RShiftZero - SET_RSHIFT(ch)) / (RSHIFT_IN_CELL / 20.0f);
     BitSet16 point;
+    BitSet16 retValue;
     point.halfWord = *address;
     int byte0 = (int)(((float)point.byte[0] - delta) * GetStretchADC(ch) + delta + 0.5f);
     LIMITATION(byte0, 0, 255);
-    point.byte[0] = (uint8)byte0;
+    retValue.byte0 = (uint8)byte0;
     int byte1 = (int)(((float)point.byte[1] - delta) * GetStretchADC(ch) + delta + 0.5f);
     LIMITATION(byte1, 0, 255);
-    point.byte[1] = (uint8)byte1;
-    return point.halfWord;
+    retValue.byte1 = (uint8)byte1;
+    return retValue.halfWord;
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -530,7 +531,7 @@ static void ReadChannel(uint8 *data, Channel ch, int length, uint16 nStop, bool 
 
     if (shift)
     {
-        *((uint8 *)p) = (uint8)((*address) >> 8);
+        *((uint8 *)p) = (uint8)(*address);
 
         p = (uint16 *)(((uint8 *)p) + 1);
         endP -= 8;                          // Это нужно, чтбы не выйти за границу буфера - ведь мы сдвигаем данные на один байт
