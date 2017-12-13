@@ -680,6 +680,10 @@ void Page::DrawTitle(int x, int yTop)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Page::DrawItems(int x, int yTop)
 {
+    if (IS_PAGE_SB(this))
+    {
+        x = LEFT_SB;
+    }
     int posFirstItem = PosItemOnTop();
     int posLastItem = posFirstItem + MENU_ITEMS_ON_DISPLAY - 1;
     LIMITATION(posLastItem, 0, NumItems() - 1);
