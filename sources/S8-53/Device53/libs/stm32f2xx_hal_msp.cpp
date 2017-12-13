@@ -110,6 +110,7 @@ void HAL_SRAM_MspDeInit(SRAM_HandleTypeDef *hsram)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
 {
+    /*
     GPIO_InitTypeDef structGPIO =
     {
         GPIO_PIN_4,
@@ -144,6 +145,7 @@ void HAL_DAC_MspInit(DAC_HandleTypeDef* hdac)
 
     HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 7, 0);
     HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
+    */
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------

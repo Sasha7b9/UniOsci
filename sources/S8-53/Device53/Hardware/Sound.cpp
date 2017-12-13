@@ -7,9 +7,6 @@
 #include <math.h>
 
 
-Sound sound;
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void TIM7_Config(uint16 prescaler, uint16 period);
 static uint16 CalculatePeriodForTIM();
@@ -46,6 +43,7 @@ void Sound::Init()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Stop()
 {
+    return;
     HAL_DAC_Stop_DMA(&handleDAC, DAC_CHANNEL_1);
     gBF.soundIsBeep = 0;
     gBF.soundWarnIsBeep = 0;
@@ -54,6 +52,7 @@ static void Stop()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 static void Beep(TypeWave typeWave_, float frequency_, float amplitude_, int duration)
 {
+    return;
     if (gBF.soundWarnIsBeep == 1)
     {
         return;

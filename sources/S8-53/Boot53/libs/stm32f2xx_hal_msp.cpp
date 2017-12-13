@@ -95,5 +95,6 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef *)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void HAL_HCD_MspDeInit(HCD_HandleTypeDef *)
 {
+    HAL_NVIC_DisableIRQ(OTG_HS_IRQn);
     __USB_OTG_HS_CLK_DISABLE();
 }

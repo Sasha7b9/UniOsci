@@ -14,17 +14,6 @@
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static TIM_HandleTypeDef handleTIM6forTimer =
-{
-    TIM6,
-    {
-        119,                    // Init.Prescaler
-        TIM_COUNTERMODE_UP,     // Init.CounterMode
-        500,                    // Init.Period
-        TIM_CLOCKDIVISION_DIV1  // Init.ClockDivision
-    }
-};
-
 static CRC_HandleTypeDef crcHandle;
 
 
@@ -52,32 +41,13 @@ void Hardware_Init()
     __GPIOG_CLK_ENABLE();
     __DMA1_CLK_ENABLE();        // Для DAC1 (бикалка)
     
-    __TIM6_CLK_ENABLE();        // Для отсчёта миллисекунд
     __TIM2_CLK_ENABLE();        // Для тиков
     __TIM7_CLK_ENABLE();        // Для DAC1 (бикалка)
-    __DAC_CLK_ENABLE();         // Для бикалки
     __PWR_CLK_ENABLE();
 
     __SYSCFG_CLK_ENABLE();
 
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-
-    // Timer  /////////////////////////////////////////////////////////////////
-    //RCC_PCLK1Config(RCC_HCLK_Div1);
-
-    // Таймер для мс
-    HAL_NVIC_SetPriority(TIM6_DAC_IRQn, 2, 0);
-    HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-
-    if (HAL_TIM_Base_Init(&handleTIM6forTimer) != HAL_OK)
-    {
-        ERROR_HANDLER();
-    }
-
-    if (HAL_TIM_Base_Start_IT(&handleTIM6forTimer) != HAL_OK)
-    {
-        ERROR_HANDLER();
-    }
 
     // Таймер для тиков
     TIM_HandleTypeDef tim2handle =
@@ -137,27 +107,6 @@ void Hardware_Init()
     if (HAL_CRC_Init(&crcHandle) != HAL_OK)
     {
         ERROR_HANDLER();
-    }
-}
-
-#ifdef __cplusplus
-}
-#endif
-
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-//----------------------------------------------------------------------------------------------------------------------------------------------------
-void TIM6_DAC_IRQHandler()
-{
-    if (__HAL_TIM_GET_FLAG(&handleTIM6forTimer, TIM_FLAG_UPDATE) == SET && __HAL_TIM_GET_ITSTATUS(&handleTIM6forTimer, TIM_IT_UPDATE))
-    {
-        Timer::Update1ms();
-        __HAL_TIM_CLEAR_FLAG(&handleTIM6forTimer, TIM_FLAG_UPDATE);
-        __HAL_TIM_CLEAR_IT(&handleTIM6forTimer, TIM_IT_UPDATE);
     }
 }
 

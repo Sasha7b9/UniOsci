@@ -111,6 +111,8 @@ int main()
     free(ms);
     */
 
+    Hardware_DeInit();
+
     __disable_irq();
     // Теперь переходим на основную программу
     JumpToApplication = (pFunction)(*(__IO uint*)(MAIN_PROGRAM_START_ADDRESS + 4));

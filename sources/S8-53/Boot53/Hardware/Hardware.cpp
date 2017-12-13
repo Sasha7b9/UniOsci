@@ -20,6 +20,18 @@ static TIM_HandleTypeDef handleTIM6forTimer =
     }
 };
 
+// Таймер для тиков
+TIM_HandleTypeDef tim2handle =
+{
+    TIM2,
+    {
+        0,
+        TIM_COUNTERMODE_UP,
+        0xffffffff,
+        TIM_CLOCKDIVISION_DIV1
+    }
+};
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 static void SystemClock_Config();
@@ -62,18 +74,6 @@ void Hardware_Init()
 
     HAL_TIM_Base_Start_IT(&handleTIM6forTimer);
 
-    // Таймер для тиков
-    TIM_HandleTypeDef tim2handle =
-    {
-        TIM2,
-        {
-            0,
-            TIM_COUNTERMODE_UP,
-            0xffffffff,
-            TIM_CLOCKDIVISION_DIV1
-        }
-    };
-
     HAL_TIM_Base_Init(&tim2handle);
     HAL_TIM_Base_Start(&tim2handle);
 
@@ -101,6 +101,35 @@ void Hardware_Init()
     
     HAL_GPIO_WritePin(GPIOG, GPIO_PIN_1, GPIO_PIN_RESET);                   // PG1 - когда равен 1, чтение дисплея, в остальных случаях 0
 
+}
+
+void Hardware_DeInit()
+{
+    HAL_DeInit();
+
+    __GPIOA_CLK_DISABLE();
+    __GPIOB_CLK_DISABLE();
+    __GPIOC_CLK_DISABLE();
+    __GPIOD_CLK_DISABLE();
+    __GPIOE_CLK_DISABLE();
+    __GPIOF_CLK_DISABLE();
+    __GPIOG_CLK_DISABLE();
+    __DMA1_CLK_DISABLE();        // Для DAC1 (бикалка)
+
+    __TIM6_CLK_DISABLE();        // Для отсчёта миллисекунд
+    __TIM2_CLK_DISABLE();        // Для тиков
+    __TIM7_CLK_DISABLE();        // Для DAC1 (бикалка)
+    __DAC_CLK_DISABLE();         // Для бикалки
+    __PWR_CLK_DISABLE();
+
+    __SYSCFG_CLK_DISABLE();
+
+    HAL_NVIC_DisableIRQ(TIM6_DAC_IRQn);
+    HAL_TIM_Base_DeInit(&handleTIM6forTimer);
+    HAL_TIM_Base_Stop_IT(&handleTIM6forTimer);
+
+    HAL_TIM_Base_DeInit(&tim2handle);
+    HAL_TIM_Base_Stop(&tim2handle);
 }
 
 #ifdef __cplusplus
