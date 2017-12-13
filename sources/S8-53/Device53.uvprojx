@@ -1191,16 +1191,6 @@
               <FilePath>.\Device53\Hardware\RTC.h</FilePath>
             </File>
             <File>
-              <FileName>Sound.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Device53\Hardware\Sound.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Sound.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Device53\Hardware\Sound.h</FilePath>
-            </File>
-            <File>
               <FileName>FLASH.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Device53\Hardware\FLASH.cpp</FilePath>
@@ -1229,6 +1219,16 @@
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Hardware\Timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Sound.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Hardware\Sound.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Sound.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Hardware\Sound.h</FilePath>
             </File>
           </Files>
         </Group>

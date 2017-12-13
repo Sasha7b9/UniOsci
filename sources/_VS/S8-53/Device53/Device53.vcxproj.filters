@@ -330,9 +330,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\RTC.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Sound.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\FLASH.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
@@ -546,6 +543,9 @@
     <ClCompile Include="..\..\..\S8-53\Device53\FlashDrive\FileManager.cpp">
       <Filter>FlashDrive</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\common\Hardware\Sound.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h">
@@ -696,9 +696,6 @@
       <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\RTC.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Sound.h">
       <Filter>Hardware</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\Menu\Pages\HelpContent.h">
@@ -871,6 +868,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\S8-53\Device53\FlashDrive\FileManager.h">
       <Filter>FlashDrive</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\common\Hardware\Sound.h">
+      <Filter>Hardware</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

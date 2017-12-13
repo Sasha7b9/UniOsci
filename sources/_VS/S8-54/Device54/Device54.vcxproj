@@ -139,6 +139,7 @@
     <ClInclude Include="..\..\..\common\Display\Painter.h" />
     <ClInclude Include="..\..\..\common\Display\Symbols.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
+    <ClInclude Include="..\..\..\common\Hardware\Sound.h" />
     <ClInclude Include="..\..\..\common\Hardware\Timer.h" />
     <ClInclude Include="..\..\..\common\Menu\Menu.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuItems.h" />
@@ -177,7 +178,6 @@
     <ClInclude Include="..\..\..\S8-54\Device54\Hardware\Hardware.h" />
     <ClInclude Include="..\..\..\S8-54\Device54\Hardware\RAM.h" />
     <ClInclude Include="..\..\..\S8-54\Device54\Hardware\RTC.h" />
-    <ClInclude Include="..\..\..\S8-54\Device54\Hardware\Sound.h" />
     <ClInclude Include="..\..\..\S8-54\Device54\libs\ffconf.h" />
     <ClInclude Include="..\..\..\S8-54\Device54\libs\stm32f4xx_hal_conf.h" />
     <ClInclude Include="..\..\..\S8-54\Device54\libs\stm32f4xx_it.h" />
@@ -370,6 +370,7 @@
     <ClCompile Include="..\..\..\common\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\common\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\..\common\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\..\common\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp" />
@@ -407,7 +408,6 @@
     <ClCompile Include="..\..\..\S8-54\Device54\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device54\Hardware\RAM.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device54\Hardware\RTC.cpp" />
-    <ClCompile Include="..\..\..\S8-54\Device54\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device54\libs\stm32f4xx_hal_msp.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device54\libs\stm32f4xx_it.cpp" />
     <ClCompile Include="..\..\..\S8-54\Device54\libs\system_stm32f4xx.c">

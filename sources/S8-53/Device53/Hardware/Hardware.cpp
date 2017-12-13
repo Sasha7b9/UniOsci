@@ -2,7 +2,7 @@
 #include "Hardware.h"
 #include "ADC.h"
 #include "FLASH.h"
-#include "Sound.h"
+#include "Hardware/Sound.h"
 #include "Hardware/RTC.h"
 #include "FSMC.h"
 #include "Hardware/Timer.h"

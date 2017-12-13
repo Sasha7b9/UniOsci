@@ -1323,12 +1323,12 @@
             <File>
               <FileName>Sound.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\Device54\Hardware\Sound.cpp</FilePath>
+              <FilePath>..\common\Hardware\Sound.cpp</FilePath>
             </File>
             <File>
               <FileName>Sound.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\Device54\Hardware\Sound.h</FilePath>
+              <FilePath>..\common\Hardware\Sound.h</FilePath>
             </File>
           </Files>
         </Group>

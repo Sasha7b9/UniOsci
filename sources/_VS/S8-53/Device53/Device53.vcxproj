@@ -128,6 +128,7 @@
     <ClCompile Include="..\..\..\common\Display\Painter.cpp" />
     <ClCompile Include="..\..\..\common\Display\PainterText.cpp" />
     <ClCompile Include="..\..\..\common\FPGA\FPGAMath.cpp" />
+    <ClCompile Include="..\..\..\common\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\..\common\Hardware\Timer.cpp" />
     <ClCompile Include="..\..\..\common\Menu\Menu.cpp" />
     <ClCompile Include="..\..\..\common\Menu\MenuItems.cpp" />
@@ -158,7 +159,6 @@
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Hardware.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\MSP_USBH.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\Hardware\RTC.cpp" />
-    <ClCompile Include="..\..\..\S8-53\Device53\Hardware\Sound.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\app_ethernet.cpp" />
     <ClCompile Include="..\..\..\S8-53\Device53\libs\ethernetif.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -453,6 +453,7 @@
     <ClInclude Include="..\..\..\common\Display\Painter.h" />
     <ClInclude Include="..\..\..\common\Display\Symbols.h" />
     <ClInclude Include="..\..\..\common\FPGA\FPGAMath.h" />
+    <ClInclude Include="..\..\..\common\Hardware\Sound.h" />
     <ClInclude Include="..\..\..\common\Hardware\Timer.h" />
     <ClInclude Include="..\..\..\common\Menu\Menu.h" />
     <ClInclude Include="..\..\..\common\Menu\MenuDrawing.h" />
@@ -484,7 +485,6 @@
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\FSMC.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Hardware.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\Hardware\RTC.h" />
-    <ClInclude Include="..\..\..\S8-53\Device53\Hardware\Sound.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\app_ethernet.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ethernetif.h" />
     <ClInclude Include="..\..\..\S8-53\Device53\libs\ffconf.h" />

@@ -2,10 +2,9 @@
 #include "Globals.h"
 #include "Log.h"
 #include "Sound.h"
+#include "stub.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
-#include <stm32f437xx.h>
-#include <stm32f4xx_hal.h>
 #include <math.h>
 
 
@@ -109,8 +108,6 @@ void CalculateSine()
             points[i] = (uint8)(255.0f * amplitude);
         }
     }
-
-    //LOG_WRITE("min = %d, max = %d", min, max);
 }
 
 
