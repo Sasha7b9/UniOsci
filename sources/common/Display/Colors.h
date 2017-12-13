@@ -38,8 +38,6 @@ public:
     
     uint8 value;
 
-    uint8 Value() { return value; };
-
     static void InitGlobalColors();
 
 private:

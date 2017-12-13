@@ -131,7 +131,7 @@ Color Painter::GetColor()
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::LoadPalette()
 {
-    for (uint8 i = 0; i < Color::NUMBER.Value(); i++)
+    for (uint8 i = 0; i < Color::NUMBER.value; i++)
     {
         SetPalette((Color)i);
     }
@@ -680,6 +680,8 @@ bool Painter::SaveScreenToFlashDrive()
     return true;
 }
 
+#define EQU(x) (bytes[0] == x)
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::SendToDisplay(uint8 *bytes, int numBytes)
 {
@@ -688,8 +690,9 @@ void Painter::SendToDisplay(uint8 *bytes, int numBytes)
         while (HAL_GPIO_ReadPin(GPIOG, GPIO_PIN_11) == GPIO_PIN_RESET)
         {
         };
+    
         Timer::PauseOnTicks(75);    /// \todo Здесь время ожидание увеличено по сравнению с С8-53 (там частота 120МГц, здесь - 180МГц)
-
+    
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;
         *ADDR_CDISPLAY = *bytes++;
@@ -710,11 +713,9 @@ void Painter::SendToInterfaces(uint8 *pointer, int size)
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 void Painter::RunDisplay()
 {
-#ifdef S8_54
     uint8 command[4] = {RUN_BUFFER};
 
     SendToDisplay(command, 4);
-#endif
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -727,11 +728,11 @@ static void OnTimerFlashDisplay()
 static void CalculateColor(uint8 *color)
 {
     currentColor = (Color)*color;
-    if (*color == Color::FLASH_10.Value())
+    if (*color == Color::FLASH_10.value)
     {
         *color = inverseColors ? Color::BACK.value : Color::FILL.value;
     }
-    else if (*color == Color::FLASH_01.Value())
+    else if (*color == Color::FLASH_01.value)
     {
         *color = inverseColors ? Color::FILL.value : Color::BACK.value;
     }

@@ -81,6 +81,7 @@ typedef enum
     LOAD_FONT               = 19, // 19 typeFont:1 height:4 symbols:9 * 256 . Описание symbols смотри в Font.h
     LOAD_IMAGE              = 20, // 
     GET_PIXEL               = 21, // 
+    RUN_BUFFER              = 22,
     SET_REINIT              = 23,
     NUM_COMMANDS            = 25
 } Command;

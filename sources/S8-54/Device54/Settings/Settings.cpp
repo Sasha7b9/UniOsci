@@ -235,7 +235,7 @@ static void WriteNonResetSettings(Settings *src, Settings *dest);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void LoadDefaultColors()
 {
-    for(int color = 0; color < Color::NUMBER.Value(); color++) 
+    for(int color = 0; color < Color::NUMBER.value; color++) 
     {
         COLOR(color) = defaultSettings.disp_Colors[color];
     }
