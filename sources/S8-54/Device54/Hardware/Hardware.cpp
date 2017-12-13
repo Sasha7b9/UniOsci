@@ -70,13 +70,6 @@ void Hardware::Init()
 
     HAL_NVIC_SetPriority(SysTick_IRQn, PRIORITY_SYS_TICK);
 
-    // Timer  /////////////////////////////////////////////////////////////////
-    //RCC_PCLK1Config(RCC_HCLK_Div1);
-
-    // Таймер для мс
-    HAL_NVIC_SetPriority(TIM6_DAC_IRQn, PRIORITY_TIMER_TIM6);
-    HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-
     Timer::Init();
 
     Sound::Init();
@@ -95,7 +88,7 @@ void Hardware::Init()
 
     GPIO_InitTypeDef isGPIO =
     {
-        GPIO_PIN_10 | GPIO_PIN_12,      // SPI SCLK, DATA
+        GPIO_PIN_10 | GPIO_PIN_12,          // SPI SCLK, DATA
         GPIO_MODE_OUTPUT_PP,
         GPIO_NOPULL,
         GPIO_SPEED_HIGH,
