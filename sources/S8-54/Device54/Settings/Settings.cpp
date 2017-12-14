@@ -20,6 +20,11 @@ static struct BitFieldSettings
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extern void OnChanged_ADC_Stretch_Mode(bool active);
 extern void OnChanged_DisplayOrientation(bool);
+extern void OnChanged_Settings_Colors_Background(bool);
+extern ColorType colorTypeA;
+extern ColorType colorTypeB;
+extern ColorType colorTypeGrid;
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,6 +283,26 @@ void Settings::Load(bool _default)
     OnChanged_ADC_Stretch_Mode(true);
     OnChanged_DisplayOrientation(true);
     Painter::SetBrightnessDisplay(BRIGHTNESS_DISPLAY);
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+void Settings::ResetColors()
+{
+    for (int i = 0; i < 16; i++)
+    {
+        set.disp_Colors[i] = defaultSettings.disp_Colors[i];
+    }
+
+    set.disp_Background = defaultSettings.disp_Background;
+    set.disp_BrightnessGrid = defaultSettings.disp_BrightnessGrid;
+    set.serv_ColorScheme = defaultSettings.serv_ColorScheme;
+
+    Color::InitGlobalColors();
+    Painter::LoadPalette();
+    OnChanged_Settings_Colors_Background(true);
+    colorTypeA.Init(true);
+    colorTypeB.Init(true);
+    colorTypeGrid.Init(true);
 }
 
 

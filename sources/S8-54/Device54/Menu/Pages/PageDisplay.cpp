@@ -16,31 +16,44 @@ extern const PageBase ppAverage;
 extern const PageBase ppGrid;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void OnPress_ResetColors()
+{
+    Settings::ResetColors();
+}
+
+DEF_BUTTON(         bResetColors,                                                                     //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сбросить ---
+    "Сбросить", "Reset",
+    "Сброс всех цветов на значения по умолчанию",
+    "Reset all colors to default values",
+    pppSettings_Colors, EmptyFuncBV, OnPress_ResetColors, EmptyFuncVII
+);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
 DEF_CHOICE_2(       cSettings_Colors_Scheme,                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема ---
     "Цветовая схема", "Color scheme",
-    "Режим работы калибратора",
-    "Mode of operation of the calibrator",
+    "Изменение цветовой схемы",
+    "Changing the color scheme",
     "Схема 1", "Scheme 1",
     "Схема 2", "Scheme 2",
     set.serv_ColorScheme, pppSettings_Colors, FuncActive, FuncChangedChoice, FuncDraw
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ColorType colorT1 = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::CHAN[A]};
+ColorType colorTypeA = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::CHAN[A]};
 DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelA,                                                        //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1 ---
     "Канал 1", "Channel 1",
-    "",
-    "",
-    colorT1, pppSettings_Colors
+    "Выбор цвета канала 1",
+    "Choice of channel 1 color",
+    colorTypeA, pppSettings_Colors
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static ColorType colorT2 = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::CHAN[B]};
+ColorType colorTypeB = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, Color::CHAN[B]};
 DEF_GOVERNOR_COLOR( gcSettings_Colors_ChannelB,                                                        //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2 ---
     "Канал 2", "Channel 2",
-    "",
-    "",
-    colorT2, pppSettings_Colors
+    "Выбор цвета канала 1",
+    "Choice of channel 2 color",
+    colorTypeB, pppSettings_Colors
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -53,7 +66,7 @@ DEF_GOVERNOR_COLOR( gcSettings_Colors_Grid,                                     
 );
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
-static void OnChanged_Settings_Colors_Background(bool)
+void OnChanged_Settings_Colors_Background(bool)
 {
     Color::InitGlobalColors();
 
@@ -77,10 +90,11 @@ DEF_CHOICE_2(       cSettings_Colors_Background,                                
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// \todo Добавить дополнительные цвета 1-го и 2-го каналов
-DEF_PAGE_5(         pppSettings_Colors,                                                                             // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ///
+DEF_PAGE_6(         pppSettings_Colors,                                                                             // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ///
     "ЦВЕТА", "COLORS",
     "Выбор цветов дисплея",
     "The choice of colors display",
+    bResetColors,                   // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Сбросить
     cSettings_Colors_Scheme,        // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Цветовая схема
     gcSettings_Colors_ChannelA,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 1
     gcSettings_Colors_ChannelB,     // ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА - Канал 2
