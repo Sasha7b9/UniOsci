@@ -175,7 +175,6 @@ void FPGA::Update()
 		return;
 	}
 
-    //if(((gBF.FPGAcanReadData == 0) && !sTime_RandomizeModeEnabled()) || (stateWork == StateWorkFPGA_Stop))
     if((gBF.FPGAcanReadData == 0) || (stateWork == StateWorkFPGA_Stop))
     {
         return;

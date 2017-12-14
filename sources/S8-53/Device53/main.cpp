@@ -33,12 +33,9 @@ static void Init();
 
 #define TICS ((gTimerTics - time) / 120.0f)
 
-extern void main3();
-
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 int main()
 {
-    //main3();
     Hardware_Init();
     Init();
     Settings_Load(false);
@@ -51,17 +48,11 @@ int main()
     while(1)
     {
         Timer::StartMultiMeasurement();      // Сброс таймера для замера длительности временных интервалов в течение одной итерации цикла.
-        
         FDrive::Update();
-
         Ethernet::Update(0);
-
         FPGA::Update();                      // Обновляем аппаратную часть.
-
         ProcessingSignal();
-
         Display::Update();               // Рисуем экран.
-
         Menu::UpdateInput();                 // Обновляем состояние меню
     }
 }
